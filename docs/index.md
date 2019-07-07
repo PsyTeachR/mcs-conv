@@ -28,6 +28,10 @@ Crucially, with an analysis script other researchers can also see how you got fr
 
 For each R lab for both RM1 and RM2 there will be pre-class and in-class activities. **It is crucial that you attempt the pre-class activities before attending your lab**. You will learn R much more easily if you work on it consistently each week and give yourself time to build and practice your skills. This is so important to your success on this course that your tutor will keep a record of your progress each week. If you are comfortable with R and/or have programming experience, please feel free to work through this book at your own pace and complete more advanced chapters.
 
+## Data files
+
+If you are a student at the University of Glasgow then the relevant data files will be made available on Moodle each week. You can also download them all as a zip file. <a href="all_data.zip" download>Click to Download.</a>
+
 ## Intended Learning Outcomes
 
 By the end of this course students will be able to:

@@ -1,10 +1,6 @@
 
 # Programming Basics
 
-<div class="info">
-<p>This chapter is intended to introduce key programming terminology to those students who may have had very little experience with coding, or indeed with computers. As a result of the diverse cohort, even basic practical steps are broken down and supported by screenshots. In my experience, for those with programming anxiety it is very difficult to overcome a bad start to learning R therefore extra effort is paid towards softening the learning curve in these initial labs and providing activities that have a tangible output so that the students can visualise their success.</p>
-</div>
-
 In this chapter we will go over some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get help. Those of you who have no programming experience should find this chapter particularly helpful, however, even if you've used R before there may be some helpful hints and tips so please make sure you read through this chapter before Lab 1.
 
 We don't expect you to memorise the information that is contained in this chapter and some sections of it will make more sense when you start writing your own code in Lab 1 - just make sure you know what help is available!
