@@ -1,4 +1,3 @@
-
 # RM2 Regression
 
 ## Pre-class activities
@@ -21,7 +20,7 @@ If our hypothesis is correct then there should be `r mcq(c("a positive", "no", "
 
 ### Activity 1: Setup
 
-Do the following. If you need help, consult Programming Basics and RM1: Lab 1.
+Do the following. If you need help, consult Chapter \@ref(ref3) and Chapter \@(ref2).
 
 * Open R Studio and set the working directory to your RM2 Lab 5 folder.  
 * Open a new R Markdown document and save it in your working directory. Call the file "Pre-class 5".    
@@ -146,7 +145,7 @@ cat("1. In the summary table, this is the estimate of the intercept.
 3. In the summary table, this is also the estimate of mean_anxiety, the slope is how much it decreases so you just remove the - sign. 
 4. In the summary table, the F-ratio is noted as he F-statistic.
 5. The overall model p.value is .001428 which is less than .05, therefore significant. 
-6. The variance explained is determined by R-squared, you simply mulitple it by 100 to get the percent. You should always use the adjusted R-squared value.
+6. The variance explained is determined by R-squared, you simply multiple it by 100 to get the percent. You should always use the adjusted R-squared value.
     ")
 ```
 `r unhide()`  
@@ -168,7 +167,7 @@ Assumptions 1-3 are nice and easy. We know this from the data we have and the de
 
 Assumption 5 could also be checked with the scatterplot but there are some nice regression-specific functions from `car` that we can use.
 
-* Run the below code. It will produce the scatterplot with a linear line and the line that best fits the data. If these two lines are quite simlar (they will never be perfect) then you can assume linearity.
+* Run the below code. It will produce the scatterplot with a linear line and the line that best fits the data. If these two lines are quite similar (they will never be perfect) then you can assume linearity.
 
 ```{r crplots, eval = FALSE}
 crPlots(mod)
@@ -181,7 +180,7 @@ qqPlot(mod$residuals)
 shapiro.test(mod$residuals)
 ```
 
-The qqplot doenn't look too bad, on the basis of this alone we would probably assume normality. However, the Shapiro-Wilk test is significant which suggests it isn't quite right. The Shaprio-Wilk has been criticised for rejecting the null hypothesis (i.e., concluding that the data are not normal) too often and that if the qqplot and the Shapiro test disagree, it's better to rely on the qqplot. There is a good discussion [about it here](https://stats.stackexchange.com/questions/2492/is-normality-testing-essentially-useless) if you'd like to know more. For now, we will proceed cautiously and check the final assumption before we make a decision about what to do.
+The qqplot doesn't look too bad, on the basis of this alone we would probably assume normality. However, the Shapiro-Wilk test is significant which suggests it isn't quite right. The Shaprio-Wilk has been criticised for rejecting the null hypothesis (i.e., concluding that the data are not normal) too often and that if the qqplot and the Shapiro test disagree, it's better to rely on the qqplot. There is a good discussion [about it here](https://stats.stackexchange.com/questions/2492/is-normality-testing-essentially-useless) if you'd like to know more. For now, we will proceed cautiously and check the final assumption before we make a decision about what to do.
 
 The final assumption of homoscedasticity means that the error in the model is fairly constant at all points (i.e., if you looked at the scatterplot, the data points wouldn't be bunched together at one end and spread out at the other). We can test this using the Non-constant Error Variance test from `car`.
 
@@ -193,9 +192,28 @@ ncvTest(mod)
 
 Returning to the issue of normality, all of the other assumptions have been met and the qqplot suggests that any deviation from normality is very mild. Based upon this evidence, it seems justified to proceed with the original regression.
 
-### Activity 9: Write-up
+### Activity 9: Power and effect size
 
-We need to manually calculate the p-value for the inline coding as you can't exract it from the `lm()` model. Run the below code to do this.
+First we can calculate the minimum effect size we were able to detect given the sample size and design of the study using `pwr.f2.test()`. As usual, we fill in all the information we have and set the effect size argument, in this case `f2`, to `NULL`.
+
+```{r power1, eval = FALSE}
+pwr.f2.test(u = 1, v = 35, f2 = NULL, sig.level = .05, power = .8)
+```
+
+* Based on the power analysis, what is the minimum effect size we were able to detect rounded to 2 decimal places? `r fitb(".22", "0.22")`  
+* According to Cohen's guidelines, this would be a `r mcq(c("Small", answer = "Medium", "Large"))` effect.
+
+There is no formula to calculate our observed f^2, we must do it manually using the formula from the lecture.
+
+```{r}
+f2 <- mod_summary$adj.r.squared/(1 - mod_summary$adj.r.squared)
+```
+
+* Is the observed effect size larger than the minimum effect size we could detect? `r mcq(c(answer = "Yes, our study is sufficiently powered", "No, our study is underpowered"))`
+
+### Activity 10: Write-up
+
+We need to manually calculate the p-value for the inline coding as you can't extract it from the `lm()` model. Run the below code to do this.
 
 ```{r pvalue}
 f <-mod_summary$fstatistic
@@ -209,7 +227,7 @@ A simple linear regression was performed with engagment (M = `r descriptives$mea
 )
 ```
 
-A simple linear regression was performed with engagment (M = `r descriptives$mean_weeks %>% round(2)`, SD = `r descriptives$sd_anx %>% round(2)`) as the outcome variable and statistics anxiety (M = `r descriptives$mean_anx %>% round(2)`, SD = `r descriptives$sd_anx %>% round(2)`) as the predictor variable. The results of the regression indicated that the model significantly predicted course engagement (F(`r mod_summary$fstatistic[2]`, `r mod_summary$fstatistic[3]`) = `r mod_summary$fstatistic[1] %>% round(2)`, p < .001, Adjusted R2 = `r mod_summary$adj.r.squared %>% round(2)`, f2 = .63), accounting for `r (mod_summary$adj.r.squared %>% round(2))*100`% of the variance. Anxiety was a significant positive predictor (β = `r mod$coefficients[2] %>% round(2)`, p < `mod_p %>% round(3)`.
+A simple linear regression was performed with engagement (M = `r descriptives$mean_weeks %>% round(2)`, SD = `r descriptives$sd_anx %>% round(2)`) as the outcome variable and statistics anxiety (M = `r descriptives$mean_anx %>% round(2)`, SD = `r descriptives$sd_anx %>% round(2)`) as the predictor variable. The results of the regression indicated that the model significantly predicted course engagement (F(`r mod_summary$fstatistic[2]`, `r mod_summary$fstatistic[3]`) = `r mod_summary$fstatistic[1] %>% round(2)`, p < .001, Adjusted R2 = `r mod_summary$adj.r.squared %>% round(2)`, f2 = .63), accounting for `r (mod_summary$adj.r.squared %>% round(2))*100`% of the variance. Anxiety was a significant positive predictor (β = `r mod$coefficients[2] %>% round(2)`, p < `mod_p %>% round(3)`.
 )
 
 
@@ -295,7 +313,7 @@ ggplot(joined, aes(mean_anxiety, n_weeks)) +
 
 
 
-### Screen time and wellbeing
+### Screen time and well-being
 
 There is currently much debate (and hype) surrounding smartphones and their effects on well-being, especially with regard to children and teenagers.  We'll be looking at data from this recent study of English adolescents:
 
@@ -303,13 +321,13 @@ There is currently much debate (and hype) surrounding smartphones and their effe
 
 This was a large-scale study that found support for the "Goldilocks" hypothesis among adolescents: that there is a "just right" amount of screen time, such that any amount more or less than this amount is associated with lower well-being.  This was a huge survey study: the data contain responses from over 120,000 participants! 
 
-Fortunately, the authors made the data from this study openly available, which allows us to dig deeper into their results. In this exercise, we will look at whether the relationship between screen time and well-being is modulated by partcipants' (self-reported) gender.
+Fortunately, the authors made the data from this study openly available, which allows us to dig deeper into their results. In this exercise, we will look at whether the relationship between screen time and well-being is modulated by participants' (self-reported) gender.
 
 The dependent measure used in the study was the [Warwick-Edinburgh Mental Well-Being Scale (WEMWBS)](https://warwick.ac.uk/fac/med/research/platform/wemwbs/). This is a 14-item scale with 5 response categories, summed together to form a single score ranging from 14-70.
 
 At [Przybylski & Weinstein's page for this study on the Open Science Framework](https://osf.io/82ybd/), you can find the [participant survey](https://osf.io/82ybd/) which asks a large number of additional questions (see page 14 for the WEMWBS questions and pages 4-5 for the questions about screen time). Within the same page you can also find the [raw data](https://osf.io/82ybd/); however, for the purpose of this exercise, you will be using local pre-processed copies of the data which can be downloaded from Moodle.
 
-Przybylski and Weinstein looked at multiple measures of screen time, but we will be focusing on smartphone use.  They found that decrements in wellbeing started to appear when respondents reported more than one hour of weekly smartphone use.  Our question: Does the negative association between hours of use and wellbeing (beyond the one-hour point) differ for boys and girls?
+Przybylski and Weinstein looked at multiple measures of screen time, but we will be focusing on smartphone use.  They found that decrements in well-being started to appear when respondents reported more than one hour of weekly smartphone use.  Our question: Does the negative association between hours of use and well-being (beyond the one-hour point) differ for boys and girls?
 
 Note that in this analysis, we have:
 
@@ -384,7 +402,7 @@ wemwbs <- wellbeing %>%
 - `summarise()`, `min()`, `max()`
 `r unhide()`
 
-* Now visualise the distribution ot `tot_wellbeing` in a histogram using ggplot2.
+* Now visualise the distribution of `tot_wellbeing` in a histogram using ggplot2.
 
 `r hide("Hint")`
 - `geom_histogram()`
@@ -438,7 +456,7 @@ In the next step, we are going to focus in on the smartphone/well-being relation
 
 For this analysis, we are going to collapse weekday and weekend use for smartphones.
 
-* Create a new table, `smarttot`, that has the that has ean number of hours per day of smartphone use for each participant, averaged over weekends/weekdays. 
+* Create a new table, `smarttot`, that has the that has mean number of hours per day of smartphone use for each participant, averaged over weekends/weekdays. 
 * You will need to filter the dataset to only include smartphone use and not other technologies. 
 * You will also need to group the results by the participant ID (i.e., `serial`). 
 * The final data-set should have two variables: `Serial` (the participant) and `hours_per_day`.
@@ -470,7 +488,7 @@ As discussed in the lecture, When you have continuous variables in a regression,
 
 For categorical predictors with two levels, these become coded as -.5 and .5 (because the mean of these two values is 0).
 
-* Use `mutate` to add two new variables to the `smart_wb`: `tothours_c`, caclulated as a mean-centered version of the `tothours` predictor; and `male_c`, recoded as -.5 for female and .5 for male.
+* Use `mutate` to add two new variables to the `smart_wb`: `tothours_c`, calculated as a mean-centered version of the `tothours` predictor; and `male_c`, recoded as -.5 for female and .5 for male.
 * To create `male_c` you will need to use `if_else(male == 1, .5, -.5)` You can read this code as "if the variable `male` equals 1, recode it as .5, if not, recode it as -.5".
 * Finally, recode `male` and `male_c` as factors, so that R knows not to treat them as a real numbers.
 
@@ -488,8 +506,8 @@ smart_wb <- smarttot %>%
 
 ### Activity 7: Visualise the relationship
 
-* Reverse-engineer the below plot. Calculate mean wellbeing scores for each combination of `male` and `tothours`, and then create a scatterplot plot that includes separate regression lines for each gender.
-* You may find it useful to refer to Chapter 7 Visualisation. 
+* Reverse-engineer the below plot. Calculate mean well-being scores for each combination of `male` and `tothours`, and then create a scatterplot plot that includes separate regression lines for each gender.
+* You may find it useful to refer to Chapter \@ref(vis). 
 
 ```{r plots, echo = FALSE, fig.cap="Relationship between mean wellbeing and smartphone use by gender"}
 smart_wb_gen <- smart_wb %>%
@@ -501,7 +519,7 @@ ggplot(smart_wb_gen, aes(tothours, mean_wellbeing, color = male)) +
   geom_smooth(method = "lm") +
   scale_color_discrete(name = "Gender", labels = c("Female", "Male"))+
   scale_x_continuous(name = "Total hours smartphone use") +
-  scale_y_continuous(name = "Mean wellbeing score")
+  scale_y_continuous(name = "Mean well-being score")
 ```
 
 
@@ -521,7 +539,7 @@ $Y_i = \beta_0 + \beta_1 X_{1i}  + \beta_2 X_{2i}  + \beta_3 X_{3i} + e_i$
 
 where
 
-- $Y_i$ is the wellbeing score for participant $i$;
+- $Y_i$ is the well-being score for participant $i$;
 - $X_{1i}$ is the mean-centered smartphone use variable for participant $i$;
 - $X_{2i}$ is gender (-.5 = female, .5 = male);
 - $X_{3i}$ is the interaction between smartphone use and gender ($= X_{1i} \times X_{2i}$)
@@ -542,7 +560,7 @@ mod_summary <- summary(mod)
 
 * The interaction between smartphone use and gender is shown by the variable `r mcq(c("thours_c", "male_c", answer = "thours_c:male_c"))`, and this interaction was `r mcq(c(answer = "significant", "nonsignificant"))` at the $\alpha = .05$ level.
 
-* To 2 decimal places, what proportion of the variance in wellbeing scores does the overall model explain? `r fitb("9.38")`
+* To 2 decimal places, what proportion of the variance in well-being scores does the overall model explain? `r fitb("9.38")`
 
 * The p-value for the overall model fit is `< 2.2e-16`. Is this significant? `r mcq(c(answer = "Yes", "No"))`
 
@@ -574,17 +592,37 @@ par(mfrow=c(2,2)) # 4 charts in 1 panel
 plot(mod)
 ```
 
-Finally, to check for multicollinearity we can use `vif()` to calculate the variance inflation factor. Essentially, this function estimates how much the variance of a coefficient is “inflated” because of linear dependence with other predictors, i.e., that a predictor isn't actually adding any unique variance to the model, it'sjust really strongly related to other predictors. [You can read more about this here](https://statisticalhorizons.com/multicollinearity). Thankfully, VIF is not affected by large samples like the other tests.
+Finally, to check for multicollinearity we can use `vif()` to calculate the variance inflation factor. Essentially, this function estimates how much the variance of a coefficient is “inflated” because of linear dependence with other predictors, i.e., that a predictor isn't actually adding any unique variance to the model, it's just really strongly related to other predictors. [You can read more about this here](https://statisticalhorizons.com/multicollinearity). Thankfully, VIF is not affected by large samples like the other tests.
 
 There are various rules of thumb, but most converge on a VIF of above 2 - 2.5 for any one predictor being problematic.
 
-* Run the below code. Do any of the predictors show evidence of mulitcollinearity? `r mcq(c("thours_c", "male_c", "thours_c:male_c", answer = "There is no evidence of multicollinearity"))`
+* Run the below code. Do any of the predictors show evidence of multicollinearity? `r mcq(c("thours_c", "male_c", "thours_c:male_c", answer = "There is no evidence of multicollinearity"))`
 
 ```{r vif, eval = FALSE}
 vif(mod)
 ```
 
-### Activity 10: Write-up
+### Activity 10: Power and effect size
+
+Finally, we'll calculate power and effect size as usual.
+
+* Using the code from the pre-class activity calculate the minimum effect size we could reliably observe given our sample size and design but for 99% power. Report this to 2 decimal places `r fitb(".00", "0.00")`
+
+
+```{r power, eval = FALSE, echo = FALSE}
+pwr.f2.test(u = 3, v = 71029, f2 = NULL, sig.level = .05, power = .99)
+```
+
+
+```{r, eval = FALSE, echo = FALSE}
+f2 <- mod_summary$adj.r.squared/(1 - mod_summary$adj.r.squared)
+f2
+```
+
+* What is the observed effect size for the study to 2 decimal places? `r fitb(".10", "0.10")`  
+* Is the study sufficiently powered? `r mcq(c(answer = "Yes", "No"))`
+
+### Activity 11: Write-up
 
 Now, copy and paste the below code into **white-space**. Note that the p-values are entered manually because of the APA `p < .001` formatting.
 
@@ -592,7 +630,7 @@ Now, copy and paste the below code into **white-space**. Note that the p-values 
 All continuous predictors were mean-centered and deviation coding was used for categorical predictors. The results of the regression indicated that the model significantly predicted course engagement (F(`r mod_summary$fstatistic[2]`, `r mod_summary$fstatistic[3]`) = `r mod_summary$fstatistic[1] %>% round(2)`, p < .001, Adjusted R2 = `r mod_summary$adj.r.squared %>% round(2)`, f2 = .63), accounting for `r (mod_summary$adj.r.squared %>% round(2))*100`% of the variance. Total screen time was a significant negative predictor of wellbeing scores (β = `r mod$coefficients[2] %>% round(2)`, p < .001, as was gender (β = `r mod$coefficients[3] %>% round(2)`, p < .001, with girls having lower wellbeing scores than boys. Importantly, there was a significant interaction between screentime and gender (β = `r mod$coefficients[4] %>% round(2)`, p < .001), smartphone use was more negatively associated with wellbeing for girls than for boys. 
 ```
 
-> All continuous predictors were mean-centered and deviation coding was used for categorical predictors. The results of the regression indicated that the model significantly predicted course engagement (F(`r mod_summary$fstatistic[2]`, `r mod_summary$fstatistic[3]`) = `r mod_summary$fstatistic[1] %>% round(2)`, p < .001, Adjusted R2 = `r mod_summary$adj.r.squared %>% round(2)`, f2 = .63), accounting for `r (mod_summary$adj.r.squared %>% round(2))*100`% of the variance. Total screen time was a significant negative predictor of wellbeing scores (β = `r mod$coefficients[2] %>% round(2)`, p < .001, as was gender (β = `r mod$coefficients[3] %>% round(2)`, p < .001, with girls having lower wellbeing scores than boys. Importantly, there was a significant interaction between screentime and gender (β = `r mod$coefficients[4] %>% round(2)`, p < .001), smartphone use was more negatively associated with wellbeing for girls than for boys.
+> All continuous predictors were mean-centered and deviation coding was used for categorical predictors. The results of the regression indicated that the model significantly predicted course engagement (F(`r mod_summary$fstatistic[2]`, `r mod_summary$fstatistic[3]`) = `r mod_summary$fstatistic[1] %>% round(2)`, p < .001, Adjusted R2 = `r mod_summary$adj.r.squared %>% round(2)`, f2 = .63), accounting for `r (mod_summary$adj.r.squared %>% round(2))*100`% of the variance. Total screen time was a significant negative predictor of well-being scores (β = `r mod$coefficients[2] %>% round(2)`, p < .001, as was gender (β = `r mod$coefficients[3] %>% round(2)`, p < .001, with girls having lower well-being scores than boys. Importantly, there was a significant interaction between screen time and gender (β = `r mod$coefficients[4] %>% round(2)`, p < .001), smartphone use was more negatively associated with well-being for girls than for boys.
 
 ### Finished!
 
@@ -664,7 +702,7 @@ ggplot(smart_wb_gen, aes(tothours, mean_wellbeing, color = male)) +
   geom_smooth(method = "lm") +
   scale_color_discrete(name = "Gender", labels = c("Female", "Male"))+
   scale_x_continuous(name = "Total hours smartphone use") +
-  scale_y_continuous(name = "Mean wellbeing score")
+  scale_y_continuous(name = "Mean well-being score")
 ```
 </div>
 
@@ -685,5 +723,14 @@ mod_summary <- summary(mod)
 <div class="solution"><button>Activity 9</button>
 ```{r a9, eval = FALSE}
 qqPlot(mod$residuals)
+```
+</div>
+
+#### Activity 10
+
+<div class="solution"><button>Activity 9</button>
+```{r a10b, eval = FALSE}
+pwr.f2.test(u = 3, v = 71029, f2 = NULL, sig.level = .05, power = .99)
+f2 <- mod_summary$adj.r.squared/(1 - mod_summary$adj.r.squared)
 ```
 </div>

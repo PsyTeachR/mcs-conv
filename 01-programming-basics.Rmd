@@ -1,4 +1,6 @@
-# Programming Basics
+# Programming Basics {#ref3}
+
+## Introduction
 
 In this chapter we will go over some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get help. Those of you who have no programming experience should find this chapter particularly helpful, however, even if you've used R before there may be some helpful hints and tips so please make sure you read through this chapter before Lab 1.
 
@@ -99,7 +101,7 @@ knitr::include_graphics("images/autocomplete.png")
 
 ```
 
-## Base R and packages
+## Base R and packages {#packages}
 
 When you install R you will have access to a range of functions including options for data wrangling and statistical analysis. The functions that are included in the default installation are typically referred to as **Base R** and there is a useful cheat sheet that shows many Base R functions [here](https://www.rstudio.com/wp-content/uploads/2016/05/base-r.pdf).
 
@@ -137,7 +139,7 @@ To avoid accidentally overwriting a package with a later version, you should **n
 
 ```
 
-### Package conflicts
+### Package conflicts {#conflicts}
 
 There are thousands of different R packages with even more functions. Unfortunately, sometimes different packages have the same function names. For example, the packages `dplyr` and `MASS` both have a function named `select()`. If you load both of these packages, R will produce a warning telling you that there is a conflict.
 
@@ -205,7 +207,7 @@ You will constantly be creating objects throughout this course and you will lear
 
 ```{block, type="info"}
 
-You may also see objects referred to as 'variables'. There is a difference between the two in programming terms, however, they are used synonomously very frequently.
+You may also see objects referred to as 'variables'. There is a difference between the two in programming terms, however, they are used synonymously very frequently.
 
 ```
 
@@ -223,11 +225,11 @@ Getting good at programming really means getting good trying stuff out,  searchi
 * If you get an error message, copy and paste it in to Google - it's very likely someone else has had the same problem.
 * In addition to these course materials there are a number of excellent resources for learning R:
   * [R Cookbook](http://www.cookbook-r.com/)
-  * [StackOverlow](https://stackoverflow.com/)
+  * [StackOverflow](https://stackoverflow.com/)
   * [R for Data Science](https://r4ds.had.co.nz/)
   * Search or use the [#rstats](https://twitter.com/search?f=tweets&q=%23rstats&src=typd) hashtag on Twitter
 
-If you would like to push yourself further with R, we reccomend working through [R for Data Science](https://r4ds.had.co.nz/) in full and/or the materials for the [MSc Data Skills course](https://gupsych.github.io/data_skills/) run by Prof. Lisa DeBruine and Dr. Dale Barr at the University of Glasgow.
+If you would like to push yourself further with R, we recommend working through [R for Data Science](https://r4ds.had.co.nz/) in full and/or the materials for the [MSc Data Skills course](https://gupsych.github.io/data_skills/) run by Prof. Lisa DeBruine and Dr. Dale Barr at the University of Glasgow.
 
 ## Debugging tips
 

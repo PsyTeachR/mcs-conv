@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 10 Dissertation analysis guide | MSc Conversion in Psychological Studies/Science</title>
+  <title>Chapter 1 Programming Basics | MSc Conversion in Psychological Studies/Science</title>
   <meta name="description" content="This is the materials for the one-year MSc Conversion in Psychological Studies/Science." />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 10 Dissertation analysis guide | MSc Conversion in Psychological Studies/Science" />
+  <meta property="og:title" content="Chapter 1 Programming Basics | MSc Conversion in Psychological Studies/Science" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 10 Dissertation analysis guide | MSc Conversion in Psychological Studies/Science" />
+  <meta name="twitter:title" content="Chapter 1 Programming Basics | MSc Conversion in Psychological Studies/Science" />
   
   <meta name="twitter:description" content="This is the materials for the one-year MSc Conversion in Psychological Studies/Science." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rm2-regression.html">
-<link rel="next" href="supp.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="rm1-intro-to-r.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -472,242 +472,213 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dissertation-analysis-guide" class="section level1">
-<h1><span class="header-section-number">Chapter 10</span> Dissertation analysis guide</h1>
-<p>In this final chapter we’re going to provide a guide for how to get started working with your dissertation data. It’s important to note that this guide won’t work for every project and every kind of data - and nothing in this chapter should supersede advice your supervisor has given you. Rather, this chapter is here to help guide you through the initial steps of working with quantitative data and to show you how what you have learned in RM2 maps on to your dissertation project.</p>
-<div id="before-r" class="section level2">
-<h2><span class="header-section-number">10.1</span> Before R</h2>
-<p>Before you touch R, you need to make sure you understand your design, data, and analysis plan. This will make your work in R considerably easier. Before you start coding, make sure you have answers to the following questions:</p>
-<div id="study-design" class="section level3">
-<h3><span class="header-section-number">10.1.1</span> Study design</h3>
+<div id="ref3" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Programming Basics</h1>
+<div id="introduction" class="section level2">
+<h2><span class="header-section-number">1.1</span> Introduction</h2>
+<p>In this chapter we will go over some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get help. Those of you who have no programming experience should find this chapter particularly helpful, however, even if you’ve used R before there may be some helpful hints and tips so please make sure you read through this chapter before Lab 1.</p>
+<p>We don’t expect you to memorise the information that is contained in this chapter and some sections of it will make more sense when you start writing your own code in Lab 1 - just make sure you know what help is available!</p>
+</div>
+<div id="r-and-r-studio" class="section level2">
+<h2><span class="header-section-number">1.2</span> R and R Studio</h2>
+<p>For this course, you need two different bits of software, <a href="">R</a> and <a href="">RStudio</a>. R is a programming language that you will write code in and R Studio is an Integrated Development Environment (IDE) which makes working with R easier. Think of it as knowing English and using a plain text editor like NotePad to write a book versus using a word processor like Microsoft Word. You could do it, but it wouldn’t look as good and it would be much harder without things like spell-checking and formatting. In a similar way, you can use R without R Studio but we wouldn’t recommend it. The key thing to remember is that although you will do all of your work using R Studio for this course, you are actually using two pieces of software which means that from time-to-time, both of them may have separate updates.</p>
+<p>All of the University of Glasgow computers should already have R and R Studio installed, however, both are freely available so you may wish to install them on your own machine.</p>
+<div id="getting-to-know-r-studio" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> Getting to know R Studio</h3>
+<p>R Studio has a console that you can try out code in (appearing as the bottom left window in Figure <a href="ref3.html#fig:img-rstudio">1.1</a>), there is a script editor (top left), a window showing functions and objects you have created in the “Environment” tab (top right window in the figure), and a window that shows plots, files packages, and help documentation (bottom right).</p>
+<div class="figure" style="text-align: center"><span id="fig:img-rstudio"></span>
+<img src="images/rstudio.png" alt="RStudio interface" width="100%" />
+<p class="caption">
+Figure 1.1: RStudio interface
+</p>
+</div>
+<p>You will learn more about how to use the features included in R Studio throughout this course, however, we highly recommend watching <a href="https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-part-1/">RStudio Essentials 1</a> from the R Studio team. The video lasts ~30 minutes and gives a tour of the main parts of R Studio.</p>
+</div>
+</div>
+<div id="functions-and-arguments" class="section level2">
+<h2><span class="header-section-number">1.3</span> Functions and arguments</h2>
+<p><strong>Functions</strong> in R execute specific tasks and normally take a number of <strong>arguments</strong> (if you’re into linguistics you might want to think as these as verbs that require a subject and an object). You can look up all the arguments that a function takes by using the help documentation by using the format <code>?function</code>. Some arguments are required, and some are optional. Optional arguments will often use a default (normally specified in the help documentation) if you do not enter any value.</p>
+<p>As an example, let’s look at the help documentation for the function <code>rnorm()</code> which randomly generates a set of numbers with a normal distribution.</p>
+<p>Open up R Studio and in the console, type the following code:</p>
+<pre class="sourceCode r"><code class="sourceCode r">?rnorm</code></pre>
+<p>The help documentation for <code>rnorm()</code> should appear in the bottom right help panel. In the usage section, we see that <code>rnorm()</code> takes the following form:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(n, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</code></pre>
+<p>In the arguments section, there are explanations for each of the arguments. <code>n</code> is the number of observations we want to create, <code>mean</code> is the mean of the data points we will create and <code>sd</code> is the standard deviation of the set. In the details section it notes that if no values are entered for <code>mean</code> and <code>sd</code> it will use a default of 0 and 1 for these values. Because there is no default value for <code>n</code> it must be specified otherwise the code won’t run.</p>
+<p>Let’s try an example and just change the required argument <code>n</code> to ask R to produce 5 random numbers. Copy and paste the following code into the console.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">12042016</span>)
+<span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>)</code></pre>
+<pre><code>## [1] -0.2896163 -0.6428964  0.5829221 -0.3286728 -0.5110101</code></pre>
+<p>These numbers have a mean of 0 and an SD of 1. Now we can change the additional arguments to produce a different set of numbers.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">5</span>, <span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="dv">2</span>)</code></pre>
+<pre><code>## [1] 13.320853  9.377956 10.235461  9.811793 13.019102</code></pre>
+<p>This time R has still produced 5 random numbers, but now this set of numbers has a mean of 10 and an sd of 2 as specified. Always remember to use the help documentation to help you understand what arguments a function requires.</p>
+<div class="info">
+<p>
+If you’re looking up examples of code online, you may often see code that starts with the function <code>set.seed()</code>. This function controls the random number generator - if you’re using any functions that generate numbers randomly (such as <code>rnorm()</code>), running <code>set.seed()</code> will ensure that you get the same result (in some cases this may not be what you want to do). We call <code>set.seed()</code> in this example because it means that you will get the same random numbers as this book.
+</p>
+</div>
+<div id="argument-names" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Argument names</h3>
+<p>In the above examples, we have written out the argument names in our code (e.g., <code>n</code>, <code>mean</code>, <code>sd</code>), however, this is not strictly necessary. The following two lines of code will both produce the same result:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">6</span>, <span class="dt">mean =</span> <span class="dv">3</span>, <span class="dt">sd =</span> <span class="dv">1</span>)
+<span class="kw">rnorm</span>(<span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">1</span>)</code></pre>
+<p>Importantly, if you do not write out the argument names, R will use the default order of arguments, that is for <code>rnorm</code> it will assume that the first number you enter is <code>n</code>. the second number is <code>mean</code> and the third number is <code>sd</code>.</p>
+<p>If you write out the argument names then you can write the arguments in whatever order you like:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dt">sd =</span> <span class="dv">1</span>, <span class="dt">n =</span> <span class="dv">6</span>, <span class="dt">mean =</span> <span class="dv">3</span>)</code></pre>
+<p>When you are first learning R, you may find it useful to write out the argument names as it can help you remember and understand what each part of the function is doing. However, as your skills progress you may find it quicker to omit the argument names and you will also see examples of code online that do not use argument names so it is important to be able to understand which argument each bit of code is referring to (or look up the help documentation to check).</p>
+<p>In this course, we will always write out the argument names the first time we use each function, however, in subsequent uses they may be omitted.</p>
+</div>
+<div id="tab-auto-complete" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> Tab auto-complete</h3>
+<p>One very useful feature of R Studio is the tab auto-complete for functions (see Figure <a href="ref3.html#fig:img-autocomplete">1.2</a>. If you write the name of the function and then press the tab key, R Studio will show you the arguments that function takes along with a brief description. If you press enter on the argument name it will fill in the name for you, just like auto-complete on your phone. This is incredibly useful when you are first learning R and you should remember to use this feature frequently.</p>
+<div class="figure" style="text-align: center"><span id="fig:img-autocomplete"></span>
+<img src="images/autocomplete.png" alt="Tab auto-complete" width="100%" />
+<p class="caption">
+Figure 1.2: Tab auto-complete
+</p>
+</div>
+</div>
+</div>
+<div id="packages" class="section level2">
+<h2><span class="header-section-number">1.4</span> Base R and packages</h2>
+<p>When you install R you will have access to a range of functions including options for data wrangling and statistical analysis. The functions that are included in the default installation are typically referred to as <strong>Base R</strong> and there is a useful cheat sheet that shows many Base R functions <a href="https://www.rstudio.com/wp-content/uploads/2016/05/base-r.pdf">here</a>.</p>
+<p>However, the power of R is that it is extendable and open source - put simply, if a function doesn’t exist or doesn’t work very well, anyone can create a new <strong>package</strong> that contains data and code to allow you to perform new tasks. You may find it useful to think of Base R as the default apps that come on your phone and packages as additional apps that you need to download separately.</p>
+<div id="installing-and-loading-packages" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Installing and loading packages</h3>
+<p>In order to use a package, you must first install it. The following code installs the package <code>tidyverse</code>, a package we will use very frequently in this course.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre>
+<p>You only need to install a package once, however, each time you start R you need to load the packages you want to use, in a similar way that you need to install an app on your phone once, but you need to open it every time you want to use it.</p>
+<p>To load packages we use the function <code>library()</code>. Typically you would start any analysis script by loading all of the packages you need, but we will come back to that in Lab 1.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre>
+<p>Now that we’ve loaded the <code>tidyverse</code> package we can use any of the functions it contains but remember, you need to run the <code>library()</code> function every time you start R.</p>
+<div class="info">
+<p>
+All of the University of Glasgow computers will already have all of the packages you need for this course so you only need to install packages if you are using your own machine. Please do not install any new packages on the university machines.
+</p>
+</div>
+</div>
+<div id="package-updates" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Package updates</h3>
+<p>In addition to updates to R and R Studio, the creators of packages also sometimes update their code. This can be to add functions to a package, or it can be to fix errors. One thing to avoid is unintentionally updating an installed package. When you run <code>install.packages()</code> it will always install the latest version of the package and it will overwrite any older versions you may have installed. Sometimes this isn’t a problem, however, sometimes you will find that the update means your code no longer works as the package has changed substantially. It is possible to revert back to an older version of a package but try to avoid this anyway.</p>
+<div class="danger">
+<p>
+To avoid accidentally overwriting a package with a later version, you should <strong>never</strong> include <code>install.packages()</code> in your analysis scripts in case you, or someone else runs the code by mistake. Remember, the University of Glasgow computers will already have all of the packages you need for this course so you only need to install packages if you are using your own machine.
+</p>
+</div>
+</div>
+<div id="conflicts" class="section level3">
+<h3><span class="header-section-number">1.4.3</span> Package conflicts</h3>
+<p>There are thousands of different R packages with even more functions. Unfortunately, sometimes different packages have the same function names. For example, the packages <code>dplyr</code> and <code>MASS</code> both have a function named <code>select()</code>. If you load both of these packages, R will produce a warning telling you that there is a conflict.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<span class="kw">library</span>(MASS)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;MASS&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     select</code></pre>
+<p>In this case, R is telling you that the function <code>select()</code> in the <code>dplyr</code> is being hidden (or ‘masked’) by another function with the same name. If you were to try and use <code>select()</code>, R would use the function from the package that was loaded most recently - in this case it would use the function from <code>MASS</code>.</p>
+<p>If you want to specify which package you want to use for a particular function you can use code in the format <code>package::function</code>, for example:</p>
+<pre class="sourceCode r"><code class="sourceCode r">dplyr<span class="op">::</span><span class="kw">select</span>(...)
+MASS<span class="op">::</span><span class="kw">select</span>(...)</code></pre>
+</div>
+</div>
+<div id="objects" class="section level2">
+<h2><span class="header-section-number">1.5</span> Objects</h2>
+<p>A large part of your coding will involve creating and manipulating objects. Objects contain stuff. That stuff can be numbers, words, or the result of operations and analyses.You assign content to an object using <code>&lt;-</code>.</p>
+<p>Copy and paste the following code into the console and run it. You should see that <code>name</code>, <code>age</code>, <code>today</code>, <code>new_year</code>, and <code>data</code> appear in the environment pane.</p>
+<pre class="sourceCode r"><code class="sourceCode r">name &lt;-<span class="st"> &quot;emily&quot;</span>
+age &lt;-<span class="st"> </span><span class="dv">15</span> <span class="op">+</span><span class="st"> </span><span class="dv">18</span> 
+today &lt;-<span class="kw">Sys.Date</span>()
+new_year &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2020-01-01&quot;</span>)
+data &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dt">n =</span> <span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">15</span>, <span class="dt">sd =</span> <span class="dv">3</span>)</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:img-objects-enviro"></span>
+<img src="images/objects-enviro.png" alt="Objects in the environment" width="100%" />
+<p class="caption">
+Figure 1.3: Objects in the environment
+</p>
+</div>
+<p>Note that in these examples, <code>name</code>,<code>age</code>, and <code>new_year</code> would always contain the values <code>emily</code>, <code>33</code>, and the date of New Year’s Day 2020, however, <code>today</code> will draw the date from the operating system and <code>data</code> will be a randomly generated set of data so the values of these objects will not be static.</p>
+<p>Importantly, objects can be involved in calculations and can interact with each other. For example:</p>
+<pre class="sourceCode r"><code class="sourceCode r">age <span class="op">+</span><span class="st"> </span><span class="dv">10</span>
+new_year <span class="op">-</span><span class="st"> </span>today
+<span class="kw">mean</span>(data)</code></pre>
+<pre><code>## [1] 43
+## Time difference of 175 days
+## [1] 17.66644</code></pre>
+<p>Finally, you can store the result of these operations in a new object:</p>
+<pre class="sourceCode r"><code class="sourceCode r">decade &lt;-<span class="st"> </span>age <span class="op">+</span><span class="st"> </span><span class="dv">10</span></code></pre>
+<div class="try">
+<p>
+You may find it helpful to read <code>&lt;-</code> as <code>contains</code>, e.g., <code>name</code> contains the text <code>emily</code>.
+</p>
+</div>
+<p>You will constantly be creating objects throughout this course and you will learn more about them and how they behave as we go along, however, for now it is enough to understand that they are a way of saving values, that these values can numbers, text, or the result of operations, and that they can be used in further operations to create new variables.</p>
+<div class="info">
+<p>
+You may also see objects referred to as ‘variables’. There is a difference between the two in programming terms, however, they are used synonymously very frequently.
+</p>
+</div>
+</div>
+<div id="help-and-additional-resources" class="section level2">
+<h2><span class="header-section-number">1.6</span> Help and additional resources</h2>
+<div class="figure" style="text-align: center"><span id="fig:img-kitteh"></span>
+<img src="images/kitteh.PNG" alt="The truth about programming" width="100%" />
+<p class="caption">
+Figure 1.4: The truth about programming
+</p>
+</div>
+<p>Getting good at programming really means getting good trying stuff out, searching for help online, and finding examples of code to copy. If you are having difficulty with any of the exercises contained in this book then you can ask for help on Slack or Moodle, however, learning to problem-solve effectively is a key skill that you need to develop throughout this course.</p>
 <ul>
-<li>What is the design of your study?</li>
-<li>What are your variables?
+<li>Use the help documentation. If you’re struggling to understand how a function works, remember the <code>?function</code> command.</li>
+<li>If you get an error message, copy and paste it in to Google - it’s very likely someone else has had the same problem.</li>
+<li>In addition to these course materials there are a number of excellent resources for learning R:
 <ul>
-<li>Are they IVs/predictors/correlation variables?</li>
-<li>How many levels do they have?
-<ul>
-<li>Are they between or within-subject?</li>
+<li><a href="http://www.cookbook-r.com/">R Cookbook</a></li>
+<li><a href="https://stackoverflow.com/">StackOverflow</a></li>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
+<li>Search or use the <a href="https://twitter.com/search?f=tweets&amp;q=%23rstats&amp;src=typd">#rstats</a> hashtag on Twitter</li>
 </ul></li>
-</ul></li>
-<li>What are your DVs?
+</ul>
+<p>If you would like to push yourself further with R, we recommend working through <a href="https://r4ds.had.co.nz/">R for Data Science</a> in full and/or the materials for the <a href="https://gupsych.github.io/data_skills/">MSc Data Skills course</a> run by Prof. Lisa DeBruine and Dr. Dale Barr at the University of Glasgow.</p>
+</div>
+<div id="debugging-tips" class="section level2">
+<h2><span class="header-section-number">1.7</span> Debugging tips</h2>
+<p>A large part of coding is trying to figure why your code doesn’t work and this is true whether you are a novice or an expert. As you progress through this course you should keep a record of mistakes you make and how you fixed them. In each chapter we will provide a number of common mistakes to look out for but you will undoubtedly make (and fix!) new mistakes yourself.</p>
 <ul>
-<li>How will you calculate them? For example, do you need to take a mean of several of questionnaire items or reaction times from multiple trials?</li>
-</ul></li>
-<li>What are your hypotheses?</li>
-<li>Do you have any demographic data included in the data files?</li>
-<li>Thinking back to the concept of tidy data, how many variables will you have?</li>
+<li>Have you loaded the correct packages for the functions you are trying to use? One very common mistake is to write the code to load the package, e.g., <code>library(tidyverse)</code> but then forget to run it.</li>
+<li>Have you made a typo? Remember <code>data</code> is not the same as <code>DATA</code> and <code>t.test</code> is not the same as <code>t_test</code>.</li>
+<li>Is there a package conflict? Have you tried specifying the package and function with <code>package::function</code>?</li>
+<li>Is it definitely an error? Not all red text in R means an error - sometimes it is just giving you a message with information.</li>
 </ul>
 </div>
-<div id="data-wrangling-considerations" class="section level3">
-<h3><span class="header-section-number">10.1.2</span> Data wrangling considerations</h3>
-<ul>
-<li>What does each variable in your data set represent?
-<ul>
-<li>Do you want to rename any variables to make them easier to work with?
-<ul>
-<li>Do you have a convention for naming variables? For example, I use all lower-case variables and words are always separated by underscores, e.g., <code>group_data</code>.<br />
-</li>
-</ul></li>
-<li>Are there any variables that are not necessary for the analysis? For example, consent forms.</li>
-<li>Are there minimum and maximum values for any of your variables?</li>
-</ul></li>
-<li>Do you have multiple data sets you need to join together?
-<ul>
-<li>Do they have a common variable? For example, does each file have the participant ID or a question number?</li>
-</ul></li>
-<li>Do you need to create any new variables? For example, the mean or sum of a number of questionnaire items to give a total scale score?<br />
-</li>
-<li>What type of data should each variable be?
-<ul>
-<li>Are there any variables that you need to convert to factors?<br />
-</li>
-</ul></li>
-<li>Do you need to recode any variables? For example, 1 = male, 2 = female, or perhaps reverse coding questionnaire responses.</li>
-<li>Do you have a rule for outlier exclusion/replacement?<br />
-</li>
-<li>Do you need to exclude any participants? For example, if they score below a certain threshold, if they are non-native speakers etc.</li>
-<li>Is there any missing data for each variable?
-<ul>
-<li>What will you do about missing data?</li>
-</ul></li>
-<li>Do you need to tidy your data?</li>
-</ul>
+<div id="test-yourself" class="section level2">
+<h2><span class="header-section-number">1.8</span> Test yourself</h2>
+<p><strong>Question 1.</strong> Why should you never include the code <code>install.packages()</code> in your analysis scripts? <select class='solveme' data-answer='["You (or someone else) may accidentally install a package update that stops your code working"]'> <option></option> <option>You should use library() instead</option> <option>Packages are already part of Base R</option> <option>You (or someone else) may accidentally install a package update that stops your code working</option> <option>You already have the latest version of the package</option></select></p>
+<div class="solution">
+<button>
+Explain This Answer
+</button>
+<p>Remember, when you run <code>install.packages()</code> it will always install the latest version of the package and it will overwrite any older versions of the package you may have installed.</p>
 </div>
-<div id="data-analysis-1" class="section level3">
-<h3><span class="header-section-number">10.1.3</span> Data analysis</h3>
-<ul>
-<li>What descriptive statistics do you need to calculate for each variable?
-<ul>
-<li>Do you need to calculate descriptive by groups?</li>
-<li>Are the descriptive statistics similar to values reported in other studies that have used the same measures. Are they similar? If not, what is the explanation?</li>
-</ul></li>
-<li>How will you visualize your data?</li>
-<li>Do you need to transform your data?</li>
-<li>Do you need to conduct any kind of reliability analysis?</li>
-<li>What type of inferential tests are you going to conduct?
-<ul>
-<li>Where appropriate, do you need to perform one or two-tailed hypothesis testing?<br />
-</li>
-<li>Do you need to do any dummy coding for regression models?<br />
-</li>
-</ul></li>
-<li>What assumptions do you need to test in order to perform your analyses?
-<ul>
-<li>What will you do if your data do not meet these assumptions?</li>
-</ul></li>
-<li>Do you need to apply a correction for multiple comparison testing? If so, which one?</li>
-<li>Do you need to calculate measures of effect size? If so, which ones?</li>
-</ul>
-<p>If this looks like a lot of work - it is. It’s important to remember that a lot of the problems that students face with R are really nothing to do with R. In order to wrangle and analyse your data you first need to understand the data that you have. If you don’t know what your independent and dependent variables are or what analysis you’re supposed to be running, it doesn’t matter what statistical software you are using, you won’t be able to complete your task. Don’t rush or skip any part of the preparation, it will make coding much harder. If you know the answers to all of the above questions then it means you’re ready to get started in R.</p>
+<p><br>
+<strong>Question 2.</strong>What will the following code produce?</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">6</span>, <span class="dv">50</span>, <span class="dv">10</span>)</code></pre>
+<p><select class='solveme' data-answer='["A dataset with 6 numbers that has a mean of 50 and an SD of 10"]'> <option></option> <option>A dataset with 10 numbers that has a mean of 6 and an SD of 50</option> <option>A dataset with 6 numbers that has a mean of 50 and an SD of 10</option> <option>A dataset with 50 numbers that has a mean of 10 and an SD of 6</option> <option>A dataset with 50 numbers that has a mean of 10 and an SD of 6</option></select></p>
+<div class="solution">
+<button>
+Explain This Answer
+</button>
+<p>The default form for <code>rnorm()</code> is <code>rnorm(n, mean, sd)</code>. If you need help remembering what each argument of a function does, look up the help documentation by running <code>?rnorm</code></p>
 </div>
+<p><br>
+<strong>Question 3.</strong> If you have two packages that have functions with the same name and you want to specify exactly which package to use, what code would you use?</p>
+<p><select class='solveme' data-answer='["package::function"]'> <option></option> <option>package::function</option> <option>function::package</option> <option>library(package)</option> <option>install.packages(package)</option></select></p>
+<div class="solution">
+<button>
+Explain This Answer
+</button>
+<p>You should use the form <code>package::function</code>, for example <code>dplyr::select</code>. Remember that when you first load your packages R will warn you if any functions have the same name - remember to look out for this!</p>
 </div>
-<div id="exploring-and-cleaning-your-data" class="section level2">
-<h2><span class="header-section-number">10.2</span> Exploring and cleaning your data</h2>
-<p>The following sections will not provide comprehensive instructions on how to use the example code, nor will they cover every function you may need to use. You should refer to the RM2 materials, help documentation, and online resources, however, these examples may give you an idea of where to start.</p>
-<p>As a first step you should explore your dataset to understand its properties and then perform some basic cleaning operations that will facilitate further analysis.</p>
-<div id="summary" class="section level3">
-<h3><span class="header-section-number">10.2.1</span> <code>summary()</code></h3>
-<p>A useful first step is to run <code>summary()</code>. Check the output for:</p>
-<ul>
-<li>Missing data<br />
-</li>
-<li>What type of data each variable is<br />
-</li>
-<li>If the variable names are easy to work with, for example <code>Participant Age</code> is difficult to work with because it has two capital letters and a space. Renaming this as <code>age</code> will make your coding easier.<br />
-</li>
-<li>Any suspicious values, for example, if your likert scale is 1-7 you shouldn’t have a maximum score of 10. If you have standardised IQ scores, you may want to check that a score of 200 or 20 isn’t a typo.<br />
-</li>
-<li>If you make any changes, run <code>summary()</code> again</li>
-</ul>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(data)</code></pre>
-</div>
-<div id="visualisations" class="section level3">
-<h3><span class="header-section-number">10.2.2</span> Visualisations</h3>
-<p>To get an overview of the data and spot any potential issues such as outliers you should plot histograms and boxplots to eyeball the distributions.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> variable)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_histogram</span>()
-
-<span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> condition, <span class="dt">y =</span> score)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_boxplot</span>()</code></pre>
-</div>
-<div id="renaming-variables" class="section level3">
-<h3><span class="header-section-number">10.2.3</span> Renaming variables</h3>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">rename</span>(data, <span class="dt">new_name =</span> old_name)</code></pre>
-</div>
-<div id="converting-to-factors" class="section level3">
-<h3><span class="header-section-number">10.2.4</span> Converting to factors</h3>
-<p>This is incredibly important. Don’t skip this step otherwise things might go very wrong much further down the line.</p>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">mutate</span>(data, <span class="dt">variable =</span> <span class="kw">as_factor</span>(variable))</code></pre>
-</div>
-<div id="dropping-irrelevant-variables" class="section level3">
-<h3><span class="header-section-number">10.2.5</span> Dropping irrelevant variables</h3>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">select</span>(data, <span class="op">-</span>consent1)</code></pre>
-</div>
-<div id="recoding-variables" class="section level3">
-<h3><span class="header-section-number">10.2.6</span> Recoding variables</h3>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">mutate</span>(data, <span class="dt">variable =</span> <span class="kw">recode</span>(variable, <span class="st">&quot;old_code&quot;</span> =<span class="st"> &quot;new_code&quot;</span>))</code></pre>
-</div>
-<div id="exclude-participantsdata" class="section level3">
-<h3><span class="header-section-number">10.2.7</span> Exclude participants/data</h3>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">!=</span><span class="st"> &quot;value&quot;</span>) <span class="co"># exclude anyone with value</span>
-data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">==</span><span class="st"> &quot;value&quot;</span>) <span class="co"># include only those with value</span>
-data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;value1&quot;</span>, <span class="st">&quot;value2&quot;</span>)) <span class="co"># include all specified values</span>
-data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>) <span class="co"># keep data if value of variable is more than 10</span>
-data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="co"># keep data if value of variable is less than or equal to 10</span></code></pre>
-</div>
-<div id="reliability" class="section level3">
-<h3><span class="header-section-number">10.2.8</span> Reliability</h3>
-<p>If you are using a scale, for example, as part of a questionnaire study you may need to calculate reliability and you should do this before you calculate the aggregated scale scores. There are several options about how you do this and you should consult your supervisor but one option is to use <code>alpha()</code> from the <code>psych</code> package.</p>
-<pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(Q1<span class="op">:</span>Q5) <span class="op">%&gt;%</span>
-<span class="st">  </span>psych<span class="op">::</span><span class="kw">alpha</span>()</code></pre>
-</div>
-</div>
-<div id="transforming-data" class="section level2">
-<h2><span class="header-section-number">10.3</span> Transforming data</h2>
-<p>The above steps should leave you with a good understanding of your data and all the variables you need for your analysis. The next step is to correct any problems with the data by replacing or transforming individual values. You may also need to create new variables, for example the total score for a questionnaire or mean reaction times or accuracy.</p>
-<div id="replace-missing-values" class="section level3">
-<h3><span class="header-section-number">10.3.1</span> Replace missing values</h3>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">variable =</span> <span class="kw">replace_na</span>(data<span class="op">$</span>variable, <span class="dv">0</span>)) <span class="co"># replace NAs in variable with 0</span>
-
-data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_na</span>(<span class="kw">list</span>(<span class="dt">gender =</span> <span class="st">&quot;unknown&quot;</span>, <span class="co"># replace NAs in `gender` with &quot;unknown&quot;</span>
-                              <span class="dt">score =</span> <span class="dv">0</span>,          <span class="co"># replace NAs in `score` with 0  </span>
-                              <span class="dt">rt =</span> <span class="kw">mean</span>(data<span class="op">$</span>rt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))  <span class="co"># replace NAs in `rt` with mean of `rt`</span></code></pre>
-</div>
-<div id="convert-implausible-values" class="section level3">
-<h3><span class="header-section-number">10.3.2</span> Convert implausible values</h3>
-<p>In the case of implausible values (such as a score or 10 on a 7-point likert scale), you may wish to recode these as missing, or as the mean (or some other value).</p>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">q1=</span> <span class="kw">ifelse</span>(q1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>, <span class="ot">NA</span>, q1)) <span class="co"># if the value in q1 is more than 10 replace it with NA, if it&#39;s not, keep the value as it is</span>
-
-data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rt =</span> <span class="kw">ifelse</span>(rt <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>, <span class="kw">mean</span>(rt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), rt)) <span class="co"># if the value in rt is more than 1000, replace it with the mean rt, if it&#39;s below 1000, keep the value as it is</span></code></pre>
-</div>
-<div id="calculate-z-scores" class="section level3">
-<h3><span class="header-section-number">10.3.3</span> Calculate z-scores</h3>
-<p>You may want to calculate z-scores in order to remove outliers. You could then use <code>filter()</code> on the new z-score variable you have created.</p>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">z_scores =</span> <span class="kw">scale</span>(scores))</code></pre>
-<p>There are a few other types of transformations we can do to correct for problems with normality. <a href="https://rcompanion.org/handbook/I_12.html">This page</a> gives a good overview of all the options.</p>
-</div>
-<div id="log-transformation" class="section level3">
-<h3><span class="header-section-number">10.3.4</span> Log transformation</h3>
-<p>A popular method of transformation is to calculate the log of a variable.</p>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">variable_log =</span> <span class="kw">log</span>(variable))</code></pre>
-</div>
-<div id="square-root" class="section level3">
-<h3><span class="header-section-number">10.3.5</span> Square root</h3>
-<p>Another popular method is to perform a square root transformation.</p>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">variable_sqrt =</span> <span class="kw">sqrt</span>(variable))</code></pre>
-</div>
-<div id="calculating-new-variables" class="section level3">
-<h3><span class="header-section-number">10.3.6</span> Calculating new variables</h3>
-<p>You may wish to calculate the sum or the mean of a number of variables. For example, if you have 9 questions and you want the sum of questions 1-5 and the mean of questions 6 - 9 and your data is is wide-form:</p>
-<pre class="sourceCode r"><code class="sourceCode r">data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sum_scoreq1q5 =</span> <span class="kw">rowSums</span>(<span class="kw">select</span>(., Q1<span class="op">:</span>Q5)),
-         <span class="dt">mean_scoreq6q10 =</span> <span class="kw">rowMeans</span>(<span class="kw">select</span>(., Q6<span class="op">:</span>Q9)))</code></pre>
-<p>If your data is in long-form you may want to use functions such as <code>gather()</code>, <code>spread()</code> and <code>summarise()</code>. See RM2 Lab 3 for more info on this.</p>
-</div>
-<div id="tidy-data-1" class="section level3">
-<h3><span class="header-section-number">10.3.7</span> Tidy data</h3>
-<p>It is at this point that you should tidy the dataset using functions such as <code>gather()</code>. Refer back to the RM1 Lab 2 and RM2 Lab 3. You may also wish to have a wide-form version of your data depending upon the analyses you are conducting.</p>
-</div>
-</div>
-<div id="summarising-and-visualising-data" class="section level2">
-<h2><span class="header-section-number">10.4</span> Summarising and visualising data</h2>
-<div id="descriptive-statistics" class="section level3">
-<h3><span class="header-section-number">10.4.1</span> Descriptive statistics</h3>
-<p>At this point you may want to calculate descriptive statistics for variables of interest. Refer back to RM1 Lab 2 and Lab 3 for more information on these functions.</p>
-<pre class="sourceCode r"><code class="sourceCode r">data <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># produce descriptives for the total data set</span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_score =</span> <span class="kw">mean</span>(score, <span class="dt">na.rm =</span> true),
-            <span class="dt">sd_score =</span> <span class="kw">sd</span>(score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
-            <span class="dt">median_score =</span> <span class="kw">median</span>(score))
-
-data <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># produce descriptives for each of the grouping variables</span>
-<span class="st">  </span><span class="kw">group_by</span>(gender, condition) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_score =</span> <span class="kw">mean</span>(score, <span class="dt">na.rm =</span> true),
-            <span class="dt">sd_score =</span> <span class="kw">sd</span>(score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),
-            <span class="dt">median_score =</span> <span class="kw">median</span>(score))</code></pre>
-<p>You may also find the function <code>describe()</code> from the <code>psych</code> package useful (you may need to install this package but as always, <strong>do not install packages on university computers</strong>). <code>describe()</code> produces a full range of descriptive statistics including skew, kurtosis and standard error.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(psych)
-<span class="kw">describe</span>(data)</code></pre>
-<p><code>describeBy()</code> produces descriptives by a grouping variable.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">describeBy</span>(data, <span class="dt">group =</span> <span class="st">&quot;gender&quot;</span>)</code></pre>
-</div>
-<div id="data-visualisation" class="section level3">
-<h3><span class="header-section-number">10.4.2</span> Data visualisation</h3>
-<p>At this point you should plot your data using a method that reflects the analysis you wish to conduct (e.g., a scatterplot for a correlation, a violn-boxplot for a t-test). For the plots and code specific to each type of analysis, please refer to the relevant chapters. You should ensure that your plots are as informative as possible and display the spread of the data using functions such as <code>geom_violin()</code>, and <code>geom_point()</code>. Avoid purely aggregated plots like bar charts representing means.</p>
-</div>
-</div>
-<div id="inferential-statistics" class="section level2">
-<h2><span class="header-section-number">10.5</span> Inferential statistics</h2>
-<p>You are now ready to conduct your inferential analyses. For details on how to perform different tests, please refer to relevant chapters. Ensure that you understand how each test relates to each of your hypotheses.</p>
-</div>
-<div id="assumption-tests" class="section level2">
-<h2><span class="header-section-number">10.6</span> Assumption tests</h2>
-<p>Depending upon the analysis, you may be able to conduct assumption checks before the inferential tests are conducted, however, for methods such as ANOVA and regression, you need to check the model residuals and therefore this can’t be done until afterwards.</p>
-<p>Foe details on what assumption checks to conduct for each statistical test, please refer to the relevant chapters.</p>
 
 </div>
 </div>
@@ -821,8 +792,8 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="rm2-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="supp.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rm1-intro-to-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

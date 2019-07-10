@@ -1,4 +1,4 @@
-# RM2 Visualisation, power, and effect size
+# RM2 Visualisation, power, and effect size {#vis}
 
 ## Pre-lab activities
 
@@ -14,7 +14,7 @@ To help you understand the data we're visualising, here is the abstract:
 
 ### Activity 1: Set-up
 
-Do the following. If you need help, consult Programming Basics and RM1: Lab 1.
+Do the following. If you need help, consult Chapter \@ref(ref3) and Chapter \@(ref2).
 
 * Open R Studio and set the working directory to your Lab 3 folder.  
 * Open a new R Markdown document and save it in your working directory. Call the file "Pre-class 3".    
@@ -286,7 +286,7 @@ ggplot(zhang_data, aes(x=Gender, fill = Condition))+
   scale_fill_viridis_d(option = "E")
 ```
 
-### Activity 7: Violin plots
+### Activity 7: Violin plots 
 
 #### Basic violin plot
 
@@ -311,7 +311,7 @@ ggplot(zhang_data, aes(x = Condition, y = interest))+
 It's important to remember that R is very literal. `ggplot2` works on a system of layers. It will add new geoms on top of existing ones and it won't stop to think whether this is a good idea. Try running the above code but put `geom_jitter()` first and then add `geom_violin()`. The order of your layers matters.
 ```
 
-### Activity 8: Violin-boxplots
+### Activity 8: Violin-boxplots {#viobox}
 
 One increasingly common graph is a violin + boxplot + summary plot that shows a huge amount of information about your data in a single plot. You've already come across these when you looked at t-tests.
 
@@ -627,7 +627,7 @@ Let's now try out some calculations. We will start with just looking at effect s
 
 ### Activity 1: Set-up
 
-Do the following. If you need help, consult Programming Basics and RM1: Lab 1.
+Do the following. If you need help, consult Chapter \@ref(ref3) and Chapter \@(ref2).
 
 * Open R Studio and set the working directory to your Lab 3 folder.  
 * Open a new R Markdown document and save it in your working directory. Call the file "In-class 3".    
@@ -834,7 +834,7 @@ Answer the following questions to check your answers. The solutions are at the b
 
 Again, `pwr.chisq.test()` is very similar to the t-test and correlation functions. 
 
-* **w** - Effect size (you can enter Cramer's V which we calculated in RM1 Lab 3)
+* **w** - Effect size (you can enter Cramer's V which we calculated in Chapter \@ref(cramer))
 * **N	** - Total number of observations
 * **df** - degree of freedom 
 * **sig.level** - Significance level (Type I error probability)
@@ -874,6 +874,8 @@ Which of the t-tests do you believe to be underpowered? Why do you think this ma
 A high-powered study looking to detect a small effect size at a low alpha will require a large number of participants!
 
 There are additional functions in the `pwr` package for other types of statistical analyses. We will include these calculates as part of the ANOVA and regression labs. 
+
+If you want more examples of power to reinforce your understanding, go back and calculate the power of the t-tests, correlations, and chi-squares from earlier chapters. 
 
 
 ### Activity solutions

@@ -44,7 +44,7 @@ Before you touch R, you need to make sure you understand your design, data, and 
 
 * What descriptive statistics do you need to calculate for each variable?
   * Do you need to calculate descriptive by groups?
-  * Are the decriptive statistics similar to values reported in other studies that have used the same measures. Are they similar? If not, what is the explanation?
+  * Are the descriptive statistics similar to values reported in other studies that have used the same measures. Are they similar? If not, what is the explanation?
 * How will you visualize your data?
 * Do you need to transform your data?
 * Do you need to conduct any kind of reliability analysis?
@@ -63,7 +63,7 @@ If this looks like a lot of work - it is. It's important to remember that a lot 
 
 The following sections will not provide comprehensive instructions on how to use the example code, nor will they cover every function you may need to use. You should refer to the RM2 materials, help documentation, and online resources, however, these examples may give you an idea of where to start.
 
-As a first step you should explore your dataset to understand its properties and then perform some basic cleaning operations that will facilitate futher analysis. 
+As a first step you should explore your dataset to understand its properties and then perform some basic cleaning operations that will facilitate further analysis. 
 
 ### `summary()`
 
@@ -192,7 +192,7 @@ There are a few other types of transformations we can do to correct for problems
 
 ### Log transformation
 
-A popular method of tranformation is to calculate the log of a variable.
+A popular method of transformation is to calculate the log of a variable.
 
 
 ```r

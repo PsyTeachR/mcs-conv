@@ -1,18 +1,18 @@
-# RM1 Lab 1: Intro to R
+# RM1 Intro to R
 
-## Pre-class activities
+## Pre-class activities {#ref2}
 
 There are nine activities in total for this pre-lab, but don't worry, they are broken down into very small steps!
 
 ### Activity 1: Programming basics
 
-Please read Programming Basics and watch the two R videos available on Moodle.
+Please read \@ref(ref3) and watch the two R videos available on Moodle.
 
 ### Activity 2: Create the working directory 
 
-If you want to load data into R, or save the ouput of what you've created (which you almost always will want to do), you first need to tell R where the **working directory** is. All this means is that we tell R where the files we need (such as raw data) are located and where we want to save any files you have created. Think of it just like when you have different subjects, and you have seperate folders for each topic e.g. biology, history and so on. When working with R, it's useful to have all the data sets and files you need in one folder. 
+If you want to load data into R, or save the output of what you've created (which you almost always will want to do), you first need to tell R where the **working directory** is. All this means is that we tell R where the files we need (such as raw data) are located and where we want to save any files you have created. Think of it just like when you have different subjects, and you have separate folders for each topic e.g. biology, history and so on. When working with R, it's useful to have all the data sets and files you need in one folder. 
 
-We reccommend making a new folder called "Research Methods R Labs" with sub-folders for each lab and saving any data, scripts, and portfolio files for each lab in these folders. We suggest that you create this folder on the M: drive. This is your personal area on the University network that is safe and secure so it is much better than flashdrives or desktops. 
+We recommend making a new folder called "Research Methods R Labs" with sub-folders for each lab and saving any data, scripts, and portfolio files for each lab in these folders. We suggest that you create this folder on the M: drive. This is your personal area on the University network that is safe and secure so it is much better than flashdrives or desktops. 
 
 
 ```{r img-folders, echo=FALSE, fig.cap="Lab folder structure"}
@@ -35,7 +35,7 @@ knitr::include_graphics("images/working-dir.png")
 
 ### R Markdown for R lab work and portfolio assignments
 
-For the R lab work and portfolio assignments you will use a worksheet format called R Markdown (abbreviated as Rmd) which is a great way to create dynamic documents with embedded chunks of code. These documents are self-contained and fully reproducible (if you have the necessary data, you should be able to run someone else's analyses with the click of a button) which makes it very easy to share. This is an important part of your open science training as one of the reasons we are using RStudio is that it enables us to share open and reproducible information. Using these worksheets enables you to keep a record of all the code you write during the labs, and when it comes time for the portfolio assignments, we can give you a task you can and then fill in the required code. 
+For the R lab work and portfolio assignments you will use a worksheet format called R Markdown (abbreviated as Rmd) which is a great way to create dynamic documents with embedded chunks of code. These documents are self-contained and fully reproducible (if you have the necessary data, you should be able to run someone else's analyses with the click of a button) which makes it very easy to share. This is an important part of your open science training as one of the reasons we are using R Studio is that it enables us to share open and reproducible information. Using these worksheets enables you to keep a record of all the code you write during the labs, and when it comes time for the portfolio assignments, we can give you a task you can and then fill in the required code. 
 
 For more information about R Markdown feel free to have a look at their main webpage sometime http://rmarkdown.rstudio.com. The key advantage of R Markdown is that it allows you to write code into a document, along with regular text, and then **knit** it using the package `knitr` to create your document as either a webpage (HTML), a PDF, or Word document (.docx). 
 
@@ -92,7 +92,7 @@ When you create a new code chunk you should notice that the grey box starts and 
 
 ### Activity 6: Write some code
 
-Now we're going to use the code examples you read about in Programming Basics to add some simple code to our R Markdown dcoument. In your code chunk write the below code but replace the values of name/age/birthday with your own details). Note that text values and dates need to be contained in quotation marks but numerical values do not. Missing and/or unnecessary quotation marks are a common cause of code not working - remember this!
+Now we're going to use the code examples you read about in \@ref(ref3) to add some simple code to our R Markdown document. In your code chunk write the below code but replace the values of name/age/birthday with your own details). Note that text values and dates need to be contained in quotation marks but numerical values do not. Missing and/or unnecessary quotation marks are a common cause of code not working - remember this!
 
 ```{r}
 name <- "Emily" 
@@ -121,7 +121,7 @@ knitr::include_graphics("images/run2.png")
 
 ```
 
-Even better though is to learn some of the keyboard shortcuts for RStudio. To run a single line of code, make sure that the cursor is in the line of code you want to run (it can be anywhere) and press `ctrl + enter`. If you want to run all of the code in the code chunk, press `ctrl + shift + enter`. Learn these shortcuts, they will make your life easier!
+Even better though is to learn some of the keyboard shortcuts for R Studio. To run a single line of code, make sure that the cursor is in the line of code you want to run (it can be anywhere) and press `ctrl + enter`. If you want to run all of the code in the code chunk, press `ctrl + shift + enter`. Learn these shortcuts, they will make your life easier!
 
 ### Activity 7: Run your code
 
@@ -151,7 +151,7 @@ We're not going to use this function very often in the rest of the course but ho
 Before we finish, there are a few final things to note about knitting that will be useful for the portfolio and mini-project:  
 
 * R Markdown will only knit if your code works - this is a good way of checking for the portfolio assignments whether you've written legal code!  
-* You can choose to knit to a Word document rather than HTML. This can be useful for e.g., sharing with others, however, it may lose some functionality and it probably won't look as good so we'd reccommend always knitting to HTML.  
+* You can choose to knit to a Word document rather than HTML. This can be useful for e.g., sharing with others, however, it may lose some functionality and it probably won't look as good so we'd recommend always knitting to HTML.  
 * You can choose to knit to PDF, however, this requires an LaTex installation and is quite complicated. If you don't already know what LaTex is and how to use it, do not knit to PDF. If you do know how to use LaTex, you don't need us to give you instructions! 
 * R will automatically open the knitted HTML file in the viewer, however, you can also navigate to the folder it is stored in and open the HTML file in your web browser (e.g., Chrome or Firefox).  
 
@@ -161,10 +161,10 @@ And you're done! On your very first time using R you've not only written functio
 
 The key thing we want you to take away from this pre-lab is that R isn't scary. It might be very new to a lot of you, but we're going to take you through it step-by-step. You'll be amazed at how quickly you can start producing professional-looking data visualisations and analysis.
 
-If you have any questions about anything contained in this pre-lab or in Programming Basics, you can use the Slack forum or ask your lab tutor.
+If you have any questions about anything contained in this pre-lab or in \@ref(ref3), you can use the Slack forum or ask your lab tutor.
 
 
-## In-class activities
+## In-class activities {#lab1-inclass}
 
 Part of becoming a psychologist is asking questions and gathering data to enable you to answer these questions effectively. It is very important that you understand all aspects of the research process such as experimental design, ethics, data management and visualisation. 
 
@@ -180,12 +180,13 @@ As part of your skill development, it is important that you work with data so th
 
 ### Getting data ready to work with
 
-Today in the lab you will learn how to load the packages required to work with our data. You'll then load the data into RStudio before getting it organised into a sensible format that relates to our research question. If you can't remember what packages are, go back and revise Programming Basics. 
+Today in the lab you will learn how to load the packages required to work with our data. You'll then load the data into R Studio before getting it organised into a sensible format that relates to our research question. If you can't remember what packages are, go back and revise \@ref(packages). 
 
 ### Activity 1: Set-up
 
-Before we begin working with the data we need to do some set-up. If you need help with any of these steps, you should refer to the pre-lab activities:  
-* Download the data files from Moodle into your Lab 1 folder.  
+Before we begin working with the data we need to do some set-up. If you need help with any of these steps, you should refer to the pre-lab activities: 
+
+* Download the `ahi-cesd.csv` and `participant-info.csv` from Moodle into your Lab 1 folder.  
 * Set the working directory to your Lab 1 folder.  
 * Open a new R Markdown document and save it in your working directory. Call the file "In-class 1".    
 * Delete the default R Markdown welcome text and insert a new code chunk.  
@@ -195,7 +196,7 @@ Before we begin working with the data we need to do some set-up. If you need hel
 
 Today we need to use the `tidyverse` package. You will use this package in every single lab on this course as the functions it contains are those we use for data wrangling, descriptive statistics, and visualisation.
 
-To load the `tidyverse` type the following code into your code chunk and then run it. 
+* To load the `tidyverse` type the following code into your code chunk and then run it. 
 
 ```{r T1, warning = FALSE, message = FALSE}
 library(tidyverse)
@@ -207,13 +208,13 @@ For this lab we are going to be using real data from the following paper:
 
 [Woodworth, R.J., O'Brien-Malone, A., Diamond, M.R. and Schüz, B., 2018. Data from, ‘Web-based Positive Psychology Interventions: A Reexamination of Effectiveness’. Journal of Open Psychology Data, 6(1).](https://openpsychologydata.metajnl.com/articles/10.5334/jopd.35/)
 
-We reccomend that you read through this paper and open up the .csv files in order to understand the data better but briefly, the files contains data from two scales, the  Authentic Happiness Inventory (AHI) and the Center for Epidemiological Studies Depression (CES-D) scale, as well as demographic information about participants. 
+We recommend that you read through this paper and open up the .csv files in order to understand the data better but briefly, the files contains data from two scales, the  Authentic Happiness Inventory (AHI) and the Center for Epidemiological Studies Depression (CES-D) scale, as well as demographic information about participants. 
 
 ### Activity 3: Read in data
 
 Now we can read in the data. To do this we will use the function `read_csv()` that allows us to read in .csv files. There are also functions that allow you to read in .xlsx files and other formats, however in this course we will only use .csv files.
 
-First, we will create an object called `dat` that contains the data in the `ahi-cesd.csv` file. Then, we will create an object called `info` that contains the data in the `participant-info.csv`.
+* First, we will create an object called `dat` that contains the data in the `ahi-cesd.csv` file. Then, we will create an object called `info` that contains the data in the `participant-info.csv`.
 
 ```{r T3, warning = FALSE, message = FALSE}
 dat <- read_csv ("ahi-cesd.csv")
@@ -241,7 +242,9 @@ We have two files, `dat` and `info` but what we really want is a single file tha
 
 Remember to use the help function `?inner_join` if you want more information about how to use a function and to use tab auto-complete to help you write your code.
 
-The below code will create a new object `all_dat` that has the data from both `dat` and `pinfo` and it will use the columns `id` and `intervention` to match the participants' data. Run this code and then view the new dataset using one of the methods from Activity 4.
+The below code will create a new object `all_dat` that has the data from both `dat` and `pinfo` and it will use the columns `id` and `intervention` to match the participants' data. 
+
+* Run this code and then view the new dataset using one of the methods from Activity 4.
 
 ```{r T5}
 all_dat <- inner_join(x = dat, # the first table you want to join
@@ -249,11 +252,11 @@ all_dat <- inner_join(x = dat, # the first table you want to join
                       by = 'id', 'intervention') # columns the two tables have in common
 ```
 
-### Activity 6: Pull out variables of interest
+### Activity 6: Pull out variables of interest {#ref1}
 
 Our final step is to pull our variables of interest. Very frequently, datasets will have more variables and data than you actually want to use and it can make life easier to create a new object with just the data you need.
 
-In this case, the file contains the responses to each individual question on boh the AHI scale and the CESD scale as well as the total score (i.e., the sum of all the individual responses). For our analysis, all we care about is the total scores, as well as the demographic information about participants.
+In this case, the file contains the responses to each individual question on both the AHI scale and the CESD scale as well as the total score (i.e., the sum of all the individual responses). For our analysis, all we care about is the total scores, as well as the demographic information about participants.
 
 To do this we use the `select()` function to create a new object named `summarydata`.
 
@@ -262,7 +265,7 @@ summarydata <- select(.data = all_dat, # name of the object to take data from
                       ahiTotal, cesdTotal, sex, age, educ, income, occasion,elapsed.days) # all the columns you want to keep
 ```
 
-Run this code and then run `head(summarydata)`. If everything has gone to plan it should look something like this:
+* Run the above code and then run `head(summarydata)`. If everything has gone to plan it should look something like this:
 
 ```{r, echo = FALSE, results='asis'}
 
@@ -276,14 +279,14 @@ Finally, try knitting the file to HTML. And that's it, well done! Remember to sa
 
 #### Finished!
 
-There is no portfolio assessment this week, instead, use the time to get comfortable with what we've covered already and revise the activities and support materials presented so far if needed. If you're feeling comfortable with R, you can work your way through this book at your own pace or push yourself by using the additional resources highlighted in Programming Basics.
+There is no portfolio assessment this week, instead, use the time to get comfortable with what we've covered already and revise the activities and support materials presented so far if needed. If you're feeling comfortable with R, you can work your way through this book at your own pace or push yourself by using the additional resources highlighted in \@ref(ref3).
 
 ## Debugging tips
 
-* When you downloaded the files from Moodle did you save the file names **exactly** as they were originally? If you download the file more than once you will find your computer may automatically add a number to the end of the filename. `data.csv` is not the same as `data(1).csv`. Pay close attention to names!
+* When you downloaded the files from Moodle did you save the file names **exactly** as they were originally? If you download the file more than once you will find your computer may automatically add a number to the end of the file name. `data.csv` is not the same as `data(1).csv`. Pay close attention to names!
 * Have you used the **exact** same object names as we did in each activity? Remember, `name` is different to `Name`. In order to make sure you can follow along with this book, pay special attention to ensuring you use the same object names as we do.  
 * Have you used quotation marks where needed?  
-* Have you accidentally deleted any backticks (```) from the beginning or end of code chunks?
+* Have you accidentally deleted any back ticks (```) from the beginning or end of code chunks?
 
 ## Test yourself
 

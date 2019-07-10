@@ -1,5 +1,7 @@
 
-# Programming Basics
+# Programming Basics {#ref3}
+
+## Introduction
 
 In this chapter we will go over some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get help. Those of you who have no programming experience should find this chapter particularly helpful, however, even if you've used R before there may be some helpful hints and tips so please make sure you read through this chapter before Lab 1.
 
@@ -106,7 +108,7 @@ One very useful feature of R Studio is the tab auto-complete for functions (see 
 <p class="caption">(\#fig:img-autocomplete)Tab auto-complete</p>
 </div>
 
-## Base R and packages
+## Base R and packages {#packages}
 
 When you install R you will have access to a range of functions including options for data wrangling and statistical analysis. The functions that are included in the default installation are typically referred to as **Base R** and there is a useful cheat sheet that shows many Base R functions [here](https://www.rstudio.com/wp-content/uploads/2016/05/base-r.pdf).
 
@@ -144,7 +146,7 @@ In addition to updates to R and R Studio, the creators of packages also sometime
 <p>To avoid accidentally overwriting a package with a later version, you should <strong>never</strong> include <code>install.packages()</code> in your analysis scripts in case you, or someone else runs the code by mistake. Remember, the University of Glasgow computers will already have all of the packages you need for this course so you only need to install packages if you are using your own machine.</p>
 </div>
 
-### Package conflicts
+### Package conflicts {#conflicts}
 
 There are thousands of different R packages with even more functions. Unfortunately, sometimes different packages have the same function names. For example, the packages `dplyr` and `MASS` both have a function named `select()`. If you load both of these packages, R will produce a warning telling you that there is a conflict.
 
@@ -208,7 +210,7 @@ mean(data)
 
 ```
 ## [1] 43
-## Time difference of 178 days
+## Time difference of 175 days
 ## [1] 17.66644
 ```
 
@@ -226,7 +228,7 @@ decade <- age + 10
 You will constantly be creating objects throughout this course and you will learn more about them and how they behave as we go along, however, for now it is enough to understand that they are a way of saving values, that these values can numbers, text, or the result of operations, and that they can be used in further operations to create new variables.
 
 <div class="info">
-<p>You may also see objects referred to as ‘variables’. There is a difference between the two in programming terms, however, they are used synonomously very frequently.</p>
+<p>You may also see objects referred to as ‘variables’. There is a difference between the two in programming terms, however, they are used synonymously very frequently.</p>
 </div>
 
 ## Help and additional resources
@@ -242,11 +244,11 @@ Getting good at programming really means getting good trying stuff out,  searchi
 * If you get an error message, copy and paste it in to Google - it's very likely someone else has had the same problem.
 * In addition to these course materials there are a number of excellent resources for learning R:
   * [R Cookbook](http://www.cookbook-r.com/)
-  * [StackOverlow](https://stackoverflow.com/)
+  * [StackOverflow](https://stackoverflow.com/)
   * [R for Data Science](https://r4ds.had.co.nz/)
   * Search or use the [#rstats](https://twitter.com/search?f=tweets&q=%23rstats&src=typd) hashtag on Twitter
 
-If you would like to push yourself further with R, we reccomend working through [R for Data Science](https://r4ds.had.co.nz/) in full and/or the materials for the [MSc Data Skills course](https://gupsych.github.io/data_skills/) run by Prof. Lisa DeBruine and Dr. Dale Barr at the University of Glasgow.
+If you would like to push yourself further with R, we recommend working through [R for Data Science](https://r4ds.had.co.nz/) in full and/or the materials for the [MSc Data Skills course](https://gupsych.github.io/data_skills/) run by Prof. Lisa DeBruine and Dr. Dale Barr at the University of Glasgow.
 
 ## Debugging tips
 
