@@ -27,7 +27,7 @@ What we want to do is to determine whether those in the RTA condition were more 
 Do the following. If you need help, consult Chapter \@ref(ref2) and Chapter \@ref(ref3).
 
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.   
-* Open a new R Markdown document and save it in your working directory. Call the file "Comapring categories".    
+* Open a new R Markdown document and save it in your working directory. Call the file "Comparing categories".    
 * Download <a href="RTA_study1.csv" download>RTA_study1.csv</a> and save it in your chapter folder. Make sure that you do not change the file name at all.
 * If you are working on your own computer, install the package `lsr`. Remember **do not install packages on university computers, they are already installed**.
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `tidyverse` and `lsr` using the `library()` function and loads the data into an object named `intent_data` using `read_csv()`.
