@@ -156,12 +156,9 @@ A crucial step of data screening is checking for implausible values. What is imp
 
 <div class='solution'><button>Explain these answers</button>
 
-
-```r
 The maximum value for age is 470, this is unlikely to be correct!
   
 The maximum value for pre, post, and delay should be 30, as we described at the start of the chapter. However, for post, the maximum value is 33 so something is wrong. This is a very important check to do on your data, not just for the raw data but if you've calculated a total score.
-```
 
 </div>
 
@@ -412,16 +409,6 @@ descriptives2 <- messy %>%
 descriptives2
 ```
 
-
-```r
-descriptives2 <- messy %>%
-  select(-id, -speaker, -gender) %>%
-  describe()
-
-descriptives2 %>%
-  kableExtra::kable()
-```
-
 <table>
  <thead>
   <tr>
@@ -521,11 +508,50 @@ descriptives3 <- messy %>%
 descriptives3
 ```
 
-
-```r
-descriptives3 <- messy %>%
-  select(-id, -speaker) %>%
-  describeBy(group = "gender")
+```
+## 
+##  Descriptive statistics by group 
+## gender: female
+##         vars  n  mean    sd median trimmed   mad min max range  skew kurtosis
+## age        1 84 38.10 48.64     31   32.96 11.86  18 470   452  8.32    71.04
+## gender*    2 84  1.00  0.00      1    1.00  0.00   1   1     0   NaN      NaN
+## pre        3 84 10.38  5.06      9   10.28  4.45  -1  23    24  0.24    -0.42
+## post       4 84 18.20  6.99     17   17.96  5.93   3  36    33  0.37    -0.08
+## delay      5 78 13.18  5.17     13   13.33  5.93  -3  24    27 -0.31     0.15
+##           se
+## age     5.31
+## gender* 0.00
+## pre     0.55
+## post    0.76
+## delay   0.59
+## ------------------------------------------------------------ 
+## gender: male
+##         vars  n  mean    sd median trimmed   mad min max range  skew kurtosis
+## age        1 68 34.96 10.03     35   35.09 14.83  18  50    32 -0.05    -1.30
+## gender*    2 68  2.00  0.00      2    2.00  0.00   2   2     0   NaN      NaN
+## pre        3 68 10.04  4.85     11   10.11  4.45  -5  26    31 -0.05     1.33
+## post       4 68 16.28  5.41     16   16.23  5.19   4  33    29  0.25     0.46
+## delay      5 59 14.02  5.07     14   14.04  4.45   1  29    28  0.04     0.62
+##           se
+## age     1.22
+## gender* 0.00
+## pre     0.59
+## post    0.66
+## delay   0.66
+## ------------------------------------------------------------ 
+## gender: nonbinary
+##         vars  n  mean   sd median trimmed   mad min max range  skew kurtosis
+## age        1 28 34.96 9.25   35.5   34.96 11.86  20  50    30 -0.03    -1.30
+## gender*    2 28  3.00 0.00    3.0    3.00  0.00   3   3     0   NaN      NaN
+## pre        3 28  9.29 5.36   10.0    9.54  4.45  -4  19    23 -0.48    -0.18
+## post       4 28 16.86 5.10   16.0   16.79  4.45   8  26    18  0.35    -0.85
+## delay      5 25 12.84 4.67   13.0   12.90  4.45   3  25    22  0.07     0.43
+##           se
+## age     1.75
+## gender* 0.00
+## pre     1.01
+## post    0.96
+## delay   0.93
 ```
 
 If you look in the environment you will see that `descriptives3` is saved as a `List of 3`. What this means is that the table of descriptives for each gender is saved as a separate table, one for female, one for male, one for non-binary. To get access to them individually, you need to use the `object$variable` notation. 
