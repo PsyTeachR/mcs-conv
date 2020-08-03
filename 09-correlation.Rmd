@@ -9,13 +9,25 @@ mh <- read_csv("MillerHadenData.csv")
 results <- cor.test(mh$Abil, mh$IQ, method = "pearson", alternative = "two.sided")
 ```
 
+We have spent the chapters so far focusing on the basics of R and data wrangling. You may think that the tasks we ask you to do in R will get harder as this course progresses but that isn't true. The hardest part of learning R is at the very beginning, trying to learn the new terminology, figuring out how to load in data and wrangle it into the format you need. It may feel like you are still struggling so it's worth reflecting on just how far you've come in a short time.
+
+You can now:
+
+* Understand what functions, arguments, objects, variables, and tibbles are  
+* Read data into R  
+* Tidy data into an appropriate format  
+* Calculate a range of descriptive statistics
+* Create plots of data
+
+That's amazing! Now we're going to move on to performing a correlation and to create a plot to visualise the data. 
+
 # Correlations
 
 As [Miller and Haden (2013)](https://drive.google.com/file/d/0B1fyuTuvj3YoaFdUR3FZaXNuNXc/view) state at the start of Chapter 11, correlations are **used to detect and quantify relationships among numerical variables**. In short, you measure two variables and the correlation analysis tells you whether or not they are related in some manner - positively or negatively; one increases as the other increases; one decreases as the other increases; etc.. 
 
-To actually carry out a correlation is very simple and we will show you that today in a little while: you just need the `cor.test()` function.  The harder part of correlations is really wrangling the data and interpreting what the results mean. You are going to run a few correlations today to give you good practice at running and interpreting the relationships between two variables. 
+To actually carry out a correlation is very simple and we will show you that today in a little while: you just need the `cor.test()` function.  The harder part of correlations is really wrangling the data and interpreting what the results mean. You are going to run a few correlations in this chapter to give you good practice at running and interpreting the relationships between two variables. 
 
-**Note:** When dealing with correlations you should always refer to relationships and not predictions. In a correlation, X does not predict Y, that is regression which we will look at later this semester. In a correlation, all we can say is whether X and Y are related. So try to get the correct terminology and please feel free to pull us up if we say the wrong thing in class. It is an easy slip of the tongue to make!
+**Note:** When dealing with correlations you should always refer to relationships and not predictions. In a correlation, X does not predict Y, that is regression which you will cover in later in this course. In a correlation, all we can say is whether X and Y are related. 
 
 ## Activity 1: Set-up
 
@@ -23,9 +35,9 @@ In this chapter we will use the examples in Miller and Haden (2013), Chapter 11,
 
 Do the following. If you need help, consult Chapter \@ref(ref3) and Chapter \@(ref2).
 
-* Open R Studio and set the working directory to your Week 5 folder. Ensure the environment is clear.    
-* Open a new R Markdown document and save it in your working directory. Call the file "Week 5".    
-* Download <a href="MillerHadenData.csv" download>MillerHadenData.csv</a> and save it in your Week 5 folder. Make sure that you do not change the file name at all.  
+* Open R Studio and set the working directory to your Correlation folder. Ensure the environment is clear.    
+* Open a new R Markdown document and save it in your working directory. Call the file "Correlation".    
+* Download <a href="MillerHadenData.csv" download>MillerHadenData.csv</a> and save it in your Correlation folder. Make sure that you do not change the file name at all.  
 * If you are working on your own computer, install the packages `Hmisc`, `car`, and `broom`. Remember **do not install packages on university computers, they are already installed**.
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `broom`, `car`, `lsr`, `Hmisc`, and `tidyverse` (in that order) using the `library()` function and loads the data into an object named `mh` using `read_csv()`
 
@@ -42,7 +54,8 @@ As in Miller and Haden, we have 5 columns:
 5. And number of minutes spent watching TV per week (`TV`). 
 
 For the chapter we will focus on Reading Ability and IQ but for further practice you can look at other relationships in your free time.  
-A probable hypothesis for today could be that as Reading Ability increases so does Intelligence (think of the issue with causality and direction). Phrasing the hypothesis more formally, we hypothesise that the reading ability of school children, as measured through a standardized test, and intelligence, again measured through a standardized test, are positively correlated.  
+
+A probable hypothesis could be that as Reading Ability increases so does Intelligence (think of the issue with causality and direction). Phrasing the hypothesis more formally, we hypothesise that the reading ability of school children, as measured through a standardized test, and intelligence, again measured through a standardized test, are positively correlated.  
 
 ## Activity 3: Assumptions
 
@@ -112,11 +125,17 @@ The QQ-plots require us to use the package `car` rather than `ggplot2`. You can 
 qqPlot(x = mh$Abil)
 ```
 
+This code looks a little different to code you've used up until this point as it comes from Base R. It uses the notation `object$variable` so our x variable could be read as "use the variable `Abil` from the object `mh`.
+
 The QQ-plot includes a **confidence envelope** (the blue dotted lines). The simple version is that if your data points fall within these dotted lines then you can assume normality. The `ggplot2` version of QQ-plots make it more difficult to add on this confidence envelope, which is why we're using a different package. `qqPlot()` will also print the IDs of the data points that are potentially problematic. In this case, the 4th and 15th data point in `Abil` are flagged to review.
 
 * Write and run the code to create a QQ-plot for `IQ`.
 
-In order to assess linearity and homoscedasticity, we can create a scatterplot using `ggplot2`. This code is slightly different to what you have already done with `ggplot()` in that with a scatterplot you need to specify both the x and y axis in `aes()`.
+In order to assess linearity and homoscedasticity, we can create a scatterplot using `ggplot2`. 
+
+## Scatterplot
+
+The `ggplot2` code is very similar to what you have already encountered with the bar chart and violin-boxplot. The first line of data sets up the base of the plot and we specify that we wish to display `Abil` on the x-axis, `IQ` on the y-axis, and use the dataset `mh`. 
 
 The first geom, `geom_point()` adds in the data points, the second geom, `geom_smooth` adds in the line of best fit. The shaded area around the line is a **confidence interval**.
 
@@ -319,7 +338,7 @@ cat("1. Negative correlations are denoted by a negative r value.
 
 ### Finished!
 
-Well done! You can now add correlations to the list of things you can do in R. If you have any questions, please post them on Slack or Moodle.
+Well done! You can now add correlations to the list of things you can do in R. If you have any questions, please post them on Teams.
 
 ## Activity solutions
 

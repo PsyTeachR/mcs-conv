@@ -2,14 +2,15 @@
 
 Two-sample designs are very common as often we want to know whether there is a difference between groups on a particular variable.  There are different types of two-sample designs depending on whether or not the two groups are independent (e.g. different participants on different conditions) or not (e.g. same participants on different conditions).  In this lab we will perform one test of each type.
 
-```{block, type="try"}
-One of the really confusing things about research design is that there are many names for the same type of design.  
-
-* Independent and between-subjects design typically mean the same thing - different participants in different conditions
-* Within-subjects, dependent, paired samples, and repeated-measures tend to mean the same participants in all conditions
-* Matched pairs design means different people in different conditions but you have matched participants across the conditions so that they are effectively the same person (e.g. age, IQ, Social Economic Status, etc)
-* Mixed design is when there is a combination of within-subjects and between-subjects designs in the one experiment. For example, say you are looking at attractiveness and dominance of male and female faces. Everyone might see both male and female faces (within) but half of the participants do ratings of attractiveness and half do ratings of trustworthiness (between).
-```
+<div class="try">
+<p>One of the really confusing things about research design is that there are many names for the same type of design.</p>
+<ul>
+<li>Independent and between-subjects design typically mean the same thing - different participants in different conditions</li>
+<li>Within-subjects, dependent, paired samples, and repeated-measures tend to mean the same participants in all conditions</li>
+<li>Matched pairs design means different people in different conditions but you have matched participants across the conditions so that they are effectively the same person (e.g. age, IQ, Social Economic Status, etc)</li>
+<li>Mixed design is when there is a combination of within-subjects and between-subjects designs in the one experiment. For example, say you are looking at attractiveness and dominance of male and female faces. Everyone might see both male and female faces (within) but half of the participants do ratings of attractiveness and half do ratings of trustworthiness (between).</li>
+</ul>
+</div>
 
 
 For the independent t-test we will be using data from Schroeder and Epley (2015). You can take a look at the Psychological Science article here:
@@ -26,37 +27,32 @@ To summarise, 39 professional recruiters from Fortune 500 companies evaluated jo
 
 Your task is to reproduce the results from the article (p. 887). 
 
-* Open R Studio and set the working directory to your Week 7 folder. Ensure the environment is clear.   
-* Open a new R Markdown document and save it in your working directory. Call the file "Week 7".    
-* Download <a href="evaluators.csv" download>evaluators.csv</a> and <a href="ratings.csv" download>rating.csv</a> and save them in your Week 7 folder. Make sure that you do not change the file name at all.    
+* Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.   
+* Open a new R Markdown document and save it in your working directory. Call the file "t-tests".    
+* Download <a href="evaluators.csv" download>evaluators.csv</a> and <a href="ratings.csv" download>rating.csv</a> and save them in your t-test folder. Make sure that you do not change the file names at all.    
 * Delete the default R Markdown welcome text and insert a new code chunk that loads `broom`, `car`, `lsr`,  and `tidyverse` using the `library()` function and loads the data into an object named `evaluators` using `read_csv()`
 
-```{r library2, echo = FALSE, message=FALSE, warning=FALSE}
-library("broom")
-library("car")
-library("lsr")
-library("tidyverse")
-evaluators <- read_csv("evaluators.csv")
-```
+
 
 ## Activity 2: Explore the dataset
 
-There are a few things we should do to explore the dataset and make working with it a bit easier. You have done all of these tasks before, use the book search function if you can't remember how to do them. As always the solutions are at the bottom but you will learn faster if you can solve the problem yourself.
+There are a few things we should do to explore the dataset and make working with it a bit easier. 
 
 * Use `mutate()` and `recode()` to recode `sex` into a new variable `sex_labels` so that `1` = `male` and `2` = `female`. Be careful - there are multiple functions in different packages called recode, make sure to specify `dplyr::recode()` to get the right one.
 * Use `mutate()` and `as.factor()` to overwrite `sex_labels` and `condition` as factors.  
 * Use `summary()` to get an overview of the missing data points in each variable.
 
-```{r a2, echo = FALSE}
+
+```r
 evaluators <- evaluators %>%
   mutate(sex_labels = dplyr::recode(sex, "1" = "male", "2" = "female"),
          sex_labels = as.factor(sex_labels),
          condition = as.factor(condition))
 ```
 
-* How many participants were noted as being female: `r fitb("30")`
-* How many participants were noted as being male: `r fitb("4")`
-* How many data points are missing for `sex`? `r fitb("5")`
+* How many participants were noted as being female: <input class='solveme nospaces' size='2' data-answer='["30"]'/>
+* How many participants were noted as being male: <input class='solveme nospaces' size='1' data-answer='["4"]'/>
+* How many data points are missing for `sex`? <input class='solveme nospaces' size='1' data-answer='["5"]'/>
 
 ## Activity 3: Ratings
 
@@ -64,24 +60,15 @@ We are now going calculate an overall intellect rating given by each evaluator -
 
 We will then combine the overall intellect rating with the overall impression ratings and overall hire ratings for each evaluator, with the end goal of having a tibble called `ratings2` - which has the following structure:
 
-```{r ratings_structure, echo=FALSE, message=FALSE}
-ratings3 <- read_csv("ratings.csv") %>%
-  filter(Category %in% c("competent", "thoughtful", "intelligent")) %>%
-  group_by(eval_id) %>%
-  summarise(Rating = mean(Rating)) %>%
-  mutate(Category = "intellect")
 
-## combine into a single table
-ratings2 <- read_csv("ratings.csv") %>%
-  filter(Category %in% c("impression", "hire")) %>%
-  bind_rows(ratings3) %>%
-  inner_join(evaluators, "eval_id") %>%
-  select(-age, -sex) %>%
-  mutate(Rating = round(Rating, 3)) %>%
-  arrange(eval_id, Category)
-
-head(ratings2) %>% knitr::kable()
-```
+ eval_id  Category      Rating  condition   sex_labels 
+--------  -----------  -------  ----------  -----------
+       1  hire           6.000  listened    female     
+       1  impression     7.000  listened    female     
+       1  intellect      6.000  listened    female     
+       2  hire           4.000  listened    female     
+       2  impression     4.667  listened    female     
+       2  intellect      5.667  listened    female     
 
 The following steps describe how to create the above tibble - if you're feeling comfortable with R, try yourself without using our code. The trick when doing data analysis and data wrangling is to first think about what you want to achieve - the end goal - and then think about what functions you need to use to get there. 
 
@@ -97,8 +84,8 @@ Steps 1-3 calculate the new `intellect` rating. Steps 4 and 5 combine this ratin
 
 5. Join `ratings2` with the `evaluator` tibble that we created in Task 1. Keep only the necessary columns as shown above and arrange by Evaluator and Category.
 
-```{r ratings_structure2, eval = FALSE}
 
+```r
 # 1. load in the data
 ratings <- read_csv("ratings.csv")
 
@@ -131,14 +118,15 @@ You should **always** visualise your data before you run a statistical analysis.
 
 To visualise our data we are going to create a violin-boxplot.
 
-`geom_violin()` represents density. The fatter the plot, the more data points there are for that . The reason is is called a violin plot is because if your data are normally distributed it should look something like a violin.  
+`geom_violin()` represents density. The fatter the plot, the more data points there are for that . The reason it is called a violin plot is because if your data are normally distributed it should look something like a violin.  
 `geom_boxplot()` shows the median and inter-quartile range (see [here](https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51) if you would like more information). The boxplot can also give you a good idea if the data are skewed - the median line should be in the middle of the box, if it's not, chances are the data are skewed.  
 `geom_pointrange()` will show the mean and confidence intervals. If you're conducting a test that is comparing means, it's a good idea to add in the means.  
 
 * Run the below code to produce the plot. It is a good idea to save code 'recipes' for tasks that you will likely want to repeat in the future. You do not need to memorise lines of code, you only need to understand how to alter examples to work with your specific data set.
 * Try setting `trim = TRUE`, `show.legend = FALSE` and altering the value of `width` to see what these arguments do.  
 
-```{r plot, eval = FALSE}
+
+```r
 # create summary data to use with `geom_pointrange()`
 summary_dat<-ratings2%>%
   group_by(condition)%>%
@@ -154,10 +142,9 @@ ggplot(ratings2, aes(x = condition, y = Rating)) +
                   aes(x = condition, y = mean, ymin=min, ymax=max),
                   shape = 20, 
                   position = position_dodge(width = 0.1), show.legend = FALSE)
-
 ```
 
-* Look at the plot. In which condition did the evaluators give the higher ratings? `r mcq(c(answer = "listened", "read"))`
+* Look at the plot. In which condition did the evaluators give the higher ratings? <select class='solveme' data-answer='["listened"]'> <option></option> <option>listened</option> <option>read</option></select>
 
 ## Activity 5: Assumptions
 
@@ -169,9 +156,10 @@ Before we run the t-test we need to check that the data meet the assumptions for
 
 We know that 1 and 2 are true from the design of the experiment, the measures used, and by looking at the data. To test assumption 3, we can create a QQ-plot of the **residuals**. For a between-subject t-test the residuals are the difference between the mean of each group and each data point. E.g., if the mean of group A is 10 and a participant in group A scores 12, the residual for that participant is 2.
 
-* Run the below code to calculate then plot the residuals. Based upon the plot, do the data meet the assumption of normality? `r mcq(c(answer = "Yes", "No"))`
+* Run the below code to calculate then plot the residuals. Based upon the plot, do the data meet the assumption of normality? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
 
-```{r qqplot, results = 'hide', fig.show='hide'}
+
+```r
 ratings2 <- ratings2 %>%
   group_by(condition) %>%
   mutate(group_resid = Rating - mean(Rating)) %>%
@@ -182,22 +170,25 @@ qqPlot(ratings2$group_resid)
 
 We can also use a new test that will statistically test the residuals for normality, the **Shapiro-Wilk** test. `shapiro.wilk()` from Base R assesses if the distribution is significantly different from a normal distribution, so, if the test is significant it means your data is not normal, and if it is non-significant it means it is approximately normal. 
 
-* Run the below code. According to the Shapiro-Wilk test, is the data normally distributed? `r mcq(c(answer = "Yes", "No"))`
+* Run the below code. According to the Shapiro-Wilk test, is the data normally distributed? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
 
-```{r shapiro, eval = FALSE}
+
+```r
 shapiro.test(x = ratings2$group_resid)
 ```
 
-`r hide("Explain this answer")`
-```{r, echo = FALSE, results='asis'}
-cat("The p-value is .2088 which is more than .05, the cut-off for statistical significance. 
-    ")
-```
-`r unhide()`  
+
+<div class='solution'><button>Explain this answer</button>
+
+The p-value is .2088 which is more than .05, the cut-off for statistical significance. 
+    
+
+</div>
+  
 <br>
 
-* Think back to the lecture. If you ran a Student's t-test instead of a Welch t-test, what would the 4th assumption be? `r mcq(c(answer = "Homogeneity of variance", "Homoscedascity", "Nominal data"))`    
-* Why should you always use a Welch test instead of a Student t-test? `r mcq(c("Because it rhymes with squelch which is a funny word", "Because you are more likely to obtain a signifcant p-value than with Student's t-test when sample sizes and variances are equal", answer =   "Because it performs better if sample sizes and variances are unequal and gives the same result when sample sizes and variances are equal"))`.
+* Think back to the lecture. If you ran a Student's t-test instead of a Welch t-test, what would the 4th assumption be? <select class='solveme' data-answer='["Homogeneity of variance"]'> <option></option> <option>Homogeneity of variance</option> <option>Homoscedascity</option> <option>Nominal data</option></select>    
+* Why should you always use a Welch test instead of a Student t-test? <select class='solveme' data-answer='["Because it performs better if sample sizes and variances are unequal and gives the same result when sample sizes and variances are equal"]'> <option></option> <option>Because it rhymes with squelch which is a funny word</option> <option>Because you are more likely to obtain a signifcant p-value than with Student's t-test when sample sizes and variances are equal</option> <option>Because it performs better if sample sizes and variances are unequal and gives the same result when sample sizes and variances are equal</option></select>.
 
 ## Activity 6: Running the t-test
 
@@ -205,7 +196,8 @@ We are going to conduct t-tests for the Intellect, Hire and Impression ratings s
 
 * First, calculate the mean and SD for each condition and category.
 
-```{r means}
+
+```r
 group_means <- ratings2 %>%
   group_by(condition, Category) %>%
   summarise(m = mean(Rating), sd = sd(Rating))
@@ -213,13 +205,10 @@ group_means <- ratings2 %>%
 
 * Next, create separate data sets for the intellect, hire, and impression data using `filter()`. We have completed intellect for you.
 
-```{r filters, echo = FALSE}
-intellect <- filter(ratings2, Category == "intellect")
-hire <- filter(ratings2, Category == "hire")
-impression <- filter(ratings2, Category == "impression")
-```
 
-```{r filters2, eval=FALSE}
+
+
+```r
 intellect <- filter(ratings2, Category == "intellect")
 hire <- 
 impression <- 
@@ -227,7 +216,8 @@ impression <-
 
 As you may have realised by now, most of the work of statistics involves the set-up - running the tests is generally very simple. To conduct the t-test we will use `t.test()` from Base R. This function uses a style of code you haven't come across yet but that is very important to get used to, **formula syntax**.
 
-```{r intellect_t}
+
+```r
 results_intellect <- t.test(Rating ~ condition, paired = FALSE, data = intellect) %>% tidy()
 ```
 
@@ -255,23 +245,22 @@ The output is in a nice table format that makes it easy to extract individual va
 
 * Complete the code to run the t-tests for the hire and impression ratings and view the results.
 
-```{r remain_ts, echo=FALSE}
-results_hire <- t.test(Rating ~ condition, data = hire) %>% tidy()
-results_impression <- t.test(Rating ~ condition, data = impression) %>% tidy()
-```
 
-```{r remain_ts2, eval=FALSE}
+
+
+```r
 results_hire <- 
 results_impression <- 
 ```
 
-```{block, type="warning"}
-What do you do if the data don't meet the assumption of normality? There are a few options. 
-
-1. Transform your data to try and normalise the distribution. We won't cover this but if you'd like to know more, [this page](https://www.researchgate.net/profile/Jason_Osborne2/publication/200152356_Notes_on_the_Use_of_Data_Transformations/links/0deec5295f1eb10df8000000.pdf) is a good start.
-2. Use a non-parametric test. The non-parametric equivalent of the independent t-test is the Mann-Whitney and the equivalent of the paired-samples t-test  is the Wilcoxon. See the Supplementary Analyses chapter for more information.
-3. Do nothing. [Delacre, Lakens & Leys, 2017](https://www.rips-irsp.com/articles/10.5334/irsp.82/) argue that with a large enough sample (>30), the Welch test is robust and that using a two-step process actually causes more problems than it solves.
-```
+<div class="warning">
+<p>What do you do if the data don’t meet the assumption of normality? There are a few options.</p>
+<ol style="list-style-type: decimal">
+<li>Transform your data to try and normalise the distribution. We won’t cover this but if you’d like to know more, <a href="https://www.researchgate.net/profile/Jason_Osborne2/publication/200152356_Notes_on_the_Use_of_Data_Transformations/links/0deec5295f1eb10df8000000.pdf">this page</a> is a good start.</li>
+<li>Use a non-parametric test. The non-parametric equivalent of the independent t-test is the Mann-Whitney and the equivalent of the paired-samples t-test is the Wilcoxon. See the Supplementary Analyses chapter for more information.</li>
+<li>Do nothing. <a href="https://www.rips-irsp.com/articles/10.5334/irsp.82/">Delacre, Lakens &amp; Leys, 2017</a> argue that with a large enough sample (&gt;30), the Welch test is robust and that using a two-step process actually causes more problems than it solves.</li>
+</ol>
+</div>
 
 ## Activity 8: Correcting for multiple comparisons
 
@@ -282,19 +271,24 @@ together using `bind_rows()`. First, you specify all of the individual tibbles y
 
 
 
-```{r bind1}
+
+```r
 results <- bind_rows(hire = results_hire, impression = results_impression, intellect = results_intellect, .id = "test")
 ```
 
-```{r bind2, echo = FALSE}
-bind_rows(hire = results_hire, impression = results_impression, intellect = results_intellect, .id = "test") %>% knitr::kable(align = 'c')
-```
+
+    test       estimate    estimate1    estimate2    statistic     p.value     parameter    conf.low     conf.high            method             alternative 
+------------  ----------  -----------  -----------  -----------  -----------  -----------  -----------  -----------  -------------------------  -------------
+    hire       1.825397    4.714286     2.888889     2.639949     0.0120842    36.85591     0.4241979    3.226596     Welch Two Sample t-test     two.sided  
+ impression    1.894333    5.968333     4.074000     2.817175     0.0080329    33.80061     0.5275086    3.261158     Welch Two Sample t-test     two.sided  
+ intellect     1.986722    5.635000     3.648278     3.478555     0.0014210    33.43481     0.8253146    3.148130     Welch Two Sample t-test     two.sided  
 
 Now, we're going to add on a column of adjusted p-values using `p.adj()` and `mutate()`. 
 
-* Run the below code and then view the adjusted p-values. Are they larger or smaller than the original values? `r mcq(c(answer = "Larger", "Smaller"))`
+* Run the below code and then view the adjusted p-values. Are they larger or smaller than the original values? <select class='solveme' data-answer='["Larger"]'> <option></option> <option>Larger</option> <option>Smaller</option></select>
 
-```{r}
+
+```r
 results <- results %>%
   mutate(p.adjusted = p.adjust(p = p.value, # the column that contains the original p-values
                                method = "bonferroni")) # type of correction to apply
@@ -306,13 +300,10 @@ Before we interpret and write-up the results our last task is to calculate the e
 
 * Run the below code and then calculate the effect sizes for hire and impression
 
-```{r es, echo = FALSE}
-intellect_d <- cohensD(Rating ~ condition, method = "unequal", data = intellect)
-hire_d <- cohensD(Rating ~ condition, method = "unequal", data = hire)
-impression_d <- cohensD(Rating ~ condition, method = "unequal", data = impression)
-```
 
-```{r es2, eval = FALSE}
+
+
+```r
 intellect_d <- cohensD(Rating ~ condition, method = "unequal", data = intellect)
 hire_d <- 
 impression_d <- 
@@ -322,22 +313,22 @@ impression_d <-
 
 * Were your results for `hire` significant? Enter the mean estimates and t-test results (means and t-value to 2 decimal places, p-value to 3 decimal places). Use the adjusted p-values:
 
-    + Mean `estimate1` (listened condition) = `r fitb("4.71")`  
+    + Mean `estimate1` (listened condition) = <input class='solveme nospaces' size='4' data-answer='["4.71"]'/>  
     
-    + Mean `estimate2` (read condition) = `r fitb("2.89")`  
+    + Mean `estimate2` (read condition) = <input class='solveme nospaces' size='4' data-answer='["2.89"]'/>  
     
-    + t(`r fitb("37")`) = `r fitb("2.62")`, p = `r fitb(c("0.036",".036"))`  
+    + t(<input class='solveme nospaces' size='2' data-answer='["37"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.62"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.036",".036"]'/>  
     
 
 * Were your results for `impression` significant? Enter the mean estimates and t-test results (means and t-value to 2 decimal places, p-value to 3 decimal places):
 
-    + Mean`estimate1` (listened condition) = `r fitb("5.97")`  
+    + Mean`estimate1` (listened condition) = <input class='solveme nospaces' size='4' data-answer='["5.97"]'/>  
     
-    + Mean `estimate2` (read condition) = `r fitb("4.07")`  
+    + Mean `estimate2` (read condition) = <input class='solveme nospaces' size='4' data-answer='["4.07"]'/>  
     
-    + t(`r fitb("37")`) = `r fitb("2.85")`, p = `r fitb(c("0.024",".024"))` 
+    + t(<input class='solveme nospaces' size='2' data-answer='["37"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.85"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.024",".024"]'/> 
 
-* According to Cohen's (1988) guidelines, the effect sizes for all three tests are `r mcq(c("Small", "Medium", answer = "Large"))`
+* According to Cohen's (1988) guidelines, the effect sizes for all three tests are <select class='solveme' data-answer='["Large"]'> <option></option> <option>Small</option> <option>Medium</option> <option>Large</option></select>
 
 ## Activity 9: Write-up
 
@@ -345,7 +336,8 @@ Copy and paste the below **exactly** into **white space** in your R Markdown doc
 
 * Note that we haven't replicated the analysis exactly - the authors of this paper conducted Student's t-test whilst we have conducted Welch tests and we've also applied a multiple comparison correction. Look back at the paper and see what differences this makes. 
 
-```{r writeup, eval = FALSE}
+
+```r
 The pattern of evaluations by professional recruiters replicated the pattern observed in Experiments 1 through 3b (see Fig. 7). Bonferroni-corrected t-tests found that in particular, the recruiters believed that the job candidates had greater intellect---were more competent, thoughtful, and intelligent---when they listened to pitches (M = `r results_intellect$estimate1%>% round(2)`, SD = `r round(group_means$sd[3], 2)`) than when they read pitches (M = `r results_intellect$estimate1%>% round(2)`, SD = `r round(group_means$sd[6], 2)`), t(`r round(results_intellect$parameter, 2)`) = `r round(results$statistic,2)`, p < `r results$p.adjusted[3] %>% round(3)`, 95% CI of the difference = [`r round(results_intellect$conf.low, 2)`, `r round(results_intellect$conf.high, 2)`], d = `r round(intellect_d,2)`. 
 
 The recruiters also formed more positive impressions of the candidates---rated them as more likeable and had a more positive and less negative impression of them---when they listened to pitches (M = `r results_impression$estimate1%>% round(2)`, SD = `r round(group_means$sd[2], 2)`) than when they read pitches (M = `r results_impression$estimate2%>% round(2)`, SD = `r round(group_means$sd[5], 2)`, t(`r round(results_impression$parameter,2)`) = `r round(results_impression$statistic,2)`, p < `r results$p.adjusted[2] %>% round(3)`, 95% CI of the difference = [`r round(results_impression$conf.low, 2)`, `r round(results_impression$conf.high, 2)`], d = `r round(impression_d, 2)`. 
@@ -354,11 +346,11 @@ Finally, they also reported being more likely to hire the candidates when they l
 ```
 
 
-> The pattern of evaluations by professional recruiters replicated the pattern observed in Experiments 1 through 3b (see Fig. 7). Bonferroni-corrected t-tests found that in particular, the recruiters believed that the job candidates had greater intellect---were more competent, thoughtful, and intelligent---when they listened to pitches (M = `r results_intellect$estimate1%>% round(2)`, SD = `r round(group_means$sd[3], 2)`) than when they read pitches (M = `r results_intellect$estimate1%>% round(2)`, SD = `r round(group_means$sd[6], 2)`), t(`r round(results_intellect$parameter, 2)`) = `r round(results$statistic,2)`, p < `r results$p.adjusted[3] %>% round(3)`, 95% CI of the difference = [`r round(results_intellect$conf.low, 2)`, `r round(results_intellect$conf.high, 2)`], d = `r round(intellect_d,2)`. 
+> The pattern of evaluations by professional recruiters replicated the pattern observed in Experiments 1 through 3b (see Fig. 7). Bonferroni-corrected t-tests found that in particular, the recruiters believed that the job candidates had greater intellect---were more competent, thoughtful, and intelligent---when they listened to pitches (M = 5.64, SD = 1.61) than when they read pitches (M = 5.64, SD = 1.91), t(33.43) = 2.64, 2.82, 3.48, p < 0.004, 95% CI of the difference = [0.83, 3.15], d = 1.12. 
 
-> The recruiters also formed more positive impressions of the candidates---rated them as more likeable and had a more positive and less negative impression of them---when they listened to pitches (M = `r results_impression$estimate1%>% round(2)`, SD = `r round(group_means$sd[2], 2)`) than when they read pitches (M = `r results_impression$estimate2%>% round(2)`, SD = `r round(group_means$sd[5], 2)`, t(`r round(results_impression$parameter,2)`) = `r round(results_impression$statistic,2)`, p < `r results$p.adjusted[2] %>% round(3)`, 95% CI of the difference = [`r round(results_impression$conf.low, 2)`, `r round(results_impression$conf.high, 2)`], d = `r round(impression_d, 2)`. 
+> The recruiters also formed more positive impressions of the candidates---rated them as more likeable and had a more positive and less negative impression of them---when they listened to pitches (M = 5.97, SD = 1.92) than when they read pitches (M = 4.07, SD = 2.23, t(33.8) = 2.82, p < 0.024, 95% CI of the difference = [0.53, 3.26], d = 0.91. 
 
-> Finally, they also reported being more likely to hire the candidates when they listened to pitches (M = `r results_hire$estimate1 %>% round(2)`, SD = `r round(group_means$sd[1], 2)`) than when they read the same pitches (M = `r results_hire$estimate2 %>% round(2)`, SD = `r round(group_means$sd[4],2)`), t(`r round(results_hire$parameter,2)`) = `r round(results_hire$statistic,2)`, p < `r results$p.adjusted[1] %>% round(3)`, 95% CI of the difference = [`r round(results_hire$conf.low, 2)`, `r round(results_hire$conf.high, 2)`], d = `r round(hire_d,2)`.
+> Finally, they also reported being more likely to hire the candidates when they listened to pitches (M = 4.71, SD = 2.26) than when they read the same pitches (M = 2.89, SD = 2.05), t(36.86) = 2.64, p < 0.036, 95% CI of the difference = [0.42, 3.23], d = 0.84.
 
 ## Activity 10: Paired-samples t-test
 
@@ -378,7 +370,8 @@ To test this hypothesis, the researchers recruited 32 infants and their parents 
 
 * First, download <a href="Mehr Song and Spelke 2016 Experiment 1.csv" download>Mehr Song and Spelke 2016 Experiment 1.csv</a> and run the below code to load and wrangle the data into the format we need - this code selects only the data we need for the analysis and renames variables to make them easier to work with.
 
-```{r paireddata, message = FALSE}
+
+```r
 gaze <- read_csv("Mehr Song and Spelke 2016 Experiment 1.csv") %>%
   filter(exp1 == 1) %>%
   select(id, Baseline_Proportion_Gaze_to_Singer,Test_Proportion_Gaze_to_Singer) %>%
@@ -398,7 +391,8 @@ Aside from the data being paired rather than independent, the key difference is 
 
 * Run the below code to calculate the difference scores and then conduct the Shapriro-Wilk and QQ-plot as with the independent test.
 
-```{r assumptionspair}
+
+```r
 gaze <- gaze %>%
   mutate(diff = baseline - test)
 ```
@@ -409,9 +403,10 @@ As you can see, from both the Shapiro-Wilk test and the QQ-plot, the data meet t
 
 It made sense to keep the data in wide-form until this point to make it easy to calculate a column for the difference score, but now we will transform it to tidy data so that we can easily create descriptives and plot the data using `tidyverse` tools.
 
-* Run the below code to tidy the data and calculate descriptives and then create the same violin-boxplot as you did for the independent t-test (hint: it is perfectly acceptable to copy and paste the code from above and change the data and variable names).
+* Run the below code to tidy the data and calculate descriptives and then create the same violin-boxplot as you did for the independent t-test (hint: it is perfectly acceptable to copy and paste the code from Activity 4 and change the data and variable names).
 
-```{r tidy}
+
+```r
 gaze_tidy <- gaze %>%
   gather(key = time, value = looking, baseline, test) %>%
   select(-diff) %>%
@@ -432,115 +427,142 @@ Finally, we can calculate the t-test and the effect size. The code is almost ide
 
 * Run the t-test and calculate the effect size. Remember to use `tidy()`.
 
-```{r pairedtests1, echo=FALSE,message=FALSE, warning=FALSE}
-gaze_test <- t.test(looking ~ time, paired = TRUE, data = gaze_tidy) %>% tidy()
-gaze_d <- cohensD(looking ~ time, method = "paired", data = gaze_tidy)
-```
 
-```{r pairedtests2, eval = FALSE}
+
+
+```r
 gaze_test <- 
 gaze_d <- 
 ```
 
 
-```{block, type="warning"}
-When you run `cohensD` you will get a warning that tells you "Results will be incorrect if cases do not appear in the same order for both levels of the grouping factor". What this means it that R has to figure out which pairs of data belong together and it does this by position. It will assume that the first data point in the baseline condition will be the same participant as the first data point in the test condition. The easiest way to ensure this is the case is to use `arrange()` to sort your data. If you look back at the code we used to tidy the data above you will see that we manually sorted the data at the end. This will avoid any problems. 
-```
+<div class="warning">
+<p>When you run <code>cohensD</code> you will get a warning that tells you “Results will be incorrect if cases do not appear in the same order for both levels of the grouping factor”. What this means it that R has to figure out which pairs of data belong together and it does this by position. It will assume that the first data point in the baseline condition will be the same participant as the first data point in the test condition. The easiest way to ensure this is the case is to use <code>arrange()</code> to sort your data. If you look back at the code we used to tidy the data above you will see that we manually sorted the data at the end. This will avoid any problems.</p>
+</div>
 
-The output of the paired-samples t-test is very similar to the independent test, with one exception. Rather than providing the means of both conditions, there is a single `estimate`. This is the mean difference score between the two conditions.
+The output of the paired-samples t-test is very similar to the independent test, with one exception. Rather than providing the means of both conditions, there is a single `estimate`. This is the mean *difference* score between the two conditions.
 
 * Enter the mean estimates and t-test results (means and t-value to 2 decimal places, p-value to 3 decimal places):
 
-    + Mean `estimate` = `r fitb("-0.07")`  
+    + Mean `estimate` = <input class='solveme nospaces' size='5' data-answer='["-0.07"]'/>  
     
-    + t(`r fitb("31")`) = `r fitb("2.42")`, p = `r fitb(c("0.022",".022"))` 
+    + t(<input class='solveme nospaces' size='2' data-answer='["31"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.42"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.022",".022"]'/> 
     
 ## Activity 15: Write-up
 
 Copy and paste the below **exactly** into **white space** in your R Markdown document and then knit the file to replicate the results section in the paper (p.489). 
 
-```{r writeup2, eval = FALSE}
+
+```r
 At test, however, the infants selectively attended to the now-silent singer of the song with the familiar melody; the proportion of time during which they looked toward her was...greater than the proportion at baseline (difference in proportion of looking: M = `r gaze_test$estimate %>% round(2)`, SD = `r sd(gaze$diff, na.rm = TRUE) %>% round(2)`, 95% CI = [`r gaze_test$conf.low %>% round(2)`, `r gaze_test$conf.high %>% round(2)`]), t(`r gaze_test$parameter`) = `r gaze_test$statistic %>% round(2)`, p = `r gaze_test$p.value %>% round(3)`, d = `r gaze_d %>% round(2)`.
 ```
 
->At test, however, the infants selectively attended to the now-silent singer of the song with the familiar melody; the proportion of time during which they looked toward her was...greater than the proportion at baseline (difference in proportion of looking: M = `r gaze_test$estimate %>% round(2)`, SD = `r sd(gaze$diff, na.rm = TRUE) %>% round(2)`, 95% CI = [`r gaze_test$conf.low %>% round(2)`, `r gaze_test$conf.high %>% round(2)`]), t(`r gaze_test$parameter`) = `r gaze_test$statistic %>% round(2)`, p = `r gaze_test$p.value %>% round(3)`, d = `r gaze_d %>% round(2)`.
+>At test, however, the infants selectively attended to the now-silent singer of the song with the familiar melody; the proportion of time during which they looked toward her was...greater than the proportion at baseline (difference in proportion of looking: M = -0.07, SD = 0.17, 95% CI = [-0.13, -0.01]), t(31) = -2.42, p = 0.022, d = 0.43.
 
 ### Finished!
 
-That was a long lab but now that you've done three types of statistical tests (chi-square, correlations, t-test) hopefully you will see that it really is true that the hardest part is the set-up and the data wrangling. As we've said before, you don't need to memorise lines of code - you just need to remember where to find examples and to understand which bits of them you need to change. Play around with the examples we have given you and see what changing the values does.
+That was a long chapter but now that you've done all the statistical tests you need to complete your quantitative project - hopefully you will see that it really is true that the hardest part is the set-up and the data wrangling. As we've said before, you don't need to memorise lines of code - you just need to remember where to find examples and to understand which bits of them you need to change. Play around with the examples we have given you and see what changing the values does.
 
 ## Activity solutions
 
 ### Activity 1
 
-`r hide("Activity 1")`
-```{r eval=FALSE}
+
+<div class='solution'><button>Activity 1</button>
+
+
+```r
 library("broom")
 library("car")
 library("lsr")
 library("tidyverse")
 evaluators <- read_csv("evaluators.csv")
 ```
-`r unhide()`  
+
+</div>
+  
 
 **click the tab to see the solution**
 <br>
 
 ### Activity 2
 
-`r hide("Activity 2")`
-```{r eval=FALSE}
+
+<div class='solution'><button>Activity 2</button>
+
+
+```r
 evaluators <- evaluators %>%
   mutate(sex_labels = dplyr::recode(sex, "1" = "male", "2" = "female"),
          sex_labels = as.factor(sex_labels),
          condition = as.factor(condition))
 summary(evaluators)
 ```
-`r unhide()`  
+
+</div>
+  
 
 **click the tab to see the solution**
 <br>
 
 ### Activity 6
 
-`r hide("Activity 6")`
-```{r eval=FALSE}
+
+<div class='solution'><button>Activity 6</button>
+
+
+```r
 intellect <- filter(ratings2, Category == "intellect")
 hire <- filter(ratings2, Category == "hire")
 impression <- filter(ratings2, Category == "impression")
 ```
-`r unhide()`  
+
+</div>
+  
 
 **click the tab to see the solution**
 <br>
 
 ### Activity 7
 
-`r hide("Activity 7")`
-```{r eval=FALSE}
+
+<div class='solution'><button>Activity 7</button>
+
+
+```r
 intellect_d <- cohensD(Rating ~ condition, method = "unequal", data = intellect)
 hire_d <- cohensD(Rating ~ condition, method = "unequal", data = hire)
 impression_d <- cohensD(Rating ~ condition, method = "unequal", data = impression)
 ```
-`r unhide()`  
+
+</div>
+  
 
 ### Activity 12
 
-`r hide("Activity 12")`
-```{r eval=FALSE}
+
+<div class='solution'><button>Activity 12</button>
+
+
+```r
 shapiro.test(x = gaze$diff)
 
 qqPlot(gaze$diff)
 ```
-`r unhide()`
+
+</div>
+
 
 **click the tab to see the solution**
 <br>
 
 ### Activity 13
 
-`r hide("Activity 13")`
-```{r eval=FALSE}
+
+<div class='solution'><button>Activity 13</button>
+
+
+```r
 # create summary data to use with `geom_pointrange()`
 summary_gaze<-gaze_tidy%>%
   group_by(time)%>%
@@ -557,19 +579,26 @@ ggplot(gaze_tidy, aes(x = time, y = looking)) +
                   shape = 20, 
                   position = position_dodge(width = 0.1), show.legend = FALSE)
 ```
-`r unhide()`
+
+</div>
+
 
 **click the tab to see the solution**
 <br>
 
 ### Activity 14
 
-`r hide("Activity 14")`
-```{r eval=FALSE}
+
+<div class='solution'><button>Activity 14</button>
+
+
+```r
 gaze_test <- t.test(looking ~ time, paired = TRUE, data = gaze_tidy) %>% tidy()
 gaze_d <- cohensD(looking ~ time, method = "paired", data = gaze_tidy)
 ```
-`r unhide()`
+
+</div>
+
 
 **click the tab to see the solution**
 <br>

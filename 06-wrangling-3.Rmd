@@ -2,13 +2,13 @@
 
 ## Data wrangling recap
 
-In the last chapter, we looked at using one-table Wickham verbs to `filter`, `arrange`, `group_by`, `select`, `mutate` and `summarise`. Now we will focus on working with data across two or more tables. The two main verbs we will practice adding to the Wickham six in this chapter are `pivot_longer()` and `inner_join()`and these will help you process your data for the your quantitative project in Research Methods 2.
+In the last chapter, we looked at using one-table Wickham verbs to `filter`, `arrange`, `group_by`, `select`, `mutate` and `summarise`. Now we will focus on working with data across two or more tables. The two main verbs we will practice adding to the Wickham six in this chapter are `pivot_longer()` and `inner_join()`and these will help you process your data for your quantitative project.
 
 * `pivot_longer()` allows us to **transform** a table from wide format to long format (more on this below).
 * `inner_join()` allows us to **combine** two tables together based on common columns.
 
 ```{block, type="try"}
-A function is a tool that takes an input, performs some action, and gives an output. They are nothing more than that. If you think about it your toaster is a function: it takes bread as an input; it performs the action of heating it up (nicely sometimes; on both sides would be a luxury); and it gives an output, the toast.  A good thing about the Wickham six functions is that they are nicely named as verbs to describe what they do - `mutate()` mutates (adds on a column); `arrange()` arranges columns, `summarise()` summarises, etc.
+A function is a tool that takes an input, performs some action, and gives an output. They are nothing more than that. If you think about it your toaster is a function: it takes bread as an input; it performs the action of heating it up; and it gives an output, the toast.  A good thing about the Wickham six functions is that they are nicely named as verbs to describe what they do - `mutate()` mutates (adds on a column); `arrange()` arranges columns, `summarise()` summarises, etc.
     
 In terms of remembering all the functions, the truth is you don't have to know them all. However, through practice and repetition, you will quickly learn to remember which ones are which and what package they come from. Sort of like where to find your spoons in your kitchen - you don't look in the fridge, and then the washing machine, and then the drawer. Nope, you learnt, by repetition, to look in the drawer first time. It's the same with functions.  Keep in mind that research methods is like a language in that the more you use it and work with it the more it makes sense.
 ```
@@ -35,7 +35,7 @@ This layout can be easy to read, however, it makes programming quite difficult. 
 
 To continue building your data wrangling skills in this chapter you will tidy data from the Autism Spectrum Quotient (AQ) questionnaire. The AQ10 is a non-diagnostic short form of the AQ with only 10 questions per participant. It is a discrete scale and the higher a participant scores on the AQ10 the more autistic-like traits they are said to display. Anyone scoring 7 or above is recommended for further diagnosis. You can see an example of the AQ10 through this link: <a href="http://docs.autismresearchcentre.com/tests/AQ10.pdf">AQ10 Example</a>.  
 
-There are 66 participants and your goal in this pre-class activity is to find an AQ score for each of them through your data-wrangling skills. 
+There are 66 participants and your goal in this chapter is to find an AQ score for each of them through your data-wrangling skills. 
 
 There are four data files to work with that you should download into your chapter folder: 
 

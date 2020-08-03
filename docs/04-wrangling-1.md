@@ -376,7 +376,7 @@ Sometimes we need to create a new variable that doesn’t exist in our dataset. 
 
 
 ```r
-new_dat <- mutate(.data = babynames, # the tibble you want to add a colum to
+new_dat <- mutate(.data = babynames, # the tibble you want to add a column to
                   decade = floor(year/10) *10) # new column name = what you want it to contain
 new_dat
 ```
@@ -500,7 +500,7 @@ summarise(group_new_dat,
 
 ## Activity 9: Pipes
 
-The final activity for this pre-lab essentially repeats what we've already covered but in a slightly different way. In the previous activities, you created new objects with new variables or groupings and then you called `summarise()` on those new objects in separate lines of code. As a result, you had multiple objects in your environment pane and you need to make sure that you keep track of the different names. 
+The final activity for this chapter essentially repeats what we've already covered but in a slightly different way. In the previous activities, you created new objects with new variables or groupings and then you called `summarise()` on those new objects in separate lines of code. As a result, you had multiple objects in your environment pane and you need to make sure that you keep track of the different names. 
 
 Instead, you can use **pipes**. Pipes are written as `%>%`and they should be read as "and then". Pipes allow you to string together 'sentences' of code into 'paragraphs' so that you don't need to create intermediary objects. Again, it is easier to show than tell.
 

@@ -2,7 +2,7 @@
 
 ## Activity 1: Prep
 
-The first half of this chapter doesn't contain any coding, instead, we're going to recap some core statistical concepts. If you need any additional resources outside of the mini-lecture, you may find the below useful.
+The first half of this chapter doesn't contain any coding, instead, we're going to recap some core statistical concepts. If you need any additional resources beyond what has been discussed in the lectures, you may find the below useful.
 
 * Read [Statistical thinking (Noba Project)](https://nobaproject.com/modules/statistical-thinking#content)
 * Watch [Normal Distribution - Explained Simply](https://www.youtube.com/watch?v=tDLcBrLzBos) (10 mins) 
@@ -16,8 +16,13 @@ Probability (*p*) is the extent to which an event is likely to occur and is repr
 $$p = \frac{number \  of  \ ways \ the \ event \ could \  arise}{number \ of \ possible \ outcomes}$$
 For example, what is the probability of randomly drawing your name out of a hat of 12 names where one name is definitely yours?
 
-```{r Q1}
+
+```r
 1/12
+```
+
+```
+## [1] 0.08333333
 ```
 
 The probability is .08, or to put it another way, there is an 8.3% chance that you would pull your name out of the hat.
@@ -42,10 +47,10 @@ How you tackle probability depends on the type of data/variables you are working
 
 What types of data are the below measurements?
 
-* Time taken to run a marathon (in seconds): `r mcq(sample(c("interval", answer = "ratio", "ordinal", "categorical")))`
-* Finishing position in marathon (e.g. 1st, 2nd, 3rd): `r mcq(sample(c("interval", "ratio", answer = "ordinal", "categorical")))`
-* Which Sesame Street character a runner was dressed as: `r mcq(sample(c("interval", "ratio", "ordinal", answer =  "categorical")))`
-* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): `r mcq(sample(c(answer = "interval", "ratio", "ordinal", "categorical")))`
+* Time taken to run a marathon (in seconds): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>ordinal</option> <option>interval</option> <option>categorical</option> <option>ratio</option></select>
+* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ratio</option> <option>categorical</option> <option>interval</option> <option>ordinal</option></select>
+* Which Sesame Street character a runner was dressed as: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>categorical</option> <option>interval</option> <option>ordinal</option> <option>ratio</option></select>
+* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ordinal</option> <option>interval</option> <option>ratio</option> <option>categorical</option></select>
 
 ### Probability distributions
 
@@ -57,17 +62,10 @@ Mathematicians have discovered a number of different probability distributions, 
 
 The uniform distribution is when each possible outcome has an equal chance of occurring. Let's take the example from above, pulling your name out of a hat of 12 names. Each name has an equal chance of being drawn (p = .08). If we visualised this distribution, it would look like this - each outcome has the same chance of occurring:
 
-```{r echo = FALSE, warning=FALSE, message=FALSE, fig.cap="Uniform distribution"}
-library(tidyverse)
-name <- 1:12
-prob <- sample(x = .08333333, size = 12, replace = TRUE)
-dat <- tibble(name, prob)
-ggplot(dat, aes(name, prob)) +
-  geom_col() +
-  scale_y_continuous(limits = c(0,.2), name = "Probability of occurrence") +
-  scale_x_continuous(breaks = c(1,2,3,4,5,6,7,8,9,10,11,12), name = "Name in hat") +
-  theme_minimal()
-```
+<div class="figure" style="text-align: center">
+<img src="08-probability_files/figure-html/unnamed-chunk-1-1.png" alt="Uniform distribution" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-1)Uniform distribution</p>
+</div>
 
 ### The binomial distribution
 
@@ -75,9 +73,19 @@ The binomial (bi = two, nominal = categories) distribution is a frequency distri
 
 Describing the probability of single events, such as a single coin flip or rolling a six is easy, but more often than not we are interested in the probability of a collection of events, such as the number of heads out of 10 coin flips. To work this out, we can use the binomial distribution and functions in R.
 
-Let’s say we flip a coin 10 times. Assuming the coin is fair (probability of heads = .5), how many heads should we expect to get? The below figure shows the results of a simulation for 10,000 coin flips (if you'd like to do this simulation yourself in R, you can see the code by clicking "Solution"). What this means is that we can use what we know about our data and the binomial distribution to work out the probability of different outcomes (e.g., what's the probability of getting at least 3 heads if you flip a coin 10 times?) and this is what we'll do in the lab.
+Let’s say we flip a coin 10 times. Assuming the coin is fair (probability of heads = .5), how many heads should we expect to get? The below figure shows the results of a simulation for 10,000 coin flips (if you'd like to do this simulation yourself in R, you can see the code by clicking "Solution"). What this means is that we can use what we know about our data and the binomial distribution to work out the probability of different outcomes (e.g., what's the probability of getting at least 3 heads if you flip a coin 10 times?).
 
-```{r echo = FALSE, fig.cap = "Probability of no. of heads from 10 coin tosses"}
+<div class="figure" style="text-align: center">
+<img src="08-probability_files/figure-html/unnamed-chunk-2-1.png" alt="Probability of no. of heads from 10 coin tosses" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-2)Probability of no. of heads from 10 coin tosses</p>
+</div>
+
+
+<div class='solution'><button>Solution</button>
+
+
+
+```r
 heads10000 <- replicate(n = 10000, expr = sample(0:1, 10, TRUE) %>% sum())
 
 data10000 <- tibble(heads = heads10000) %>%   # convert to a tibble
@@ -92,25 +100,9 @@ ggplot(data10000, aes(x = heads,y = p)) +
   scale_x_continuous(breaks = c(0,1,2,3,4,5,6,7,8,9,10))
 ```
 
-`r webex::hide()`
 
-```{r eval = FALSE}
-heads10000 <- replicate(n = 10000, expr = sample(0:1, 10, TRUE) %>% sum())
+</div>
 
-data10000 <- tibble(heads = heads10000) %>%   # convert to a tibble
-                group_by(heads) %>%     # group by number of possibilities 
-                summarise(n = n(), # count occurances of each possibility,
-                          p=n/10000) # & calculate probability (p) of each
-
-ggplot(data10000, aes(x = heads,y = p)) + 
-  geom_bar(stat = "identity") + 
-  labs(x = "Number of Heads", y = "Probability of Heads in 10 flips (p)") +
-  theme_bw() +
-  scale_x_continuous(breaks = c(0,1,2,3,4,5,6,7,8,9,10))
-
-```
-
-`r webex::unhide()`
 
 
 ### The normal distribution
@@ -119,37 +111,37 @@ The final probability distribution you need to know about is the normal distribu
 
 As the normal distribution models the probability of a continuous variable, we plot the probability using a density plot. A normal distribution looks like this:
 
-```{r, echo=FALSE, fig.cap="Normal Distribution of height. $\\mu$ = the mean (average), $\\sigma$ = standard deviation", out.width="100%", out.height="100%"}
-knitr::include_graphics(path="./images/norm_dist_height.png")
-```
+<div class="figure" style="text-align: center">
+<img src="./images/norm_dist_height.png" alt="Normal Distribution of height. $\mu$ = the mean (average), $\sigma$ = standard deviation" width="100%" height="100%" />
+<p class="caption">(\#fig:unnamed-chunk-4)Normal Distribution of height. $\mu$ = the mean (average), $\sigma$ = standard deviation</p>
+</div>
 
 Normal distributions are symmetrical, meaning there is an equal probability of observations occurring above and below the mean. This means that, if the mean in figure 1 is 170, we could expect the number of people who have a height of 160 to equal the number of people who have a height of 180. This also means that the mean, median, and mode are all expected to be equal in a normal distribution.
 
-In the same way that we could with the coin flips, we can then use what we know about our data and the normal distribution to estimate the probability of certain outcomes (e.g., what's the probability that someone would be taller than 190cm?) and we'll do this in the lab.
+In the same way that we could with the coin flips, we can then use what we know about our data and the normal distribution to estimate the probability of certain outcomes (e.g., what's the probability that someone would be taller than 190cm?).
 
 As with any probabilities, real-world data will come close to the normal distribution, but will (almost certainly) never match it exactly. As we collect more observations from normally-distributed data, our data will get increasingly closer to a normal distribution. As an example, here's a simulation of an experiment in which we collect heights from 5000 participants. As you can see, as we add more observations, our data starts to look more and more like the normal distribution in the previous figure.
 
-```{r, echo=FALSE, fig.cap="A simulation of an experiment collecting height data from 2000 participants", out.width="75%", out.height="75%"}
-knitr::include_graphics(path="./images/normal_dist.gif")
-```
+<div class="figure" style="text-align: center">
+<img src="./images/normal_dist.gif" alt="A simulation of an experiment collecting height data from 2000 participants" width="75%" height="75%" />
+<p class="caption">(\#fig:unnamed-chunk-5)A simulation of an experiment collecting height data from 2000 participants</p>
+</div>
 
 ## Activity 3: Normal distribution
 
 Complete the sentences so that they are correct.
 
-* In a normal distribution, the mean, median, and mode `r mcq(sample(c(answer = "are all equal", "sum to zero", "are always different")))`.
-* In a normal distribution, the further away from the mean an observation is `r mcq(sample(c(answer = "the lower its probability of occuring", "the higher its probability of occuring")))`.
-* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data `r mcq(sample(c(answer = "is a continuous variable", "has three possible values", "is a categorical variable")))`.
+* In a normal distribution, the mean, median, and mode <select class='solveme' data-answer='["are all equal"]'> <option></option> <option>sum to zero</option> <option>are all equal</option> <option>are always different</option></select>.
+* In a normal distribution, the further away from the mean an observation is <select class='solveme' data-answer='["the lower its probability of occuring"]'> <option></option> <option>the lower its probability of occuring</option> <option>the higher its probability of occuring</option></select>.
+* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='solveme' data-answer='["is a continuous variable"]'> <option></option> <option>is a categorical variable</option> <option>is a continuous variable</option> <option>has three possible values</option></select>.
 
 ## Activity 4: Distribution test
 
 Which distribution is likely to be associated with the following?
 
-* Scores on an IQ test `r mcq(c("Uniform distribution", "Binomial distribution", answer = "Normal distribution"))`
-* Whether a country has won or lost the Eurovision song contest `r mcq(c("Uniform distribution", answer = "Binomial distribution", "Normal distribution"))`
-* Picking a spade card out of a normal pack of playing cards`r mcq(c(answer = "Uniform distribution", "Binomial distribution", "Normal distribution"))`
-
-In the labs we're going to continue looking at distributions and probability. Whilst you won't start conducting statistical tests until level 2, by the end of the lab you should be able to understand the core principles of probability and how we can use what we know about distributions to calculate whether a particular outcome is likely. 
+* Scores on an IQ test <select class='solveme' data-answer='["Normal distribution"]'> <option></option> <option>Uniform distribution</option> <option>Binomial distribution</option> <option>Normal distribution</option></select>
+* Whether a country has won or lost the Eurovision song contest <select class='solveme' data-answer='["Binomial distribution"]'> <option></option> <option>Uniform distribution</option> <option>Binomial distribution</option> <option>Normal distribution</option></select>
+* Picking a spade card out of a normal pack of playing cards<select class='solveme' data-answer='["Uniform distribution"]'> <option></option> <option>Uniform distribution</option> <option>Binomial distribution</option> <option>Normal distribution</option></select>
 
 ## Activity 5: Binomial distribution
 
@@ -186,12 +178,13 @@ The `dbinom()` (density) function has three arguments:
 
 Copy, paste and run the below code in a new code chunk:
 
-```{r binom_fake, eval = FALSE}
+
+```r
 dbinom(x = 5, size = 10, prob = 0.5)
 ```
 
-* What is the probability of getting 5 heads out of 10 coin flips to 2 decimal places? `r fitb(c("0.25", ".25"))`  
-* What is this probability expressed in percent? `r mcq(c("0.25%", "2.5%", answer = "25%"))`
+* What is the probability of getting 5 heads out of 10 coin flips to 2 decimal places? <input class='solveme nospaces' size='4' data-answer='["0.25",".25"]'/>  
+* What is this probability expressed in percent? <select class='solveme' data-answer='["25%"]'> <option></option> <option>0.25%</option> <option>2.5%</option> <option>25%</option></select>
 
 ## Activity 7: `pbinom()`
 
@@ -203,13 +196,14 @@ This time we use `pbinom()` as we want to know the **cumulative probability** of
 
 Copy, paste and run the below code in a new code chunk:
 
-```{r pbinom_fake, results = TRUE, , eval = FALSE}
+
+```r
 pbinom(q = 2, size = 10, prob = 0.5)
 ```
 
 
-* What is the probability of getting a maximum of 2 heads on 10 coin flips to 2 decimal places? `r fitb(c("0.05", ".05"))`  
-* What is this probability expressed in percent? `r mcq(c("0.05%", "0.5%", answer = "5%"))`
+* What is the probability of getting a maximum of 2 heads on 10 coin flips to 2 decimal places? <input class='solveme nospaces' size='4' data-answer='["0.05",".05"]'/>  
+* What is this probability expressed in percent? <select class='solveme' data-answer='["5%"]'> <option></option> <option>0.05%</option> <option>0.5%</option> <option>5%</option></select>
 
 ## Activity 8: `pbinom()` 2
 
@@ -217,31 +211,33 @@ Let's try one more scenario with a cut-off point to make sure you have understoo
 
 We can use the same function as in the previous example, however, there's an extra argument if we want to get the correct answer. Let's try running the code we used above but change `q = 2` to `q = 7`.
 
-```{r pbinom_2, eval = TRUE}
+
+```r
 pbinom(q = 7, size = 10, prob = .5) 
+```
+
+```
+## [1] 0.9453125
 ```
 
 This tells us that the probability is .95 or 95% - that doesn't seem right does it? The default behaviour for `pbinom()` is to calculate cumulative probability for the lower tail of the curve, i.e., if you specify `q = 2` it calculates the probability of all outcomes below 2. We specified `q = 7` which means that it's calculated the probability of getting an outcome of 0, 1, 2, 3, 4, 5, 6, and 7, the blue area in the below figure - which is obviously very high.
 
-```{r fig.cap="Lower and upper tails", echo = FALSE}
-ggplot(data10000, aes(x = heads,y = p)) + 
-  geom_bar(stat = "identity", aes(fill = heads >7), show.legend = FALSE, alpha = .8) + 
-  labs(x = "Number of Heads", y = "Probability of Heads in 10 flips (p)") +
-  theme_bw() +
-  scale_x_continuous(breaks = c(0,1,2,3,4,5,6,7,8,9,10)) +
-  scale_fill_viridis_d(option = "E")
-```
+<div class="figure" style="text-align: center">
+<img src="08-probability_files/figure-html/unnamed-chunk-6-1.png" alt="Lower and upper tails" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-6)Lower and upper tails</p>
+</div>
 
 To get the right answer, we have to add `lower.tail = FALSE` as we are interested in the upper tail of the distribution. Because we want the cumulative probability to include 7, we set `q = 6`. This will now calculate the cumulative probability of getting 7, 8, 9, or 10 heads out of 10 coin flips.
 
 Copy, paste and run the below code in a new code chunk:
 
-```{r binom_2.5, eval = FALSE}
+
+```r
 pbinom(q = 6, size = 10, prob = .5, lower.tail = FALSE) 
 ```
 
-* What is the probability of getting between 7 and 10 heads from 10 coin flips to 2 decimal places? `r fitb(c("0.17", ".17"))`  
-* What is this probability expressed in percent? `r mcq(c("0.017%", "0.17", answer = "17%"))` 
+* What is the probability of getting between 7 and 10 heads from 10 coin flips to 2 decimal places? <input class='solveme nospaces' size='4' data-answer='["0.17",".17"]'/>  
+* What is this probability expressed in percent? <select class='solveme' data-answer='["17%"]'> <option></option> <option>0.017%</option> <option>0.17</option> <option>17%</option></select> 
 
 ## Activity 9: `qbinom()`
 
@@ -253,8 +249,13 @@ We know from looking at the binomial distribution above that sometimes even when
 
 In other words, you ask it for the minimum number of successes (e.g. heads) to maintain an overall probability of .05, in 10 flips, when the probability of a success on any one flip is .5.
 
-```{r binom_3, eval = TRUE}
+
+```r
 qbinom(p = .05, size = 10, prob = .5)
+```
+
+```
+## [1] 2
 ```
 
 And it tells you the answer is 2. If the magician flipped fewer than two heads out of ten, you could conclude that there is a less than 5% probability that would happen if the coin was fair and you would reject the null hypothesis that the coin was unbiased against heads and tell the magician to do one.
@@ -263,11 +264,12 @@ And it tells you the answer is 2. If the magician flipped fewer than two heads o
  
 However, ten trials is probably far too few if you want to accuse the magician of being a bit dodge. Run the below code and then answer the following questions:
 
-* What would your cut-off be if you ran 100 trials? `r fitb("42")`
-* What would your cut-off be if you ran 1000 trials? `r fitb("474")`
-* What would your cut-off be if you ran 10,000 trials? `r fitb("4918")`
+* What would your cut-off be if you ran 100 trials? <input class='solveme nospaces' size='2' data-answer='["42"]'/>
+* What would your cut-off be if you ran 1000 trials? <input class='solveme nospaces' size='3' data-answer='["474"]'/>
+* What would your cut-off be if you ran 10,000 trials? <input class='solveme nospaces' size='4' data-answer='["4918"]'/>
 
-``` {r pbinom_3, eval = FALSE}
+
+```r
 qbinom(p = .05, size = c(100, 1000, 10000), prob = .5)
 ```
 
@@ -279,12 +281,10 @@ Notice that the more trials you run, the more precise the estimates become, that
 
 Have a go at playing around with different numbers of coin flips and probabilities in our `dbinom()` and `pbinom()` app!
 
-```{r, echo = FALSE, fig.cap="Binomial distribution app"}
-
-knitr::include_url("https://shannon-mcnee19.shinyapps.io/binomial_shiny/",
-                   height = "800px")
-
-```
+<div class="figure" style="text-align: center">
+<iframe src="https://shannon-mcnee19.shinyapps.io/binomial_shiny/" width="100%" height="800px"></iframe>
+<p class="caption">(\#fig:unnamed-chunk-7)Binomial distribution app</p>
+</div>
 
 ******
 
@@ -310,8 +310,11 @@ Data from the [Scottish Health Survey (2008)](http://www.scotland.gov.uk/Resourc
 
 The below figure is a simulation of this data - you can see the code used to run this simulation by clicking the solution button.
 
-`r webex::hide()`
-```{r eval = FALSE}
+
+<div class='solution'><button>Solution</button>
+
+
+```r
 men <- rnorm(n = 100000, mean = 176.2, sd = 6.748)
 women <- rnorm(n = 100000, mean = 163.8, sd = 6.931)
 
@@ -323,20 +326,14 @@ ggplot(heights, aes(x = height, fill = sex)) +
   scale_fill_viridis_d(option = "E") +
   theme_minimal()
 ```
-`r webex::unhide()`
 
-```{r echo = FALSE, fig.cap= "Simulation of Scottish height data"}
-men <- rnorm(n = 100000, mean = 176.2, sd = 6.748)
-women <- rnorm(n = 100000, mean = 163.8, sd = 6.931)
+</div>
 
-heights <- tibble(men, women) %>%
-  pivot_longer(names_to = "sex", values_to = "height", men:women)
-ggplot(heights, aes(x = height, fill = sex)) +
-  geom_density(alpha = .6) +
-  scale_fill_viridis_d(option = "E", name = "Sex", labels = c("Men", "Women")) +
-  theme_minimal()
-  
-```
+
+<div class="figure" style="text-align: center">
+<img src="08-probability_files/figure-html/unnamed-chunk-9-1.png" alt="Simulation of Scottish height data" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-9)Simulation of Scottish height data</p>
+</div>
 
 In this chapter  we will use this information to calculate the probability of observing at least or at most a specific height with `pnorm()`, and the heights that are associated with specific probabilities with `qnorm()`.
 
@@ -349,28 +346,29 @@ In this chapter  we will use this information to calculate the probability of ob
 * `sd` is the standard deviation of the data
 * `lower.tail` works as above and depends on whether you are interested in the upper or lower tail
 
-```{r eval = FALSE}
+
+```r
 pnorm(q = NULL, mean = NULL, sd = NULL, lower.tail = NULL)
 ```
 
 Replace the NULLs in the above code to calculate the probability of meeting a 16-24 y.o. Scottish woman who is taller than the average 16-24 y.o. Scottish man.
 
-* What is the probability of meeting a 16-24 y.o. Scottish woman who is taller than the average 16-24 y.o. Scottish man? `r fitb(c("0.04", ".04"))`  
-* What is this probability expressed in percent? `r mcq(c("0.04%", "0.4%", answer = "4%"))`
+* What is the probability of meeting a 16-24 y.o. Scottish woman who is taller than the average 16-24 y.o. Scottish man? <input class='solveme nospaces' size='4' data-answer='["0.04",".04"]'/>  
+* What is this probability expressed in percent? <select class='solveme' data-answer='["4%"]'> <option></option> <option>0.04%</option> <option>0.4%</option> <option>4%</option></select>
 
 ## Activity 11: `pnorm` 2
 
 Fiona is a very tall Scottish woman (181.12\nbsp{}cm) in the 16-24 y.o. range who will only date men who are taller than her.  
 
-* Using `pnorm()` again, what is the proportion of Scottish men Fiona would be willing to date to 2 decimal places? `r fitb(c("0.23", ".23"))`  
-* What is this probability expressed in percent? `r mcq(c("0.23%", "2.3%", answer = "23%"))`
+* Using `pnorm()` again, what is the proportion of Scottish men Fiona would be willing to date to 2 decimal places? <input class='solveme nospaces' size='4' data-answer='["0.23",".23"]'/>  
+* What is this probability expressed in percent? <select class='solveme' data-answer='["23%"]'> <option></option> <option>0.23%</option> <option>2.3%</option> <option>23%</option></select>
 
 ## Activity 12: `pnorm` 3
 
 On the other hand, Fiona will only date women who are shorter than her. 
 
-* What is the proportion of Scottish women would Fiona be willing to date to 2 decimal places? `r fitb(c("0.99", ".99"))`  
-* What is this probability expressed in percent? `r mcq(c("0.99%", "9.9%", answer = "99%"))`
+* What is the proportion of Scottish women would Fiona be willing to date to 2 decimal places? <input class='solveme nospaces' size='4' data-answer='["0.99",".99"]'/>  
+* What is this probability expressed in percent? <select class='solveme' data-answer='["99%"]'> <option></option> <option>0.99%</option> <option>9.9%</option> <option>99%</option></select>
 
 ## Activity 13: `qnorm()`
 
@@ -378,7 +376,8 @@ In the previous examples we calculated the probability of a particular outcome. 
 
 `qnorm()` is very similar to `pnorm()` with one exception, rather than specifying `q` our known observation or quantile, instead we have to specify `p`, our known probability.
 
-```{r eval = FALSE}
+
+```r
 qnorm(p = NULL, mean = NULL, sd = NULL, lower.tail = NULL)
 ```
 
@@ -390,64 +389,101 @@ Have a go at playing around with different distributions in our `dnorm()` and `p
 
 ******
 
-And that's it! The key concepts to take away from this chapter are that different types of data tend to follow known distributions, and that we can use these distributions to calculate the probability of particular outcomes. This is the foundation of many of the statistical tests that you will learn about in Research Methods 2. For example, if you want to compare whether the scores from two groups are different, that is, whether they come from different distributions, you can calculate the probability that the scores from group 2 would be in the same distribution as group 1. If this probability is less than 5% (p = .05), you might conclude that the scores were significantly different. That's an oversimplification obviously, but if you can develop a good understanding of probability distributions it will stand you in good stead for the rest of the statistics content.  
+And that's it! The key concepts to take away from this chapter are that different types of data tend to follow known distributions, and that we can use these distributions to calculate the probability of particular outcomes. This is the foundation of many of the statistical tests that you will learn about in this course. 
+
+For example, if you want to compare whether the scores from two groups are different, that is, whether they come from different distributions, you can calculate the probability that the scores from group 2 would be in the same distribution as group 1. If this probability is less than 5% (p = .05), you might conclude that the scores were significantly different. That's an oversimplification obviously, but if you can develop a good understanding of probability distributions it will stand you in good stead for the rest of the statistics content.  
 
 ## Activity solutions
 
 ### Activity 6
 
-`r webex::hide()`
-```{r eval = FALSE}
+
+<div class='solution'><button>Solution</button>
+
+
+```r
 .25
 ```
-`r webex::unhide()`
+
+</div>
+
 
 ### Activity 7
 
-`r webex::hide()`
-```{r eval = FALSE}
+
+<div class='solution'><button>Solution</button>
+
+
+```r
 .06
 ```
-`r webex::unhide()`
+
+</div>
+
 
 ### Activity 8
 
-`r webex::hide()`
-```{r eval = FALSE}
+
+<div class='solution'><button>Solution</button>
+
+
+```r
 .17
 ```
-`r webex::unhide()`
+
+</div>
+
 
 ### Activity 10
 
-`r webex::hide()`
-```{r eval = FALSE}
+
+<div class='solution'><button>Solution</button>
+
+
+```r
 pnorm(q = 176.2, mean = 163.8, sd = 6.931, lower.tail = FALSE)
 ```
-`r webex::unhide()`
+
+</div>
+
 
 ### Activity 11
 
-`r webex::hide()`
-```{r eval = FALSE}
+
+<div class='solution'><button>Solution</button>
+
+
+```r
 pnorm(q = 181.12, mean = 176.2, sd = 6.748, lower.tail = FALSE)
 ```
-`r webex::unhide()`
+
+</div>
+
 
 ### Activity 12
 
-`r webex::hide()`
-```{r eval = FALSE}
+
+<div class='solution'><button>Solution</button>
+
+
+```r
 pnorm(q = 181.12, mean = 163.8, sd = 6.931, lower.tail = TRUE)
 ```
-`r webex::unhide()`
+
+</div>
+
 
 ### Activity 13
 
-`r webex::hide()`
-```{r eval = FALSE}
+
+<div class='solution'><button>Solution</button>
+
+
+```r
 qnorm(p = .05, mean = 176.2, sd = 6.748, lower.tail = FALSE)
 ```
-`r webex::unhide()`
+
+</div>
+
 
 

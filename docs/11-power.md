@@ -5,7 +5,7 @@ Until now we have mainly spent time on data-wrangling, visualising our data, and
 * **Type I error** - rejecting the null hypothesis when it is true (otherwise called **alpha** or $\alpha$). Probably better recalled as **False Positives** 
 * **Type II error** - retaining the null hypothesis when it is false (otherwise called **beta** or $\beta$). Probably better recalled as **False Negatives**
 
-Building from there we have started to discuss the idea of **power** ($1-\beta$) which you should understand as the long-run probability of correctly rejecting the null hypothesis when it is false; i.e. saying there is an effect when there is not one. In short, **the higher the power of your study the better**, with the field standard proposed as $power >= .8$. Often in fact Registered Reports are required to have a power of at least $power >= .9$.
+Building from there we have started to discuss the idea of **power** ($1-\beta$) which you should understand as the probability of correctly rejecting the null hypothesis when it is false; i.e. saying there is an effect when there is not one. In short, **the higher the power of your study the better**, with the field standard proposed as $power >= .8$. Often in fact Registered Reports are required to have a power of at least $power >= .9$.
 
 In the past a number of studies have fallen short of the field standard and it is this lack of power that is thought to be a key issue in the replication crisis. This makes sense because, if you think about it, if previous studies only have a $power = .5$ then they only have a .5 probability of correctly rejecting the null hypothesis. As such there may be a large number of studies where the null hypothesis has been rejected when it should not have been; the field becomes noisy at that point and you are unsure which studies will replicate.  It is issues like this that led us to redevelop our courses and why we really want you to understand power as much as possible.
 
@@ -44,63 +44,68 @@ Let's now try out some calculations. We will start with just looking at effect s
 
 Do the following. 
 
-* Open R Studio and set the working directory to your Week 9 folder.  
-* Open a new R Markdown document and save it in your working directory. Call the file "Week 9".    
+* Open R Studio and set the working directory to your chapter folder.  
+* Open a new R Markdown document and save it in your working directory. Call the file "Power and Effect Size".    
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `pwr`, `broom`, and `tidyverse` using the `library()` function. You may need to install `pwr` if you are working on your own machine but remember **never install packages on a university machine**.
 
 ## Activity 2: Effect size from a one-sample t-test
 
 * You run a one-sample t-test and discover a significant effect, t(25) = 3.24, p < .05. Using the above formulas, calculate `d` and determine whether the effect size is small, medium or large.
 
-`r hide("Helpful hint")`
-```{r, echo = FALSE, results = 'asis'}
-cat("
+
+<div class='solution'><button>Helpful hint</button>
+
+
     
 * Use the appropriate formula from above for the one-sample t-tests. 
 * You have been given a t-value and df (degrees of freedom), you still need to determine `n` before you calculate `d`. 
 * According to Cohen (1988), the effect size is small (.2 to .5), medium (.5 to .8) or large (> .8).
     
-    ")
-```
-`r unhide()`  
+    
+
+</div>
+  
 
 Answering the following questions to check your answers. The solutions are at the bottom if you need them:
 
-* Enter, in digits, how many people were run in this study: `r fitb("26", ignore_ws = TRUE)`
-* Which of these codes is the appropriate calculation of `d` in this instance:`r mcq(c(answer = "d = t/sqrt(N)","d = 2t/sqrt(df)"))`
-* Enter the correct value of `d` for this analysis rounded to 2 decimal places: `r fitb(c("0.64", ".64"), ignore_ws = TRUE)`
-* According to Cohen (1988), the effect size for this t-test would probably be considered: `r mcq(c("small", answer = "medium", "large"))`  
+* Enter, in digits, how many people were run in this study: <input class='solveme nospaces' size='2' data-answer='["26"]'/>
+* Which of these codes is the appropriate calculation of `d` in this instance:<select class='solveme' data-answer='["d = t/sqrt(N)"]'> <option></option> <option>d = t/sqrt(N)</option> <option>d = 2t/sqrt(df)</option></select>
+* Enter the correct value of `d` for this analysis rounded to 2 decimal places: <input class='solveme nospaces' size='4' data-answer='["0.64",".64"]'/>
+* According to Cohen (1988), the effect size for this t-test would probably be considered: <select class='solveme' data-answer='["medium"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>  
 
 ## Activity 3: Effect size from between-subjects t-test
 
 * You run a between-subjects t-test and discover a significant effect, t(30) = 2.9, p < .05. Calculate `d` and determine whether the effect size is small, medium or large.
 
-`r hide("Helpful hint")`
-```{r, echo = FALSE, results = 'asis'}
-cat("
+
+<div class='solution'><button>Helpful hint</button>
+
+
     
 * Use the appropriate formula above for between-subjects t-tests. 
 * According to Cohen (1988), the effect size is small (.2 to .5), medium (.5 to .8) or large (> .8).
     
-    ")
-```
-`r unhide()`  
+    
+
+</div>
+  
 
 Answer the following questions to check your answers. The solutions are at the bottom if you need them:
 
-* Enter, in digits, how many people were run in this study: `r fitb("32", ignore_ws = TRUE)`
-* Which of these codes is the appropriate calculation of `d` in this instance:`r mcq(c("d = t/sqrt(N)",answer = "d = 2t/sqrt(df)"))`
-* Enter the correct value of `d` for this analysis rounded to 2 decimal places:  `r fitb(c("1.06"), ignore_ws = TRUE)`
-* According to Cohen (1988), the effect size for this t-test would probably be considered: `r mcq(c("small", "medium", answer = "large"))`
+* Enter, in digits, how many people were run in this study: <input class='solveme nospaces' size='2' data-answer='["32"]'/>
+* Which of these codes is the appropriate calculation of `d` in this instance:<select class='solveme' data-answer='["d = 2t/sqrt(df)"]'> <option></option> <option>d = t/sqrt(N)</option> <option>d = 2t/sqrt(df)</option></select>
+* Enter the correct value of `d` for this analysis rounded to 2 decimal places:  <input class='solveme nospaces' size='4' data-answer='["1.06"]'/>
+* According to Cohen (1988), the effect size for this t-test would probably be considered: <select class='solveme' data-answer='["large"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>
 
 
 ## Activity 4: t-value and effect size for a between-subjects Experiment
 
 * You run a between-subjects design study and the descriptives tell you: **Group 1**, M = 10, SD = 1.3, n = 30; **Group 2**, M = 11, SD = 1.7, n = 30. Calculate `t` and `d` for this between-subjects experiment.
 
-`r hide("Helpful hint")`
-```{r, echo = FALSE, results = 'asis'}
-cat("
+
+<div class='solution'><button>Helpful hint</button>
+
+
     
 * Before you can calculate `d` (using the appropriate formula for a between-subjects experiment), you need to first calculate `t` using the formula:  
 
@@ -110,21 +115,22 @@ cat("
 * Now you have your t-value, but for calculating `d` you also need degrees of freedom. Think about how you would calculate `df` for a between-subjects experiment, taking `n` for both Group 1 and Group 2 into account.
 * Remember that convention is that people report the `t` and `d` values as positive.
 
-    ")
-```
-`r unhide()`   
+    
+
+</div>
+   
 
 Answer the following questions to check your answers. The solutions are at the bottom if you need them:
 
-* Enter the correct `t-value` for this test, rounded to two decimal places: `r fitb(c("2.56","-2.56"))`
+* Enter the correct `t-value` for this test, rounded to two decimal places: <input class='solveme nospaces' size='5' data-answer='["2.56","-2.56"]'/>
 
-* Which of these codes is the appropriate calculation of `d` in this instance:`r mcq(c("d = t/sqrt(N)",answer = "d = 2t/sqrt(df)"))`
-* Based on the above t-value above, enter the correct value of `d` for this analysis rounded to 2 decimal places: `r fitb(c(".67", "0.67"))`
-* According to Cohen (1988), the effect size for this t-test would probably be described as: `r mcq(c("small", answer = "medium", "large"))`
+* Which of these codes is the appropriate calculation of `d` in this instance:<select class='solveme' data-answer='["d = 2t/sqrt(df)"]'> <option></option> <option>d = t/sqrt(N)</option> <option>d = 2t/sqrt(df)</option></select>
+* Based on the above t-value above, enter the correct value of `d` for this analysis rounded to 2 decimal places: <input class='solveme nospaces' size='4' data-answer='[".67","0.67"]'/>
+* According to Cohen (1988), the effect size for this t-test would probably be described as: <select class='solveme' data-answer='["medium"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>
 
 We've asked you to calculate Cohen's D by hand above to reinforce your understanding of what `d` actually means, however, if you were conducting a t-test in R, chances are that you would get R is calculate this for you.
 
-* Think back to the t-test chapter. What is the name of the function for calculating Cohen's D? `r fitb("cohensD")`. What package does this come from? `r fitb("lsr")`
+* Think back to the t-test chapter. What is the name of the function for calculating Cohen's D? <input class='solveme nospaces' size='7' data-answer='["cohensD"]'/>. What package does this come from? <input class='solveme nospaces' size='3' data-answer='["lsr"]'/>
 
 **Excellent!** Now that you are comfortable with calculating effect sizes, we will look at using them to establish appropriate sample sizes for a given power. Remember, in analysis, in nearly all occasions we should set the effect size as the minimum effect size we are interested. This can be determined through discussion, through previous studies, through pilots studies, or through rules of thumb like Cohen (1988). However, also keep in mind that the lower the effect size, the larger the sample size you will need. Everything is a trade-off.
 
@@ -145,20 +151,11 @@ The function works on a leave one out principle. You give it all the information
 
 * Run the below code:
 
-```{r pwr_example_out, echo=FALSE, message=FALSE}
-library(broom)
-library(pwr)
-library(tidyverse)
-
-n_test <- pwr.t.test(d = .4,
-           power = .8,
-           sig.level = .05,
-           alternative = "two.sided",
-           type = "two.sample") %>% tidy() %>% pull(n)
-```
 
 
-```{r pwr_example, eval=FALSE}
+
+
+```r
 pwr.t.test(d = .4,
            power = .8,
            sig.level = .05,
@@ -166,7 +163,7 @@ pwr.t.test(d = .4,
            type = "two.sample")
 ```
 
-The output tells you that you would need `r n_test` people **per condition**. But you only get whole people and we like to be conservative on our estimates so we would actually run `r ceiling(n_test)` **per condition**. That is a lot of people!!!
+The output tells you that you would need 99.0803248 people **per condition**. But you only get whole people and we like to be conservative on our estimates so we would actually run 100 **per condition**. That is a lot of people!!!
 
 To make the output of `pwr.t.test()` easier to work with, we're going to amend the code to just give us exactly the number that we want. 
 
@@ -174,7 +171,8 @@ To make the output of `pwr.t.test()` easier to work with, we're going to amend t
 * `pull()` will pull out a single value (in this case `n` but it could be anything)
 * `ceiling()` rounds up to give us the next highest whole number
 
-```{r pull_explan, eval=FALSE}
+
+```r
 pwr.t.test(d = .4,
            power = .8,
            sig.level = .05,
@@ -191,21 +189,20 @@ pwr.t.test(d = .4,
 
 Using a pipeline, store the answer as a single, rounded value called `sample_size_t` (i.e. use `tidy() %>% pull() %>% ceiling()`).
 
-`r hide("Helpful hint")`
-```{r, echo = FALSE, results = 'asis'}
-cat("
+
+<div class='solution'><button>Helpful hint</button>
+
 
 * Use the list of inputs above as a kind of check-list to clearly determine which inputs are known or unknown. This can help you enter the appropriate values to your code.
 * The structure of the `pwr.t.test()` would be very similar to the one shown above except two.sample would become one.sample
 * You will also need to use `tidy() %>% pull(n)` to help you obtain the sample size and `%>% ceiling()` to round up to the nearest whole participant.
 
-")
-```
-`r unhide()`  
+</div>
+  
 
 Answer the following question to check your answers. The solutions are at the bottom if you need them:
 
-* Enter the minimum number of participants you would need in this one-sample t-test: `r fitb("151")`
+* Enter the minimum number of participants you would need in this one-sample t-test: <input class='solveme nospaces' size='3' data-answer='["151"]'/>
 
 ## Activity 7: Effect size from a high power between-subjects t-test
 
@@ -213,10 +210,10 @@ Answer the following question to check your answers. The solutions are at the bo
 
 Answer the following questions to check your answers. The solutions are at the bottom if you need them:
 
-* Based on the information given, what will you set `type` as in the function? `r mcq(c("one.sample", answer = "two.sample"))`
-* Based on the output, enter the minimum effect size you can reliably detect in this test, rounded to two decimal places: `r fitb(c(".65", "0.65"),ignore_ws = TRUE)`
-* According to Cohen (1988), the effect size for this t-test is `r mcq(c("small", answer = "medium", "large"))`
-* Say you run the study and find that the effect size determined is d = .50. Given what you know about power, select the statement that is true: `r mcq(c("the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than d = .65",answer = "the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .65"))`
+* Based on the information given, what will you set `type` as in the function? <select class='solveme' data-answer='["two.sample"]'> <option></option> <option>one.sample</option> <option>two.sample</option></select>
+* Based on the output, enter the minimum effect size you can reliably detect in this test, rounded to two decimal places: <input class='solveme nospaces' size='4' data-answer='[".65","0.65"]'/>
+* According to Cohen (1988), the effect size for this t-test is <select class='solveme' data-answer='["medium"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>
+* Say you run the study and find that the effect size determined is d = .50. Given what you know about power, select the statement that is true: <select class='solveme' data-answer='["the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .65"]'> <option></option> <option>the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than d = .65</option> <option>the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .65</option></select>
 
 ## Activity 8: Sample size for a correlation
 
@@ -232,7 +229,7 @@ Now, we're going to do the same thing but for a correlation analysis using `pwr.
 
 Using a pipeline, store the answer as a single, rounded value called `sample_size_r` (i.e. use `tidy() %>% pull() %>% ceiling()`).
 
-* Enter the minimum number of participants you would need in this correlation: `r fitb("46")`
+* Enter the minimum number of participants you would need in this correlation: <input class='solveme nospaces' size='2' data-answer='["46"]'/>
 
 ## Activity 9: Effect size for a correlation analysis
 
@@ -240,10 +237,10 @@ Using a pipeline, store the answer as a single, rounded value called `sample_siz
 
 Answer the following questions to check your answers. The solutions are at the bottom if you need them:
 
-* Based on the information given, what will you set `alternative` as in the function? `r mcq(c("two.sided", answer = "greater", "less"))`
-* Based on the output, enter the minimum effect size you can reliably detect in this test, rounded to two decimal places: `r fitb(c(".34", "0.34"),ignore_ws = TRUE)`
-* According to Cohen (1988), the effect size for this correlation is `r mcq(c("small", answer = "medium", "large"))`
-* Say you run the study and find that the effect size determined is d = .24. Given what you know about power, select the statement that is true: `r mcq(c("the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than d = .24",answer = "the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .34"))`
+* Based on the information given, what will you set `alternative` as in the function? <select class='solveme' data-answer='["greater"]'> <option></option> <option>two.sided</option> <option>greater</option> <option>less</option></select>
+* Based on the output, enter the minimum effect size you can reliably detect in this test, rounded to two decimal places: <input class='solveme nospaces' size='4' data-answer='[".34","0.34"]'/>
+* According to Cohen (1988), the effect size for this correlation is <select class='solveme' data-answer='["medium"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>
+* Say you run the study and find that the effect size determined is d = .24. Given what you know about power, select the statement that is true: <select class='solveme' data-answer='["the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .34"]'> <option></option> <option>the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than d = .24</option> <option>the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .34</option></select>
 
 ## Activity 10: Effect size for chi-square
 
@@ -257,7 +254,7 @@ Again, `pwr.chisq.test()` is very similar to the t-test and correlation function
 
 Imagine you were conducting a chi-square analysis with 30 observations, 1 df, and conventional alpha and power.
 
-* Using `pwr.chisq.test()`, what is the smallest effect size that you could reliably detect, rounded to 2 decimal places? `r fitb("0.51", ".51")`
+* Using `pwr.chisq.test()`, what is the smallest effect size that you could reliably detect, rounded to 2 decimal places? <input class='solveme nospaces' size='.51' data-answer='["0.51"]'/>
 
 
 ## Activity 11: Power of published research
@@ -267,14 +264,16 @@ Thus far we have used hypothetical situations - now go look at the paper on the 
 1. one-sample: t(31) = 2.96, p = .006, d = 0.52
 2. paired t-test: t(31) = 2.42, p = .022, d= 0.43
 
-`r hide("Helpful hint")`
-```{r, echo = FALSE, results = 'asis'}
-cat("
+
+<div class='solution'><button>Helpful hint</button>
+
+
     
 * To calculate n: `n = df + 1`.
-    ")
-```
-`r unhide()`
+    
+
+</div>
+
 
 Which of the t-tests do you believe to be underpowered? Why do you think this may be? Additional information about this can be found in the solution to task 8 at the end of this activity.
 
@@ -299,48 +298,61 @@ Below you will find possible solutions to the above tasks. But first, be sure to
 
 ### Activity 1
 
-`r hide("Activity 1")`
-```{r a1, eval=FALSE}
+
+<div class='solution'><button>Activity 1</button>
+
+
+```r
 library(pwr)
 library(broom)
 library(tidyverse)
 ```
-`r unhide()`
+
+</div>
+
 <br>
 Click on the tab to reveal the solution
 
 ### Activity 2
 
-`r hide("Activity 2")`
-```{r a2, results='asis'}
 
+<div class='solution'><button>Activity 2</button>
+
+
+```r
 d <- 3.24 / sqrt(25 +1)
 
 # effect is medium to large; d = .64
-
 ```
-`r unhide()`
+
+</div>
+
 <br>
 Click on the tab to reveal the solution
 
 ### Activity 3
 
-`r hide("Activity 3")`
-```{r a3, results='asis'}
 
+<div class='solution'><button>Activity 3</button>
+
+
+```r
 d <- (2*2.9) / sqrt(30)
 
 # effect is large; d = 1.06
-
 ```
-`r unhide()`
+
+</div>
+
 <br>
 Click on the tab to reveal the solution
 
 ### Activity 4
-`r hide("Activity 4")`
-```{r a4, results='asis'}
 
+<div class='solution'><button>Activity 4</button>
+
+
+```r
 t = (10 - 11)/sqrt((1.3^2/30) + (1.7^2/30))
 
 d = (2*t)/sqrt((30-1) + (30-1))
@@ -349,15 +361,19 @@ d = (2*t)/sqrt((30-1) + (30-1))
 # d = .67
 
 # Remember that convention is that people report the t and d as positive.
-
 ```
-`r unhide()`
+
+</div>
+
 <br>
 Click on the tab to reveal the solution
 
 ### Activity 6
-`r hide("Activity 6")`
-```{r a5, results='asis', message = FALSE}
+
+<div class='solution'><button>Activity 6</button>
+
+
+```r
 sample_size_t <- pwr.t.test(d = .23,
                             power = .8, 
                             sig.level = .05, 
@@ -366,74 +382,137 @@ sample_size_t <- pwr.t.test(d = .23,
 
 sample_size_t
 ```
-`r unhide()`
+
+[1] 151
+
+</div>
+
 <br>
 Click on the tab to reveal the solution
 
 ### Activity 7
-`r hide("Activity 7")`
-```{r a7, results='asis'}
 
+<div class='solution'><button>Activity 7</button>
+
+
+```r
 pwr.t.test(n = 50,
            power = .9, 
            sig.level = .05, 
            alternative = "two.sided", 
            type = "two.sample")
-
 ```
-`r unhide()`
+
+     Two-sample t test power calculation 
+
+              n = 50
+              d = 0.654752
+      sig.level = 0.05
+          power = 0.9
+    alternative = two.sided
+
+NOTE: n is number in *each* group
+
+</div>
+
 <br>
 Click on the tab to reveal the solution
 
 
 ### Activity 8
-`r hide("Activity 8")`
-```{r a8, results='asis'}
+
+<div class='solution'><button>Activity 8</button>
+
+
+```r
 sample_size_r <- pwr.r.test(r = .4, 
                             sig.level = .05, 
                             power = .8, 
                             alternative = "two.sided") %>%
   tidy() %>% pull(n) %>% ceiling()
 ```
-`r unhide()`
+
+</div>
+
 <br>
 Click on the tab to reveal the solution
 
 
 ### Activity 9
-`r hide("Activity 9")`
-```{r a9, results='asis'}
+
+<div class='solution'><button>Activity 9</button>
+
+
+```r
 pwr.r.test(n = 50,
            sig.level = .05, 
            power = .8, 
            alternative = "greater")
 ```
-`r unhide()`
+
+     approximate correlation power calculation (arctangh transformation) 
+
+              n = 50
+              r = 0.3443671
+      sig.level = 0.05
+          power = 0.8
+    alternative = greater
+
+</div>
+
 <br>
 Click on the tab to reveal the solution
 
 ### Activity 10
-`r hide("Activity 10")`
-```{r a10, results='asis'}
+
+<div class='solution'><button>Activity 10</button>
+
+
+```r
 pwr.chisq.test(N = 30,
                df = 1,
            sig.level = .05, 
            power = .8)
 ```
-`r unhide()`
+
+     Chi squared power calculation 
+
+              w = 0.5114954
+              N = 30
+             df = 1
+      sig.level = 0.05
+          power = 0.8
+
+NOTE: N is the number of observations
+
+</div>
+
 <br>
 Click on the tab to reveal the solution
 
 ### Activity 11
-`r hide("Activity 11")`
-```{r a11, results='asis'}
+
+<div class='solution'><button>Activity 11</button>
+
+
+```r
 # Achievable Cohen d for Example 1
 pwr.t.test(power = .8, 
            n = 32, 
            type = "one.sample", 
            alternative = "two.sided", 
            sig.level = .05)
+```
 
+     One-sample t test power calculation 
+
+              n = 32
+              d = 0.5112738
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+```r
 # This study seems ok as the authors could achieve an effect size as low as .51 and found an effect size at .52
 
 # Achievable Cohen d for Example 2
@@ -442,7 +521,19 @@ pwr.t.test(power = .8,
            type = "paired", 
            alternative = "two.sided", 
            sig.level = .05) 
+```
 
+     Paired t test power calculation 
+
+              n = 32
+              d = 0.5112738
+      sig.level = 0.05
+          power = 0.8
+    alternative = two.sided
+
+NOTE: n is number of *pairs*
+
+```r
 # this effect might not be reliable given that the effect size found was much lower than the achievable effect size. The issue here is that the researchers established their sample size based on a previous effect size and not on the minimum effect size that they would find important. If an effect size as small as .4 was important then they should have powered all studies to that level and ran the appropriate n ~52 babies (see below). Flipside of course is that obtaining 52 babies isnt easy; hence why some people consider the Many Labs approach a good way ahead.
 
 # Below you could calculate the actual sample size required to achieve a power of .8:
@@ -455,8 +546,11 @@ sample_size <- pwr.t.test(power = .8,
 tidy() %>% pull(n) %>% ceiling()
 
 sample_size
-
 ```
-`r unhide()`
+
+[1] 52
+
+</div>
+
 <br>
 Click on the tab to reveal the solution.

@@ -29,7 +29,7 @@ Before we begin working with the data we need to do some set-up. If you need hel
 
 ### Activity  2: Load in the package
 
-Today we need to use the `tidyverse` package. You will use this package in every single chapter of this course as the functions it contains are those we use for data wrangling, descriptive statistics, and visualisation.
+Today we need to use the `tidyverse` package. You will use this package in almost every single chapter of this course as the functions it contains are those we use for data wrangling, descriptive statistics, and visualisation.
 
 * To load the `tidyverse` type the following code into your code chunk and then run it. 
 
@@ -124,7 +124,7 @@ There is no portfolio assessment this week, instead, use the time to get comfort
 
 ## Debugging tips
 
-* When you downloaded the files from Moodle did you save the file names **exactly** as they were originally? If you download the file more than once you will find your computer may automatically add a number to the end of the file name. `data.csv` is not the same as `data(1).csv`. Pay close attention to names!
+* When you downloaded the files did you save the file names **exactly** as they were originally? If you download the file more than once you will find your computer may automatically add a number to the end of the file name. `data.csv` is not the same as `data(1).csv`. Pay close attention to names!
 * Have you used the **exact** same object names as we did in each activity? Remember, `name` is different to `Name`. In order to make sure you can follow along with this book, pay special attention to ensuring you use the same object names as we do.  
 * Have you used quotation marks where needed?  
 * Have you accidentally deleted any back ticks (```) from the beginning or end of code chunks?

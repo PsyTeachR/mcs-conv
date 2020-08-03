@@ -81,9 +81,9 @@ Now we're going to use the code examples you read about in Programming Basics to
 
 ```r
 name <- "Emily" 
-age <- 34
+age <- 35
 today <- Sys.Date()
-next_birthday <- as.Date("2020-07-11")
+next_birthday <- as.Date("2021-07-11")
 ```
 
 ## Running code
@@ -128,7 +128,7 @@ Nearly finished! As our final step we are going to "knit" our file. This simply 
 
 As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created. 
 
-**My name is Emily and I am 34 years old. It is -20 days until my birthday.**
+**My name is Emily and I am 35 years old. It is 342 days until my birthday.**
 
 We're not going to use this function very often in the rest of the course but hopefully you can see just how useful this would be when writing up a report with lots of numbers! R Markdown is an incredibly powerful and flexible format - this book was written using it! If you want to push yourself with R, additional functions and features of R Markdown would be a good place to start.
 
@@ -141,7 +141,7 @@ Before we finish, there are a few final things to note about knitting that will 
 
 ## Activity 9: Make R your own
 
-Finally, you can customise how R Studio looks to make it feel more like your own personal version. Click `Tools` - `Global Options` - `Apperance`. You can change the default font, font size, and general apperance of R Studio, including using dark mode. Play around with the settings and see which one you prefer - you're going to spend a lot of time with R, it might as well look nice!
+Finally, you can customise how R Studio looks to make it feel more like your own personal version. Click `Tools` - `Global Options` - `Apperance`. You can change the default font, font size, and general appearance of R Studio, including using dark mode. Play around with the settings and see which one you prefer - you're going to spend a lot of time with R, it might as well look nice!
 
 ## Finished
 
@@ -149,4 +149,4 @@ And you're done! On your very first time using R you've not only written functio
 
 The key thing we want you to take away from this chapter is that R isn't scary. It might be very new to a lot of you, but we're going to take you through it step-by-step. You'll be amazed at how quickly you can start producing professional-looking data visualisations and analysis.
 
-If you have any questions about anything contained in this chapter or in Programming Basics, please use the Research Methods forum on Teams.
+If you have any questions about anything contained in this chapter or in Programming Basics, please use Teams.
