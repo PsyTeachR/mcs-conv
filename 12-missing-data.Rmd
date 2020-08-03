@@ -1,51 +1,59 @@
 
-# Missing Data 
+# Screening Data 
 
-In this chapter we're going to focus on how to deal with missing data and to reinforce the concept of tidy data. So far, we've given you complete datasets to work with, however, you will find that real data is often much messier than this, for example, participants may not answer some items in your questionnaire or may not turn up for repeated testing sessions. 
+In this chapter we're going to focus on how to screen datasets for  potential issues and to reinforce the concept of tidy data. So far, we've given you complete datasets to work with, however, you will find that real data is often much messier than this, for example, participants may not answer some items in your questionnaire or there may be errors or implausible values in your dataset. We're also going to show you a different function to make calculating descriptive statistics easier. 
 
 ## Activity 1: Set-up
 
 Do the following. If you need help, consult Chapter \@ref(ref3) and Chapter \@ref(ref2).
 
-* Open R Studio and set the working directory to your Week 6 folder. Ensure the environment is clear. * Open a new R Markdown document and save it in your working directory. Call the file "Week 6".    
-* Download <a href="messy.csv" download>messy.csv</a>and save it in your Week 6 folder. Make sure that you do not change the file name at all.  
-* Delete the default R Markdown welcome text and insert a new code chunk that loads the `tidyverse` using the `library()` function and loads the data into an object named `messy` using `read_csv()`
+* Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear. 
+* Open a new R Markdown document and save it in your working directory. Call the file "Screening Data".    
+* Download <a href="messy.csv" download>messy.csv</a> and save it in your Screening Data folder. Make sure that you do not change the file name at all.  
+* Delete the default R Markdown welcome text and insert a new code chunk that loads the `tidyverse` and `psych` packages using the `library()` function and loads the data into an object named `messy` using `read_csv()`
 
 ```{r echo = FALSE, message=FALSE, warning=FALSE}
 library("tidyverse")
+library("psych")
+library("webex")
 messy <- read_csv("messy.csv")
 ```
 
 ## Activity 2: Look at the data
 
-`messy` is simulated data for an experiment looking at the effect of note-taking on test performance and whether this is affected by being a native speaker. Participants are first given a pre-test to judge their baseline knowledge, then they watch a lecture and take notes. Immediately after the lecture is finished they take another test. Finally, they are tested after a week delay. The dataset has six variables:
+`messy` is simulated data for an experiment looking at the effect of note-taking on test performance and whether this is affected by being a native speaker. Participants are first given a pre-test to judge their baseline knowledge, then they watch a lecture and take notes. Immediately after the lecture is finished they take another test. Finally, they are tested after a week delay. The maximum score for any test is 30. The dataset has six variables:
 
 * `id` = the participant ID number  
+* `age` = the age of the participant
 * `speaker` = if the participant is a native or non-native English speaker  
 * `gender` = if the participant is male, female, or non-binary  
 * `pre` = pre-test score before any notes were taken  
 * `post` = post-test score immediately after the lecture  
 * `delay` = test score after one week delay
 
-As you can see, there are a number of missing values in the columns `speaker` and `gender` (perhaps due to participants not wanting to divulge that information, perhaps due to experimenter error), and `delay` (due to participants not returning to be tested for the final session).
+## Missing data
 
-The best way to get a sense of how many missing data points you have is to use `summary()`. Because `speaker` and `gender` are text rather than numbers, in order to see how many values are missing we first need to convert them to factors.
+The first issue we will cover is missing data. Data can be missing because your participants accidentally didn't fill in a question, it can be missing because they intentionally didn't want to answer, or that they didn't turn up to a final testing session, or it could be that you did something wrong whilst setting up your questionnaire/experiment and it didn't save. Real data frequently contains missing values and it's important that you know how to identify missing data and what you can do with it.
+
+## Activity 3: `summary()`
+
+A good way to get a sense of how many missing data points you have is to use `summary()`. Because `speaker` and `gender` are text rather than numbers, in order to see how many values are missing we first need to convert them to factors.
 
 * Run the below code  
 
 ```{r summary, results='hide'}
 messy <- messy %>%
-  mutate(speaker = as.factor(speaker), # overwrite `speaker` with `speaker` as a factor
+  mutate(speaker = as.factor(speaker), 
          gender = as.factor(gender))
 
 summary(messy)
 ```
 
-As you can see, there are 20 data points missing in each of `speaker`, `gender`, and `delay` (but importantly, this isn't from just 20 participants).There are several different approaches to dealing with missing data. We will cover the most common.
+As you can see, there are 20 data points missing (NAs) in each of `speaker`, `gender`, and `delay` (but importantly, this isn't from just 20 participants).There are several different approaches to dealing with missing data. We will cover the most common.
 
-## Activity 3: Listwise deletion
+## Activity 4: Listwise deletion
 
-One method for dealing with missing data is **listwise deletion**. This approach removes any participant with a single missing value. So if there is missing data in any of the six columns in the dataset, that participant will be removed and you will only be left with complete datasets. We can achieve this using `drop_na`
+One method for dealing with missing data is **listwise deletion**. This approach removes any participant with a single missing value. So if there is missing data in any of the columns in the dataset, that participant will be removed and you will only be left with complete datasets. We can achieve this using `drop_na`
 
 * Run the below code and then view the object.  
 
@@ -75,7 +83,7 @@ mess_corr <- as.data.frame(messy %>% select(pre:delay))
 correlate(mess_corr, test = TRUE)
 ```
 
-## Activity 3: `na.rm = TRUE`
+## Activity 5: `na.rm = TRUE`
 
 When running inferential tests like correlations and t-tests, R will usually know when to ignore missing values. However, if you're calculating descriptive statistics or if you want to calculate the average score of a number of different items, you need to explicitly tell R to ignore the missing values.
 
@@ -110,11 +118,162 @@ summarise(messy,
           )
 ```
 
-There are other options, for example, some researchers will replace missing values with a particular score (e.g., the mean) using `replace_na()` or you might have a cut-off such as participants need to answer at least 80% of all questionnaire items to be included. If you're doing a quantitative dissertation, these are things to discuss with your supervisor. The key thing is to know your data.
+```{r block, type = "danger", eval = FALSE}
 
-## Activity 4: Tidy data  
+It's really important that you think about whether you want to calculate your descriptives from participants that have missing data. For example, if you are calculating the average reaction time from hundreds of trials, a few missing data points won't affect the validity of the mean. However, if you are using a standardised questionnaire that has been validated using complete responses but your participants didn't answer 3/10 questions, it may not be appropriate to calculate a mean score from the remaining data.
+```
 
-For the rest of this chapter we're going to focus on tidy data. You already covered this in Chapter \@ref(gather) when we introduced `gather()` but this is a very common task so it's worth repeating. 
+## Activity 6: Implausible values
+
+A crucial step of data screening is checking for implausible values. What is implausible depends on the data you've collected! `summary()` can also help you out here by looking at the minimum and maximum values.
+
+* Run `summary(messy)` again and look at the minimum and maximum values for each variable. 
+
+* Do the min and max values of `age` look plausible? `r mcq(c("Yes", answer = "No"))`
+* Do the min and max values of `pre` look plausible? `r mcq(c(answer = "Yes", "No"))`
+* Do the min and max values of `post` look plausible? `r mcq(c("Yes", answer = "No"))`
+* Do the min and max values of `delay` look plausible? `r mcq(c(answer = "Yes", "No"))`
+
+`r hide("Explain these answers")`
+```{r eval=FALSE}
+The maximum value for age is 470, this is unlikely to be correct!
+  
+The maximum value for pre, post, and delay should be 30, as we described at the start of the chapter. However, for post, the maximum value is 33 so something is wrong. This is a very important check to do on your data, not just for the raw data but if you've calculated a total score.
+```
+`r unhide()`
+
+## Activity 7: Visualising implausible values
+
+Whilst `summary()` can be useful, another key step is to visualise the data to check for implausible values.
+
+How you do this will depend on the data, and your preferences. You could produce violin-boxplots with the data points on top to check the distributions
+
+```{r fig.cap="Data screening plots", warning = FALSE, message = FALSE}
+messy %>%
+  pivot_longer(cols = c("pre", "post", "delay"), 
+               names_to = "test", 
+               values_to = "score") %>%
+  ggplot(aes(x = test, y = score)) +
+  geom_violin() +
+  geom_boxplot() +
+  geom_jitter(width = .2)
+```
+
+You could also use histograms:
+
+```{r fig.cap="Histograms for data screening", warning = FALSE, message = FALSE}
+ggplot(messy, aes(x = age)) +
+  geom_histogram()
+
+messy %>%
+  pivot_longer(cols = c("pre", "post", "delay"), 
+               names_to = "test", 
+               values_to = "score") %>%
+  ggplot(aes(x = score)) +
+  geom_histogram(binwidth = 1) +
+  facet_wrap(~test)
+```
+
+Whatever method you choose, make sure that you look at your data before trying to work with it and that you know in advance what range your values should take (for example, if your Likert scale is 1-7, you shouldn't have a score of 8, for reaction times, 50ms is unlikely to reflect a real response). 
+
+## Dealing with implausible values or missing data
+
+To remove implausible values you can use `replace` and `mutate`.
+
+* For `age`, we know that we have one very specific data point that is implausible, an age of 470 so we can specify just to replace this one value with NA.
+* For `post`, there are multiple missing values so we specify to replace any data point that is over the maximum plausible value (30) with NA.
+
+```{r}
+messy_screen <-  messy %>% 
+  mutate(age = replace(age, age == 470, NA),
+         post = replace(post, post > 30, NA))
+```
+
+There is no hard and fast rule about what to do with missing data. You should review the missing data to see if there are any patterns, for example, is all the missing data from one condition? Does a single participant have a lot of missing data and should they be removed.
+
+One method of dealing with implausible data is to **impute** the data, i.e., to replace missing data with substituted values. There are many methods of doing this, for example, you can replace missing values with the mean. We won't go into which method you should choose this in this chapter but there's [more information available](https://www.theanalysisfactor.com/seven-ways-to-make-up-data-common-methods-to-imputing-missing-data/) online about the various options if you're interested. The code for imputing missing data is relatively simple and uses `mutate()` and `replace_na()`.
+
+* You can read the below code as "create a new variable named `post_impute` that replaces the values of `post` if they're `NA` with the mean of the values in `post`.
+
+```{r}
+messy_impute <- messy_screen %>%
+  mutate(post_impute = replace_na(post, 
+                                  mean(post, na.rm = TRUE)))
+```
+
+## Alternative descriptive statistics
+
+So far in this book, we've calculated descriptive statistics using `summarise()` from the tidyverse. There's a good reason we've done this - the output of `summarise()` works well with `ggplot()` and the code is very flexible. However, there are other options for producing descriptive statistics that it is helpful to know about.
+
+The `psych` package contains many functions that are useful for psychology research. One of the functions of `psych` is `describe()`.
+
+* Run the below code
+
+```{r eval = FALSE}
+descriptives <- describe(messy)
+descriptives
+```
+
+```{r echo = FALSE, warning = FALSE}
+describe(messy) %>%
+  kableExtra::kable()
+```
+
+`describe()` produces a full set of descriptive statistics, including skew, kurtosis and standard error for the entire dataset! Run `?describe` to see a full explanation of all the statistics it calculates.
+
+You may have noticed when you ran the code you received a number of error messages. This is because `describe()` doesn't know how to deal with the data that is in `id` which has both numbers and letters. 
+
+Additionally, you should see that `id`, `speaker` and `gender` all have a star next to their name. This star signifies that these variables are factors, and so it is not really appropriate to calculate these statistics, but we asked it to apply `describe` to the entire dataset so it's done what you asked.
+
+`describe()` can be used in conjunction with `select()` to remove these variables.
+
+```{r eval = FALSE}
+descriptives2 <- messy %>%
+  select(-id, -speaker, -gender) %>%
+  describe()
+
+descriptives2
+```
+
+```{r}
+descriptives2 <- messy %>%
+  select(-id, -speaker, -gender) %>%
+  describe()
+
+descriptives2 %>%
+  kableExtra::kable()
+```
+
+
+A variant of `describe()` is `describeBy` which works very much like using `summarise()` and `group_by()` together.
+
+```{r eval = FALSE}
+descriptives3 <- messy %>%
+  select(-id, -speaker) %>%
+  describeBy(group = "gender")
+
+descriptives3
+```
+
+```{r eval = TRUE}
+descriptives3 <- messy %>%
+  select(-id, -speaker) %>%
+  describeBy(group = "gender")
+```
+
+If you look in the environment you will see that `descriptives3` is saved as a `List of 3`. What this means is that the table of descriptives for each gender is saved as a separate table, one for female, one for male, one for non-binary. To get access to them individually, you need to use the `object$variable` notation. 
+
+```{r eval = FALSE}
+descriptives3$male
+descriptives3$female
+descriptives3$nonbinary
+```
+
+The output of `describe()` is a little harder to work with in terms of manipulating the table and using the data in subsequent plots and analyses, so we still strongly recommend that you use `summarise()` and `group_by()` for these operations, however, for getting a comprehensive overview of your data, `describe()` is a good function to know about.
+
+## Tidy data  
+
+For the rest of this chapter we're going to focus on tidy data. You already covered this in Chapter \@ref(gather) when we introduced `pivot_longer()` but this is a very common task so it's worth repeating. 
 
 Remember the rules of tidy data:
 
@@ -128,27 +287,17 @@ There are a number of different types of variable you might have in your dataset
 * Independent/predictor variables like experimental condition (but these could also be demographic groups like gender or native speaker status)  
 * Dependent variables like score, reaction time, questionnaire response  
 
-How many variables does `messy` have? `r mcq(c("4", answer = "5", "6", "7"))`
+How many variables does `messy` have? `r mcq(c("4", "5", answer = "6", "7"))`
 
 `r hide("Explain this answer")`
 ```{r, echo = FALSE, results='asis'}
-cat("There are five variables. There are two demographic variables `id` and `gender`. There are two independent variables, `speaker` which is a between-subject variable, and test time which is a within-subject variable. Finally, there is one dependent variable, the participant's score. 
+cat("There are six variables. There are two demographic variables `id`, `age` and `gender`. There are two independent variables, `speaker` which is a between-subject variable, and test time which is a within-subject variable. Finally, there is one dependent variable, the participant's score (which is measured at three time points, but still counts as a single DV). 
     ")
 ```
 `r unhide()`  
 <br>
 
-* Use `gather()` to tidy the `messy` data and save it as a new object named `tidy`. Refer back to Chapter \@ref(gather) if you need help with the code. Your tidy dataset should look like this:
-
-```{r echo = FALSE}
-tidy <- gather(data = messy, key = test_time, value = score, pre:delay)
-
-head(tidy) %>%
-  knitr::kable(digits = 2, align = "c")
-
-```
-
-## Activity 5: Questionnaire data
+## Activity 8: Questionnaire data
 
 One very common type of data you are likely to work with is questionnaire data.
 
@@ -168,11 +317,13 @@ scales <- read_csv("scale_info.csv")
 
 First, we're going to gather up all of the questions into one column using `gather()`.
 
-* Run the below code to gather the data. 
+* Run the below code to transform the data to long-form. 
 
 ```{r gather}
 qdat_tidy <- qdat %>%
-  gather(key = item, value = response, Q1:Q9)
+  pivot_longer(cols = Q1:Q9,
+               names_to = "item", 
+               values_to = "response")
 ```
 
 Next, we want to add in the information in `scales`.
@@ -191,7 +342,7 @@ head(qdat_tidy) %>% knitr::kable(digits = 2)
 
 ## Activity 6: Calculating scale scores
 
-Commonly with questionnaire data you will need to calculate the average response for a scale or a sub-scale for each participant. You can do this using `group_by()` and `summarise()` that you should now be familiar with.
+Commonly with questionnaire data you  need to calculate the average response for a scale or a sub-scale for each participant. You can do this using `group_by()` and `summarise()` that you should now be familiar with.
 
 ```{r scores}
 qdat_scores <- qdat_tidy %>%
@@ -212,12 +363,12 @@ ggplot(qdat_scores, aes(scale, mean_score)) +
 
 ## Activity 7: `spread()` back to wide-form
 
-You may also want to transform the dataset back to wide-form if, for example, you wanted to run correlations between the variables. You can do this using `spread()` a function we haven't used but essentially works like the reverse of `gather()`.
+You may also want to transform the dataset back to wide-form if, for example, you wanted to run correlations between the variables. You can do this using `pivot_wider()` a function we haven't used but essentially works like the reverse of `pivot_longer()`.
 
 ```{r wide}
 qdat_wide <- qdat_scores%>%
-  spread(key = scale, # the values in this column will become the name of the columns
-         value = mean_score) # the values in this column will fill the cells
+  pivot_wider(names_from = "scale", 
+              values_from = "mean_score")
 ```
 
 ```{r echo = FALSE}
@@ -235,6 +386,7 @@ And you're done! This isn't a comprehensive tutorial on every type of dataset yo
 `r hide("Activity 1")`
 ```{r eval=FALSE}
 library("tidyverse")
+library("psych")
 messy <- read_csv("messy.csv")
 ```
 `r unhide()`  
@@ -242,18 +394,7 @@ messy <- read_csv("messy.csv")
 **click the tab to see the solution**
 <br>
 
-### Activity 4
-
-`r hide("Activity 4")`
-```{r eval=FALSE}
-tidy <- gather(data = messy, key = test_time, value = score, pre:delay)
-```
-`r unhide()`  
-
-**click the tab to see the solution**
-<br>
-
-### Activity 5
+### Activity 8
 
 `r hide("Activity 5")`
 ```{r eval=FALSE}
