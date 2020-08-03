@@ -138,10 +138,9 @@ The mean score for `delay` shows as `NA`. This is because R is trying to calcula
 
 
 
-
-```r
-It's really important that you think about whether you want to calculate your descriptives from participants that have missing data. For example, if you are calculating the average reaction time from hundreds of trials, a few missing data points won't affect the validity of the mean. However, if you are using a standardised questionnaire that has been validated using complete responses but your participants didn't answer 3/10 questions, it may not be appropriate to calculate a mean score from the remaining data.
-```
+<div class="danger">
+<p>It’s really important that you think about whether you want to calculate your descriptives from participants that have missing data. For example, if you are calculating the average reaction time from hundreds of trials, a few missing data points won’t affect the validity of the mean. However, if you are using a standardised questionnaire that has been validated using complete responses but your participants didn’t answer 3/10 questions, it may not be appropriate to calculate a mean score from the remaining data.</p>
+</div>
 
 ## Activity 6: Implausible values
 
@@ -186,8 +185,8 @@ messy %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="12-missing-data_files/figure-html/unnamed-chunk-3-1.png" alt="Data screening plots" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-3)Data screening plots</p>
+<img src="12-missing-data_files/figure-html/unnamed-chunk-4-1.png" alt="Data screening plots" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-4)Data screening plots</p>
 </div>
 
 You could also use histograms:
@@ -199,8 +198,8 @@ ggplot(messy, aes(x = age)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="12-missing-data_files/figure-html/unnamed-chunk-4-1.png" alt="Histograms for data screening" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-41)Histograms for data screening</p>
+<img src="12-missing-data_files/figure-html/unnamed-chunk-5-1.png" alt="Histograms for data screening" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-51)Histograms for data screening</p>
 </div>
 
 ```r
@@ -214,8 +213,8 @@ messy %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="12-missing-data_files/figure-html/unnamed-chunk-4-2.png" alt="Histograms for data screening" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-42)Histograms for data screening</p>
+<img src="12-missing-data_files/figure-html/unnamed-chunk-5-2.png" alt="Histograms for data screening" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-52)Histograms for data screening</p>
 </div>
 
 Whatever method you choose, make sure that you look at your data before trying to work with it and that you know in advance what range your values should take (for example, if your Likert scale is 1-7, you shouldn't have a score of 8, for reaction times, 50ms is unlikely to reflect a real response). 
@@ -718,7 +717,7 @@ ggplot(qdat_scores, aes(scale, mean_score)) +
 <p class="caption">(\#fig:img-scale)Boxplots of scale scores</p>
 </div>
 
-## Activity 7: `spread()` back to wide-form
+## Activity 7: `pivot_wider()` back to wide-form
 
 You may also want to transform the dataset back to wide-form if, for example, you wanted to run correlations between the variables. You can do this using `pivot_wider()` a function we haven't used but essentially works like the reverse of `pivot_longer()`.
 
@@ -805,7 +804,7 @@ messy <- read_csv("messy.csv")
 ### Activity 8
 
 
-<div class='solution'><button>Activity 5</button>
+<div class='solution'><button>Activity 8</button>
 
 
 ```r

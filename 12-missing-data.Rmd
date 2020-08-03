@@ -118,7 +118,7 @@ summarise(messy,
           )
 ```
 
-```{r block, type = "danger", eval = FALSE}
+```{block, type = "danger", eval = FALSE}
 
 It's really important that you think about whether you want to calculate your descriptives from participants that have missing data. For example, if you are calculating the average reaction time from hundreds of trials, a few missing data points won't affect the validity of the mean. However, if you are using a standardised questionnaire that has been validated using complete responses but your participants didn't answer 3/10 questions, it may not be appropriate to calculate a mean score from the remaining data.
 ```
@@ -361,7 +361,7 @@ ggplot(qdat_scores, aes(scale, mean_score)) +
   geom_boxplot()
 ```
 
-## Activity 7: `spread()` back to wide-form
+## Activity 7: `pivot_wider()` back to wide-form
 
 You may also want to transform the dataset back to wide-form if, for example, you wanted to run correlations between the variables. You can do this using `pivot_wider()` a function we haven't used but essentially works like the reverse of `pivot_longer()`.
 
@@ -396,7 +396,7 @@ messy <- read_csv("messy.csv")
 
 ### Activity 8
 
-`r hide("Activity 5")`
+`r hide("Activity 8")`
 ```{r eval=FALSE}
 # loading in the data
 qdat <- read_csv("questionnaire_data.csv")
