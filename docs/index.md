@@ -1,6 +1,6 @@
 --- 
 title: "MSc Conversion in Psychological Studies"
-date: "2020-08-03"
+date: "2020-09-14"
 bibliography:
 - book.bib
 - packages.bib
