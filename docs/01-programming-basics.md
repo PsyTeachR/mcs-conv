@@ -39,6 +39,7 @@ You will learn more about how to use the features included in R Studio throughou
 
 When you first open up R Studio you won't see a script like above, there will just be a single pane on the left, which is the console. You can write code in the console to test it out, but it won't save anywhere. For this chapter, we'll use the console to show you some simple code examples but moving forward you'll save your code in a script file, and you'll see the extra pane appear.
 
+
 ### Functions and arguments
 
 **Functions** in R execute specific tasks and normally take a number of **arguments** (if you're into linguistics you might want to think as these as verbs that require a subject and an object). You can look up all the arguments that a function takes by using the help documentation by using the format `?function`. Some arguments are required, and some are optional. Optional arguments will often use a default (normally specified in the help documentation) if you do not enter any value.
@@ -279,6 +280,14 @@ If you've been writing a lot of code you may find that the environment pane (or 
 <p class="caption">(\#fig:img-broom)Clearing the workspace</p>
 </div>
 
+### Global options
+
+By default, when you open R Studio it will show you what you were last working on, including your code and any objects you have created. This might sound helpful, but actually it tends to cause more problems than it's worth because it means that you risk accidentally using an old version of an object. We recommend changing the settings so that each time you start R Studio, it opens a fresh copy. You can do this by clicking `Tools` -  `Global Options` and then deselecting boxes so that it looks like the below.
+
+<div class="figure" style="text-align: center">
+<img src="images/global_options.jpg" alt="Global options" width="100%" />
+<p class="caption">(\#fig:img-options)Global options</p>
+</div>
 ### R sessions
 
 When you open up R and start writing code, loading packages, and creating objects, you're doing so in a new **session**. In addition to clearing the workspace, it can sometimes be useful to start a new session. This will happen automatically each time you start R, however, if you find your code isn't working and you can't figure out why, it might be worth starting a new session. This will clear the environment and detach all loaded packages - think of it like restarting your phone.
