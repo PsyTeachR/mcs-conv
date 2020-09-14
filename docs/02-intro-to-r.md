@@ -6,9 +6,9 @@ There are nine activities in total for this chapter, but don't worry, they are b
 
 If you want to load data into R, or save the output of what you've created (which you almost always will want to do), you first need to tell R where the **working directory** is. All this means is that we tell R where the files we need (such as raw data) are located and where we want to save any files you have created. Think of it just like when you have different subjects, and you have separate folders for each topic e.g. biology, history and so on. When working with R, it's useful to have all the data sets and files you need in one folder. 
 
-We recommend making a new folder called "Research Methods R" with sub-folders for each chapter and saving any data, scripts, and portfolio files for each chapter into these folders. We suggest that you save your work onto a cloud storage server like OneDrive so that you never lose your work.
+We recommend making a new folder called "Research Methods R" with sub-folders for each chapter and saving any data, scripts, and portfolio files for each chapter into these folders. If you're using R on your laptop rather than the server, we suggest that you save your work onto a cloud storage server like OneDrive so that you never lose your work.
 
-* Choose a location for your book work and then create the necessary folders for each chapter.
+* Choose a location for your book work and then create the necessary folders for each chapter. If you're using the server, you can do this in the file pane by clicking `New folder`.
 
 <div class="warning">
 <p>Whatever you do, don’t call the folder your keep your R work in “R”. If you do this, sometimes R has an identity crisis and won’t save or load your files properly.</p>
@@ -16,7 +16,7 @@ We recommend making a new folder called "Research Methods R" with sub-folders fo
 
 ## Activity 2: Set the working directory
 
-Once you have created your folders, open R Studio. To set the working directory click `Session` -> `Set Working Directory` -> `Choose Directory` and then select the relevant folder for this chapter as your working directory. 
+Once you have created your folders you can set the working directory by clicking `Session` -> `Set Working Directory` -> `Choose Directory` and then select the relevant folder for this chapter as your working directory. 
 
 <div class="figure" style="text-align: center">
 <img src="images/working-dir.png" alt="Setting the working directory" width="100%" />
@@ -128,7 +128,7 @@ Nearly finished! As our final step we are going to "knit" our file. This simply 
 
 As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created. 
 
-**My name is Emily and I am 35 years old. It is 342 days until my birthday.**
+**My name is Emily and I am 35 years old. It is 300 days until my birthday.**
 
 We're not going to use this function very often in the rest of the course but hopefully you can see just how useful this would be when writing up a report with lots of numbers! R Markdown is an incredibly powerful and flexible format - this book was written using it! If you want to push yourself with R, additional functions and features of R Markdown would be a good place to start.
 
@@ -136,7 +136,7 @@ Before we finish, there are a few final things to note about knitting that will 
 
 * R Markdown will only knit if your code works - this is a good way of checking for the portfolio assignments whether you've written legal code!  
 * You can choose to knit to a Word document rather than HTML. This can be useful for e.g., sharing with others, however, it may lose some functionality and it probably won't look as good so we'd recommend always knitting to HTML.  
-* You can choose to knit to PDF, however, this requires an LaTex installation and is quite complicated. If you don't already know what LaTex is and how to use it, do not knit to PDF. If you do know how to use LaTex, you don't need us to give you instructions! 
+* You can choose to knit to PDF, however, unless you're using the server this requires an LaTex installation and is quite complicated. If you don't already know what LaTex is and how to use it, do not knit to PDF. If you do know how to use LaTex, you don't need us to give you instructions! 
 * R will automatically open the knitted HTML file in the viewer, however, you can also navigate to the folder it is stored in and open the HTML file in your web browser (e.g., Chrome or Firefox).  
 
 ## Activity 9: Make R your own
@@ -149,4 +149,4 @@ And you're done! On your very first time using R you've not only written functio
 
 The key thing we want you to take away from this chapter is that R isn't scary. It might be very new to a lot of you, but we're going to take you through it step-by-step. You'll be amazed at how quickly you can start producing professional-looking data visualisations and analysis.
 
-If you have any questions about anything contained in this chapter or in Programming Basics, please use Teams.
+If you have any questions about anything contained in this chapter or in Programming Basics, please use the Research Methods channel on Teams.
