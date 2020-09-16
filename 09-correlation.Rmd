@@ -33,11 +33,9 @@ To actually carry out a correlation is very simple and we will show you that tod
 
 In this chapter we will use the examples in Miller and Haden (2013), Chapter 11, looking at the relationship between four variables: reading ability, intelligence (IQ), the number of minutes per week spent reading at home (Home); and the number of minutes per week spent watching TV at home (TV). You can see in this situation that it would be unethical to manipulate these variables so measuring them as they exist in the environment is most appropriate; hence the use of correlations.
 
-Do the following. If you need help, consult Chapter \@ref(ref3) and Chapter \@(ref2).
-
 * Open R Studio and set the working directory to your Correlation folder. Ensure the environment is clear.    
 * Open a new R Markdown document and save it in your working directory. Call the file "Correlation".    
-* Download <a href="MillerHadenData.csv" download>MillerHadenData.csv</a> and save it in your Correlation folder. Make sure that you do not change the file name at all.  
+* Download <a href="MillerHadenData.csv" download>MillerHadenData.csv</a> and save it in your Correlation folder and/or upload to to the R server. Make sure that you do not change the file name at all.  
 * If you are working on your own computer, install the packages `Hmisc`, `car`, and `broom`. Remember **do not install packages on university computers, they are already installed**.
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `broom`, `car`, `lsr`, `Hmisc`, and `tidyverse` (in that order) using the `library()` function and loads the data into an object named `mh` using `read_csv()`
 

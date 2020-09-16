@@ -1,4 +1,4 @@
-# Programming basics
+# Programming basics {#ref3}
 
 In this chapter, we will cover how to use R and RStudio at the University of Glasgow as well as some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get help. Those of you who have no programming experience should find this chapter particularly helpful, however, even if you've used R before there may be some helpful hints and tips so please make sure you read through this chapter before the moving on.
 
@@ -14,7 +14,7 @@ There are two ways you can use R for psychology. First, you can use a online ver
 
 The advantage of using the R server is that you do not need to install anything on your machine and all of the extra packages and functions you need will already be installed so you will have fewer potential technical issues. The advantage to installing R on your laptop is that you do not need to be connected to the internet to use it, and it is easier to save and manage your files. Unless you do not have reliable access to the internet **we strongly recommend that you use the R server**.
 
-With the exception of how they save files, both versions are identical and we will show you how to use both in this book.
+With the exception of how they save files, both versions are identical and you can user either for this book.
 
 ### R server
 
