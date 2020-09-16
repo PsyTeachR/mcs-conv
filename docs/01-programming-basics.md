@@ -1,4 +1,4 @@
-# Programming basics
+# Programming basics {#ref3}
 
 In this chapter, we will cover how to use R and RStudio at the University of Glasgow as well as some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get help. Those of you who have no programming experience should find this chapter particularly helpful, however, even if you've used R before there may be some helpful hints and tips so please make sure you read through this chapter before the moving on.
 
@@ -14,7 +14,7 @@ There are two ways you can use R for psychology. First, you can use a online ver
 
 The advantage of using the R server is that you do not need to install anything on your machine and all of the extra packages and functions you need will already be installed so you will have fewer potential technical issues. The advantage to installing R on your laptop is that you do not need to be connected to the internet to use it, and it is easier to save and manage your files. Unless you do not have reliable access to the internet **we strongly recommend that you use the R server**.
 
-With the exception of how they save files, both versions are identical and we will show you how to use both in this book.
+With the exception of how they save files, both versions are identical and you can user either for this book.
 
 ### R server
 
@@ -38,6 +38,7 @@ You will learn more about how to use the features included in R Studio throughou
 ### Console vs. scripts
 
 When you first open up R Studio you won't see a script like above, there will just be a single pane on the left, which is the console. You can write code in the console to test it out, but it won't save anywhere. For this chapter, we'll use the console to show you some simple code examples but moving forward you'll save your code in a script file, and you'll see the extra pane appear.
+
 
 ### Functions and arguments
 
@@ -244,7 +245,7 @@ mean(data)
 
 ```
 ## [1] 45
-## Time difference of 109 days
+## Time difference of 107 days
 ## [1] 17.66644
 ```
 
@@ -279,6 +280,14 @@ If you've been writing a lot of code you may find that the environment pane (or 
 <p class="caption">(\#fig:img-broom)Clearing the workspace</p>
 </div>
 
+### Global options
+
+By default, when you open R Studio it will show you what you were last working on, including your code and any objects you have created. This might sound helpful, but actually it tends to cause more problems than it's worth because it means that you risk accidentally using an old version of an object. We recommend changing the settings so that each time you start R Studio, it opens a fresh copy. You can do this by clicking `Tools` -  `Global Options` and then deselecting boxes so that it looks like the below.
+
+<div class="figure" style="text-align: center">
+<img src="images/global_options.jpg" alt="Global options" width="100%" />
+<p class="caption">(\#fig:img-options)Global options</p>
+</div>
 ### R sessions
 
 When you open up R and start writing code, loading packages, and creating objects, you're doing so in a new **session**. In addition to clearing the workspace, it can sometimes be useful to start a new session. This will happen automatically each time you start R, however, if you find your code isn't working and you can't figure out why, it might be worth starting a new session. This will clear the environment and detach all loaded packages - think of it like restarting your phone.

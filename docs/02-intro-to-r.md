@@ -23,6 +23,17 @@ Once you have created your folders you can set the working directory by clicking
 <p class="caption">(\#fig:img-working-dir)Setting the working directory</p>
 </div>
 
+## Activity 2b: Upload files to the server
+
+* Download <a href="ahi-cesd.csv" download>`ahi-cesd.csv`</a> and <a href="participant-info.csv" download>`participant-info.csv`</a> into the chapter folder on your computer. If you are working on the server, you will need to uploaded the files to the server as well.  
+
+The main disadvantage to using the R server is that you will need to upload and download any files you are working on to and from the server (if you are using a local installation on your laptop you can skip this step).
+
+* Log on to the [R server](https://rstudio.psy.gla.ac.uk/)
+* Click `Upload` then `Browse`and choose the folder for the chapter you're working on.
+* Click `Choose file` and go and find the data you want to upload.
+
+
 ## R Markdown for R book work and portfolio assignments
 
 For the R book work and portfolio assignments you will use a worksheet format called R Markdown (abbreviated as Rmd) which is a great way to create dynamic documents with embedded chunks of code. These documents are self-contained and fully reproducible (if you have the necessary data, you should be able to run someone else's analyses with the click of a button) which makes it very easy to share. This is an important part of your open science training as one of the reasons we are using R Studio is that it enables us to share open and reproducible information. Using these worksheets enables you to keep a record of all the code you write during this course, and when it comes time for the portfolio assignments, we can give you a task you can and then fill in the required code. 
@@ -128,7 +139,7 @@ Nearly finished! As our final step we are going to "knit" our file. This simply 
 
 As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created. 
 
-**My name is Emily and I am 35 years old. It is 300 days until my birthday.**
+**My name is Emily and I am 35 years old. It is 298 days until my birthday.**
 
 We're not going to use this function very often in the rest of the course but hopefully you can see just how useful this would be when writing up a report with lots of numbers! R Markdown is an incredibly powerful and flexible format - this book was written using it! If you want to push yourself with R, additional functions and features of R Markdown would be a good place to start.
 
