@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-09-16" />
+<meta name="date" content="2020-09-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -165,8 +165,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="ref2.html"><a href="ref2.html"><i class="fa fa-check"></i><b>2</b> Intro to R</a><ul>
 <li class="chapter" data-level="2.1" data-path="ref2.html"><a href="ref2.html#activity-1-create-the-working-directory"><i class="fa fa-check"></i><b>2.1</b> Activity 1: Create the working directory</a></li>
-<li class="chapter" data-level="2.2" data-path="ref2.html"><a href="ref2.html#activity-2-set-the-working-directory"><i class="fa fa-check"></i><b>2.2</b> Activity 2: Set the working directory</a></li>
-<li class="chapter" data-level="2.3" data-path="ref2.html"><a href="ref2.html#activity-2b-upload-files-to-the-server"><i class="fa fa-check"></i><b>2.3</b> Activity 2b: Upload files to the server</a></li>
+<li class="chapter" data-level="2.2" data-path="ref2.html"><a href="ref2.html#activity-1b-mirror-the-directory-on-the-server"><i class="fa fa-check"></i><b>2.2</b> Activity 1b: Mirror the directory on the server</a></li>
+<li class="chapter" data-level="2.3" data-path="ref2.html"><a href="ref2.html#activity-2-set-the-working-directory"><i class="fa fa-check"></i><b>2.3</b> Activity 2: Set the working directory</a></li>
 <li class="chapter" data-level="2.4" data-path="ref2.html"><a href="ref2.html#r-markdown-for-r-book-work-and-portfolio-assignments"><i class="fa fa-check"></i><b>2.4</b> R Markdown for R book work and portfolio assignments</a></li>
 <li class="chapter" data-level="2.5" data-path="ref2.html"><a href="ref2.html#activity-3-open-and-save-a-new-r-markdown-document"><i class="fa fa-check"></i><b>2.5</b> Activity 3: Open and save a new R Markdown document</a></li>
 <li class="chapter" data-level="2.6" data-path="ref2.html"><a href="ref2.html#activity-4-create-a-new-code-chunk"><i class="fa fa-check"></i><b>2.6</b> Activity 4: Create a new code chunk</a></li>
@@ -630,7 +630,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If you want to load data into R, or save the output of what you’ve created (which you almost always will want to do), you first need to tell R where the <strong>working directory</strong> is. All this means is that we tell R where the files we need (such as raw data) are located and where we want to save any files you have created. Think of it just like when you have different subjects, and you have separate folders for each topic e.g. biology, history and so on. When working with R, it’s useful to have all the data sets and files you need in one folder.</p>
 <p>We recommend making a new folder called “Research Methods R” with sub-folders for each chapter and saving any data, scripts, and portfolio files for each chapter into these folders. If you’re using R on your laptop rather than the server, we suggest that you save your work onto a cloud storage server like OneDrive so that you never lose your work.</p>
 <ul>
-<li>Choose a location for your book work and then create the necessary folders for each chapter. If you’re using the server, you can do this in the file pane by clicking <code>New folder</code>.</li>
+<li>Choose a location for your book work and then create the necessary folders for each chapter.</li>
 </ul>
 <div class="warning">
 <p>
@@ -638,8 +638,23 @@ Whatever you do, don’t call the folder your keep your R work in “R”. If yo
 </p>
 </div>
 </div>
+<div id="activity-1b-mirror-the-directory-on-the-server" class="section level2">
+<h2><span class="header-section-number">2.2</span> Activity 1b: Mirror the directory on the server</h2>
+<p>The main disadvantage to using the R server is that you will need to upload and download any files you are working on to and from the server (if you are using a local installation on your laptop you can skip this step).</p>
+<ul>
+<li>Log on to the <a href="https://rstudio.psy.gla.ac.uk/">R server</a></li>
+<li>In the file pane click <code>New folder</code> and create the same structure you created on your computer.</li>
+</ul>
+<p>Going forward throughout this book, you can either download files to your local computer or, if you’re using the server, you’ll do an extra step where you also upload them to the sever. We’re not going to use any data files in this session but let’s try an example to make it clear how you get the data files on to the server.</p>
+<ul>
+<li>Download <a href="ahi-cesd.csv" download><code>ahi-cesd.csv</code></a> and <a href="participant-info.csv" download><code>participant-info.csv</code></a> into the chapter folder on your computer. If you are working on the server, you will need to uploaded the files to the server as well.<br />
+</li>
+<li>Click <code>Upload</code> then <code>Browse</code>and choose the folder for the chapter you’re working on.</li>
+<li>Click <code>Choose file</code> and go and find the data you want to upload.</li>
+</ul>
+</div>
 <div id="activity-2-set-the-working-directory" class="section level2">
-<h2><span class="header-section-number">2.2</span> Activity 2: Set the working directory</h2>
+<h2><span class="header-section-number">2.3</span> Activity 2: Set the working directory</h2>
 <p>Once you have created your folders you can set the working directory by clicking <code>Session</code> -&gt; <code>Set Working Directory</code> -&gt; <code>Choose Directory</code> and then select the relevant folder for this chapter as your working directory.</p>
 <div class="figure" style="text-align: center"><span id="fig:img-working-dir"></span>
 <img src="images/working-dir.png" alt="Setting the working directory" width="100%" />
@@ -647,18 +662,6 @@ Whatever you do, don’t call the folder your keep your R work in “R”. If yo
 Figure 2.1: Setting the working directory
 </p>
 </div>
-</div>
-<div id="activity-2b-upload-files-to-the-server" class="section level2">
-<h2><span class="header-section-number">2.3</span> Activity 2b: Upload files to the server</h2>
-<ul>
-<li>Download <a href="ahi-cesd.csv" download><code>ahi-cesd.csv</code></a> and <a href="participant-info.csv" download><code>participant-info.csv</code></a> into the chapter folder on your computer. If you are working on the server, you will need to uploaded the files to the server as well.</li>
-</ul>
-<p>The main disadvantage to using the R server is that you will need to upload and download any files you are working on to and from the server (if you are using a local installation on your laptop you can skip this step).</p>
-<ul>
-<li>Log on to the <a href="https://rstudio.psy.gla.ac.uk/">R server</a></li>
-<li>Click <code>Upload</code> then <code>Browse</code>and choose the folder for the chapter you’re working on.</li>
-<li>Click <code>Choose file</code> and go and find the data you want to upload.</li>
-</ul>
 </div>
 <div id="r-markdown-for-r-book-work-and-portfolio-assignments" class="section level2">
 <h2><span class="header-section-number">2.4</span> R Markdown for R book work and portfolio assignments</h2>
@@ -750,7 +753,7 @@ Figure 2.7: Slightly better method of running code
 <h2><span class="header-section-number">2.11</span> Activity 8: Knitting your file</h2>
 <p>Nearly finished! As our final step we are going to “knit” our file. This simply means that we’re going to compile our code into a document that is more presentable. To do this click <code>Knit</code> -&gt; <code>Knit to HMTL</code>. R Markdown will create a new HTML document and it will automatically save this file in your working directory.</p>
 <p>As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created.</p>
-<p><strong>My name is Emily and I am 35 years old. It is 298 days until my birthday.</strong></p>
+<p><strong>My name is Emily and I am 35 years old. It is 294 days until my birthday.</strong></p>
 <p>We’re not going to use this function very often in the rest of the course but hopefully you can see just how useful this would be when writing up a report with lots of numbers! R Markdown is an incredibly powerful and flexible format - this book was written using it! If you want to push yourself with R, additional functions and features of R Markdown would be a good place to start.</p>
 <p>Before we finish, there are a few final things to note about knitting that will be useful for the portfolio and quantitative project:</p>
 <ul>

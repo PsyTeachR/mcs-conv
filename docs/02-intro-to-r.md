@@ -8,11 +8,25 @@ If you want to load data into R, or save the output of what you've created (whic
 
 We recommend making a new folder called "Research Methods R" with sub-folders for each chapter and saving any data, scripts, and portfolio files for each chapter into these folders. If you're using R on your laptop rather than the server, we suggest that you save your work onto a cloud storage server like OneDrive so that you never lose your work.
 
-* Choose a location for your book work and then create the necessary folders for each chapter. If you're using the server, you can do this in the file pane by clicking `New folder`.
+* Choose a location for your book work and then create the necessary folders for each chapter.
 
 <div class="warning">
 <p>Whatever you do, don’t call the folder your keep your R work in “R”. If you do this, sometimes R has an identity crisis and won’t save or load your files properly.</p>
 </div>
+
+
+## Activity 1b: Mirror the directory on the server
+
+The main disadvantage to using the R server is that you will need to upload and download any files you are working on to and from the server (if you are using a local installation on your laptop you can skip this step).
+
+* Log on to the [R server](https://rstudio.psy.gla.ac.uk/)
+* In the file pane click `New folder` and create the same structure you created on your computer.
+
+Going forward throughout this book, you can either download files to your local computer or, if you're using the server, you'll do an extra step where you also upload them to the sever. We're not going to use any data files in this session but let's try an example to make it clear how you get the data files on to the server.
+
+* Download <a href="ahi-cesd.csv" download>`ahi-cesd.csv`</a> and <a href="participant-info.csv" download>`participant-info.csv`</a> into the chapter folder on your computer. If you are working on the server, you will need to uploaded the files to the server as well.  
+* Click `Upload` then `Browse`and choose the folder for the chapter you're working on.
+* Click `Choose file` and go and find the data you want to upload.
 
 ## Activity 2: Set the working directory
 
@@ -22,17 +36,6 @@ Once you have created your folders you can set the working directory by clicking
 <img src="images/working-dir.png" alt="Setting the working directory" width="100%" />
 <p class="caption">(\#fig:img-working-dir)Setting the working directory</p>
 </div>
-
-## Activity 2b: Upload files to the server
-
-* Download <a href="ahi-cesd.csv" download>`ahi-cesd.csv`</a> and <a href="participant-info.csv" download>`participant-info.csv`</a> into the chapter folder on your computer. If you are working on the server, you will need to uploaded the files to the server as well.  
-
-The main disadvantage to using the R server is that you will need to upload and download any files you are working on to and from the server (if you are using a local installation on your laptop you can skip this step).
-
-* Log on to the [R server](https://rstudio.psy.gla.ac.uk/)
-* Click `Upload` then `Browse`and choose the folder for the chapter you're working on.
-* Click `Choose file` and go and find the data you want to upload.
-
 
 ## R Markdown for R book work and portfolio assignments
 
@@ -139,7 +142,7 @@ Nearly finished! As our final step we are going to "knit" our file. This simply 
 
 As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created. 
 
-**My name is Emily and I am 35 years old. It is 298 days until my birthday.**
+**My name is Emily and I am 35 years old. It is 294 days until my birthday.**
 
 We're not going to use this function very often in the rest of the course but hopefully you can see just how useful this would be when writing up a report with lots of numbers! R Markdown is an incredibly powerful and flexible format - this book was written using it! If you want to push yourself with R, additional functions and features of R Markdown would be a good place to start.
 
