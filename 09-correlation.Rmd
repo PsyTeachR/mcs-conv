@@ -196,7 +196,7 @@ Finally we will run the correlation using the `cor.test()` function.  Remember t
 * the column name of Variable 1
 * the column name of Variable 2
 * the type of correlation you want to run: e.g. `pearson`, `spearman`
-* the type of NHST tail you want to run: e.g. `one.sided`, `two.sided`
+* the type of NHST tail you want to run: e.g. `"less"`,`"greater"1`, `"two.sided"`
 
 For example, if your data is stored in `dat` and you want to do a two-sided pearson correlation of the variables (columns) `X` and `Y`, then you would do:
 
