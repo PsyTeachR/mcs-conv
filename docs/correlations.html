@@ -810,7 +810,7 @@ Explain these answers
 <li>the column name of Variable 1</li>
 <li>the column name of Variable 2</li>
 <li>the type of correlation you want to run: e.g. <code>pearson</code>, <code>spearman</code></li>
-<li>the type of NHST tail you want to run: e.g. <code>one.sided</code>, <code>two.sided</code></li>
+<li>the type of NHST tail you want to run: e.g. <code>"less"</code>,<code>"greater"1</code>, <code>"two.sided"</code></li>
 </ul>
 <p>For example, if your data is stored in <code>dat</code> and you want to do a two-sided pearson correlation of the variables (columns) <code>X</code> and <code>Y</code>, then you would do:</p>
 <div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="correlations.html#cb136-1"></a><span class="kw">cor.test</span>(dat<span class="op">$</span>X, dat<span class="op">$</span>Y, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="dt">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
