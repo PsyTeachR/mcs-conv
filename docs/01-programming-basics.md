@@ -18,7 +18,7 @@ With the exception of how they save files, both versions are identical and you c
 
 ### R server
 
-To access the R server, [click here](https://rstudio.psy.gla.ac.uk/). Please note that the R server is only for use by students and staff in the School of Psychology and Institute for Neuroscience and Psychology. Sign in to the R server with your usual GUID and password.
+The R server is available for students on [PSYCH5080](https://moodle.gla.ac.uk/mod/url/view.php?id=1878856), [PSYCH5088](https://moodle.gla.ac.uk/mod/url/view.php?id=1878861), and [PSYCH5086](https://moodle.gla.ac.uk/mod/url/view.php?id=1878873). Please note that the R server is only for use by students and staff in the School of Psychology and Institute for Neuroscience and Psychology. Sign in to the R server with your usual GUID and password.
 
 ### Installing R on your computer
 
@@ -245,7 +245,7 @@ mean(data)
 
 ```
 ## [1] 45
-## Time difference of 103 days
+## Time difference of 92 days
 ## [1] 17.66644
 ```
 
