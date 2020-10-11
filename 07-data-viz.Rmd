@@ -38,16 +38,14 @@ knitr::include_graphics("images/layers.png")
 
 ## Activity 2: Set-up
 
-We will use the same data files as in Data Wrangling 3:
+We will use the same data files as in Loading Data when you uploaded files to the server. This data contains happiness and depression scores:
 
-* <a href="responses.csv" download>responses.csv</a> 
-* <a href="qformats.csv" download>qformats.csv</a> 
-* <a href="scoring.csv" download>scoring.csv</a> 
-* <a href="pinfo.csv" download>pinfo.csv</a>
+* <a href="ahi-cesd.csv" download>ahi-cesd.csv</a> 
+* <a href="participant-info.csv" download>participant-info.csv</a>
 
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.  
 * Open a new R Markdown document and save it in your working directory. Call the file "Intro to Data Viz".    
-* Download the four .csv files above and save them in your chapter folder. Make sure that you do not change the file names at all.
+* Download the two .csv files above and save them in your chapter folder. Make sure that you do not change the file names at all.
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the package `tidyverse` using the `library()` function. 
 * Type and run the below code to load the `tidyverse` package and to load in the data files in to the Activity 2 code chunk. 
 
