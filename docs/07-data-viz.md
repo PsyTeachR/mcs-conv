@@ -4,15 +4,15 @@
 
 Which function(s) would you use to approach each of the following problems?
 
-* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>mutate()</option> <option>group_by()</option> <option>arrange()</option> <option>select()</option> <option>filter()</option> <option>summarise()</option></select> function.
+* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>select()</option> <option>arrange()</option> <option>mutate()</option> <option>group_by()</option> <option>summarise()</option> <option>filter()</option></select> function.
 
-* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>summarise()</option> <option>arrange()</option> <option>group_by()</option> <option>filter()</option> <option>select()</option> <option>mutate()</option></select> function.
+* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>mutate()</option> <option>group_by()</option> <option>filter()</option> <option>select()</option> <option>arrange()</option> <option>summarise()</option></select> function.
 
-* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>filter()</option> <option>summarise()</option> <option>mutate()</option> <option>arrange()</option> <option>select()</option> <option>group_by()</option></select> function.
+* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>summarise()</option> <option>group_by()</option> <option>arrange()</option> <option>select()</option> <option>mutate()</option> <option>filter()</option></select> function.
 
-* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>group_by() and arrange()</option> <option>arrange() and mutate()</option> <option>group_by() and summarise()</option> <option>filter() and select()</option></select> functions.
+* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>group_by() and summarise()</option> <option>arrange() and mutate()</option> <option>group_by() and arrange()</option> <option>filter() and select()</option></select> functions.
 
-* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["mutate() and filter()","arrange() and select()"]'> <option></option> <option>group_by() and mutate()</option> <option>mutate() and filter()</option> <option>select() and summarise()</option> <option>arrange() and select()</option></select> functions.
+* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["arrange() and select()","mutate() and filter()"]'> <option></option> <option>arrange() and select()</option> <option>mutate() and filter()</option> <option>group_by() and mutate()</option> <option>select() and summarise()</option></select> functions.
 
 ### Data visualisation
 
@@ -37,16 +37,14 @@ Being able to visualise our variables, and relationships between our variables, 
 
 ## Activity 2: Set-up
 
-We will use the same data files as in Data Wrangling 3:
+We will use the same data files as in Loading Data when you uploaded files to the server. This data contains happiness and depression scores:
 
-* <a href="responses.csv" download>responses.csv</a> 
-* <a href="qformats.csv" download>qformats.csv</a> 
-* <a href="scoring.csv" download>scoring.csv</a> 
-* <a href="pinfo.csv" download>pinfo.csv</a>
+* <a href="ahi-cesd.csv" download>ahi-cesd.csv</a> 
+* <a href="participant-info.csv" download>participant-info.csv</a>
 
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.  
 * Open a new R Markdown document and save it in your working directory. Call the file "Intro to Data Viz".    
-* Download the four .csv files above and save them in your chapter folder. Make sure that you do not change the file names at all.
+* Download the two .csv files above and save them in your chapter folder. Make sure that you do not change the file names at all.
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the package `tidyverse` using the `library()` function. 
 * Type and run the below code to load the `tidyverse` package and to load in the data files in to the Activity 2 code chunk. 
 
