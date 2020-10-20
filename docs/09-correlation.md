@@ -28,6 +28,7 @@ In this chapter we will use the examples in Miller and Haden (2013), Chapter 11,
 * Open R Studio and set the working directory to your Correlation folder. Ensure the environment is clear.    
 * Open a new R Markdown document and save it in your working directory. Call the file "Correlation".    
 * Download <a href="MillerHadenData.csv" download>MillerHadenData.csv</a> and save it in your Correlation folder and/or upload to to the R server. Make sure that you do not change the file name at all.  
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * If you are working on your own computer, install the packages `Hmisc`, `car`, and `broom`. Remember **do not install packages on university computers, they are already installed**.
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `broom`, `car`, `lsr`, `Hmisc`, and `tidyverse` (in that order) using the `library()` function and loads the data into an object named `mh` using `read_csv()`
 
@@ -239,7 +240,7 @@ You should now have a tibble called `results` that gives you the output of the c
 
 Look at `results`and then with your group, answer the following questions:
 
-1. What is the value of Pearson's *r* to 2 decimal places? <input class='solveme nospaces' size='20' data-answer='[".45"]'/>
+1. What is the value of Pearson's *r* to 2 decimal places? <input class='solveme nospaces' size='20' data-answer='[".45","0.45"]'/>
 2. The direction of the relationship between Ability and IQ is: <select class='solveme' data-answer='["positive"]'> <option></option> <option>positive</option> <option>negative</option> <option>no relationship</option></select>
 3. The strength of the relationship between Ability and IQ is: <select class='solveme' data-answer='["medium"]'> <option></option> <option>strong</option> <option>medium</option> <option>weak</option></select>
 4. Based on $\alpha = .05$ the relationship between Ability and IQ is: <select class='solveme' data-answer='["significant"]'> <option></option> <option>significant</option> <option>not significant</option></select>

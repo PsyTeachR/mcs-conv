@@ -33,6 +33,7 @@ But the expressive power of regression allows us to do this all within a single 
 * Open R Studio and set the working directory to your Week 13 folder. Ensure the environment is clear.    
 * Open a new R Markdown document and save it in your working directory. Call the file "Week 13".    
 * Download <a href="wellbeing.csv" download>wellbeing.csv</a>, <a href="participant_info.csv" download>participant_info.csv</a> and <a href="screen_time.csv" download>screen_time.csv</a> and save them in your Week 13 folder. Make sure that you do not change the file names at all.    
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads `pwr`, `car`, `broom`, and `tidyverse` using the `library()` function.
 * Load the CSV datasets into variables called `pinfo`, `wellbeing` and `screen` using `read_csv()`.
 

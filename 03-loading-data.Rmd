@@ -22,6 +22,7 @@ Before we begin working with the data we need to do some set-up. If you need hel
 
 * Download <a href="ahi-cesd.csv" download>`ahi-cesd.csv`</a> and <a href="participant-info.csv" download>`participant-info.csv`</a> into your chapter folder. If you are working on the server, you will need to uploaded the files to the server as well.  
 * Open R and ensure the environment is clear.
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Set the working directory to your chapter folder.  
 * Open a new R Markdown document and save it in your working directory. Call the file "Loading Data".    
 * Delete the default R Markdown welcome text and insert a new code chunk.  

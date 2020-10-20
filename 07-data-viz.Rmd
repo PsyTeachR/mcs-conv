@@ -46,6 +46,7 @@ We will use the same data files as in Loading Data when you uploaded files to th
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.  
 * Open a new R Markdown document and save it in your working directory. Call the file "Intro to Data Viz".    
 * Download the two .csv files above and save them in your chapter folder. Make sure that you do not change the file names at all.
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the package `tidyverse` using the `library()` function. 
 * Type and run the below code to load the `tidyverse` package and to load in the data files in to the Activity 2 code chunk. 
 

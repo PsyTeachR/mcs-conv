@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-10-11" />
+<meta name="date" content="2020-10-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -639,6 +639,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li>Download <a href="MillerHadenData.csv" download>MillerHadenData.csv</a> and save it in your Correlation folder and/or upload to to the R server. Make sure that you do not change the file name at all.<br />
 </li>
+<li>If you’re on the server, avoid a number of issues by restarting the session - click <code>Session</code> - <code>Restart R</code></li>
 <li>If you are working on your own computer, install the packages <code>Hmisc</code>, <code>car</code>, and <code>broom</code>. Remember <strong>do not install packages on university computers, they are already installed</strong>.</li>
 <li>Delete the default R Markdown welcome text and insert a new code chunk that loads the packages <code>broom</code>, <code>car</code>, <code>lsr</code>, <code>Hmisc</code>, and <code>tidyverse</code> (in that order) using the <code>library()</code> function and loads the data into an object named <code>mh</code> using <code>read_csv()</code></li>
 </ul>
@@ -833,7 +834,7 @@ Explain these answers
 <p>You should now have a tibble called <code>results</code> that gives you the output of the correlation between Reading Ability and IQ for the school children measured in Miller and Haden (2013) Chapter 11. All that is left to do now, is interpret the output.</p>
 <p>Look at <code>results</code>and then with your group, answer the following questions:</p>
 <ol style="list-style-type: decimal">
-<li>What is the value of Pearson’s <em>r</em> to 2 decimal places? <input class='solveme nospaces' size='20' data-answer='[".45"]'/></li>
+<li>What is the value of Pearson’s <em>r</em> to 2 decimal places? <input class='solveme nospaces' size='20' data-answer='[".45","0.45"]'/></li>
 <li>The direction of the relationship between Ability and IQ is: <select class='solveme' data-answer='["positive"]'> <option></option> <option>positive</option> <option>negative</option> <option>no relationship</option></select></li>
 <li>The strength of the relationship between Ability and IQ is: <select class='solveme' data-answer='["medium"]'> <option></option> <option>strong</option> <option>medium</option> <option>weak</option></select></li>
 <li>Based on <span class="math inline">\(\alpha = .05\)</span> the relationship between Ability and IQ is: <select class='solveme' data-answer='["significant"]'> <option></option> <option>significant</option> <option>not significant</option></select></li>

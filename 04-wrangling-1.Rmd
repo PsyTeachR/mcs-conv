@@ -37,7 +37,8 @@ To demonstrate the power of the six `dplyr` verbs, we will use them to work with
 Do the following. If you need help, consult Intro to R or Programming Basics.
 
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.  
-* Open a new R Markdown document and save it in your working directory. Call the file "Data wrangling 1".    
+* Open a new R Markdown document and save it in your working directory. Call the file "Data wrangling 1".   
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * If you are working on your own computer, install the package `babynames`. Remember, **never install packages if you are working on a university computer**. 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `tidyverse` and `babynames` using `library()`.  
 

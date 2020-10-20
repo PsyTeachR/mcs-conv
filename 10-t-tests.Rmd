@@ -29,6 +29,7 @@ Your task is to reproduce the results from the article (p. 887).
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.   
 * Open a new R Markdown document and save it in your working directory. Call the file "t-tests".    
 * Download <a href="evaluators.csv" download>evaluators.csv</a> and <a href="ratings.csv" download>rating.csv</a> and save them in your t-test folder. Make sure that you do not change the file names at all.    
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads `broom`, `car`, `lsr`,  and `tidyverse` using the `library()` function and loads the data into an object named `evaluators` using `read_csv()`
 
 ```{r library2, echo = FALSE, message=FALSE, warning=FALSE}

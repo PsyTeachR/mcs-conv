@@ -10,6 +10,7 @@ Do the following. If you need help, consult Chapter \@ref(ref3) and Chapter \@re
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear. 
 * Open a new R Markdown document and save it in your working directory. Call the file "Screening Data".    
 * Download <a href="messy.csv" download>messy.csv</a> and save it in your Screening Data folder. Make sure that you do not change the file name at all.  
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the `tidyverse` and `psych` packages using the `library()` function and loads the data into an object named `messy` using `read_csv()`
 
 ```{r echo = FALSE, message=FALSE, warning=FALSE}

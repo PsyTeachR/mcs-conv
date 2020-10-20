@@ -15,6 +15,7 @@ This experiment has a 2 x 2 mixed design:
 * Open R Studio and set the working directory to your Week 10 folder. Ensure the environment is clear. 
 * Open a new R Markdown document and save it in your working directory. Call the file "Week 11". 
 * Download <a href="Zhang et al. 2014 Study 3.csv" download>Zhang et al. 2014 Study 3.csv</a> and extract the files in to your Week 11 folder. 
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * If you are working on your own computer, install the package `rcompanion`. Remember **do not install packages on university computers, they are already installed**.
 * Type and run the code that loads `pwr`, `rcompanion`, `lsr`, `car`, `broom`, `afex`, `emmeans` and `tidyverse` using the `library()` function.
 
