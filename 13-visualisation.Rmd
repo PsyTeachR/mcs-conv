@@ -17,6 +17,7 @@ Do the following. If you need help, consult Chapter \@ref(ref3) and Chapter \@(r
 * Open R Studio and set the working directory to your Week 8 folder. Ensure the environment is clear.   
 * Open a new R Markdown document and save it in your working directory. Call the file "Week 8".    
 * Download <a href="Zhang et al. 2014 Study 3.csv" download>Zhang et al. 2014 Study 3.csv</a> and save it in your Week 8 folder. Make sure that you do not change the file name at all.
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the package `tidyverse` using the `library()` function. 
 * Run the below code to load and wrangle the data into tidy data.
 

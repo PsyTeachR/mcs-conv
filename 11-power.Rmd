@@ -46,6 +46,7 @@ Do the following.
 
 * Open R Studio and set the working directory to your chapter folder.  
 * Open a new R Markdown document and save it in your working directory. Call the file "Power and Effect Size".    
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `pwr`, `broom`, and `tidyverse` using the `library()` function. You may need to install `pwr` if you are working on your own machine but remember **never install packages on a university machine**.
 
 ## Activity 2: Effect size from a one-sample t-test

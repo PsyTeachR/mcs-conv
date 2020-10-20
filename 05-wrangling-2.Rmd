@@ -26,7 +26,8 @@ This experiment does not use tennis players however, they used the Pong task: "a
 
 * Download <a href="PongBlueRedBack 1-16 Codebook.csv" download>PongBlueRedBack 1-16 Codebook.csv</a> into your chapter folder.  
 * Set the working directory to your chapter folder. Ensure the environment is clear.    
-* Open a new R Markdown document and save it in your working directory. Call the file "Data wrangling 2".    
+* Open a new R Markdown document and save it in your working directory. Call the file "Data wrangling 2". 
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk.
 * Copy and paste the below code into this code chunk and then run the code.
 
