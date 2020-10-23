@@ -258,7 +258,7 @@ results_impression <-
 <p>What do you do if the data don’t meet the assumption of normality? There are a few options.</p>
 <ol style="list-style-type: decimal">
 <li>Transform your data to try and normalise the distribution. We won’t cover this but if you’d like to know more, <a href="https://www.researchgate.net/profile/Jason_Osborne2/publication/200152356_Notes_on_the_Use_of_Data_Transformations/links/0deec5295f1eb10df8000000.pdf">this page</a> is a good start.</li>
-<li>Use a non-parametric test. The non-parametric equivalent of the independent t-test is the Mann-Whitney and the equivalent of the paired-samples t-test is the Wilcoxon. See the Supplementary Analyses chapter for more information.</li>
+<li>Use a non-parametric test. The non-parametric equivalent of the independent t-test is the Mann-Whitney and the equivalent of the paired-samples t-test is the Wilcoxon.</li>
 <li>Do nothing. <a href="https://www.rips-irsp.com/articles/10.5334/irsp.82/">Delacre, Lakens &amp; Leys, 2017</a> argue that with a large enough sample (&gt;30), the Welch test is robust and that using a two-step process actually causes more problems than it solves.</li>
 </ol>
 </div>
@@ -318,7 +318,7 @@ impression_d <-
     
     + Mean `estimate2` (read condition) = <input class='solveme nospaces' size='4' data-answer='["2.89"]'/>  
     
-    + t(<input class='solveme nospaces' size='2' data-answer='["37"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.62"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.036",".036"]'/>  
+    + t(<input class='solveme nospaces' size='5' data-answer='["36.85"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.64"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.036",".036"]'/>  
     
 
 * Were your results for `impression` significant? Enter the mean estimates and t-test results (means and t-value to 2 decimal places, p-value to 3 decimal places):

@@ -270,7 +270,7 @@ results_impression <-
 What do you do if the data don't meet the assumption of normality? There are a few options. 
 
 1. Transform your data to try and normalise the distribution. We won't cover this but if you'd like to know more, [this page](https://www.researchgate.net/profile/Jason_Osborne2/publication/200152356_Notes_on_the_Use_of_Data_Transformations/links/0deec5295f1eb10df8000000.pdf) is a good start.
-2. Use a non-parametric test. The non-parametric equivalent of the independent t-test is the Mann-Whitney and the equivalent of the paired-samples t-test  is the Wilcoxon. See the Supplementary Analyses chapter for more information.
+2. Use a non-parametric test. The non-parametric equivalent of the independent t-test is the Mann-Whitney and the equivalent of the paired-samples t-test  is the Wilcoxon. 
 3. Do nothing. [Delacre, Lakens & Leys, 2017](https://www.rips-irsp.com/articles/10.5334/irsp.82/) argue that with a large enough sample (>30), the Welch test is robust and that using a two-step process actually causes more problems than it solves.
 ```
 
@@ -327,7 +327,7 @@ impression_d <-
     
     + Mean `estimate2` (read condition) = `r fitb("2.89")`  
     
-    + t(`r fitb("37")`) = `r fitb("2.62")`, p = `r fitb(c("0.036",".036"))`  
+    + t(`r fitb("36.85")`) = `r fitb("2.64")`, p = `r fitb(c("0.036",".036"))`  
     
 
 * Were your results for `impression` significant? Enter the mean estimates and t-test results (means and t-value to 2 decimal places, p-value to 3 decimal places):
