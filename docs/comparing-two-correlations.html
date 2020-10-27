@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 17 Regression | MSc Conversion in Psychological Studies</title>
+  <title>A Comparing two correlations | MSc Conversion in Psychological Studies</title>
   <meta name="description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 17 Regression | MSc Conversion in Psychological Studies" />
+  <meta property="og:title" content="A Comparing two correlations | MSc Conversion in Psychological Studies" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 17 Regression | MSc Conversion in Psychological Studies" />
+  <meta name="twitter:title" content="A Comparing two correlations | MSc Conversion in Psychological Studies" />
   
   <meta name="twitter:description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="factorial-anova.html"/>
-<link rel="next" href="multiple-regression.html"/>
+<link rel="prev" href="multiple-regression.html"/>
+<link rel="next" href="data-transformation.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -622,302 +622,244 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="regression" class="section level1">
-<h1><span class="header-section-number">Chapter 17</span> Regression</h1>
-<p>In this activity, you will be working with real data and using regression to explore the question of whether there is a relationship between statistics anxiety and engagement in course activities. The hypothesis is that students who are more anxious about statistics are less likely to engage in course-related activities. This avoidance behaviour could ultimately be responsible for lower performance for these students (although we won’t be examining the assessment scores in this activity).</p>
-<p>We are going to analyse data from the STARS Statistics Anxiety Survey, which was administered to students in the third-year statistics course in Psychology at the University of Glasgow. All the responses have been anonymised by associating the responses for each student with an arbitrary ID number (integer).</p>
-<p>The STARS survey (Cruise, Cash, &amp; Bolton, 1985) is a 51-item questionnaire, with each response on a 1 to 5 scale, with higher numbers indicating greater anxiety.</p>
-<p>Cruise, R. J., Cash, R. W., &amp; Bolton, D. L. (1985). Development and validation of an instrument to measure statistical anxiety. <em>Proceedings of the American Statistical Association, Section on Statistical Education</em>, Las Vegas, NV.</p>
-<div class="figure">
-<img src="images/stars_survey.png" alt="" />
-<p class="caption"><em>Example items from the STARS survey (Cruise, Cash, &amp; Bolton, 1985)</em></p>
-</div>
-<p>As a measure of engagement in the course, we will use data from Moodle usage analytics. Over the course of the term, there were eight optional weekly on-line sessions that students could attend for extra support. The variable <code>n_weeks</code> in the <code>psess.csv</code> file tells you how many (out of eight) a given student attended.</p>
-<p>Our hypothesis was that greater anxiety would be reflected in lower engagement. Answer the following question.</p>
-<p>If our hypothesis is correct then there should be <select class='solveme' data-answer='["a negative"]'> <option></option> <option>a positive</option> <option>no</option> <option>a negative</option></select> correlation between students’ mean anxiety levels and <code>n_weeks</code>.</p>
-<div id="activity-1-setup" class="section level2">
-<h2><span class="header-section-number">17.1</span> Activity 1: Setup</h2>
-<p>Do the following. If you need help, consult Chapter @(ref3) and Chapter @(ref2).</p>
-<ul>
-<li>Open R Studio and set the working directory to your Week 12 folder. Ensure the environment is clear.<br />
-</li>
-<li>Open a new R Markdown document and save it in your working directory. Call the file “Week 12”.<br />
-</li>
-<li>Download <a href="L3_stars.csv" download>L3_stars.csv</a> and <a href="psess.csv" download>psess.csv</a> and save them in your Week 12 folder. Make sure that you do not change the file name at all.<br />
-</li>
-<li>If you’re on the server, avoid a number of issues by restarting the session - click <code>Session</code> - <code>Restart R</code></li>
-<li>Delete the default R Markdown welcome text and insert a new code chunk that loads <code>pwr</code>, <code>car</code>, <code>broom</code>, and <code>tidyverse</code> using the <code>library()</code> function.</li>
-<li>Load the two CSV datasets into variables called <code>stars</code> and <code>engage</code> using <code>read_csv()</code>.</li>
-</ul>
-</div>
-<div id="activity-2-tidy-the-data" class="section level2">
-<h2><span class="header-section-number">17.2</span> Activity 2: Tidy the data</h2>
-<ul>
-<li>Take a look at both of the datasets you loaded in (you can use just type the name to output them out to the console).</li>
-</ul>
-<p>The next thing we need to do is to calculate a mean anxiety score for each student (recall that individual students are identified by the <code>ID</code> variable).</p>
-<p>Recall the difference between <em>wide</em> and <em>tidy</em> data. In wide data, each row represents an individual case, with observations for that case in separate columns; in tidy data, each row represents a single observation, and the observations are grouped together into cases based on the value of a variable (for these data, the <code>ID</code> variable).</p>
-<ul>
-<li>The STARS data are currently in <select class='solveme' data-answer='["wide"]'> <option></option> <option>wide</option> <option>tidy</option></select> format.</li>
-</ul>
-<p>Before we calculate means, you need to use <code>gather()</code> to restructure the STARS data into the appropriate “tidy” format; i.e., so that it looks like the table below.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="left">ID</th>
-<th align="left">Question</th>
-<th align="left">Score</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">Q01</td>
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">3</td>
-<td align="left">Q02</td>
-<td align="left">1</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">Q03</td>
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">3</td>
-<td align="left">Q04</td>
-<td align="left">1</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">Q05</td>
-<td align="left">1</td>
-</tr>
-<tr class="even">
-<td align="left">3</td>
-<td align="left">Q06</td>
-<td align="left">1</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Write and run the code to do tidy the STARS data, and store the resulting table as <code>stars2</code>.</li>
-</ul>
-</div>
-<div id="activity-3-calculate-mean-anxiety-for-each-student" class="section level2">
-<h2><span class="header-section-number">17.3</span> Activity 3: Calculate mean anxiety for each student</h2>
-<ul>
-<li>Now that you’ve got the data into a tidy format, use <code>summarise()</code> and <code>group_by()</code> to calculate mean anxiety scores (<code>mean_anxiety</code>) for each student (<code>ID</code>). Store the resulting table in a variable named <code>stars_means</code>.</li>
-</ul>
-</div>
-<div id="activity-4-join-the-datasets-together" class="section level2">
-<h2><span class="header-section-number">17.4</span> Activity 4: Join the datasets together</h2>
-<ul>
-<li>In order to perform the regression analysis, combine the data from <code>stars_means</code> with <code>engage</code> using <code>inner_join()</code>. Call the resulting table <code>joined</code>. It should look like this:</li>
-</ul>
-</div>
-<div id="activity-5-calculate-descriptives-for-the-variables-overall" class="section level2">
-<h2><span class="header-section-number">17.5</span> Activity 5: Calculate descriptives for the variables overall</h2>
-<p>It is also useful to calculate descriptives statistics for the sample overall so that you can check that the sample scores are what you were expecting (e.g., are they comparable to previous studies and samples?). This is also useful for the write-up.</p>
-<ul>
-<li>Run the below code. Read each line and ensure you understand what is being calculated.</li>
-</ul>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="regression.html#cb304-1"></a>descriptives &lt;-<span class="st"> </span>joined <span class="op">%&gt;%</span></span>
-<span id="cb304-2"><a href="regression.html#cb304-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_anx =</span> <span class="kw">mean</span>(mean_anxiety, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb304-3"><a href="regression.html#cb304-3"></a>            <span class="dt">min_anx =</span> <span class="kw">mean</span>(mean_anxiety,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">-</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(mean_anxiety,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()), </span>
-<span id="cb304-4"><a href="regression.html#cb304-4"></a>            <span class="dt">max_anx =</span> <span class="kw">mean</span>(mean_anxiety,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(mean_anxiety,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()),</span>
-<span id="cb304-5"><a href="regression.html#cb304-5"></a>            <span class="dt">sd_anx =</span> <span class="kw">sd</span>(mean_anxiety, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb304-6"><a href="regression.html#cb304-6"></a>            <span class="dt">mean_weeks =</span> <span class="kw">mean</span>(n_weeks, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb304-7"><a href="regression.html#cb304-7"></a>            <span class="dt">min_weeks =</span> <span class="kw">mean</span>(n_weeks) <span class="op">-</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(n_weeks,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()), </span>
-<span id="cb304-8"><a href="regression.html#cb304-8"></a>            <span class="dt">max_weeks =</span> <span class="kw">mean</span>(n_weeks) <span class="op">+</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(n_weeks,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()),</span>
-<span id="cb304-9"><a href="regression.html#cb304-9"></a>            <span class="dt">sd_weeks =</span> <span class="kw">sd</span>(n_weeks, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span></code></pre></div>
-</div>
-<div id="activity-6-visualisations" class="section level2">
-<h2><span class="header-section-number">17.6</span> Activity 6: Visualisations</h2>
-<ul>
-<li>Now that youwe have all of the variables in one place, write the code to reproduce the exact scatterplot below (using ggplot2).</li>
-</ul>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:scatter"></span>
-<img src="17-regression_files/figure-html/scatter-1.png" alt="Scatteplot of mean anxiety and attendance" width="100%" />
-<p class="caption">
-Figure 17.1: Scatteplot of mean anxiety and attendance
-</p>
-</div>
-<ul>
-<li>According to the scatterplot, <select class='solveme' data-answer='["as anxiety increases, engagement decreases"]'> <option></option> <option>there is no apparent relationship</option> <option>as anxiety increases, engagement decreases</option> <option>as anxiety increases, engagement increases</option></select></li>
-</ul>
-</div>
-<div id="activity-7-run-the-regression" class="section level2">
-<h2><span class="header-section-number">17.7</span> Activity 7: Run the regression</h2>
-<p>The <code>lm()</code> function from Base R is the main function to estimate a <em>L</em>inear <em>M</em>odel (hence the function name <code>lm</code>). <code>lm()</code> uses formula syntax that you have seen before, i.e., <code>DV ~ predictor</code>.</p>
-<ul>
-<li>Use the <code>lm()</code> function to predict <code>n_weeks</code> (DV) from <code>mean_anxiety</code> (predictor). Store the result of the call to <code>lm()</code> in the variable <code>mod</code>. To see the results, use <code>summary(mod)</code>.</li>
-</ul>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="regression.html#cb306-1"></a>mod &lt;-<span class="st"> </span><span class="kw">lm</span>(n_weeks <span class="op">~</span><span class="st"> </span>mean_anxiety, joined)</span>
-<span id="cb306-2"><a href="regression.html#cb306-2"></a>mod_summary &lt;-<span class="st"> </span><span class="kw">summary</span>(mod)</span></code></pre></div>
-<p>Answer the following questions about the model. You may wish to refer to the lecture notes to help you answer these questions.</p>
-<ol style="list-style-type: decimal">
-<li>The estimate of the y-intercept for the model, rounded to three decimal places, is <input class='solveme nospaces' size='5' data-answer='["9.057"]'/></li>
-<li>To three decimal places, if the GLM for this model is <span class="math inline">\(Y_i = \beta_0 + \beta_1 X_i + e_i\)</span>, then <span class="math inline">\(\beta_1\)</span> is <input class='solveme nospaces' size='6' data-answer='["-2.173"]'/></li>
-<li>To three decimal places, for each unit increase in anxiety, <code>n_weeks</code> decreases by <input class='solveme nospaces' size='5' data-answer='["2.173"]'/></li>
-<li>To two decimal places, what is the overall F-ratio of the model? <input class='solveme nospaces' size='5' data-answer='["11.99"]'/></li>
-<li>Is the overall model significant? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select></li>
-<li>What proportion of the variance does the model explain? <input class='solveme nospaces' size='5' data-answer='["23.39"]'/></li>
-</ol>
-<div class="solution">
-<button>
-Explain these answers
-</button>
-<ol style="list-style-type: decimal">
-<li>In the summary table, this is the estimate of the intercept.</li>
-<li>In the summary table, this is the estimate of mean_anxiety, i.e., the slope.</li>
-<li>In the summary table, this is also the estimate of mean_anxiety, the slope is how much it decreases so you just remove the - sign.</li>
-<li>In the summary table, the F-ratio is noted as he F-statistic.</li>
-<li>The overall model p.value is .001428 which is less than .05, therefore significant.</li>
-<li>The variance explained is determined by R-squared, you simply multiple it by 100 to get the percent. You should always use the adjusted R-squared value.</li>
-</ol>
-</div>
-<p><br></p>
-</div>
-<div id="activity-8-assumption-checking" class="section level2">
-<h2><span class="header-section-number">17.8</span> Activity 8: Assumption checking</h2>
-<p>It’s now time to check the assumptions, which for regression are a little bit more involved than they were for ANOVA.</p>
-<ol style="list-style-type: decimal">
-<li>The outcome/DV is a interval/ratio level data</li>
-<li>The predictor variable is interval/ratio or categorical (with two levels)</li>
-<li>All values of the outcome variable are independent (i.e., each score should come from a different participant)</li>
-<li>The predictors have non-zero variance</li>
-<li>The relationship between outcome and predictor is linear</li>
-<li>The residuals should be normally distributed</li>
-<li>There should be homoscedasticity (homogeneity of variance, but for the residuals)</li>
-</ol>
-<p>Assumptions 1-3 are nice and easy. We know this from the data we have and the design of the study. Assumption 4 simply means that there is some spread in the data - for example, there’s no point running a regression with age as a variable if all your participants are 20 years old. We can check this using the scatterplot we created in Activity 4 and we can see that this assumption is met, we do indeed have a spread of scores.</p>
-<p>Assumption 5 could also be checked with the scatterplot but there are some nice regression-specific functions from <code>car</code> that we can use.</p>
-<ul>
-<li>Run the below code. It will produce the scatterplot with a linear line and the line that best fits the data. If these two lines are quite similar (they will never be perfect) then you can assume linearity.</li>
-</ul>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="regression.html#cb307-1"></a><span class="kw">crPlots</span>(mod)</span></code></pre></div>
-<p>Assumption 6 can be tested as we have done before with a qqplot and a Shapiro-Wilk test.</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="regression.html#cb308-1"></a><span class="kw">qqPlot</span>(mod<span class="op">$</span>residuals)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:normality"></span>
-<img src="17-regression_files/figure-html/normality-1.png" alt="qqplot for residuals" width="100%" />
-<p class="caption">
-Figure 17.2: qqplot for residuals
-</p>
-</div>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="regression.html#cb309-1"></a><span class="kw">shapiro.test</span>(mod<span class="op">$</span>residuals)</span></code></pre></div>
-<pre><code>## [1] 13 11
+<div id="comparing-two-correlations" class="section level1">
+<h1><span class="header-section-number">A</span> Comparing two correlations</h1>
+<p>Sometimes you will need or want to statistically compare the strength of two correlation coefficients to help determine whether they are statistically different (rather than just comparing r values). For this set of analyses you will need to install and load the <code>cocor</code> package as well as the <code>tidyverse</code> and <code>lsr</code>.</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="comparing-two-correlations.html#cb335-1"></a><span class="kw">library</span>(cocor)</span></code></pre></div>
+<pre><code>## Warning: package &#39;cocor&#39; was built under R version 4.0.3</code></pre>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="comparing-two-correlations.html#cb337-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb337-2"><a href="comparing-two-correlations.html#cb337-2"></a><span class="kw">library</span>(lsr)</span></code></pre></div>
+<p>The <code>cocor</code> package comes with a dataset called <code>aptitude</code>. This dataset contains scores on four aptitude tests <code>knowledge</code>, <code>logiic</code>, <code>intelligence.a</code>, and <code>intelligence.b</code> for two separate samples. First, let’s load the full dataset and then create two separate objects for the two samples to make it easier to see the different types of comparisons we can make.</p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="comparing-two-correlations.html#cb338-1"></a><span class="kw">data</span>(aptitude)</span>
+<span id="cb338-2"><a href="comparing-two-correlations.html#cb338-2"></a>sample1 &lt;-<span class="st"> </span>aptitude<span class="op">$</span>sample1</span>
+<span id="cb338-3"><a href="comparing-two-correlations.html#cb338-3"></a>sample2 &lt;-aptitude<span class="op">$</span>sample2</span></code></pre></div>
+<p>We can then conduct correlations on these datasets. We could conduct single correlations using <code>cor.test()</code>:</p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="comparing-two-correlations.html#cb339-1"></a><span class="kw">cor.test</span>(sample1<span class="op">$</span>intelligence.a, sample1<span class="op">$</span>logic, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
 ## 
-##  Shapiro-Wilk normality test
+## data:  sample1$intelligence.a and sample1$logic
+## t = 5.7687, df = 289, p-value = 2.053e-08
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.2142758 0.4207744
+## sample estimates:
+##     cor 
+## 0.32134</code></pre>
+<p>Or perhaps we might be interested in running all possible correlations with <code>correlate()</code> from <code>lsr</code>.</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="comparing-two-correlations.html#cb341-1"></a>sample1 <span class="op">%&gt;%</span></span>
+<span id="cb341-2"><a href="comparing-two-correlations.html#cb341-2"></a><span class="st">  </span><span class="kw">correlate</span>()</span></code></pre></div>
+<pre><code>## 
+## CORRELATIONS
+## ============
+## - correlation type:  pearson 
+## - correlations shown only when both variables are numeric
 ## 
-## data:  mod$residuals
-## W = 0.91652, p-value = 0.008764</code></pre>
-<p>The qqplot doesn’t look too bad, on the basis of this alone we would probably assume normality. However, the Shapiro-Wilk test is significant which suggests something isn’t quite right. The Shaprio-Wilk has been criticised for rejecting the null hypothesis (i.e., concluding that the data are not normal) too often and it’s argued that if the qqplot and the Shapiro test disagree, it’s better to rely on the qqplot. There is a good discussion <a href="https://stats.stackexchange.com/questions/2492/is-normality-testing-essentially-useless">about it here</a> if you’d like to know more. For now, we will proceed cautiously and check the final assumption before we make a decision about what to do.</p>
-<p>The final assumption of homoscedasticity means that the error in the model is fairly constant at all points (i.e., if you looked at the scatterplot, the data points wouldn’t be bunched together at one end and spread out at the other). We can test this using the non-constant error variance test from <code>car</code>.</p>
+##                knowledge logic intelligence.b intelligence.a
+## knowledge              . 0.026          0.171          0.104
+## logic              0.026     .          0.268          0.321
+## intelligence.b     0.171 0.268              .          0.473
+## intelligence.a     0.104 0.321          0.473              .</code></pre>
+<p>So far, so repetitive from what you already know.</p>
+<div id="compare-two-correlations-based-on-two-independent-groups" class="section level2">
+<h2><span class="header-section-number">A.1</span> Compare two correlations based on two independent groups</h2>
+<p>In this example we want to compare two correlations from two independent groups, i.e., where the participants involved in each correlation are completely different. For the example dataset, we can compare sample 1 and sample.</p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="comparing-two-correlations.html#cb343-1"></a><span class="kw">cor.test</span>(sample1<span class="op">$</span>logic, sample1<span class="op">$</span>intelligence.a, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb343-2"><a href="comparing-two-correlations.html#cb343-2"></a><span class="kw">cor.test</span>(sample2<span class="op">$</span>logic, sample2<span class="op">$</span>intelligence.a, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  sample1$logic and sample1$intelligence.a
+## t = 5.7687, df = 289, p-value = 2.053e-08
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.2142758 0.4207744
+## sample estimates:
+##     cor 
+## 0.32134 
+## 
+## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  sample2$logic and sample2$intelligence.a
+## t = 3.7665, df = 332, p-value = 0.0001958
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.09723082 0.30316175
+## sample estimates:
+##       cor 
+## 0.2024331</code></pre>
+<p>Here we can see that the correlations between logic scores and intelligence.a scores are significant in both samples, however, the correlation for sample 1 is larger (r = .32) than for sample 2 (r = .20) and so we can compare these using <code>cocor</code>.</p>
 <ul>
-<li>Run the below code. If the test is significant, the assumption has been violated. Based upon the results, can we assume homoscedasticity? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select></li>
+<li>For this comparison, the two sample datasets need to be in a single <code>list</code> object, so we’re going to use the original <code>aptitude</code> object.</li>
+<li>The left-hand side of the formula (before the <code>|</code>) refers to variables in the first dataset in the list, the right-hand side of the formula (after the <code>|</code>) refers to variables in the second dataset in the list.</li>
 </ul>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="regression.html#cb311-1"></a><span class="kw">ncvTest</span>(mod)</span></code></pre></div>
-<p>Returning to the issue of normality, all of the other assumptions have been met and the qqplot suggests that any deviation from normality is very mild. Based upon this evidence, it seems justified to proceed with the original regression.</p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="comparing-two-correlations.html#cb345-1"></a><span class="kw">cocor</span>(<span class="dt">formula =</span> <span class="op">~</span>logic <span class="op">+</span><span class="st"> </span>intelligence.a <span class="op">|</span><span class="st"> </span>logic <span class="op">+</span><span class="st"> </span>intelligence.a, </span>
+<span id="cb345-2"><a href="comparing-two-correlations.html#cb345-2"></a>      <span class="dt">data =</span> aptitude)</span></code></pre></div>
+<pre><code>## 
+##   Results of a comparison of two correlations based on independent groups
+## 
+## Comparison between r1.jk (logic, intelligence.a) = 0.3213 and r2.hm (logic, intelligence.a) = 0.2024
+## Difference: r1.jk - r2.hm = 0.1189
+## Data: sample1: j = logic, k = intelligence.a; sample2: h = logic, m = intelligence.a
+## Group sizes: n1 = 291, n2 = 334
+## Null hypothesis: r1.jk is equal to r2.hm
+## Alternative hypothesis: r1.jk is not equal to r2.hm (two-sided)
+## Alpha: 0.05
+## 
+## fisher1925: Fisher&#39;s z (1925)
+##   z = 1.5869, p-value = 0.1125
+##   Null hypothesis retained
+## 
+## zou2007: Zou&#39;s (2007) confidence interval
+##   95% confidence interval for r1.jk - r2.hm: -0.0281 0.2637
+##   Null hypothesis retained (Interval includes 0)</code></pre>
+<p>The full paper by <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945#sec003">Diedenhofen and Musch (2015)</a> explains the output in detail, for our purposes, Fisher’s z-test tells us that our correlations are not significantly different (z = 1.59, p = .113) and Zou’s confidence intervals gives us the CI for the size of the difference between the two correlations (which at -0.0281 - 0.2637 is quite a range and so isn’t surprising that the two are not statistically different).</p>
 </div>
-<div id="activity-9-power-and-effect-size-1" class="section level2">
-<h2><span class="header-section-number">17.9</span> Activity 9: Power and effect size</h2>
-<p>First we can calculate the minimum effect size we were able to detect given the sample size and design of the study using <code>pwr.f2.test()</code>. As usual, we fill in all the information we have and set the effect size argument, in this case <code>f2</code>, to <code>NULL</code>.</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="regression.html#cb312-1"></a><span class="kw">pwr.f2.test</span>(<span class="dt">u =</span> <span class="dv">1</span>, <span class="dt">v =</span> <span class="dv">35</span>, <span class="dt">f2 =</span> <span class="ot">NULL</span>, <span class="dt">sig.level =</span> <span class="fl">.05</span>, <span class="dt">power =</span> <span class="fl">.8</span>)</span></code></pre></div>
+<div id="compare-two-overlapping-correlations-based-on-two-dependent-groups" class="section level2">
+<h2><span class="header-section-number">A.2</span> Compare two overlapping correlations based on two dependent groups</h2>
+<p>In this example, we want to compare two correlations from two dependent groups (i.e., the participants are the same) and where one of the variables is also the same, i.e., it overlaps.</p>
+<p>For example, let’s run all possible correlations for sample 2:</p>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="comparing-two-correlations.html#cb347-1"></a>sample2 <span class="op">%&gt;%</span></span>
+<span id="cb347-2"><a href="comparing-two-correlations.html#cb347-2"></a><span class="st">  </span><span class="kw">correlate</span>(<span class="dt">test =</span> <span class="ot">TRUE</span>, <span class="dt">p.adjust.method =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## CORRELATIONS
+## ============
+## - correlation type:  pearson 
+## - correlations shown only when both variables are numeric
+## 
+##                knowledge    logic    intelligence.b    intelligence.a   
+## knowledge              .    0.031             0.129.            0.116.  
+## logic              0.031        .             0.201***          0.202***
+## intelligence.b     0.129.   0.201***              .             0.643***
+## intelligence.a     0.116.   0.202***          0.643***              .   
+## 
+## ---
+## Signif. codes: . = p &lt; .1, * = p&lt;.05, ** = p&lt;.01, *** = p&lt;.001
+## 
+## 
+## p-VALUES
+## ========
+## - total number of tests run:  6 
+## - correction for multiple testing:  holm 
+## 
+##                knowledge logic intelligence.b intelligence.a
+## knowledge              . 0.567          0.055          0.068
+## logic              0.567     .          0.001          0.001
+## intelligence.b     0.055 0.001              .          0.000
+## intelligence.a     0.068 0.001          0.000              .
+## 
+## 
+## SAMPLE SIZES
+## ============
+## 
+##                knowledge logic intelligence.b intelligence.a
+## knowledge            334   334            334            334
+## logic                334   334            334            334
+## intelligence.b       334   334            334            334
+## intelligence.a       334   334            334            334</code></pre>
+<p>We see that the correlations between <code>logic</code>, <code>intelligence.a</code> and <code>intelligence.b</code> are all significant. We can assess whether the correlation between <code>logic</code> and <code>intelligence.a</code> is strong than with <code>intelligence.b</code>.</p>
 <ul>
-<li>Based on the power analysis, what is the minimum effect size we were able to detect rounded to 2 decimal places? <input class='solveme nospaces' size='0.22' data-answer='[".22"]'/><br />
-</li>
-<li>According to Cohen’s guidelines, this would be a <select class='solveme' data-answer='["Medium"]'> <option></option> <option>Small</option> <option>Medium</option> <option>Large</option></select> effect.</li>
+<li>Note that the the <code>data</code> argument now specifies which dataset of the list to use. We could also have just used the <code>sample1</code> data that we extracted earlier.</li>
 </ul>
-<p>There is no formula to calculate our observed f<sup>2</sup>, we must do it manually using the formula from the lecture.</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="regression.html#cb313-1"></a>f2 &lt;-<span class="st"> </span>mod_summary<span class="op">$</span>adj.r.squared<span class="op">/</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>mod_summary<span class="op">$</span>adj.r.squared)</span></code></pre></div>
-<ul>
-<li>Is the observed effect size larger than the minimum effect size we could detect? <select class='solveme' data-answer='["Yes, our study is sufficiently powered"]'> <option></option> <option>Yes, our study is sufficiently powered</option> <option>No, our study is underpowered</option></select></li>
-</ul>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="comparing-two-correlations.html#cb349-1"></a><span class="kw">cocor</span>(<span class="dt">formula =</span> <span class="op">~</span>logic <span class="op">+</span><span class="st"> </span>intelligence.a <span class="op">|</span><span class="st"> </span>logic <span class="op">+</span><span class="st"> </span>intelligence.b,</span>
+<span id="cb349-2"><a href="comparing-two-correlations.html#cb349-2"></a>      <span class="dt">data =</span> aptitude<span class="op">$</span>sample1)</span></code></pre></div>
+<pre><code>## 
+##   Results of a comparison of two overlapping correlations based on dependent groups
+## 
+## Comparison between r.jk (logic, intelligence.a) = 0.3213 and r.jh (logic, intelligence.b) = 0.2679
+## Difference: r.jk - r.jh = 0.0534
+## Related correlation: r.kh = 0.4731
+## Data: aptitude$sample1: j = logic, k = intelligence.a, h = intelligence.b
+## Group size: n = 291
+## Null hypothesis: r.jk is equal to r.jh
+## Alternative hypothesis: r.jk is not equal to r.jh (two-sided)
+## Alpha: 0.05
+## 
+## pearson1898: Pearson and Filon&#39;s z (1898)
+##   z = 0.9419, p-value = 0.3462
+##   Null hypothesis retained
+## 
+## hotelling1940: Hotelling&#39;s t (1940)
+##   t = 0.9422, df = 288, p-value = 0.3469
+##   Null hypothesis retained
+## 
+## williams1959: Williams&#39; t (1959)
+##   t = 0.9379, df = 288, p-value = 0.3491
+##   Null hypothesis retained
+## 
+## olkin1967: Olkin&#39;s z (1967)
+##   z = 0.9419, p-value = 0.3462
+##   Null hypothesis retained
+## 
+## dunn1969: Dunn and Clark&#39;s z (1969)
+##   z = 0.9370, p-value = 0.3487
+##   Null hypothesis retained
+## 
+## hendrickson1970: Hendrickson, Stanley, and Hills&#39; (1970) modification of Williams&#39; t (1959)
+##   t = 0.9422, df = 288, p-value = 0.3469
+##   Null hypothesis retained
+## 
+## steiger1980: Steiger&#39;s (1980) modification of Dunn and Clark&#39;s z (1969) using average correlations
+##   z = 0.9367, p-value = 0.3489
+##   Null hypothesis retained
+## 
+## meng1992: Meng, Rosenthal, and Rubin&#39;s z (1992)
+##   z = 0.9365, p-value = 0.3490
+##   Null hypothesis retained
+##   95% confidence interval for r.jk - r.jh: -0.0640 0.1811
+##   Null hypothesis retained (Interval includes 0)
+## 
+## hittner2003: Hittner, May, and Silver&#39;s (2003) modification of Dunn and Clark&#39;s z (1969) using a backtransformed average Fisher&#39;s (1921) Z procedure
+##   z = 0.9367, p-value = 0.3489
+##   Null hypothesis retained
+## 
+## zou2007: Zou&#39;s (2007) confidence interval
+##   95% confidence interval for r.jk - r.jh: -0.0583 0.1649
+##   Null hypothesis retained (Interval includes 0)</code></pre>
+<p>This produces a large number of tests, the mathematics of which are described in the <a href="https://cran.r-project.org/web/packages/cocor/cocor.pdf"><code>cocor</code> documentation.</a>. The <code>cocor</code> documentation suggests basing the decision on convergence - in this case all tests indicated the null hypothesis should be retained, i.e., the correlations are not significantly different. For the purposes of writing up such a comparison, [Silver, Hittner &amp; May (2004)]((<a href="https://www.tandfonline.com/doi/abs/10.3200/JEXE.71.1.53-70" class="uri">https://www.tandfonline.com/doi/abs/10.3200/JEXE.71.1.53-70</a>) suggest that Dunn &amp; Clark’s performs best so you can report that (z = .94, p = .349) as well as Zou’s confidence intervals.</p>
 </div>
-<div id="activity-10-write-up-1" class="section level2">
-<h2><span class="header-section-number">17.10</span> Activity 10: Write-up</h2>
-<p>We need to manually calculate the p-value for the inline coding as you can’t extract it from the <code>lm()</code> model. Run the below code to do this.</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="regression.html#cb314-1"></a>f &lt;-mod_summary<span class="op">$</span>fstatistic</span>
-<span id="cb314-2"><a href="regression.html#cb314-2"></a>mod_p &lt;-<span class="st"> </span><span class="kw">pf</span>(f[<span class="dv">1</span>], f[<span class="dv">2</span>], f[<span class="dv">3</span>], <span class="dt">lower=</span><span class="ot">FALSE</span>) </span></code></pre></div>
-<p>Now, copy and paste the below code into <strong>white-space</strong> and knit the document.</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="regression.html#cb315-1"></a>A simple linear regression was performed with <span class="kw">engagment</span> (<span class="dt">M =</span> <span class="st">`</span><span class="dt">r descriptives$mean_weeks %&gt;% round(2)</span><span class="st">`</span>, <span class="dt">SD =</span> <span class="st">`</span><span class="dt">r descriptives$sd_anx %&gt;% round(2)</span><span class="st">`</span>) as the outcome variable and statistics <span class="kw">anxiety</span> (<span class="dt">M =</span> <span class="st">`</span><span class="dt">r descriptives$mean_anx %&gt;% round(2)</span><span class="st">`</span>, <span class="dt">SD =</span> <span class="st">`</span><span class="dt">r descriptives$sd_anx %&gt;% round(2)</span><span class="st">`</span>) as the predictor variable. The results of the regression indicated that the model significantly predicted course <span class="kw">engagement</span> (<span class="kw">F</span>(<span class="st">`</span><span class="dt">r mod_summary$fstatistic[2]</span><span class="st">`</span>, <span class="st">`</span><span class="dt">r mod_summary$fstatistic[3]</span><span class="st">`</span>) =<span class="st"> `</span><span class="dt">r mod_summary$fstatistic[1] %&gt;% round(2)</span><span class="st">`</span>, p <span class="op">&lt;</span><span class="st"> </span><span class="fl">.001</span>, Adjusted <span class="dt">R2 =</span> <span class="st">`</span><span class="dt">r mod_summary$adj.r.squared %&gt;% round(2)</span><span class="st">`</span>, <span class="dt">f2 =</span> <span class="fl">.63</span>), accounting <span class="cf">for</span> <span class="st">`</span><span class="dt">r (mod_summary$adj.r.squared %&gt;% round(2))*100</span><span class="st">`</span><span class="op">% of the variance. Anxiety was a significant positive predictor (β = `r mod$coefficients[2] %</span><span class="er">&gt;</span><span class="op">% round(2)`, p &lt; `mod_p %</span><span class="er">&gt;</span>% <span class="kw">round</span>(<span class="dv">3</span>)<span class="st">`</span><span class="dt">.</span></span>
-<span id="cb315-2"><a href="regression.html#cb315-2"></a><span class="dt">)</span></span></code></pre></div>
-<p>A simple linear regression was performed with engagement (M = 4.54, SD = 0.56) as the outcome variable and statistics anxiety (M = 2.08, SD = 0.56) as the predictor variable. The results of the regression indicated that the model significantly predicted course engagement (F(1, 35) = 11.99, p &lt; .001, Adjusted R2 = 0.23, f<sup>2</sup> = .63), accounting for 23% of the variance. Anxiety was a significant positive predictor (β = -2.17, p &lt; 0.001.
-)</p>
-</div>
-<div id="activity-solutions-10" class="section level2">
-<h2><span class="header-section-number">17.11</span> Activity solutions</h2>
-<div id="activity-1-8" class="section level3">
-<h3><span class="header-section-number">17.11.1</span> Activity 1</h3>
-<div class="solution">
-<button>
-Activity 1
-</button>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="regression.html#cb316-1"></a><span class="kw">library</span>(<span class="st">&quot;pwr&quot;</span>)</span>
-<span id="cb316-2"><a href="regression.html#cb316-2"></a><span class="kw">library</span>(<span class="st">&quot;rcompanion&quot;</span>)</span>
-<span id="cb316-3"><a href="regression.html#cb316-3"></a><span class="kw">library</span>(<span class="st">&quot;car&quot;</span>)</span>
-<span id="cb316-4"><a href="regression.html#cb316-4"></a><span class="kw">library</span>(<span class="st">&quot;broom&quot;</span>)</span>
-<span id="cb316-5"><a href="regression.html#cb316-5"></a><span class="kw">library</span>(<span class="st">&quot;afex&quot;</span>)</span>
-<span id="cb316-6"><a href="regression.html#cb316-6"></a><span class="kw">library</span>(<span class="st">&quot;emmeans&quot;</span>)</span>
-<span id="cb316-7"><a href="regression.html#cb316-7"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
-</div>
-<p>** Click tab to see solution **</p>
-</div>
-<div id="activity-2-6" class="section level3">
-<h3><span class="header-section-number">17.11.2</span> Activity 2</h3>
-<div class="solution">
-<button>
-Activity 2
-</button>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="regression.html#cb317-1"></a><span class="kw">library</span>(<span class="st">&quot;pwr&quot;</span>)</span>
-<span id="cb317-2"><a href="regression.html#cb317-2"></a>stars2 &lt;-<span class="st"> </span><span class="kw">gather</span>(stars, <span class="st">&quot;Question&quot;</span>, <span class="st">&quot;Score&quot;</span>, Q01<span class="op">:</span>Q51) <span class="op">%&gt;%</span></span>
-<span id="cb317-3"><a href="regression.html#cb317-3"></a><span class="st">  </span><span class="kw">arrange</span>(ID)</span>
-<span id="cb317-4"><a href="regression.html#cb317-4"></a><span class="kw">head</span>(stars2) <span class="op">%&gt;%</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">align =</span> <span class="st">&#39;c&#39;</span>)</span></code></pre></div>
-</div>
-<p>** Click tab to see solution **</p>
-</div>
-<div id="activity-3-5" class="section level3">
-<h3><span class="header-section-number">17.11.3</span> Activity 3</h3>
-<div class="solution">
-<button>
-Activity 3
-</button>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="regression.html#cb318-1"></a>stars_means &lt;-<span class="st"> </span>stars2 <span class="op">%&gt;%</span></span>
-<span id="cb318-2"><a href="regression.html#cb318-2"></a><span class="st">  </span><span class="kw">group_by</span>(ID) <span class="op">%&gt;%</span></span>
-<span id="cb318-3"><a href="regression.html#cb318-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_anxiety =</span> <span class="kw">mean</span>(Score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb318-4"><a href="regression.html#cb318-4"></a>            <span class="dt">min =</span> <span class="kw">mean</span>(Score) <span class="op">-</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(Score)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()), </span>
-<span id="cb318-5"><a href="regression.html#cb318-5"></a>            <span class="dt">max =</span> <span class="kw">mean</span>(Score) <span class="op">+</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(Score)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()),</span>
-<span id="cb318-6"><a href="regression.html#cb318-6"></a>            <span class="dt">sd =</span> <span class="kw">sd</span>(Score))</span></code></pre></div>
-</div>
-<p>** Click tab to see solution **</p>
-</div>
-<div id="activity-4-3" class="section level3">
-<h3><span class="header-section-number">17.11.4</span> Activity 4</h3>
-<div class="solution">
-<button>
-Activity 4
-</button>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="regression.html#cb319-1"></a>joined &lt;-<span class="st"> </span><span class="kw">inner_join</span>(stars_means, engage, <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
-</div>
-<p>** Click tab to see solution **</p>
-</div>
-<div id="activity-5-5" class="section level3">
-<h3><span class="header-section-number">17.11.5</span> Activity 5</h3>
-<div class="solution">
-<button>
-Activity 5
-</button>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="regression.html#cb320-1"></a><span class="kw">ggplot</span>(joined, <span class="kw">aes</span>(mean_anxiety, n_weeks)) <span class="op">+</span></span>
-<span id="cb320-2"><a href="regression.html#cb320-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb320-3"><a href="regression.html#cb320-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
-</div>
-<p>** Click tab to see solution **</p>
-
-</div>
+<div id="compare-two-non-overlapping-correlations-from-two-dependent-groups" class="section level2">
+<h2><span class="header-section-number">A.3</span> Compare two non-overlapping correlations from two dependent groups</h2>
+<p>The final comparison we could make is to compare two non-overlapping (none of the variables are the same) correlations from two dependent groups (the same sample).</p>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="comparing-two-correlations.html#cb351-1"></a><span class="kw">cocor</span>(<span class="dt">formula =</span> <span class="op">~</span>logic <span class="op">+</span><span class="st"> </span>intelligence.b <span class="op">|</span><span class="st"> </span>knowledge <span class="op">+</span><span class="st"> </span>intelligence.a, </span>
+<span id="cb351-2"><a href="comparing-two-correlations.html#cb351-2"></a>      <span class="dt">data =</span> aptitude<span class="op">$</span>sample1)</span></code></pre></div>
+<pre><code>## 
+##   Results of a comparison of two nonoverlapping correlations based on dependent groups
+## 
+## Comparison between r.jk (logic, intelligence.b) = 0.2679 and r.hm (knowledge, intelligence.a) = 0.1038
+## Difference: r.jk - r.hm = 0.164
+## Related correlations: r.jh = 0.0257, r.jm = 0.3213, r.kh = 0.1713, r.km = 0.4731
+## Data: aptitude$sample1: j = logic, k = intelligence.b, h = knowledge, m = intelligence.a
+## Group size: n = 291
+## Null hypothesis: r.jk is equal to r.hm
+## Alternative hypothesis: r.jk is not equal to r.hm (two-sided)
+## Alpha: 0.05
+## 
+## pearson1898: Pearson and Filon&#39;s z (1898)
+##   z = 2.0998, p-value = 0.0357
+##   Null hypothesis rejected
+## 
+## dunn1969: Dunn and Clark&#39;s z (1969)
+##   z = 2.0811, p-value = 0.0374
+##   Null hypothesis rejected
+## 
+## steiger1980: Steiger&#39;s (1980) modification of Dunn and Clark&#39;s z (1969) using average correlations
+##   z = 2.0755, p-value = 0.0379
+##   Null hypothesis rejected
+## 
+## raghunathan1996: Raghunathan, Rosenthal, and Rubin&#39;s (1996) modification of Pearson and Filon&#39;s z (1898)
+##   z = 2.0811, p-value = 0.0374
+##   Null hypothesis rejected
+## 
+## silver2004: Silver, Hittner, and May&#39;s (2004) modification of Dunn and Clark&#39;s z (1969) using a backtransformed average Fisher&#39;s (1921) Z procedure
+##   z = 2.0753, p-value = 0.0380
+##   Null hypothesis rejected
+## 
+## zou2007: Zou&#39;s (2007) confidence interval
+##   95% confidence interval for r.jk - r.hm: 0.0095 0.3162
+##   Null hypothesis rejected (Interval does not include 0)</code></pre>
+<p>Again the output produces a number of tests, although in this case they all converge on the conclusion that the null hypothesis should be rejected, i.e., the correlations are significantly different. Again following <a href="https://www.tandfonline.com/doi/abs/10.1080/00221300309601282">Silver et al.</a>, if you need to pick one to report, I’d suggest Dunn and Clark’s z with Zou’s confidence intervals.</p>
 </div>
 </div>
 <div class="psyteachr_footer">
@@ -1030,8 +972,8 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="factorial-anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="multiple-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="multiple-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-transformation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

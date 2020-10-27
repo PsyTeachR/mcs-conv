@@ -1,398 +1,317 @@
 # (APPENDIX) Appendices {-} 
 
-# RStudio Cloud
+# Comparing two correlations
 
-Sometimes R might not work well on our own computers. However, there is an online version of R Studio (R Studio Cloud) which can be used in a pinch. Using R Studio Cloud is a little different to R Studio, so we have made a short guide to get you up and running.
-
-Please take a minute to read the  [GDPR guidance](https://rstudio.com/about/rstudio-and-the-gdpr-what-you-need-to-know/) for using RStudio Cloud.
-
-## Creating an Account
-
-Head to [RStudio Cloud](https://rstudio.cloud/) and click "Sign Up" at the top of the page
-
-<img src="images/appendix/online/1.gif" alt="sign up for rstudio online">
-
-Enter details you wish to sign in with and select "Sign up"
-
-<img src="images/appendix/online/2.gif" alt="enter details to create an account">
-
-You'll receive an e-mail at the address you sign up with, make sure to click the link to activate your account fully.
-
-## Accessing RStudio Cloud
-
-Head back to [RStudio Cloud](https://rstudio.cloud/) and select "log In", where we previously chose "Sign Up"
-
-<img src="images/appendix/online/3.gif" alt="log into rstudio">
-
-Once logged in, you'll be taken to the "Your Workspace" page, this is where all of your RStudio Cloud projects will be accessible from 
-
-Select "New Project" and then "New Project" again
-
-<img src="images/appendix/online/4.gif" alt="create a new project">
-
-You will see the message "Deploying Project" for a couple of minutes while it creates your Workspace
-
-<img src="images/appendix/online/deploying.gif" alt="deploying animation">
-
-## Getting Started with RStudio Cloud
-
-Once loaded, you'll see a page that looks almost identical to the other screenshots in the learning material
-
-### Naming the Workspace
-
-Let's give the project a better name!
-
-Click on "Untitled Project" at the top of the page
-
-<img src="images/appendix/online/5.gif" alt="renaming new project">
-
-This will allow you to rename to whatever you like, in this case we'll go for "Network Training"
-
-Press the return key on your keyboard, or click on a different area on the page to complete the task
-
-### Uploading Files
-
-Since this is on the web, files on your computer won't be immediately accessible to RStudio Cloud, you will need to upload them yourself
-
-Click the "Upload" button on the Files tab
-
-<img src="images/appendix/online/6.gif" alt="select upload to begin uploading process">
-
-An "Upload Files" element will load up where you can click "Browse" and select the file(s) you wish to make available to RStudio Cloud
-
-<img src="images/appendix/online/7.gif" alt="choosing files from your computer to upload">
-
-Once you have selected a file and chosen "OK", you'll be taken back to the main application and you will now see the file you uploaded
-
-<img src="images/appendix/online/8.png" alt="uploaded file now visible in Files tab">
-
-You can now interact with this file as described in the rest of the learning material!
-
-# Portfolio instructions
-
-Just like you've done throughout this book so far, we're going to use R Markdown for the portfolio worksheets.
-
-**There are just a couple of important rules we need you to follow to make sure this all runs smoothly.**
-
-1. These worksheets will ask you to fill in your answers and not change any other information. For example, if we ask you to replace NULL with your answer, only write in the code you are giving as your answer and nothing else. To illustrate -
-
-**Task 1 read in your data**
+Sometimes you will need or want to statistically compare the strength of two correlation coefficients to help determine whether they are statistically different (rather than just comparing r values). For this set of analyses you will need to install and load the `cocor` package as well as the `tidyverse` and `lsr`.
 
 
 ```r
-data <- NULL
+library(cocor)
 ```
 
-The task above is to read in the data file we are using for this task - the correct answer is ```data <- read_csv(data.csv)```. You would replace the NULL with:
-
-**Solution to Task 1**  
-
-
-```r
-data <- read_csv("data.csv")
 ```
-
-This means that we can look for your code and if it is in the format we expect to see it in, we can give you the marks! If you decide to get all creative on us then we can't give you the marks as 'my_work_Nov_2018.csv' isn't the filename we have given to you to use. So don't change the file, variable or data frame names as we need these to be consistent. 
-
-2. We will look for your answers within the boxes which start and end with ``` and have {r task name} in them e.g. 
-
-<div class='verbatim'><code>&#96;&#96;&#96;{r tidyverse, messages=FALSE}</code>
+## Warning: package 'cocor' was built under R version 4.0.3
+```
 
 ```r
 library(tidyverse)
+library(lsr)
 ```
 
-<code>&#96;&#96;&#96;</code></div>
-
-These are called code chunks and are the part of the worksheet that we can read and pick out your answers. If you change these in any way we can't read your answer and therefore we can't give you marks. You can see in the example above that the code chunk (the grey zone), starts and ends with these back ticks (usually found on top left corner of the keyboard). This code chunk has the ticks and text which makes it the part of the worksheet that will contain code. The {r tidyverse} part tells us which task it is (e.g., loading in tidyverse) and therefore what we should be looking for and what we can give marks for - loading in the package called tidyverse in the example above. If this changes then it won't be read properly, so will impact on your grade.
-
-The easiest way to use our worksheets is to think of them as fill-in-the-blanks and keep the file names and names used in the worksheet the same. If you are unsure about anything then use the forums on Moodle and Teams to ask any questions. 
-
-# Dissertation analysis guide
-
-In this final chapter we're going to provide a guide for how to get started working with your dissertation data. It's important to note that this guide won't work for every project and every kind of data - and nothing in this chapter should supersede advice your supervisor has given you. Rather, this chapter is here to help guide you through the initial steps of working with quantitative data and to show you how what you have learned in RM2 maps on to your dissertation project. 
-
-## Before R
-
-Before you touch R, you need to make sure you understand your design, data, and analysis plan. This will make your work in R considerably easier. Before you start coding, make sure you have answers to the following questions:
-
-### Study design
-
-* What is the design of your study?
-* What are your variables?
-  * Are they IVs/predictors/correlation variables?
-  * How many levels do they have?
-	* Are they between or within-subject?
-* What are your DVs?
-	* How will you calculate them? For example, do you need to take a mean of several of questionnaire items or reaction times from multiple trials?
-* What are your hypotheses?
-* Do you have any demographic data included in the data files?
-* Thinking back to the concept of tidy data, how many variables will you have?  
-
-### Data wrangling considerations
-
-* What does each variable in your data set represent?  
-  * Do you want to rename any variables to make them easier to work with?
-    * Do you have a convention for naming variables? For example, I use all lower-case variables and words are always separated by underscores, e.g., `group_data`.  
-  * Are there any variables that are not necessary for the analysis? For example, consent forms.
-  * Are there minimum and maximum values for any of your variables? 
-* Do you have multiple data sets you need to join together? 
-  * Do they have a common variable? For example, does each file have the participant ID or a question number?
-* Do you need to create any new variables? For example, the mean or sum of a number of questionnaire items to give a total scale score?  
-* What type of data should each variable be?
-  * Are there any variables that you need to convert to factors?  
-* Do you need to recode any variables? For example, 1 = male, 2 = female, or perhaps reverse coding questionnaire responses.
-* Do you have a rule for outlier exclusion/replacement?  
-* Do you need to exclude any participants? For example, if they score below a certain threshold, if they are non-native speakers etc.
-* Is there any missing data for each variable?
-  * What will you do about missing data?
-* Do you need to tidy your data?
-
-
-### Data analysis
-
-* What descriptive statistics do you need to calculate for each variable?
-  * Do you need to calculate descriptive by groups?
-  * Are the descriptive statistics similar to values reported in other studies that have used the same measures. Are they similar? If not, what is the explanation?
-* How will you visualize your data?
-* Do you need to transform your data?
-* Do you need to conduct any kind of reliability analysis?
-* What type of inferential tests are you going to conduct?  
-  * Where appropriate, do you need to perform one or two-tailed hypothesis testing?  
-  * Do you need to do any dummy coding for regression models?  
-* What assumptions do you need to test in order to perform your analyses?
-  * What will you do if your data do not meet these assumptions?
-* Do you need to apply a correction for multiple comparison testing? If so, which one?
-* Do you need to calculate measures of effect size? If so, which ones?
-
-
-If this looks like a lot of work - it is. It's important to remember that a lot of the problems that students face with R are really nothing to do with R. In order to wrangle and analyse your data you first need to understand the data that you have. If you don't know what your independent and dependent variables are or what analysis you're supposed to be running, it doesn't matter what statistical software you are using, you won't be able to complete your task. Don't rush or skip any part of the preparation, it will make coding much harder. If you know the answers to all of the above questions then it means you're ready to get started in R.  
-
-## Exploring and cleaning your data
-
-The following sections will not provide comprehensive instructions on how to use the example code, nor will they cover every function you may need to use. You should refer to the RM2 materials, help documentation, and online resources, however, these examples may give you an idea of where to start.
-
-As a first step you should explore your dataset to understand its properties and then perform some basic cleaning operations that will facilitate further analysis. 
-
-### `summary()`
-
-A useful first step is to run `summary()`. Check the output for:
-
-* Missing data  
-* What type of data each variable is  
-* If the variable names are easy to work with, for example `Participant Age` is difficult to work with because it has two capital letters and a space. Renaming this as `age` will make your coding easier.  
-* Any suspicious values, for example, if your likert scale is 1-7 you shouldn't have a maximum score of 10. If you have standardised IQ scores, you may want to check that a score of 200 or 20 isn't a typo.  
-* If you make any changes, run `summary()` again
-
-
-
+The `cocor` package comes with a dataset called `aptitude`. This dataset contains scores on four aptitude tests `knowledge`, `logiic`, `intelligence.a`, and `intelligence.b` for two separate samples. First, let's load the full dataset and then create two separate objects for the two samples to make it easier to see the different types of comparisons we can make.
 
 
 ```r
-summary(data)
+data(aptitude)
+sample1 <- aptitude$sample1
+sample2 <-aptitude$sample2
 ```
 
-### Visualisations
-
-To get an overview of the data and spot any potential issues such as outliers you should plot histograms and boxplots to eyeball the distributions. 
+We can then conduct correlations on these datasets. We could conduct single correlations using `cor.test()`:
 
 
 ```r
-ggplot(data, aes(x = variable)) +
-  geom_histogram()
-
-ggplot(data, aes(x = condition, y = score)) +
-  geom_boxplot()
+cor.test(sample1$intelligence.a, sample1$logic, method = "pearson")
 ```
 
+```
+## 
+## 	Pearson's product-moment correlation
+## 
+## data:  sample1$intelligence.a and sample1$logic
+## t = 5.7687, df = 289, p-value = 2.053e-08
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.2142758 0.4207744
+## sample estimates:
+##     cor 
+## 0.32134
+```
 
-### Renaming variables
+Or perhaps we might be interested in running all possible correlations with `correlate()` from `lsr`.
 
 
 ```r
-data <- rename(data, new_name = old_name)
+sample1 %>%
+  correlate()
 ```
 
-### Converting to factors
+```
+## 
+## CORRELATIONS
+## ============
+## - correlation type:  pearson 
+## - correlations shown only when both variables are numeric
+## 
+##                knowledge logic intelligence.b intelligence.a
+## knowledge              . 0.026          0.171          0.104
+## logic              0.026     .          0.268          0.321
+## intelligence.b     0.171 0.268              .          0.473
+## intelligence.a     0.104 0.321          0.473              .
+```
 
-This is incredibly important. Don't skip this step otherwise things might go very wrong much further down the line. 
+So far, so repetitive from what you already know.
+
+## Compare two correlations based on two independent groups
+
+In this example we want to compare two correlations from two independent groups, i.e., where the participants involved in each correlation are completely different. For the example dataset, we can compare sample 1 and sample.
 
 
 ```r
-data <- mutate(data, variable = as_factor(variable))
+cor.test(sample1$logic, sample1$intelligence.a, method = "pearson")
+cor.test(sample2$logic, sample2$intelligence.a, method = "pearson")
 ```
 
-### Dropping irrelevant variables
+```
+## 
+## 	Pearson's product-moment correlation
+## 
+## data:  sample1$logic and sample1$intelligence.a
+## t = 5.7687, df = 289, p-value = 2.053e-08
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.2142758 0.4207744
+## sample estimates:
+##     cor 
+## 0.32134 
+## 
+## 
+## 	Pearson's product-moment correlation
+## 
+## data:  sample2$logic and sample2$intelligence.a
+## t = 3.7665, df = 332, p-value = 0.0001958
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.09723082 0.30316175
+## sample estimates:
+##       cor 
+## 0.2024331
+```
+
+Here we can see that the correlations between logic scores and intelligence.a scores are significant in both samples, however, the correlation for sample 1 is larger (r = .32) than for sample 2 (r = .20) and so we can compare these using `cocor`.
+
+* For this comparison, the two sample datasets need to be in a single `list` object, so we're going to use the original `aptitude` object.
+* The left-hand side of the formula (before the `|`) refers to variables in the first dataset in the list, the right-hand side of the formula (after the `|`) refers to variables in the second dataset in the list. 
 
 
 ```r
-data <- select(data, -consent1)
+cocor(formula = ~logic + intelligence.a | logic + intelligence.a, 
+      data = aptitude)
 ```
 
-### Recoding variables
+```
+## 
+##   Results of a comparison of two correlations based on independent groups
+## 
+## Comparison between r1.jk (logic, intelligence.a) = 0.3213 and r2.hm (logic, intelligence.a) = 0.2024
+## Difference: r1.jk - r2.hm = 0.1189
+## Data: sample1: j = logic, k = intelligence.a; sample2: h = logic, m = intelligence.a
+## Group sizes: n1 = 291, n2 = 334
+## Null hypothesis: r1.jk is equal to r2.hm
+## Alternative hypothesis: r1.jk is not equal to r2.hm (two-sided)
+## Alpha: 0.05
+## 
+## fisher1925: Fisher's z (1925)
+##   z = 1.5869, p-value = 0.1125
+##   Null hypothesis retained
+## 
+## zou2007: Zou's (2007) confidence interval
+##   95% confidence interval for r1.jk - r2.hm: -0.0281 0.2637
+##   Null hypothesis retained (Interval includes 0)
+```
+
+The full paper by [Diedenhofen and Musch (2015)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945#sec003) explains the output in detail, for our purposes, Fisher's z-test tells us that our correlations are not significantly different (z = 1.59, p = .113) and Zou's confidence intervals gives us the CI for the size of the difference between the two correlations (which at -0.0281 - 0.2637 is quite a range and so isn't surprising that the two are not statistically different).
+
+## Compare two overlapping correlations based on two dependent groups
+
+In this example, we want to compare two correlations from two dependent groups (i.e., the participants are the same) and where one of the variables is also the same, i.e., it overlaps.
+
+For example, let's run all possible correlations for sample 2:
 
 
 ```r
-data <- mutate(data, variable = recode(variable, "old_code" = "new_code"))
+sample2 %>%
+  correlate(test = TRUE, p.adjust.method = "holm")
 ```
 
-### Exclude participants/data 
+```
+## 
+## CORRELATIONS
+## ============
+## - correlation type:  pearson 
+## - correlations shown only when both variables are numeric
+## 
+##                knowledge    logic    intelligence.b    intelligence.a   
+## knowledge              .    0.031             0.129.            0.116.  
+## logic              0.031        .             0.201***          0.202***
+## intelligence.b     0.129.   0.201***              .             0.643***
+## intelligence.a     0.116.   0.202***          0.643***              .   
+## 
+## ---
+## Signif. codes: . = p < .1, * = p<.05, ** = p<.01, *** = p<.001
+## 
+## 
+## p-VALUES
+## ========
+## - total number of tests run:  6 
+## - correction for multiple testing:  holm 
+## 
+##                knowledge logic intelligence.b intelligence.a
+## knowledge              . 0.567          0.055          0.068
+## logic              0.567     .          0.001          0.001
+## intelligence.b     0.055 0.001              .          0.000
+## intelligence.a     0.068 0.001          0.000              .
+## 
+## 
+## SAMPLE SIZES
+## ============
+## 
+##                knowledge logic intelligence.b intelligence.a
+## knowledge            334   334            334            334
+## logic                334   334            334            334
+## intelligence.b       334   334            334            334
+## intelligence.a       334   334            334            334
+```
+
+We see that the correlations between `logic`, `intelligence.a` and `intelligence.b` are all significant. We can assess whether the correlation between `logic` and `intelligence.a` is strong than with `intelligence.b`.
+
+* Note that the the `data` argument now specifies which dataset of the list to use. We could also have just used the `sample1` data that we extracted earlier.
 
 
 ```r
-data <- filter(data, variable != "value") # exclude anyone with value
-data <- filter(data, variable == "value") # include only those with value
-data <- filter(data, variable %in% c("value1", "value2")) # include all specified values
-data <- filter(data, variable > 10) # keep data if value of variable is more than 10
-data <- filter(data, variable <= 10) # keep data if value of variable is less than or equal to 10
+cocor(formula = ~logic + intelligence.a | logic + intelligence.b,
+      data = aptitude$sample1)
 ```
 
-### Reliability
+```
+## 
+##   Results of a comparison of two overlapping correlations based on dependent groups
+## 
+## Comparison between r.jk (logic, intelligence.a) = 0.3213 and r.jh (logic, intelligence.b) = 0.2679
+## Difference: r.jk - r.jh = 0.0534
+## Related correlation: r.kh = 0.4731
+## Data: aptitude$sample1: j = logic, k = intelligence.a, h = intelligence.b
+## Group size: n = 291
+## Null hypothesis: r.jk is equal to r.jh
+## Alternative hypothesis: r.jk is not equal to r.jh (two-sided)
+## Alpha: 0.05
+## 
+## pearson1898: Pearson and Filon's z (1898)
+##   z = 0.9419, p-value = 0.3462
+##   Null hypothesis retained
+## 
+## hotelling1940: Hotelling's t (1940)
+##   t = 0.9422, df = 288, p-value = 0.3469
+##   Null hypothesis retained
+## 
+## williams1959: Williams' t (1959)
+##   t = 0.9379, df = 288, p-value = 0.3491
+##   Null hypothesis retained
+## 
+## olkin1967: Olkin's z (1967)
+##   z = 0.9419, p-value = 0.3462
+##   Null hypothesis retained
+## 
+## dunn1969: Dunn and Clark's z (1969)
+##   z = 0.9370, p-value = 0.3487
+##   Null hypothesis retained
+## 
+## hendrickson1970: Hendrickson, Stanley, and Hills' (1970) modification of Williams' t (1959)
+##   t = 0.9422, df = 288, p-value = 0.3469
+##   Null hypothesis retained
+## 
+## steiger1980: Steiger's (1980) modification of Dunn and Clark's z (1969) using average correlations
+##   z = 0.9367, p-value = 0.3489
+##   Null hypothesis retained
+## 
+## meng1992: Meng, Rosenthal, and Rubin's z (1992)
+##   z = 0.9365, p-value = 0.3490
+##   Null hypothesis retained
+##   95% confidence interval for r.jk - r.jh: -0.0640 0.1811
+##   Null hypothesis retained (Interval includes 0)
+## 
+## hittner2003: Hittner, May, and Silver's (2003) modification of Dunn and Clark's z (1969) using a backtransformed average Fisher's (1921) Z procedure
+##   z = 0.9367, p-value = 0.3489
+##   Null hypothesis retained
+## 
+## zou2007: Zou's (2007) confidence interval
+##   95% confidence interval for r.jk - r.jh: -0.0583 0.1649
+##   Null hypothesis retained (Interval includes 0)
+```
 
-If you are using a scale, for example, as part of a questionnaire study you may need to calculate reliability and you should do this before you calculate the aggregated scale scores. There are several options about how you do this and you should consult your supervisor but one option is to use `alpha()` from the `psych` package. 
+This produces a large number of tests, the mathematics of which are described in the [`cocor` documentation.](https://cran.r-project.org/web/packages/cocor/cocor.pdf). The `cocor` documentation suggests basing the decision on convergence - in this case all tests indicated the null hypothesis should be retained, i.e., the correlations are not significantly different. For the purposes of writing up such a comparison, [Silver, Hittner & May (2004)]((https://www.tandfonline.com/doi/abs/10.3200/JEXE.71.1.53-70) suggest that Dunn & Clark's performs best so you can report that (z = .94, p = .349) as well as Zou's confidence intervals. 
+
+## Compare two non-overlapping correlations from two dependent groups
+
+The final comparison we could make is to compare two non-overlapping (none of the variables are the same) correlations from two dependent groups (the same sample).
 
 
 ```r
-data %>%
-  select(Q1:Q5) %>%
-  psych::alpha()
+cocor(formula = ~logic + intelligence.b | knowledge + intelligence.a, 
+      data = aptitude$sample1)
 ```
 
-
-## Transforming data
-
-The above steps should leave you with a good understanding of your data and all  the variables you need for your analysis. The next step is to correct any problems with the data by replacing or transforming individual values. You may also need to create new variables, for example the total score for a questionnaire or mean reaction times or accuracy.
-
-### Replace missing values
-
-
-```r
-data <- data %>% 
-  mutate(variable = replace_na(data$variable, 0)) # replace NAs in variable with 0
-
-data <- data %>% replace_na(list(gender = "unknown", # replace NAs in `gender` with "unknown"
-                              score = 0,          # replace NAs in `score` with 0  
-                              rt = mean(data$rt, na.rm = TRUE)))  # replace NAs in `rt` with mean of `rt`
+```
+## 
+##   Results of a comparison of two nonoverlapping correlations based on dependent groups
+## 
+## Comparison between r.jk (logic, intelligence.b) = 0.2679 and r.hm (knowledge, intelligence.a) = 0.1038
+## Difference: r.jk - r.hm = 0.164
+## Related correlations: r.jh = 0.0257, r.jm = 0.3213, r.kh = 0.1713, r.km = 0.4731
+## Data: aptitude$sample1: j = logic, k = intelligence.b, h = knowledge, m = intelligence.a
+## Group size: n = 291
+## Null hypothesis: r.jk is equal to r.hm
+## Alternative hypothesis: r.jk is not equal to r.hm (two-sided)
+## Alpha: 0.05
+## 
+## pearson1898: Pearson and Filon's z (1898)
+##   z = 2.0998, p-value = 0.0357
+##   Null hypothesis rejected
+## 
+## dunn1969: Dunn and Clark's z (1969)
+##   z = 2.0811, p-value = 0.0374
+##   Null hypothesis rejected
+## 
+## steiger1980: Steiger's (1980) modification of Dunn and Clark's z (1969) using average correlations
+##   z = 2.0755, p-value = 0.0379
+##   Null hypothesis rejected
+## 
+## raghunathan1996: Raghunathan, Rosenthal, and Rubin's (1996) modification of Pearson and Filon's z (1898)
+##   z = 2.0811, p-value = 0.0374
+##   Null hypothesis rejected
+## 
+## silver2004: Silver, Hittner, and May's (2004) modification of Dunn and Clark's z (1969) using a backtransformed average Fisher's (1921) Z procedure
+##   z = 2.0753, p-value = 0.0380
+##   Null hypothesis rejected
+## 
+## zou2007: Zou's (2007) confidence interval
+##   95% confidence interval for r.jk - r.hm: 0.0095 0.3162
+##   Null hypothesis rejected (Interval does not include 0)
 ```
 
-### Convert implausible values
+Again the output produces a number of tests, although in this case they all converge on the conclusion that the null hypothesis should be rejected, i.e., the correlations are significantly different. Again following [Silver et al.](https://www.tandfonline.com/doi/abs/10.1080/00221300309601282), if you need to pick one to report, I'd suggest Dunn and Clark's z with Zou's confidence intervals. 
 
-In the case of implausible values (such as a score or 10 on a 7-point likert scale), you may wish to recode these as missing, or as the mean (or some other value).
-
-
-```r
-data <- data %>% 
-  mutate(q1= ifelse(q1 > 10, NA, q1)) # if the value in q1 is more than 10 replace it with NA, if it's not, keep the value as it is
-
-data <- data %>%
-  mutate(rt = ifelse(rt > 1000, mean(rt, na.rm = TRUE), rt)) # if the value in rt is more than 1000, replace it with the mean rt, if it's below 1000, keep the value as it is
-```
-
-### Calculate z-scores
-
-You may want to calculate z-scores in order to remove outliers. You could then use `filter()` on the new z-score variable you have created. 
-
-
-```r
-data <- data %>% mutate(z_scores = scale(scores))
-```
-
-There are a few other types of transformations we can do to correct for problems with normality. [This page](https://rcompanion.org/handbook/I_12.html) gives a good overview of all the options.
-
-### Log transformation
-
-A popular method of transformation is to calculate the log of a variable.
-
-
-```r
-data <- data %>% mutate(variable_log = log(variable))
-```
-
-### Square root
-
-Another popular method is to perform a square root transformation.
-
-
-```r
-data <- data %>% mutate(variable_sqrt = sqrt(variable))
-```
-
-### Calculating new variables
-
-You may wish to calculate the sum or the mean of a number of variables. For example, if you have 9 questions and you want the sum of questions 1-5 and the mean of questions 6 - 9 and your data is is wide-form:
-
-
-
-
-```r
-data <- data %>%
-  mutate(sum_scoreq1q5 = rowSums(select(., Q1:Q5)),
-         mean_scoreq6q10 = rowMeans(select(., Q6:Q9)))
-```
-
-If your data is in long-form you may want to use functions such as `gather()`, `spread()` and `summarise()`. See RM2 Lab 3 for more info on this.
-
-### Tidy data
-
-It is at this point that you should tidy the dataset using functions such as `gather()`. Refer back to the RM1 Lab 2 and RM2 Lab 3. You may also wish to have a wide-form version of your data depending upon the analyses you are conducting. 
-
-## Summarising and visualising data
-
-### Descriptive statistics
-
-At this point you may want to calculate descriptive statistics for variables of interest. Refer back to RM1 Lab 2 and Lab 3 for more information on these functions.
-
-
-```r
-data %>% # produce descriptives for the total data set
-  summarise(mean_score = mean(score, na.rm = true),
-            sd_score = sd(score, na.rm = TRUE),
-            median_score = median(score))
-
-data %>% # produce descriptives for each of the grouping variables
-  group_by(gender, condition) %>%
-  summarise(mean_score = mean(score, na.rm = true),
-            sd_score = sd(score, na.rm = TRUE),
-            median_score = median(score))
-```
-
-You may also find the function `describe()` from the `psych` package useful (you may need to install this package but as always, **do not install packages on university computers**). `describe()` produces a full range of descriptive statistics including skew, kurtosis and standard error. 
-
-
-
-
-
-```r
-library(psych)
-describe(data)
-```
-
-`describeBy()` produces descriptives by a grouping variable.
-
-
-```r
-describeBy(data, group = "gender")
-```
-
-### Data visualisation
-
-At this point you should plot your data using a method that reflects the analysis you wish to conduct (e.g., a scatterplot for a correlation, a violn-boxplot for a t-test). For the plots and code specific to each type of analysis, please refer to the relevant chapters. You should ensure that your plots are as informative as possible and display the spread of the data using functions such as `geom_violin()`, and `geom_point()`. Avoid purely aggregated plots like bar charts representing means. 
-
-### Inferential statistics
-
-You are now ready to conduct your inferential analyses. For details on how to perform different tests, please refer to relevant chapters. Ensure that you understand how each test relates to each of your hypotheses.
-
-### Assumption tests
-
-Depending upon the analysis, you may be able to conduct assumption checks before the inferential tests are conducted, however, for methods such as ANOVA and regression, you need to check the model residuals and therefore this can't be done until afterwards.
-
-Foe details on what assumption checks to conduct for each statistical test, please refer to the relevant chapters. 
-
-# Supplementary Analyses {#refsup}
-
-This chapter will contain a number of supplementary analyses. These are beyond the core content of the MSc Conversion course. Some of them are taken from the undergraduate course where there is more time for statistics, and some of them are just for fun. You may find some of the function useful for your dissertation or if you want to stretch yourself with the mini-project so it's worth having a browse.WW
-
-## Data transformation
+# Data transformation
 
 This section has been adapted from materials made available by [Greg Anderson at Bates College](http://abacus.bates.edu/~ganderso/biology/bio270/homework_files/Data_Transformation.pdf). 
 
@@ -433,7 +352,7 @@ Also see:
   
 Hoaglin, D. C., Mosteller, F., & Tukey, J. W. (1983). *Understanding robust and exploratory data analysis*. New York: Wiley.
 
-## Permutation tests
+# Permutation tests
 
 This section has been adapated from the Level 2 class on permutation tests written by Dr. Phil McAleer. The original [can be viewed here](https://psyteachr.github.io/ug2-practical/permutation-tests-a-skill-set.html).
 
@@ -475,8 +394,8 @@ rnorm(10)
 ```
 
 ```
-##  [1]  0.74486843  0.60844106 -0.07333941 -0.16033807 -0.10296230 -0.55421803
-##  [7] -0.74580059 -0.90178559 -0.03478136 -1.18918334
+##  [1]  0.25481376  1.28790284  1.17977869  2.32032704  0.54558393  0.53904583
+##  [7] -0.37307569  0.15437136  1.20618860 -0.07075625
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -574,8 +493,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "u" "n" "m" "o" "d" "e" "i" "f" "v" "h" "c" "l" "q" "j" "g" "y" "p" "t" "k"
-## [20] "a" "x" "w" "r" "z" "s" "b"
+##  [1] "i" "l" "z" "t" "k" "s" "e" "n" "c" "h" "u" "d" "v" "o" "w" "a" "y" "x" "b"
+## [20] "f" "p" "j" "r" "g" "q" "m"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -612,16 +531,16 @@ tibble(Y = rnorm(10))
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1 -1.22 
-##  2 -0.583
-##  3 -0.407
-##  4 -2.03 
-##  5  0.875
-##  6  1.75 
-##  7 -0.939
-##  8  0.728
-##  9 -0.340
-## 10 -0.568
+##  1 -0.528
+##  2  0.822
+##  3 -1.39 
+##  4  1.51 
+##  5 -0.629
+##  6  0.388
+##  7  1.23 
+##  8  0.559
+##  9  0.119
+## 10  0.117
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -638,16 +557,16 @@ tibble(Y = c(rnorm(5, mean = -10),
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1 -11.2 
-##  2  -9.15
-##  3 -10.7 
-##  4  -9.86
-##  5 -10.4 
-##  6  21.3 
-##  7  19.3 
-##  8  20.0 
-##  9  17.7 
-## 10  19.2
+##  1 -10.1 
+##  2 -10.8 
+##  3  -9.80
+##  4 -11.6 
+##  5  -9.96
+##  6  20.6 
+##  7  22.3 
+##  8  21.3 
+##  9  22.3 
+## 10  19.1
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -709,16 +628,16 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A      -9.08
-##  2 A      -9.32
-##  3 A     -11.0 
-##  4 A      -9.53
-##  5 A      -9.46
-##  6 B      19.8 
-##  7 B      18.9 
-##  8 B      20.1 
-##  9 B      21.0 
-## 10 B      20.4
+##  1 A      -9.02
+##  2 A     -12.0 
+##  3 A      -8.51
+##  4 A      -9.27
+##  5 A      -9.13
+##  6 B      18.7 
+##  7 B      19.5 
+##  8 B      20.6 
+##  9 B      20.5 
+## 10 B      19.0
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -773,11 +692,11 @@ my_data_means
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      19.0
-## 2 B     -18.8
+## 1 A      19.7
+## 2 B     -20.6
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -18.8 from the first group mean of 19, to get a single value, the difference: 37.8.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -20.6 from the first group mean of 19.7, to get a single value, the difference: 40.2.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -790,7 +709,7 @@ vec
 ```
 
 ```
-## [1]  18.98458 -18.77985
+## [1]  19.66721 -20.55394
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -801,7 +720,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 37.76443
+## [1] 40.22114
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -812,7 +731,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 37.76443
+## [1] 40.22114
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -825,7 +744,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 37.76443
+## [1] 40.22114
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -840,7 +759,7 @@ my_data_means %>%
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  19.0 -18.8
+## 1  19.7 -20.6
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -856,7 +775,7 @@ my_data_means %>%
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  19.0 -18.8  37.8
+## 1  19.7 -20.6  40.2
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -872,7 +791,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 37.76443
+## [1] 40.22114
 ```
 
 
@@ -1061,8 +980,8 @@ ten_samples
 ```
 
 ```
-##  [1] -0.022366076 -0.003246596 -0.048323393  0.096048252  0.175685870
-##  [6]  0.018399647 -0.076122535  0.037206076 -0.040962445  0.050569960
+##  [1] -0.069386974  0.004164374  0.011342125  0.135291628 -0.024607994
+##  [6] -0.016393179 -0.109152443  0.010423530 -0.105986881  0.059074703
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
@@ -1394,11 +1313,236 @@ p <- NULL
 Well done in completing this lab. Let's recap before finishing. We had two groups, A and B, that we had tested in an experiment. We calculated the mean difference between A and B and wanted to know if this was a significant difference. To test this we created a distribution of all possible differences between A and B using the premise of permutation tests and then found the probability of our original value in that permuted distribution. The more extreme the value in a distribution the more likely that the difference is significant. And that is exactly what we found; an $\alpha < .05$. Next time we will look at using functions and inferential tests to perform this analysis but by understanding the above you now know how probability is determined.
 
 
-## Non-parametric tests
+# Non-parametric tests
 
-![](http://www.reactiongifs.com/wp-content/uploads/2013/07/see.gif)
+First, before Dale Barr shouts at me, it needs to be noted that non-parametric tests are problematic. Because they are based on rank data:
 
-## Simulation
+* They ignore the magnitude of any differences therefore
+* They are less powerful
+* You cannot calculate interactions
+
+Additionally, with large sample sizes the parametric options (t-tests, one-way ANOVA, Pearson's correlations) are usually robust and perform better and with the wealth of packages and tests available in R, we now all have easy access to better alternatives such as ordinal regression or permutation test, or options for data transformation that were more difficult when these tests were first popularised.
+
+However, the textbooks still teach them and there may be situations in which you are called to perform non-parametric tests, so here we are.
+
+## Two independent groups
+
+The non-parametric equivalent of a independent-samples t-test is known as the *Mann-Whitney-U* test also referred to as the *Wilcoxon Rank Sum* test. It uses ranked data to test the null hypothesis that the median ranks of two groups are different.
+
+For this example we're going to use the `wine` dataset from the `ordinal` package that has ratings for different wines.
+
+
+```r
+library(tidyverse)
+library(ordinal)
+```
+
+```
+## 
+## Attaching package: 'ordinal'
+```
+
+```
+## The following object is masked from 'package:dplyr':
+## 
+##     slice
+```
+
+```r
+data(wine)
+force(wine)
+```
+
+```
+##    response rating temp contact bottle judge
+## 1        36      2 cold      no      1     1
+## 2        48      3 cold      no      2     1
+## 3        47      3 cold     yes      3     1
+## 4        67      4 cold     yes      4     1
+## 5        77      4 warm      no      5     1
+## 6        60      4 warm      no      6     1
+## 7        83      5 warm     yes      7     1
+## 8        90      5 warm     yes      8     1
+## 9        17      1 cold      no      1     2
+## 10       22      2 cold      no      2     2
+## 11       14      1 cold     yes      3     2
+## 12       50      3 cold     yes      4     2
+## 13       30      2 warm      no      5     2
+## 14       51      3 warm      no      6     2
+## 15       90      5 warm     yes      7     2
+## 16       70      4 warm     yes      8     2
+## 17       36      2 cold      no      1     3
+## 18       50      3 cold      no      2     3
+## 19       42      3 cold     yes      3     3
+## 20       23      2 cold     yes      4     3
+## 21       80      5 warm      no      5     3
+## 22       81      5 warm      no      6     3
+## 23       73      4 warm     yes      7     3
+## 24       62      4 warm     yes      8     3
+## 25       46      3 cold      no      1     4
+## 26       27      2 cold      no      2     4
+## 27       48      3 cold     yes      3     4
+## 28       32      2 cold     yes      4     4
+## 29       57      3 warm      no      5     4
+## 30       37      2 warm      no      6     4
+## 31       84      5 warm     yes      7     4
+## 32       58      3 warm     yes      8     4
+## 33       26      2 cold      no      1     5
+## 34       45      3 cold      no      2     5
+## 35       61      4 cold     yes      3     5
+## 36       41      3 cold     yes      4     5
+## 37       48      3 warm      no      5     5
+## 38       41      3 warm      no      6     5
+## 39       58      3 warm     yes      7     5
+## 40       55      3 warm     yes      8     5
+## 41       46      3 cold      no      1     6
+## 42       30      2 cold      no      2     6
+## 43       54      3 cold     yes      3     6
+## 44       37      2 cold     yes      4     6
+## 45       32      2 warm      no      5     6
+## 46       60      4 warm      no      6     6
+## 47       88      5 warm     yes      7     6
+## 48       73      4 warm     yes      8     6
+## 49       13      1 cold      no      1     7
+## 50       19      1 cold      no      2     7
+## 51       31      2 cold     yes      3     7
+## 52       29      2 cold     yes      4     7
+## 53       22      2 warm      no      5     7
+## 54       43      3 warm      no      6     7
+## 55       32      2 warm     yes      7     7
+## 56       49      3 warm     yes      8     7
+## 57       25      2 cold      no      1     8
+## 58       32      2 cold      no      2     8
+## 59       39      2 cold     yes      3     8
+## 60       40      3 cold     yes      4     8
+## 61       51      3 warm      no      5     8
+## 62       45      3 warm      no      6     8
+## 63       42      3 warm     yes      7     8
+## 64       67      4 warm     yes      8     8
+## 65       12      1 cold      no      1     9
+## 66       29      2 cold      no      2     9
+## 67       47      3 cold     yes      3     9
+## 68       28      2 cold     yes      4     9
+## 69       47      3 warm      no      5     9
+## 70       38      2 warm      no      6     9
+## 71       72      4 warm     yes      7     9
+## 72       65      4 warm     yes      8     9
+```
+
+Each wine is given a bitterness rating on a 0-100 scale (`response` variable) and one of the grouping variables is whether the wine was served cold or warm (`temp`).
+
+First, we can calculate descriptive statistics. For ordinal data the median and range are most suitable.
+
+
+```r
+wine %>%
+  group_by(temp) %>%
+  summarise(median_response = median(response),
+            min_response = min(response),
+            max_response = max(response))
+```
+
+```
+## # A tibble: 2 x 4
+##   temp  median_response min_response max_response
+##   <fct>           <dbl>        <dbl>        <dbl>
+## 1 cold               36           12           67
+## 2 warm               58           22           90
+```
+
+And to visualise, grouped histograms:
+
+
+```r
+ggplot(wine, aes(x = response, fill = temp)) +
+  geom_histogram(colour = "black",alpha = .8) +
+  scale_fill_viridis_d(option = "E") +
+  theme_minimal()
+```
+
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+<div class="figure" style="text-align: center">
+<img src="appendix-0_files/figure-html/unnamed-chunk-26-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-26)**CAPTION THIS FIGURE!!**</p>
+</div>
+
+The Mann-Whitney code takes the following form:
+
+
+```r
+wilcox.test(dv ~ iv, data, paired = FALSE, correct = TRUE)
+```
+
+Therefore to test whether bitterness ratings are significantly different between temperate groups.
+
+
+```r
+np_test1 <- wilcox.test(response ~ temp, 
+            data = wine, 
+            paired = FALSE, 
+            correct = TRUE)
+```
+
+```
+## Warning in wilcox.test.default(x = c(36, 48, 47, 67, 17, 22, 14, 50, 36, :
+## cannot compute exact p-value with ties
+```
+
+```r
+np_test1
+```
+
+```
+## 
+## 	Wilcoxon rank sum test with continuity correction
+## 
+## data:  response by temp
+## W = 214.5, p-value = 1.072e-06
+## alternative hypothesis: true location shift is not equal to 0
+```
+
+The result of the test tells us that there is a significance different between the groups with , however, there's also a warning message about the calculation of the p-value. 
+
+When we calculate a p-value, we do it under the assumption that the data are normally distributed so that we know what the probability of getting a particular score would be. However, non-parametric data isn’t normally distributed, that's the point.
+
+There are two solutions. First, there’s the exact method or the Monte Carlo method. This takes the data and randomizes the group labels, so it mixes up which group each score is in. It does this thousands of times to calculate the probability of the observed result - if you still get the same difference in scores between the groups when the labels have been randomly shuffled, you'd want to accept the null hypothesis. 
+
+The great thing about this method is because it randomizes the data thousands of times, you get the exact probability of your observed data. The problem is that it doesn’t work when you’ve got ties in your data.
+
+The other way is to use the normal approximation and this is where rather than using the distribution of the data, it assumes that the distribution of the test statistic, so in this case `W`, is normally distributed, and calculates the probability the observed test statistic. Because the normal distribution is smooth, whereas ranked data increases in increments of .5 and 1, this can reduce the p-values so by default a correction is applied to counteract this which is what the continuity correction refers to. 
+
+### Effect size
+
+The effect size for a Mann-wWitney is actually pearson’s R, the same r we use in correlation and is calculated by extracting the z score from the p-value. First, we create a new function to do this for us (from Field et al., 2013) that specifies we want to calculate r for the Mann-Whitney test we stored in `np_test`:
+
+
+```r
+rFromWilcox <-  function(np_test1, N){
+  Z <- qnorm(np_test1$p.value/2)
+  r <- Z/sqrt(N)
+  cat(np_test1$data.name, "Effect Size, r = ", r)
+}
+```
+
+Next, we use this new function to calculate the effect size by specifying the model object and the sample size.:
+
+
+```r
+rFromWilcox(np_test1, 72)
+```
+
+```
+## response by temp Effect Size, r =  -0.5748666
+```
+
+
+### APA write-up
+
+> A Mann-Whitney U test found
+
 
 ![](http://www.reactiongifs.com/wp-content/uploads/2013/07/see.gif)
 
@@ -1475,8 +1619,8 @@ ts_plot(tweets, by = "1 hours")
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-24-1.png" alt="Time series plot by hour" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-24)Time series plot by hour</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-36-1.png" alt="Time series plot by hour" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-36)Time series plot by hour</p>
 </div>
 
 You can change the time interval with the `by` argument and you can also change the time zone. `ts_plot` creates a `ggplot` object so you can also add the usual ggplot layers to customise apperance. 
@@ -1489,8 +1633,8 @@ ts_plot(tweets, by = "10 mins", tz = "GMT") +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-25-1.png" alt="Time series plot by 10 minute intervals" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-25)Time series plot by 10 minute intervals</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-37-1.png" alt="Time series plot by 10 minute intervals" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-37)Time series plot by 10 minute intervals</p>
 </div>
 
 ### Tidy text and word frequencies
@@ -1523,8 +1667,8 @@ dat_token%>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-27-1.png" alt="Most frequent words" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-27)Most frequent words</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-39-1.png" alt="Most frequent words" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-39)Most frequent words</p>
 </div>
 
 There's quite a few words here that aren't that helpful to us so it might be best to get rid of them (essentially we're building our own list of stop words).
@@ -1553,8 +1697,8 @@ dat_token%>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-29-1.png" alt="Most frequent words (edited)" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-29)Most frequent words (edited)</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-41-1.png" alt="Most frequent words (edited)" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-41)Most frequent words (edited)</p>
 </div>
 
 To be honest, this isn't that interesting because it's so general, it might be more interesting to see how often each of the main characters are being mentioned. 
@@ -1589,8 +1733,8 @@ dat_token2 %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-31-1.png" alt="Frequecy of mentions for each character" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-31)Frequecy of mentions for each character</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-43-1.png" alt="Frequecy of mentions for each character" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-43)Frequecy of mentions for each character</p>
 </div>
 
 ### Bigram analysis
@@ -1651,8 +1795,8 @@ ggraph(bigram_graph, layout = "fr") +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-33-1.png" alt="Network graph of bigrams" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-33)Network graph of bigrams</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-45-1.png" alt="Network graph of bigrams" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-45)Network graph of bigrams</p>
 </div>
 
 ```
@@ -1850,11 +1994,291 @@ dat_sentiment %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-38-1.png" alt="Sentiment scores for each character" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-38)Sentiment scores for each character</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-50-1.png" alt="Sentiment scores for each character" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-50)Sentiment scores for each character</p>
 </div>
 
 `rtweet` is such a cool package and I've found that the limits of what you can do with it are much more about one's imagination. There's much more you could do with this package but when I first ran these analyses I found that tracking RuPaul's Drag Race was a fun way to learn a new package as it did give an insight into the fan reactions of one of my favourite shows. I also use this package to look at swearing on Twitter (replace the hashtags with swear words). The best way to learn what `rtweet` and `tidytext` can do for you is to find a topic you care about and explore the options it gives you. If you have any feedback on this tutorial you can find me on twitter: [emilynordmann](https://twitter.com/emilynordmann).
+
+# Dissertation analysis guide
+
+In this  chapter we're going to provide a guide for how to get started working with your dissertation data. It's important to note that this guide won't work for every project and every kind of data - and nothing in this chapter should supersede advice your supervisor has given you. Rather, this chapter is here to help guide you through the initial steps of working with quantitative data and to show you how what you have learned in RM2 maps on to your dissertation project. 
+
+## Before R
+
+Before you touch R, you need to make sure you understand your design, data, and analysis plan. This will make your work in R considerably easier. Before you start coding, make sure you have answers to the following questions:
+
+### Study design
+
+* What is the design of your study?
+* What are your variables?
+  * Are they IVs/predictors/correlation variables?
+  * How many levels do they have?
+	* Are they between or within-subject?
+* What are your DVs?
+	* How will you calculate them? For example, do you need to take a mean of several of questionnaire items or reaction times from multiple trials?
+* What are your hypotheses?
+* Do you have any demographic data included in the data files?
+* Thinking back to the concept of tidy data, how many variables will you have?  
+
+### Data wrangling considerations
+
+* What does each variable in your data set represent?  
+  * Do you want to rename any variables to make them easier to work with?
+    * Do you have a convention for naming variables? For example, I use all lower-case variables and words are always separated by underscores, e.g., `group_data`.  
+  * Are there any variables that are not necessary for the analysis? For example, consent forms.
+  * Are there minimum and maximum values for any of your variables? 
+* Do you have multiple data sets you need to join together? 
+  * Do they have a common variable? For example, does each file have the participant ID or a question number?
+* Do you need to create any new variables? For example, the mean or sum of a number of questionnaire items to give a total scale score?  
+* What type of data should each variable be?
+  * Are there any variables that you need to convert to factors?  
+* Do you need to recode any variables? For example, 1 = male, 2 = female, or perhaps reverse coding questionnaire responses.
+* Do you have a rule for outlier exclusion/replacement?  
+* Do you need to exclude any participants? For example, if they score below a certain threshold, if they are non-native speakers etc.
+* Is there any missing data for each variable?
+  * What will you do about missing data?
+* Do you need to tidy your data?
+
+
+### Data analysis
+
+* What descriptive statistics do you need to calculate for each variable?
+  * Do you need to calculate descriptive by groups?
+  * Are the descriptive statistics similar to values reported in other studies that have used the same measures. Are they similar? If not, what is the explanation?
+* How will you visualize your data?
+* Do you need to transform your data?
+* Do you need to conduct any kind of reliability analysis?
+* What type of inferential tests are you going to conduct?  
+  * Where appropriate, do you need to perform one or two-tailed hypothesis testing?  
+  * Do you need to do any dummy coding for regression models?  
+* What assumptions do you need to test in order to perform your analyses?
+  * What will you do if your data do not meet these assumptions?
+* Do you need to apply a correction for multiple comparison testing? If so, which one?
+* Do you need to calculate measures of effect size? If so, which ones?
+
+
+If this looks like a lot of work - it is. It's important to remember that a lot of the problems that students face with R are really nothing to do with R. In order to wrangle and analyse your data you first need to understand the data that you have. If you don't know what your independent and dependent variables are or what analysis you're supposed to be running, it doesn't matter what statistical software you are using, you won't be able to complete your task. Don't rush or skip any part of the preparation, it will make coding much harder. If you know the answers to all of the above questions then it means you're ready to get started in R.  
+
+## Exploring and cleaning your data
+
+The following sections will not provide comprehensive instructions on how to use the example code, nor will they cover every function you may need to use. You should refer to the RM2 materials, help documentation, and online resources, however, these examples may give you an idea of where to start.
+
+As a first step you should explore your dataset to understand its properties and then perform some basic cleaning operations that will facilitate further analysis. 
+
+### `summary()`
+
+A useful first step is to run `summary()`. Check the output for:
+
+* Missing data  
+* What type of data each variable is  
+* If the variable names are easy to work with, for example `Participant Age` is difficult to work with because it has two capital letters and a space. Renaming this as `age` will make your coding easier.  
+* Any suspicious values, for example, if your likert scale is 1-7 you shouldn't have a maximum score of 10. If you have standardised IQ scores, you may want to check that a score of 200 or 20 isn't a typo.  
+* If you make any changes, run `summary()` again
+
+
+
+
+
+```r
+summary(data)
+```
+
+### Visualisations
+
+To get an overview of the data and spot any potential issues such as outliers you should plot histograms and boxplots to eyeball the distributions. 
+
+
+```r
+ggplot(data, aes(x = variable)) +
+  geom_histogram()
+
+ggplot(data, aes(x = condition, y = score)) +
+  geom_boxplot()
+```
+
+
+### Renaming variables
+
+
+```r
+data <- rename(data, new_name = old_name)
+```
+
+### Converting to factors
+
+This is incredibly important. Don't skip this step otherwise things might go very wrong much further down the line. 
+
+
+```r
+data <- mutate(data, variable = as_factor(variable))
+```
+
+### Dropping irrelevant variables
+
+
+```r
+data <- select(data, -consent1)
+```
+
+### Recoding variables
+
+
+```r
+data <- mutate(data, variable = recode(variable, "old_code" = "new_code"))
+```
+
+### Exclude participants/data 
+
+
+```r
+data <- filter(data, variable != "value") # exclude anyone with value
+data <- filter(data, variable == "value") # include only those with value
+data <- filter(data, variable %in% c("value1", "value2")) # include all specified values
+data <- filter(data, variable > 10) # keep data if value of variable is more than 10
+data <- filter(data, variable <= 10) # keep data if value of variable is less than or equal to 10
+```
+
+### Reliability
+
+If you are using a scale, for example, as part of a questionnaire study you may need to calculate reliability and you should do this before you calculate the aggregated scale scores. There are several options about how you do this and you should consult your supervisor but one option is to use `alpha()` from the `psych` package. 
+
+
+```r
+data %>%
+  select(Q1:Q5) %>%
+  psych::alpha()
+```
+
+
+## Transforming data
+
+The above steps should leave you with a good understanding of your data and all  the variables you need for your analysis. The next step is to correct any problems with the data by replacing or transforming individual values. You may also need to create new variables, for example the total score for a questionnaire or mean reaction times or accuracy.
+
+### Replace missing values
+
+
+```r
+data <- data %>% 
+  mutate(variable = replace_na(data$variable, 0)) # replace NAs in variable with 0
+
+data <- data %>% replace_na(list(gender = "unknown", # replace NAs in `gender` with "unknown"
+                              score = 0,          # replace NAs in `score` with 0  
+                              rt = mean(data$rt, na.rm = TRUE)))  # replace NAs in `rt` with mean of `rt`
+```
+
+### Convert implausible values
+
+In the case of implausible values (such as a score or 10 on a 7-point likert scale), you may wish to recode these as missing, or as the mean (or some other value).
+
+
+```r
+data <- data %>% 
+  mutate(q1= ifelse(q1 > 10, NA, q1)) # if the value in q1 is more than 10 replace it with NA, if it's not, keep the value as it is
+
+data <- data %>%
+  mutate(rt = ifelse(rt > 1000, mean(rt, na.rm = TRUE), rt)) # if the value in rt is more than 1000, replace it with the mean rt, if it's below 1000, keep the value as it is
+```
+
+### Calculate z-scores
+
+You may want to calculate z-scores in order to remove outliers. You could then use `filter()` on the new z-score variable you have created. 
+
+
+```r
+data <- data %>% mutate(z_scores = scale(scores))
+```
+
+There are a few other types of transformations we can do to correct for problems with normality. [This page](https://rcompanion.org/handbook/I_12.html) gives a good overview of all the options.
+
+### Log transformation
+
+A popular method of transformation is to calculate the log of a variable.
+
+
+```r
+data <- data %>% mutate(variable_log = log(variable))
+```
+
+### Square root
+
+Another popular method is to perform a square root transformation.
+
+
+```r
+data <- data %>% mutate(variable_sqrt = sqrt(variable))
+```
+
+### Calculating new variables
+
+You may wish to calculate the sum or the mean of a number of variables. For example, if you have 9 questions and you want the sum of questions 1-5 and the mean of questions 6 - 9 and your data is is wide-form:
+
+
+
+
+```r
+data <- data %>%
+  mutate(sum_scoreq1q5 = rowSums(select(., Q1:Q5)),
+         mean_scoreq6q10 = rowMeans(select(., Q6:Q9)))
+```
+
+If your data is in long-form you may want to use functions such as `gather()`, `spread()` and `summarise()`. See RM2 Lab 3 for more info on this.
+
+### Tidy data
+
+It is at this point that you should tidy the dataset using functions such as `gather()`. Refer back to the RM1 Lab 2 and RM2 Lab 3. You may also wish to have a wide-form version of your data depending upon the analyses you are conducting. 
+
+## Summarising and visualising data
+
+### Descriptive statistics
+
+At this point you may want to calculate descriptive statistics for variables of interest. Refer back to RM1 Lab 2 and Lab 3 for more information on these functions.
+
+
+```r
+data %>% # produce descriptives for the total data set
+  summarise(mean_score = mean(score, na.rm = true),
+            sd_score = sd(score, na.rm = TRUE),
+            median_score = median(score))
+
+data %>% # produce descriptives for each of the grouping variables
+  group_by(gender, condition) %>%
+  summarise(mean_score = mean(score, na.rm = true),
+            sd_score = sd(score, na.rm = TRUE),
+            median_score = median(score))
+```
+
+You may also find the function `describe()` from the `psych` package useful (you may need to install this package but as always, **do not install packages on university computers**). `describe()` produces a full range of descriptive statistics including skew, kurtosis and standard error. 
+
+
+
+
+
+```r
+library(psych)
+describe(data)
+```
+
+`describeBy()` produces descriptives by a grouping variable.
+
+
+```r
+describeBy(data, group = "gender")
+```
+
+### Data visualisation
+
+At this point you should plot your data using a method that reflects the analysis you wish to conduct (e.g., a scatterplot for a correlation, a violn-boxplot for a t-test). For the plots and code specific to each type of analysis, please refer to the relevant chapters. You should ensure that your plots are as informative as possible and display the spread of the data using functions such as `geom_violin()`, and `geom_point()`. Avoid purely aggregated plots like bar charts representing means. 
+
+### Inferential statistics
+
+You are now ready to conduct your inferential analyses. For details on how to perform different tests, please refer to relevant chapters. Ensure that you understand how each test relates to each of your hypotheses.
+
+### Assumption tests
+
+Depending upon the analysis, you may be able to conduct assumption checks before the inferential tests are conducted, however, for methods such as ANOVA and regression, you need to check the model residuals and therefore this can't be done until afterwards.
+
+Foe details on what assumption checks to conduct for each statistical test, please refer to the relevant chapters. 
 
 
 
