@@ -609,7 +609,7 @@ Again, this is simulated data that we're using for the purpose of this activity 
 
 
 
-First, we're going to gather up all of the questions into one column using `gather()`.
+First, we're going to gather up all of the questions into one column using `pivot_longer()`.
 
 * Run the below code to transform the data to long-form. 
 
@@ -678,7 +678,7 @@ Your data should look like this:
 </tbody>
 </table>
 
-## Activity 6: Calculating scale scores
+## Activity 9: Calculating scale scores
 
 Commonly with questionnaire data you  need to calculate the average response for a scale or a sub-scale for each participant. You can do this using `group_by()` and `summarise()` that you should now be familiar with.
 
@@ -744,7 +744,7 @@ ggplot(qdat_scores, aes(scale, mean_score)) +
 <p class="caption">(\#fig:img-scale)Boxplots of scale scores</p>
 </div>
 
-## Activity 7: `pivot_wider()` back to wide-form
+## Activity 10: `pivot_wider()` back to wide-form
 
 You may also want to transform the dataset back to wide-form if, for example, you wanted to run correlations between the variables. You can do this using `pivot_wider()` a function we haven't used but essentially works like the reverse of `pivot_longer()`.
 
