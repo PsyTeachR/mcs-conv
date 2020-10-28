@@ -186,6 +186,10 @@ pong_data_hits<- pong_data %>% # take pong_data
             meanhits = mean(HitOrMiss, na.rm = TRUE)) # then summarise it
 ```
 
+<div class="info">
+<p>If you get what looks like an error that says <code>summarise() ungrouping output (override with .groups argument)</code>don’t worry, this isn’t an error it’s just R telling you what it’s done. This message was included in a very recent update to the <code>tidyverse</code> which is why it doesn’t appear on some of the walkthrough vidoes.</p>
+</div>
+
 `summarise()` has a range of internal functions that make life really easy, e.g. `mean`, `sum`, `max`, `min`, etc. See the [dplyr cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) for more examples.
 
 <div class="info">
