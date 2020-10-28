@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-10-27" />
+<meta name="date" content="2020-10-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -840,6 +840,11 @@ Helpful Hint
 <span id="cb67-2"><a href="data-wrangling-2.html#cb67-2"></a><span class="st">  </span><span class="kw">group_by</span>(BackgroundColor, PaddleLength) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># then group it</span></span>
 <span id="cb67-3"><a href="data-wrangling-2.html#cb67-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">total_hits =</span> <span class="kw">sum</span>(HitOrMiss, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
 <span id="cb67-4"><a href="data-wrangling-2.html#cb67-4"></a>            <span class="dt">meanhits =</span> <span class="kw">mean</span>(HitOrMiss, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) <span class="co"># then summarise it</span></span></code></pre></div>
+<div class="info">
+<p>
+If you get what looks like an error that says <code>summarise() ungrouping output (override with .groups argument)</code>don’t worry, this isn’t an error it’s just R telling you what it’s done. This message was included in a very recent update to the <code>tidyverse</code> which is why it doesn’t appear on some of the walkthrough vidoes.
+</p>
+</div>
 <p><code>summarise()</code> has a range of internal functions that make life really easy, e.g. <code>mean</code>, <code>sum</code>, <code>max</code>, <code>min</code>, etc. See the <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">dplyr cheatsheet</a> for more examples.</p>
 <div class="info">
 <p>
