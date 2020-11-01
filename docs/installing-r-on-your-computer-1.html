@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Intro to R | MSc Conversion in Psychological Studies</title>
+  <title>B Installing R on your computer | MSc Conversion in Psychological Studies</title>
   <meta name="description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Intro to R | MSc Conversion in Psychological Studies" />
+  <meta property="og:title" content="B Installing R on your computer | MSc Conversion in Psychological Studies" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Intro to R | MSc Conversion in Psychological Studies" />
+  <meta name="twitter:title" content="B Installing R on your computer | MSc Conversion in Psychological Studies" />
   
   <meta name="twitter:description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="ref3.html"/>
-<link rel="next" href="loading-data.html"/>
+<link rel="prev" href="exporting-files-from-the-server.html"/>
+<link rel="next" href="comparing-two-correlations.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -619,159 +619,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ref2" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Intro to R</h1>
-<p>There are nine activities in total for this chapter, but don’t worry, they are broken down into very small steps!</p>
-<div id="activity-1-create-the-working-directory" class="section level2">
-<h2><span class="header-section-number">2.1</span> Activity 1: Create the working directory</h2>
-<p>If you want to load data into R, or save the output of what you’ve created (which you almost always will want to do), you first need to tell R where the <strong>working directory</strong> is. All this means is that we tell R where the files we need (such as raw data) are located and where we want to save any files you have created. Think of it just like when you have different subjects, and you have separate folders for each topic e.g. biology, history and so on. When working with R, it’s useful to have all the data sets and files you need in one folder.</p>
-<p>We recommend making a new folder called “Research Methods R” with sub-folders for each chapter and saving any data, scripts, and portfolio files for each chapter into these folders. If you’re using R on your laptop rather than the server, we suggest that you save your work onto a cloud storage server like OneDrive so that you never lose your work.</p>
-<ul>
-<li>Choose a location for your book work and then create the necessary folders for each chapter.</li>
-</ul>
-<div class="warning">
-<p>
-Whatever you do, don’t call the folder your keep your R work in “R”. If you do this, sometimes R has an identity crisis and won’t save or load your files properly.
-</p>
+<div id="installing-r-on-your-computer-1" class="section level1">
+<h1><span class="header-section-number">B</span> Installing R on your computer</h1>
+<div id="why-should-i-install-r-on-my-computer" class="section level2">
+<h2><span class="header-section-number">B.1</span> Why should I install R on my computer?</h2>
+<p>The R Server is cuts down on a lot of installation problems and it means that you have all the packages and functions you need already installed. However, it requires an internet connection to use and additional when it comes time to submit your R assessments, if you don’t have R on your computer it means that you won’t be able to open the files you download from the server to check they’re ok before you submit them.</p>
+<p>It is not necessary to install R on your computer, however, now that we’re over the initial anxiety spike of using R for the first time, you may find it helpful.</p>
 </div>
-</div>
-<div id="activity-1b-mirror-the-directory-on-the-server" class="section level2">
-<h2><span class="header-section-number">2.2</span> Activity 1b: Mirror the directory on the server</h2>
-<p>The main disadvantage to using the R server is that you will need to upload and download any files you are working on to and from the server (if you are using a local installation on your laptop you can skip this step).</p>
+<div id="windows" class="section level2">
+<h2><span class="header-section-number">B.2</span> Windows</h2>
+<p>If you are using Windows, you should download and install the following:</p>
 <ul>
-<li>Log on to the <a href="https://rstudio.psy.gla.ac.uk/">R server</a></li>
-<li>In the file pane click <code>New folder</code> and create the same structure you created on your computer.</li>
-</ul>
-<p>Going forward throughout this book, you can either download files to your local computer or, if you’re using the server, you’ll do an extra step where you also upload them to the sever. We’re not going to use any data files in this session but let’s try an example to make it clear how you get the data files on to the server.</p>
-<ul>
-<li>Download <a href="ahi-cesd.csv" download><code>ahi-cesd.csv</code></a> and <a href="participant-info.csv" download><code>participant-info.csv</code></a> into the chapter folder on your computer. If you are working on the server, you will need to uploaded the files to the server as well.<br />
+<li><a href="https://cran.r-project.org/bin/windows/base/">R</a><br />
 </li>
-<li>Click <code>Upload</code> then <code>Browse</code>and choose the folder for the chapter you’re working on.</li>
-<li>Click <code>Choose file</code> and go and find the data you want to upload.</li>
+<li><a href="https://rstudio.com/products/rstudio/download/#download">R Studio</a><br />
+</li>
+<li><a href="https://cran.r-project.org/bin/windows/Rtools/">RTools</a></li>
 </ul>
+<p>Once you’ve installed all three programs, restart your computer. Then, open RStudio (not R) and run the below code:</p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="installing-r-on-your-computer-1.html#cb330-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>This will install the <code>tidyverse</code> package on your computer. You can still use the server to do all your work, but having R on your computer will make it easier to view the files. If you would like to work from your computer, you will also need to install the other packages we use, for example <code>lsr</code>, <code>psych</code>, <code>babynames</code> etc.</p>
+<p>If you have any problems installing R, please book into a GTA session as they should be able to help you with any installation problems.</p>
 </div>
-<div id="activity-2-set-the-working-directory" class="section level2">
-<h2><span class="header-section-number">2.3</span> Activity 2: Set the working directory</h2>
-<p>Once you have created your folders you can set the working directory by clicking <code>Session</code> -&gt; <code>Set Working Directory</code> -&gt; <code>Choose Directory</code> and then select the relevant folder for this chapter as your working directory.</p>
-<div class="figure" style="text-align: center"><span id="fig:img-working-dir"></span>
-<img src="images/working-dir.png" alt="Setting the working directory" width="100%" />
-<p class="caption">
-Figure 2.1: Setting the working directory
-</p>
-</div>
-</div>
-<div id="r-markdown-for-r-book-work-and-portfolio-assignments" class="section level2">
-<h2><span class="header-section-number">2.4</span> R Markdown for R book work and portfolio assignments</h2>
-<p>For the R book work and portfolio assignments you will use a worksheet format called R Markdown (abbreviated as Rmd) which is a great way to create dynamic documents with embedded chunks of code. These documents are self-contained and fully reproducible (if you have the necessary data, you should be able to run someone else’s analyses with the click of a button) which makes it very easy to share. This is an important part of your open science training as one of the reasons we are using R Studio is that it enables us to share open and reproducible information. Using these worksheets enables you to keep a record of all the code you write during this course, and when it comes time for the portfolio assignments, we can give you a task you can and then fill in the required code.</p>
-<p>For more information about R Markdown feel free to have a look at their main webpage sometime <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>. The key advantage of R Markdown is that it allows you to write code into a document, along with regular text, and then <strong>knit</strong> it using the package <code>knitr</code> to create your document as either a webpage (HTML), a PDF, or Word document (.docx).</p>
-</div>
-<div id="activity-3-open-and-save-a-new-r-markdown-document" class="section level2">
-<h2><span class="header-section-number">2.5</span> Activity 3: Open and save a new R Markdown document</h2>
-<p>To open a new R Markdown document click the ‘new item’ icon and then click ‘R Markdown’. You will be prompted to give it a title, call it “Intro to R”. Also, change the author name to your GUID as this will be good practice for the portfolio assignments. Keep the output format as HTML.</p>
-<div class="figure" style="text-align: center"><span id="fig:img-new-markdown"></span>
-<img src="images/new-markdown.png" alt="Opening a new R Markdown document" width="100%" />
-<p class="caption">
-Figure 2.2: Opening a new R Markdown document
-</p>
-</div>
-<p>Once you’ve opened a new document be sure to save it by clicking <code>File</code> -&gt; <code>Save as</code>. Name this file “Intro to R” as well. If you’ve set the working directory correctly, you should now see this file appear in your file viewer pane in the bottom right hand corner like in the example below (your file names and folders will be different).</p>
-<div class="figure" style="text-align: center"><span id="fig:img-file-dir"></span>
-<img src="images/file-dir.png" alt="New file in working directory" width="100%" />
-<p class="caption">
-Figure 2.3: New file in working directory
-</p>
-</div>
-</div>
-<div id="activity-4-create-a-new-code-chunk" class="section level2">
-<h2><span class="header-section-number">2.6</span> Activity 4: Create a new code chunk</h2>
-<p>When you first open a new R Markdown document you will see a bunch of welcome text that looks like this:</p>
-<div class="figure" style="text-align: center"><span id="fig:img-markdown-default"></span>
-<img src="images/markdown-default.png" alt="New R Markdown text" width="100%" />
-<p class="caption">
-Figure 2.4: New R Markdown text
-</p>
-</div>
-<p>Do the following steps:<br />
-* Delete <strong>everything</strong> below line 7<br />
-* On line 8 type “About me”<br />
-* Click <code>Insert</code> -&gt; <code>R</code></p>
-<p>Your Markdown document should now look something like this:</p>
-<div class="figure" style="text-align: center"><span id="fig:img-new-chunk"></span>
-<img src="images/new-chunk.png" alt="New R chunk" width="100%" />
-<p class="caption">
-Figure 2.5: New R chunk
-</p>
-</div>
-<p>What you have created is a <strong>code chunk</strong>. In R Markdown, anything written in the white space is regarded as normal text, and anything written in a grey code chunk is assumed to be code. This makes it easy to combine both text and code in one document.</p>
-<div class="warning">
-<p>
-When you create a new code chunk you should notice that the grey box starts and ends with three back ticks ```. One common mistake is to accidentally delete these back ticks. Remember, code chunks are grey and text entry is white - if the colour of certain parts of your Markdown doesn’t look right, check that you haven’t deleted the back ticks.
-</p>
-</div>
-</div>
-<div id="activity-5-write-some-code" class="section level2">
-<h2><span class="header-section-number">2.7</span> Activity 5: Write some code</h2>
-<p>Now we’re going to use the code examples you read about in Programming Basics to add some simple code to our R Markdown document. In your code chunk write the below code but replace the values of name/age/birthday with your own details). Note that text values and dates need to be contained in quotation marks but numerical values do not. Missing and/or unnecessary quotation marks are a common cause of code not working - remember this!</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="ref2.html#cb20-1"></a>name &lt;-<span class="st"> &quot;Emily&quot;</span> </span>
-<span id="cb20-2"><a href="ref2.html#cb20-2"></a>age &lt;-<span class="st"> </span><span class="dv">35</span></span>
-<span id="cb20-3"><a href="ref2.html#cb20-3"></a>today &lt;-<span class="st"> </span><span class="kw">Sys.Date</span>()</span>
-<span id="cb20-4"><a href="ref2.html#cb20-4"></a>next_birthday &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2021-07-11&quot;</span>)</span></code></pre></div>
-</div>
-<div id="running-code" class="section level2">
-<h2><span class="header-section-number">2.8</span> Running code</h2>
-<p>When you’re working in an R Markdown document, there are several ways to run your lines of code.</p>
-<p>First, you can highlight the code you want to run and then click <code>Run</code> -&gt; <code>Run Selected Line(s)</code>, however this is very slow.</p>
-<div class="figure" style="text-align: center"><span id="fig:img-run1"></span>
-<img src="images/run1.png" alt="Slow method of running code" width="100%" />
-<p class="caption">
-Figure 2.6: Slow method of running code
-</p>
-</div>
-<p>Alternatively, you can press the green “play” button at the top-right of the code chunk and this will run <strong>all</strong> lines of code in that chunk.</p>
-<div class="figure" style="text-align: center"><span id="fig:img-run2"></span>
-<img src="images/run2.png" alt="Slightly better method of running code" width="100%" />
-<p class="caption">
-Figure 2.7: Slightly better method of running code
-</p>
-</div>
-<p>Even better though is to learn some of the keyboard shortcuts for R Studio. To run a single line of code, make sure that the cursor is in the line of code you want to run (it can be anywhere) and press <code>ctrl + enter</code>. If you want to run all of the code in the code chunk, press <code>ctrl + shift + enter</code>. Learn these shortcuts, they will make your life easier!</p>
-</div>
-<div id="activity-6-run-your-code" class="section level2">
-<h2><span class="header-section-number">2.9</span> Activity 6: Run your code</h2>
-<p>Run your code using one of the methods above. You should see the variables <code>name</code>, <code>age</code>, <code>today</code>, and <code>next_birthday</code> appear in the environment pane in the top right corner.</p>
-</div>
-<div id="activity-7-inline-code" class="section level2">
-<h2><span class="header-section-number">2.10</span> Activity 7: Inline code</h2>
-<p>An incredibly useful feature of R Markdown is that R can insert values into your writing using <strong>inline code</strong>. If you’ve ever had to copy and paste a value or text from one file in to another, you’ll know how easy it can be to make mistakes. Inline code avoids this. It’s easier to show you what inline code does rather than to explain it so let’s have a go.</p>
-<p>First, copy and paste this text exactly (do not change <em>anything</em>) to the <strong>white space</strong> underneath your code chunk.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="ref2.html#cb21-1"></a>My name is <span class="st">`</span><span class="dt">r name</span><span class="st">`</span> and I am <span class="st">`</span><span class="dt">r age</span><span class="st">`</span> years old. It is <span class="st">`</span><span class="dt">r next_birthday - today</span><span class="st">`</span> days until my birthday.</span></code></pre></div>
-</div>
-<div id="activity-8-knitting-your-file" class="section level2">
-<h2><span class="header-section-number">2.11</span> Activity 8: Knitting your file</h2>
-<p>Nearly finished! As our final step we are going to “knit” our file. This simply means that we’re going to compile our code into a document that is more presentable. To do this click <code>Knit</code> -&gt; <code>Knit to HMTL</code>. R Markdown will create a new HTML document and it will automatically save this file in your working directory.</p>
-<p>As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created.</p>
-<p><strong>My name is Emily and I am 35 years old. It is 252 days until my birthday.</strong></p>
-<p>We’re not going to use this function very often in the rest of the course but hopefully you can see just how useful this would be when writing up a report with lots of numbers! R Markdown is an incredibly powerful and flexible format - this book was written using it! If you want to push yourself with R, additional functions and features of R Markdown would be a good place to start.</p>
-<p>Before we finish, there are a few final things to note about knitting that will be useful for the portfolio and quantitative project:</p>
+<div id="mac" class="section level2">
+<h2><span class="header-section-number">B.3</span> Mac</h2>
+<p>If you are using a Mac, you should download and install the following:</p>
 <ul>
-<li>R Markdown will only knit if your code works - this is a good way of checking for the portfolio assignments whether you’ve written legal code!<br />
+<li><a href="https://www.stats.bris.ac.uk/R/">R</a><br />
 </li>
-<li>You can choose to knit to a Word document rather than HTML. This can be useful for e.g., sharing with others, however, it may lose some functionality and it probably won’t look as good so we’d recommend always knitting to HTML.<br />
+<li><a href="https://rstudio.com/products/rstudio/download/#download">R Studio</a><br />
 </li>
-<li>You can choose to knit to PDF, however, unless you’re using the server this requires an LaTex installation and is quite complicated. If you don’t already know what LaTex is and how to use it, do not knit to PDF. If you do know how to use LaTex, you don’t need us to give you instructions!</li>
-<li>R will automatically open the knitted HTML file in the viewer, however, you can also navigate to the folder it is stored in and open the HTML file in your web browser (e.g., Chrome or Firefox).</li>
+<li><a href="https://www.xquartz.org/">XQuartz</a></li>
 </ul>
+<p>There have been a number of issues installing R on Macs. We recommend you watch this <a href="https://www.youtube.com/watch?v=90IdULVGmYY">walkthrough video</a>.</p>
+<p>If you are using a Mac with the Catalina OS, we also recommend you read this <a href="https://psyteachr.github.io/FAQ/installing-r-and-rstudio.html#i-am-using-macos-10.15-catalina">troubleshooting guide</a></p>
+<p>Once you’ve installed all three programs, restart your computer. Then, open RStudio (not R) and run the below code:</p>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="installing-r-on-your-computer-1.html#cb331-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>This will install the <code>tidyverse</code> package on your computer. You can still use the server to do all your work, but having R on your computer will make it easier to view the files. If you would like to work from your computer, you will also need to install the other packages we use, for example <code>lsr</code>, <code>psych</code>, <code>babynames</code> etc.</p>
+<p>If you have any problems installing R, please book into a GTA session as they should be able to help you with any installation problems.</p>
 </div>
-<div id="activity-9-make-r-your-own" class="section level2">
-<h2><span class="header-section-number">2.12</span> Activity 9: Make R your own</h2>
-<p>Finally, you can customise how R Studio looks to make it feel more like your own personal version. Click <code>Tools</code> - <code>Global Options</code> - <code>Apperance</code>. You can change the default font, font size, and general appearance of R Studio, including using dark mode. Play around with the settings and see which one you prefer - you’re going to spend a lot of time with R, it might as well look nice!</p>
-</div>
-<div id="finished" class="section level2">
-<h2><span class="header-section-number">2.13</span> Finished</h2>
-<p>And you’re done! On your very first time using R you’ve not only written functioning code but you’ve written a reproducible output! You could send someone else your R Markdown document and they would be able to produce exactly the same HTML document as you, just by pressing knit.</p>
-<p>The key thing we want you to take away from this chapter is that R isn’t scary. It might be very new to a lot of you, but we’re going to take you through it step-by-step. You’ll be amazed at how quickly you can start producing professional-looking data visualisations and analysis.</p>
-<p>If you have any questions about anything contained in this chapter or in Programming Basics, please use the Research Methods channel on Teams.</p>
-
+<div id="chromebooks" class="section level2">
+<h2><span class="header-section-number">B.4</span> Chromebooks</h2>
+<p>Please note that you cannot currently install R on a Chromebook, please continue to use the R Server.</p>
 </div>
 </div>
 <div class="psyteachr_footer">
@@ -884,8 +773,8 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="ref3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="loading-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exporting-files-from-the-server.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="comparing-two-correlations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
