@@ -63,6 +63,24 @@ If you have any problems installing R, please book into a GTA session as they sh
 
 Please note that you cannot currently install R on a Chromebook, please continue to use the R Server.
 
+# Additional R resources
+
+If you would like additional practice, you can check out the other UofG PsyTeachR course books. 
+
+* [Level 1](https://psyteachr.github.io/ug1-practical/) - Intro to R (overlaps with Msc Conv book), data wrangling, data viz, descriptive statistics  
+* [Level 2](https://psyteachr.github.io/ug2-practical/) - Our second-year undergraduate course introduces statistical concepts such as permutation tests,t-tests, NHST, alpha, power, effect size, and sample size. Semester 2 focusses on correlations and the general linear model. 
+* [Level 3](https://psyteachr.github.io/ug3-stats/): This third-year undergraduate course teaches students how to specify, estimate, and interpret statistical models corresponding to various study designs, using a General Linear Models approach.
+* [MSc Data Skills](https://psyteachr.github.io/msc-data-skills/): This course provides an overview of skills needed for reproducible research and open science using the statistical programming language R. Students will learn about data visualisation, data tidying and wrangling, archiving, iteration and functions, probability and data simulations, general linear models, and reproducible workflows.
+
+We also highly recommend the following, they will help practice your data wrangling skills but also they're great options if you're enjoying R and want to stretch yourself:
+
+* [Open Stats Lab](https://sites.trinity.edu/osl) - this wonderful resource gives you practice at running statistical tests by providing you with datasets from published papers.
+* [R for Data Science](https://r4ds.had.co.nz/) - written by the authors of the tidyverse, this is a great resource for additional data wrangling practice and more depth on many of the tidyverse functions.
+* [Text Mining with R](https://www.tidytextmining.com/) - Shows you how to use R to work with text. This isn't something we cover in this course, but it uses the same data wrangling skills and be a very useful additional skill to have.
+* [How to make BBC style graphics](https://bbc.github.io/rcookbook/#how_to_create_bbc_style_graphics) - Ever wondered how the BBC News makes their data visualisation? Well, now you can make your own!
+* [Data Vizualisation](https://socviz.co/) - this is an entire book on data visualisation and goes into detail on how to take `ggplot` to its limits. 
+
+
 # Comparing two correlations
 
 Sometimes you will need or want to statistically compare the strength of two correlation coefficients to help determine whether they are statistically different (rather than just comparing r values). For this set of analyses you will need to install and load the `cocor` package as well as the `tidyverse` and `lsr`.
@@ -457,8 +475,8 @@ rnorm(10)
 ```
 
 ```
-##  [1] -0.474196430 -0.270527870  0.712372827  1.624318357  2.311774712
-##  [6] -0.008310174 -0.137733413  0.715491555 -0.925662037  0.036426039
+##  [1] -0.8402200  0.8524629 -0.4209648 -1.6625063 -0.5848997  0.3450685
+##  [7] -0.1603291  1.1200106 -1.2680580 -1.2115945
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -556,8 +574,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "k" "l" "y" "i" "x" "m" "n" "o" "f" "c" "v" "w" "z" "e" "g" "s" "u" "p" "q"
-## [20] "h" "a" "j" "t" "b" "d" "r"
+##  [1] "c" "s" "j" "b" "w" "d" "p" "m" "q" "g" "u" "o" "i" "n" "v" "l" "a" "x" "y"
+## [20] "k" "h" "f" "e" "t" "r" "z"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -592,18 +610,18 @@ tibble(Y = rnorm(10))
 
 ```
 ## # A tibble: 10 x 1
-##          Y
-##      <dbl>
-##  1  0.728 
-##  2 -0.346 
-##  3 -0.0187
-##  4 -0.642 
-##  5  2.15  
-##  6 -1.12  
-##  7  0.181 
-##  8  0.771 
-##  9 -1.08  
-## 10  0.208
+##         Y
+##     <dbl>
+##  1  1.80 
+##  2 -0.488
+##  3  0.850
+##  4 -0.427
+##  5 -1.11 
+##  6 -0.171
+##  7 -1.40 
+##  8 -0.348
+##  9  0.456
+## 10 -1.38
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -620,16 +638,16 @@ tibble(Y = c(rnorm(5, mean = -10),
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1  -8.61
-##  2 -10.2 
-##  3  -8.71
-##  4 -10.8 
-##  5  -9.89
-##  6  20.7 
-##  7  19.7 
-##  8  19.5 
-##  9  20.8 
-## 10  20.4
+##  1 -11.0 
+##  2  -9.36
+##  3  -8.72
+##  4 -10.1 
+##  5  -8.18
+##  6  21.2 
+##  7  20.9 
+##  8  19.4 
+##  9  21.1 
+## 10  19.6
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -691,15 +709,15 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A     -11.2 
-##  2 A     -11.0 
-##  3 A     -11.3 
-##  4 A      -9.91
-##  5 A      -9.73
-##  6 B      20.1 
-##  7 B      20.5 
-##  8 B      19.8 
-##  9 B      19.5 
+##  1 A      -8.89
+##  2 A      -9.77
+##  3 A      -8.37
+##  4 A      -8.71
+##  5 A     -10.3 
+##  6 B      20.6 
+##  7 B      19.9 
+##  8 B      20.2 
+##  9 B      21.6 
 ## 10 B      20.3
 ```
 
@@ -755,11 +773,11 @@ my_data_means
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      17.9
-## 2 B     -20.7
+## 1 A      20.5
+## 2 B     -20.9
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -20.7 from the first group mean of 17.9, to get a single value, the difference: 38.6.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -20.9 from the first group mean of 20.5, to get a single value, the difference: 41.4.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -772,7 +790,7 @@ vec
 ```
 
 ```
-## [1]  17.86856 -20.74057
+## [1]  20.47129 -20.88671
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -783,7 +801,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 38.60912
+## [1] 41.358
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -794,7 +812,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 38.60912
+## [1] 41.358
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -807,7 +825,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 38.60912
+## [1] 41.358
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -822,7 +840,7 @@ my_data_means %>%
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  17.9 -20.7
+## 1  20.5 -20.9
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -838,7 +856,7 @@ my_data_means %>%
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  17.9 -20.7  38.6
+## 1  20.5 -20.9  41.4
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -854,7 +872,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 38.60912
+## [1] 41.358
 ```
 
 
@@ -1043,8 +1061,8 @@ ten_samples
 ```
 
 ```
-##  [1]  0.082542655 -0.004271689 -0.013239421  0.075383107 -0.198869110
-##  [6] -0.065834621  0.061178598 -0.081117015  0.033082081  0.112116265
+##  [1]  0.0513885635  0.0362280729 -0.0322369018 -0.0478917195 -0.0037382044
+##  [6]  0.0248375774 -0.0965056267  0.0315590849  0.0009838251  0.0666130989
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
