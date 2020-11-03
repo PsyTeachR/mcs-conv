@@ -99,7 +99,7 @@ library(tidyverse)
 library(lsr)
 ```
 
-The `cocor` package comes with a dataset called `aptitude`. This dataset contains scores on four aptitude tests `knowledge`, `logiic`, `intelligence.a`, and `intelligence.b` for two separate samples. First, let's load the full dataset and then create two separate objects for the two samples to make it easier to see the different types of comparisons we can make.
+The `cocor` package comes with a dataset called `aptitude`. This dataset contains scores on four aptitude tests `knowledge`, `logic`, `intelligence.a`, and `intelligence.b` for two separate samples. First, let's load the full dataset and then create two separate objects for the two samples to make it easier to see the different types of comparisons we can make.
 
 
 ```r
@@ -222,6 +222,36 @@ cocor(formula = ~logic + intelligence.a | logic + intelligence.a,
 ```
 
 The full paper by [Diedenhofen and Musch (2015)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945#sec003) explains the output in detail, for our purposes, Fisher's z-test tells us that our correlations are not significantly different (z = 1.59, p = .113) and Zou's confidence intervals gives us the CI for the size of the difference between the two correlations (which at -0.0281 - 0.2637 is quite a range and so isn't surprising that the two are not statistically different).
+
+### Visualising two groups correlations
+
+Rather than producing two separate scatterplots, it can be useful to display the data from bot groups on the same plot. For the dataset we have, this requires a little bit of wrangling first, if you have all the data from both groups in one object, you could skip step one.
+
+* The `colour` argument tells `ggplot()` to draw the `geom_jitter()` and `geom_smooth()` in different colours for each level of `sample`.
+* We're using `geom_jitter()` instead of `geom_point()` because many of the data points overlap - try changing it to `geom_point()` and see how it looks.
+* 
+
+
+```r
+both_samples <- bind_rows(sample1, sample2, .id = "sample")
+
+ggplot(both_samples, aes(x = logic, y = intelligence.a, 
+                         colour = sample)) +
+  geom_jitter() +
+  geom_smooth(method = "lm") +
+  theme_minimal() +
+  scale_colour_viridis_d(option = "E")
+```
+
+```
+## `geom_smooth()` using formula 'y ~ x'
+```
+
+<div class="figure" style="text-align: center">
+<img src="appendix-0_files/figure-html/unnamed-chunk-8-1.png" alt="Scatterplot comparing correlation between two variables for two groups" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-8)Scatterplot comparing correlation between two variables for two groups</p>
+</div>
+
 
 ## Compare two overlapping correlations based on two dependent groups
 
@@ -475,8 +505,8 @@ rnorm(10)
 ```
 
 ```
-##  [1] -0.8402200  0.8524629 -0.4209648 -1.6625063 -0.5848997  0.3450685
-##  [7] -0.1603291  1.1200106 -1.2680580 -1.2115945
+##  [1] -0.15748314  0.76228637  0.40510465  0.09522612  0.18257285  0.66660536
+##  [7]  0.99169839  1.40107501  1.44412291  0.01937933
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -574,8 +604,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "c" "s" "j" "b" "w" "d" "p" "m" "q" "g" "u" "o" "i" "n" "v" "l" "a" "x" "y"
-## [20] "k" "h" "f" "e" "t" "r" "z"
+##  [1] "p" "x" "m" "f" "j" "b" "d" "n" "i" "z" "y" "a" "v" "q" "g" "l" "t" "s" "e"
+## [20] "o" "u" "k" "h" "w" "c" "r"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -610,18 +640,18 @@ tibble(Y = rnorm(10))
 
 ```
 ## # A tibble: 10 x 1
-##         Y
-##     <dbl>
-##  1  1.80 
-##  2 -0.488
-##  3  0.850
-##  4 -0.427
-##  5 -1.11 
-##  6 -0.171
-##  7 -1.40 
-##  8 -0.348
-##  9  0.456
-## 10 -1.38
+##             Y
+##         <dbl>
+##  1 -0.0935   
+##  2  0.0425   
+##  3 -1.18     
+##  4 -1.43     
+##  5  0.0000683
+##  6 -0.771    
+##  7  0.264    
+##  8 -0.602    
+##  9  0.136    
+## 10 -0.852
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -638,16 +668,16 @@ tibble(Y = c(rnorm(5, mean = -10),
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1 -11.0 
+##  1 -10.6 
 ##  2  -9.36
-##  3  -8.72
-##  4 -10.1 
-##  5  -8.18
-##  6  21.2 
-##  7  20.9 
-##  8  19.4 
-##  9  21.1 
-## 10  19.6
+##  3 -10.1 
+##  4 -10.6 
+##  5  -9.96
+##  6  20.1 
+##  7  20.8 
+##  8  22.1 
+##  9  19.4 
+## 10  20.9
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -709,16 +739,16 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A      -8.89
-##  2 A      -9.77
-##  3 A      -8.37
-##  4 A      -8.71
-##  5 A     -10.3 
-##  6 B      20.6 
-##  7 B      19.9 
-##  8 B      20.2 
-##  9 B      21.6 
-## 10 B      20.3
+##  1 A     -11.3 
+##  2 A      -9.31
+##  3 A      -9.76
+##  4 A     -11.0 
+##  5 A      -8.70
+##  6 B      20.1 
+##  7 B      19.6 
+##  8 B      20.1 
+##  9 B      20.4 
+## 10 B      21.9
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -773,11 +803,11 @@ my_data_means
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      20.5
-## 2 B     -20.9
+## 1 A      19.5
+## 2 B     -21.4
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -20.9 from the first group mean of 20.5, to get a single value, the difference: 41.4.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -21.4 from the first group mean of 19.5, to get a single value, the difference: 40.9.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -790,7 +820,7 @@ vec
 ```
 
 ```
-## [1]  20.47129 -20.88671
+## [1]  19.47481 -21.39781
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -801,7 +831,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 41.358
+## [1] 40.87263
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -812,7 +842,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 41.358
+## [1] 40.87263
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -825,7 +855,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 41.358
+## [1] 40.87263
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -840,7 +870,7 @@ my_data_means %>%
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  20.5 -20.9
+## 1  19.5 -21.4
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -856,7 +886,7 @@ my_data_means %>%
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  20.5 -20.9  41.4
+## 1  19.5 -21.4  40.9
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -872,7 +902,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 41.358
+## [1] 40.87263
 ```
 
 
@@ -1061,8 +1091,8 @@ ten_samples
 ```
 
 ```
-##  [1]  0.0513885635  0.0362280729 -0.0322369018 -0.0478917195 -0.0037382044
-##  [6]  0.0248375774 -0.0965056267  0.0315590849  0.0009838251  0.0666130989
+##  [1] -0.111789929 -0.050184862 -0.005511499 -0.011296587 -0.020365405
+##  [6]  0.067821899 -0.065896970  0.001630387 -0.016550060  0.001531921
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
@@ -1546,8 +1576,8 @@ ggplot(wine, aes(x = response, fill = temp)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-28-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-28)**CAPTION THIS FIGURE!!**</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-29-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-29)**CAPTION THIS FIGURE!!**</p>
 </div>
 
 The Mann-Whitney code takes the following form:
@@ -1585,7 +1615,7 @@ np_test1
 ## alternative hypothesis: true location shift is not equal to 0
 ```
 
-The result of the test tells us that there is a significance different between the groups with , however, there's also a warning message about the calculation of the p-value. 
+The result of the test tells us that there is a significance difference between the groups, however, there's also a warning message about the calculation of the p-value. 
 
 When we calculate a p-value, we do it under the assumption that the data are normally distributed so that we know what the probability of getting a particular score would be. However, non-parametric data isn’t normally distributed, that's the point.
 
@@ -1622,10 +1652,144 @@ rFromWilcox(np_test1, 72)
 
 ### APA write-up
 
-> A Mann-Whitney U test found
+> A Mann-Whitney U test found that cold wines recieved significantly higher bitterness ratings than warm wines (**W** = 214.5, **p** <.001, **r** = -.58).
+
+### Spearman's correlations
+
+The `cocor` package comes with a dataset called `aptitude`. This dataset contains scores on four aptitude tests `knowledge`, `logic`, `intelligence.a`, and `intelligence.b` for two separate samples and we'll also load `lsr` for correlations
 
 
-![](http://www.reactiongifs.com/wp-content/uploads/2013/07/see.gif)
+```r
+library(cocor)
+library(tidyverse)
+library(lsr)
+```
+
+First, let's load the full dataset and then pull out just the data for one sample.
+
+
+```r
+data(aptitude)
+sample1 <- aptitude$sample1
+```
+
+We can use `ggplot()` to look at the distributions of the data. Looking at all four variables, we might conclude that the distributions for `intelligence.b` and `logic` do not meet the assumption of normality as so we want to do a non-parametric Spearman's correlation (although if N > 100, Spearman and Pearson correlations are basically identical but let's ignore that for now).
+
+
+```r
+sample1 %>%
+  mutate(subject = row_number()) %>%
+  pivot_longer(cols = knowledge:intelligence.a, names_to = "test", values_to = "score") %>%
+  ggplot(aes(x = score)) +
+  geom_histogram() +
+  facet_wrap(~test, scales = "free_x")
+```
+
+```
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+<div class="figure" style="text-align: center">
+<img src="appendix-0_files/figure-html/unnamed-chunk-36-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-36)**CAPTION THIS FIGURE!!**</p>
+</div>
+
+To run a single Spearman's correlation we can use `cor.test()`. The code is the same as we have used previously with one edit, we change `method` to `spearman`. 
+
+
+```r
+cor.test(sample1$knowledge, sample1$logic, method = "spearman")
+```
+
+```
+## Warning in cor.test.default(sample1$knowledge, sample1$logic, method =
+## "spearman"): Cannot compute exact p-value with ties
+```
+
+```
+## 
+## 	Spearman's rank correlation rho
+## 
+## data:  sample1$knowledge and sample1$logic
+## S = 3999856, p-value = 0.6577
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##        rho 
+## 0.02608352
+```
+
+For reasons I am unclear about, the Spearman test doesn't produce degrees of freedom, the easiest way to do this is probably just to run the test again using `method = "pearson"` and take the DF from there.
+
+
+```r
+cor.test(sample1$knowledge, sample1$logic, method = "pearson")
+```
+
+```
+## 
+## 	Pearson's product-moment correlation
+## 
+## data:  sample1$knowledge and sample1$logic
+## t = 0.43664, df = 289, p-value = 0.6627
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.0895695  0.1402433
+## sample estimates:
+##        cor 
+## 0.02567615
+```
+
+If you want to run multiple correlations using `correlate()` from `lsr`, again, you just need to amend the method.
+
+
+```r
+sample1 %>%
+  correlate(test = TRUE, corr.method = "spearman")
+```
+
+```
+## 
+## CORRELATIONS
+## ============
+## - correlation type:  spearman 
+## - correlations shown only when both variables are numeric
+## 
+##                knowledge    logic    intelligence.b    intelligence.a   
+## knowledge              .    0.026             0.169*            0.101   
+## logic              0.026        .             0.279***          0.305***
+## intelligence.b     0.169*   0.279***              .             0.486***
+## intelligence.a     0.101    0.305***          0.486***              .   
+## 
+## ---
+## Signif. codes: . = p < .1, * = p<.05, ** = p<.01, *** = p<.001
+## 
+## 
+## p-VALUES
+## ========
+## - total number of tests run:  6 
+## - correction for multiple testing:  holm 
+## - WARNING: cannot compute exact p-values with ties
+## 
+##                knowledge logic intelligence.b intelligence.a
+## knowledge              . 0.658          0.011          0.171
+## logic              0.658     .          0.000          0.000
+## intelligence.b     0.011 0.000              .          0.000
+## intelligence.a     0.171 0.000          0.000              .
+## 
+## 
+## SAMPLE SIZES
+## ============
+## 
+##                knowledge logic intelligence.b intelligence.a
+## knowledge            291   291            291            291
+## logic                291   291            291            291
+## intelligence.b       291   291            291            291
+## intelligence.a       291   291            291            291
+```
+
+### APA write-up 
+
+> A Spearman’s correlation found a weak,non-significant, positive correlation (rs (289) = .03, p = .658) between knowledge and logic test scores.
 
 # rtweet
 
@@ -1700,8 +1864,8 @@ ts_plot(tweets, by = "1 hours")
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-38-1.png" alt="Time series plot by hour" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-38)Time series plot by hour</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-45-1.png" alt="Time series plot by hour" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-45)Time series plot by hour</p>
 </div>
 
 You can change the time interval with the `by` argument and you can also change the time zone. `ts_plot` creates a `ggplot` object so you can also add the usual ggplot layers to customise apperance. 
@@ -1714,8 +1878,8 @@ ts_plot(tweets, by = "10 mins", tz = "GMT") +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-39-1.png" alt="Time series plot by 10 minute intervals" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-39)Time series plot by 10 minute intervals</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-46-1.png" alt="Time series plot by 10 minute intervals" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-46)Time series plot by 10 minute intervals</p>
 </div>
 
 ### Tidy text and word frequencies
@@ -1748,8 +1912,8 @@ dat_token%>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-41-1.png" alt="Most frequent words" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-41)Most frequent words</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-48-1.png" alt="Most frequent words" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-48)Most frequent words</p>
 </div>
 
 There's quite a few words here that aren't that helpful to us so it might be best to get rid of them (essentially we're building our own list of stop words).
@@ -1778,8 +1942,8 @@ dat_token%>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-43-1.png" alt="Most frequent words (edited)" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-43)Most frequent words (edited)</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-50-1.png" alt="Most frequent words (edited)" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-50)Most frequent words (edited)</p>
 </div>
 
 To be honest, this isn't that interesting because it's so general, it might be more interesting to see how often each of the main characters are being mentioned. 
@@ -1814,8 +1978,8 @@ dat_token2 %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-45-1.png" alt="Frequecy of mentions for each character" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-45)Frequecy of mentions for each character</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-52-1.png" alt="Frequecy of mentions for each character" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-52)Frequecy of mentions for each character</p>
 </div>
 
 ### Bigram analysis
@@ -1876,8 +2040,8 @@ ggraph(bigram_graph, layout = "fr") +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-47-1.png" alt="Network graph of bigrams" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-47)Network graph of bigrams</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-54-1.png" alt="Network graph of bigrams" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-54)Network graph of bigrams</p>
 </div>
 
 ```
@@ -2075,8 +2239,8 @@ dat_sentiment %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-52-1.png" alt="Sentiment scores for each character" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-52)Sentiment scores for each character</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-59-1.png" alt="Sentiment scores for each character" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-59)Sentiment scores for each character</p>
 </div>
 
 `rtweet` is such a cool package and I've found that the limits of what you can do with it are much more about one's imagination. There's much more you could do with this package but when I first ran these analyses I found that tracking RuPaul's Drag Race was a fun way to learn a new package as it did give an insight into the fan reactions of one of my favourite shows. I also use this package to look at swearing on Twitter (replace the hashtags with swear words). The best way to learn what `rtweet` and `tidytext` can do for you is to find a topic you care about and explore the options it gives you. If you have any feedback on this tutorial you can find me on twitter: [emilynordmann](https://twitter.com/emilynordmann).

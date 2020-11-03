@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-11-01" />
+<meta name="date" content="2020-11-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -529,7 +529,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="C" data-path="additional-r-resources.html"><a href="additional-r-resources.html"><i class="fa fa-check"></i><b>C</b> Additional R resources</a></li>
 <li class="chapter" data-level="D" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html"><i class="fa fa-check"></i><b>D</b> Comparing two correlations</a><ul>
-<li class="chapter" data-level="D.1" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#compare-two-correlations-based-on-two-independent-groups"><i class="fa fa-check"></i><b>D.1</b> Compare two correlations based on two independent groups</a></li>
+<li class="chapter" data-level="D.1" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#compare-two-correlations-based-on-two-independent-groups"><i class="fa fa-check"></i><b>D.1</b> Compare two correlations based on two independent groups</a><ul>
+<li class="chapter" data-level="D.1.1" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#visualising-two-groups-correlations"><i class="fa fa-check"></i><b>D.1.1</b> Visualising two groups correlations</a></li>
+</ul></li>
 <li class="chapter" data-level="D.2" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#compare-two-overlapping-correlations-based-on-two-dependent-groups"><i class="fa fa-check"></i><b>D.2</b> Compare two overlapping correlations based on two dependent groups</a></li>
 <li class="chapter" data-level="D.3" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#compare-two-non-overlapping-correlations-from-two-dependent-groups"><i class="fa fa-check"></i><b>D.3</b> Compare two non-overlapping correlations from two dependent groups</a></li>
 </ul></li>
@@ -557,6 +559,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="G" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html"><i class="fa fa-check"></i><b>G</b> Non-parametric tests</a><ul>
 <li class="chapter" data-level="G.0.1" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html#two-independent-groups"><i class="fa fa-check"></i><b>G.0.1</b> Two independent groups</a></li>
 <li class="chapter" data-level="G.0.2" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html#apa-write-up"><i class="fa fa-check"></i><b>G.0.2</b> APA write-up</a></li>
+<li class="chapter" data-level="G.0.3" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html#spearmans-correlations"><i class="fa fa-check"></i><b>G.0.3</b> Spearman’s correlations</a></li>
+<li class="chapter" data-level="G.0.4" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html#apa-write-up-1"><i class="fa fa-check"></i><b>G.0.4</b> APA write-up</a></li>
 </ul></li>
 <li class="chapter" data-level="H" data-path="rtweet.html"><a href="rtweet.html"><i class="fa fa-check"></i><b>H</b> rtweet</a><ul>
 <li class="chapter" data-level="H.0.1" data-path="rtweet.html"><a href="rtweet.html#packages-1"><i class="fa fa-check"></i><b>H.0.1</b> Packages</a></li>
@@ -626,11 +630,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.1</span> Activity 1: dplyr recap</h2>
 <p>Which function(s) would you use to approach each of the following problems?</p>
 <ul>
-<li><p>We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>summarise()</option> <option>filter()</option> <option>arrange()</option> <option>select()</option> <option>mutate()</option> <option>group_by()</option></select> function.</p></li>
-<li><p>We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>arrange()</option> <option>mutate()</option> <option>group_by()</option> <option>filter()</option> <option>summarise()</option> <option>select()</option></select> function.</p></li>
-<li><p>Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>summarise()</option> <option>arrange()</option> <option>mutate()</option> <option>select()</option> <option>filter()</option> <option>group_by()</option></select> function.</p></li>
-<li><p>We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>filter() and select()</option> <option>group_by() and arrange()</option> <option>group_by() and summarise()</option> <option>arrange() and mutate()</option></select> functions.</p></li>
-<li><p>We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["arrange() and select()","mutate() and filter()"]'> <option></option> <option>arrange() and select()</option> <option>group_by() and mutate()</option> <option>select() and summarise()</option> <option>mutate() and filter()</option></select> functions.</p></li>
+<li><p>We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>mutate()</option> <option>group_by()</option> <option>select()</option> <option>summarise()</option> <option>arrange()</option> <option>filter()</option></select> function.</p></li>
+<li><p>We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>group_by()</option> <option>filter()</option> <option>arrange()</option> <option>select()</option> <option>summarise()</option> <option>mutate()</option></select> function.</p></li>
+<li><p>Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>select()</option> <option>group_by()</option> <option>summarise()</option> <option>arrange()</option> <option>filter()</option> <option>mutate()</option></select> function.</p></li>
+<li><p>We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>group_by() and summarise()</option> <option>arrange() and mutate()</option> <option>group_by() and arrange()</option> <option>filter() and select()</option></select> functions.</p></li>
+<li><p>We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["arrange() and select()","mutate() and filter()"]'> <option></option> <option>select() and summarise()</option> <option>arrange() and select()</option> <option>mutate() and filter()</option> <option>group_by() and mutate()</option></select> functions.</p></li>
 </ul>
 <div id="data-visualisation" class="section level3">
 <h3><span class="header-section-number">7.1.1</span> Data visualisation</h3>

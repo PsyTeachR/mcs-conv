@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-11-01" />
+<meta name="date" content="2020-11-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -529,7 +529,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="C" data-path="additional-r-resources.html"><a href="additional-r-resources.html"><i class="fa fa-check"></i><b>C</b> Additional R resources</a></li>
 <li class="chapter" data-level="D" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html"><i class="fa fa-check"></i><b>D</b> Comparing two correlations</a><ul>
-<li class="chapter" data-level="D.1" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#compare-two-correlations-based-on-two-independent-groups"><i class="fa fa-check"></i><b>D.1</b> Compare two correlations based on two independent groups</a></li>
+<li class="chapter" data-level="D.1" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#compare-two-correlations-based-on-two-independent-groups"><i class="fa fa-check"></i><b>D.1</b> Compare two correlations based on two independent groups</a><ul>
+<li class="chapter" data-level="D.1.1" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#visualising-two-groups-correlations"><i class="fa fa-check"></i><b>D.1.1</b> Visualising two groups correlations</a></li>
+</ul></li>
 <li class="chapter" data-level="D.2" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#compare-two-overlapping-correlations-based-on-two-dependent-groups"><i class="fa fa-check"></i><b>D.2</b> Compare two overlapping correlations based on two dependent groups</a></li>
 <li class="chapter" data-level="D.3" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#compare-two-non-overlapping-correlations-from-two-dependent-groups"><i class="fa fa-check"></i><b>D.3</b> Compare two non-overlapping correlations from two dependent groups</a></li>
 </ul></li>
@@ -557,6 +559,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="G" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html"><i class="fa fa-check"></i><b>G</b> Non-parametric tests</a><ul>
 <li class="chapter" data-level="G.0.1" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html#two-independent-groups"><i class="fa fa-check"></i><b>G.0.1</b> Two independent groups</a></li>
 <li class="chapter" data-level="G.0.2" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html#apa-write-up"><i class="fa fa-check"></i><b>G.0.2</b> APA write-up</a></li>
+<li class="chapter" data-level="G.0.3" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html#spearmans-correlations"><i class="fa fa-check"></i><b>G.0.3</b> Spearman’s correlations</a></li>
+<li class="chapter" data-level="G.0.4" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html#apa-write-up-1"><i class="fa fa-check"></i><b>G.0.4</b> APA write-up</a></li>
 </ul></li>
 <li class="chapter" data-level="H" data-path="rtweet.html"><a href="rtweet.html"><i class="fa fa-check"></i><b>H</b> rtweet</a><ul>
 <li class="chapter" data-level="H.0.1" data-path="rtweet.html"><a href="rtweet.html#packages-1"><i class="fa fa-check"></i><b>H.0.1</b> Packages</a></li>
@@ -634,15 +638,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">G.0.1</span> Two independent groups</h3>
 <p>The non-parametric equivalent of a independent-samples t-test is known as the <em>Mann-Whitney-U</em> test also referred to as the <em>Wilcoxon Rank Sum</em> test. It uses ranked data to test the null hypothesis that the median ranks of two groups are different.</p>
 <p>For this example we’re going to use the <code>wine</code> dataset from the <code>ordinal</code> package that has ratings for different wines.</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="non-parametric-tests.html#cb413-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb413-2"><a href="non-parametric-tests.html#cb413-2"></a><span class="kw">library</span>(ordinal)</span></code></pre></div>
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="non-parametric-tests.html#cb415-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb415-2"><a href="non-parametric-tests.html#cb415-2"></a><span class="kw">library</span>(ordinal)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;ordinal&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
 ## 
 ##     slice</code></pre>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="non-parametric-tests.html#cb416-1"></a><span class="kw">data</span>(wine)</span>
-<span id="cb416-2"><a href="non-parametric-tests.html#cb416-2"></a><span class="kw">force</span>(wine)</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="non-parametric-tests.html#cb418-1"></a><span class="kw">data</span>(wine)</span>
+<span id="cb418-2"><a href="non-parametric-tests.html#cb418-2"></a><span class="kw">force</span>(wine)</span></code></pre></div>
 <pre><code>##    response rating temp contact bottle judge
 ## 1        36      2 cold      no      1     1
 ## 2        48      3 cold      no      2     1
@@ -718,45 +722,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 72       65      4 warm     yes      8     9</code></pre>
 <p>Each wine is given a bitterness rating on a 0-100 scale (<code>response</code> variable) and one of the grouping variables is whether the wine was served cold or warm (<code>temp</code>).</p>
 <p>First, we can calculate descriptive statistics. For ordinal data the median and range are most suitable.</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="non-parametric-tests.html#cb418-1"></a>wine <span class="op">%&gt;%</span></span>
-<span id="cb418-2"><a href="non-parametric-tests.html#cb418-2"></a><span class="st">  </span><span class="kw">group_by</span>(temp) <span class="op">%&gt;%</span></span>
-<span id="cb418-3"><a href="non-parametric-tests.html#cb418-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">median_response =</span> <span class="kw">median</span>(response),</span>
-<span id="cb418-4"><a href="non-parametric-tests.html#cb418-4"></a>            <span class="dt">min_response =</span> <span class="kw">min</span>(response),</span>
-<span id="cb418-5"><a href="non-parametric-tests.html#cb418-5"></a>            <span class="dt">max_response =</span> <span class="kw">max</span>(response))</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="non-parametric-tests.html#cb420-1"></a>wine <span class="op">%&gt;%</span></span>
+<span id="cb420-2"><a href="non-parametric-tests.html#cb420-2"></a><span class="st">  </span><span class="kw">group_by</span>(temp) <span class="op">%&gt;%</span></span>
+<span id="cb420-3"><a href="non-parametric-tests.html#cb420-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">median_response =</span> <span class="kw">median</span>(response),</span>
+<span id="cb420-4"><a href="non-parametric-tests.html#cb420-4"></a>            <span class="dt">min_response =</span> <span class="kw">min</span>(response),</span>
+<span id="cb420-5"><a href="non-parametric-tests.html#cb420-5"></a>            <span class="dt">max_response =</span> <span class="kw">max</span>(response))</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 4
 ##   temp  median_response min_response max_response
 ##   &lt;fct&gt;           &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
 ## 1 cold               36           12           67
 ## 2 warm               58           22           90</code></pre>
 <p>And to visualise, grouped histograms:</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="non-parametric-tests.html#cb420-1"></a><span class="kw">ggplot</span>(wine, <span class="kw">aes</span>(<span class="dt">x =</span> response, <span class="dt">fill =</span> temp)) <span class="op">+</span></span>
-<span id="cb420-2"><a href="non-parametric-tests.html#cb420-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>,<span class="dt">alpha =</span> <span class="fl">.8</span>) <span class="op">+</span></span>
-<span id="cb420-3"><a href="non-parametric-tests.html#cb420-3"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;E&quot;</span>) <span class="op">+</span></span>
-<span id="cb420-4"><a href="non-parametric-tests.html#cb420-4"></a><span class="st">  </span><span class="kw">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="non-parametric-tests.html#cb422-1"></a><span class="kw">ggplot</span>(wine, <span class="kw">aes</span>(<span class="dt">x =</span> response, <span class="dt">fill =</span> temp)) <span class="op">+</span></span>
+<span id="cb422-2"><a href="non-parametric-tests.html#cb422-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>,<span class="dt">alpha =</span> <span class="fl">.8</span>) <span class="op">+</span></span>
+<span id="cb422-3"><a href="non-parametric-tests.html#cb422-3"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;E&quot;</span>) <span class="op">+</span></span>
+<span id="cb422-4"><a href="non-parametric-tests.html#cb422-4"></a><span class="st">  </span><span class="kw">theme_minimal</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-28"></span>
-<img src="appendix-0_files/figure-html/unnamed-chunk-28-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-29"></span>
+<img src="appendix-0_files/figure-html/unnamed-chunk-29-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
 <p class="caption">
 Figure G.1: <strong>CAPTION THIS FIGURE!!</strong>
 </p>
 </div>
 <p>The Mann-Whitney code takes the following form:</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="non-parametric-tests.html#cb422-1"></a><span class="kw">wilcox.test</span>(dv <span class="op">~</span><span class="st"> </span>iv, data, <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">correct =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="non-parametric-tests.html#cb424-1"></a><span class="kw">wilcox.test</span>(dv <span class="op">~</span><span class="st"> </span>iv, data, <span class="dt">paired =</span> <span class="ot">FALSE</span>, <span class="dt">correct =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <p>Therefore to test whether bitterness ratings are significantly different between temperate groups.</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="non-parametric-tests.html#cb423-1"></a>np_test1 &lt;-<span class="st"> </span><span class="kw">wilcox.test</span>(response <span class="op">~</span><span class="st"> </span>temp, </span>
-<span id="cb423-2"><a href="non-parametric-tests.html#cb423-2"></a>            <span class="dt">data =</span> wine, </span>
-<span id="cb423-3"><a href="non-parametric-tests.html#cb423-3"></a>            <span class="dt">paired =</span> <span class="ot">FALSE</span>, </span>
-<span id="cb423-4"><a href="non-parametric-tests.html#cb423-4"></a>            <span class="dt">correct =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="non-parametric-tests.html#cb425-1"></a>np_test1 &lt;-<span class="st"> </span><span class="kw">wilcox.test</span>(response <span class="op">~</span><span class="st"> </span>temp, </span>
+<span id="cb425-2"><a href="non-parametric-tests.html#cb425-2"></a>            <span class="dt">data =</span> wine, </span>
+<span id="cb425-3"><a href="non-parametric-tests.html#cb425-3"></a>            <span class="dt">paired =</span> <span class="ot">FALSE</span>, </span>
+<span id="cb425-4"><a href="non-parametric-tests.html#cb425-4"></a>            <span class="dt">correct =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <pre><code>## Warning in wilcox.test.default(x = c(36, 48, 47, 67, 17, 22, 14, 50, 36, :
 ## cannot compute exact p-value with ties</code></pre>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="non-parametric-tests.html#cb425-1"></a>np_test1</span></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="non-parametric-tests.html#cb427-1"></a>np_test1</span></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  response by temp
 ## W = 214.5, p-value = 1.072e-06
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
-<p>The result of the test tells us that there is a significance different between the groups with , however, there’s also a warning message about the calculation of the p-value.</p>
+<p>The result of the test tells us that there is a significance difference between the groups, however, there’s also a warning message about the calculation of the p-value.</p>
 <p>When we calculate a p-value, we do it under the assumption that the data are normally distributed so that we know what the probability of getting a particular score would be. However, non-parametric data isn’t normally distributed, that’s the point.</p>
 <p>There are two solutions. First, there’s the exact method or the Monte Carlo method. This takes the data and randomizes the group labels, so it mixes up which group each score is in. It does this thousands of times to calculate the probability of the observed result - if you still get the same difference in scores between the groups when the labels have been randomly shuffled, you’d want to accept the null hypothesis.</p>
 <p>The great thing about this method is because it randomizes the data thousands of times, you get the exact probability of your observed data. The problem is that it doesn’t work when you’ve got ties in your data.</p>
@@ -764,22 +768,117 @@ Figure G.1: <strong>CAPTION THIS FIGURE!!</strong>
 <div id="effect-size-1" class="section level4">
 <h4><span class="header-section-number">G.0.1.1</span> Effect size</h4>
 <p>The effect size for a Mann-wWitney is actually pearson’s R, the same r we use in correlation and is calculated by extracting the z score from the p-value. First, we create a new function to do this for us (from Field et al., 2013) that specifies we want to calculate r for the Mann-Whitney test we stored in <code>np_test</code>:</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="non-parametric-tests.html#cb427-1"></a>rFromWilcox &lt;-<span class="st">  </span><span class="cf">function</span>(np_test1, N){</span>
-<span id="cb427-2"><a href="non-parametric-tests.html#cb427-2"></a>  Z &lt;-<span class="st"> </span><span class="kw">qnorm</span>(np_test1<span class="op">$</span>p.value<span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb427-3"><a href="non-parametric-tests.html#cb427-3"></a>  r &lt;-<span class="st"> </span>Z<span class="op">/</span><span class="kw">sqrt</span>(N)</span>
-<span id="cb427-4"><a href="non-parametric-tests.html#cb427-4"></a>  <span class="kw">cat</span>(np_test1<span class="op">$</span>data.name, <span class="st">&quot;Effect Size, r = &quot;</span>, r)</span>
-<span id="cb427-5"><a href="non-parametric-tests.html#cb427-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="non-parametric-tests.html#cb429-1"></a>rFromWilcox &lt;-<span class="st">  </span><span class="cf">function</span>(np_test1, N){</span>
+<span id="cb429-2"><a href="non-parametric-tests.html#cb429-2"></a>  Z &lt;-<span class="st"> </span><span class="kw">qnorm</span>(np_test1<span class="op">$</span>p.value<span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb429-3"><a href="non-parametric-tests.html#cb429-3"></a>  r &lt;-<span class="st"> </span>Z<span class="op">/</span><span class="kw">sqrt</span>(N)</span>
+<span id="cb429-4"><a href="non-parametric-tests.html#cb429-4"></a>  <span class="kw">cat</span>(np_test1<span class="op">$</span>data.name, <span class="st">&quot;Effect Size, r = &quot;</span>, r)</span>
+<span id="cb429-5"><a href="non-parametric-tests.html#cb429-5"></a>}</span></code></pre></div>
 <p>Next, we use this new function to calculate the effect size by specifying the model object and the sample size.:</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="non-parametric-tests.html#cb428-1"></a><span class="kw">rFromWilcox</span>(np_test1, <span class="dv">72</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="non-parametric-tests.html#cb430-1"></a><span class="kw">rFromWilcox</span>(np_test1, <span class="dv">72</span>)</span></code></pre></div>
 <pre><code>## response by temp Effect Size, r =  -0.5748666</code></pre>
 </div>
 </div>
 <div id="apa-write-up" class="section level3">
 <h3><span class="header-section-number">G.0.2</span> APA write-up</h3>
 <blockquote>
-<p>A Mann-Whitney U test found</p>
+<p>A Mann-Whitney U test found that cold wines recieved significantly higher bitterness ratings than warm wines (<strong>W</strong> = 214.5, <strong>p</strong> &lt;.001, <strong>r</strong> = -.58).</p>
 </blockquote>
-<p><img src="http://www.reactiongifs.com/wp-content/uploads/2013/07/see.gif" /></p>
+</div>
+<div id="spearmans-correlations" class="section level3">
+<h3><span class="header-section-number">G.0.3</span> Spearman’s correlations</h3>
+<p>The <code>cocor</code> package comes with a dataset called <code>aptitude</code>. This dataset contains scores on four aptitude tests <code>knowledge</code>, <code>logic</code>, <code>intelligence.a</code>, and <code>intelligence.b</code> for two separate samples and we’ll also load <code>lsr</code> for correlations</p>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="non-parametric-tests.html#cb432-1"></a><span class="kw">library</span>(cocor)</span>
+<span id="cb432-2"><a href="non-parametric-tests.html#cb432-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb432-3"><a href="non-parametric-tests.html#cb432-3"></a><span class="kw">library</span>(lsr)</span></code></pre></div>
+<p>First, let’s load the full dataset and then pull out just the data for one sample.</p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="non-parametric-tests.html#cb433-1"></a><span class="kw">data</span>(aptitude)</span>
+<span id="cb433-2"><a href="non-parametric-tests.html#cb433-2"></a>sample1 &lt;-<span class="st"> </span>aptitude<span class="op">$</span>sample1</span></code></pre></div>
+<p>We can use <code>ggplot()</code> to look at the distributions of the data. Looking at all four variables, we might conclude that the distributions for <code>intelligence.b</code> and <code>logic</code> do not meet the assumption of normality as so we want to do a non-parametric Spearman’s correlation (although if N &gt; 100, Spearman and Pearson correlations are basically identical but let’s ignore that for now).</p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="non-parametric-tests.html#cb434-1"></a>sample1 <span class="op">%&gt;%</span></span>
+<span id="cb434-2"><a href="non-parametric-tests.html#cb434-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">subject =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span></span>
+<span id="cb434-3"><a href="non-parametric-tests.html#cb434-3"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> knowledge<span class="op">:</span>intelligence.a, <span class="dt">names_to =</span> <span class="st">&quot;test&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb434-4"><a href="non-parametric-tests.html#cb434-4"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> score)) <span class="op">+</span></span>
+<span id="cb434-5"><a href="non-parametric-tests.html#cb434-5"></a><span class="st">  </span><span class="kw">geom_histogram</span>() <span class="op">+</span></span>
+<span id="cb434-6"><a href="non-parametric-tests.html#cb434-6"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>test, <span class="dt">scales =</span> <span class="st">&quot;free_x&quot;</span>)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-36"></span>
+<img src="appendix-0_files/figure-html/unnamed-chunk-36-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
+<p class="caption">
+Figure G.2: <strong>CAPTION THIS FIGURE!!</strong>
+</p>
+</div>
+<p>To run a single Spearman’s correlation we can use <code>cor.test()</code>. The code is the same as we have used previously with one edit, we change <code>method</code> to <code>spearman</code>.</p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="non-parametric-tests.html#cb436-1"></a><span class="kw">cor.test</span>(sample1<span class="op">$</span>knowledge, sample1<span class="op">$</span>logic, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning in cor.test.default(sample1$knowledge, sample1$logic, method =
+## &quot;spearman&quot;): Cannot compute exact p-value with ties</code></pre>
+<pre><code>## 
+##  Spearman&#39;s rank correlation rho
+## 
+## data:  sample1$knowledge and sample1$logic
+## S = 3999856, p-value = 0.6577
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##        rho 
+## 0.02608352</code></pre>
+<p>For reasons I am unclear about, the Spearman test doesn’t produce degrees of freedom, the easiest way to do this is probably just to run the test again using <code>method = "pearson"</code> and take the DF from there.</p>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="non-parametric-tests.html#cb439-1"></a><span class="kw">cor.test</span>(sample1<span class="op">$</span>knowledge, sample1<span class="op">$</span>logic, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  sample1$knowledge and sample1$logic
+## t = 0.43664, df = 289, p-value = 0.6627
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.0895695  0.1402433
+## sample estimates:
+##        cor 
+## 0.02567615</code></pre>
+<p>If you want to run multiple correlations using <code>correlate()</code> from <code>lsr</code>, again, you just need to amend the method.</p>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="non-parametric-tests.html#cb441-1"></a>sample1 <span class="op">%&gt;%</span></span>
+<span id="cb441-2"><a href="non-parametric-tests.html#cb441-2"></a><span class="st">  </span><span class="kw">correlate</span>(<span class="dt">test =</span> <span class="ot">TRUE</span>, <span class="dt">corr.method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## CORRELATIONS
+## ============
+## - correlation type:  spearman 
+## - correlations shown only when both variables are numeric
+## 
+##                knowledge    logic    intelligence.b    intelligence.a   
+## knowledge              .    0.026             0.169*            0.101   
+## logic              0.026        .             0.279***          0.305***
+## intelligence.b     0.169*   0.279***              .             0.486***
+## intelligence.a     0.101    0.305***          0.486***              .   
+## 
+## ---
+## Signif. codes: . = p &lt; .1, * = p&lt;.05, ** = p&lt;.01, *** = p&lt;.001
+## 
+## 
+## p-VALUES
+## ========
+## - total number of tests run:  6 
+## - correction for multiple testing:  holm 
+## - WARNING: cannot compute exact p-values with ties
+## 
+##                knowledge logic intelligence.b intelligence.a
+## knowledge              . 0.658          0.011          0.171
+## logic              0.658     .          0.000          0.000
+## intelligence.b     0.011 0.000              .          0.000
+## intelligence.a     0.171 0.000          0.000              .
+## 
+## 
+## SAMPLE SIZES
+## ============
+## 
+##                knowledge logic intelligence.b intelligence.a
+## knowledge            291   291            291            291
+## logic                291   291            291            291
+## intelligence.b       291   291            291            291
+## intelligence.a       291   291            291            291</code></pre>
+</div>
+<div id="apa-write-up-1" class="section level3">
+<h3><span class="header-section-number">G.0.4</span> APA write-up</h3>
+<blockquote>
+<p>A Spearman’s correlation found a weak,non-significant, positive correlation (rs (289) = .03, p = .658) between knowledge and logic test scores.</p>
+</blockquote>
 </div>
 </div>
 <div class="psyteachr_footer">

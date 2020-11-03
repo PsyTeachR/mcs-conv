@@ -89,7 +89,7 @@ library(tidyverse)
 library(lsr)
 ```
 
-The `cocor` package comes with a dataset called `aptitude`. This dataset contains scores on four aptitude tests `knowledge`, `logiic`, `intelligence.a`, and `intelligence.b` for two separate samples. First, let's load the full dataset and then create two separate objects for the two samples to make it easier to see the different types of comparisons we can make.
+The `cocor` package comes with a dataset called `aptitude`. This dataset contains scores on four aptitude tests `knowledge`, `logic`, `intelligence.a`, and `intelligence.b` for two separate samples. First, let's load the full dataset and then create two separate objects for the two samples to make it easier to see the different types of comparisons we can make.
 
 ```{r}
 data(aptitude)
@@ -132,6 +132,26 @@ cocor(formula = ~logic + intelligence.a | logic + intelligence.a,
 ```
 
 The full paper by [Diedenhofen and Musch (2015)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945#sec003) explains the output in detail, for our purposes, Fisher's z-test tells us that our correlations are not significantly different (z = 1.59, p = .113) and Zou's confidence intervals gives us the CI for the size of the difference between the two correlations (which at -0.0281 - 0.2637 is quite a range and so isn't surprising that the two are not statistically different).
+
+### Visualising two groups correlations
+
+Rather than producing two separate scatterplots, it can be useful to display the data from bot groups on the same plot. For the dataset we have, this requires a little bit of wrangling first, if you have all the data from both groups in one object, you could skip step one.
+
+* The `colour` argument tells `ggplot()` to draw the `geom_jitter()` and `geom_smooth()` in different colours for each level of `sample`.
+* We're using `geom_jitter()` instead of `geom_point()` because many of the data points overlap - try changing it to `geom_point()` and see how it looks.
+* 
+
+```{r fig.cap= "Scatterplot comparing correlation between two variables for two groups"}
+both_samples <- bind_rows(sample1, sample2, .id = "sample")
+
+ggplot(both_samples, aes(x = logic, y = intelligence.a, 
+                         colour = sample)) +
+  geom_jitter() +
+  geom_smooth(method = "lm") +
+  theme_minimal() +
+  scale_colour_viridis_d(option = "E")
+```
+
 
 ## Compare two overlapping correlations based on two dependent groups
 
@@ -990,7 +1010,7 @@ np_test1 <- wilcox.test(response ~ temp,
 np_test1
 ```
 
-The result of the test tells us that there is a significance different between the groups with , however, there's also a warning message about the calculation of the p-value. 
+The result of the test tells us that there is a significance difference between the groups, however, there's also a warning message about the calculation of the p-value. 
 
 When we calculate a p-value, we do it under the assumption that the data are normally distributed so that we know what the probability of getting a particular score would be. However, non-parametric data isn’t normally distributed, that's the point.
 
@@ -1021,10 +1041,58 @@ rFromWilcox(np_test1, 72)
 
 ### APA write-up
 
-> A Mann-Whitney U test found
+> A Mann-Whitney U test found that cold wines recieved significantly higher bitterness ratings than warm wines (**W** = 214.5, **p** <.001, **r** = -.58).
 
+### Spearman's correlations
 
-![](http://www.reactiongifs.com/wp-content/uploads/2013/07/see.gif)
+The `cocor` package comes with a dataset called `aptitude`. This dataset contains scores on four aptitude tests `knowledge`, `logic`, `intelligence.a`, and `intelligence.b` for two separate samples and we'll also load `lsr` for correlations
+
+```{r }
+library(cocor)
+library(tidyverse)
+library(lsr)
+```
+
+First, let's load the full dataset and then pull out just the data for one sample.
+
+```{r}
+data(aptitude)
+sample1 <- aptitude$sample1
+```
+
+We can use `ggplot()` to look at the distributions of the data. Looking at all four variables, we might conclude that the distributions for `intelligence.b` and `logic` do not meet the assumption of normality as so we want to do a non-parametric Spearman's correlation (although if N > 100, Spearman and Pearson correlations are basically identical but let's ignore that for now).
+
+```{r}
+sample1 %>%
+  mutate(subject = row_number()) %>%
+  pivot_longer(cols = knowledge:intelligence.a, names_to = "test", values_to = "score") %>%
+  ggplot(aes(x = score)) +
+  geom_histogram() +
+  facet_wrap(~test, scales = "free_x")
+```
+
+To run a single Spearman's correlation we can use `cor.test()`. The code is the same as we have used previously with one edit, we change `method` to `spearman`. 
+
+```{r}
+cor.test(sample1$knowledge, sample1$logic, method = "spearman")
+```
+
+For reasons I am unclear about, the Spearman test doesn't produce degrees of freedom, the easiest way to do this is probably just to run the test again using `method = "pearson"` and take the DF from there.
+
+```{r}
+cor.test(sample1$knowledge, sample1$logic, method = "pearson")
+```
+
+If you want to run multiple correlations using `correlate()` from `lsr`, again, you just need to amend the method.
+
+```{r}
+sample1 %>%
+  correlate(test = TRUE, corr.method = "spearman")
+```
+
+### APA write-up 
+
+> A Spearman’s correlation found a weak,non-significant, positive correlation (rs (289) = .03, p = .658) between knowledge and logic test scores.
 
 # rtweet
 
