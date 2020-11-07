@@ -12,11 +12,9 @@ To help you understand the data we're visualising, here is the abstract:
 
 ## Activity 1: Set-up
 
-Do the following. If you need help, consult Chapter \@ref(ref3) and Chapter \@(ref2).
-
-* Open R Studio and set the working directory to your Week 8 folder. Ensure the environment is clear.   
-* Open a new R Markdown document and save it in your working directory. Call the file "Week 8".    
-* Download <a href="Zhang et al. 2014 Study 3.csv" download>Zhang et al. 2014 Study 3.csv</a> and save it in your Week 8 folder. Make sure that you do not change the file name at all.
+* Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.   
+* Open a new R Markdown document and save it in your working directory. Call the file "Visualisation".    
+* Download <a href="Zhang et al. 2014 Study 3.csv" download>Zhang et al. 2014 Study 3.csv</a> and save it in your chapter folder. Make sure that you do not change the file name at all.
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the package `tidyverse` using the `library()` function. 
 * Run the below code to load and wrangle the data into tidy data.
@@ -27,9 +25,8 @@ library(tidyverse)
 zhang_data <- read_csv("Zhang et al. 2014 Study 3.csv")%>%
   select(Gender, Age,Condition, T1_Predicted_Interest_Composite, T2_Actual_Interest_Composite)%>%
   mutate(subject = row_number())%>%
-  gather(key = time,
-         value = interest,
-         T1_Predicted_Interest_Composite,T2_Actual_Interest_Composite)%>%
+  pivot_longer(names_to = "time",values_to = "interest",
+               cols = T1_Predicted_Interest_Composite:T2_Actual_Interest_Composite)%>%
   mutate(Condition = recode(Condition, "1" = "Ordinary", "2" = "Extraordinary"))%>%
   mutate(time = recode(time, "T1_Predicted_Interest_Composite" = "time1_interest", "T2_Actual_Interest_Composite" = "time2_interest"),
          Gender = recode(Gender, "1" = "male", "2" = "female")) %>%
@@ -461,7 +458,7 @@ summary_data<-zhang_data%>%
             )
 ```
 
-Once you've done this you can then create the plot. By now you should have a good understand of what each of the layers are doing. Change them to make the plot look how you want.
+Once you've done this you can then create the plot. By now you should have a good understanding of what each of the layers are doing. Change them to make the plot look how you want.
 
 
 ```r
@@ -617,11 +614,19 @@ The split-violin is a version of the violin-boxplot that is good for visualising
 
 
 ```r
+summary_data3<-zhang_data%>%
+  group_by(Condition, Gender)%>% # add Gender to group_by()
+  summarise(mean = mean(interest, na.rm = TRUE),
+            min = mean(interest) - sd(interest)/sqrt(n()),
+            max = mean(interest) + sd(interest)/sqrt(n()),
+            sd = sd(interest)
+            )
+
 ggplot(zhang_data, aes(x = Condition, y = interest, fill = Gender))+
   geom_split_violin(trim = FALSE, alpha = .5)+
   geom_boxplot(width = .2, position = position_dodge(.25))+
   scale_fill_viridis_d(option = "E") +
-  geom_pointrange(data = summary_data2,
+  geom_pointrange(data = summary_data3,
                   aes(Condition, mean, ymin=min, ymax=max),
                   shape = 20, 
                   position = position_dodge(width = 0.25),
@@ -739,7 +744,7 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = Gender))+
   geom_flat_violin(position = position_nudge(x = .25, y = 0), 
                    trim=FALSE, alpha = 0.6) +
   geom_point(position = position_jitter(width = .05, height = 0.05), 
-             size = .5, alpha = .7, show.legend = FALSE)+
+             size = .5, alpha = .7, show.legend = FALSE, aes(colour = Gender))+
   geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.5, position = "dodge")+
   geom_pointrange(
     data = summary_data2,
@@ -747,7 +752,8 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = Gender))+
     shape = 20, 
     position = position_dodge(width = 0.1),
     show.legend = FALSE) +
-  scale_fill_viridis_d(option = "E")
+  scale_fill_viridis_d(option = "E") +
+  scale_colour_viridis_d(option = "E")
 ```
 
 <div class="figure" style="text-align: center">

@@ -23,6 +23,7 @@ Do the following. If you need help, consult Chapter @\ref(ref3) and Chapter \@(r
 * Open R Studio and set the working directory to your Week 12 folder. Ensure the environment is clear.   
 * Open a new R Markdown document and save it in your working directory. Call the file "Week 12".    
 * Download <a href="L3_stars.csv" download>L3_stars.csv</a> and <a href="psess.csv" download>psess.csv</a> and save them in your Week 12 folder. Make sure that you do not change the file name at all.    
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads `pwr`, `car`, `broom`, and `tidyverse` using the `library()` function.
 * Load the two CSV datasets into variables called `stars` and `engage` using `read_csv()`.
 
