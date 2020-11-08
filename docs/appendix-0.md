@@ -99,71 +99,76 @@ library(tidyverse)
 library(lsr)
 ```
 
-The `cocor` package comes with a dataset called `aptitude`. This dataset contains scores on four aptitude tests `knowledge`, `logic`, `intelligence.a`, and `intelligence.b` for two separate samples. First, let's load the full dataset and then create two separate objects for the two samples to make it easier to see the different types of comparisons we can make.
+The `cocor` package comes with a built-in dataset called `aptitude`. This dataset contains scores on four aptitude tests `knowledge`, `logic`, `intelligence.a`, and `intelligence.b` for two separate samples. This data is stored in a `list` object that then contains two separate data frames `sample1` and `sample2`. We haven't worked with lists much in this book but `cocor` requires the data to be in list format so it's worth spending a little time on this before we get going.
+
+First, load the built-in aptitude dataset.
 
 
 ```r
-data(aptitude)
-sample1 <- aptitude$sample1
-sample2 <-aptitude$sample2
+data("aptitude")
 ```
 
-We can then conduct correlations on these datasets. We could conduct single correlations using `cor.test()`:
+You can view the contents of each dataset by calling them separately:
 
 
 ```r
-cor.test(sample1$intelligence.a, sample1$logic, method = "pearson")
+aptitude$sample1
+aptitude$sample2
+```
+
+However, it may that your research dataset isn't structured like this and that the data for the two groups or samples you want to compare is in the same dataset (for example, for the data for your quantitative report).
+
+The below code transforms the data to the format you're likely to have so that we can show you how to put it back into list form by using the `bind_rows()` function to pull out the two datasets, bind them together, and add on a column called `sample` that identifies which dataset the data is from.
+
+* Run the below code and then view `full_dat` to see how it is structured.
+
+
+
+```r
+full_dat <- bind_rows(aptitude$sample1, aptitude$sample2, .id = "sample")
+```
+
+This is how the data for your quantitative report is structured. All the data you have is in a single table and there is a column that tells you what group it is from (in this case `sample` but for the quant report this might be gender or whether the student is mature).
+
+To use `cocor` to compare the correlations you will need to transform it into a list object. We achieve this by creating two separate obkects for each sample using `filter()` and then we combine them back into a `list`.
+
+
+```r
+sample1 <- full_dat %>%
+  filter(sample == 1)
+
+sample2 <- full_dat %>%
+  filter(sample == 2)
+
+dat_list <- list(sample1 = sample1, sample2 = sample2)
+```
+
+This is somewhat convoluted but the key takeaway is that if you want to use `cocor` to compare correlations, you need to ensure your data is in a list oject and that may require the above transformation.
+
+## Compare two correlations based on two independent groups
+
+In this example we want to compare two correlations from two independent groups, i.e., where the participants involved in each correlation are completely different. Let's run the correlations for the full dataset, and then for sample 1 and sample 2 separately.
+
+
+```r
+cor.test(full_dat$logic, full_dat$intelligence.a, method = "pearson")
+cor.test(sample1$logic, sample1$intelligence.a, method = "pearson")
+cor.test(sample2$logic, sample2$intelligence.a, method = "pearson")
 ```
 
 ```
 ## 
 ## 	Pearson's product-moment correlation
 ## 
-## data:  sample1$intelligence.a and sample1$logic
-## t = 5.7687, df = 289, p-value = 2.053e-08
+## data:  full_dat$logic and full_dat$intelligence.a
+## t = 6.3039, df = 623, p-value = 5.497e-10
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
-##  0.2142758 0.4207744
+##  0.1697040 0.3172053
 ## sample estimates:
-##     cor 
-## 0.32134
-```
-
-Or perhaps we might be interested in running all possible correlations with `correlate()` from `lsr`.
-
-
-```r
-sample1 %>%
-  correlate()
-```
-
-```
+##      cor 
+## 0.244871 
 ## 
-## CORRELATIONS
-## ============
-## - correlation type:  pearson 
-## - correlations shown only when both variables are numeric
-## 
-##                knowledge logic intelligence.b intelligence.a
-## knowledge              . 0.026          0.171          0.104
-## logic              0.026     .          0.268          0.321
-## intelligence.b     0.171 0.268              .          0.473
-## intelligence.a     0.104 0.321          0.473              .
-```
-
-So far, so repetitive from what you already know.
-
-## Compare two correlations based on two independent groups
-
-In this example we want to compare two correlations from two independent groups, i.e., where the participants involved in each correlation are completely different. For the example dataset, we can compare sample 1 and sample.
-
-
-```r
-cor.test(sample1$logic, sample1$intelligence.a, method = "pearson")
-cor.test(sample2$logic, sample2$intelligence.a, method = "pearson")
-```
-
-```
 ## 
 ## 	Pearson's product-moment correlation
 ## 
@@ -189,15 +194,15 @@ cor.test(sample2$logic, sample2$intelligence.a, method = "pearson")
 ## 0.2024331
 ```
 
-Here we can see that the correlations between logic scores and intelligence.a scores are significant in both samples, however, the correlation for sample 1 is larger (r = .32) than for sample 2 (r = .20) and so we can compare these using `cocor`.
+Here we can see that the correlations between logic scores and intelligence.a scores are significant overall and in both samples separately, however, the correlation for sample 1 is larger (r = .32) than for sample 2 (r = .20) and so we can compare these using `cocor`.
 
-* For this comparison, the two sample datasets need to be in a single `list` object, so we're going to use the original `aptitude` object.
 * The left-hand side of the formula (before the `|`) refers to variables in the first dataset in the list, the right-hand side of the formula (after the `|`) refers to variables in the second dataset in the list. 
+* This comparison requires us to use the list object we created.
 
 
 ```r
 cocor(formula = ~logic + intelligence.a | logic + intelligence.a, 
-      data = aptitude)
+      data = dat_list)
 ```
 
 ```
@@ -233,9 +238,7 @@ Rather than producing two separate scatterplots, it can be useful to display the
 
 
 ```r
-both_samples <- bind_rows(sample1, sample2, .id = "sample")
-
-ggplot(both_samples, aes(x = logic, y = intelligence.a, 
+ggplot(full_dat, aes(x = logic, y = intelligence.a, 
                          colour = sample)) +
   geom_jitter() +
   geom_smooth(method = "lm") +
@@ -248,8 +251,8 @@ ggplot(both_samples, aes(x = logic, y = intelligence.a,
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-8-1.png" alt="Scatterplot comparing correlation between two variables for two groups" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-8)Scatterplot comparing correlation between two variables for two groups</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-9-1.png" alt="Scatterplot comparing correlation between two variables for two groups" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-9)Scatterplot comparing correlation between two variables for two groups</p>
 </div>
 
 
@@ -272,11 +275,18 @@ sample2 %>%
 ## - correlation type:  pearson 
 ## - correlations shown only when both variables are numeric
 ## 
-##                knowledge    logic    intelligence.b    intelligence.a   
-## knowledge              .    0.031             0.129.            0.116.  
-## logic              0.031        .             0.201***          0.202***
-## intelligence.b     0.129.   0.201***              .             0.643***
-## intelligence.a     0.116.   0.202***          0.643***              .   
+##                sample    knowledge    logic    intelligence.b   
+## sample              .            .        .                 .   
+## knowledge           .            .    0.031             0.129.  
+## logic               .        0.031        .             0.201***
+## intelligence.b      .        0.129.   0.201***              .   
+## intelligence.a      .        0.116.   0.202***          0.643***
+##                intelligence.a   
+## sample                      .   
+## knowledge               0.116.  
+## logic                   0.202***
+## intelligence.b          0.643***
+## intelligence.a              .   
 ## 
 ## ---
 ## Signif. codes: . = p < .1, * = p<.05, ** = p<.01, *** = p<.001
@@ -287,21 +297,23 @@ sample2 %>%
 ## - total number of tests run:  6 
 ## - correction for multiple testing:  holm 
 ## 
-##                knowledge logic intelligence.b intelligence.a
-## knowledge              . 0.567          0.055          0.068
-## logic              0.567     .          0.001          0.001
-## intelligence.b     0.055 0.001              .          0.000
-## intelligence.a     0.068 0.001          0.000              .
+##                sample knowledge logic intelligence.b intelligence.a
+## sample              .         .     .              .              .
+## knowledge           .         . 0.567          0.055          0.068
+## logic               .     0.567     .          0.001          0.001
+## intelligence.b      .     0.055 0.001              .          0.000
+## intelligence.a      .     0.068 0.001          0.000              .
 ## 
 ## 
 ## SAMPLE SIZES
 ## ============
 ## 
-##                knowledge logic intelligence.b intelligence.a
-## knowledge            334   334            334            334
-## logic                334   334            334            334
-## intelligence.b       334   334            334            334
-## intelligence.a       334   334            334            334
+##                sample knowledge logic intelligence.b intelligence.a
+## sample            334       334   334            334            334
+## knowledge         334       334   334            334            334
+## logic             334       334   334            334            334
+## intelligence.b    334       334   334            334            334
+## intelligence.a    334       334   334            334            334
 ```
 
 We see that the correlations between `logic`, `intelligence.a` and `intelligence.b` are all significant. We can assess whether the correlation between `logic` and `intelligence.a` is strong than with `intelligence.b`.
@@ -311,7 +323,7 @@ We see that the correlations between `logic`, `intelligence.a` and `intelligence
 
 ```r
 cocor(formula = ~logic + intelligence.a | logic + intelligence.b,
-      data = aptitude$sample1)
+      data = dat_list$sample1)
 ```
 
 ```
@@ -321,7 +333,7 @@ cocor(formula = ~logic + intelligence.a | logic + intelligence.b,
 ## Comparison between r.jk (logic, intelligence.a) = 0.3213 and r.jh (logic, intelligence.b) = 0.2679
 ## Difference: r.jk - r.jh = 0.0534
 ## Related correlation: r.kh = 0.4731
-## Data: aptitude$sample1: j = logic, k = intelligence.a, h = intelligence.b
+## Data: dat_list$sample1: j = logic, k = intelligence.a, h = intelligence.b
 ## Group size: n = 291
 ## Null hypothesis: r.jk is equal to r.jh
 ## Alternative hypothesis: r.jk is not equal to r.jh (two-sided)
@@ -379,7 +391,7 @@ The final comparison we could make is to compare two non-overlapping (none of th
 
 ```r
 cocor(formula = ~logic + intelligence.b | knowledge + intelligence.a, 
-      data = aptitude$sample1)
+      data = dat_list$sample1)
 ```
 
 ```
@@ -389,7 +401,7 @@ cocor(formula = ~logic + intelligence.b | knowledge + intelligence.a,
 ## Comparison between r.jk (logic, intelligence.b) = 0.2679 and r.hm (knowledge, intelligence.a) = 0.1038
 ## Difference: r.jk - r.hm = 0.164
 ## Related correlations: r.jh = 0.0257, r.jm = 0.3213, r.kh = 0.1713, r.km = 0.4731
-## Data: aptitude$sample1: j = logic, k = intelligence.b, h = knowledge, m = intelligence.a
+## Data: dat_list$sample1: j = logic, k = intelligence.b, h = knowledge, m = intelligence.a
 ## Group size: n = 291
 ## Null hypothesis: r.jk is equal to r.hm
 ## Alternative hypothesis: r.jk is not equal to r.hm (two-sided)
@@ -505,8 +517,8 @@ rnorm(10)
 ```
 
 ```
-##  [1] -0.15748314  0.76228637  0.40510465  0.09522612  0.18257285  0.66660536
-##  [7]  0.99169839  1.40107501  1.44412291  0.01937933
+##  [1] -0.7435481 -0.6950124 -0.1378256  1.7489924  0.1862915  0.6727110
+##  [7]  1.4042428 -0.6949041 -0.2675438 -0.7945652
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -604,8 +616,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "p" "x" "m" "f" "j" "b" "d" "n" "i" "z" "y" "a" "v" "q" "g" "l" "t" "s" "e"
-## [20] "o" "u" "k" "h" "w" "c" "r"
+##  [1] "w" "a" "x" "p" "z" "t" "d" "y" "j" "e" "v" "n" "r" "s" "q" "b" "o" "k" "u"
+## [20] "l" "g" "f" "h" "i" "m" "c"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -640,18 +652,18 @@ tibble(Y = rnorm(10))
 
 ```
 ## # A tibble: 10 x 1
-##             Y
-##         <dbl>
-##  1 -0.0935   
-##  2  0.0425   
-##  3 -1.18     
-##  4 -1.43     
-##  5  0.0000683
-##  6 -0.771    
-##  7  0.264    
-##  8 -0.602    
-##  9  0.136    
-## 10 -0.852
+##         Y
+##     <dbl>
+##  1  0.287
+##  2 -1.68 
+##  3  0.584
+##  4  1.23 
+##  5  0.474
+##  6 -0.218
+##  7  0.235
+##  8  0.892
+##  9 -0.347
+## 10  1.66
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -668,16 +680,16 @@ tibble(Y = c(rnorm(5, mean = -10),
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1 -10.6 
-##  2  -9.36
-##  3 -10.1 
-##  4 -10.6 
-##  5  -9.96
-##  6  20.1 
-##  7  20.8 
-##  8  22.1 
-##  9  19.4 
-## 10  20.9
+##  1  -9.35
+##  2 -10.2 
+##  3  -9.39
+##  4  -9.80
+##  5  -8.65
+##  6  19.3 
+##  7  19.8 
+##  8  18.6 
+##  9  18.0 
+## 10  21.9
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -739,16 +751,16 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A     -11.3 
-##  2 A      -9.31
-##  3 A      -9.76
-##  4 A     -11.0 
-##  5 A      -8.70
-##  6 B      20.1 
-##  7 B      19.6 
-##  8 B      20.1 
-##  9 B      20.4 
-## 10 B      21.9
+##  1 A     -10.7 
+##  2 A      -9.46
+##  3 A      -8.89
+##  4 A     -10.3 
+##  5 A      -8.92
+##  6 B      20.7 
+##  7 B      20.4 
+##  8 B      19.0 
+##  9 B      20.8 
+## 10 B      20.4
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -803,11 +815,11 @@ my_data_means
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      19.5
-## 2 B     -21.4
+## 1 A      21.2
+## 2 B     -22.5
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -21.4 from the first group mean of 19.5, to get a single value, the difference: 40.9.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -22.5 from the first group mean of 21.2, to get a single value, the difference: 43.7.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -820,7 +832,7 @@ vec
 ```
 
 ```
-## [1]  19.47481 -21.39781
+## [1]  21.16091 -22.50310
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -831,7 +843,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 40.87263
+## [1] 43.66401
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -842,7 +854,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 40.87263
+## [1] 43.66401
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -855,7 +867,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 40.87263
+## [1] 43.66401
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -870,7 +882,7 @@ my_data_means %>%
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  19.5 -21.4
+## 1  21.2 -22.5
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -886,7 +898,7 @@ my_data_means %>%
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  19.5 -21.4  40.9
+## 1  21.2 -22.5  43.7
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -902,7 +914,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 40.87263
+## [1] 43.66401
 ```
 
 
@@ -1091,8 +1103,8 @@ ten_samples
 ```
 
 ```
-##  [1] -0.111789929 -0.050184862 -0.005511499 -0.011296587 -0.020365405
-##  [6]  0.067821899 -0.065896970  0.001630387 -0.016550060  0.001531921
+##  [1] -0.23654729 -0.15045278 -0.01123172 -0.05631518 -0.11053489  0.01698098
+##  [7] -0.23417653  0.08828847  0.08303564  0.07272930
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
@@ -1576,8 +1588,8 @@ ggplot(wine, aes(x = response, fill = temp)) +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-29-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-29)**CAPTION THIS FIGURE!!**</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-30-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-30)**CAPTION THIS FIGURE!!**</p>
 </div>
 
 The Mann-Whitney code takes the following form:
@@ -1690,8 +1702,8 @@ sample1 %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-36-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-36)**CAPTION THIS FIGURE!!**</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-37-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-37)**CAPTION THIS FIGURE!!**</p>
 </div>
 
 To run a single Spearman's correlation we can use `cor.test()`. The code is the same as we have used previously with one edit, we change `method` to `spearman`. 
@@ -1864,8 +1876,8 @@ ts_plot(tweets, by = "1 hours")
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-45-1.png" alt="Time series plot by hour" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-45)Time series plot by hour</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-46-1.png" alt="Time series plot by hour" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-46)Time series plot by hour</p>
 </div>
 
 You can change the time interval with the `by` argument and you can also change the time zone. `ts_plot` creates a `ggplot` object so you can also add the usual ggplot layers to customise apperance. 
@@ -1878,8 +1890,8 @@ ts_plot(tweets, by = "10 mins", tz = "GMT") +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-46-1.png" alt="Time series plot by 10 minute intervals" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-46)Time series plot by 10 minute intervals</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-47-1.png" alt="Time series plot by 10 minute intervals" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-47)Time series plot by 10 minute intervals</p>
 </div>
 
 ### Tidy text and word frequencies
@@ -1912,8 +1924,8 @@ dat_token%>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-48-1.png" alt="Most frequent words" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-48)Most frequent words</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-49-1.png" alt="Most frequent words" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-49)Most frequent words</p>
 </div>
 
 There's quite a few words here that aren't that helpful to us so it might be best to get rid of them (essentially we're building our own list of stop words).
@@ -1942,8 +1954,8 @@ dat_token%>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-50-1.png" alt="Most frequent words (edited)" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-50)Most frequent words (edited)</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-51-1.png" alt="Most frequent words (edited)" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-51)Most frequent words (edited)</p>
 </div>
 
 To be honest, this isn't that interesting because it's so general, it might be more interesting to see how often each of the main characters are being mentioned. 
@@ -1978,8 +1990,8 @@ dat_token2 %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-52-1.png" alt="Frequecy of mentions for each character" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-52)Frequecy of mentions for each character</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-53-1.png" alt="Frequecy of mentions for each character" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-53)Frequecy of mentions for each character</p>
 </div>
 
 ### Bigram analysis
@@ -2040,8 +2052,8 @@ ggraph(bigram_graph, layout = "fr") +
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-54-1.png" alt="Network graph of bigrams" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-54)Network graph of bigrams</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-55-1.png" alt="Network graph of bigrams" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-55)Network graph of bigrams</p>
 </div>
 
 ```
@@ -2239,8 +2251,8 @@ dat_sentiment %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-59-1.png" alt="Sentiment scores for each character" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-59)Sentiment scores for each character</p>
+<img src="appendix-0_files/figure-html/unnamed-chunk-60-1.png" alt="Sentiment scores for each character" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-60)Sentiment scores for each character</p>
 </div>
 
 `rtweet` is such a cool package and I've found that the limits of what you can do with it are much more about one's imagination. There's much more you could do with this package but when I first ran these analyses I found that tracking RuPaul's Drag Race was a fun way to learn a new package as it did give an insight into the fan reactions of one of my favourite shows. I also use this package to look at swearing on Twitter (replace the hashtags with swear words). The best way to learn what `rtweet` and `tidytext` can do for you is to find a topic you care about and explore the options it gives you. If you have any feedback on this tutorial you can find me on twitter: [emilynordmann](https://twitter.com/emilynordmann).
