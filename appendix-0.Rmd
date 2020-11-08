@@ -89,46 +89,66 @@ library(tidyverse)
 library(lsr)
 ```
 
-The `cocor` package comes with a dataset called `aptitude`. This dataset contains scores on four aptitude tests `knowledge`, `logic`, `intelligence.a`, and `intelligence.b` for two separate samples. First, let's load the full dataset and then create two separate objects for the two samples to make it easier to see the different types of comparisons we can make.
+The `cocor` package comes with a built-in dataset called `aptitude`. This dataset contains scores on four aptitude tests `knowledge`, `logic`, `intelligence.a`, and `intelligence.b` for two separate samples. This data is stored in a `list` object that then contains two separate data frames `sample1` and `sample2`. We haven't worked with lists much in this book but `cocor` requires the data to be in list format so it's worth spending a little time on this before we get going.
+
+First, load the built-in aptitude dataset.
 
 ```{r}
-data(aptitude)
-sample1 <- aptitude$sample1
-sample2 <-aptitude$sample2
+data("aptitude")
 ```
 
-We can then conduct correlations on these datasets. We could conduct single correlations using `cor.test()`:
+You can view the contents of each dataset by calling them separately:
+
+```{r eval = FALSE}
+aptitude$sample1
+aptitude$sample2
+```
+
+However, it may that your research dataset isn't structured like this and that the data for the two groups or samples you want to compare is in the same dataset (for example, for the data for your quantitative report).
+
+The below code transforms the data to the format you're likely to have so that we can show you how to put it back into list form by using the `bind_rows()` function to pull out the two datasets, bind them together, and add on a column called `sample` that identifies which dataset the data is from.
+
+* Run the below code and then view `full_dat` to see how it is structured.
+
 
 ```{r}
-cor.test(sample1$intelligence.a, sample1$logic, method = "pearson")
+full_dat <- bind_rows(aptitude$sample1, aptitude$sample2, .id = "sample")
 ```
 
-Or perhaps we might be interested in running all possible correlations with `correlate()` from `lsr`.
+This is how the data for your quantitative report is structured. All the data you have is in a single table and there is a column that tells you what group it is from (in this case `sample` but for the quant report this might be gender or whether the student is mature).
+
+To use `cocor` to compare the correlations you will need to transform it into a list object. We achieve this by creating two separate obkects for each sample using `filter()` and then we combine them back into a `list`.
 
 ```{r}
-sample1 %>%
-  correlate()
+sample1 <- full_dat %>%
+  filter(sample == 1)
+
+sample2 <- full_dat %>%
+  filter(sample == 2)
+
+dat_list <- list(sample1 = sample1, sample2 = sample2)
 ```
 
-So far, so repetitive from what you already know.
+This is somewhat convoluted but the key takeaway is that if you want to use `cocor` to compare correlations, you need to ensure your data is in a list oject and that may require the above transformation.
 
 ## Compare two correlations based on two independent groups
 
-In this example we want to compare two correlations from two independent groups, i.e., where the participants involved in each correlation are completely different. For the example dataset, we can compare sample 1 and sample.
+In this example we want to compare two correlations from two independent groups, i.e., where the participants involved in each correlation are completely different. Let's run the correlations for the full dataset, and then for sample 1 and sample 2 separately.
 
 ```{r}
+cor.test(full_dat$logic, full_dat$intelligence.a, method = "pearson")
 cor.test(sample1$logic, sample1$intelligence.a, method = "pearson")
 cor.test(sample2$logic, sample2$intelligence.a, method = "pearson")
 ```
 
-Here we can see that the correlations between logic scores and intelligence.a scores are significant in both samples, however, the correlation for sample 1 is larger (r = .32) than for sample 2 (r = .20) and so we can compare these using `cocor`.
+Here we can see that the correlations between logic scores and intelligence.a scores are significant overall and in both samples separately, however, the correlation for sample 1 is larger (r = .32) than for sample 2 (r = .20) and so we can compare these using `cocor`.
 
-* For this comparison, the two sample datasets need to be in a single `list` object, so we're going to use the original `aptitude` object.
 * The left-hand side of the formula (before the `|`) refers to variables in the first dataset in the list, the right-hand side of the formula (after the `|`) refers to variables in the second dataset in the list. 
+* This comparison requires us to use the list object we created.
 
 ```{r}
 cocor(formula = ~logic + intelligence.a | logic + intelligence.a, 
-      data = aptitude)
+      data = dat_list)
 ```
 
 The full paper by [Diedenhofen and Musch (2015)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945#sec003) explains the output in detail, for our purposes, Fisher's z-test tells us that our correlations are not significantly different (z = 1.59, p = .113) and Zou's confidence intervals gives us the CI for the size of the difference between the two correlations (which at -0.0281 - 0.2637 is quite a range and so isn't surprising that the two are not statistically different).
@@ -142,9 +162,7 @@ Rather than producing two separate scatterplots, it can be useful to display the
 * 
 
 ```{r fig.cap= "Scatterplot comparing correlation between two variables for two groups"}
-both_samples <- bind_rows(sample1, sample2, .id = "sample")
-
-ggplot(both_samples, aes(x = logic, y = intelligence.a, 
+ggplot(full_dat, aes(x = logic, y = intelligence.a, 
                          colour = sample)) +
   geom_jitter() +
   geom_smooth(method = "lm") +
@@ -170,7 +188,7 @@ We see that the correlations between `logic`, `intelligence.a` and `intelligence
 
 ```{r}
 cocor(formula = ~logic + intelligence.a | logic + intelligence.b,
-      data = aptitude$sample1)
+      data = dat_list$sample1)
 ```
 
 This produces a large number of tests, the mathematics of which are described in the [`cocor` documentation.](https://cran.r-project.org/web/packages/cocor/cocor.pdf). The `cocor` documentation suggests basing the decision on convergence - in this case all tests indicated the null hypothesis should be retained, i.e., the correlations are not significantly different. For the purposes of writing up such a comparison, [Silver, Hittner & May (2004)]((https://www.tandfonline.com/doi/abs/10.3200/JEXE.71.1.53-70) suggest that Dunn & Clark's performs best so you can report that (z = .94, p = .349) as well as Zou's confidence intervals. 
@@ -181,7 +199,7 @@ The final comparison we could make is to compare two non-overlapping (none of th
 
 ```{r}
 cocor(formula = ~logic + intelligence.b | knowledge + intelligence.a, 
-      data = aptitude$sample1)
+      data = dat_list$sample1)
 ```
 
 Again the output produces a number of tests, although in this case they all converge on the conclusion that the null hypothesis should be rejected, i.e., the correlations are significantly different. Again following [Silver et al.](https://www.tandfonline.com/doi/abs/10.1080/00221300309601282), if you need to pick one to report, I'd suggest Dunn and Clark's z with Zou's confidence intervals. 
