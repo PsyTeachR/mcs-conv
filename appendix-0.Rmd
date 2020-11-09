@@ -117,7 +117,7 @@ full_dat <- bind_rows(aptitude$sample1, aptitude$sample2, .id = "sample")
 
 This is how the data for your quantitative report is structured. All the data you have is in a single table and there is a column that tells you what group it is from (in this case `sample` but for the quant report this might be gender or whether the student is mature).
 
-To use `cocor` to compare the correlations you will need to transform it into a list object. We achieve this by creating two separate obkects for each sample using `filter()` and then we combine them back into a `list`.
+To use `cocor` to compare the correlations you will need to transform it into a list object. We achieve this by creating two separate objects for each sample using `filter()` and then we combine them back into a `list`. We've also added in the code to ensure that the table is a data frame because `cocor` is a bit fussy about what it needs.
 
 ```{r}
 sample1 <- full_dat %>%
@@ -126,10 +126,11 @@ sample1 <- full_dat %>%
 sample2 <- full_dat %>%
   filter(sample == 2)
 
-dat_list <- list(sample1 = sample1, sample2 = sample2)
+dat_list <- list(sample1 = as.data.frame(sample1),
+                 sample2 = as.data.frame(sample2))
 ```
 
-This is somewhat convoluted but the key takeaway is that if you want to use `cocor` to compare correlations, you need to ensure your data is in a list oject and that may require the above transformation.
+This is somewhat convoluted but the key takeaway is that if you want to use `cocor` to compare correlations, you need to ensure your data is in a list object and that may require the above transformation.
 
 ## Compare two correlations based on two independent groups
 

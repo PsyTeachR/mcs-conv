@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-11-08" />
+<meta name="date" content="2020-11-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -644,15 +644,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="comparing-two-correlations.html#cb337-1"></a>full_dat &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(aptitude<span class="op">$</span>sample1, aptitude<span class="op">$</span>sample2, <span class="dt">.id =</span> <span class="st">&quot;sample&quot;</span>)</span></code></pre></div>
 <p>This is how the data for your quantitative report is structured. All the data you have is in a single table and there is a column that tells you what group it is from (in this case <code>sample</code> but for the quant report this might be gender or whether the student is mature).</p>
-<p>To use <code>cocor</code> to compare the correlations you will need to transform it into a list object. We achieve this by creating two separate obkects for each sample using <code>filter()</code> and then we combine them back into a <code>list</code>.</p>
+<p>To use <code>cocor</code> to compare the correlations you will need to transform it into a list object. We achieve this by creating two separate objects for each sample using <code>filter()</code> and then we combine them back into a <code>list</code>. We’ve also added in the code to ensure that the table is a data frame because <code>cocor</code> is a bit fussy about what it needs.</p>
 <div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="comparing-two-correlations.html#cb338-1"></a>sample1 &lt;-<span class="st"> </span>full_dat <span class="op">%&gt;%</span></span>
 <span id="cb338-2"><a href="comparing-two-correlations.html#cb338-2"></a><span class="st">  </span><span class="kw">filter</span>(sample <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)</span>
 <span id="cb338-3"><a href="comparing-two-correlations.html#cb338-3"></a></span>
 <span id="cb338-4"><a href="comparing-two-correlations.html#cb338-4"></a>sample2 &lt;-<span class="st"> </span>full_dat <span class="op">%&gt;%</span></span>
 <span id="cb338-5"><a href="comparing-two-correlations.html#cb338-5"></a><span class="st">  </span><span class="kw">filter</span>(sample <span class="op">==</span><span class="st"> </span><span class="dv">2</span>)</span>
 <span id="cb338-6"><a href="comparing-two-correlations.html#cb338-6"></a></span>
-<span id="cb338-7"><a href="comparing-two-correlations.html#cb338-7"></a>dat_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> sample1, <span class="dt">sample2 =</span> sample2)</span></code></pre></div>
-<p>This is somewhat convoluted but the key takeaway is that if you want to use <code>cocor</code> to compare correlations, you need to ensure your data is in a list oject and that may require the above transformation.</p>
+<span id="cb338-7"><a href="comparing-two-correlations.html#cb338-7"></a>dat_list &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sample1 =</span> <span class="kw">as.data.frame</span>(sample1),</span>
+<span id="cb338-8"><a href="comparing-two-correlations.html#cb338-8"></a>                 <span class="dt">sample2 =</span> <span class="kw">as.data.frame</span>(sample2))</span></code></pre></div>
+<p>This is somewhat convoluted but the key takeaway is that if you want to use <code>cocor</code> to compare correlations, you need to ensure your data is in a list object and that may require the above transformation.</p>
 <div id="compare-two-correlations-based-on-two-independent-groups" class="section level2">
 <h2><span class="header-section-number">D.1</span> Compare two correlations based on two independent groups</h2>
 <p>In this example we want to compare two correlations from two independent groups, i.e., where the participants involved in each correlation are completely different. Let’s run the correlations for the full dataset, and then for sample 1 and sample 2 separately.</p>
