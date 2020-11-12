@@ -418,6 +418,26 @@ ggplot(data = mh, aes(x = Abil, y = IQ)) +
 **click the tab to see the solution**
 <br>
 
+### Activity 4
+
+
+<div class='solution'><button>Activity 4</button>
+
+
+```r
+descriptives <- summarise(mh, 
+                          Abil_mean = mean(Abil),
+                          Abil_SD = sd(Abil),
+                          IQ_mean = mean(IQ),
+                          IQ_SD = sd(IQ))
+```
+
+</div>
+  
+
+**click the tab to see the solution**
+<br>
+
 ### Activity 5
 
 

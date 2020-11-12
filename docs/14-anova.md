@@ -12,12 +12,13 @@ The abstract for the paper is as follows:
 
 ### Activity 1: Set-up
 
-Do the following.  
-* Open R Studio and set the working directory to your Week 10 folder. Ensure the environment is clear.  
-* Open a new R Markdown document and save it in your working directory. Call the file "Week 10".  
-* Download <a href="James Holmes_Expt 2_DATA.csv" download>James Holmes_Expt 2_DATA.csv</a> and extract the files in to your Week 10 folder.  
-* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
-* In a new code chunk, type and run the code that loads `pwr`, `lsr`, `car`, `broom`, `afex`, `emmeans` and `tidyverse` using the `library()` function and loads the data into an object named `dat` using `read_csv()`. If you are working on your own machine you may need to install `afex` and `emmeans` but as always **do not install packages on university machines**.  
+Do the following:
+
+* Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.    
+* Open a new R Markdown document and save it in your working directory. Call the file "One-way ANOVA".  
+* Download <a href="James Holmes_Expt 2_DATA.csv" download>James Holmes_Expt 2_DATA.csv</a> and save it in your chapter 10 folder.  
+* If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R`   
+* In a new code chunk, type and run the code that loads `pwr`, `lsr`, `car`, `broom`, `afex`, `emmeans` and `tidyverse` using the `library()` function and loads the data into an object named `dat` using `read_csv()`. If you are working on your own machine you may need to install `afex` and `emmeans` but as always **do not install packages on university machines**.    
 * Add (hint: mutate) a column to `dat` called `subject`that equals `row_number()` to act as a participant ID which is currently missing from the data set.  
 
 
@@ -342,7 +343,7 @@ mod_contrasts <- mod_contrasts %>%
 <div class="warning">
 <p>What are your options if the data don’t meet the assumptions and it’s really not appropriate to continue with a regular one-way ANOVA? As always, there are multiple options and it is a judgement call.</p>
 <ol style="list-style-type: decimal">
-<li>You could run a non-parametric test, the Kruskal-Wallis for between-subject designs and the Friedman test for within-subject designs. There is more information about how to do this in Chapter @ref(refsup).</li>
+<li>You could run a non-parametric test, the Kruskal-Wallis for between-subject designs and the Friedman test for within-subject designs.</li>
 <li>If normality is the problem, you could try transforming the data. Field et al. (2009) has a good section on data transformation.</li>
 <li>You could use bootstrapping, which is not something we will cover in this course at all. Again, Field et al. (2009) covers this although it is a little complicated.</li>
 </ol>
@@ -350,7 +351,7 @@ mod_contrasts <- mod_contrasts %>%
 
 ### Activity 10: Write-up
 
-The below code replicates the write-up in the paper, although has changed the Welch t-test for the pairwise comparisons.
+The below code replicates the write-up in the paper, although has changed the Welch t-test to the pairwise comparisons from `emmeans`.
 
 
 ```r
@@ -360,7 +361,7 @@ Second, and critically, for the 7-day diary postintervention, there was a signif
 Second, and critically, for the 7-day diary postintervention, there was a significant difference between groups in overall intrusion frequency in daily life, F(3, 68) = 3.79, p = 0.014, ηp2 = .0.14. Planned comparisons demonstrated that relative to the no-task control group, only those in the reactivation-plus-Tetris group, t(68) = 3.04, p = 0.02, d = 1, experienced significantly fewer intrusive memories; this finding replicated Experiment 1. Critically, as predicted by reconsolidation theory, the reactivation-plus-Tetris group had significantly fewer intrusive memories than the Tetris-only group, t(68) = -1.89, p = 0.38, d = 0.84, as well as the reactivation-only group, t(68) = -2.78, p = 0.04, d = 1.11. Further, there were no significant differences between the no-task control group and the reactivation-only group, t(68) = 0.26, p = 1, or between the no-task control group and the Tetris-only group, t(68) = 1.15, p = 1
 
 ### Activity solutions 
-Below this line you will find the solutions to the above tasks. Only look at them after giving the tasks a good try and speaking to the tutor about any issues
+Below this line you will find the solutions to the above tasks. Only look at them after giving the tasks a good try yourself!
 
 #### Activity 1
 
