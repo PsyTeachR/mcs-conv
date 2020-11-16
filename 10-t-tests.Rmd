@@ -336,7 +336,7 @@ impression_d <-
     
     + Mean `estimate2` (read condition) = `r fitb("4.07")`  
     
-    + t(`r fitb(c("33.80", "33.8"))`) = `r fitb("2.85")`, p = `r fitb(c("0.024",".024"))` 
+    + t(`r fitb(c("33.80", "33.8"))`) = `r fitb("2.82")`, p = `r fitb(c("0.024",".024"))` 
 
 * According to Cohen's (1988) guidelines, the effect sizes for all three tests are `r mcq(c("Small", "Medium", answer = "Large"))`
 
