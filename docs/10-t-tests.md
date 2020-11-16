@@ -263,7 +263,7 @@ results_impression <-
 </ol>
 </div>
 
-## Activity 8: Correcting for multiple comparisons
+## Activity 7: Correcting for multiple comparisons
 
 Because we've run three t-tests we risk inflating our chances of a Type 1 errors due to familywise error. To correct for this we can apply a correction for multiple comparisons.
 
@@ -295,7 +295,7 @@ results <- results %>%
                                method = "bonferroni")) # type of correction to apply
 ```
 
-## Activity 7: Effect size
+## Activity 8: Effect size
 
 Before we interpret and write-up the results our last task is to calculate the effect size which for a t-test is Cohen's D. To do this, we will use the function `cohensD()` from the `lsr` package. The code is very simple, it is very similar to the syntax for `t.test()`. The only difference is rather than `paired = FALSE`, you must specify `method = "unequal"` which indicates that we conducted a Welch test (see the help documentation for more information). 
 
@@ -310,7 +310,7 @@ hire_d <-
 impression_d <- 
 ```
 
-## Activity 8: Interpreting the results
+## Activity 9: Interpreting the results
 
 * Were your results for `hire` significant? Enter the mean estimates and t-test results (means and t-value to 2 decimal places, p-value to 3 decimal places). Use the adjusted p-values:
 
@@ -318,7 +318,7 @@ impression_d <-
     
     + Mean `estimate2` (read condition) = <input class='solveme nospaces' size='4' data-answer='["2.89"]'/>  
     
-    + t(<input class='solveme nospaces' size='5' data-answer='["36.85"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.64"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.036",".036"]'/>  
+    + t(<input class='solveme nospaces' size='5' data-answer='["36.86"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.64"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.036",".036"]'/>  
     
 
 * Were your results for `impression` significant? Enter the mean estimates and t-test results (means and t-value to 2 decimal places, p-value to 3 decimal places):
@@ -327,11 +327,11 @@ impression_d <-
     
     + Mean `estimate2` (read condition) = <input class='solveme nospaces' size='4' data-answer='["4.07"]'/>  
     
-    + t(<input class='solveme nospaces' size='2' data-answer='["37"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.85"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.024",".024"]'/> 
+    + t(<input class='solveme nospaces' size='5' data-answer='["33.80","33.8"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.85"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.024",".024"]'/> 
 
 * According to Cohen's (1988) guidelines, the effect sizes for all three tests are <select class='solveme' data-answer='["Large"]'> <option></option> <option>Small</option> <option>Medium</option> <option>Large</option></select>
 
-## Activity 9: Write-up
+## Activity 10: Write-up
 
 Copy and paste the below **exactly** into **white space** in your R Markdown document and then knit the file to replicate the results section in the paper (p.887). 
 
@@ -353,7 +353,7 @@ Finally, they also reported being more likely to hire the candidates when they l
 
 > Finally, they also reported being more likely to hire the candidates when they listened to pitches (M = 4.71, SD = 2.26) than when they read the same pitches (M = 2.89, SD = 2.05), t(36.86) = 2.64, p < 0.036, 95% CI of the difference = [0.42, 3.23], d = 0.84.
 
-## Activity 10: Paired-samples t-test
+## Activity 11: Paired-samples t-test
 
 For the final activity we will run a paired-samples t-test for a within-subject design but we will do this much quicker than for the Welch test and just point out the differences in the code.
 
