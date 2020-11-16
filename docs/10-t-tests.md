@@ -327,7 +327,7 @@ impression_d <-
     
     + Mean `estimate2` (read condition) = <input class='solveme nospaces' size='4' data-answer='["4.07"]'/>  
     
-    + t(<input class='solveme nospaces' size='5' data-answer='["33.80","33.8"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.85"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.024",".024"]'/> 
+    + t(<input class='solveme nospaces' size='5' data-answer='["33.80","33.8"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.82"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.024",".024"]'/> 
 
 * According to Cohen's (1988) guidelines, the effect sizes for all three tests are <select class='solveme' data-answer='["Large"]'> <option></option> <option>Small</option> <option>Medium</option> <option>Large</option></select>
 
