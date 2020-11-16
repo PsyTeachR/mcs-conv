@@ -16,7 +16,7 @@ Do the following:
 
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.    
 * Open a new R Markdown document and save it in your working directory. Call the file "One-way ANOVA".  
-* Download <a href="James Holmes_Expt 2_DATA.csv" download>James Holmes_Expt 2_DATA.csv</a> and save it in your chapter 10 folder.  
+* Download <a href="James Holmes_Expt 2_DATA.csv" download>James Holmes_Expt 2_DATA.csv</a> and save it in your chapter folder.  
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R`   
 * In a new code chunk, type and run the code that loads `pwr`, `lsr`, `car`, `broom`, `afex`, `emmeans` and `tidyverse` using the `library()` function and loads the data into an object named `dat` using `read_csv()`. If you are working on your own machine you may need to install `afex` and `emmeans` but as always **do not install packages on university machines**.    
 * Add (hint: mutate) a column to `dat` called `subject`that equals `row_number()` to act as a participant ID which is currently missing from the data set.  
