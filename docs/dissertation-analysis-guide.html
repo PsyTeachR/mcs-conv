@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-11-16" />
+<meta name="date" content="2020-11-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -733,48 +733,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
 <li>If you make any changes, run <code>summary()</code> again</li>
 </ul>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="dissertation-analysis-guide.html#cb463-1"></a><span class="kw">summary</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="dissertation-analysis-guide.html#cb464-1"></a><span class="kw">summary</span>(data)</span></code></pre></div>
 </div>
 <div id="visualisations" class="section level3">
 <h3><span class="header-section-number">I.1.6</span> Visualisations</h3>
 <p>To get an overview of the data and spot any potential issues such as outliers you should plot histograms and boxplots to eyeball the distributions.</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="dissertation-analysis-guide.html#cb464-1"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> variable)) <span class="op">+</span></span>
-<span id="cb464-2"><a href="dissertation-analysis-guide.html#cb464-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span>
-<span id="cb464-3"><a href="dissertation-analysis-guide.html#cb464-3"></a></span>
-<span id="cb464-4"><a href="dissertation-analysis-guide.html#cb464-4"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> condition, <span class="dt">y =</span> score)) <span class="op">+</span></span>
-<span id="cb464-5"><a href="dissertation-analysis-guide.html#cb464-5"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="dissertation-analysis-guide.html#cb465-1"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> variable)) <span class="op">+</span></span>
+<span id="cb465-2"><a href="dissertation-analysis-guide.html#cb465-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span>
+<span id="cb465-3"><a href="dissertation-analysis-guide.html#cb465-3"></a></span>
+<span id="cb465-4"><a href="dissertation-analysis-guide.html#cb465-4"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> condition, <span class="dt">y =</span> score)) <span class="op">+</span></span>
+<span id="cb465-5"><a href="dissertation-analysis-guide.html#cb465-5"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
 </div>
 <div id="renaming-variables" class="section level3">
 <h3><span class="header-section-number">I.1.7</span> Renaming variables</h3>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb465-1"><a href="dissertation-analysis-guide.html#cb465-1"></a>data &lt;-<span class="st"> </span><span class="kw">rename</span>(data, <span class="dt">new_name =</span> old_name)</span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="dissertation-analysis-guide.html#cb466-1"></a>data &lt;-<span class="st"> </span><span class="kw">rename</span>(data, <span class="dt">new_name =</span> old_name)</span></code></pre></div>
 </div>
 <div id="converting-to-factors" class="section level3">
 <h3><span class="header-section-number">I.1.8</span> Converting to factors</h3>
 <p>This is incredibly important. Don’t skip this step otherwise things might go very wrong much further down the line.</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="dissertation-analysis-guide.html#cb466-1"></a>data &lt;-<span class="st"> </span><span class="kw">mutate</span>(data, <span class="dt">variable =</span> <span class="kw">as_factor</span>(variable))</span></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="dissertation-analysis-guide.html#cb467-1"></a>data &lt;-<span class="st"> </span><span class="kw">mutate</span>(data, <span class="dt">variable =</span> <span class="kw">as_factor</span>(variable))</span></code></pre></div>
 </div>
 <div id="dropping-irrelevant-variables" class="section level3">
 <h3><span class="header-section-number">I.1.9</span> Dropping irrelevant variables</h3>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb467-1"><a href="dissertation-analysis-guide.html#cb467-1"></a>data &lt;-<span class="st"> </span><span class="kw">select</span>(data, <span class="op">-</span>consent1)</span></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="dissertation-analysis-guide.html#cb468-1"></a>data &lt;-<span class="st"> </span><span class="kw">select</span>(data, <span class="op">-</span>consent1)</span></code></pre></div>
 </div>
 <div id="recoding-variables" class="section level3">
 <h3><span class="header-section-number">I.1.10</span> Recoding variables</h3>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="dissertation-analysis-guide.html#cb468-1"></a>data &lt;-<span class="st"> </span><span class="kw">mutate</span>(data, <span class="dt">variable =</span> <span class="kw">recode</span>(variable, <span class="st">&quot;old_code&quot;</span> =<span class="st"> &quot;new_code&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="dissertation-analysis-guide.html#cb469-1"></a>data &lt;-<span class="st"> </span><span class="kw">mutate</span>(data, <span class="dt">variable =</span> <span class="kw">recode</span>(variable, <span class="st">&quot;old_code&quot;</span> =<span class="st"> &quot;new_code&quot;</span>))</span></code></pre></div>
 </div>
 <div id="exclude-participantsdata" class="section level3">
 <h3><span class="header-section-number">I.1.11</span> Exclude participants/data</h3>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="dissertation-analysis-guide.html#cb469-1"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">!=</span><span class="st"> &quot;value&quot;</span>) <span class="co"># exclude anyone with value</span></span>
-<span id="cb469-2"><a href="dissertation-analysis-guide.html#cb469-2"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">==</span><span class="st"> &quot;value&quot;</span>) <span class="co"># include only those with value</span></span>
-<span id="cb469-3"><a href="dissertation-analysis-guide.html#cb469-3"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;value1&quot;</span>, <span class="st">&quot;value2&quot;</span>)) <span class="co"># include all specified values</span></span>
-<span id="cb469-4"><a href="dissertation-analysis-guide.html#cb469-4"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>) <span class="co"># keep data if value of variable is more than 10</span></span>
-<span id="cb469-5"><a href="dissertation-analysis-guide.html#cb469-5"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="co"># keep data if value of variable is less than or equal to 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="dissertation-analysis-guide.html#cb470-1"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">!=</span><span class="st"> &quot;value&quot;</span>) <span class="co"># exclude anyone with value</span></span>
+<span id="cb470-2"><a href="dissertation-analysis-guide.html#cb470-2"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">==</span><span class="st"> &quot;value&quot;</span>) <span class="co"># include only those with value</span></span>
+<span id="cb470-3"><a href="dissertation-analysis-guide.html#cb470-3"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;value1&quot;</span>, <span class="st">&quot;value2&quot;</span>)) <span class="co"># include all specified values</span></span>
+<span id="cb470-4"><a href="dissertation-analysis-guide.html#cb470-4"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>) <span class="co"># keep data if value of variable is more than 10</span></span>
+<span id="cb470-5"><a href="dissertation-analysis-guide.html#cb470-5"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="co"># keep data if value of variable is less than or equal to 10</span></span></code></pre></div>
 </div>
 <div id="reliability" class="section level3">
 <h3><span class="header-section-number">I.1.12</span> Reliability</h3>
 <p>If you are using a scale, for example, as part of a questionnaire study you may need to calculate reliability and you should do this before you calculate the aggregated scale scores. There are several options about how you do this and you should consult your supervisor but one option is to use <code>alpha()</code> from the <code>psych</code> package.</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="dissertation-analysis-guide.html#cb470-1"></a>data <span class="op">%&gt;%</span></span>
-<span id="cb470-2"><a href="dissertation-analysis-guide.html#cb470-2"></a><span class="st">  </span><span class="kw">select</span>(Q1<span class="op">:</span>Q5) <span class="op">%&gt;%</span></span>
-<span id="cb470-3"><a href="dissertation-analysis-guide.html#cb470-3"></a><span class="st">  </span>psych<span class="op">::</span><span class="kw">alpha</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="dissertation-analysis-guide.html#cb471-1"></a>data <span class="op">%&gt;%</span></span>
+<span id="cb471-2"><a href="dissertation-analysis-guide.html#cb471-2"></a><span class="st">  </span><span class="kw">select</span>(Q1<span class="op">:</span>Q5) <span class="op">%&gt;%</span></span>
+<span id="cb471-3"><a href="dissertation-analysis-guide.html#cb471-3"></a><span class="st">  </span>psych<span class="op">::</span><span class="kw">alpha</span>()</span></code></pre></div>
 </div>
 <div id="transforming-data" class="section level3">
 <h3><span class="header-section-number">I.1.13</span> Transforming data</h3>
@@ -782,44 +782,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="replace-missing-values" class="section level3">
 <h3><span class="header-section-number">I.1.14</span> Replace missing values</h3>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="dissertation-analysis-guide.html#cb471-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb471-2"><a href="dissertation-analysis-guide.html#cb471-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">variable =</span> <span class="kw">replace_na</span>(data<span class="op">$</span>variable, <span class="dv">0</span>)) <span class="co"># replace NAs in variable with 0</span></span>
-<span id="cb471-3"><a href="dissertation-analysis-guide.html#cb471-3"></a></span>
-<span id="cb471-4"><a href="dissertation-analysis-guide.html#cb471-4"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_na</span>(<span class="kw">list</span>(<span class="dt">gender =</span> <span class="st">&quot;unknown&quot;</span>, <span class="co"># replace NAs in `gender` with &quot;unknown&quot;</span></span>
-<span id="cb471-5"><a href="dissertation-analysis-guide.html#cb471-5"></a>                              <span class="dt">score =</span> <span class="dv">0</span>,          <span class="co"># replace NAs in `score` with 0  </span></span>
-<span id="cb471-6"><a href="dissertation-analysis-guide.html#cb471-6"></a>                              <span class="dt">rt =</span> <span class="kw">mean</span>(data<span class="op">$</span>rt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))  <span class="co"># replace NAs in `rt` with mean of `rt`</span></span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="dissertation-analysis-guide.html#cb472-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb472-2"><a href="dissertation-analysis-guide.html#cb472-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">variable =</span> <span class="kw">replace_na</span>(data<span class="op">$</span>variable, <span class="dv">0</span>)) <span class="co"># replace NAs in variable with 0</span></span>
+<span id="cb472-3"><a href="dissertation-analysis-guide.html#cb472-3"></a></span>
+<span id="cb472-4"><a href="dissertation-analysis-guide.html#cb472-4"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_na</span>(<span class="kw">list</span>(<span class="dt">gender =</span> <span class="st">&quot;unknown&quot;</span>, <span class="co"># replace NAs in `gender` with &quot;unknown&quot;</span></span>
+<span id="cb472-5"><a href="dissertation-analysis-guide.html#cb472-5"></a>                              <span class="dt">score =</span> <span class="dv">0</span>,          <span class="co"># replace NAs in `score` with 0  </span></span>
+<span id="cb472-6"><a href="dissertation-analysis-guide.html#cb472-6"></a>                              <span class="dt">rt =</span> <span class="kw">mean</span>(data<span class="op">$</span>rt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))  <span class="co"># replace NAs in `rt` with mean of `rt`</span></span></code></pre></div>
 </div>
 <div id="convert-implausible-values" class="section level3">
 <h3><span class="header-section-number">I.1.15</span> Convert implausible values</h3>
 <p>In the case of implausible values (such as a score or 10 on a 7-point likert scale), you may wish to recode these as missing, or as the mean (or some other value).</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="dissertation-analysis-guide.html#cb472-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb472-2"><a href="dissertation-analysis-guide.html#cb472-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">q1=</span> <span class="kw">ifelse</span>(q1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>, <span class="ot">NA</span>, q1)) <span class="co"># if the value in q1 is more than 10 replace it with NA, if it&#39;s not, keep the value as it is</span></span>
-<span id="cb472-3"><a href="dissertation-analysis-guide.html#cb472-3"></a></span>
-<span id="cb472-4"><a href="dissertation-analysis-guide.html#cb472-4"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></span>
-<span id="cb472-5"><a href="dissertation-analysis-guide.html#cb472-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rt =</span> <span class="kw">ifelse</span>(rt <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>, <span class="kw">mean</span>(rt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), rt)) <span class="co"># if the value in rt is more than 1000, replace it with the mean rt, if it&#39;s below 1000, keep the value as it is</span></span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="dissertation-analysis-guide.html#cb473-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb473-2"><a href="dissertation-analysis-guide.html#cb473-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">q1=</span> <span class="kw">ifelse</span>(q1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>, <span class="ot">NA</span>, q1)) <span class="co"># if the value in q1 is more than 10 replace it with NA, if it&#39;s not, keep the value as it is</span></span>
+<span id="cb473-3"><a href="dissertation-analysis-guide.html#cb473-3"></a></span>
+<span id="cb473-4"><a href="dissertation-analysis-guide.html#cb473-4"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></span>
+<span id="cb473-5"><a href="dissertation-analysis-guide.html#cb473-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rt =</span> <span class="kw">ifelse</span>(rt <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>, <span class="kw">mean</span>(rt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), rt)) <span class="co"># if the value in rt is more than 1000, replace it with the mean rt, if it&#39;s below 1000, keep the value as it is</span></span></code></pre></div>
 </div>
 <div id="calculate-z-scores" class="section level3">
 <h3><span class="header-section-number">I.1.16</span> Calculate z-scores</h3>
 <p>You may want to calculate z-scores in order to remove outliers. You could then use <code>filter()</code> on the new z-score variable you have created.</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="dissertation-analysis-guide.html#cb473-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">z_scores =</span> <span class="kw">scale</span>(scores))</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="dissertation-analysis-guide.html#cb474-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">z_scores =</span> <span class="kw">scale</span>(scores))</span></code></pre></div>
 <p>There are a few other types of transformations we can do to correct for problems with normality. <a href="https://rcompanion.org/handbook/I_12.html">This page</a> gives a good overview of all the options.</p>
 </div>
 <div id="log-transformation" class="section level3">
 <h3><span class="header-section-number">I.1.17</span> Log transformation</h3>
 <p>A popular method of transformation is to calculate the log of a variable.</p>
-<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="dissertation-analysis-guide.html#cb474-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">variable_log =</span> <span class="kw">log</span>(variable))</span></code></pre></div>
+<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="dissertation-analysis-guide.html#cb475-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">variable_log =</span> <span class="kw">log</span>(variable))</span></code></pre></div>
 </div>
 <div id="square-root" class="section level3">
 <h3><span class="header-section-number">I.1.18</span> Square root</h3>
 <p>Another popular method is to perform a square root transformation.</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="dissertation-analysis-guide.html#cb475-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">variable_sqrt =</span> <span class="kw">sqrt</span>(variable))</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="dissertation-analysis-guide.html#cb476-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">variable_sqrt =</span> <span class="kw">sqrt</span>(variable))</span></code></pre></div>
 </div>
 <div id="calculating-new-variables" class="section level3">
 <h3><span class="header-section-number">I.1.19</span> Calculating new variables</h3>
 <p>You may wish to calculate the sum or the mean of a number of variables. For example, if you have 9 questions and you want the sum of questions 1-5 and the mean of questions 6 - 9 and your data is is wide-form:</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="dissertation-analysis-guide.html#cb476-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></span>
-<span id="cb476-2"><a href="dissertation-analysis-guide.html#cb476-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sum_scoreq1q5 =</span> <span class="kw">rowSums</span>(<span class="kw">select</span>(., Q1<span class="op">:</span>Q5)),</span>
-<span id="cb476-3"><a href="dissertation-analysis-guide.html#cb476-3"></a>         <span class="dt">mean_scoreq6q10 =</span> <span class="kw">rowMeans</span>(<span class="kw">select</span>(., Q6<span class="op">:</span>Q9)))</span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="dissertation-analysis-guide.html#cb477-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></span>
+<span id="cb477-2"><a href="dissertation-analysis-guide.html#cb477-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sum_scoreq1q5 =</span> <span class="kw">rowSums</span>(<span class="kw">select</span>(., Q1<span class="op">:</span>Q5)),</span>
+<span id="cb477-3"><a href="dissertation-analysis-guide.html#cb477-3"></a>         <span class="dt">mean_scoreq6q10 =</span> <span class="kw">rowMeans</span>(<span class="kw">select</span>(., Q6<span class="op">:</span>Q9)))</span></code></pre></div>
 <p>If your data is in long-form you may want to use functions such as <code>gather()</code>, <code>spread()</code> and <code>summarise()</code>. See RM2 Lab 3 for more info on this.</p>
 </div>
 <div id="tidy-data-1" class="section level3">
@@ -832,21 +832,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="descriptive-statistics" class="section level3">
 <h3><span class="header-section-number">I.1.22</span> Descriptive statistics</h3>
 <p>At this point you may want to calculate descriptive statistics for variables of interest. Refer back to RM1 Lab 2 and Lab 3 for more information on these functions.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="dissertation-analysis-guide.html#cb477-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># produce descriptives for the total data set</span></span>
-<span id="cb477-2"><a href="dissertation-analysis-guide.html#cb477-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_score =</span> <span class="kw">mean</span>(score, <span class="dt">na.rm =</span> true),</span>
-<span id="cb477-3"><a href="dissertation-analysis-guide.html#cb477-3"></a>            <span class="dt">sd_score =</span> <span class="kw">sd</span>(score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb477-4"><a href="dissertation-analysis-guide.html#cb477-4"></a>            <span class="dt">median_score =</span> <span class="kw">median</span>(score))</span>
-<span id="cb477-5"><a href="dissertation-analysis-guide.html#cb477-5"></a></span>
-<span id="cb477-6"><a href="dissertation-analysis-guide.html#cb477-6"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># produce descriptives for each of the grouping variables</span></span>
-<span id="cb477-7"><a href="dissertation-analysis-guide.html#cb477-7"></a><span class="st">  </span><span class="kw">group_by</span>(gender, condition) <span class="op">%&gt;%</span></span>
-<span id="cb477-8"><a href="dissertation-analysis-guide.html#cb477-8"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_score =</span> <span class="kw">mean</span>(score, <span class="dt">na.rm =</span> true),</span>
-<span id="cb477-9"><a href="dissertation-analysis-guide.html#cb477-9"></a>            <span class="dt">sd_score =</span> <span class="kw">sd</span>(score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb477-10"><a href="dissertation-analysis-guide.html#cb477-10"></a>            <span class="dt">median_score =</span> <span class="kw">median</span>(score))</span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="dissertation-analysis-guide.html#cb478-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># produce descriptives for the total data set</span></span>
+<span id="cb478-2"><a href="dissertation-analysis-guide.html#cb478-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_score =</span> <span class="kw">mean</span>(score, <span class="dt">na.rm =</span> true),</span>
+<span id="cb478-3"><a href="dissertation-analysis-guide.html#cb478-3"></a>            <span class="dt">sd_score =</span> <span class="kw">sd</span>(score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb478-4"><a href="dissertation-analysis-guide.html#cb478-4"></a>            <span class="dt">median_score =</span> <span class="kw">median</span>(score))</span>
+<span id="cb478-5"><a href="dissertation-analysis-guide.html#cb478-5"></a></span>
+<span id="cb478-6"><a href="dissertation-analysis-guide.html#cb478-6"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># produce descriptives for each of the grouping variables</span></span>
+<span id="cb478-7"><a href="dissertation-analysis-guide.html#cb478-7"></a><span class="st">  </span><span class="kw">group_by</span>(gender, condition) <span class="op">%&gt;%</span></span>
+<span id="cb478-8"><a href="dissertation-analysis-guide.html#cb478-8"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_score =</span> <span class="kw">mean</span>(score, <span class="dt">na.rm =</span> true),</span>
+<span id="cb478-9"><a href="dissertation-analysis-guide.html#cb478-9"></a>            <span class="dt">sd_score =</span> <span class="kw">sd</span>(score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb478-10"><a href="dissertation-analysis-guide.html#cb478-10"></a>            <span class="dt">median_score =</span> <span class="kw">median</span>(score))</span></code></pre></div>
 <p>You may also find the function <code>describe()</code> from the <code>psych</code> package useful (you may need to install this package but as always, <strong>do not install packages on university computers</strong>). <code>describe()</code> produces a full range of descriptive statistics including skew, kurtosis and standard error.</p>
-<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb478-1"><a href="dissertation-analysis-guide.html#cb478-1"></a><span class="kw">library</span>(psych)</span>
-<span id="cb478-2"><a href="dissertation-analysis-guide.html#cb478-2"></a><span class="kw">describe</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="dissertation-analysis-guide.html#cb479-1"></a><span class="kw">library</span>(psych)</span>
+<span id="cb479-2"><a href="dissertation-analysis-guide.html#cb479-2"></a><span class="kw">describe</span>(data)</span></code></pre></div>
 <p><code>describeBy()</code> produces descriptives by a grouping variable.</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="dissertation-analysis-guide.html#cb479-1"></a><span class="kw">describeBy</span>(data, <span class="dt">group =</span> <span class="st">&quot;gender&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb480-1"><a href="dissertation-analysis-guide.html#cb480-1"></a><span class="kw">describeBy</span>(data, <span class="dt">group =</span> <span class="st">&quot;gender&quot;</span>)</span></code></pre></div>
 </div>
 <div id="data-visualisation-1" class="section level3">
 <h3><span class="header-section-number">I.1.23</span> Data visualisation</h3>

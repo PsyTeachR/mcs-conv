@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-11-16" />
+<meta name="date" content="2020-11-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -631,41 +631,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">H.0.1</span> Packages</h3>
 <p>In order to run these analyses you will need <code>tidyverse</code> for data wrangling,<code>rtweet</code> for getting the twitter data, <code>tidytext</code> for working with text, <code>knitr</code> for tidy tables, and <code>igraph</code> and <code>ggraph</code> for making pretty network plots.</p>
 <p>In order to get data from Twitter you will need to have a twitter account and gain access to Twitter’s API. There are instructions <a href="https://rtweet.info/">for doing so here</a>.</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="rtweet.html#cb443-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb443-2"><a href="rtweet.html#cb443-2"></a><span class="kw">library</span>(knitr)</span>
-<span id="cb443-3"><a href="rtweet.html#cb443-3"></a><span class="kw">library</span>(tidytext)</span>
-<span id="cb443-4"><a href="rtweet.html#cb443-4"></a><span class="kw">library</span>(rtweet)</span>
-<span id="cb443-5"><a href="rtweet.html#cb443-5"></a><span class="kw">library</span>(igraph)</span>
-<span id="cb443-6"><a href="rtweet.html#cb443-6"></a><span class="kw">library</span>(ggraph)</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="rtweet.html#cb444-1"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb444-2"><a href="rtweet.html#cb444-2"></a><span class="kw">library</span>(knitr)</span>
+<span id="cb444-3"><a href="rtweet.html#cb444-3"></a><span class="kw">library</span>(tidytext)</span>
+<span id="cb444-4"><a href="rtweet.html#cb444-4"></a><span class="kw">library</span>(rtweet)</span>
+<span id="cb444-5"><a href="rtweet.html#cb444-5"></a><span class="kw">library</span>(igraph)</span>
+<span id="cb444-6"><a href="rtweet.html#cb444-6"></a><span class="kw">library</span>(ggraph)</span></code></pre></div>
 </div>
 <div id="hashtag-search" class="section level3">
 <h3><span class="header-section-number">H.0.2</span> Hashtag search</h3>
 <p>We can use rtweet to search for all tweets containing particular words or hashtags. It will return the last 18,000 tweets and only from the last 6-9 days. Be careful, there is a 15 minute time-out which means you can only retrieve 18,000 tweets every 15 minutes (there are various limits on what Twitter allows you to do with the data).</p>
 <p>First, let’s search for all tweets that contain #GoT and #ForTheThrone.</p>
 <p>There are various arguments to the <code>search_tweets</code> function, you can specify how many tweets you want to retrive with <code>n</code>, whether retweets should be included in the search results with <code>include_rts</code> and you can also specify the language of the user’s account with <code>lang</code>. Note that this doesn’t tell you what language the tweets are written in, only that the account language is set to e.g., English, so it’s not perfect. For additional options, see the help documentation.</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="rtweet.html#cb444-1"></a>tweets &lt;-<span class="st"> </span><span class="kw">search_tweets</span>(<span class="dt">q =</span> <span class="st">&quot;#GoT OR #ForTheThrone&quot;</span>, <span class="dt">n =</span> <span class="dv">18000</span>, <span class="dt">include_rts =</span> <span class="ot">FALSE</span>, <span class="dt">lang =</span> <span class="st">&quot;en&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="rtweet.html#cb445-1"></a>tweets &lt;-<span class="st"> </span><span class="kw">search_tweets</span>(<span class="dt">q =</span> <span class="st">&quot;#GoT OR #ForTheThrone&quot;</span>, <span class="dt">n =</span> <span class="dv">18000</span>, <span class="dt">include_rts =</span> <span class="ot">FALSE</span>, <span class="dt">lang =</span> <span class="st">&quot;en&quot;</span>)</span></code></pre></div>
 </div>
 <div id="data-wrangling" class="section level3">
 <h3><span class="header-section-number">H.0.3</span> Data wrangling</h3>
 <p>The output of <code>search_tweets()</code> is a list which makes it difficult to share. We need to do a little bit of tidying to turn it into a tibble, and additionally there’s a lot of data and we don’t need it all. I’m also going to add a tweet counter which will help when we move between wide and long-form. <code>rtweet</code> provides a huge amount of data, more than we’re going to use in this example so have a look through to see what you have access to - there are some great examples of how this data can be used <a href="https://mkearney.github.io/nicar_tworkshop/">here</a> and <a href="https://rud.is/books/21-recipes/index.html">here</a> .</p>
 <p>In the following code, I have added an identifier column <code>tweet_number</code> and then selected <code>text</code> (the actual text of the tweets), <code>created_at</code> (the timestamp of the tweet), <code>source</code> (iphone/android etc), <code>followers_count</code> (how many followers the accounts the tweets came from have), and <code>country</code> (like <code>lang</code>, the is the country specified on the account, not necessarily the country the tweeter is in).</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="rtweet.html#cb445-1"></a>dat &lt;-<span class="st"> </span>tweets <span class="op">%&gt;%</span></span>
-<span id="cb445-2"><a href="rtweet.html#cb445-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">tweet_number =</span> <span class="kw">row_number</span>())<span class="op">%&gt;%</span></span>
-<span id="cb445-3"><a href="rtweet.html#cb445-3"></a><span class="st">  </span><span class="kw">select</span>(tweet_number, text, created_at, source, followers_count, country)<span class="op">%&gt;%</span></span>
-<span id="cb445-4"><a href="rtweet.html#cb445-4"></a><span class="st">  </span><span class="kw">as_tibble</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="rtweet.html#cb446-1"></a>dat &lt;-<span class="st"> </span>tweets <span class="op">%&gt;%</span></span>
+<span id="cb446-2"><a href="rtweet.html#cb446-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">tweet_number =</span> <span class="kw">row_number</span>())<span class="op">%&gt;%</span></span>
+<span id="cb446-3"><a href="rtweet.html#cb446-3"></a><span class="st">  </span><span class="kw">select</span>(tweet_number, text, created_at, source, followers_count, country)<span class="op">%&gt;%</span></span>
+<span id="cb446-4"><a href="rtweet.html#cb446-4"></a><span class="st">  </span><span class="kw">as_tibble</span>()</span></code></pre></div>
 <p>You can <a href="all_data.zip" download>download this file here</a> so that you can reproduce my exact analyses (or you can use your own, but the results will look a bit different).</p>
 <p>The first thing we need to do is tidy up the text by getting rid of punctuation, numbers, and links that aren’t of any interest to us. We can also remove the hashtags because we don’t want those to be included in any analysis. This code uses <strong>regular expressions</strong> which quite frankly make very little sense to me, I have copied and pasted this code from the Tidy Text book.</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="rtweet.html#cb446-1"></a>dat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span></span>
-<span id="cb446-2"><a href="rtweet.html#cb446-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">text =</span> <span class="kw">str_replace_all</span>(text, <span class="st">&quot;[^</span><span class="ch">\x01</span><span class="st">-</span><span class="ch">\x7F</span><span class="st">]&quot;</span>, <span class="st">&quot;&quot;</span>),</span>
-<span id="cb446-3"><a href="rtweet.html#cb446-3"></a>         <span class="dt">text =</span> <span class="kw">str_replace_all</span>(text, <span class="st">&quot;#GoT&quot;</span>, <span class="st">&quot;&quot;</span>),</span>
-<span id="cb446-4"><a href="rtweet.html#cb446-4"></a>         <span class="dt">text =</span> <span class="kw">str_replace_all</span>(text, <span class="st">&quot;#ForTheThrone&quot;</span>, <span class="st">&quot;&quot;</span>),</span>
-<span id="cb446-5"><a href="rtweet.html#cb446-5"></a>         <span class="dt">text =</span> <span class="kw">str_replace_all</span>(text, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.|[[:digit:]]+&quot;</span>, <span class="st">&quot;&quot;</span>),</span>
-<span id="cb446-6"><a href="rtweet.html#cb446-6"></a>         <span class="dt">text =</span> <span class="kw">str_replace_all</span>(text, <span class="st">&quot;https|amp|t.co&quot;</span>, <span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="rtweet.html#cb447-1"></a>dat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span></span>
+<span id="cb447-2"><a href="rtweet.html#cb447-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">text =</span> <span class="kw">str_replace_all</span>(text, <span class="st">&quot;[^</span><span class="ch">\x01</span><span class="st">-</span><span class="ch">\x7F</span><span class="st">]&quot;</span>, <span class="st">&quot;&quot;</span>),</span>
+<span id="cb447-3"><a href="rtweet.html#cb447-3"></a>         <span class="dt">text =</span> <span class="kw">str_replace_all</span>(text, <span class="st">&quot;#GoT&quot;</span>, <span class="st">&quot;&quot;</span>),</span>
+<span id="cb447-4"><a href="rtweet.html#cb447-4"></a>         <span class="dt">text =</span> <span class="kw">str_replace_all</span>(text, <span class="st">&quot;#ForTheThrone&quot;</span>, <span class="st">&quot;&quot;</span>),</span>
+<span id="cb447-5"><a href="rtweet.html#cb447-5"></a>         <span class="dt">text =</span> <span class="kw">str_replace_all</span>(text, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.|[[:digit:]]+&quot;</span>, <span class="st">&quot;&quot;</span>),</span>
+<span id="cb447-6"><a href="rtweet.html#cb447-6"></a>         <span class="dt">text =</span> <span class="kw">str_replace_all</span>(text, <span class="st">&quot;https|amp|t.co&quot;</span>, <span class="st">&quot;&quot;</span>))</span></code></pre></div>
 </div>
 <div id="time-series" class="section level3">
 <h3><span class="header-section-number">H.0.4</span> Time series</h3>
 <p>We can plot when the tweets were sent. This is somewhat uninteresting because it’s no longer airing, but it’s worth highlighting this as a feature. If you were watching live, you could use this to see the spikes in tweets when people are watching each episode live (different timezones will muddle this a little, you could filter by <code>country</code> perhaps).</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="rtweet.html#cb447-1"></a><span class="kw">ts_plot</span>(tweets, <span class="dt">by =</span> <span class="st">&quot;1 hours&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="rtweet.html#cb448-1"></a><span class="kw">ts_plot</span>(tweets, <span class="dt">by =</span> <span class="st">&quot;1 hours&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-46"></span>
 <img src="appendix-0_files/figure-html/unnamed-chunk-46-1.png" alt="Time series plot by hour" width="100%" />
 <p class="caption">
@@ -673,9 +673,9 @@ Figure H.1: Time series plot by hour
 </p>
 </div>
 <p>You can change the time interval with the <code>by</code> argument and you can also change the time zone. <code>ts_plot</code> creates a <code>ggplot</code> object so you can also add the usual ggplot layers to customise apperance.</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="rtweet.html#cb448-1"></a><span class="kw">ts_plot</span>(tweets, <span class="dt">by =</span> <span class="st">&quot;10 mins&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;GMT&quot;</span>) <span class="op">+</span></span>
-<span id="cb448-2"><a href="rtweet.html#cb448-2"></a><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></span>
-<span id="cb448-3"><a href="rtweet.html#cb448-3"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of tweets&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="rtweet.html#cb449-1"></a><span class="kw">ts_plot</span>(tweets, <span class="dt">by =</span> <span class="st">&quot;10 mins&quot;</span>, <span class="dt">tz =</span> <span class="st">&quot;GMT&quot;</span>) <span class="op">+</span></span>
+<span id="cb449-2"><a href="rtweet.html#cb449-2"></a><span class="st">  </span><span class="kw">theme_minimal</span>()<span class="op">+</span></span>
+<span id="cb449-3"><a href="rtweet.html#cb449-3"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of tweets&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-47"></span>
 <img src="appendix-0_files/figure-html/unnamed-chunk-47-1.png" alt="Time series plot by 10 minute intervals" width="100%" />
 <p class="caption">
@@ -687,19 +687,19 @@ Figure H.2: Time series plot by 10 minute intervals
 <h3><span class="header-section-number">H.0.5</span> Tidy text and word frequencies</h3>
 <p>First, we can produce frequency plots for words used in all tweets to see which words are used most often in #GoT and #ForTheThrone tweets. To do this, we have to create a tidy dataset, just like we do when working with numerical data. We’re going to use the <code>unnest_tokens</code> function from <code>tidytext</code> which will separate each word on to a new line, something similar to like using <code>gather</code> (or <code>pivot_longer</code> as it will soon be known). Helpfully, this function will also convert all of our words to lower case which makes them a bit easier to work with.</p>
 <p>The second part of the code removes all the stop words. Stop words are words that are commonly used but are of not real interest, for example function words like “the”, “a”, “it”. You can make your own list but <code>tidytext</code> helpfully comes with several databases. Look at the help documentation if you want to know more about these or change the defaults.</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb449-1"><a href="rtweet.html#cb449-1"></a><span class="co"># create tidy text</span></span>
-<span id="cb449-2"><a href="rtweet.html#cb449-2"></a>dat_token &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st">  </span></span>
-<span id="cb449-3"><a href="rtweet.html#cb449-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(word, text) <span class="op">%&gt;%</span></span>
-<span id="cb449-4"><a href="rtweet.html#cb449-4"></a><span class="st">  </span><span class="kw">anti_join</span>(stop_words, <span class="dt">by =</span> <span class="st">&quot;word&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="rtweet.html#cb450-1"></a><span class="co"># create tidy text</span></span>
+<span id="cb450-2"><a href="rtweet.html#cb450-2"></a>dat_token &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st">  </span></span>
+<span id="cb450-3"><a href="rtweet.html#cb450-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(word, text) <span class="op">%&gt;%</span></span>
+<span id="cb450-4"><a href="rtweet.html#cb450-4"></a><span class="st">  </span><span class="kw">anti_join</span>(stop_words, <span class="dt">by =</span> <span class="st">&quot;word&quot;</span>)</span></code></pre></div>
 <p>We can plot the 20 most frequent words used in all the tweets.</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="rtweet.html#cb450-1"></a>dat_token<span class="op">%&gt;%</span></span>
-<span id="cb450-2"><a href="rtweet.html#cb450-2"></a><span class="st">  </span><span class="kw">na.omit</span>()<span class="op">%&gt;%</span></span>
-<span id="cb450-3"><a href="rtweet.html#cb450-3"></a><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></span>
-<span id="cb450-4"><a href="rtweet.html#cb450-4"></a><span class="st">  </span><span class="kw">head</span>(<span class="dv">20</span>) <span class="op">%&gt;%</span></span>
-<span id="cb450-5"><a href="rtweet.html#cb450-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n))<span class="op">%&gt;%</span></span>
-<span id="cb450-6"><a href="rtweet.html#cb450-6"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> word, <span class="dt">y =</span> n))<span class="op">+</span></span>
-<span id="cb450-7"><a href="rtweet.html#cb450-7"></a><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></span>
-<span id="cb450-8"><a href="rtweet.html#cb450-8"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="rtweet.html#cb451-1"></a>dat_token<span class="op">%&gt;%</span></span>
+<span id="cb451-2"><a href="rtweet.html#cb451-2"></a><span class="st">  </span><span class="kw">na.omit</span>()<span class="op">%&gt;%</span></span>
+<span id="cb451-3"><a href="rtweet.html#cb451-3"></a><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></span>
+<span id="cb451-4"><a href="rtweet.html#cb451-4"></a><span class="st">  </span><span class="kw">head</span>(<span class="dv">20</span>) <span class="op">%&gt;%</span></span>
+<span id="cb451-5"><a href="rtweet.html#cb451-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n))<span class="op">%&gt;%</span></span>
+<span id="cb451-6"><a href="rtweet.html#cb451-6"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> word, <span class="dt">y =</span> n))<span class="op">+</span></span>
+<span id="cb451-7"><a href="rtweet.html#cb451-7"></a><span class="st">  </span><span class="kw">geom_col</span>()<span class="op">+</span></span>
+<span id="cb451-8"><a href="rtweet.html#cb451-8"></a><span class="st">  </span><span class="kw">coord_flip</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-49"></span>
 <img src="appendix-0_files/figure-html/unnamed-chunk-49-1.png" alt="Most frequent words" width="100%" />
 <p class="caption">
@@ -707,20 +707,20 @@ Figure H.3: Most frequent words
 </p>
 </div>
 <p>There’s quite a few words here that aren’t that helpful to us so it might be best to get rid of them (essentially we’re building our own list of stop words).</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="rtweet.html#cb451-1"></a>custom_stop &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;gameofthrones&quot;</span>, <span class="st">&quot;hbo&quot;</span>, <span class="st">&quot;season&quot;</span>, <span class="st">&quot;game&quot;</span>, <span class="st">&quot;thrones&quot;</span>, <span class="st">&quot;lol&quot;</span>, <span class="st">&quot;tco&quot;</span>, <span class="st">&quot;https&quot;</span>, <span class="st">&quot;watch&quot;</span>, <span class="st">&quot;watching&quot;</span>, <span class="st">&quot;im&quot;</span>, <span class="st">&quot;amp&quot;</span>)</span>
-<span id="cb451-2"><a href="rtweet.html#cb451-2"></a></span>
-<span id="cb451-3"><a href="rtweet.html#cb451-3"></a>dat_token &lt;-<span class="st"> </span>dat_token <span class="op">%&gt;%</span></span>
-<span id="cb451-4"><a href="rtweet.html#cb451-4"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word <span class="op">%in%</span><span class="st"> </span>custom_stop)</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="rtweet.html#cb452-1"></a>custom_stop &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;gameofthrones&quot;</span>, <span class="st">&quot;hbo&quot;</span>, <span class="st">&quot;season&quot;</span>, <span class="st">&quot;game&quot;</span>, <span class="st">&quot;thrones&quot;</span>, <span class="st">&quot;lol&quot;</span>, <span class="st">&quot;tco&quot;</span>, <span class="st">&quot;https&quot;</span>, <span class="st">&quot;watch&quot;</span>, <span class="st">&quot;watching&quot;</span>, <span class="st">&quot;im&quot;</span>, <span class="st">&quot;amp&quot;</span>)</span>
+<span id="cb452-2"><a href="rtweet.html#cb452-2"></a></span>
+<span id="cb452-3"><a href="rtweet.html#cb452-3"></a>dat_token &lt;-<span class="st"> </span>dat_token <span class="op">%&gt;%</span></span>
+<span id="cb452-4"><a href="rtweet.html#cb452-4"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>word <span class="op">%in%</span><span class="st"> </span>custom_stop)</span></code></pre></div>
 <p>Now we can try plotting the words again and make them pretty.</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="rtweet.html#cb452-1"></a>dat_token<span class="op">%&gt;%</span></span>
-<span id="cb452-2"><a href="rtweet.html#cb452-2"></a><span class="st">  </span><span class="kw">na.omit</span>()<span class="op">%&gt;%</span></span>
-<span id="cb452-3"><a href="rtweet.html#cb452-3"></a><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></span>
-<span id="cb452-4"><a href="rtweet.html#cb452-4"></a><span class="st">  </span><span class="kw">head</span>(<span class="dv">20</span>) <span class="op">%&gt;%</span></span>
-<span id="cb452-5"><a href="rtweet.html#cb452-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n))<span class="op">%&gt;%</span></span>
-<span id="cb452-6"><a href="rtweet.html#cb452-6"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> word, <span class="dt">y =</span> n, <span class="dt">fill =</span> word))<span class="op">+</span></span>
-<span id="cb452-7"><a href="rtweet.html#cb452-7"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>)<span class="op">+</span></span>
-<span id="cb452-8"><a href="rtweet.html#cb452-8"></a><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></span>
-<span id="cb452-9"><a href="rtweet.html#cb452-9"></a><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="rtweet.html#cb453-1"></a>dat_token<span class="op">%&gt;%</span></span>
+<span id="cb453-2"><a href="rtweet.html#cb453-2"></a><span class="st">  </span><span class="kw">na.omit</span>()<span class="op">%&gt;%</span></span>
+<span id="cb453-3"><a href="rtweet.html#cb453-3"></a><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></span>
+<span id="cb453-4"><a href="rtweet.html#cb453-4"></a><span class="st">  </span><span class="kw">head</span>(<span class="dv">20</span>) <span class="op">%&gt;%</span></span>
+<span id="cb453-5"><a href="rtweet.html#cb453-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n))<span class="op">%&gt;%</span></span>
+<span id="cb453-6"><a href="rtweet.html#cb453-6"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> word, <span class="dt">y =</span> n, <span class="dt">fill =</span> word))<span class="op">+</span></span>
+<span id="cb453-7"><a href="rtweet.html#cb453-7"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>)<span class="op">+</span></span>
+<span id="cb453-8"><a href="rtweet.html#cb453-8"></a><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></span>
+<span id="cb453-9"><a href="rtweet.html#cb453-9"></a><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-51"></span>
 <img src="appendix-0_files/figure-html/unnamed-chunk-51-1.png" alt="Most frequent words (edited)" width="100%" />
 <p class="caption">
@@ -729,24 +729,24 @@ Figure 12.1: Most frequent words (edited)
 </div>
 <p>To be honest, this isn’t that interesting because it’s so general, it might be more interesting to see how often each of the main characters are being mentioned.</p>
 <p>One problem is that people on the internet are terrible at spelling and we need to have the exact spellings which means that for Daenerys, Jon, and Jaime, the chances that people will have spelled their names wrong is quite high (as my level 2 students who watched me live code the first version of this will attest) so first we’re going to correct those.</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="rtweet.html#cb453-1"></a>dat_token2 &lt;-<span class="st"> </span>dat_token <span class="op">%&gt;%</span></span>
-<span id="cb453-2"><a href="rtweet.html#cb453-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">recode</span>(word, <span class="st">&quot;khaleesi&quot;</span> =<span class="st"> &quot;daenerys&quot;</span>,</span>
-<span id="cb453-3"><a href="rtweet.html#cb453-3"></a>                       <span class="st">&quot;dany&quot;</span> =<span class="st"> &quot;daenerys&quot;</span>,</span>
-<span id="cb453-4"><a href="rtweet.html#cb453-4"></a>                       <span class="st">&quot;jamie&quot;</span> =<span class="st"> &quot;jaime&quot;</span>,</span>
-<span id="cb453-5"><a href="rtweet.html#cb453-5"></a>                       <span class="st">&quot;john&quot;</span> =<span class="st"> &quot;jon&quot;</span>))</span>
-<span id="cb453-6"><a href="rtweet.html#cb453-6"></a></span>
-<span id="cb453-7"><a href="rtweet.html#cb453-7"></a>characters &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;jon&quot;</span>, <span class="st">&quot;daenerys&quot;</span>, <span class="st">&quot;bran&quot;</span>, <span class="st">&quot;arya&quot;</span>, <span class="st">&quot;sansa&quot;</span>, <span class="st">&quot;tyrion&quot;</span>, <span class="st">&quot;cersei&quot;</span>, <span class="st">&quot;jaime&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="rtweet.html#cb454-1"></a>dat_token2 &lt;-<span class="st"> </span>dat_token <span class="op">%&gt;%</span></span>
+<span id="cb454-2"><a href="rtweet.html#cb454-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">recode</span>(word, <span class="st">&quot;khaleesi&quot;</span> =<span class="st"> &quot;daenerys&quot;</span>,</span>
+<span id="cb454-3"><a href="rtweet.html#cb454-3"></a>                       <span class="st">&quot;dany&quot;</span> =<span class="st"> &quot;daenerys&quot;</span>,</span>
+<span id="cb454-4"><a href="rtweet.html#cb454-4"></a>                       <span class="st">&quot;jamie&quot;</span> =<span class="st"> &quot;jaime&quot;</span>,</span>
+<span id="cb454-5"><a href="rtweet.html#cb454-5"></a>                       <span class="st">&quot;john&quot;</span> =<span class="st"> &quot;jon&quot;</span>))</span>
+<span id="cb454-6"><a href="rtweet.html#cb454-6"></a></span>
+<span id="cb454-7"><a href="rtweet.html#cb454-7"></a>characters &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;jon&quot;</span>, <span class="st">&quot;daenerys&quot;</span>, <span class="st">&quot;bran&quot;</span>, <span class="st">&quot;arya&quot;</span>, <span class="st">&quot;sansa&quot;</span>, <span class="st">&quot;tyrion&quot;</span>, <span class="st">&quot;cersei&quot;</span>, <span class="st">&quot;jaime&quot;</span>)</span></code></pre></div>
 <p>Now we can plot a count of how many times each name has been mentioned.</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="rtweet.html#cb454-1"></a>dat_token2 <span class="op">%&gt;%</span></span>
-<span id="cb454-2"><a href="rtweet.html#cb454-2"></a><span class="st">  </span><span class="kw">filter</span>(word <span class="op">%in%</span><span class="st"> </span>characters)<span class="op">%&gt;%</span></span>
-<span id="cb454-3"><a href="rtweet.html#cb454-3"></a><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></span>
-<span id="cb454-4"><a href="rtweet.html#cb454-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n))<span class="op">%&gt;%</span></span>
-<span id="cb454-5"><a href="rtweet.html#cb454-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> word, <span class="dt">y =</span> n, <span class="dt">fill =</span> word)) <span class="op">+</span></span>
-<span id="cb454-6"><a href="rtweet.html#cb454-6"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb454-7"><a href="rtweet.html#cb454-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></span>
-<span id="cb454-8"><a href="rtweet.html#cb454-8"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of mentions&quot;</span>)<span class="op">+</span></span>
-<span id="cb454-9"><a href="rtweet.html#cb454-9"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Character&quot;</span>)<span class="op">+</span></span>
-<span id="cb454-10"><a href="rtweet.html#cb454-10"></a><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="rtweet.html#cb455-1"></a>dat_token2 <span class="op">%&gt;%</span></span>
+<span id="cb455-2"><a href="rtweet.html#cb455-2"></a><span class="st">  </span><span class="kw">filter</span>(word <span class="op">%in%</span><span class="st"> </span>characters)<span class="op">%&gt;%</span></span>
+<span id="cb455-3"><a href="rtweet.html#cb455-3"></a><span class="st">  </span><span class="kw">count</span>(word, <span class="dt">sort =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb455-4"><a href="rtweet.html#cb455-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">word =</span> <span class="kw">reorder</span>(word, n))<span class="op">%&gt;%</span></span>
+<span id="cb455-5"><a href="rtweet.html#cb455-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> word, <span class="dt">y =</span> n, <span class="dt">fill =</span> word)) <span class="op">+</span></span>
+<span id="cb455-6"><a href="rtweet.html#cb455-6"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb455-7"><a href="rtweet.html#cb455-7"></a><span class="st">  </span><span class="kw">coord_flip</span>()<span class="op">+</span></span>
+<span id="cb455-8"><a href="rtweet.html#cb455-8"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of mentions&quot;</span>)<span class="op">+</span></span>
+<span id="cb455-9"><a href="rtweet.html#cb455-9"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Character&quot;</span>)<span class="op">+</span></span>
+<span id="cb455-10"><a href="rtweet.html#cb455-10"></a><span class="st">  </span><span class="kw">scale_fill_viridis</span>(<span class="dt">discrete =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-53"></span>
 <img src="appendix-0_files/figure-html/unnamed-chunk-53-1.png" alt="Frequecy of mentions for each character" width="100%" />
 <p class="caption">
@@ -757,15 +757,15 @@ Figure H.4: Frequecy of mentions for each character
 <div id="bigram-analysis" class="section level3">
 <h3><span class="header-section-number">H.0.6</span> Bigram analysis</h3>
 <p>Rather than looking at individual words we can look at what words tend to co-occur. We want to use the data set where we’ve corrected the spelling so this is going to require us to transform from long to wide and then back to long because the night is dark and full of terror. DID YOU SEE WHAT I DID THERE.</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="rtweet.html#cb455-1"></a>dat_bigram &lt;-<span class="st"> </span>dat_token2 <span class="op">%&gt;%</span></span>
-<span id="cb455-2"><a href="rtweet.html#cb455-2"></a><span class="st">  </span><span class="kw">group_by</span>(tweet_number) <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">text =</span> <span class="kw">str_c</span>(word, <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>))<span class="op">%&gt;%</span><span class="st"> </span><span class="co"># this puts it back into wide-form</span></span>
-<span id="cb455-3"><a href="rtweet.html#cb455-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(bigram, text, <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>, <span class="dt">collapse =</span> <span class="ot">FALSE</span>)<span class="op">%&gt;%</span><span class="st"> </span><span class="co"># and then this turns it into bigrams in a tidy format</span></span>
-<span id="cb455-4"><a href="rtweet.html#cb455-4"></a><span class="st">  </span><span class="kw">na.omit</span>()</span>
-<span id="cb455-5"><a href="rtweet.html#cb455-5"></a></span>
-<span id="cb455-6"><a href="rtweet.html#cb455-6"></a>dat_bigram <span class="op">%&gt;%</span></span>
-<span id="cb455-7"><a href="rtweet.html#cb455-7"></a><span class="st">  </span><span class="kw">count</span>(bigram, <span class="dt">sort =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></span>
-<span id="cb455-8"><a href="rtweet.html#cb455-8"></a><span class="st">  </span><span class="kw">head</span>(<span class="dv">10</span>)<span class="op">%&gt;%</span></span>
-<span id="cb455-9"><a href="rtweet.html#cb455-9"></a><span class="st">  </span><span class="kw">kable</span>(<span class="dt">align =</span> <span class="st">&quot;c&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="rtweet.html#cb456-1"></a>dat_bigram &lt;-<span class="st"> </span>dat_token2 <span class="op">%&gt;%</span></span>
+<span id="cb456-2"><a href="rtweet.html#cb456-2"></a><span class="st">  </span><span class="kw">group_by</span>(tweet_number) <span class="op">%&gt;%</span><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">text =</span> <span class="kw">str_c</span>(word, <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>))<span class="op">%&gt;%</span><span class="st"> </span><span class="co"># this puts it back into wide-form</span></span>
+<span id="cb456-3"><a href="rtweet.html#cb456-3"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(bigram, text, <span class="dt">token =</span> <span class="st">&quot;ngrams&quot;</span>, <span class="dt">n =</span> <span class="dv">2</span>, <span class="dt">collapse =</span> <span class="ot">FALSE</span>)<span class="op">%&gt;%</span><span class="st"> </span><span class="co"># and then this turns it into bigrams in a tidy format</span></span>
+<span id="cb456-4"><a href="rtweet.html#cb456-4"></a><span class="st">  </span><span class="kw">na.omit</span>()</span>
+<span id="cb456-5"><a href="rtweet.html#cb456-5"></a></span>
+<span id="cb456-6"><a href="rtweet.html#cb456-6"></a>dat_bigram <span class="op">%&gt;%</span></span>
+<span id="cb456-7"><a href="rtweet.html#cb456-7"></a><span class="st">  </span><span class="kw">count</span>(bigram, <span class="dt">sort =</span> <span class="ot">TRUE</span>)<span class="op">%&gt;%</span></span>
+<span id="cb456-8"><a href="rtweet.html#cb456-8"></a><span class="st">  </span><span class="kw">head</span>(<span class="dv">10</span>)<span class="op">%&gt;%</span></span>
+<span id="cb456-9"><a href="rtweet.html#cb456-9"></a><span class="st">  </span><span class="kw">kable</span>(<span class="dt">align =</span> <span class="st">&quot;c&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -817,27 +817,27 @@ Figure H.4: Frequecy of mentions for each character
 </tbody>
 </table>
 <p>Again there’s a bit of nonsense here and it’s a bit uninteresting but it’s worth highlighting this is something you can do. Now that we’ve got our bigrams we can plot these to see the connections between the different words. First, we’re going to use <code>separate</code> to put the two words into different columns, then we’ll count them up and plot them. If you want more information about this see the <a href="https://www.tidytextmining.com/ngrams.html">tidytext book online</a> as I am entirely cribbing this from that book. The plot requires the packages <code>igraph</code> and <code>ggraph</code>.</p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="rtweet.html#cb456-1"></a>bigrams_separated &lt;-<span class="st"> </span>dat_bigram <span class="op">%&gt;%</span></span>
-<span id="cb456-2"><a href="rtweet.html#cb456-2"></a><span class="st">  </span><span class="kw">separate</span>(bigram, <span class="kw">c</span>(<span class="st">&quot;word1&quot;</span>, <span class="st">&quot;word2&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</span>
-<span id="cb456-3"><a href="rtweet.html#cb456-3"></a></span>
-<span id="cb456-4"><a href="rtweet.html#cb456-4"></a><span class="co"># new bigram counts:</span></span>
-<span id="cb456-5"><a href="rtweet.html#cb456-5"></a>bigram_counts &lt;-<span class="st"> </span>bigrams_separated <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb456-6"><a href="rtweet.html#cb456-6"></a><span class="st">  </span><span class="kw">count</span>(word1, word2, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb456-7"><a href="rtweet.html#cb456-7"></a></span>
-<span id="cb456-8"><a href="rtweet.html#cb456-8"></a>bigram_counts</span>
-<span id="cb456-9"><a href="rtweet.html#cb456-9"></a></span>
-<span id="cb456-10"><a href="rtweet.html#cb456-10"></a><span class="co"># filter for only relatively common combinations (more than 20 occurances)</span></span>
-<span id="cb456-11"><a href="rtweet.html#cb456-11"></a>bigram_graph &lt;-<span class="st"> </span>bigram_counts <span class="op">%&gt;%</span></span>
-<span id="cb456-12"><a href="rtweet.html#cb456-12"></a><span class="st">  </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>) <span class="op">%&gt;%</span></span>
-<span id="cb456-13"><a href="rtweet.html#cb456-13"></a><span class="st">  </span><span class="kw">graph_from_data_frame</span>()</span>
-<span id="cb456-14"><a href="rtweet.html#cb456-14"></a></span>
-<span id="cb456-15"><a href="rtweet.html#cb456-15"></a><span class="co"># make a pretty network plot</span></span>
-<span id="cb456-16"><a href="rtweet.html#cb456-16"></a></span>
-<span id="cb456-17"><a href="rtweet.html#cb456-17"></a><span class="kw">ggraph</span>(bigram_graph, <span class="dt">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="op">+</span></span>
-<span id="cb456-18"><a href="rtweet.html#cb456-18"></a><span class="st">  </span><span class="kw">geom_edge_link</span>() <span class="op">+</span></span>
-<span id="cb456-19"><a href="rtweet.html#cb456-19"></a><span class="st">  </span><span class="kw">geom_node_point</span>() <span class="op">+</span></span>
-<span id="cb456-20"><a href="rtweet.html#cb456-20"></a><span class="st">  </span><span class="kw">geom_node_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> name), <span class="dt">vjust =</span> <span class="dv">1</span>, <span class="dt">hjust =</span> <span class="dv">1</span>)<span class="op">+</span></span>
-<span id="cb456-21"><a href="rtweet.html#cb456-21"></a><span class="st">  </span><span class="kw">theme_void</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="rtweet.html#cb457-1"></a>bigrams_separated &lt;-<span class="st"> </span>dat_bigram <span class="op">%&gt;%</span></span>
+<span id="cb457-2"><a href="rtweet.html#cb457-2"></a><span class="st">  </span><span class="kw">separate</span>(bigram, <span class="kw">c</span>(<span class="st">&quot;word1&quot;</span>, <span class="st">&quot;word2&quot;</span>), <span class="dt">sep =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb457-3"><a href="rtweet.html#cb457-3"></a></span>
+<span id="cb457-4"><a href="rtweet.html#cb457-4"></a><span class="co"># new bigram counts:</span></span>
+<span id="cb457-5"><a href="rtweet.html#cb457-5"></a>bigram_counts &lt;-<span class="st"> </span>bigrams_separated <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb457-6"><a href="rtweet.html#cb457-6"></a><span class="st">  </span><span class="kw">count</span>(word1, word2, <span class="dt">sort =</span> <span class="ot">TRUE</span>)</span>
+<span id="cb457-7"><a href="rtweet.html#cb457-7"></a></span>
+<span id="cb457-8"><a href="rtweet.html#cb457-8"></a>bigram_counts</span>
+<span id="cb457-9"><a href="rtweet.html#cb457-9"></a></span>
+<span id="cb457-10"><a href="rtweet.html#cb457-10"></a><span class="co"># filter for only relatively common combinations (more than 20 occurances)</span></span>
+<span id="cb457-11"><a href="rtweet.html#cb457-11"></a>bigram_graph &lt;-<span class="st"> </span>bigram_counts <span class="op">%&gt;%</span></span>
+<span id="cb457-12"><a href="rtweet.html#cb457-12"></a><span class="st">  </span><span class="kw">filter</span>(n <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>) <span class="op">%&gt;%</span></span>
+<span id="cb457-13"><a href="rtweet.html#cb457-13"></a><span class="st">  </span><span class="kw">graph_from_data_frame</span>()</span>
+<span id="cb457-14"><a href="rtweet.html#cb457-14"></a></span>
+<span id="cb457-15"><a href="rtweet.html#cb457-15"></a><span class="co"># make a pretty network plot</span></span>
+<span id="cb457-16"><a href="rtweet.html#cb457-16"></a></span>
+<span id="cb457-17"><a href="rtweet.html#cb457-17"></a><span class="kw">ggraph</span>(bigram_graph, <span class="dt">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="op">+</span></span>
+<span id="cb457-18"><a href="rtweet.html#cb457-18"></a><span class="st">  </span><span class="kw">geom_edge_link</span>() <span class="op">+</span></span>
+<span id="cb457-19"><a href="rtweet.html#cb457-19"></a><span class="st">  </span><span class="kw">geom_node_point</span>() <span class="op">+</span></span>
+<span id="cb457-20"><a href="rtweet.html#cb457-20"></a><span class="st">  </span><span class="kw">geom_node_text</span>(<span class="kw">aes</span>(<span class="dt">label =</span> name), <span class="dt">vjust =</span> <span class="dv">1</span>, <span class="dt">hjust =</span> <span class="dv">1</span>)<span class="op">+</span></span>
+<span id="cb457-21"><a href="rtweet.html#cb457-21"></a><span class="st">  </span><span class="kw">theme_void</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-55"></span>
 <img src="appendix-0_files/figure-html/unnamed-chunk-55-1.png" alt="Network graph of bigrams" width="100%" />
 <p class="caption">
@@ -864,98 +864,98 @@ Figure H.5: Network graph of bigrams
 <h3><span class="header-section-number">H.0.7</span> Sentiment analysis</h3>
 <p>Sentiment analyses look at whether the expressed opinion in a bit of text is positive, negative, or neutral, using information from databases about the valance of different words. We can perform a sentiment analysis on the tweets that contain each character’s name to see whether e.g., Jon is mentioned in tweets that are largely positive or if Jaime is mentioned in tweets that are largely negative.</p>
 <p>To do this, we first need to do a bit of wrangling. We’re going to transform it back to wide-form, then we’re going to add in in a column that says whether each character was mentioned in the tweet, then we’re going to transform it back to long-form.</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="rtweet.html#cb458-1"></a>dat_mentions &lt;-<span class="st"> </span>dat_token2 <span class="op">%&gt;%</span></span>
-<span id="cb458-2"><a href="rtweet.html#cb458-2"></a><span class="st">  </span><span class="kw">group_by</span>(tweet_number) <span class="op">%&gt;%</span></span>
-<span id="cb458-3"><a href="rtweet.html#cb458-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">text =</span> <span class="kw">str_c</span>(word, <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb458-4"><a href="rtweet.html#cb458-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">jon =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.jon&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
-<span id="cb458-5"><a href="rtweet.html#cb458-5"></a>         <span class="dt">daenerys =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.daenerys&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
-<span id="cb458-6"><a href="rtweet.html#cb458-6"></a>         <span class="dt">bran =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.bran&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
-<span id="cb458-7"><a href="rtweet.html#cb458-7"></a>         <span class="dt">arya =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.arya&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
-<span id="cb458-8"><a href="rtweet.html#cb458-8"></a>         <span class="dt">sansa =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.sansa&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
-<span id="cb458-9"><a href="rtweet.html#cb458-9"></a>         <span class="dt">tyrion =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.tyrion&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
-<span id="cb458-10"><a href="rtweet.html#cb458-10"></a>         <span class="dt">cersei =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.cersei&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
-<span id="cb458-11"><a href="rtweet.html#cb458-11"></a>         <span class="dt">jaime =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.jaime&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>))<span class="op">%&gt;%</span></span>
-<span id="cb458-12"><a href="rtweet.html#cb458-12"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(word, text) <span class="op">%&gt;%</span></span>
-<span id="cb458-13"><a href="rtweet.html#cb458-13"></a><span class="st">  </span><span class="kw">anti_join</span>(stop_words, <span class="dt">by =</span> <span class="st">&quot;word&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="rtweet.html#cb459-1"></a>dat_mentions &lt;-<span class="st"> </span>dat_token2 <span class="op">%&gt;%</span></span>
+<span id="cb459-2"><a href="rtweet.html#cb459-2"></a><span class="st">  </span><span class="kw">group_by</span>(tweet_number) <span class="op">%&gt;%</span></span>
+<span id="cb459-3"><a href="rtweet.html#cb459-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">text =</span> <span class="kw">str_c</span>(word, <span class="dt">collapse =</span> <span class="st">&quot; &quot;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb459-4"><a href="rtweet.html#cb459-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">jon =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.jon&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
+<span id="cb459-5"><a href="rtweet.html#cb459-5"></a>         <span class="dt">daenerys =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.daenerys&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
+<span id="cb459-6"><a href="rtweet.html#cb459-6"></a>         <span class="dt">bran =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.bran&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
+<span id="cb459-7"><a href="rtweet.html#cb459-7"></a>         <span class="dt">arya =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.arya&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
+<span id="cb459-8"><a href="rtweet.html#cb459-8"></a>         <span class="dt">sansa =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.sansa&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
+<span id="cb459-9"><a href="rtweet.html#cb459-9"></a>         <span class="dt">tyrion =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.tyrion&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
+<span id="cb459-10"><a href="rtweet.html#cb459-10"></a>         <span class="dt">cersei =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.cersei&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>),</span>
+<span id="cb459-11"><a href="rtweet.html#cb459-11"></a>         <span class="dt">jaime =</span> <span class="kw">case_when</span>(<span class="kw">str_detect</span>(text, <span class="st">&quot;.jaime&quot;</span>) <span class="op">~</span><span class="st"> </span><span class="ot">TRUE</span>, <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">FALSE</span>))<span class="op">%&gt;%</span></span>
+<span id="cb459-12"><a href="rtweet.html#cb459-12"></a><span class="st">  </span><span class="kw">unnest_tokens</span>(word, text) <span class="op">%&gt;%</span></span>
+<span id="cb459-13"><a href="rtweet.html#cb459-13"></a><span class="st">  </span><span class="kw">anti_join</span>(stop_words, <span class="dt">by =</span> <span class="st">&quot;word&quot;</span>)</span></code></pre></div>
 <p>Once we’ve done this, we can then run a sentiment analysis on the tweets for each character. I still haven’t quite cracked iteration so this code is a bit repetitive, if you can give me the better way of doing this that’s less prone to copy and paste errors, please do.</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="rtweet.html#cb459-1"></a>jon &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
-<span id="cb459-2"><a href="rtweet.html#cb459-2"></a><span class="st">  </span><span class="kw">filter</span>(jon)<span class="op">%&gt;%</span></span>
-<span id="cb459-3"><a href="rtweet.html#cb459-3"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb459-4"><a href="rtweet.html#cb459-4"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
-<span id="cb459-5"><a href="rtweet.html#cb459-5"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
-<span id="cb459-6"><a href="rtweet.html#cb459-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
-<span id="cb459-7"><a href="rtweet.html#cb459-7"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;jon&quot;</span>)</span>
-<span id="cb459-8"><a href="rtweet.html#cb459-8"></a></span>
-<span id="cb459-9"><a href="rtweet.html#cb459-9"></a>daenerys &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
-<span id="cb459-10"><a href="rtweet.html#cb459-10"></a><span class="st">  </span><span class="kw">filter</span>(daenerys <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
-<span id="cb459-11"><a href="rtweet.html#cb459-11"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb459-12"><a href="rtweet.html#cb459-12"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
-<span id="cb459-13"><a href="rtweet.html#cb459-13"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
-<span id="cb459-14"><a href="rtweet.html#cb459-14"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
-<span id="cb459-15"><a href="rtweet.html#cb459-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;daenerys&quot;</span>)</span>
-<span id="cb459-16"><a href="rtweet.html#cb459-16"></a></span>
-<span id="cb459-17"><a href="rtweet.html#cb459-17"></a></span>
-<span id="cb459-18"><a href="rtweet.html#cb459-18"></a>bran &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
-<span id="cb459-19"><a href="rtweet.html#cb459-19"></a><span class="st">  </span><span class="kw">filter</span>(bran <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
-<span id="cb459-20"><a href="rtweet.html#cb459-20"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb459-21"><a href="rtweet.html#cb459-21"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
-<span id="cb459-22"><a href="rtweet.html#cb459-22"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
-<span id="cb459-23"><a href="rtweet.html#cb459-23"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
-<span id="cb459-24"><a href="rtweet.html#cb459-24"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;bran&quot;</span>)</span>
-<span id="cb459-25"><a href="rtweet.html#cb459-25"></a></span>
-<span id="cb459-26"><a href="rtweet.html#cb459-26"></a>arya &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
-<span id="cb459-27"><a href="rtweet.html#cb459-27"></a><span class="st">  </span><span class="kw">filter</span>(arya <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
-<span id="cb459-28"><a href="rtweet.html#cb459-28"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb459-29"><a href="rtweet.html#cb459-29"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
-<span id="cb459-30"><a href="rtweet.html#cb459-30"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
-<span id="cb459-31"><a href="rtweet.html#cb459-31"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
-<span id="cb459-32"><a href="rtweet.html#cb459-32"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;arya&quot;</span>)</span>
-<span id="cb459-33"><a href="rtweet.html#cb459-33"></a></span>
-<span id="cb459-34"><a href="rtweet.html#cb459-34"></a>sansa &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
-<span id="cb459-35"><a href="rtweet.html#cb459-35"></a><span class="st">  </span><span class="kw">filter</span>(sansa <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
-<span id="cb459-36"><a href="rtweet.html#cb459-36"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb459-37"><a href="rtweet.html#cb459-37"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
-<span id="cb459-38"><a href="rtweet.html#cb459-38"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
-<span id="cb459-39"><a href="rtweet.html#cb459-39"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
-<span id="cb459-40"><a href="rtweet.html#cb459-40"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;sansa&quot;</span>)</span>
-<span id="cb459-41"><a href="rtweet.html#cb459-41"></a></span>
-<span id="cb459-42"><a href="rtweet.html#cb459-42"></a>tyrion &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
-<span id="cb459-43"><a href="rtweet.html#cb459-43"></a><span class="st">  </span><span class="kw">filter</span>(tyrion <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
-<span id="cb459-44"><a href="rtweet.html#cb459-44"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb459-45"><a href="rtweet.html#cb459-45"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
-<span id="cb459-46"><a href="rtweet.html#cb459-46"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
-<span id="cb459-47"><a href="rtweet.html#cb459-47"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
-<span id="cb459-48"><a href="rtweet.html#cb459-48"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;tyrion&quot;</span>)</span>
-<span id="cb459-49"><a href="rtweet.html#cb459-49"></a></span>
-<span id="cb459-50"><a href="rtweet.html#cb459-50"></a>cersei &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
-<span id="cb459-51"><a href="rtweet.html#cb459-51"></a><span class="st">  </span><span class="kw">filter</span>(cersei <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
-<span id="cb459-52"><a href="rtweet.html#cb459-52"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb459-53"><a href="rtweet.html#cb459-53"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
-<span id="cb459-54"><a href="rtweet.html#cb459-54"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
-<span id="cb459-55"><a href="rtweet.html#cb459-55"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
-<span id="cb459-56"><a href="rtweet.html#cb459-56"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;cersei&quot;</span>)</span>
-<span id="cb459-57"><a href="rtweet.html#cb459-57"></a></span>
-<span id="cb459-58"><a href="rtweet.html#cb459-58"></a>jaime &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
-<span id="cb459-59"><a href="rtweet.html#cb459-59"></a><span class="st">  </span><span class="kw">filter</span>(jaime <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
-<span id="cb459-60"><a href="rtweet.html#cb459-60"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
-<span id="cb459-61"><a href="rtweet.html#cb459-61"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
-<span id="cb459-62"><a href="rtweet.html#cb459-62"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
-<span id="cb459-63"><a href="rtweet.html#cb459-63"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
-<span id="cb459-64"><a href="rtweet.html#cb459-64"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;jaime&quot;</span>)</span>
-<span id="cb459-65"><a href="rtweet.html#cb459-65"></a></span>
-<span id="cb459-66"><a href="rtweet.html#cb459-66"></a></span>
-<span id="cb459-67"><a href="rtweet.html#cb459-67"></a>dat_sentiment &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(jon,daenerys,bran,arya,sansa,tyrion,cersei,jaime) <span class="op">%&gt;%</span></span>
-<span id="cb459-68"><a href="rtweet.html#cb459-68"></a><span class="st">  </span><span class="kw">group_by</span>(character) <span class="op">%&gt;%</span></span>
-<span id="cb459-69"><a href="rtweet.html#cb459-69"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">positive =</span> <span class="kw">sum</span>(positive),</span>
-<span id="cb459-70"><a href="rtweet.html#cb459-70"></a>            <span class="dt">negative =</span> <span class="kw">sum</span>(negative),</span>
-<span id="cb459-71"><a href="rtweet.html#cb459-71"></a>            <span class="dt">overall =</span> <span class="kw">sum</span>(sentiment))<span class="op">%&gt;%</span></span>
-<span id="cb459-72"><a href="rtweet.html#cb459-72"></a><span class="st">  </span><span class="kw">gather</span>(positive<span class="op">:</span>overall, <span class="dt">key =</span> type, <span class="dt">value =</span> score)<span class="op">%&gt;%</span></span>
-<span id="cb459-73"><a href="rtweet.html#cb459-73"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="kw">factor</span>(type, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;positive&quot;</span>, <span class="st">&quot;negative&quot;</span>, <span class="st">&quot;overall&quot;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="rtweet.html#cb460-1"></a>jon &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
+<span id="cb460-2"><a href="rtweet.html#cb460-2"></a><span class="st">  </span><span class="kw">filter</span>(jon)<span class="op">%&gt;%</span></span>
+<span id="cb460-3"><a href="rtweet.html#cb460-3"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb460-4"><a href="rtweet.html#cb460-4"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
+<span id="cb460-5"><a href="rtweet.html#cb460-5"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
+<span id="cb460-6"><a href="rtweet.html#cb460-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
+<span id="cb460-7"><a href="rtweet.html#cb460-7"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;jon&quot;</span>)</span>
+<span id="cb460-8"><a href="rtweet.html#cb460-8"></a></span>
+<span id="cb460-9"><a href="rtweet.html#cb460-9"></a>daenerys &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
+<span id="cb460-10"><a href="rtweet.html#cb460-10"></a><span class="st">  </span><span class="kw">filter</span>(daenerys <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
+<span id="cb460-11"><a href="rtweet.html#cb460-11"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb460-12"><a href="rtweet.html#cb460-12"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
+<span id="cb460-13"><a href="rtweet.html#cb460-13"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
+<span id="cb460-14"><a href="rtweet.html#cb460-14"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
+<span id="cb460-15"><a href="rtweet.html#cb460-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;daenerys&quot;</span>)</span>
+<span id="cb460-16"><a href="rtweet.html#cb460-16"></a></span>
+<span id="cb460-17"><a href="rtweet.html#cb460-17"></a></span>
+<span id="cb460-18"><a href="rtweet.html#cb460-18"></a>bran &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
+<span id="cb460-19"><a href="rtweet.html#cb460-19"></a><span class="st">  </span><span class="kw">filter</span>(bran <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
+<span id="cb460-20"><a href="rtweet.html#cb460-20"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb460-21"><a href="rtweet.html#cb460-21"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
+<span id="cb460-22"><a href="rtweet.html#cb460-22"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
+<span id="cb460-23"><a href="rtweet.html#cb460-23"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
+<span id="cb460-24"><a href="rtweet.html#cb460-24"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;bran&quot;</span>)</span>
+<span id="cb460-25"><a href="rtweet.html#cb460-25"></a></span>
+<span id="cb460-26"><a href="rtweet.html#cb460-26"></a>arya &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
+<span id="cb460-27"><a href="rtweet.html#cb460-27"></a><span class="st">  </span><span class="kw">filter</span>(arya <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
+<span id="cb460-28"><a href="rtweet.html#cb460-28"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb460-29"><a href="rtweet.html#cb460-29"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
+<span id="cb460-30"><a href="rtweet.html#cb460-30"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
+<span id="cb460-31"><a href="rtweet.html#cb460-31"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
+<span id="cb460-32"><a href="rtweet.html#cb460-32"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;arya&quot;</span>)</span>
+<span id="cb460-33"><a href="rtweet.html#cb460-33"></a></span>
+<span id="cb460-34"><a href="rtweet.html#cb460-34"></a>sansa &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
+<span id="cb460-35"><a href="rtweet.html#cb460-35"></a><span class="st">  </span><span class="kw">filter</span>(sansa <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
+<span id="cb460-36"><a href="rtweet.html#cb460-36"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb460-37"><a href="rtweet.html#cb460-37"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
+<span id="cb460-38"><a href="rtweet.html#cb460-38"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
+<span id="cb460-39"><a href="rtweet.html#cb460-39"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
+<span id="cb460-40"><a href="rtweet.html#cb460-40"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;sansa&quot;</span>)</span>
+<span id="cb460-41"><a href="rtweet.html#cb460-41"></a></span>
+<span id="cb460-42"><a href="rtweet.html#cb460-42"></a>tyrion &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
+<span id="cb460-43"><a href="rtweet.html#cb460-43"></a><span class="st">  </span><span class="kw">filter</span>(tyrion <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
+<span id="cb460-44"><a href="rtweet.html#cb460-44"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb460-45"><a href="rtweet.html#cb460-45"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
+<span id="cb460-46"><a href="rtweet.html#cb460-46"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
+<span id="cb460-47"><a href="rtweet.html#cb460-47"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
+<span id="cb460-48"><a href="rtweet.html#cb460-48"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;tyrion&quot;</span>)</span>
+<span id="cb460-49"><a href="rtweet.html#cb460-49"></a></span>
+<span id="cb460-50"><a href="rtweet.html#cb460-50"></a>cersei &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
+<span id="cb460-51"><a href="rtweet.html#cb460-51"></a><span class="st">  </span><span class="kw">filter</span>(cersei <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
+<span id="cb460-52"><a href="rtweet.html#cb460-52"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb460-53"><a href="rtweet.html#cb460-53"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
+<span id="cb460-54"><a href="rtweet.html#cb460-54"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
+<span id="cb460-55"><a href="rtweet.html#cb460-55"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
+<span id="cb460-56"><a href="rtweet.html#cb460-56"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;cersei&quot;</span>)</span>
+<span id="cb460-57"><a href="rtweet.html#cb460-57"></a></span>
+<span id="cb460-58"><a href="rtweet.html#cb460-58"></a>jaime &lt;-<span class="st"> </span>dat_mentions <span class="op">%&gt;%</span></span>
+<span id="cb460-59"><a href="rtweet.html#cb460-59"></a><span class="st">  </span><span class="kw">filter</span>(jaime <span class="op">==</span><span class="st"> &quot;TRUE&quot;</span>)<span class="op">%&gt;%</span></span>
+<span id="cb460-60"><a href="rtweet.html#cb460-60"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">get_sentiments</span>(<span class="st">&quot;bing&quot;</span>))<span class="op">%&gt;%</span></span>
+<span id="cb460-61"><a href="rtweet.html#cb460-61"></a><span class="st">  </span><span class="kw">count</span>(<span class="dt">index =</span> tweet_number, sentiment) <span class="op">%&gt;%</span></span>
+<span id="cb460-62"><a href="rtweet.html#cb460-62"></a><span class="st">  </span><span class="kw">spread</span>(sentiment, n, <span class="dt">fill =</span> <span class="dv">0</span>) <span class="op">%&gt;%</span></span>
+<span id="cb460-63"><a href="rtweet.html#cb460-63"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sentiment =</span> positive <span class="op">-</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
+<span id="cb460-64"><a href="rtweet.html#cb460-64"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">character =</span> <span class="st">&quot;jaime&quot;</span>)</span>
+<span id="cb460-65"><a href="rtweet.html#cb460-65"></a></span>
+<span id="cb460-66"><a href="rtweet.html#cb460-66"></a></span>
+<span id="cb460-67"><a href="rtweet.html#cb460-67"></a>dat_sentiment &lt;-<span class="st"> </span><span class="kw">bind_rows</span>(jon,daenerys,bran,arya,sansa,tyrion,cersei,jaime) <span class="op">%&gt;%</span></span>
+<span id="cb460-68"><a href="rtweet.html#cb460-68"></a><span class="st">  </span><span class="kw">group_by</span>(character) <span class="op">%&gt;%</span></span>
+<span id="cb460-69"><a href="rtweet.html#cb460-69"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">positive =</span> <span class="kw">sum</span>(positive),</span>
+<span id="cb460-70"><a href="rtweet.html#cb460-70"></a>            <span class="dt">negative =</span> <span class="kw">sum</span>(negative),</span>
+<span id="cb460-71"><a href="rtweet.html#cb460-71"></a>            <span class="dt">overall =</span> <span class="kw">sum</span>(sentiment))<span class="op">%&gt;%</span></span>
+<span id="cb460-72"><a href="rtweet.html#cb460-72"></a><span class="st">  </span><span class="kw">gather</span>(positive<span class="op">:</span>overall, <span class="dt">key =</span> type, <span class="dt">value =</span> score)<span class="op">%&gt;%</span></span>
+<span id="cb460-73"><a href="rtweet.html#cb460-73"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="kw">factor</span>(type, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;positive&quot;</span>, <span class="st">&quot;negative&quot;</span>, <span class="st">&quot;overall&quot;</span>)))</span></code></pre></div>
 <p>Now that we’ve done all that we can display a table of positive, negative and overall sentiment scores. Bear in mind that not all words have an associated sentiment score, particularly if they’re a non-standard usage of English (as an aside, this makes RuPaul’s Drag Race very difficult to analyse because tidytext will think a sickening death drop is a bad thing).</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="rtweet.html#cb460-1"></a>dat_sentiment <span class="op">%&gt;%</span></span>
-<span id="cb460-2"><a href="rtweet.html#cb460-2"></a><span class="st">  </span><span class="kw">spread</span>(type, score)<span class="op">%&gt;%</span></span>
-<span id="cb460-3"><a href="rtweet.html#cb460-3"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(overall))<span class="op">%&gt;%</span></span>
-<span id="cb460-4"><a href="rtweet.html#cb460-4"></a><span class="st">  </span><span class="kw">kable</span>(<span class="dt">align =</span> <span class="st">&quot;c&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="rtweet.html#cb461-1"></a>dat_sentiment <span class="op">%&gt;%</span></span>
+<span id="cb461-2"><a href="rtweet.html#cb461-2"></a><span class="st">  </span><span class="kw">spread</span>(type, score)<span class="op">%&gt;%</span></span>
+<span id="cb461-3"><a href="rtweet.html#cb461-3"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(overall))<span class="op">%&gt;%</span></span>
+<span id="cb461-4"><a href="rtweet.html#cb461-4"></a><span class="st">  </span><span class="kw">kable</span>(<span class="dt">align =</span> <span class="st">&quot;c&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1017,16 +1017,16 @@ Figure H.5: Network graph of bigrams
 </tbody>
 </table>
 <p>Because there’s diferent numbers of tweets for each character, it might be more helpful to convert it to percentages to make it easier to compare.</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="rtweet.html#cb461-1"></a>dat_sentiment <span class="op">%&gt;%</span></span>
-<span id="cb461-2"><a href="rtweet.html#cb461-2"></a><span class="st">  </span><span class="kw">spread</span>(type, score)<span class="op">%&gt;%</span></span>
-<span id="cb461-3"><a href="rtweet.html#cb461-3"></a><span class="st">  </span><span class="kw">group_by</span>(character)<span class="op">%&gt;%</span></span>
-<span id="cb461-4"><a href="rtweet.html#cb461-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total =</span> positive <span class="op">+</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
-<span id="cb461-5"><a href="rtweet.html#cb461-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">positive_percent =</span> positive<span class="op">/</span>total<span class="op">*</span><span class="dv">100</span>,</span>
-<span id="cb461-6"><a href="rtweet.html#cb461-6"></a>         <span class="dt">negative_percent =</span> negative<span class="op">/</span>total<span class="op">*</span><span class="dv">100</span>,</span>
-<span id="cb461-7"><a href="rtweet.html#cb461-7"></a>         <span class="dt">sentiment =</span> positive_percent <span class="op">-</span><span class="st"> </span>negative_percent)<span class="op">%&gt;%</span></span>
-<span id="cb461-8"><a href="rtweet.html#cb461-8"></a><span class="st">  </span><span class="kw">select</span>(character, positive_percent, negative_percent, sentiment)<span class="op">%&gt;%</span></span>
-<span id="cb461-9"><a href="rtweet.html#cb461-9"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(sentiment))<span class="op">%&gt;%</span></span>
-<span id="cb461-10"><a href="rtweet.html#cb461-10"></a><span class="st">  </span><span class="kw">kable</span>(<span class="dt">align =</span> <span class="st">&quot;c&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="rtweet.html#cb462-1"></a>dat_sentiment <span class="op">%&gt;%</span></span>
+<span id="cb462-2"><a href="rtweet.html#cb462-2"></a><span class="st">  </span><span class="kw">spread</span>(type, score)<span class="op">%&gt;%</span></span>
+<span id="cb462-3"><a href="rtweet.html#cb462-3"></a><span class="st">  </span><span class="kw">group_by</span>(character)<span class="op">%&gt;%</span></span>
+<span id="cb462-4"><a href="rtweet.html#cb462-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total =</span> positive <span class="op">+</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
+<span id="cb462-5"><a href="rtweet.html#cb462-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">positive_percent =</span> positive<span class="op">/</span>total<span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb462-6"><a href="rtweet.html#cb462-6"></a>         <span class="dt">negative_percent =</span> negative<span class="op">/</span>total<span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb462-7"><a href="rtweet.html#cb462-7"></a>         <span class="dt">sentiment =</span> positive_percent <span class="op">-</span><span class="st"> </span>negative_percent)<span class="op">%&gt;%</span></span>
+<span id="cb462-8"><a href="rtweet.html#cb462-8"></a><span class="st">  </span><span class="kw">select</span>(character, positive_percent, negative_percent, sentiment)<span class="op">%&gt;%</span></span>
+<span id="cb462-9"><a href="rtweet.html#cb462-9"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(sentiment))<span class="op">%&gt;%</span></span>
+<span id="cb462-10"><a href="rtweet.html#cb462-10"></a><span class="st">  </span><span class="kw">kable</span>(<span class="dt">align =</span> <span class="st">&quot;c&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1089,19 +1089,19 @@ Figure H.5: Network graph of bigrams
 </table>
 <p>They’re all quite negative because there’s no pleasing some people but there’s some face validity to the analysis given the order of the rankings. If you’d been watching this live you could have repeated this each episode to see how the reactions to the characters changes.</p>
 <p>Let’s make that into a graph cause graphs are great.</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="rtweet.html#cb462-1"></a>dat_sentiment <span class="op">%&gt;%</span></span>
-<span id="cb462-2"><a href="rtweet.html#cb462-2"></a><span class="st">  </span><span class="kw">spread</span>(type, score)<span class="op">%&gt;%</span></span>
-<span id="cb462-3"><a href="rtweet.html#cb462-3"></a><span class="st">  </span><span class="kw">group_by</span>(character)<span class="op">%&gt;%</span></span>
-<span id="cb462-4"><a href="rtweet.html#cb462-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total =</span> positive <span class="op">+</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
-<span id="cb462-5"><a href="rtweet.html#cb462-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">positive_percent =</span> positive<span class="op">/</span>total<span class="op">*</span><span class="dv">100</span>,</span>
-<span id="cb462-6"><a href="rtweet.html#cb462-6"></a>         <span class="dt">negative_percent =</span> negative<span class="op">/</span>total<span class="op">*</span><span class="dv">100</span>,</span>
-<span id="cb462-7"><a href="rtweet.html#cb462-7"></a>         <span class="dt">sentiment =</span> positive_percent <span class="op">-</span><span class="st"> </span>negative_percent)<span class="op">%&gt;%</span></span>
-<span id="cb462-8"><a href="rtweet.html#cb462-8"></a><span class="st">  </span><span class="kw">select</span>(character, positive_percent, negative_percent, sentiment)<span class="op">%&gt;%</span></span>
-<span id="cb462-9"><a href="rtweet.html#cb462-9"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(sentiment))<span class="op">%&gt;%</span></span>
-<span id="cb462-10"><a href="rtweet.html#cb462-10"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(character,sentiment), <span class="dt">y =</span> sentiment)) <span class="op">+</span></span>
-<span id="cb462-11"><a href="rtweet.html#cb462-11"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb462-12"><a href="rtweet.html#cb462-12"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Overall sentiment (percent)&quot;</span>)<span class="op">+</span></span>
-<span id="cb462-13"><a href="rtweet.html#cb462-13"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Character&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb463-1"><a href="rtweet.html#cb463-1"></a>dat_sentiment <span class="op">%&gt;%</span></span>
+<span id="cb463-2"><a href="rtweet.html#cb463-2"></a><span class="st">  </span><span class="kw">spread</span>(type, score)<span class="op">%&gt;%</span></span>
+<span id="cb463-3"><a href="rtweet.html#cb463-3"></a><span class="st">  </span><span class="kw">group_by</span>(character)<span class="op">%&gt;%</span></span>
+<span id="cb463-4"><a href="rtweet.html#cb463-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">total =</span> positive <span class="op">+</span><span class="st"> </span>negative)<span class="op">%&gt;%</span></span>
+<span id="cb463-5"><a href="rtweet.html#cb463-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">positive_percent =</span> positive<span class="op">/</span>total<span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb463-6"><a href="rtweet.html#cb463-6"></a>         <span class="dt">negative_percent =</span> negative<span class="op">/</span>total<span class="op">*</span><span class="dv">100</span>,</span>
+<span id="cb463-7"><a href="rtweet.html#cb463-7"></a>         <span class="dt">sentiment =</span> positive_percent <span class="op">-</span><span class="st"> </span>negative_percent)<span class="op">%&gt;%</span></span>
+<span id="cb463-8"><a href="rtweet.html#cb463-8"></a><span class="st">  </span><span class="kw">select</span>(character, positive_percent, negative_percent, sentiment)<span class="op">%&gt;%</span></span>
+<span id="cb463-9"><a href="rtweet.html#cb463-9"></a><span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(sentiment))<span class="op">%&gt;%</span></span>
+<span id="cb463-10"><a href="rtweet.html#cb463-10"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">reorder</span>(character,sentiment), <span class="dt">y =</span> sentiment)) <span class="op">+</span></span>
+<span id="cb463-11"><a href="rtweet.html#cb463-11"></a><span class="st">  </span><span class="kw">geom_col</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb463-12"><a href="rtweet.html#cb463-12"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Overall sentiment (percent)&quot;</span>)<span class="op">+</span></span>
+<span id="cb463-13"><a href="rtweet.html#cb463-13"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Character&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-60"></span>
 <img src="appendix-0_files/figure-html/unnamed-chunk-60-1.png" alt="Sentiment scores for each character" width="100%" />
 <p class="caption">
