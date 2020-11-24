@@ -12,8 +12,8 @@ This experiment has a 2 x 2 mixed design:
 
 ### Activity 1: Set-up
 
-* Open R Studio and set the working directory to your Week 10 folder. Ensure the environment is clear. 
-* Open a new R Markdown document and save it in your working directory. Call the file "Week 11". 
+* Open R Studio and set the working directory to your chpter folder. Ensure the environment is clear. 
+* Open a new R Markdown document and save it in your working directory. Call the file "Factorial ANOVA". 
 * Download <a href="Zhang et al. 2014 Study 3.csv" download>Zhang et al. 2014 Study 3.csv</a> and extract the files in to your Week 11 folder. 
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * If you are working on your own computer, install the package `rcompanion`. Remember **do not install packages on university computers, they are already installed**.
@@ -35,9 +35,7 @@ Run the below code to load the data and wrangle it into the format we need. You 
 factorial <- read_csv("Zhang et al. 2014 Study 3.csv")%>%
   select(Condition, T1_Predicted_Interest_Composite, T2_Actual_Interest_Composite)%>%
   mutate(subject = row_number())%>%
-  gather(key = time,
-         value = interest,
-         T1_Predicted_Interest_Composite,T2_Actual_Interest_Composite)%>%
+  pivot_longer(names_to = "time",values_to = "interest", cols =       c("T1_Predicted_Interest_Composite","T2_Actual_Interest_Composite"))%>%
   mutate(Condition = dplyr::recode(Condition, "1" = "Ordinary", "2" = "Extraordinary"))%>%
   mutate(time = dplyr::recode(time, "T1_Predicted_Interest_Composite" = "time1_interest",
                        "T2_Actual_Interest_Composite" = "time2_interest")) %>%
@@ -46,7 +44,7 @@ factorial <- read_csv("Zhang et al. 2014 Study 3.csv")%>%
 
 ### Activity 2: Descriptive statistics
 
-* Calculate descriptive statistics (mean, standard error min and max, SD) for `interest`  for each `Condition` for each `time` (hint: you will need to `group_by()` two variables) and store it in an object named `sum_dat_factorial`. These are known as the cells means.
+* Calculate descriptive statistics (mean, the minumum and maximum standard error values for using with a plot, and SD) for `interest`  for each `Condition` for each `time` (hint: you will need to `group_by()` two variables) and store it in an object named `sum_dat_factorial`. These are known as the cells means.
 * Hint: for the standard error code, refer back to \@ref(viobox)
 
 
@@ -94,8 +92,8 @@ ggplot(sum_dat_factorial, aes(x = time, y = mean, group = Condition, shape = Con
 * Complete the below code to run the factorial ANOVA. Remember that you will need to specify both IVs and that one of them is between-subjects and one of them is within-subjects. Look up the help documentation for `aov_ez` to find out how to do this. 
 
 * Save the ANOVA model to an object called `mod_factorial`
-* Use `tidy()` and save the output to an object named `factorial_output`.
-* Hint: refer to pre-class Activity 6
+* Pull out the anova table, you can either do this with `mod_factorial$anova_table` or `anova(mod_factorial)` both have the same result. Save this to an object named `factorial_output` and make sure you have used `tidy()`.
+
 
 
 
@@ -281,6 +279,7 @@ And we're done! There's only one more week of R left. I know that for some of yo
 library("pwr")
 library("rcompanion")
 library("car")
+library("lsr")
 library("broom")
 library("afex")
 library("emmeans")
@@ -299,8 +298,8 @@ library("tidyverse")
 sum_dat_factorial<-factorial%>%
   group_by(Condition, time)%>%
   summarise(mean = mean(interest, na.rm = TRUE),
-            min = mean(interest) - qnorm(0.975)*sd(interest)/sqrt(n()), 
-            max = mean(interest) + qnorm(0.975)*sd(interest)/sqrt(n()),
+            min = mean(interest) - sd(interest)/sqrt(n()), 
+            max = mean(interest) + sd(interest)/sqrt(n()),
             sd = sd(interest)
             )
 ```
@@ -341,6 +340,10 @@ mod_factorial <- aov_ez(id = "subject",
                type = 3) 
 
 factorial_output <- anova(mod_factorial) %>% tidy()
+
+# OR
+
+factorial_output <- mod_factorial$anova_table %>% tidy()
 ```
 
 </div>
