@@ -13,9 +13,7 @@ If you are using the R server, you may need to export files to share them with o
 
 ## Why should I install R on my computer?
 
-The R Server is cuts down on a lot of installation problems and it means that you have all the packages and functions you need already installed. However, it requires an internet connection to use and additional when it comes time to submit your R assessments, if you don't have R on your computer it means that you won't be able to open the files you download from the server to check they're ok before you submit them.
-
-It is not necessary to install R on your computer, however, now that we're over the initial anxiety spike of using R for the first time, you may find it helpful.
+The R Server cuts down on a lot of installation problems and it means that you have all the packages and functions you need already installed. However, it requires an internet connection to use and when it comes time to submit your R assessments, if you don't have R on your computer it means that you won't be able to open the files you download from the server to check they're ok before you submit them.
 
 ## Windows
 
@@ -33,8 +31,6 @@ install.packages("tidyverse")
 ```
 
 This will install the `tidyverse` package on your computer. You can still use the server to do all your work, but having R on your computer will make it easier to view the files. If you would like to work from your computer, you will also need to install the other packages we use, for example `lsr`, `psych`, `babynames` etc.
-
-If you have any problems installing R, please book into a GTA session as they should be able to help you with any installation problems.
 
 ## Mac
 
@@ -56,8 +52,6 @@ install.packages("tidyverse")
 ```
 
 This will install the `tidyverse` package on your computer. You can still use the server to do all your work, but having R on your computer will make it easier to view the files. If you would like to work from your computer, you will also need to install the other packages we use, for example `lsr`, `psych`, `babynames` etc.
-
-If you have any problems installing R, please book into a GTA session as they should be able to help you with any installation problems.
 
 ## Chromebooks
 
@@ -518,8 +512,8 @@ rnorm(10)
 ```
 
 ```
-##  [1]  0.90672089 -0.18871298  1.14808182 -1.45932073  1.30781807  0.93623438
-##  [7]  0.65206109  0.01181113  0.14590225  0.49184755
+##  [1]  0.07296144  0.31963857 -0.28032432 -0.68342293  1.24401301 -1.36945840
+##  [7]  0.49771988  0.63820538  0.06717718 -0.65938653
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -617,8 +611,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "d" "x" "f" "r" "e" "u" "b" "n" "a" "s" "i" "o" "y" "p" "c" "v" "h" "z" "t"
-## [20] "l" "g" "m" "k" "j" "w" "q"
+##  [1] "u" "t" "v" "g" "l" "f" "c" "h" "q" "r" "p" "n" "b" "j" "k" "o" "a" "m" "i"
+## [20] "x" "y" "w" "e" "z" "s" "d"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -653,18 +647,18 @@ tibble(Y = rnorm(10))
 
 ```
 ## # A tibble: 10 x 1
-##         Y
-##     <dbl>
-##  1  2.32 
-##  2 -0.447
-##  3 -1.93 
-##  4 -0.684
-##  5 -1.36 
-##  6 -0.104
-##  7 -0.833
-##  8  0.393
-##  9  0.499
-## 10  0.385
+##          Y
+##      <dbl>
+##  1 -1.36  
+##  2 -0.0184
+##  3 -0.880 
+##  4 -0.123 
+##  5 -0.159 
+##  6  0.483 
+##  7 -0.289 
+##  8  0.231 
+##  9 -0.629 
+## 10  1.35
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -681,16 +675,16 @@ tibble(Y = c(rnorm(5, mean = -10),
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1 -10.3 
-##  2 -11.1 
-##  3 -10.1 
-##  4  -9.87
-##  5  -9.12
-##  6  21.0 
-##  7  20.1 
-##  8  18.7 
-##  9  20.3 
-## 10  18.8
+##  1 -11.0 
+##  2 -10.8 
+##  3 -11.3 
+##  4  -8.61
+##  5  -8.95
+##  6  20.4 
+##  7  18.1 
+##  8  20.4 
+##  9  20.1 
+## 10  19.6
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -752,16 +746,16 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A      -9.55
-##  2 A     -10.8 
-##  3 A     -10.5 
-##  4 A      -9.82
-##  5 A      -8.85
-##  6 B      21.0 
-##  7 B      18.4 
-##  8 B      19.6 
-##  9 B      19.1 
-## 10 B      19.4
+##  1 A     -11.1 
+##  2 A      -7.66
+##  3 A      -8.67
+##  4 A      -9.38
+##  5 A      -9.99
+##  6 B      20.1 
+##  7 B      19.7 
+##  8 B      20.4 
+##  9 B      19.8 
+## 10 B      20.7
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -816,11 +810,11 @@ my_data_means
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      20.4
-## 2 B     -21.4
+## 1 A      21.6
+## 2 B     -19.6
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -21.4 from the first group mean of 20.4, to get a single value, the difference: 41.8.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -19.6 from the first group mean of 21.6, to get a single value, the difference: 41.2.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -833,7 +827,7 @@ vec
 ```
 
 ```
-## [1]  20.37187 -21.41040
+## [1]  21.58423 -19.59738
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -844,7 +838,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 41.78227
+## [1] 41.18161
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -855,7 +849,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 41.78227
+## [1] 41.18161
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -868,7 +862,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 41.78227
+## [1] 41.18161
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -883,7 +877,7 @@ my_data_means %>%
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  20.4 -21.4
+## 1  21.6 -19.6
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -899,7 +893,7 @@ my_data_means %>%
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  20.4 -21.4  41.8
+## 1  21.6 -19.6  41.2
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -915,7 +909,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 41.78227
+## [1] 41.18161
 ```
 
 
@@ -1104,8 +1098,8 @@ ten_samples
 ```
 
 ```
-##  [1] -0.043606274 -0.024840534  0.005363480 -0.032851920 -0.008346971
-##  [6]  0.073203932 -0.138019448  0.029209188 -0.245912292 -0.058088789
+##  [1]  0.185832792  0.012304019  0.015468226 -0.032090804  0.048584475
+##  [6] -0.038301742  0.131999006 -0.039989831 -0.203520090 -0.007328026
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
