@@ -60,6 +60,16 @@ babynames
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 1,924,665 x 5
 ##     year sex   name          n   prop
 ##    <dbl> <chr> <chr>     <int>  <dbl>
@@ -125,6 +135,16 @@ select(.data = babynames, # the object you want to select variables from
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 1,924,665 x 4
 ##     year sex   name        prop
 ##    <dbl> <chr> <chr>      <dbl>
@@ -146,6 +166,16 @@ Alternatively, you can also tell R which variables you don't want, in this case,
 
 ```r
 select(.data = babynames, -n)
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
 ```
 
 ```
@@ -183,6 +213,16 @@ arrange(.data = babynames, # the data you want to sort
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 1,924,665 x 5
 ##     year sex   name      n       prop
 ##    <dbl> <chr> <chr> <int>      <dbl>
@@ -204,6 +244,16 @@ The data are now sorted in ascending alphabetical order by name. The default is 
 
 ```r
 arrange(babynames,desc(year)) 
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
 ```
 
 ```
@@ -278,6 +328,16 @@ filter(babynames, name == "Mary")
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 268 x 5
 ##     year sex   name      n     prop
 ##    <dbl> <chr> <chr> <int>    <dbl>
@@ -299,6 +359,16 @@ If you wanted all the names except Mary, you use the 'not equals' operator:
 
 ```r
 filter(babynames, name!="Mary") 
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
 ```
 
 ```
@@ -326,6 +396,16 @@ filter(babynames, name %in% c("Mary","Elizabeth","Victoria"))
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 772 x 5
 ##     year sex   name          n      prop
 ##    <dbl> <chr> <chr>     <int>     <dbl>
@@ -348,6 +428,16 @@ This gives you data for the names in the vector on the right hand side of `%in%`
 
 ```r
 filter(babynames, !(name %in% c("Mary","Elizabeth","Victoria")))
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
 ```
 
 ```
@@ -380,6 +470,16 @@ Sometimes we need to create a new variable that doesn’t exist in our dataset. 
 new_dat <- mutate(.data = babynames, # the tibble you want to add a column to
                   decade = floor(year/10) *10) # new column name = what you want it to contain
 new_dat
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
 ```
 
 ```
@@ -416,6 +516,16 @@ summarise(.data = dat, # the data you want to use
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 1 x 1
 ##     total
 ##     <int>
@@ -441,6 +551,20 @@ summarise(.data = group_dat,
 ```
 
 ```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 4 x 2
 ##   name       total
 ##   <chr>      <int>
@@ -462,6 +586,20 @@ summarise(group_dat,
 ```
 
 ```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 4 x 3
 ##   name      mean_year median_year
 ##   <chr>         <dbl>       <dbl>
@@ -479,6 +617,20 @@ group_new_dat <- group_by(new_dat, sex, decade)
 summarise(group_new_dat,
           mean_year = mean(n),
           median_year = median(n))
+```
+
+```
+## `summarise()` regrouping output by 'sex' (override with `.groups` argument)
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
 ```
 
 ```

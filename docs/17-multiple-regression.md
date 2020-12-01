@@ -38,6 +38,9 @@ But the expressive power of regression allows us to do this all within a single 
 * Load the CSV datasets into variables called `pinfo`, `wellbeing` and `screen` using `read_csv()`.
 
 
+```
+## Warning: package 'broom' was built under R version 4.0.3
+```
 
 ## Activity 2: Look at the data
 
@@ -75,6 +78,9 @@ The WEMWBS well-being score is simply the *sum* of all the items.
 
 
 
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
 
 **Sanity check:** Verify for yourself that the scores all fall in the 14-70 range.  Przybylski and Weinstein reported a mean of 47.52 with a standard deviation of 9.55. Can you reproduce these values?
 
@@ -144,7 +150,13 @@ screen2 <- screen_long %>%
 dat_means <- inner_join(wemwbs, screen2, "Serial") %>%
   group_by(variable, day, hours) %>%
   summarise(mean_wellbeing = mean(tot_wellbeing))
+```
 
+```
+## `summarise()` regrouping output by 'variable', 'day' (override with `.groups` argument)
+```
+
+```r
 ggplot(dat_means, aes(hours, mean_wellbeing, linetype = day)) +
   geom_line() +
   geom_point() +
@@ -175,6 +187,9 @@ For this analysis, we are going to collapse weekday and weekend use for smartpho
 * Next, create a new tibble called `smart_wb` that only includes (filters) participants from `smarttot` who used a smartphone for more than one hour per day each week, and then combine (join) this table with the information in `wemwbs` and `pinfo`.**
 
 
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
 
 ## Activity 6: Mean-centering variables
 
@@ -198,6 +213,10 @@ For categorical predictors with two levels, these become coded as -.5 and .5 (be
 * Reverse-engineer the below plot. Calculate mean well-being scores for each combination of `male` and `tothours`, and then create a scatterplot plot that includes separate regression lines for each gender.
 * You may find it useful to refer to Chapter \@ref(vis). 
 
+
+```
+## `summarise()` regrouping output by 'tothours' (override with `.groups` argument)
+```
 
 ```
 ## `geom_smooth()` using formula 'y ~ x'

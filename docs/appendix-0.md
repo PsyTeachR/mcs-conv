@@ -447,13 +447,13 @@ should be used when transforming data.
 
 
 
-Problem                                              Transformation         R function       
----------------------------------------------------  ---------------------  -----------------
-Moderately positive skewness                         Square-root            `sqrt(var)`      
-Substantially positive skewness                      Logarithmic (Log 10)   `log10(var)`     
-Substantially positive skewness (with zero values)   Logarithmic (Log 10)   `log10(var + C)` 
-Moderately negative skewness                         Square-Root            `sqrt(var + K)`  
-Substantially negative skewness                      Logarithmic (Log 10)   `log10(K - var)` 
+|Problem                                            |Transformation       |R function       |
+|:--------------------------------------------------|:--------------------|:----------------|
+|Moderately positive skewness                       |Square-root          |`sqrt(var)`      |
+|Substantially positive skewness                    |Logarithmic (Log 10) |`log10(var)`     |
+|Substantially positive skewness (with zero values) |Logarithmic (Log 10) |`log10(var + C)` |
+|Moderately negative skewness                       |Square-Root          |`sqrt(var + K)`  |
+|Substantially negative skewness                    |Logarithmic (Log 10) |`log10(K - var)` |
 
 `C` = a constant added to each score so that the smallest score is 1.  
 `K` = a constant from which each score is subtracted so that the smallest score is 1; usually equal to the largest score + 1.
@@ -512,8 +512,8 @@ rnorm(10)
 ```
 
 ```
-##  [1]  0.07296144  0.31963857 -0.28032432 -0.68342293  1.24401301 -1.36945840
-##  [7]  0.49771988  0.63820538  0.06717718 -0.65938653
+##  [1]  0.99288022  1.21370524 -0.46917103 -0.06163062 -0.39858269 -0.12173078
+##  [7] -0.60358626  0.80298022  0.03303179 -0.01608901
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -611,8 +611,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "u" "t" "v" "g" "l" "f" "c" "h" "q" "r" "p" "n" "b" "j" "k" "o" "a" "m" "i"
-## [20] "x" "y" "w" "e" "z" "s" "d"
+##  [1] "n" "p" "k" "b" "t" "c" "v" "a" "j" "q" "o" "u" "g" "z" "x" "y" "s" "m" "f"
+## [20] "h" "d" "w" "e" "r" "l" "i"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -646,19 +646,29 @@ tibble(Y = rnorm(10))
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 10 x 1
-##          Y
-##      <dbl>
-##  1 -1.36  
-##  2 -0.0184
-##  3 -0.880 
-##  4 -0.123 
-##  5 -0.159 
-##  6  0.483 
-##  7 -0.289 
-##  8  0.231 
-##  9 -0.629 
-## 10  1.35
+##         Y
+##     <dbl>
+##  1 -1.06 
+##  2 -1.27 
+##  3 -0.202
+##  4  0.896
+##  5  1.55 
+##  6  0.429
+##  7 -0.162
+##  8 -0.830
+##  9  0.450
+## 10  1.98
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -672,19 +682,29 @@ tibble(Y = c(rnorm(5, mean = -10),
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1 -11.0 
-##  2 -10.8 
-##  3 -11.3 
-##  4  -8.61
-##  5  -8.95
-##  6  20.4 
-##  7  18.1 
-##  8  20.4 
-##  9  20.1 
-## 10  19.6
+##  1  -9.61
+##  2  -9.92
+##  3  -9.82
+##  4 -11.4 
+##  5 -10.2 
+##  6  20.3 
+##  7  20.5 
+##  8  19.8 
+##  9  19.6 
+## 10  19.2
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -743,19 +763,29 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A     -11.1 
-##  2 A      -7.66
-##  3 A      -8.67
-##  4 A      -9.38
-##  5 A      -9.99
+##  1 A      -9.65
+##  2 A     -10.3 
+##  3 A     -11.1 
+##  4 A     -10.4 
+##  5 A      -9.96
 ##  6 B      20.1 
-##  7 B      19.7 
-##  8 B      20.4 
-##  9 B      19.8 
-## 10 B      20.7
+##  7 B      19.9 
+##  8 B      19.3 
+##  9 B      18.9 
+## 10 B      19.9
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -764,6 +794,16 @@ You now know how to create this table. Have a look at the code below and make su
 ```r
 tibble(group = rep(c("A", "B"), c(5, 5)),
        Y = c(rnorm(5, mean = -10), rnorm(5, mean =  20)))
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
 ```
 
 Be sure to play around with the code chunk to get used to it. Try adding a third group or even a third column? Perhaps you want to give every participant a random age with a mean of 18, and a sd of 1; or even a participant number.
@@ -802,19 +842,35 @@ my_data <- tibble(group = rep(c("A", "B"), c(20, 20)),
 my_data_means <- my_data %>%
   group_by(group) %>%
   summarise(m = mean(Y))
+```
 
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```r
 my_data_means
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
 ```
 
 ```
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      21.6
-## 2 B     -19.6
+## 1 A      20.0
+## 2 B     -19.7
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -19.6 from the first group mean of 21.6, to get a single value, the difference: 41.2.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -19.7 from the first group mean of 20, to get a single value, the difference: 39.7.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -827,7 +883,7 @@ vec
 ```
 
 ```
-## [1]  21.58423 -19.59738
+## [1]  19.96823 -19.72712
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -838,7 +894,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 41.18161
+## [1] 39.69535
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -849,7 +905,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 41.18161
+## [1] 39.69535
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -862,7 +918,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 41.18161
+## [1] 39.69535
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -874,10 +930,20 @@ my_data_means %>%
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  21.6 -19.6
+## 1  20.0 -19.7
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -890,10 +956,20 @@ my_data_means %>%
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  21.6 -19.6  41.2
+## 1  20.0 -19.7  39.7
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -909,7 +985,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 41.18161
+## [1] 39.69535
 ```
 
 
@@ -1098,8 +1174,8 @@ ten_samples
 ```
 
 ```
-##  [1]  0.185832792  0.012304019  0.015468226 -0.032090804  0.048584475
-##  [6] -0.038301742  0.131999006 -0.039989831 -0.203520090 -0.007328026
+##  [1]  0.069918592 -0.031594536 -0.023174892 -0.101748447  0.019963953
+##  [6]  0.153173924  0.082529595 -0.068658450 -0.009662465 -0.002424803
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
@@ -1561,6 +1637,20 @@ wine %>%
 ```
 
 ```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 2 x 4
 ##   temp  median_response min_response max_response
 ##   <fct>           <dbl>        <dbl>        <dbl>
@@ -1999,25 +2089,33 @@ dat_bigram <- dat_token2 %>%
   group_by(tweet_number) %>%  summarise(text = str_c(word, collapse = " "))%>% # this puts it back into wide-form
   unnest_tokens(bigram, text, token = "ngrams", n = 2, collapse = FALSE)%>% # and then this turns it into bigrams in a tidy format
   na.omit()
+```
 
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```r
 dat_bigram %>%
   count(bigram, sort = TRUE)%>%
   head(10)%>%
   kable(align = "c")
 ```
 
-      bigram          n  
-------------------  -----
-   freefolk gt       165 
- togive freefolk     164 
-    se tvtime        103 
- watched episode     88  
-    episode se       86  
-     ice fire        85  
-     song ice        81  
- jonsnow daenerys    73  
-  bracelets fef      71  
- connected matter    71  
+
+
+|      bigram      |  n  |
+|:----------------:|:---:|
+|   freefolk gt    | 165 |
+| togive freefolk  | 164 |
+|    se tvtime     | 103 |
+| watched episode  | 88  |
+|    episode se    | 86  |
+|     ice fire     | 85  |
+|     song ice     | 81  |
+| jonsnow daenerys | 73  |
+|  bracelets fef   | 71  |
+| connected matter | 71  |
 
 Again there's a bit of nonsense here and it's a bit uninteresting but it's worth highlighting this is something you can do. Now that we've got our bigrams we can plot these to see the connections between the different words. First, we're going to use `separate` to put the two words into different columns, then we'll count them up and plot them. If you want more information about this see the [tidytext book online](https://www.tidytextmining.com/ngrams.html) as I am entirely cribbing this from that book. The plot requires the packages `igraph` and `ggraph`.
 
@@ -2031,7 +2129,19 @@ bigram_counts <- bigrams_separated %>%
   count(word1, word2, sort = TRUE)
 
 bigram_counts
+```
 
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```r
 # filter for only relatively common combinations (more than 20 occurances)
 bigram_graph <- bigram_counts %>%
   filter(n > 20) %>%
@@ -2091,6 +2201,10 @@ dat_mentions <- dat_token2 %>%
          jaime = case_when(str_detect(text, ".jaime") ~ TRUE, TRUE ~ FALSE))%>%
   unnest_tokens(word, text) %>%
   anti_join(stop_words, by = "word")
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 Once we've done this, we can then run a sentiment analysis on the tweets for each character. I still haven't quite cracked iteration so this code is a bit repetitive, if you can give me the better way of doing this that's less prone to copy and paste errors, please do.
@@ -2184,16 +2298,16 @@ dat_sentiment %>%
 
 
 
- character    positive    negative    overall 
------------  ----------  ----------  ---------
-   jaime         16          29         -13   
-  tyrion         15          30         -15   
-   sansa         26          44         -18   
-  cersei         28          55         -27   
-   arya          26          58         -32   
-   bran          32          66         -34   
- daenerys        62         155         -93   
-    jon          90         185         -95   
+| character | positive | negative | overall |
+|:---------:|:--------:|:--------:|:-------:|
+|   jaime   |    16    |    29    |   -13   |
+|  tyrion   |    15    |    30    |   -15   |
+|   sansa   |    26    |    44    |   -18   |
+|  cersei   |    28    |    55    |   -27   |
+|   arya    |    26    |    58    |   -32   |
+|   bran    |    32    |    66    |   -34   |
+| daenerys  |    62    |   155    |   -93   |
+|    jon    |    90    |   185    |   -95   |
 
 Because there's diferent numbers of tweets for each character, it might be more helpful to convert it to percentages to make it easier to compare.
 
@@ -2213,16 +2327,16 @@ dat_sentiment %>%
 
 
 
- character    positive_percent    negative_percent    sentiment 
------------  ------------------  ------------------  -----------
-   sansa          37.14286            62.85714        -25.71429 
-   jaime          35.55556            64.44444        -28.88889 
-  cersei          33.73494            66.26506        -32.53012 
-  tyrion          33.33333            66.66667        -33.33333 
-    jon           32.72727            67.27273        -34.54545 
-   bran           32.65306            67.34694        -34.69388 
-   arya           30.95238            69.04762        -38.09524 
- daenerys         28.57143            71.42857        -42.85714 
+| character | positive_percent | negative_percent | sentiment |
+|:---------:|:----------------:|:----------------:|:---------:|
+|   sansa   |     37.14286     |     62.85714     | -25.71429 |
+|   jaime   |     35.55556     |     64.44444     | -28.88889 |
+|  cersei   |     33.73494     |     66.26506     | -32.53012 |
+|  tyrion   |     33.33333     |     66.66667     | -33.33333 |
+|    jon    |     32.72727     |     67.27273     | -34.54545 |
+|   bran    |     32.65306     |     67.34694     | -34.69388 |
+|   arya    |     30.95238     |     69.04762     | -38.09524 |
+| daenerys  |     28.57143     |     71.42857     | -42.85714 |
 
 They're all quite negative because there's no pleasing some people but there's some face validity to the analysis given the order of the rankings. If you'd been watching this live you could have repeated this each episode to see how the reactions to the characters changes.
 

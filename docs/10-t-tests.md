@@ -62,14 +62,14 @@ We are now going calculate an overall intellect rating given by each evaluator -
 We will then combine the overall intellect rating with the overall impression ratings and overall hire ratings for each evaluator, with the end goal of having a tibble called `ratings2` - which has the following structure:
 
 
- eval_id  Category      Rating  condition   sex_labels 
---------  -----------  -------  ----------  -----------
-       1  hire           6.000  listened    female     
-       1  impression     7.000  listened    female     
-       1  intellect      6.000  listened    female     
-       2  hire           4.000  listened    female     
-       2  impression     4.667  listened    female     
-       2  intellect      5.667  listened    female     
+| eval_id|Category   | Rating|condition |sex_labels |
+|-------:|:----------|------:|:---------|:----------|
+|       1|hire       |  6.000|listened  |female     |
+|       1|impression |  7.000|listened  |female     |
+|       1|intellect  |  6.000|listened  |female     |
+|       2|hire       |  4.000|listened  |female     |
+|       2|impression |  4.667|listened  |female     |
+|       2|intellect  |  5.667|listened  |female     |
 
 The following steps describe how to create the above tibble - if you're feeling comfortable with R, try yourself without using our code. The trick when doing data analysis and data wrangling is to first think about what you want to achieve - the end goal - and then think about what functions you need to use to get there. 
 
@@ -204,6 +204,10 @@ group_means <- ratings2 %>%
   summarise(m = mean(Rating), sd = sd(Rating))
 ```
 
+```
+## `summarise()` regrouping output by 'condition' (override with `.groups` argument)
+```
+
 * Next, create separate data sets for the intellect, hire, and impression data using `filter()`. We have completed intellect for you.
 
 
@@ -278,11 +282,11 @@ results <- bind_rows(hire = results_hire, impression = results_impression, intel
 ```
 
 
-    test       estimate    estimate1    estimate2    statistic     p.value     parameter    conf.low     conf.high            method             alternative 
-------------  ----------  -----------  -----------  -----------  -----------  -----------  -----------  -----------  -------------------------  -------------
-    hire       1.825397    4.714286     2.888889     2.639949     0.0120842    36.85591     0.4241979    3.226596     Welch Two Sample t-test     two.sided  
- impression    1.894333    5.968333     4.074000     2.817175     0.0080329    33.80061     0.5275086    3.261158     Welch Two Sample t-test     two.sided  
- intellect     1.986722    5.635000     3.648278     3.478555     0.0014210    33.43481     0.8253146    3.148130     Welch Two Sample t-test     two.sided  
+|    test    | estimate | estimate1 | estimate2 | statistic |  p.value  | parameter | conf.low  | conf.high |         method          | alternative |
+|:----------:|:--------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:---------:|:-----------------------:|:-----------:|
+|    hire    | 1.825397 | 4.714286  | 2.888889  | 2.639949  | 0.0120842 | 36.85591  | 0.4241979 | 3.226596  | Welch Two Sample t-test |  two.sided  |
+| impression | 1.894333 | 5.968333  | 4.074000  | 2.817175  | 0.0080329 | 33.80061  | 0.5275086 | 3.261158  | Welch Two Sample t-test |  two.sided  |
+| intellect  | 1.986722 | 5.635000  | 3.648278  | 3.478555  | 0.0014210 | 33.43481  | 0.8253146 | 3.148130  | Welch Two Sample t-test |  two.sided  |
 
 Now, we're going to add on a column of adjusted p-values using `p.adj()` and `mutate()`. 
 
@@ -417,6 +421,10 @@ gaze_descriptives <- gaze_tidy %>%
   group_by(time) %>%
   summarise(mean_looking = mean(looking, na.rm = TRUE),
             sd_looking = sd(looking, na.rm = TRUE))
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ## Activity 14: Paired-samples t-test

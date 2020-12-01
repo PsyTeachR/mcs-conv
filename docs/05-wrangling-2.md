@@ -224,6 +224,10 @@ pong_count <- pong_data %>%
             n = n())
 ```
 
+```
+## `summarise()` regrouping output by 'BackgroundColor' (override with `.groups` argument)
+```
+
 However, if you're just interested in counts rather than also calculating descriptives, `this method is a bit clunky. For example, if we wanted to count the number of observations in each BackgroundColor group, we would need the following code which is a bit clunky for a relatively simple task.
 
 
@@ -244,6 +248,16 @@ pong_data %>% # take pong_data
 ```
 
 ```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
+```
+
+```
 ## # A tibble: 1 x 1
 ##       n
 ##   <int>
@@ -256,6 +270,16 @@ To count the number of observations in groups:
 ```r
 pong_data %>%
   count(BackgroundColor)
+```
+
+```
+## Warning: `...` is not empty.
+## 
+## We detected these problematic arguments:
+## * `needs_dots`
+## 
+## These dots only exist to allow future extensions and should be empty.
+## Did you misspecify an argument?
 ```
 
 ```

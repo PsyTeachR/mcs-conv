@@ -77,14 +77,14 @@ You will need to put both sides of each recode argument (i.e., 1 and rta) in quo
 `intent_recode` should have data from 77 participants and should look something like this:
 
 
- condition    intend    actualdonate    id 
------------  --------  --------------  ----
-    rta         1         donated       1  
-    rta         1         donated       2  
-    rta         1         donated       3  
-    rta         1         donated       4  
-    rta         1         donated       5  
-    rta         1         donated       6  
+| condition | intend | actualdonate | id |
+|:---------:|:------:|:------------:|:--:|
+|    rta    |   1    |   donated    | 1  |
+|    rta    |   1    |   donated    | 2  |
+|    rta    |   1    |   donated    | 3  |
+|    rta    |   1    |   donated    | 4  |
+|    rta    |   1    |   donated    | 5  |
+|    rta    |   1    |   donated    | 6  |
 
 <div class="warn">
 <p>There are several different packages that have a function called <code>recode()</code> and <code>select()</code>. At the moment, we haven’t loaded them so there won’t be any problems however, in the future you should remember these as potentially problematic functions. To avoid any issues you can specify exactly which package you want the function to come from using <code>dplyr::recode()</code> and <code>dplyr::select()</code>. Remember this - it may save you a lot of time in the future!</p>
@@ -121,12 +121,12 @@ intent_percent <- intent_recode %>%
 ```
 
 
- condition    actualdonate    n     percent_condition 
------------  --------------  ----  -------------------
-  control       donated       16          42.11       
-  control     no_donation     22          57.89       
-    rta         donated       29          74.36       
-    rta       no_donation     10          25.64       
+| condition | actualdonate | n  | percent_condition |
+|:---------:|:------------:|:--:|:-----------------:|
+|  control  |   donated    | 16 |       42.11       |
+|  control  | no_donation  | 22 |       57.89       |
+|    rta    |   donated    | 29 |       74.36       |
+|    rta    | no_donation  | 10 |       25.64       |
 
 ### `ggplot2()`
 
@@ -257,10 +257,10 @@ results$observed
 ```
 
 
-           donated    no_donation 
---------  ---------  -------------
-control      16           22      
-rta          29           10      
+|        | donated | no_donation |
+|:-------|:-------:|:-----------:|
+|control |   16    |     22      |
+|rta     |   29    |     10      |
 
 ### Assumption checks
 

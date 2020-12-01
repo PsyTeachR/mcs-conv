@@ -44,14 +44,14 @@ Recall the difference between *wide* and *tidy* data. In wide data, each row rep
 Before we calculate means, you need to use `gather()` to restructure the STARS data into the appropriate "tidy" format; i.e., so that it looks like the table below.
 
 
- ID    Question    Score 
-----  ----------  -------
- 3       Q01         1   
- 3       Q02         1   
- 3       Q03         1   
- 3       Q04         1   
- 3       Q05         1   
- 3       Q06         1   
+| ID | Question | Score |
+|:--:|:--------:|:-----:|
+| 3  |   Q01    |   1   |
+| 3  |   Q02    |   1   |
+| 3  |   Q03    |   1   |
+| 3  |   Q04    |   1   |
+| 3  |   Q05    |   1   |
+| 3  |   Q06    |   1   |
 
 * Write and run the code to do tidy the STARS data, and store the resulting table as `stars2`.
 
@@ -62,6 +62,9 @@ Before we calculate means, you need to use `gather()` to restructure the STARS d
 
 
 
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
 
 
 ## Activity 4: Join the datasets together

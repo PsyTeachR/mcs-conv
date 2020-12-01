@@ -199,9 +199,9 @@ There's no fixed answer to this question but the person writing this book takes 
 * Store the output of this in an object called `descriptives` and then view the object. It should look something like this:  
 
 
- Abil_mean    Abil_SD    IQ_mean    IQ_SD 
------------  ---------  ---------  -------
-   55.12       6.08      100.04     9.04  
+| Abil_mean | Abil_SD | IQ_mean | IQ_SD |
+|:---------:|:-------:|:-------:|:-----:|
+|   55.12   |  6.08   | 100.04  | 9.04  |
 
 
 ## Activity 5: Correlation
