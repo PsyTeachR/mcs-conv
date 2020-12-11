@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Intro to Data Viz | MSc Conversion in Psychological Studies</title>
+  <meta name="description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Intro to Data Viz | MSc Conversion in Psychological Studies" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Intro to Data Viz | MSc Conversion in Psychological Studies" />
+  
+  <meta name="twitter:description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
+  
+
+
+
+<meta name="date" content="2020-11-30" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-wrangling-3.html"/>
+<link rel="next" href="probability.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="include\psyteachr.css" type="text/css" />
+<link rel="stylesheet" href="include\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MSc Conversion in Psychological Studies/Science (face-to-face)</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#how-to-use-this-book"><i class="fa fa-check"></i><b>0.1</b> How to use this book</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#intended-learning-outcomes"><i class="fa fa-check"></i><b>0.2</b> Intended Learning Outcomes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="ref3.html"><a href="ref3.html"><i class="fa fa-check"></i><b>1</b> Programming basics</a><ul>
+<li class="chapter" data-level="1.0.1" data-path="ref3.html"><a href="ref3.html#r-and-r-studio"><i class="fa fa-check"></i><b>1.0.1</b> R and R Studio</a></li>
+<li class="chapter" data-level="1.0.2" data-path="ref3.html"><a href="ref3.html#how-to-use-r-and-r-studio"><i class="fa fa-check"></i><b>1.0.2</b> How to use R and R Studio</a></li>
+<li class="chapter" data-level="1.0.3" data-path="ref3.html"><a href="ref3.html#r-server"><i class="fa fa-check"></i><b>1.0.3</b> R server</a></li>
+<li class="chapter" data-level="1.0.4" data-path="ref3.html"><a href="ref3.html#installing-r-on-your-computer"><i class="fa fa-check"></i><b>1.0.4</b> Installing R on your computer</a></li>
+<li class="chapter" data-level="1.0.5" data-path="ref3.html"><a href="ref3.html#getting-to-know-r-studio"><i class="fa fa-check"></i><b>1.0.5</b> Getting to know R Studio</a></li>
+<li class="chapter" data-level="1.0.6" data-path="ref3.html"><a href="ref3.html#console-vs.-scripts"><i class="fa fa-check"></i><b>1.0.6</b> Console vs. scripts</a></li>
+<li class="chapter" data-level="1.0.7" data-path="ref3.html"><a href="ref3.html#functions-and-arguments"><i class="fa fa-check"></i><b>1.0.7</b> Functions and arguments</a></li>
+<li class="chapter" data-level="1.0.8" data-path="ref3.html"><a href="ref3.html#activity-1"><i class="fa fa-check"></i><b>1.0.8</b> Activity 1</a></li>
+<li class="chapter" data-level="1.0.9" data-path="ref3.html"><a href="ref3.html#activity-2"><i class="fa fa-check"></i><b>1.0.9</b> Activity 2</a></li>
+<li class="chapter" data-level="1.0.10" data-path="ref3.html"><a href="ref3.html#argument-names"><i class="fa fa-check"></i><b>1.0.10</b> Argument names</a></li>
+<li class="chapter" data-level="1.0.11" data-path="ref3.html"><a href="ref3.html#tab-auto-complete"><i class="fa fa-check"></i><b>1.0.11</b> Tab auto-complete</a></li>
+<li class="chapter" data-level="1.0.12" data-path="ref3.html"><a href="ref3.html#packages"><i class="fa fa-check"></i><b>1.0.12</b> Base R and packages</a></li>
+<li class="chapter" data-level="1.0.13" data-path="ref3.html"><a href="ref3.html#activity-3-install-the-tidyverse-optional"><i class="fa fa-check"></i><b>1.0.13</b> Activity 3: Install the tidyverse (optional)</a></li>
+<li class="chapter" data-level="1.0.14" data-path="ref3.html"><a href="ref3.html#activity-4-load-the-tidyverse"><i class="fa fa-check"></i><b>1.0.14</b> Activity 4: Load the tidyverse</a></li>
+<li class="chapter" data-level="1.0.15" data-path="ref3.html"><a href="ref3.html#package-updates"><i class="fa fa-check"></i><b>1.0.15</b> Package updates</a></li>
+<li class="chapter" data-level="1.0.16" data-path="ref3.html"><a href="ref3.html#conflicts"><i class="fa fa-check"></i><b>1.0.16</b> Package conflicts</a></li>
+<li class="chapter" data-level="1.0.17" data-path="ref3.html"><a href="ref3.html#objects"><i class="fa fa-check"></i><b>1.0.17</b> Objects</a></li>
+<li class="chapter" data-level="1.0.18" data-path="ref3.html"><a href="ref3.html#activity-5-create-some-objects"><i class="fa fa-check"></i><b>1.0.18</b> Activity 5: Create some objects</a></li>
+<li class="chapter" data-level="1.0.19" data-path="ref3.html"><a href="ref3.html#looking-after-the-environment"><i class="fa fa-check"></i><b>1.0.19</b> Looking after the environment</a></li>
+<li class="chapter" data-level="1.0.20" data-path="ref3.html"><a href="ref3.html#global-options"><i class="fa fa-check"></i><b>1.0.20</b> Global options</a></li>
+<li class="chapter" data-level="1.0.21" data-path="ref3.html"><a href="ref3.html#r-sessions"><i class="fa fa-check"></i><b>1.0.21</b> R sessions</a></li>
+<li class="chapter" data-level="1.0.22" data-path="ref3.html"><a href="ref3.html#help-and-additional-resources"><i class="fa fa-check"></i><b>1.0.22</b> Help and additional resources</a></li>
+<li class="chapter" data-level="1.0.23" data-path="ref3.html"><a href="ref3.html#debugging-tips"><i class="fa fa-check"></i><b>1.0.23</b> Debugging tips</a></li>
+<li class="chapter" data-level="1.0.24" data-path="ref3.html"><a href="ref3.html#activity-6-test-yourself"><i class="fa fa-check"></i><b>1.0.24</b> Activity 6: Test yourself</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ref2.html"><a href="ref2.html"><i class="fa fa-check"></i><b>2</b> Intro to R</a><ul>
+<li class="chapter" data-level="2.1" data-path="ref2.html"><a href="ref2.html#activity-1-create-the-working-directory"><i class="fa fa-check"></i><b>2.1</b> Activity 1: Create the working directory</a></li>
+<li class="chapter" data-level="2.2" data-path="ref2.html"><a href="ref2.html#activity-1b-mirror-the-directory-on-the-server"><i class="fa fa-check"></i><b>2.2</b> Activity 1b: Mirror the directory on the server</a></li>
+<li class="chapter" data-level="2.3" data-path="ref2.html"><a href="ref2.html#activity-2-set-the-working-directory"><i class="fa fa-check"></i><b>2.3</b> Activity 2: Set the working directory</a></li>
+<li class="chapter" data-level="2.4" data-path="ref2.html"><a href="ref2.html#r-markdown-for-r-book-work-and-portfolio-assignments"><i class="fa fa-check"></i><b>2.4</b> R Markdown for R book work and portfolio assignments</a></li>
+<li class="chapter" data-level="2.5" data-path="ref2.html"><a href="ref2.html#activity-3-open-and-save-a-new-r-markdown-document"><i class="fa fa-check"></i><b>2.5</b> Activity 3: Open and save a new R Markdown document</a></li>
+<li class="chapter" data-level="2.6" data-path="ref2.html"><a href="ref2.html#activity-4-create-a-new-code-chunk"><i class="fa fa-check"></i><b>2.6</b> Activity 4: Create a new code chunk</a></li>
+<li class="chapter" data-level="2.7" data-path="ref2.html"><a href="ref2.html#activity-5-write-some-code"><i class="fa fa-check"></i><b>2.7</b> Activity 5: Write some code</a></li>
+<li class="chapter" data-level="2.8" data-path="ref2.html"><a href="ref2.html#running-code"><i class="fa fa-check"></i><b>2.8</b> Running code</a></li>
+<li class="chapter" data-level="2.9" data-path="ref2.html"><a href="ref2.html#activity-6-run-your-code"><i class="fa fa-check"></i><b>2.9</b> Activity 6: Run your code</a></li>
+<li class="chapter" data-level="2.10" data-path="ref2.html"><a href="ref2.html#activity-7-inline-code"><i class="fa fa-check"></i><b>2.10</b> Activity 7: Inline code</a></li>
+<li class="chapter" data-level="2.11" data-path="ref2.html"><a href="ref2.html#activity-8-knitting-your-file"><i class="fa fa-check"></i><b>2.11</b> Activity 8: Knitting your file</a></li>
+<li class="chapter" data-level="2.12" data-path="ref2.html"><a href="ref2.html#activity-9-make-r-your-own"><i class="fa fa-check"></i><b>2.12</b> Activity 9: Make R your own</a></li>
+<li class="chapter" data-level="2.13" data-path="ref2.html"><a href="ref2.html#finished"><i class="fa fa-check"></i><b>2.13</b> Finished</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="loading-data.html"><a href="loading-data.html"><i class="fa fa-check"></i><b>3</b> Loading data</a><ul>
+<li class="chapter" data-level="3.0.1" data-path="loading-data.html"><a href="loading-data.html#getting-data-ready-to-work-with"><i class="fa fa-check"></i><b>3.0.1</b> Getting data ready to work with</a></li>
+<li class="chapter" data-level="3.0.2" data-path="loading-data.html"><a href="loading-data.html#activity-1-set-up"><i class="fa fa-check"></i><b>3.0.2</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="3.0.3" data-path="loading-data.html"><a href="loading-data.html#activity-2-load-in-the-package"><i class="fa fa-check"></i><b>3.0.3</b> Activity 2: Load in the package</a></li>
+<li class="chapter" data-level="3.0.4" data-path="loading-data.html"><a href="loading-data.html#open-data"><i class="fa fa-check"></i><b>3.0.4</b> Open data</a></li>
+<li class="chapter" data-level="3.0.5" data-path="loading-data.html"><a href="loading-data.html#activity-3-read-in-data"><i class="fa fa-check"></i><b>3.0.5</b> Activity 3: Read in data</a></li>
+<li class="chapter" data-level="3.0.6" data-path="loading-data.html"><a href="loading-data.html#activity-4-check-yo-data"><i class="fa fa-check"></i><b>3.0.6</b> Activity 4: Check yo’ data</a></li>
+<li class="chapter" data-level="3.0.7" data-path="loading-data.html"><a href="loading-data.html#join"><i class="fa fa-check"></i><b>3.0.7</b> Activity 5: Join the files together</a></li>
+<li class="chapter" data-level="3.0.8" data-path="loading-data.html"><a href="loading-data.html#ref1"><i class="fa fa-check"></i><b>3.0.8</b> Activity 6: Pull out variables of interest</a></li>
+<li class="chapter" data-level="3.1" data-path="loading-data.html"><a href="loading-data.html#debugging-tips-1"><i class="fa fa-check"></i><b>3.1</b> Debugging tips</a></li>
+<li class="chapter" data-level="3.2" data-path="loading-data.html"><a href="loading-data.html#test-yourself"><i class="fa fa-check"></i><b>3.2</b> Test yourself</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html"><i class="fa fa-check"></i><b>4</b> Data wrangling 1</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#tidyverse"><i class="fa fa-check"></i><b>4.1</b> Tidyverse</a></li>
+<li class="chapter" data-level="4.2" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#the-babynames-database"><i class="fa fa-check"></i><b>4.2</b> The <code>babynames</code> database</a></li>
+<li class="chapter" data-level="4.3" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#activity-1-set-up-1"><i class="fa fa-check"></i><b>4.3</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="4.4" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#activity-2-look-at-the-data"><i class="fa fa-check"></i><b>4.4</b> Activity 2: Look at the data</a></li>
+<li class="chapter" data-level="4.5" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#activity-3-your-first-plot"><i class="fa fa-check"></i><b>4.5</b> Activity 3: Your first plot</a></li>
+<li class="chapter" data-level="4.6" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#activity-4-selecting-variables-of-interest"><i class="fa fa-check"></i><b>4.6</b> Activity 4: Selecting variables of interest</a></li>
+<li class="chapter" data-level="4.7" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#activity-5-arranging-the-data"><i class="fa fa-check"></i><b>4.7</b> Activity 5: Arranging the data</a></li>
+<li class="chapter" data-level="4.8" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#activity-6-using-filter-to-select-observations"><i class="fa fa-check"></i><b>4.8</b> Activity 6: Using filter to select observations</a></li>
+<li class="chapter" data-level="4.9" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#mutate"><i class="fa fa-check"></i><b>4.9</b> Activity 7: Creating new variables</a></li>
+<li class="chapter" data-level="4.10" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#activity-8-grouping-and-summarising"><i class="fa fa-check"></i><b>4.10</b> Activity 8: Grouping and summarising</a></li>
+<li class="chapter" data-level="4.11" data-path="data-wrangling-1.html"><a href="data-wrangling-1.html#activity-9-pipes"><i class="fa fa-check"></i><b>4.11</b> Activity 9: Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html"><i class="fa fa-check"></i><b>5</b> Data wrangling 2</a><ul>
+<li class="chapter" data-level="5.1" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#learning-to-wrangle-is-there-a-chastity-belt-on-perception"><i class="fa fa-check"></i><b>5.1</b> Learning to wrangle: Is there a chastity belt on perception</a></li>
+<li class="chapter" data-level="5.2" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-1-set-up-2"><i class="fa fa-check"></i><b>5.2</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="5.3" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-2-look-at-your-data"><i class="fa fa-check"></i><b>5.3</b> Activity 2: Look at your data</a></li>
+<li class="chapter" data-level="5.4" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-3-select"><i class="fa fa-check"></i><b>5.4</b> Activity 3: <strong><code>select()</code></strong></a></li>
+<li class="chapter" data-level="5.5" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-4-reorder-the-variables"><i class="fa fa-check"></i><b>5.5</b> Activity 4: Reorder the variables</a></li>
+<li class="chapter" data-level="5.6" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-5-arrange-f"><i class="fa fa-check"></i><b>5.6</b> Activity 5: <strong><code>arrange()</code></strong> F</a></li>
+<li class="chapter" data-level="5.7" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-6-filter"><i class="fa fa-check"></i><b>5.7</b> Activity 6: <code>filter()</code></a></li>
+<li class="chapter" data-level="5.8" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#recode"><i class="fa fa-check"></i><b>5.8</b> Activity 7: <code>mutate()</code></a></li>
+<li class="chapter" data-level="5.9" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-8-summarising-data"><i class="fa fa-check"></i><b>5.9</b> Activity 8: Summarising data</a></li>
+<li class="chapter" data-level="5.10" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-9-counting-observations"><i class="fa fa-check"></i><b>5.10</b> Activity 9: Counting observations</a></li>
+<li class="chapter" data-level="5.11" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#bind_rows"><i class="fa fa-check"></i><b>5.11</b> <code>bind_rows()</code></a></li>
+<li class="chapter" data-level="5.12" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#pipes"><i class="fa fa-check"></i><b>5.12</b> Pipes (<strong><code>%&gt;%</code></strong>)</a><ul>
+<li class="chapter" data-level="5.12.1" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#finished-2"><i class="fa fa-check"></i><b>5.12.1</b> Finished!</a></li>
+</ul></li>
+<li class="chapter" data-level="5.13" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-solutions"><i class="fa fa-check"></i><b>5.13</b> Activity solutions</a><ul>
+<li class="chapter" data-level="5.13.1" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-3"><i class="fa fa-check"></i><b>5.13.1</b> Activity 3</a></li>
+<li class="chapter" data-level="5.13.2" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-4"><i class="fa fa-check"></i><b>5.13.2</b> Activity 4</a></li>
+<li class="chapter" data-level="5.13.3" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-5"><i class="fa fa-check"></i><b>5.13.3</b> Activity 5</a></li>
+<li class="chapter" data-level="5.13.4" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-6"><i class="fa fa-check"></i><b>5.13.4</b> Activity 6</a></li>
+<li class="chapter" data-level="5.13.5" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-7"><i class="fa fa-check"></i><b>5.13.5</b> Activity 7</a></li>
+<li class="chapter" data-level="5.13.6" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#activity-8"><i class="fa fa-check"></i><b>5.13.6</b> Activity 8</a></li>
+</ul></li>
+<li class="chapter" data-level="5.14" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#debugging-tips-2"><i class="fa fa-check"></i><b>5.14</b> Debugging tips</a></li>
+<li class="chapter" data-level="5.15" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#test-yourself-1"><i class="fa fa-check"></i><b>5.15</b> Test yourself</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html"><i class="fa fa-check"></i><b>6</b> Data Wrangling 3</a><ul>
+<li class="chapter" data-level="6.1" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#data-wrangling-recap"><i class="fa fa-check"></i><b>6.1</b> Data wrangling recap</a></li>
+<li class="chapter" data-level="6.2" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#tidy-data"><i class="fa fa-check"></i><b>6.2</b> Tidy data</a></li>
+<li class="chapter" data-level="6.3" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#analysing-the-autism-spectrum-quotient-aq"><i class="fa fa-check"></i><b>6.3</b> Analysing the Autism Spectrum Quotient (AQ)</a></li>
+<li class="chapter" data-level="6.4" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#activity-1-set-up-3"><i class="fa fa-check"></i><b>6.4</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="6.5" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#activity-2-load-in-the-data"><i class="fa fa-check"></i><b>6.5</b> Activity 2: Load in the data</a></li>
+<li class="chapter" data-level="6.6" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#activity-3-look-at-your-data"><i class="fa fa-check"></i><b>6.6</b> Activity 3: Look at your data</a></li>
+<li class="chapter" data-level="6.7" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#gather"><i class="fa fa-check"></i><b>6.7</b> Activity 4: Tidying data</a></li>
+<li class="chapter" data-level="6.8" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#activity-5-combining-data"><i class="fa fa-check"></i><b>6.8</b> Activity 5: Combining data</a></li>
+<li class="chapter" data-level="6.9" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#activity-6-combining-more-data"><i class="fa fa-check"></i><b>6.9</b> Activity 6: Combining more data</a></li>
+<li class="chapter" data-level="6.10" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#activity-7-calculating-the-aq-scores."><i class="fa fa-check"></i><b>6.10</b> Activity 7: Calculating the AQ scores.</a></li>
+<li class="chapter" data-level="6.11" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#activity-8-one-last-thing-on-pipes"><i class="fa fa-check"></i><b>6.11</b> Activity 8: One last thing on pipes</a></li>
+<li class="chapter" data-level="6.12" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#activity-solutions-1"><i class="fa fa-check"></i><b>6.12</b> Activity solutions</a><ul>
+<li class="chapter" data-level="6.12.1" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#activity-2-1"><i class="fa fa-check"></i><b>6.12.1</b> Activity 2</a></li>
+<li class="chapter" data-level="6.12.2" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#activity-5-1"><i class="fa fa-check"></i><b>6.12.2</b> Activity 5</a></li>
+<li class="chapter" data-level="6.12.3" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#activity-7-1"><i class="fa fa-check"></i><b>6.12.3</b> Activity 7</a></li>
+<li class="chapter" data-level="6.12.4" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#activity-8-1"><i class="fa fa-check"></i><b>6.12.4</b> Activity 8</a></li>
+</ul></li>
+<li class="chapter" data-level="6.13" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#test-yourself-2"><i class="fa fa-check"></i><b>6.13</b> Test yourself</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="intro-to-data-viz.html"><a href="intro-to-data-viz.html"><i class="fa fa-check"></i><b>7</b> Intro to Data Viz</a><ul>
+<li class="chapter" data-level="7.1" data-path="intro-to-data-viz.html"><a href="intro-to-data-viz.html#activity-1-dplyr-recap"><i class="fa fa-check"></i><b>7.1</b> Activity 1: dplyr recap</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="intro-to-data-viz.html"><a href="intro-to-data-viz.html#data-visualisation"><i class="fa fa-check"></i><b>7.1.1</b> Data visualisation</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="intro-to-data-viz.html"><a href="intro-to-data-viz.html#activity-2-set-up"><i class="fa fa-check"></i><b>7.2</b> Activity 2: Set-up</a></li>
+<li class="chapter" data-level="7.3" data-path="intro-to-data-viz.html"><a href="intro-to-data-viz.html#activity-3-factors"><i class="fa fa-check"></i><b>7.3</b> Activity 3: Factors</a></li>
+<li class="chapter" data-level="7.4" data-path="intro-to-data-viz.html"><a href="intro-to-data-viz.html#activity-4-bar-plot"><i class="fa fa-check"></i><b>7.4</b> Activity 4: Bar plot</a></li>
+<li class="chapter" data-level="7.5" data-path="intro-to-data-viz.html"><a href="intro-to-data-viz.html#activity-5-violin-boxplot"><i class="fa fa-check"></i><b>7.5</b> Activity 5: Violin-boxplot</a></li>
+<li class="chapter" data-level="7.6" data-path="intro-to-data-viz.html"><a href="intro-to-data-viz.html#activity-6-layers-part-2"><i class="fa fa-check"></i><b>7.6</b> Activity 6: Layers part 2</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="intro-to-data-viz.html"><a href="intro-to-data-viz.html#finished-3"><i class="fa fa-check"></i><b>7.6.1</b> Finished!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>8</b> Probability</a><ul>
+<li class="chapter" data-level="8.1" data-path="probability.html"><a href="probability.html#activity-1-prep"><i class="fa fa-check"></i><b>8.1</b> Activity 1: Prep</a></li>
+<li class="chapter" data-level="8.2" data-path="probability.html"><a href="probability.html#what-is-probability"><i class="fa fa-check"></i><b>8.2</b> What is probability?</a></li>
+<li class="chapter" data-level="8.3" data-path="probability.html"><a href="probability.html#types-of-data"><i class="fa fa-check"></i><b>8.3</b> Types of data</a></li>
+<li class="chapter" data-level="8.4" data-path="probability.html"><a href="probability.html#activity-2-types-of-data"><i class="fa fa-check"></i><b>8.4</b> Activity 2: Types of data</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="probability.html"><a href="probability.html#probability-distributions"><i class="fa fa-check"></i><b>8.4.1</b> Probability distributions</a></li>
+<li class="chapter" data-level="8.4.2" data-path="probability.html"><a href="probability.html#the-uniform-distribution"><i class="fa fa-check"></i><b>8.4.2</b> The uniform distribution</a></li>
+<li class="chapter" data-level="8.4.3" data-path="probability.html"><a href="probability.html#the-binomial-distribution"><i class="fa fa-check"></i><b>8.4.3</b> The binomial distribution</a></li>
+<li class="chapter" data-level="8.4.4" data-path="probability.html"><a href="probability.html#the-normal-distribution"><i class="fa fa-check"></i><b>8.4.4</b> The normal distribution</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="probability.html"><a href="probability.html#activity-3-normal-distribution"><i class="fa fa-check"></i><b>8.5</b> Activity 3: Normal distribution</a></li>
+<li class="chapter" data-level="8.6" data-path="probability.html"><a href="probability.html#activity-4-distribution-test"><i class="fa fa-check"></i><b>8.6</b> Activity 4: Distribution test</a></li>
+<li class="chapter" data-level="8.7" data-path="probability.html"><a href="probability.html#activity-5-binomial-distribution"><i class="fa fa-check"></i><b>8.7</b> Activity 5: Binomial distribution</a></li>
+<li class="chapter" data-level="8.8" data-path="probability.html"><a href="probability.html#activity-6-dbinom"><i class="fa fa-check"></i><b>8.8</b> Activity 6: <code>dbinom()</code></a></li>
+<li class="chapter" data-level="8.9" data-path="probability.html"><a href="probability.html#activity-7-pbinom"><i class="fa fa-check"></i><b>8.9</b> Activity 7: <code>pbinom()</code></a></li>
+<li class="chapter" data-level="8.10" data-path="probability.html"><a href="probability.html#activity-8-pbinom-2"><i class="fa fa-check"></i><b>8.10</b> Activity 8: <code>pbinom()</code> 2</a></li>
+<li class="chapter" data-level="8.11" data-path="probability.html"><a href="probability.html#activity-9-qbinom"><i class="fa fa-check"></i><b>8.11</b> Activity 9: <code>qbinom()</code></a></li>
+<li class="chapter" data-level="8.12" data-path="probability.html"><a href="probability.html#normal-distribution"><i class="fa fa-check"></i><b>8.12</b> Normal distribution</a><ul>
+<li class="chapter" data-level="8.12.1" data-path="probability.html"><a href="probability.html#probability-of-heights"><i class="fa fa-check"></i><b>8.12.1</b> Probability of heights</a></li>
+</ul></li>
+<li class="chapter" data-level="8.13" data-path="probability.html"><a href="probability.html#activity-10pnorm"><i class="fa fa-check"></i><b>8.13</b> Activity 10:<code>pnorm()</code></a></li>
+<li class="chapter" data-level="8.14" data-path="probability.html"><a href="probability.html#activity-11-pnorm-2"><i class="fa fa-check"></i><b>8.14</b> Activity 11: <code>pnorm</code> 2</a></li>
+<li class="chapter" data-level="8.15" data-path="probability.html"><a href="probability.html#activity-12-pnorm-3"><i class="fa fa-check"></i><b>8.15</b> Activity 12: <code>pnorm</code> 3</a></li>
+<li class="chapter" data-level="8.16" data-path="probability.html"><a href="probability.html#activity-13-qnorm"><i class="fa fa-check"></i><b>8.16</b> Activity 13: <code>qnorm()</code></a></li>
+<li class="chapter" data-level="8.17" data-path="probability.html"><a href="probability.html#activity-solutions-2"><i class="fa fa-check"></i><b>8.17</b> Activity solutions</a><ul>
+<li class="chapter" data-level="8.17.1" data-path="probability.html"><a href="probability.html#activity-6-1"><i class="fa fa-check"></i><b>8.17.1</b> Activity 6</a></li>
+<li class="chapter" data-level="8.17.2" data-path="probability.html"><a href="probability.html#activity-7-2"><i class="fa fa-check"></i><b>8.17.2</b> Activity 7</a></li>
+<li class="chapter" data-level="8.17.3" data-path="probability.html"><a href="probability.html#activity-8-2"><i class="fa fa-check"></i><b>8.17.3</b> Activity 8</a></li>
+<li class="chapter" data-level="8.17.4" data-path="probability.html"><a href="probability.html#activity-10"><i class="fa fa-check"></i><b>8.17.4</b> Activity 10</a></li>
+<li class="chapter" data-level="8.17.5" data-path="probability.html"><a href="probability.html#activity-11"><i class="fa fa-check"></i><b>8.17.5</b> Activity 11</a></li>
+<li class="chapter" data-level="8.17.6" data-path="probability.html"><a href="probability.html#activity-12"><i class="fa fa-check"></i><b>8.17.6</b> Activity 12</a></li>
+<li class="chapter" data-level="8.17.7" data-path="probability.html"><a href="probability.html#activity-13"><i class="fa fa-check"></i><b>8.17.7</b> Activity 13</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="correlations.html"><a href="correlations.html"><i class="fa fa-check"></i><b>9</b> Correlations</a><ul>
+<li class="chapter" data-level="9.1" data-path="correlations.html"><a href="correlations.html#activity-1-set-up-4"><i class="fa fa-check"></i><b>9.1</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="9.2" data-path="correlations.html"><a href="correlations.html#activity-2-look-at-your-data-1"><i class="fa fa-check"></i><b>9.2</b> Activity 2: Look at your data</a></li>
+<li class="chapter" data-level="9.3" data-path="correlations.html"><a href="correlations.html#activity-3-assumptions"><i class="fa fa-check"></i><b>9.3</b> Activity 3: Assumptions</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="correlations.html"><a href="correlations.html#assumption-1-level-of-measurement"><i class="fa fa-check"></i><b>9.3.1</b> Assumption 1: Level of Measurement</a></li>
+<li class="chapter" data-level="9.3.2" data-path="correlations.html"><a href="correlations.html#assumption-2-pairs-of-data"><i class="fa fa-check"></i><b>9.3.2</b> Assumption 2: Pairs of Data</a></li>
+<li class="chapter" data-level="9.3.3" data-path="correlations.html"><a href="correlations.html#assumption-3-5-normality-linearity-homoscedasticity"><i class="fa fa-check"></i><b>9.3.3</b> Assumption 3-5: Normality, linearity, homoscedasticity</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="correlations.html"><a href="correlations.html#scatterplot"><i class="fa fa-check"></i><b>9.4</b> Scatterplot</a></li>
+<li class="chapter" data-level="9.5" data-path="correlations.html"><a href="correlations.html#activity-4-descriptive-statistics"><i class="fa fa-check"></i><b>9.5</b> Activity 4: Descriptive statistics</a></li>
+<li class="chapter" data-level="9.6" data-path="correlations.html"><a href="correlations.html#activity-5-correlation"><i class="fa fa-check"></i><b>9.6</b> Activity 5: Correlation</a></li>
+<li class="chapter" data-level="9.7" data-path="correlations.html"><a href="correlations.html#activity-6-interpreting-the-correlation"><i class="fa fa-check"></i><b>9.7</b> Activity 6: Interpreting the correlation</a></li>
+<li class="chapter" data-level="9.8" data-path="correlations.html"><a href="correlations.html#activity-7-write-up"><i class="fa fa-check"></i><b>9.8</b> Activity 7: Write-up</a></li>
+<li class="chapter" data-level="9.9" data-path="correlations.html"><a href="correlations.html#activity-8-scatterplot-matrix"><i class="fa fa-check"></i><b>9.9</b> Activity 8: Scatterplot matrix</a></li>
+<li class="chapter" data-level="9.10" data-path="correlations.html"><a href="correlations.html#activity-9-multiple-correlations"><i class="fa fa-check"></i><b>9.10</b> Activity 9: Multiple correlations</a><ul>
+<li class="chapter" data-level="9.10.1" data-path="correlations.html"><a href="correlations.html#finished-4"><i class="fa fa-check"></i><b>9.10.1</b> Finished!</a></li>
+</ul></li>
+<li class="chapter" data-level="9.11" data-path="correlations.html"><a href="correlations.html#activity-solutions-3"><i class="fa fa-check"></i><b>9.11</b> Activity solutions</a><ul>
+<li class="chapter" data-level="9.11.1" data-path="correlations.html"><a href="correlations.html#activity-1-1"><i class="fa fa-check"></i><b>9.11.1</b> Activity 1</a></li>
+<li class="chapter" data-level="9.11.2" data-path="correlations.html"><a href="correlations.html#activity-3-1"><i class="fa fa-check"></i><b>9.11.2</b> Activity 3</a></li>
+<li class="chapter" data-level="9.11.3" data-path="correlations.html"><a href="correlations.html#activity-4-1"><i class="fa fa-check"></i><b>9.11.3</b> Activity 4</a></li>
+<li class="chapter" data-level="9.11.4" data-path="correlations.html"><a href="correlations.html#activity-5-2"><i class="fa fa-check"></i><b>9.11.4</b> Activity 5</a></li>
+<li class="chapter" data-level="9.11.5" data-path="correlations.html"><a href="correlations.html#activity-8-3"><i class="fa fa-check"></i><b>9.11.5</b> Activity 8</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="t-tests.html"><a href="t-tests.html"><i class="fa fa-check"></i><b>10</b> t-tests</a><ul>
+<li class="chapter" data-level="10.1" data-path="t-tests.html"><a href="t-tests.html#activity-1-set-up-5"><i class="fa fa-check"></i><b>10.1</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="10.2" data-path="t-tests.html"><a href="t-tests.html#activity-2-explore-the-dataset"><i class="fa fa-check"></i><b>10.2</b> Activity 2: Explore the dataset</a></li>
+<li class="chapter" data-level="10.3" data-path="t-tests.html"><a href="t-tests.html#activity-3-ratings"><i class="fa fa-check"></i><b>10.3</b> Activity 3: Ratings</a></li>
+<li class="chapter" data-level="10.4" data-path="t-tests.html"><a href="t-tests.html#activity-4-visualisation"><i class="fa fa-check"></i><b>10.4</b> Activity 4: Visualisation</a></li>
+<li class="chapter" data-level="10.5" data-path="t-tests.html"><a href="t-tests.html#activity-5-assumptions"><i class="fa fa-check"></i><b>10.5</b> Activity 5: Assumptions</a></li>
+<li class="chapter" data-level="10.6" data-path="t-tests.html"><a href="t-tests.html#activity-6-running-the-t-test"><i class="fa fa-check"></i><b>10.6</b> Activity 6: Running the t-test</a></li>
+<li class="chapter" data-level="10.7" data-path="t-tests.html"><a href="t-tests.html#activity-7-correcting-for-multiple-comparisons"><i class="fa fa-check"></i><b>10.7</b> Activity 7: Correcting for multiple comparisons</a></li>
+<li class="chapter" data-level="10.8" data-path="t-tests.html"><a href="t-tests.html#activity-8-effect-size"><i class="fa fa-check"></i><b>10.8</b> Activity 8: Effect size</a></li>
+<li class="chapter" data-level="10.9" data-path="t-tests.html"><a href="t-tests.html#activity-9-interpreting-the-results"><i class="fa fa-check"></i><b>10.9</b> Activity 9: Interpreting the results</a></li>
+<li class="chapter" data-level="10.10" data-path="t-tests.html"><a href="t-tests.html#activity-10-write-up"><i class="fa fa-check"></i><b>10.10</b> Activity 10: Write-up</a></li>
+<li class="chapter" data-level="10.11" data-path="t-tests.html"><a href="t-tests.html#activity-11-paired-samples-t-test"><i class="fa fa-check"></i><b>10.11</b> Activity 11: Paired-samples t-test</a></li>
+<li class="chapter" data-level="10.12" data-path="t-tests.html"><a href="t-tests.html#activity-12-assumptions"><i class="fa fa-check"></i><b>10.12</b> Activity 12: Assumptions</a></li>
+<li class="chapter" data-level="10.13" data-path="t-tests.html"><a href="t-tests.html#activity-13-descriptives-and-visualisations"><i class="fa fa-check"></i><b>10.13</b> Activity 13: Descriptives and visualisations</a></li>
+<li class="chapter" data-level="10.14" data-path="t-tests.html"><a href="t-tests.html#activity-14-paired-samples-t-test"><i class="fa fa-check"></i><b>10.14</b> Activity 14: Paired-samples t-test</a></li>
+<li class="chapter" data-level="10.15" data-path="t-tests.html"><a href="t-tests.html#activity-15-write-up"><i class="fa fa-check"></i><b>10.15</b> Activity 15: Write-up</a><ul>
+<li class="chapter" data-level="10.15.1" data-path="t-tests.html"><a href="t-tests.html#finished-5"><i class="fa fa-check"></i><b>10.15.1</b> Finished!</a></li>
+</ul></li>
+<li class="chapter" data-level="10.16" data-path="t-tests.html"><a href="t-tests.html#activity-solutions-4"><i class="fa fa-check"></i><b>10.16</b> Activity solutions</a><ul>
+<li class="chapter" data-level="10.16.1" data-path="t-tests.html"><a href="t-tests.html#activity-1-2"><i class="fa fa-check"></i><b>10.16.1</b> Activity 1</a></li>
+<li class="chapter" data-level="10.16.2" data-path="t-tests.html"><a href="t-tests.html#activity-2-2"><i class="fa fa-check"></i><b>10.16.2</b> Activity 2</a></li>
+<li class="chapter" data-level="10.16.3" data-path="t-tests.html"><a href="t-tests.html#activity-6-2"><i class="fa fa-check"></i><b>10.16.3</b> Activity 6</a></li>
+<li class="chapter" data-level="10.16.4" data-path="t-tests.html"><a href="t-tests.html#activity-7-3"><i class="fa fa-check"></i><b>10.16.4</b> Activity 7</a></li>
+<li class="chapter" data-level="10.16.5" data-path="t-tests.html"><a href="t-tests.html#activity-12-1"><i class="fa fa-check"></i><b>10.16.5</b> Activity 12</a></li>
+<li class="chapter" data-level="10.16.6" data-path="t-tests.html"><a href="t-tests.html#activity-13-1"><i class="fa fa-check"></i><b>10.16.6</b> Activity 13</a></li>
+<li class="chapter" data-level="10.16.7" data-path="t-tests.html"><a href="t-tests.html#activity-14"><i class="fa fa-check"></i><b>10.16.7</b> Activity 14</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="power-and-error.html"><a href="power-and-error.html"><i class="fa fa-check"></i><b>11</b> Power and error</a><ul>
+<li class="chapter" data-level="11.1" data-path="power-and-error.html"><a href="power-and-error.html#effect-size"><i class="fa fa-check"></i><b>11.1</b> Effect Size</a></li>
+<li class="chapter" data-level="11.2" data-path="power-and-error.html"><a href="power-and-error.html#activity-1-set-up-6"><i class="fa fa-check"></i><b>11.2</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="11.3" data-path="power-and-error.html"><a href="power-and-error.html#activity-2-effect-size-from-a-one-sample-t-test"><i class="fa fa-check"></i><b>11.3</b> Activity 2: Effect size from a one-sample t-test</a></li>
+<li class="chapter" data-level="11.4" data-path="power-and-error.html"><a href="power-and-error.html#activity-3-effect-size-from-between-subjects-t-test"><i class="fa fa-check"></i><b>11.4</b> Activity 3: Effect size from between-subjects t-test</a></li>
+<li class="chapter" data-level="11.5" data-path="power-and-error.html"><a href="power-and-error.html#activity-4-t-value-and-effect-size-for-a-between-subjects-experiment"><i class="fa fa-check"></i><b>11.5</b> Activity 4: t-value and effect size for a between-subjects Experiment</a></li>
+<li class="chapter" data-level="11.6" data-path="power-and-error.html"><a href="power-and-error.html#activity-5-pwr.t.test"><i class="fa fa-check"></i><b>11.6</b> Activity 5: <code>pwr.t.test()</code></a></li>
+<li class="chapter" data-level="11.7" data-path="power-and-error.html"><a href="power-and-error.html#activity-6-sample-size-for-standard-power-one-sample-t-test"><i class="fa fa-check"></i><b>11.7</b> Activity 6: Sample size for standard power one-sample t-test</a></li>
+<li class="chapter" data-level="11.8" data-path="power-and-error.html"><a href="power-and-error.html#activity-7-effect-size-from-a-high-power-between-subjects-t-test"><i class="fa fa-check"></i><b>11.8</b> Activity 7: Effect size from a high power between-subjects t-test</a></li>
+<li class="chapter" data-level="11.9" data-path="power-and-error.html"><a href="power-and-error.html#activity-8-sample-size-for-a-correlation"><i class="fa fa-check"></i><b>11.9</b> Activity 8: Sample size for a correlation</a></li>
+<li class="chapter" data-level="11.10" data-path="power-and-error.html"><a href="power-and-error.html#activity-9-effect-size-for-a-correlation-analysis"><i class="fa fa-check"></i><b>11.10</b> Activity 9: Effect size for a correlation analysis</a></li>
+<li class="chapter" data-level="11.11" data-path="power-and-error.html"><a href="power-and-error.html#activity-10-effect-size-for-chi-square"><i class="fa fa-check"></i><b>11.11</b> Activity 10: Effect size for chi-square</a></li>
+<li class="chapter" data-level="11.12" data-path="power-and-error.html"><a href="power-and-error.html#activity-11-power-of-published-research"><i class="fa fa-check"></i><b>11.12</b> Activity 11: Power of published research</a><ul>
+<li class="chapter" data-level="11.12.1" data-path="power-and-error.html"><a href="power-and-error.html#finished-6"><i class="fa fa-check"></i><b>11.12.1</b> Finished!</a></li>
+</ul></li>
+<li class="chapter" data-level="11.13" data-path="power-and-error.html"><a href="power-and-error.html#activity-solutions-5"><i class="fa fa-check"></i><b>11.13</b> Activity solutions</a><ul>
+<li class="chapter" data-level="11.13.1" data-path="power-and-error.html"><a href="power-and-error.html#activity-1-3"><i class="fa fa-check"></i><b>11.13.1</b> Activity 1</a></li>
+<li class="chapter" data-level="11.13.2" data-path="power-and-error.html"><a href="power-and-error.html#activity-2-3"><i class="fa fa-check"></i><b>11.13.2</b> Activity 2</a></li>
+<li class="chapter" data-level="11.13.3" data-path="power-and-error.html"><a href="power-and-error.html#activity-3-2"><i class="fa fa-check"></i><b>11.13.3</b> Activity 3</a></li>
+<li class="chapter" data-level="11.13.4" data-path="power-and-error.html"><a href="power-and-error.html#activity-4-2"><i class="fa fa-check"></i><b>11.13.4</b> Activity 4</a></li>
+<li class="chapter" data-level="11.13.5" data-path="power-and-error.html"><a href="power-and-error.html#activity-6-3"><i class="fa fa-check"></i><b>11.13.5</b> Activity 6</a></li>
+<li class="chapter" data-level="11.13.6" data-path="power-and-error.html"><a href="power-and-error.html#activity-7-4"><i class="fa fa-check"></i><b>11.13.6</b> Activity 7</a></li>
+<li class="chapter" data-level="11.13.7" data-path="power-and-error.html"><a href="power-and-error.html#activity-8-4"><i class="fa fa-check"></i><b>11.13.7</b> Activity 8</a></li>
+<li class="chapter" data-level="11.13.8" data-path="power-and-error.html"><a href="power-and-error.html#activity-9"><i class="fa fa-check"></i><b>11.13.8</b> Activity 9</a></li>
+<li class="chapter" data-level="11.13.9" data-path="power-and-error.html"><a href="power-and-error.html#activity-10-1"><i class="fa fa-check"></i><b>11.13.9</b> Activity 10</a></li>
+<li class="chapter" data-level="11.13.10" data-path="power-and-error.html"><a href="power-and-error.html#activity-11-1"><i class="fa fa-check"></i><b>11.13.10</b> Activity 11</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="screening-data.html"><a href="screening-data.html"><i class="fa fa-check"></i><b>12</b> Screening Data</a><ul>
+<li class="chapter" data-level="12.1" data-path="screening-data.html"><a href="screening-data.html#activity-1-set-up-7"><i class="fa fa-check"></i><b>12.1</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="12.2" data-path="screening-data.html"><a href="screening-data.html#activity-2-look-at-the-data-1"><i class="fa fa-check"></i><b>12.2</b> Activity 2: Look at the data</a></li>
+<li class="chapter" data-level="12.3" data-path="screening-data.html"><a href="screening-data.html#missing-data"><i class="fa fa-check"></i><b>12.3</b> Missing data</a></li>
+<li class="chapter" data-level="12.4" data-path="screening-data.html"><a href="screening-data.html#activity-3-summary"><i class="fa fa-check"></i><b>12.4</b> Activity 3: <code>summary()</code></a></li>
+<li class="chapter" data-level="12.5" data-path="screening-data.html"><a href="screening-data.html#activity-4-listwise-deletion"><i class="fa fa-check"></i><b>12.5</b> Activity 4: Listwise deletion</a></li>
+<li class="chapter" data-level="12.6" data-path="screening-data.html"><a href="screening-data.html#pairwise-deletion"><i class="fa fa-check"></i><b>12.6</b> Pairwise deletion</a></li>
+<li class="chapter" data-level="12.7" data-path="screening-data.html"><a href="screening-data.html#activity-5-na.rm-true"><i class="fa fa-check"></i><b>12.7</b> Activity 5: <code>na.rm = TRUE</code></a></li>
+<li class="chapter" data-level="12.8" data-path="screening-data.html"><a href="screening-data.html#activity-6-implausible-values"><i class="fa fa-check"></i><b>12.8</b> Activity 6: Implausible values</a></li>
+<li class="chapter" data-level="12.9" data-path="screening-data.html"><a href="screening-data.html#activity-7-visualising-implausible-values"><i class="fa fa-check"></i><b>12.9</b> Activity 7: Visualising implausible values</a></li>
+<li class="chapter" data-level="12.10" data-path="screening-data.html"><a href="screening-data.html#dealing-with-implausible-values-or-missing-data"><i class="fa fa-check"></i><b>12.10</b> Dealing with implausible values or missing data</a></li>
+<li class="chapter" data-level="12.11" data-path="screening-data.html"><a href="screening-data.html#alternative-descriptive-statistics"><i class="fa fa-check"></i><b>12.11</b> Alternative descriptive statistics</a></li>
+<li class="chapter" data-level="12.12" data-path="screening-data.html"><a href="screening-data.html#finished-7"><i class="fa fa-check"></i><b>12.12</b> Finished!</a></li>
+<li class="chapter" data-level="12.13" data-path="screening-data.html"><a href="screening-data.html#activity-solutions-6"><i class="fa fa-check"></i><b>12.13</b> Activity solutions</a><ul>
+<li class="chapter" data-level="12.13.1" data-path="screening-data.html"><a href="screening-data.html#activity-1-4"><i class="fa fa-check"></i><b>12.13.1</b> Activity 1</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="vis.html"><a href="vis.html"><i class="fa fa-check"></i><b>13</b> Visualisation</a><ul>
+<li class="chapter" data-level="13.1" data-path="vis.html"><a href="vis.html#activity-1-set-up-8"><i class="fa fa-check"></i><b>13.1</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="13.2" data-path="vis.html"><a href="vis.html#activity-2-histograms"><i class="fa fa-check"></i><b>13.2</b> Activity 2: Histograms</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="vis.html"><a href="vis.html#basic-histogram"><i class="fa fa-check"></i><b>13.2.1</b> Basic histogram</a></li>
+<li class="chapter" data-level="13.2.2" data-path="vis.html"><a href="vis.html#colour-and-fill"><i class="fa fa-check"></i><b>13.2.2</b> Colour and fill</a></li>
+<li class="chapter" data-level="13.2.3" data-path="vis.html"><a href="vis.html#axis-labels"><i class="fa fa-check"></i><b>13.2.3</b> Axis labels</a></li>
+<li class="chapter" data-level="13.2.4" data-path="vis.html"><a href="vis.html#density-curve"><i class="fa fa-check"></i><b>13.2.4</b> Density curve</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="vis.html"><a href="vis.html#activity-3-scatterplots"><i class="fa fa-check"></i><b>13.3</b> Activity 3: Scatterplots</a><ul>
+<li class="chapter" data-level="13.3.1" data-path="vis.html"><a href="vis.html#basic-scatterplot"><i class="fa fa-check"></i><b>13.3.1</b> Basic scatterplot</a></li>
+<li class="chapter" data-level="13.3.2" data-path="vis.html"><a href="vis.html#axis-labels-1"><i class="fa fa-check"></i><b>13.3.2</b> Axis labels</a></li>
+<li class="chapter" data-level="13.3.3" data-path="vis.html"><a href="vis.html#adding-a-regression-line"><i class="fa fa-check"></i><b>13.3.3</b> Adding a regression line</a></li>
+<li class="chapter" data-level="13.3.4" data-path="vis.html"><a href="vis.html#grouped-scatterplots"><i class="fa fa-check"></i><b>13.3.4</b> Grouped scatterplots</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="vis.html"><a href="vis.html#activity-4-boxplots"><i class="fa fa-check"></i><b>13.4</b> Activity 4: Boxplots</a><ul>
+<li class="chapter" data-level="13.4.1" data-path="vis.html"><a href="vis.html#basic-boxplot"><i class="fa fa-check"></i><b>13.4.1</b> Basic boxplot</a></li>
+<li class="chapter" data-level="13.4.2" data-path="vis.html"><a href="vis.html#adding-data-points"><i class="fa fa-check"></i><b>13.4.2</b> Adding data points</a></li>
+<li class="chapter" data-level="13.4.3" data-path="vis.html"><a href="vis.html#adding-colour"><i class="fa fa-check"></i><b>13.4.3</b> Adding colour</a></li>
+<li class="chapter" data-level="13.4.4" data-path="vis.html"><a href="vis.html#boxplots-for-multiple-factors"><i class="fa fa-check"></i><b>13.4.4</b> Boxplots for multiple factors</a></li>
+<li class="chapter" data-level="13.4.5" data-path="vis.html"><a href="vis.html#colour-blind-friendly-options"><i class="fa fa-check"></i><b>13.4.5</b> Colour-blind friendly options</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="vis.html"><a href="vis.html#activity-5-reordering-factors"><i class="fa fa-check"></i><b>13.5</b> Activity 5: Reordering factors</a></li>
+<li class="chapter" data-level="13.6" data-path="vis.html"><a href="vis.html#activity-6-bar-charts"><i class="fa fa-check"></i><b>13.6</b> Activity 6: Bar Charts</a><ul>
+<li class="chapter" data-level="13.6.1" data-path="vis.html"><a href="vis.html#basic-bar-chart"><i class="fa fa-check"></i><b>13.6.1</b> Basic bar chart</a></li>
+<li class="chapter" data-level="13.6.2" data-path="vis.html"><a href="vis.html#bar-charts-with-two-factors"><i class="fa fa-check"></i><b>13.6.2</b> Bar charts with two factors</a></li>
+</ul></li>
+<li class="chapter" data-level="13.7" data-path="vis.html"><a href="vis.html#activity-7-violin-plots"><i class="fa fa-check"></i><b>13.7</b> Activity 7: Violin plots</a><ul>
+<li class="chapter" data-level="13.7.1" data-path="vis.html"><a href="vis.html#basic-violin-plot"><i class="fa fa-check"></i><b>13.7.1</b> Basic violin plot</a></li>
+<li class="chapter" data-level="13.7.2" data-path="vis.html"><a href="vis.html#violin-plots-with-raw-data-points"><i class="fa fa-check"></i><b>13.7.2</b> Violin plots with raw data points</a></li>
+</ul></li>
+<li class="chapter" data-level="13.8" data-path="vis.html"><a href="vis.html#viobox"><i class="fa fa-check"></i><b>13.8</b> Activity 8: Violin-boxplots</a></li>
+<li class="chapter" data-level="13.9" data-path="vis.html"><a href="vis.html#activity-9-faceting"><i class="fa fa-check"></i><b>13.9</b> Activity 9: Faceting</a><ul>
+<li class="chapter" data-level="13.9.1" data-path="vis.html"><a href="vis.html#facet-labelling"><i class="fa fa-check"></i><b>13.9.1</b> Facet labelling</a></li>
+</ul></li>
+<li class="chapter" data-level="13.10" data-path="vis.html"><a href="vis.html#activity-10-split-violins-and-raincloud-plots"><i class="fa fa-check"></i><b>13.10</b> Activity 10: Split-violins and raincloud plots</a><ul>
+<li class="chapter" data-level="13.10.1" data-path="vis.html"><a href="vis.html#split-violin-plots"><i class="fa fa-check"></i><b>13.10.1</b> Split-violin plots</a></li>
+<li class="chapter" data-level="13.10.2" data-path="vis.html"><a href="vis.html#raincloud-plots"><i class="fa fa-check"></i><b>13.10.2</b> Raincloud plots</a></li>
+<li class="chapter" data-level="13.10.3" data-path="vis.html"><a href="vis.html#raincloud-plots-with-multiple-factors"><i class="fa fa-check"></i><b>13.10.3</b> Raincloud plots with multiple factors</a></li>
+<li class="chapter" data-level="13.10.4" data-path="vis.html"><a href="vis.html#finished-8"><i class="fa fa-check"></i><b>13.10.4</b> Finished!</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="one-way-anova.html"><a href="one-way-anova.html"><i class="fa fa-check"></i><b>14</b> One-way ANOVA</a><ul>
+<li class="chapter" data-level="14.0.1" data-path="one-way-anova.html"><a href="one-way-anova.html#background-intrusive-memories"><i class="fa fa-check"></i><b>14.0.1</b> Background: Intrusive memories</a></li>
+<li class="chapter" data-level="14.0.2" data-path="one-way-anova.html"><a href="one-way-anova.html#activity-1-set-up-9"><i class="fa fa-check"></i><b>14.0.2</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="14.0.3" data-path="one-way-anova.html"><a href="one-way-anova.html#activity-2-data-wrangling"><i class="fa fa-check"></i><b>14.0.3</b> Activity 2: Data wrangling</a></li>
+<li class="chapter" data-level="14.0.4" data-path="one-way-anova.html"><a href="one-way-anova.html#activity-3-numbers-and-factors"><i class="fa fa-check"></i><b>14.0.4</b> Activity 3: Numbers and factors</a></li>
+<li class="chapter" data-level="14.0.5" data-path="one-way-anova.html"><a href="one-way-anova.html#activity-4-create-summary-statistics"><i class="fa fa-check"></i><b>14.0.5</b> Activity 4: Create summary statistics</a></li>
+<li class="chapter" data-level="14.0.6" data-path="one-way-anova.html"><a href="one-way-anova.html#activity-5-visualisation"><i class="fa fa-check"></i><b>14.0.6</b> Activity 5: Visualisation</a></li>
+<li class="chapter" data-level="14.0.7" data-path="one-way-anova.html"><a href="one-way-anova.html#activity-6-one-way-anova"><i class="fa fa-check"></i><b>14.0.7</b> Activity 6: One-way ANOVA</a></li>
+<li class="chapter" data-level="14.0.8" data-path="one-way-anova.html"><a href="one-way-anova.html#activity-7-assumption-checking"><i class="fa fa-check"></i><b>14.0.8</b> Activity 7: Assumption checking</a></li>
+<li class="chapter" data-level="14.0.9" data-path="one-way-anova.html"><a href="one-way-anova.html#activity-8-post-hoc-tests"><i class="fa fa-check"></i><b>14.0.9</b> Activity 8: Post-hoc tests</a></li>
+<li class="chapter" data-level="14.0.10" data-path="one-way-anova.html"><a href="one-way-anova.html#activity-9-power-and-effect-size"><i class="fa fa-check"></i><b>14.0.10</b> Activity 9: Power and effect size</a></li>
+<li class="chapter" data-level="14.0.11" data-path="one-way-anova.html"><a href="one-way-anova.html#activity-10-write-up-1"><i class="fa fa-check"></i><b>14.0.11</b> Activity 10: Write-up</a></li>
+<li class="chapter" data-level="14.0.12" data-path="one-way-anova.html"><a href="one-way-anova.html#activity-solutions-7"><i class="fa fa-check"></i><b>14.0.12</b> Activity solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="factorial-anova.html"><a href="factorial-anova.html"><i class="fa fa-check"></i><b>15</b> Factorial ANOVA</a><ul>
+<li class="chapter" data-level="15.0.1" data-path="factorial-anova.html"><a href="factorial-anova.html#activity-1-set-up-10"><i class="fa fa-check"></i><b>15.0.1</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="15.0.2" data-path="factorial-anova.html"><a href="factorial-anova.html#activity-2-descriptive-statistics"><i class="fa fa-check"></i><b>15.0.2</b> Activity 2: Descriptive statistics</a></li>
+<li class="chapter" data-level="15.0.3" data-path="factorial-anova.html"><a href="factorial-anova.html#activity-3-violin-boxplots"><i class="fa fa-check"></i><b>15.0.3</b> Activity 3: Violin-boxplots</a></li>
+<li class="chapter" data-level="15.0.4" data-path="factorial-anova.html"><a href="factorial-anova.html#activity-4-interaction-plots"><i class="fa fa-check"></i><b>15.0.4</b> Activity 4: Interaction plots</a></li>
+<li class="chapter" data-level="15.0.5" data-path="factorial-anova.html"><a href="factorial-anova.html#activity-5-anova"><i class="fa fa-check"></i><b>15.0.5</b> Activity 5: ANOVA</a></li>
+<li class="chapter" data-level="15.0.6" data-path="factorial-anova.html"><a href="factorial-anova.html#activity-6-assumption-checking"><i class="fa fa-check"></i><b>15.0.6</b> Activity 6: Assumption checking</a></li>
+<li class="chapter" data-level="15.0.7" data-path="factorial-anova.html"><a href="factorial-anova.html#activity-7-post-hoc-tests"><i class="fa fa-check"></i><b>15.0.7</b> Activity 7: Post-hoc tests</a></li>
+<li class="chapter" data-level="15.0.8" data-path="factorial-anova.html"><a href="factorial-anova.html#activity-8-write-up"><i class="fa fa-check"></i><b>15.0.8</b> Activity 8: Write-up</a></li>
+<li class="chapter" data-level="15.0.9" data-path="factorial-anova.html"><a href="factorial-anova.html#activity-9-transforming-data"><i class="fa fa-check"></i><b>15.0.9</b> Activity 9: Transforming data</a></li>
+<li class="chapter" data-level="15.0.10" data-path="factorial-anova.html"><a href="factorial-anova.html#activity-solutions-8"><i class="fa fa-check"></i><b>15.0.10</b> Activity solutions</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="regression.html"><a href="regression.html"><i class="fa fa-check"></i><b>16</b> Regression</a><ul>
+<li class="chapter" data-level="16.1" data-path="regression.html"><a href="regression.html#activity-1-setup"><i class="fa fa-check"></i><b>16.1</b> Activity 1: Setup</a></li>
+<li class="chapter" data-level="16.2" data-path="regression.html"><a href="regression.html#activity-2-tidy-the-data"><i class="fa fa-check"></i><b>16.2</b> Activity 2: Tidy the data</a></li>
+<li class="chapter" data-level="16.3" data-path="regression.html"><a href="regression.html#activity-3-calculate-mean-anxiety-for-each-student"><i class="fa fa-check"></i><b>16.3</b> Activity 3: Calculate mean anxiety for each student</a></li>
+<li class="chapter" data-level="16.4" data-path="regression.html"><a href="regression.html#activity-4-join-the-datasets-together"><i class="fa fa-check"></i><b>16.4</b> Activity 4: Join the datasets together</a></li>
+<li class="chapter" data-level="16.5" data-path="regression.html"><a href="regression.html#activity-5-calculate-descriptives-for-the-variables-overall"><i class="fa fa-check"></i><b>16.5</b> Activity 5: Calculate descriptives for the variables overall</a></li>
+<li class="chapter" data-level="16.6" data-path="regression.html"><a href="regression.html#activity-6-visualisations"><i class="fa fa-check"></i><b>16.6</b> Activity 6: Visualisations</a></li>
+<li class="chapter" data-level="16.7" data-path="regression.html"><a href="regression.html#activity-7-run-the-regression"><i class="fa fa-check"></i><b>16.7</b> Activity 7: Run the regression</a></li>
+<li class="chapter" data-level="16.8" data-path="regression.html"><a href="regression.html#activity-8-assumption-checking"><i class="fa fa-check"></i><b>16.8</b> Activity 8: Assumption checking</a></li>
+<li class="chapter" data-level="16.9" data-path="regression.html"><a href="regression.html#activity-9-power-and-effect-size-1"><i class="fa fa-check"></i><b>16.9</b> Activity 9: Power and effect size</a></li>
+<li class="chapter" data-level="16.10" data-path="regression.html"><a href="regression.html#activity-10-write-up-2"><i class="fa fa-check"></i><b>16.10</b> Activity 10: Write-up</a></li>
+<li class="chapter" data-level="16.11" data-path="regression.html"><a href="regression.html#activity-solutions-9"><i class="fa fa-check"></i><b>16.11</b> Activity solutions</a><ul>
+<li class="chapter" data-level="16.11.1" data-path="regression.html"><a href="regression.html#activity-1-7"><i class="fa fa-check"></i><b>16.11.1</b> Activity 1</a></li>
+<li class="chapter" data-level="16.11.2" data-path="regression.html"><a href="regression.html#activity-2-6"><i class="fa fa-check"></i><b>16.11.2</b> Activity 2</a></li>
+<li class="chapter" data-level="16.11.3" data-path="regression.html"><a href="regression.html#activity-3-4"><i class="fa fa-check"></i><b>16.11.3</b> Activity 3</a></li>
+<li class="chapter" data-level="16.11.4" data-path="regression.html"><a href="regression.html#activity-4-4"><i class="fa fa-check"></i><b>16.11.4</b> Activity 4</a></li>
+<li class="chapter" data-level="16.11.5" data-path="regression.html"><a href="regression.html#activity-5-5"><i class="fa fa-check"></i><b>16.11.5</b> Activity 5</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="multiple-regression.html"><a href="multiple-regression.html"><i class="fa fa-check"></i><b>17</b> Multiple regression</a><ul>
+<li class="chapter" data-level="17.1" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-1-set-up-11"><i class="fa fa-check"></i><b>17.1</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="17.2" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-2-look-at-the-data-2"><i class="fa fa-check"></i><b>17.2</b> Activity 2: Look at the data</a></li>
+<li class="chapter" data-level="17.3" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-3-compute-the-well-being-score-for-each-respondent"><i class="fa fa-check"></i><b>17.3</b> Activity 3: Compute the well-being score for each respondent</a></li>
+<li class="chapter" data-level="17.4" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-4-visualise-the-relationship"><i class="fa fa-check"></i><b>17.4</b> Activity 4: Visualise the relationship</a></li>
+<li class="chapter" data-level="17.5" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-5-smartphone-and-well-being-for-boys-and-girls"><i class="fa fa-check"></i><b>17.5</b> Activity 5: Smartphone and well-being for boys and girls</a></li>
+<li class="chapter" data-level="17.6" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-6-mean-centering-variables"><i class="fa fa-check"></i><b>17.6</b> Activity 6: Mean-centering variables</a></li>
+<li class="chapter" data-level="17.7" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-7-visualise-the-relationship"><i class="fa fa-check"></i><b>17.7</b> Activity 7: Visualise the relationship</a></li>
+<li class="chapter" data-level="17.8" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-8-running-the-regression"><i class="fa fa-check"></i><b>17.8</b> Activity 8: Running the regression</a></li>
+<li class="chapter" data-level="17.9" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-9-assumption-checking"><i class="fa fa-check"></i><b>17.9</b> Activity 9: Assumption checking</a></li>
+<li class="chapter" data-level="17.10" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-10-power-and-effect-size"><i class="fa fa-check"></i><b>17.10</b> Activity 10: Power and effect size</a></li>
+<li class="chapter" data-level="17.11" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-11-write-up"><i class="fa fa-check"></i><b>17.11</b> Activity 11: Write-up</a></li>
+<li class="chapter" data-level="17.12" data-path="multiple-regression.html"><a href="multiple-regression.html#finished-10"><i class="fa fa-check"></i><b>17.12</b> Finished!</a></li>
+<li class="chapter" data-level="17.13" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-solutions-10"><i class="fa fa-check"></i><b>17.13</b> Activity solutions</a><ul>
+<li class="chapter" data-level="17.13.1" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-3-5"><i class="fa fa-check"></i><b>17.13.1</b> Activity 3</a></li>
+<li class="chapter" data-level="17.13.2" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-5-6"><i class="fa fa-check"></i><b>17.13.2</b> Activity 5</a></li>
+<li class="chapter" data-level="17.13.3" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-6-5"><i class="fa fa-check"></i><b>17.13.3</b> Activity 6</a></li>
+<li class="chapter" data-level="17.13.4" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-7-5"><i class="fa fa-check"></i><b>17.13.4</b> Activity 7</a></li>
+<li class="chapter" data-level="17.13.5" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-8-5"><i class="fa fa-check"></i><b>17.13.5</b> Activity 8</a></li>
+<li class="chapter" data-level="17.13.6" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-9-1"><i class="fa fa-check"></i><b>17.13.6</b> Activity 9</a></li>
+<li class="chapter" data-level="17.13.7" data-path="multiple-regression.html"><a href="multiple-regression.html#activity-10-2"><i class="fa fa-check"></i><b>17.13.7</b> Activity 10</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="comparing-categories.html"><a href="comparing-categories.html"><i class="fa fa-check"></i><b>18</b> Comparing categories</a><ul>
+<li class="chapter" data-level="18.0.1" data-path="comparing-categories.html"><a href="comparing-categories.html#reminders-through-association"><i class="fa fa-check"></i><b>18.0.1</b> Reminders through association</a></li>
+<li class="chapter" data-level="18.0.2" data-path="comparing-categories.html"><a href="comparing-categories.html#activity-1-set-up-12"><i class="fa fa-check"></i><b>18.0.2</b> Activity 1: Set-up</a></li>
+<li class="chapter" data-level="18.0.3" data-path="comparing-categories.html"><a href="comparing-categories.html#activity-2-look-at-the-data-3"><i class="fa fa-check"></i><b>18.0.3</b> Activity 2: Look at the data</a></li>
+<li class="chapter" data-level="18.0.4" data-path="comparing-categories.html"><a href="comparing-categories.html#activity-3-wrangle-and-recode-the-data"><i class="fa fa-check"></i><b>18.0.4</b> Activity 3: Wrangle and recode the data</a></li>
+<li class="chapter" data-level="18.0.5" data-path="comparing-categories.html"><a href="comparing-categories.html#activity-4-descriptive-statistics-1"><i class="fa fa-check"></i><b>18.0.5</b> Activity 4: Descriptive statistics</a></li>
+<li class="chapter" data-level="18.0.6" data-path="comparing-categories.html"><a href="comparing-categories.html#ggplot2"><i class="fa fa-check"></i><b>18.0.6</b> <code>ggplot2()</code></a></li>
+<li class="chapter" data-level="18.0.7" data-path="comparing-categories.html"><a href="comparing-categories.html#bar"><i class="fa fa-check"></i><b>18.0.7</b> Activity 5: Bar plot</a></li>
+<li class="chapter" data-level="18.0.8" data-path="comparing-categories.html"><a href="comparing-categories.html#activity-6-make-the-plot-pretty"><i class="fa fa-check"></i><b>18.0.8</b> Activity 6: Make the plot pretty</a></li>
+<li class="chapter" data-level="18.0.9" data-path="comparing-categories.html"><a href="comparing-categories.html#activity-7-chi-square"><i class="fa fa-check"></i><b>18.0.9</b> Activity 7: Chi-square</a></li>
+<li class="chapter" data-level="18.0.10" data-path="comparing-categories.html"><a href="comparing-categories.html#activity-8-additional-analysis-information"><i class="fa fa-check"></i><b>18.0.10</b> Activity 8: Additional analysis information</a></li>
+<li class="chapter" data-level="18.0.11" data-path="comparing-categories.html"><a href="comparing-categories.html#assumption-checks"><i class="fa fa-check"></i><b>18.0.11</b> Assumption checks</a></li>
+<li class="chapter" data-level="18.0.12" data-path="comparing-categories.html"><a href="comparing-categories.html#activity-9-check-the-expected-frequencies"><i class="fa fa-check"></i><b>18.0.12</b> Activity 9: Check the expected frequencies</a></li>
+<li class="chapter" data-level="18.0.13" data-path="comparing-categories.html"><a href="comparing-categories.html#cramer"><i class="fa fa-check"></i><b>18.0.13</b> Activity 10: Effect size</a></li>
+<li class="chapter" data-level="18.0.14" data-path="comparing-categories.html"><a href="comparing-categories.html#activity-11-write-up-1"><i class="fa fa-check"></i><b>18.0.14</b> Activity 11: Write-up</a></li>
+<li class="chapter" data-level="18.0.15" data-path="comparing-categories.html"><a href="comparing-categories.html#activity-solutions-11"><i class="fa fa-check"></i><b>18.0.15</b> Activity solutions</a></li>
+<li class="chapter" data-level="18.0.16" data-path="comparing-categories.html"><a href="comparing-categories.html#test-yourself-3"><i class="fa fa-check"></i><b>18.0.16</b> Test yourself</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendices</b></span></li>
+<li class="chapter" data-level="A" data-path="exporting-files-from-the-server.html"><a href="exporting-files-from-the-server.html"><i class="fa fa-check"></i><b>A</b> Exporting files from the server</a></li>
+<li class="chapter" data-level="B" data-path="installing-r-on-your-computer-1.html"><a href="installing-r-on-your-computer-1.html"><i class="fa fa-check"></i><b>B</b> Installing R on your computer</a><ul>
+<li class="chapter" data-level="B.1" data-path="installing-r-on-your-computer-1.html"><a href="installing-r-on-your-computer-1.html#why-should-i-install-r-on-my-computer"><i class="fa fa-check"></i><b>B.1</b> Why should I install R on my computer?</a></li>
+<li class="chapter" data-level="B.2" data-path="installing-r-on-your-computer-1.html"><a href="installing-r-on-your-computer-1.html#windows"><i class="fa fa-check"></i><b>B.2</b> Windows</a></li>
+<li class="chapter" data-level="B.3" data-path="installing-r-on-your-computer-1.html"><a href="installing-r-on-your-computer-1.html#mac"><i class="fa fa-check"></i><b>B.3</b> Mac</a></li>
+<li class="chapter" data-level="B.4" data-path="installing-r-on-your-computer-1.html"><a href="installing-r-on-your-computer-1.html#chromebooks"><i class="fa fa-check"></i><b>B.4</b> Chromebooks</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="additional-r-resources.html"><a href="additional-r-resources.html"><i class="fa fa-check"></i><b>C</b> Additional R resources</a></li>
+<li class="chapter" data-level="D" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html"><i class="fa fa-check"></i><b>D</b> Comparing two correlations</a><ul>
+<li class="chapter" data-level="D.1" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#compare-two-correlations-based-on-two-independent-groups"><i class="fa fa-check"></i><b>D.1</b> Compare two correlations based on two independent groups</a><ul>
+<li class="chapter" data-level="D.1.1" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#visualising-two-groups-correlations"><i class="fa fa-check"></i><b>D.1.1</b> Visualising two groups correlations</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#compare-two-overlapping-correlations-based-on-two-dependent-groups"><i class="fa fa-check"></i><b>D.2</b> Compare two overlapping correlations based on two dependent groups</a></li>
+<li class="chapter" data-level="D.3" data-path="comparing-two-correlations.html"><a href="comparing-two-correlations.html#compare-two-non-overlapping-correlations-from-two-dependent-groups"><i class="fa fa-check"></i><b>D.3</b> Compare two non-overlapping correlations from two dependent groups</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>E</b> Data transformation</a></li>
+<li class="chapter" data-level="F" data-path="permutation-tests.html"><a href="permutation-tests.html"><i class="fa fa-check"></i><b>F</b> Permutation tests</a><ul>
+<li class="chapter" data-level="F.1" data-path="permutation-tests.html"><a href="permutation-tests.html#overview-1"><i class="fa fa-check"></i><b>F.1</b> Overview</a></li>
+<li class="chapter" data-level="F.2" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-1-generating-random-numbers"><i class="fa fa-check"></i><b>F.2</b> Skill 1: Generating Random Numbers</a></li>
+<li class="chapter" data-level="F.3" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-2-permuting-values"><i class="fa fa-check"></i><b>F.3</b> Skill 2: Permuting Values</a></li>
+<li class="chapter" data-level="F.4" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-3-creating-tibbles"><i class="fa fa-check"></i><b>F.4</b> Skill 3: Creating Tibbles</a></li>
+<li class="chapter" data-level="F.5" data-path="permutation-tests.html"><a href="permutation-tests.html#entering-data-into-a-tibble"><i class="fa fa-check"></i><b>F.5</b> Entering Data into a Tibble</a></li>
+<li class="chapter" data-level="F.6" data-path="permutation-tests.html"><a href="permutation-tests.html#repeating-values-to-save-typing"><i class="fa fa-check"></i><b>F.6</b> Repeating Values to Save Typing</a></li>
+<li class="chapter" data-level="F.7" data-path="permutation-tests.html"><a href="permutation-tests.html#bringing-it-together-in-a-tibble"><i class="fa fa-check"></i><b>F.7</b> Bringing it Together in a Tibble</a></li>
+<li class="chapter" data-level="F.8" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-4-computing-differences-in-group-means"><i class="fa fa-check"></i><b>F.8</b> Skill 4: Computing Differences in Group Means</a></li>
+<li class="chapter" data-level="F.9" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-5-creating-your-own-functions"><i class="fa fa-check"></i><b>F.9</b> Skill 5: Creating Your Own Functions</a></li>
+<li class="chapter" data-level="F.10" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-6-replicating-operations"><i class="fa fa-check"></i><b>F.10</b> Skill 6: Replicating Operations</a></li>
+<li class="chapter" data-level="F.11" data-path="permutation-tests.html"><a href="permutation-tests.html#finished-12"><i class="fa fa-check"></i><b>F.11</b> Finished!</a></li>
+<li class="chapter" data-level="F.12" data-path="permutation-tests.html"><a href="permutation-tests.html#permutation-tests-of-hypotheses"><i class="fa fa-check"></i><b>F.12</b> Permutation Tests of Hypotheses</a></li>
+<li class="chapter" data-level="F.13" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT1"><i class="fa fa-check"></i><b>F.13</b> Step 1: Load in Add-on Packages and Data</a></li>
+<li class="chapter" data-level="F.14" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT2"><i class="fa fa-check"></i><b>F.14</b> Step 2: Calculate the Original Mean Difference - <span class="math inline">\(D_{orig}\)</span></a></li>
+<li class="chapter" data-level="F.15" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT3"><i class="fa fa-check"></i><b>F.15</b> Step 3: Permute the Group Labels</a></li>
+<li class="chapter" data-level="F.16" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT4"><i class="fa fa-check"></i><b>F.16</b> Step 4: Create the Null-Hypothesis Distribution (NHD) for the Difference</a></li>
+<li class="chapter" data-level="F.17" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT5"><i class="fa fa-check"></i><b>F.17</b> Step 5: Compare the Observed Mean Difference to the NHD</a></li>
+<li class="chapter" data-level="F.18" data-path="permutation-tests.html"><a href="permutation-tests.html#finished-13"><i class="fa fa-check"></i><b>F.18</b> Finished!</a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html"><i class="fa fa-check"></i><b>G</b> Non-parametric tests</a><ul>
+<li class="chapter" data-level="G.0.1" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html#two-independent-groups"><i class="fa fa-check"></i><b>G.0.1</b> Two independent groups</a></li>
+<li class="chapter" data-level="G.0.2" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html#apa-write-up"><i class="fa fa-check"></i><b>G.0.2</b> APA write-up</a></li>
+<li class="chapter" data-level="G.0.3" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html#spearmans-correlations"><i class="fa fa-check"></i><b>G.0.3</b> Spearman’s correlations</a></li>
+<li class="chapter" data-level="G.0.4" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html#apa-write-up-1"><i class="fa fa-check"></i><b>G.0.4</b> APA write-up</a></li>
+</ul></li>
+<li class="chapter" data-level="H" data-path="rtweet.html"><a href="rtweet.html"><i class="fa fa-check"></i><b>H</b> rtweet</a><ul>
+<li class="chapter" data-level="H.0.1" data-path="rtweet.html"><a href="rtweet.html#packages-1"><i class="fa fa-check"></i><b>H.0.1</b> Packages</a></li>
+<li class="chapter" data-level="H.0.2" data-path="rtweet.html"><a href="rtweet.html#hashtag-search"><i class="fa fa-check"></i><b>H.0.2</b> Hashtag search</a></li>
+<li class="chapter" data-level="H.0.3" data-path="rtweet.html"><a href="rtweet.html#data-wrangling"><i class="fa fa-check"></i><b>H.0.3</b> Data wrangling</a></li>
+<li class="chapter" data-level="H.0.4" data-path="rtweet.html"><a href="rtweet.html#time-series"><i class="fa fa-check"></i><b>H.0.4</b> Time series</a></li>
+<li class="chapter" data-level="H.0.5" data-path="rtweet.html"><a href="rtweet.html#tidy-text-and-word-frequencies"><i class="fa fa-check"></i><b>H.0.5</b> Tidy text and word frequencies</a></li>
+<li class="chapter" data-level="H.0.6" data-path="rtweet.html"><a href="rtweet.html#bigram-analysis"><i class="fa fa-check"></i><b>H.0.6</b> Bigram analysis</a></li>
+<li class="chapter" data-level="H.0.7" data-path="rtweet.html"><a href="rtweet.html#sentiment-analysis"><i class="fa fa-check"></i><b>H.0.7</b> Sentiment analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="I" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html"><i class="fa fa-check"></i><b>I</b> Dissertation analysis guide</a><ul>
+<li class="chapter" data-level="I.1" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#before-r"><i class="fa fa-check"></i><b>I.1</b> Before R</a><ul>
+<li class="chapter" data-level="I.1.1" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#study-design"><i class="fa fa-check"></i><b>I.1.1</b> Study design</a></li>
+<li class="chapter" data-level="I.1.2" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#data-wrangling-considerations"><i class="fa fa-check"></i><b>I.1.2</b> Data wrangling considerations</a></li>
+<li class="chapter" data-level="I.1.3" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#data-analysis"><i class="fa fa-check"></i><b>I.1.3</b> Data analysis</a></li>
+<li class="chapter" data-level="I.1.4" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#exploring-and-cleaning-your-data"><i class="fa fa-check"></i><b>I.1.4</b> Exploring and cleaning your data</a></li>
+<li class="chapter" data-level="I.1.5" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#summary"><i class="fa fa-check"></i><b>I.1.5</b> <code>summary()</code></a></li>
+<li class="chapter" data-level="I.1.6" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#visualisations"><i class="fa fa-check"></i><b>I.1.6</b> Visualisations</a></li>
+<li class="chapter" data-level="I.1.7" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#renaming-variables"><i class="fa fa-check"></i><b>I.1.7</b> Renaming variables</a></li>
+<li class="chapter" data-level="I.1.8" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#converting-to-factors"><i class="fa fa-check"></i><b>I.1.8</b> Converting to factors</a></li>
+<li class="chapter" data-level="I.1.9" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#dropping-irrelevant-variables"><i class="fa fa-check"></i><b>I.1.9</b> Dropping irrelevant variables</a></li>
+<li class="chapter" data-level="I.1.10" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#recoding-variables"><i class="fa fa-check"></i><b>I.1.10</b> Recoding variables</a></li>
+<li class="chapter" data-level="I.1.11" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#exclude-participantsdata"><i class="fa fa-check"></i><b>I.1.11</b> Exclude participants/data</a></li>
+<li class="chapter" data-level="I.1.12" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#reliability"><i class="fa fa-check"></i><b>I.1.12</b> Reliability</a></li>
+<li class="chapter" data-level="I.1.13" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#transforming-data"><i class="fa fa-check"></i><b>I.1.13</b> Transforming data</a></li>
+<li class="chapter" data-level="I.1.14" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#replace-missing-values"><i class="fa fa-check"></i><b>I.1.14</b> Replace missing values</a></li>
+<li class="chapter" data-level="I.1.15" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#convert-implausible-values"><i class="fa fa-check"></i><b>I.1.15</b> Convert implausible values</a></li>
+<li class="chapter" data-level="I.1.16" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#calculate-z-scores"><i class="fa fa-check"></i><b>I.1.16</b> Calculate z-scores</a></li>
+<li class="chapter" data-level="I.1.17" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#log-transformation"><i class="fa fa-check"></i><b>I.1.17</b> Log transformation</a></li>
+<li class="chapter" data-level="I.1.18" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#square-root"><i class="fa fa-check"></i><b>I.1.18</b> Square root</a></li>
+<li class="chapter" data-level="I.1.19" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#calculating-new-variables"><i class="fa fa-check"></i><b>I.1.19</b> Calculating new variables</a></li>
+<li class="chapter" data-level="I.1.20" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#tidy-data-1"><i class="fa fa-check"></i><b>I.1.20</b> Tidy data</a></li>
+<li class="chapter" data-level="I.1.21" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#summarising-and-visualising-data"><i class="fa fa-check"></i><b>I.1.21</b> Summarising and visualising data</a></li>
+<li class="chapter" data-level="I.1.22" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#descriptive-statistics"><i class="fa fa-check"></i><b>I.1.22</b> Descriptive statistics</a></li>
+<li class="chapter" data-level="I.1.23" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#data-visualisation-1"><i class="fa fa-check"></i><b>I.1.23</b> Data visualisation</a></li>
+<li class="chapter" data-level="I.1.24" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#inferential-statistics"><i class="fa fa-check"></i><b>I.1.24</b> Inferential statistics</a></li>
+<li class="chapter" data-level="I.1.25" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#assumption-tests"><i class="fa fa-check"></i><b>I.1.25</b> Assumption tests</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
+    target="blank"><img alt="Creative Commons License" 
+    style="border-width:0" 
+    src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><li>
+<li><a href="https://psyteachr.github.io/" target="blank">PsyTeachR</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MSc Conversion in Psychological Studies</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro-to-data-viz" class="section level1">
+<h1><span class="header-section-number">Chapter 7</span> Intro to Data Viz</h1>
+<div id="activity-1-dplyr-recap" class="section level2">
+<h2><span class="header-section-number">7.1</span> Activity 1: dplyr recap</h2>
+<p>Which function(s) would you use to approach each of the following problems?</p>
+<ul>
+<li><p>We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>arrange()</option> <option>filter()</option> <option>summarise()</option> <option>group_by()</option> <option>mutate()</option> <option>select()</option></select> function.</p></li>
+<li><p>We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>summarise()</option> <option>group_by()</option> <option>filter()</option> <option>mutate()</option> <option>arrange()</option> <option>select()</option></select> function.</p></li>
+<li><p>Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>select()</option> <option>mutate()</option> <option>summarise()</option> <option>group_by()</option> <option>filter()</option> <option>arrange()</option></select> function.</p></li>
+<li><p>We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>group_by() and arrange()</option> <option>arrange() and mutate()</option> <option>filter() and select()</option> <option>group_by() and summarise()</option></select> functions.</p></li>
+<li><p>We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["mutate() and filter()","arrange() and select()"]'> <option></option> <option>select() and summarise()</option> <option>mutate() and filter()</option> <option>group_by() and mutate()</option> <option>arrange() and select()</option></select> functions.</p></li>
+</ul>
+<div id="data-visualisation" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Data visualisation</h3>
+<p>As Grolemund and Wickham tell us:</p>
+<blockquote>
+<p>Visualisation is a fundamentally human activity. A good visualisation will show you things that you did not expect, or raise new questions about the data. A good visualisation might also hint that you’re asking the wrong question, or you need to collect different data. Visualisations can surprise you, but don’t scale particularly well because they require a human to interpret them.</p>
+</blockquote>
+<p>(<a href="http://r4ds.had.co.nz/introduction.html" class="uri">http://r4ds.had.co.nz/introduction.html</a>)</p>
+<p>Being able to visualise our variables, and relationships between our variables, is a very useful skill. Before we do any statistical analyses or present any summary statistics, we should visualise our data as it is:</p>
+<ol style="list-style-type: decimal">
+<li><p>A quick and easy way to check our data make sense, and to identify any unusual trends.</p></li>
+<li><p>A way to honestly present the features of our data to anyone who reads our research.</p></li>
+</ol>
+<p><code>ggplot()</code> builds plots by combining layers (see Figure <a href="intro-to-data-viz.html#fig:img-layers">7.1</a>)). If you’re used to making plots in Excel this might seem a bit odd at first, however, it means that you can customise each layer and R is capable of making very complex and beautiful figures (<a href="https://www.data-to-viz.com/">this website</a> gives you a good sense of what’s possible).</p>
+<div class="figure" style="text-align: center"><span id="fig:img-layers"></span>
+<img src="images/layers.png" alt="ggplot2 layers from Field et al. (2012)" width="100%" />
+<p class="caption">
+Figure 7.1: ggplot2 layers from Field et al. (2012)
+</p>
+</div>
+</div>
+</div>
+<div id="activity-2-set-up" class="section level2">
+<h2><span class="header-section-number">7.2</span> Activity 2: Set-up</h2>
+<p>We will use the same data files as in Loading Data when you uploaded files to the server. This data contains happiness and depression scores:</p>
+<ul>
+<li><p><a href="ahi-cesd.csv" download>ahi-cesd.csv</a></p></li>
+<li><p><a href="participant-info.csv" download>participant-info.csv</a></p></li>
+<li><p>Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.<br />
+</p></li>
+<li><p>Open a new R Markdown document and save it in your working directory. Call the file “Intro to Data Viz”.<br />
+</p></li>
+<li><p>Download the two .csv files above and save them in your chapter folder. Make sure that you do not change the file names at all.</p></li>
+<li><p>If you’re on the server, avoid a number of issues by restarting the session - click <code>Session</code> - <code>Restart R</code></p></li>
+<li><p>Delete the default R Markdown welcome text and insert a new code chunk that loads the package <code>tidyverse</code> using the <code>library()</code> function.</p></li>
+<li><p>Type and run the below code to load the <code>tidyverse</code> package and to load in the data files in to the Activity 2 code chunk.</p></li>
+</ul>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="intro-to-data-viz.html#cb96-1"></a><span class="kw">library</span>(tidyverse) </span>
+<span id="cb96-2"><a href="intro-to-data-viz.html#cb96-2"></a></span>
+<span id="cb96-3"><a href="intro-to-data-viz.html#cb96-3"></a>dat &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;ahi-cesd.csv&#39;</span>)</span>
+<span id="cb96-4"><a href="intro-to-data-viz.html#cb96-4"></a>pinfo &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&#39;participant-info.csv&#39;</span>)</span>
+<span id="cb96-5"><a href="intro-to-data-viz.html#cb96-5"></a>all_dat &lt;-<span class="st"> </span><span class="kw">inner_join</span>(dat, pinfo, <span class="dt">by=</span> <span class="kw">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;intervention&quot;</span>))</span>
+<span id="cb96-6"><a href="intro-to-data-viz.html#cb96-6"></a>summarydata &lt;-<span class="st"> </span><span class="kw">select</span>(<span class="dt">.data =</span> all_dat, </span>
+<span id="cb96-7"><a href="intro-to-data-viz.html#cb96-7"></a>                      ahiTotal, cesdTotal, sex, age, </span>
+<span id="cb96-8"><a href="intro-to-data-viz.html#cb96-8"></a>                      educ, income, occasion, elapsed.days) </span></code></pre></div>
+</div>
+<div id="activity-3-factors" class="section level2">
+<h2><span class="header-section-number">7.3</span> Activity 3: Factors</h2>
+<p>Before we go any further we need to perform an additional step of data processing that we have glossed over up until this point. First, run the below code to look at the structure of the dataset:</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="intro-to-data-viz.html#cb97-1"></a><span class="kw">str</span>(summarydata)</span></code></pre></div>
+<pre><code>## tibble [992 x 8] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ ahiTotal    : num [1:992] 32 34 34 35 36 37 38 38 38 38 ...
+##  $ cesdTotal   : num [1:992] 50 49 47 41 36 35 50 55 47 39 ...
+##  $ sex         : num [1:992] 1 1 1 1 1 1 2 1 2 2 ...
+##  $ age         : num [1:992] 46 37 37 19 40 49 42 57 41 41 ...
+##  $ educ        : num [1:992] 4 3 3 2 5 4 4 4 4 4 ...
+##  $ income      : num [1:992] 3 2 2 1 2 1 1 2 1 1 ...
+##  $ occasion    : num [1:992] 5 2 3 0 5 0 2 2 2 4 ...
+##  $ elapsed.days: num [1:992] 182 14.2 33 0 202.1 ...</code></pre>
+<p>R assumes that all the variables are numeric (represented by <code>num</code>) and this is going to be a problem because whilst <code>sex</code>, <code>educ</code>, and <code>income</code> are represented by numerical codes, they aren’t actually numbers, they’re categories, or <strong>factors</strong>.</p>
+<p>We need to tell R that these variables are factors and we can use <code>mutate()</code> to do this by overriding the original variable with the same data but classified as a factor. Type and run the below code to change the categories to factors.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="intro-to-data-viz.html#cb99-1"></a>summarydata &lt;-<span class="st"> </span>summarydata <span class="op">%&gt;%</span></span>
+<span id="cb99-2"><a href="intro-to-data-viz.html#cb99-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sex =</span> <span class="kw">as.factor</span>(sex),</span>
+<span id="cb99-3"><a href="intro-to-data-viz.html#cb99-3"></a>         <span class="dt">educ =</span> <span class="kw">as.factor</span>(educ),</span>
+<span id="cb99-4"><a href="intro-to-data-viz.html#cb99-4"></a>         <span class="dt">income =</span> <span class="kw">as.factor</span>(income))</span></code></pre></div>
+<p>You can read this code as “overwrite the data that is in the column sex with sex as a factor”.</p>
+<p><strong>Remember this. It’s a really important step and if your graphs are looking weird this might be the reason.</strong></p>
+</div>
+<div id="activity-4-bar-plot" class="section level2">
+<h2><span class="header-section-number">7.4</span> Activity 4: Bar plot</h2>
+<p>For our first example we will recreate the bar plot showing the number of male and female participants from Loading Data by showing you how the layers of code build up.</p>
+<ul>
+<li>The first line (or layer) sets up the base of the graph: the data to use and the aesthetics (what will go on the x and y axis, how the plot will be grouped).<br />
+</li>
+<li><code>aes()</code> can take both an <code>x</code> and <code>y</code> argument, however, with a bar plot you are just asking R to count the number of data points in each group so you don’t need to specify this.</li>
+</ul>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="intro-to-data-viz.html#cb100-1"></a><span class="kw">ggplot</span>(summarydata, <span class="kw">aes</span>(<span class="dt">x =</span> sex))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:layer1"></span>
+<img src="07-data-viz_files/figure-html/layer1-1.png" alt="First ggplot layer sets the axes" width="100%" />
+<p class="caption">
+Figure 7.2: First ggplot layer sets the axes
+</p>
+</div>
+<ul>
+<li>The next layer adds a <strong>geom</strong> or a shape, in this case we use <code>geom_bar()</code> as we want to draw a bar plot.</li>
+</ul>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="intro-to-data-viz.html#cb101-1"></a><span class="kw">ggplot</span>(summarydata, <span class="kw">aes</span>(<span class="dt">x =</span> sex)) <span class="op">+</span></span>
+<span id="cb101-2"><a href="intro-to-data-viz.html#cb101-2"></a><span class="st">  </span><span class="kw">geom_bar</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<img src="07-data-viz_files/figure-html/unnamed-chunk-2-1.png" alt="Basic barplot" width="100%" />
+<p class="caption">
+Figure 7.3: Basic barplot
+</p>
+</div>
+<ul>
+<li>Adding <code>fill</code> to the first layer will separate the data into each level of the grouping variable and give it a different colour. In this case, there is a different coloured bar for each level of <code>sex</code>.</li>
+</ul>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="intro-to-data-viz.html#cb102-1"></a><span class="kw">ggplot</span>(summarydata, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">fill =</span> sex)) <span class="op">+</span></span>
+<span id="cb102-2"><a href="intro-to-data-viz.html#cb102-2"></a><span class="st">  </span><span class="kw">geom_bar</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<img src="07-data-viz_files/figure-html/unnamed-chunk-3-1.png" alt="Barplot with colour" width="100%" />
+<p class="caption">
+Figure 7.4: Barplot with colour
+</p>
+</div>
+<ul>
+<li><code>fill()</code> has also produced a plot legend to the right of the graph. When you have multiple grouping variables you need this to know which groups each bit of the plot is referring to, but in this case it is redundant because it doesn’t tell us anything that the axis labels don’t already. We can get rid of it by adding <code>show.legend = FALSE</code> to the <code>geom_bar()</code> code.</li>
+</ul>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="intro-to-data-viz.html#cb103-1"></a><span class="kw">ggplot</span>(summarydata, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">fill =</span> sex)) <span class="op">+</span></span>
+<span id="cb103-2"><a href="intro-to-data-viz.html#cb103-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<img src="07-data-viz_files/figure-html/unnamed-chunk-4-1.png" alt="Barplot without legend" width="100%" />
+<p class="caption">
+Figure 7.5: Barplot without legend
+</p>
+</div>
+<p>We might want to tidy up our plot to make it look a bit nicer. First we can edit the axis labels to be more informative. The most common functions you will use are:</p>
+<ul>
+<li><code>scale_x_continuous()</code> for adjusting the x-axis for a continuous variable</li>
+<li><code>scale_y_continuous()</code> for adjusting the y-axis for a continuous variable</li>
+<li><code>scale_x_discrete()</code> for adjusting the x-axis for a discrete/categorical variable</li>
+<li><code>scale_y_discrete()</code> for adjusting the y-axis for a discrete/categorical variable</li>
+</ul>
+<p>And in those functions the two most common arguments you will use are:</p>
+<ul>
+<li><code>name</code> which controls the name of each axis</li>
+<li><code>labels</code> which controls the names of the break points on the axis</li>
+</ul>
+<p>There are lots more ways you can customise your axes but we’ll stick with these for now. Copy, paste, and run the below code to change the axis labels and change the numeric sex codes into words.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="intro-to-data-viz.html#cb104-1"></a><span class="kw">ggplot</span>(summarydata, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">fill =</span> sex)) <span class="op">+</span></span>
+<span id="cb104-2"><a href="intro-to-data-viz.html#cb104-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb104-3"><a href="intro-to-data-viz.html#cb104-3"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Participant Sex&quot;</span>, </span>
+<span id="cb104-4"><a href="intro-to-data-viz.html#cb104-4"></a>                   <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>)) <span class="op">+</span></span>
+<span id="cb104-5"><a href="intro-to-data-viz.html#cb104-5"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of participants&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
+<img src="07-data-viz_files/figure-html/unnamed-chunk-5-1.png" alt="Barplot with axis labels" width="100%" />
+<p class="caption">
+Figure 7.6: Barplot with axis labels
+</p>
+</div>
+<p>Second, you might want to adjust the colours and the visual style of the plot. <code>ggplot2</code> comes with built in themes. Below, we’ll use <code>theme_minimal()</code> but try typing <code>theme_</code> into a code chunk and try all the options that come up to see which one you like best.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="intro-to-data-viz.html#cb105-1"></a><span class="kw">ggplot</span>(summarydata, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">fill =</span> sex)) <span class="op">+</span></span>
+<span id="cb105-2"><a href="intro-to-data-viz.html#cb105-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb105-3"><a href="intro-to-data-viz.html#cb105-3"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Participant Sex&quot;</span>, </span>
+<span id="cb105-4"><a href="intro-to-data-viz.html#cb105-4"></a>                   <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>)) <span class="op">+</span></span>
+<span id="cb105-5"><a href="intro-to-data-viz.html#cb105-5"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of participants&quot;</span>) <span class="op">+</span></span>
+<span id="cb105-6"><a href="intro-to-data-viz.html#cb105-6"></a><span class="st">  </span><span class="kw">theme_minimal</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<img src="07-data-viz_files/figure-html/unnamed-chunk-6-1.png" alt="Barplot with minimal theme" width="100%" />
+<p class="caption">
+Figure 7.7: Barplot with minimal theme
+</p>
+</div>
+<p>There are various options to adjust the colours but a good way to be inclusive is to use a colour-blind friendly palette that can also be read if printed in black-and-white. To do this, we can add on the function <code>scale_fill_viridis_d()</code>. This function has 5 colour options, A, B, C, D, and E. I prefer E but you can play around with them and choose the one you prefer.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="intro-to-data-viz.html#cb106-1"></a><span class="kw">ggplot</span>(summarydata, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">fill =</span> sex)) <span class="op">+</span></span>
+<span id="cb106-2"><a href="intro-to-data-viz.html#cb106-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
+<span id="cb106-3"><a href="intro-to-data-viz.html#cb106-3"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Participant Sex&quot;</span>, </span>
+<span id="cb106-4"><a href="intro-to-data-viz.html#cb106-4"></a>                   <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>)) <span class="op">+</span></span>
+<span id="cb106-5"><a href="intro-to-data-viz.html#cb106-5"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of participants&quot;</span>) <span class="op">+</span></span>
+<span id="cb106-6"><a href="intro-to-data-viz.html#cb106-6"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
+<span id="cb106-7"><a href="intro-to-data-viz.html#cb106-7"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;E&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-7"></span>
+<img src="07-data-viz_files/figure-html/unnamed-chunk-7-1.png" alt="Barplot with colour-blind friendly colour scheme" width="100%" />
+<p class="caption">
+Figure 7.8: Barplot with colour-blind friendly colour scheme
+</p>
+</div>
+<p>Finally, you can also adjust the transparency of the bars by adding <code>alpha</code> to <code>geom_bar()</code>. Play around with the value and see what value you prefer.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="intro-to-data-viz.html#cb107-1"></a><span class="kw">ggplot</span>(summarydata, <span class="kw">aes</span>(<span class="dt">x =</span> sex, <span class="dt">fill =</span> sex)) <span class="op">+</span></span>
+<span id="cb107-2"><a href="intro-to-data-viz.html#cb107-2"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">alpha =</span> <span class="fl">.8</span>) <span class="op">+</span></span>
+<span id="cb107-3"><a href="intro-to-data-viz.html#cb107-3"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Participant Sex&quot;</span>, </span>
+<span id="cb107-4"><a href="intro-to-data-viz.html#cb107-4"></a>                   <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>)) <span class="op">+</span></span>
+<span id="cb107-5"><a href="intro-to-data-viz.html#cb107-5"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Number of participants&quot;</span>) <span class="op">+</span></span>
+<span id="cb107-6"><a href="intro-to-data-viz.html#cb107-6"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
+<span id="cb107-7"><a href="intro-to-data-viz.html#cb107-7"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&quot;E&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-8"></span>
+<img src="07-data-viz_files/figure-html/unnamed-chunk-8-1.png" alt="Barplot with adjusted alpha" width="100%" />
+<p class="caption">
+Figure 7.9: Barplot with adjusted alpha
+</p>
+</div>
+<div class="warning">
+<p>
+In R terms, <code>ggplot2</code> is a fairly old package. As a result, the use of pipes wasn’t included when it was originally written. As you can see in the code above, the layers of the code are separated by <code>+</code> rather than <code>%&gt;%</code>. In this case, <code>+</code> is doing essentially the same job as a pipe - be careful not to confuse them.
+</p>
+</div>
+</div>
+<div id="activity-5-violin-boxplot" class="section level2">
+<h2><span class="header-section-number">7.5</span> Activity 5: Violin-boxplot</h2>
+<p>As our final activity we will create a violin-boxplot, hopefully now you will be able to see how similar it is in structure to the bar chart code. In fact, there are only three differences:</p>
+<ol style="list-style-type: decimal">
+<li>We have added a <code>y</code> argument to the first layer because we wanted to represent two variables, not just a count.</li>
+<li><code>geom_violin()</code> has an additional argument <code>trim</code>. Try setting this to <code>TRUE</code> to see what happens.</li>
+<li><code>geom_boxpot()</code> has an additional argument <code>width</code>. Try adjusting the value of this and see what happens.</li>
+</ol>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="intro-to-data-viz.html#cb108-1"></a><span class="kw">ggplot</span>(summarydata, <span class="kw">aes</span>(<span class="dt">x =</span> income, <span class="dt">y =</span> ahiTotal, <span class="dt">fill =</span> income)) <span class="op">+</span></span>
+<span id="cb108-2"><a href="intro-to-data-viz.html#cb108-2"></a><span class="st">  </span><span class="kw">geom_violin</span>(<span class="dt">trim =</span> <span class="ot">FALSE</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">alpha =</span> <span class="fl">.4</span>) <span class="op">+</span></span>
+<span id="cb108-3"><a href="intro-to-data-viz.html#cb108-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">width =</span> <span class="fl">.2</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>, <span class="dt">alpha =</span> <span class="fl">.7</span>)<span class="op">+</span></span>
+<span id="cb108-4"><a href="intro-to-data-viz.html#cb108-4"></a><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">name =</span> <span class="st">&quot;Income&quot;</span>,</span>
+<span id="cb108-5"><a href="intro-to-data-viz.html#cb108-5"></a>                   <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Below Average&quot;</span>, <span class="st">&quot;Average&quot;</span>, <span class="st">&quot;Above Average&quot;</span>)) <span class="op">+</span></span>
+<span id="cb108-6"><a href="intro-to-data-viz.html#cb108-6"></a><span class="st">  </span><span class="kw">scale_y_continuous</span>(<span class="dt">name =</span> <span class="st">&quot;Authentic Happiness Inventory Score&quot;</span>)<span class="op">+</span></span>
+<span id="cb108-7"><a href="intro-to-data-viz.html#cb108-7"></a><span class="st">  </span><span class="kw">theme_minimal</span>() <span class="op">+</span></span>
+<span id="cb108-8"><a href="intro-to-data-viz.html#cb108-8"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-10"></span>
+<img src="07-data-viz_files/figure-html/unnamed-chunk-10-1.png" alt="Violin-boxplot" width="100%" />
+<p class="caption">
+Figure 7.10: Violin-boxplot
+</p>
+</div>
+</div>
+<div id="activity-6-layers-part-2" class="section level2">
+<h2><span class="header-section-number">7.6</span> Activity 6: Layers part 2</h2>
+<p>The key thing to note about <code>ggplot</code> is the use of layers. Whilst we’ve built this up step-by-step, they are independent and you could remove any of them except for the first layer. Additionally, although they are independent, the order you put them in does matter. Try running the two code examples below and see what happens.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="intro-to-data-viz.html#cb109-1"></a><span class="kw">ggplot</span>(summarydata, <span class="kw">aes</span>(<span class="dt">x =</span> income, <span class="dt">y =</span> ahiTotal)) <span class="op">+</span></span>
+<span id="cb109-2"><a href="intro-to-data-viz.html#cb109-2"></a><span class="st">  </span><span class="kw">geom_violin</span>() <span class="op">+</span></span>
+<span id="cb109-3"><a href="intro-to-data-viz.html#cb109-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span>
+<span id="cb109-4"><a href="intro-to-data-viz.html#cb109-4"></a></span>
+<span id="cb109-5"><a href="intro-to-data-viz.html#cb109-5"></a><span class="kw">ggplot</span>(summarydata, <span class="kw">aes</span>(<span class="dt">x =</span> income, <span class="dt">y =</span> ahiTotal)) <span class="op">+</span></span>
+<span id="cb109-6"><a href="intro-to-data-viz.html#cb109-6"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb109-7"><a href="intro-to-data-viz.html#cb109-7"></a><span class="st">  </span><span class="kw">geom_violin</span>()</span></code></pre></div>
+<div id="finished-3" class="section level3">
+<h3><span class="header-section-number">7.6.1</span> Finished!</h3>
+<p>Well done! <code>ggplot</code> can be a bit difficult to get your head around at first, particularly if you’ve been used to making graphs a different way. But once it clicks, you’ll be able to make informative and professional visualisations with ease, which, amongst other things, will make your reports look FANCY.</p>
+
+</div>
+</div>
+</div>
+<div class="psyteachr_footer">
+  
+</div>
+<script>
+
+/* update total correct if #total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("correct").length + " of " +
+      document.getElementsByClassName("solveme").length + " correct";
+  }
+}
+
+/* solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "");
+  }
+  
+  if (my_answer !== "" & real_answers.includes(my_answer)) {
+    cl.add("correct");
+  } else {
+    cl.remove("correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol){
+    var tol = JSON.parse(this.dataset.tol);  
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("correct");
+    } else {
+      cl.remove("correct");
+    }  
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("correct");
+    }  
+  }
+  
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+  
+  /* set up solveme inputs */
+  var solveme = document.getElementsByClassName("solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off"); 
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+    
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+    
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+  
+  update_total_correct();
+}
+
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-wrangling-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="probability.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": {},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
