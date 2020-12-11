@@ -18,11 +18,9 @@ If our hypothesis is correct then there should be `r mcq(c("a positive", "no", "
 
 ## Activity 1: Setup
 
-Do the following. If you need help, consult Chapter @\ref(ref3) and Chapter \@(ref2).
-
-* Open R Studio and set the working directory to your Week 12 folder. Ensure the environment is clear.   
-* Open a new R Markdown document and save it in your working directory. Call the file "Week 12".    
-* Download <a href="L3_stars.csv" download>L3_stars.csv</a> and <a href="psess.csv" download>psess.csv</a> and save them in your Week 12 folder. Make sure that you do not change the file name at all.    
+* Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.   
+* Open a new R Markdown document and save it in your working directory. Call the file "Regression".    
+* Download <a href="L3_stars.csv" download>L3_stars.csv</a> and <a href="psess.csv" download>psess.csv</a> and save them in your chapter folder. Make sure that you do not change the file name at all.    
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads `pwr`, `car`, `broom`, and `tidyverse` using the `library()` function.
 * Load the two CSV datasets into variables called `stars` and `engage` using `read_csv()`.
@@ -42,7 +40,7 @@ engage <- read_csv("psess.csv")
 
 ## Activity 2: Tidy the data
 
-* Take a look at both of the datasets you loaded in (you can use just type the name to output them out to the console).
+* Take a look at both of the datasets you loaded in.
 
 The next thing we need to do is to calculate a mean anxiety score for each student (recall that individual students are identified by the `ID` variable).
 
@@ -50,10 +48,10 @@ Recall the difference between *wide* and *tidy* data. In wide data, each row rep
 
 * The STARS data are currently in `r mcq(c("answer" = "wide", "tidy"))` format.
 
-Before we calculate means, you need to use `gather()` to restructure the STARS data into the appropriate "tidy" format; i.e., so that it looks like the table below.
+Before we calculate means, you need to use `pivot_longer()` to restructure the STARS data into the appropriate "tidy" format; i.e., so that it looks like the table below.
 
 ```{r stars_wide, echo = FALSE}
-stars2 <- gather(stars, "Question", "Score", Q01:Q51) %>%
+stars2 <- pivot_longer(data = stars, names_to = "Question", values_to = "Score",cols = Q01:Q51) %>%
   arrange(ID)
 head(stars2) %>% knitr::kable(align = 'c')
 ```
@@ -82,6 +80,8 @@ stars_means <- stars2 %>%
 
 ```{r combine_ex, echo = FALSE}
 joined <- inner_join(stars_means, engage, "ID")
+joined %>%
+  knitr::kable(align = 'c', digits = 2)
 ```
 
 ## Activity 5: Calculate descriptives for the variables overall
@@ -105,7 +105,7 @@ descriptives <- joined %>%
 
 ## Activity 6: Visualisations
 
-* Now that youwe have all of the variables in one place, write the code to reproduce the exact scatterplot below (using ggplot2).
+* Now that you've have all of the variables in one place, write the code to reproduce the exact scatterplot below (using ggplot2).
 
 ```{r scatter, echo = FALSE, fig.cap="Scatteplot of mean anxiety and attendance"}
 ggplot(joined, aes(mean_anxiety, n_weeks)) +
@@ -168,7 +168,7 @@ Assumption 5 could also be checked with the scatterplot but there are some nice 
 
 * Run the below code. It will produce the scatterplot with a linear line and the line that best fits the data. If these two lines are quite similar (they will never be perfect) then you can assume linearity.
 
-```{r crplots, eval = FALSE}
+```{r crplots, eval = TRUE}
 crPlots(mod)
 ```
 
@@ -255,10 +255,8 @@ library("tidyverse")
 <div class="solution"><button>Activity 2</button>
 ```{r a2b, eval = FALSE}
 
-library("pwr")
-stars2 <- gather(stars, "Question", "Score", Q01:Q51) %>%
+stars2 <- pivot_longer(data = stars, names_to = "Question", values_to = "Score",cols = Q01:Q51) %>%
   arrange(ID)
-head(stars2) %>% knitr::kable(align = 'c')
 
 ```
 </div>

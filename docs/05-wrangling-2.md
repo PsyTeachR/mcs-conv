@@ -224,6 +224,10 @@ pong_count <- pong_data %>%
             n = n())
 ```
 
+```
+## `summarise()` regrouping output by 'BackgroundColor' (override with `.groups` argument)
+```
+
 However, if you're just interested in counts rather than also calculating descriptives, `this method is a bit clunky. For example, if we wanted to count the number of observations in each BackgroundColor group, we would need the following code which is a bit clunky for a relatively simple task.
 
 

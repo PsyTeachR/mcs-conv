@@ -458,6 +458,10 @@ summary_data<-zhang_data%>%
             )
 ```
 
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
 Once you've done this you can then create the plot. By now you should have a good understanding of what each of the layers are doing. Change them to make the plot look how you want.
 
 
@@ -507,7 +511,13 @@ summary_data2<-zhang_data%>%
             max = mean(interest) + sd(interest)/sqrt(n()),
             sd = sd(interest)
             )
+```
 
+```
+## `summarise()` regrouping output by 'Condition', 'Gender' (override with `.groups` argument)
+```
+
+```r
 ggplot(zhang_data, aes(x = Condition, y = interest, fill = time))+
   geom_violin(alpha = .6, trim = FALSE)+
   geom_boxplot(width = .2, alpha = .6, position = position_dodge(.9))+
@@ -629,7 +639,13 @@ summary_data3<-zhang_data%>%
             max = mean(interest) + sd(interest)/sqrt(n()),
             sd = sd(interest)
             )
+```
 
+```
+## `summarise()` regrouping output by 'Condition' (override with `.groups` argument)
+```
+
+```r
 ggplot(zhang_data, aes(x = Condition, y = interest, fill = Gender))+
   geom_split_violin(trim = FALSE, alpha = .5)+
   geom_boxplot(width = .2, position = position_dodge(.25))+

@@ -129,9 +129,9 @@ summarise(messy,
 ```
 
 
- pre_mean    post_mean    delay_mean 
-----------  -----------  ------------
-  10.02        17.27          NA     
+| pre_mean | post_mean | delay_mean |
+|:--------:|:---------:|:----------:|
+|  10.02   |   17.27   |     NA     |
 
 The mean score for `delay` shows as `NA`. This is because R is trying to calculate an average of a dataset and including the missing value and this creates a logical problem (how do you take the average of nothing?). In order to calculate the mean we have to tell R to ignore the missing values by adding `na.rm = TRUE` to our code. You can read this as "remove the NAs? Yes".
 
@@ -197,7 +197,7 @@ ggplot(messy, aes(x = age)) +
 
 <div class="figure" style="text-align: center">
 <img src="12-missing-data_files/figure-html/unnamed-chunk-5-1.png" alt="Histograms for data screening" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-51)Histograms for data screening</p>
+<p class="caption">(\#fig:unnamed-chunk-5-1)Histograms for data screening</p>
 </div>
 
 ```r
@@ -212,7 +212,7 @@ messy %>%
 
 <div class="figure" style="text-align: center">
 <img src="12-missing-data_files/figure-html/unnamed-chunk-5-2.png" alt="Histograms for data screening" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-52)Histograms for data screening</p>
+<p class="caption">(\#fig:unnamed-chunk-5-2)Histograms for data screening</p>
 </div>
 
 Whatever method you choose, make sure that you look at your data before trying to work with it and that you know in advance what range your values should take (for example, if your Likert scale is 1-7, you shouldn't have a score of 8, for reaction times, 50ms is unlikely to reflect a real response). 
@@ -282,17 +282,17 @@ descriptives
    <td style="text-align:left;"> id* </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 200 </td>
-   <td style="text-align:right;"> NaN </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> NaN </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> Inf </td>
-   <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> -Inf </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> NA </td>
-   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 100.500000 </td>
+   <td style="text-align:right;"> 57.8791845 </td>
+   <td style="text-align:right;"> 100.5 </td>
+   <td style="text-align:right;"> 100.500000 </td>
+   <td style="text-align:right;"> 74.1300 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 200 </td>
+   <td style="text-align:right;"> 199 </td>
+   <td style="text-align:right;"> 0.0000000 </td>
+   <td style="text-align:right;"> -1.2180144 </td>
+   <td style="text-align:right;"> 4.0926764 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> age </td>
@@ -300,7 +300,7 @@ descriptives
    <td style="text-align:right;"> 200 </td>
    <td style="text-align:right;"> 36.075000 </td>
    <td style="text-align:right;"> 32.3102015 </td>
-   <td style="text-align:right;"> 34 </td>
+   <td style="text-align:right;"> 34.0 </td>
    <td style="text-align:right;"> 33.931250 </td>
    <td style="text-align:right;"> 13.3434 </td>
    <td style="text-align:right;"> 18 </td>
@@ -316,7 +316,7 @@ descriptives
    <td style="text-align:right;"> 180 </td>
    <td style="text-align:right;"> 1.511111 </td>
    <td style="text-align:right;"> 0.5012709 </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2.0 </td>
    <td style="text-align:right;"> 1.513889 </td>
    <td style="text-align:right;"> 0.0000 </td>
    <td style="text-align:right;"> 1 </td>
@@ -332,7 +332,7 @@ descriptives
    <td style="text-align:right;"> 180 </td>
    <td style="text-align:right;"> 1.688889 </td>
    <td style="text-align:right;"> 0.7268889 </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2.0 </td>
    <td style="text-align:right;"> 1.611111 </td>
    <td style="text-align:right;"> 1.4826 </td>
    <td style="text-align:right;"> 1 </td>
@@ -348,7 +348,7 @@ descriptives
    <td style="text-align:right;"> 200 </td>
    <td style="text-align:right;"> 10.015000 </td>
    <td style="text-align:right;"> 5.0039959 </td>
-   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 10.0 </td>
    <td style="text-align:right;"> 9.987500 </td>
    <td style="text-align:right;"> 4.4478 </td>
    <td style="text-align:right;"> -5 </td>
@@ -364,7 +364,7 @@ descriptives
    <td style="text-align:right;"> 200 </td>
    <td style="text-align:right;"> 17.270000 </td>
    <td style="text-align:right;"> 6.3386110 </td>
-   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 17.0 </td>
    <td style="text-align:right;"> 16.968750 </td>
    <td style="text-align:right;"> 5.9304 </td>
    <td style="text-align:right;"> 3 </td>
@@ -380,7 +380,7 @@ descriptives
    <td style="text-align:right;"> 180 </td>
    <td style="text-align:right;"> 13.600000 </td>
    <td style="text-align:right;"> 5.1563271 </td>
-   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 14.0 </td>
    <td style="text-align:right;"> 13.645833 </td>
    <td style="text-align:right;"> 4.4478 </td>
    <td style="text-align:right;"> -3 </td>
