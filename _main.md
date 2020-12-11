@@ -2130,15 +2130,15 @@ sandwich <- pivot_longer(data = responses, names_to = "Jam", values_to = "Strawb
 
 Which function(s) would you use to approach each of the following problems?
 
-* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>mutate()</option> <option>filter()</option> <option>select()</option> <option>arrange()</option> <option>summarise()</option> <option>group_by()</option></select> function.
+* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>summarise()</option> <option>filter()</option> <option>arrange()</option> <option>select()</option> <option>group_by()</option> <option>mutate()</option></select> function.
 
-* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>filter()</option> <option>mutate()</option> <option>group_by()</option> <option>select()</option> <option>summarise()</option> <option>arrange()</option></select> function.
+* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>arrange()</option> <option>filter()</option> <option>summarise()</option> <option>mutate()</option> <option>group_by()</option> <option>select()</option></select> function.
 
-* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>summarise()</option> <option>arrange()</option> <option>group_by()</option> <option>select()</option> <option>mutate()</option> <option>filter()</option></select> function.
+* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>mutate()</option> <option>select()</option> <option>group_by()</option> <option>filter()</option> <option>arrange()</option> <option>summarise()</option></select> function.
 
-* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>group_by() and summarise()</option> <option>filter() and select()</option> <option>group_by() and arrange()</option> <option>arrange() and mutate()</option></select> functions.
+* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>group_by() and arrange()</option> <option>filter() and select()</option> <option>arrange() and mutate()</option> <option>group_by() and summarise()</option></select> functions.
 
-* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["mutate() and filter()","arrange() and select()"]'> <option></option> <option>select() and summarise()</option> <option>mutate() and filter()</option> <option>group_by() and mutate()</option> <option>arrange() and select()</option></select> functions.
+* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["mutate() and filter()","arrange() and select()"]'> <option></option> <option>mutate() and filter()</option> <option>select() and summarise()</option> <option>group_by() and mutate()</option> <option>arrange() and select()</option></select> functions.
 
 ### Data visualisation
 
@@ -2463,10 +2463,10 @@ How you tackle probability depends on the type of data/variables you are working
 
 What types of data are the below measurements?
 
-* Time taken to run a marathon (in seconds): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>ratio</option> <option>interval</option> <option>categorical</option> <option>ordinal</option></select>
-* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ratio</option> <option>categorical</option> <option>ordinal</option> <option>interval</option></select>
-* Which Sesame Street character a runner was dressed as: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>ratio</option> <option>categorical</option> <option>interval</option> <option>ordinal</option></select>
-* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ratio</option> <option>interval</option> <option>categorical</option> <option>ordinal</option></select>
+* Time taken to run a marathon (in seconds): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>categorical</option> <option>ratio</option> <option>interval</option> <option>ordinal</option></select>
+* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ratio</option> <option>interval</option> <option>categorical</option> <option>ordinal</option></select>
+* Which Sesame Street character a runner was dressed as: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>ordinal</option> <option>interval</option> <option>categorical</option> <option>ratio</option></select>
+* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ordinal</option> <option>interval</option> <option>categorical</option> <option>ratio</option></select>
 
 ### Probability distributions
 
@@ -2552,9 +2552,9 @@ As with any probabilities, real-world data will come close to the normal distrib
 
 Complete the sentences so that they are correct.
 
-* In a normal distribution, the mean, median, and mode <select class='solveme' data-answer='["are all equal"]'> <option></option> <option>sum to zero</option> <option>are all equal</option> <option>are always different</option></select>.
-* In a normal distribution, the further away from the mean an observation is <select class='solveme' data-answer='["the lower its probability of occuring"]'> <option></option> <option>the higher its probability of occuring</option> <option>the lower its probability of occuring</option></select>.
-* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='solveme' data-answer='["is a continuous variable"]'> <option></option> <option>is a continuous variable</option> <option>has three possible values</option> <option>is a categorical variable</option></select>.
+* In a normal distribution, the mean, median, and mode <select class='solveme' data-answer='["are all equal"]'> <option></option> <option>sum to zero</option> <option>are always different</option> <option>are all equal</option></select>.
+* In a normal distribution, the further away from the mean an observation is <select class='solveme' data-answer='["the lower its probability of occuring"]'> <option></option> <option>the lower its probability of occuring</option> <option>the higher its probability of occuring</option></select>.
+* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='solveme' data-answer='["is a continuous variable"]'> <option></option> <option>is a categorical variable</option> <option>has three possible values</option> <option>is a continuous variable</option></select>.
 
 ## Activity 4: Distribution test
 
@@ -7589,439 +7589,459 @@ f2 <- mod_summary$adj.r.squared/(1 - mod_summary$adj.r.squared)
 
 <!--chapter:end:17-multiple-regression.Rmd-->
 
+# Multiple regression
 
+There is currently much debate (and hype) surrounding smartphones and their effects on well-being, especially with regard to children and teenagers.  We'll be looking at data from this recent study of English adolescents:
 
+> Przybylski, A. & Weinstein, N. (2017). A Large-Scale Test of the Goldilocks Hypothesis. *Psychological Science*, *28*, 204--215.
 
-# Comparing categories
+This was a large-scale study that found support for the "Goldilocks" hypothesis among adolescents: that there is a "just right" amount of screen time, such that any amount more or less than this amount is associated with lower well-being.  This was a huge survey study: the data contain responses from over 120,000 participants! 
 
-We have spent the chapters so far focusing on the basics of R and data wrangling. You may think that the tasks we ask you to do in R will get harder as this course progresses but that isn't true. The hardest part of learning R is at the very beginning, trying to learn the new terminology, figuring out how to load in data and wrangle it into the format you need. It may feel like you are still struggling so it's worth reflecting on just how far you've come in a short time.
+Fortunately, the authors made the data from this study openly available, which allows us to dig deeper into their results. In this exercise, we will look at whether the relationship between screen time and well-being is modulated by participants' (self-reported) gender.
 
-You can now:
+The dependent measure used in the study was the [Warwick-Edinburgh Mental Well-Being Scale (WEMWBS)](https://warwick.ac.uk/fac/med/research/platform/wemwbs/). This is a 14-item scale with 5 response categories, summed together to form a single score ranging from 14-70.
 
-* Understand what functions, arguments, objects, variables, and tibbles are  
-* Read data into R  
-* Tidy data into an appropriate format  
-* Calculate a range of descriptive statistics
+At [Przybylski & Weinstein's page for this study on the Open Science Framework](https://osf.io/82ybd/), you can find the [participant survey](https://osf.io/82ybd/) which asks a large number of additional questions (see page 14 for the WEMWBS questions and pages 4-5 for the questions about screen time). Within the same page you can also find the [raw data](https://osf.io/82ybd/); however, for the purpose of this exercise, you will be using local pre-processed copies of the data which can be downloaded from Moodle.
 
-That's amazing! Now we're going to move on to performing some simple descriptive comparisons and create a plot to visualise the data. 
+Przybylski and Weinstein looked at multiple measures of screen time, but we will be focusing on smartphone use.  They found that decrements in well-being started to appear when respondents reported more than one hour of weekly smartphone use.  Our question: Does the negative association between hours of use and well-being (beyond the one-hour point) differ for boys and girls?
 
-### Reminders through association
+Note that in this analysis, we have:
 
-For this chapter, we're going to use data from [Rogers, T. & Milkman, K. L. (2016). Reminders through association. Psychological Science, 27, 973-986](https://journals.sagepub.com/stoken/default+domain/6XgDSfr6ZHSDs47tx5bu/full). You can read the full paper online but the short version is that the authors looked at how people remember to follow through with the intention of doing something.  Although there are lots of potential reasons (e.g., some people may lack the self-control resources), Rogers and Milkman (2016) propose that some people fail to follow through simply because they forget about their good intentions. If this is the case, the authors argue, then having visual reminders to follow through on their intentions may help people remember to keep them. For example, a person may choose to put a sticker for their gym on their car window, so that every time they get in the car they remember to go to the gym. 
+- a continuous$^*$ DV, well-being;
 
-In Study 1, participants took part in an unrelated experiment but at the start of the task they were asked to return a small stack of paper clips to the reception of the building at the end of the study and if they did so the researchers would donate $1 to a charity. They were then asked if they intended to do this. Those in the reminder-through-association (RTA) condition read “Thank you! To remind you to pick up a paper clip, an elephant statuette will be sitting on the counter as you collect your payment.” This message was followed by a picture of the elephant statuette. Those in the control condition simply read “Thank you!”.
+- a continuous$^*$ predictor, screen time;
 
-What we want to do is to determine whether those in the RTA condition were more likely to remember to return the paper-clips than those in the control condition and we'll do this by replicating the chi-square analysis that the authors used in their paper. 
+- a categorical predictor, gender.
 
-### Activity 1: Set-up
+$^*$these variables are only quasi-continuous, inasmuch as only discrete values are possible. However, there are a sufficient number of discrete categories that we can treat them as effectively continuous.
 
-Do the following. If you need help, consult Chapter \@ref(ref2) and Chapter \@ref(ref3).
+What we want to do is to estimate two slopes relating screen time to well-being, one for girls and one for boys, and then statistically compare these slopes. So this problem seems simultaneously like a situation where you would run a regression (to estimate the slopes) but also one where you would need a t-test (to compare two groups).
 
-* Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.   
-* Open a new R Markdown document and save it in your working directory. Call the file "Comparing categories".    
-* Download <a href="RTA_study1.csv" download>RTA_study1.csv</a> and save it in your chapter folder. Make sure that you do not change the file name at all.
+But the expressive power of regression allows us to do this all within a single model. As the [Bishop blog showed](http://deevybee.blogspot.com/2017/11/anova-t-tests-and-regression-different.html), *an independent groups t-test is just a special case of ordinary regression with a single categorical predictor; ANOVA is just a special case of regression where all predictors are categorical.*  So although we can express any ANOVA design using regression, the converse is not true: we cannot express every regression design in ANOVA. Regression allows us to have any combination of continuous and categorical predictors in the model. The only inconvenience with running ANOVA models as regression models is that you have to take care in how you numerically code the categorical predictors.
+
+## Activity 1: Set-up
+
+* Open R Studio and set the working directory to your Week 13 folder. Ensure the environment is clear.    
+* Open a new R Markdown document and save it in your working directory. Call the file "Week 13".    
+* Download <a href="wellbeing.csv" download>wellbeing.csv</a>, <a href="participant_info.csv" download>participant_info.csv</a> and <a href="screen_time.csv" download>screen_time.csv</a> and save them in your Week 13 folder. Make sure that you do not change the file names at all.    
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
-* If you are working on your own computer, install the package `lsr`. Remember **do not install packages on university computers, they are already installed**.
-* Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `tidyverse` and `lsr` using the `library()` function and loads the data into an object named `intent_data` using `read_csv()`.
+* Delete the default R Markdown welcome text and insert a new code chunk that loads `pwr`, `car`, `broom`, and `tidyverse` using the `library()` function.
+* Load the CSV datasets into variables called `pinfo`, `wellbeing` and `screen` using `read_csv()`.
 
 
-```r
-library(NULL)
-intent_data <- read_csv(NULL)
-```
 
-### Activity 2: Look at the data
+## Activity 2: Look at the data
 
-Using your preferred method, look at the data. It is a fairly simple data file that contains four variables for 87 participants:
+Take a look at the resulting tibbles `pinfo`, `wellbeing`, and `screen`.  The `wellbeing` tibble has information from the WEMWBS questionnaire; `screen` has information about screen time use on weekends (variables ending with `we`) and weekdays (variables ending with `wk`) for four types of activities: using a computer (variables starting with `Comph`; Q10 on the survey), playing video games (variables starting with `Comp`; Q9 on the survey), using a smartphone (variables starting with `Smart`; Q11 on the survey) and watching TV (variables starting with `Watch`; Q8 on the survey).  If you want more information about these variables, look at the items 8-11 on pages 4-5 of the the [PDF version of the survey on the OSF website](https://osf.io/82ybd/).
 
-* `condition`: this variable indicates which condition participants were in, 1 =  reminder-through-association condition, 2 = control condition
-* `intend`: this variable indicates whether participants said they were intending to return the paper-clips, 1 = yes, 0 = no
-* `actualdonate`: this variable indicates whether participants actually ended up returning the paper-clips and therefore donating to charity, 1 = yes, 0 = no
-* `id`: this variable indicates the participant ID number
+* The variable corresponding to *gender* is located in the table named <select class='solveme' data-answer='["pinfo"]'> <option></option> <option>pinfo</option> <option>wellbeing</option> <option>screen</option></select> and this variable is called <input class='solveme nospaces' size='6' data-answer='["male"]'/>.
 
-### Activity 3: Wrangle and recode the data
+* The WEMWBS data is in <select class='solveme' data-answer='["wide"]'> <option></option> <option>long</option> <option>wide</option></select> format, and contains observations from <input class='solveme nospaces' size='10' data-answer='["102580","102,580"]'/> participants on <input class='solveme nospaces' size='2' data-answer='["15"]'/> items.
 
-We need to do a little bit of wrangling to get our data into the format we need. First, we need to remove all the participants who said that they did not intend to return the paper-clips (`intend = 0`) as we are only interested in whether people follow through on an intention. Second, to make the output easier to read, we're going to recode `condition` to have text labels rather than numerical values. 
+* Individual participants in this dataset are identified by the variable named <input class='solveme nospaces' size='9' data-answer='["Serial"]'/> [be sure to type the name *exactly*, including capitalization].  This variable will allow us to link information across the three tables.
 
-* Use `filter()` to remove all participants who said that they did not intend to return the paper-clips
-* Use `mutate()` and `recode()` to recode the values in `condition` to make 1 = rta and 2 = control and the values in `actualdonate` to 1 = donated and  0 = no_donation. If you need help with this, consult Chapter \@ref(recode). 
-* You can do this in two separate steps, or you can use pipes. Regardless of how you do it, save the final output to an object named `intent_recode`.
-
-The solutions are at the end of this chapter but make sure you try it yourself and ask your peers and tutor for help first.
+* Run `summary()` on the three data-sets. Are there any missing data points? <select class='solveme' data-answer='["No"]'> <option></option> <option>Yes</option> <option>No</option></select>
 
 
-```r
-intent_recode <-
-```
+## Activity 3: Compute the well-being score for each respondent
+
+The WEMWBS well-being score is simply the *sum* of all the items. 
+
+* Write the code to create a new table called `wemwbs`, with two variables: `Serial`, and `tot_wellbeing`, the total WEMWBS score.
 
 
-<div class='solution'><button>Helpful hint</button>
+<div class='solution'><button>Hint</button>
 
-
-You will need to put both sides of each recode argument (i.e., 1 and rta) in quotation marks, even though 1 and 2 are numbers, they actually represent categories rather than numerical data.
+- "gather" the table from wide to long
 
 </div>
- 
+
+
+
+<div class='solution'><button>Another Hint</button>
+
+- `group_by()`; `summarise(tot_wellbeing = ...)`
+
+</div>
+
+
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+**Sanity check:** Verify for yourself that the scores all fall in the 14-70 range.  Przybylski and Weinstein reported a mean of 47.52 with a standard deviation of 9.55. Can you reproduce these values?
+
+
+<div class='solution'><button>Hint</button>
+
+- `summarise()`, `min()`, `max()`
+
+</div>
 
 <br>
+* Now visualise the distribution of `tot_wellbeing` in a histogram using ggplot2.
 
-`intent_recode` should have data from 77 participants and should look something like this:
 
+<div class='solution'><button>Hint</button>
 
-| condition | intend | actualdonate | id |
-|:---------:|:------:|:------------:|:--:|
-|    rta    |   1    |   donated    | 1  |
-|    rta    |   1    |   donated    | 2  |
-|    rta    |   1    |   donated    | 3  |
-|    rta    |   1    |   donated    | 4  |
-|    rta    |   1    |   donated    | 5  |
-|    rta    |   1    |   donated    | 6  |
+- `geom_histogram()`
 
-<div class="warn">
-<p>There are several different packages that have a function called <code>recode()</code> and <code>select()</code>. At the moment, we haven’t loaded them so there won’t be any problems however, in the future you should remember these as potentially problematic functions. To avoid any issues you can specify exactly which package you want the function to come from using <code>dplyr::recode()</code> and <code>dplyr::select()</code>. Remember this - it may save you a lot of time in the future!</p>
 </div>
 
-### Activity 4: Descriptive statistics
 
-Next you need to calculate descriptive statistics. For frequency data these are simply counts so we can use the function `count()` rather than having to use `summarise`. We want to know how many participants are in each group (rta - donated, rta - didn't donate, control - donated, control - didn't donate) so we will need to use `group_by` to display the results for all combinations of `condition` and `actualdonate`.
 
-* Replace the NULLs in the below code to calculate the number of participants in each category and save it to an object named `intent_counts`. 
+<div class='solution'><button>Solution</button>
 
 
 ```r
-intent_counts <- intent_recode %>%
-  group_by(NULL, NULL) %>%
-  count()
+ggplot(wemwbs, aes(tot_wellbeing)) + geom_histogram() 
 ```
 
-How many participants in the control condition didn't donate? <input class='solveme nospaces' size='2' data-answer='["22"]'/>  
-How many participants in the control condition donated? <input class='solveme nospaces' size='2' data-answer='["16"]'/>  
-How many participants in the rta condition didn't donate? <input class='solveme nospaces' size='2' data-answer='["10"]'/>  
-How many participants in the rta condition donated? <input class='solveme nospaces' size='2' data-answer='["29"]'/>  
-
-You may also want to calculate the percentage of people who donated in each condition, if so you can adapt the code like this:
-
-
-```r
-intent_percent <- intent_recode %>%
-  group_by(condition, actualdonate) %>%
-  count() %>%
-  ungroup() %>% # ungroups the code
-  group_by(condition) %>% # then groups it again but just by condition
-  mutate(percent_condition = n/sum(n) * 100)
 ```
-
-
-| condition | actualdonate | n  | percent_condition |
-|:---------:|:------------:|:--:|:-----------------:|
-|  control  |   donated    | 16 |       42.11       |
-|  control  | no_donation  | 22 |       57.89       |
-|    rta    |   donated    | 29 |       74.36       |
-|    rta    | no_donation  | 10 |       25.64       |
-
-### `ggplot2()`
-
-Now you have calculated how many participants are in each cell (or combination of the categories), however, it is also useful to create a visualisation of the data - the old saying is true, a picture is worth a thousand words. To make our data visualisations we're going to use the package `ggplot2()` which was loaded as part of the `tidyverse`.
-
-`ggplot()` builds plots by combining layers (see Figure \@ref(fig:img-layers))). If you're used to making plots in Excel this might seem a bit odd at first, however, it means that you can customise each layer and R is capable of making very complex and beautiful figures ([this website](https://www.data-to-viz.com/) gives you a good sense of what's possible).
-
-<div class="figure" style="text-align: center">
-<img src="images/layers.png" alt="ggplot2 layers from Field et al. (2012)" width="100%" />
-<p class="caption">(\#fig:img-layers)ggplot2 layers from Field et al. (2012)</p>
-</div>
-
-### Activity 5: Bar plot {#bar}
-
-We want to create a simple bar plot of our count data.  
-
-* Type the below code into a new R chunk and run it.   
-* The first line (or layer) sets up the base of the graph: the data to use and the aesthetics (what will go on the x and y axis, how the plot will be grouped).    
-* `aes()` can take both an `x` and `y` argument, however, with a bar plot you are just asking R to count the number of data points in each group so you don't need to specify this.  
-* `fill` will separate the data into each level of the grouping variable and give it a different colour. In this case, there is a different coloured bar for each level of `actualdonate`.  
-* The next layer adds a **geom** or a shape, in this case we use `geom_bar()` as we want to draw a bar plot.  
-* `position = "dodge"` places the bars next to each other, rather than on top of each other. Try removing this argument and just running the code with `geom_bar()` to see what happens.   
-
-
-```r
-ggplot(data = intent_recode, aes(x = condition, fill = actualdonate)) +
-  geom_bar(position = "dodge")
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
 <div class="figure" style="text-align: center">
-<img src="18-chi-square_files/figure-html/layer1-1.png" alt="Bar plot of RTA Study 1 data" width="100%" />
-<p class="caption">(\#fig:layer1)Bar plot of RTA Study 1 data</p>
+<img src="18-multiple-regression_files/figure-html/wemwbs_histogram-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
+<p class="caption">(\#fig:wemwbs_histogram)**CAPTION THIS FIGURE!!**</p>
 </div>
 
-<div class="warning">
-<p>In R terms, <code>ggplot2</code> is a fairly old package. As a result, the use of pipes wasn’t included when it was originally written. As you can see in the code above, the layers of the code are separated by <code>+</code> rather than <code>%&gt;%</code>. In this case, <code>+</code> is doing essentially the same job as a pipe - be careful not to confuse them.</p>
+
 </div>
 
-As you can see, the plot makes it much easier to visualise the data - participants in the RTA condition appear to have been more likely to remember to donate than those in the control condition.
 
-### Activity 6: Make the plot pretty
+The distribution of well-being scores is <select class='solveme' data-answer='["negatively skewed"]'> <option></option> <option>symmetric</option> <option>negatively skewed</option> <option>positively skewed</option></select>.
 
-As mentioned, `ggplot2` allows you to customise all aspects of your plots, so let's tidy ours up a little bit. We're going to do the following:  
+## Activity 4: Visualise the relationship
 
-* Edit the labels on the x-axis, y-axis and fill  
-* Change the colours of the bars to colour-blind friendly options with `scale_fill_viridis_d()`  
-* Change the theme of the plot to change how it looks visually
+Let's take a quick look at the relationship between screen time (for the four different technologies) and measures of well-being.  Here is code to do this. 
+
+* Run the below code and try and explain in words what each line of code is doing (remember, pronounce `%>%` as "and then"). You may find it easier to look at each of the tables that are produced.
 
 
 ```r
-ggplot(data = intent_recode, aes(x = condition, fill = actualdonate)) +
-  geom_bar(position = "dodge") +
-  scale_x_discrete(name = "Condition", labels = c("Control", "RTA")) +
-  scale_y_continuous(name = "Count") +
-  scale_fill_viridis_d(name = "Behaviour", labels = c("Donated", "Did not donate"), option = "E")+
-  theme_classic()
+screen_long <- screen %>%
+  gather("var", "hours", -Serial) %>%
+  separate(var, c("variable", "day"), "_")
+
+screen2 <- screen_long %>%
+  mutate(variable = dplyr::recode(variable,
+               "Watch" = "Watching TV",
+               "Comp" = "Playing Video Games",
+               "Comph" = "Using Computers",
+               "Smart" = "Using Smartphone"),
+     day = dplyr::recode(day,
+              "wk" = "Weekday",
+              "we" = "Weekend"))
+
+dat_means <- inner_join(wemwbs, screen2, "Serial") %>%
+  group_by(variable, day, hours) %>%
+  summarise(mean_wellbeing = mean(tot_wellbeing))
+```
+
+```
+## `summarise()` regrouping output by 'variable', 'day' (override with `.groups` argument)
+```
+
+```r
+ggplot(dat_means, aes(hours, mean_wellbeing, linetype = day)) +
+  geom_line() +
+  geom_point() +
+  facet_wrap(~variable, nrow = 2)
 ```
 
 <div class="figure" style="text-align: center">
-<img src="18-chi-square_files/figure-html/plot-edits-1.png" alt="Prettier bar plot of RTA Study" width="100%" />
-<p class="caption">(\#fig:plot-edits)Prettier bar plot of RTA Study</p>
+<img src="18-multiple-regression_files/figure-html/combined-1.png" alt="Relationship between wellbeing and screentime usage by technology and weekday" width="100%" />
+<p class="caption">(\#fig:combined)Relationship between wellbeing and screentime usage by technology and weekday</p>
 </div>
 
-There are a few things to note about the code we just added on: 
+The graph makes it evident that smartphone use of more than 1 hour per day is associated with increasingly negative well-being.  Note that we have combined the tables using an `inner_join()`, such that we only include data for which we have observations across the `wemwbs` and `screen2` tables.
 
-* The first two lines are the same code as we used in Activity 4, what we've done now is add on extra layers.   
-* `scale_fill_viridis_d()` has multiple options for colours, try replacing "E" with a letter from A - D and see which one you prefer.
-*The `d` in `scale_fill_viridis_d()` stands for discrete, because we have a categorical variable. There is also a `scale_fill_viridis_c()` that you would use if your fill variable was continuous.
-* There are multiple themes that you can apply. If you type `theme_` the auto-complete will show you the options - try a few out and see which one you prefer.   
-* If you want more information on any of these functions, remember you can look at the help documentation by typing `?function`.  
+In the next step, we are going to focus in on the smartphone/well-being relationship.
 
-### Activity 7: Chi-square
+## Activity 5: Smartphone and well-being for boys and girls
 
-So, let's finally run that chi-square analysis to see whether our intuition from the plot holds up and there is a significant association between the grouping variables. As promised, the code is quite simple - type the below code into a new R chunk and run it.
+For this analysis, we are going to collapse weekday and weekend use for smartphones.
 
-
-```r
-results <- chisq.test(x = intent_recode$condition, # the first grouping variable
-                      y = intent_recode$actualdonate, # the second grouping variable
-                      correct = FALSE) # whether we want to apply the continuity correction
-results
-```
-
-```
-## 
-## 	Pearson's Chi-squared test
-## 
-## data:  intent_recode$condition and intent_recode$actualdonate
-## X-squared = 8.244, df = 1, p-value = 0.004089
-```
-
-This code looks a little different to code you've used up until this point as it comes from Base R. The x and y variables use the notation `object$variable` so our x variable could be read as "use the variable `condition` from the object `intent_recode`. The reason that we chose not to apply the continuity correction is because this is what the analysis in the original paper did.
-
-1. What is the chi-square statistic? <input class='solveme nospaces' size='5' data-answer='["8.244"]'/>
-2. Is the p-value significant? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>  
-3. What are the degrees of freedom for the test? <input class='solveme nospaces' size='1' data-answer='["1"]'/>  
-
-
-<div class='solution'><button>Explain these answers</button>
-
-1. The chi-square statistic is noted in the output as X-squared. Refer to the lecture for more information on how this number is calculated.  
-2. The traditional cut-off for significance is p < .05. This means that if your p-value is smaller than .05 there is a statistically significant association, that is, you would be unlikely to observe this pattern of data by chance if the null hypothesis was true. If p is larger than .05 it means that there is a higher probability that any difference you see would be likely to occur even if the null hypothesis was true. Pay attention to the decimal places, they make a huge difference!  
-3. Degrees of freedom are noted as `df` in the output. Refer to the lecture for more information on what they are and how they are calculated.
-    
-    
-
-</div>
-
+* Create a new table, `smarttot`, that has the that has mean number of hours per day of smartphone use for each participant, averaged over weekends/weekdays. 
+* You will need to filter the dataset to only include smartphone use and not other technologies. 
+* You will also need to group the results by the participant ID (i.e., `serial`). 
+* The final data-set should have two variables: `Serial` (the participant) and `hours_per_day`.
+* You will need to use the data-set `screen2` to do this.
 
 <br>
 
-Go and find the results section in the original paper, do your numbers match the ones they report?
+* Next, create a new tibble called `smart_wb` that only includes (filters) participants from `smarttot` who used a smartphone for more than one hour per day each week, and then combine (join) this table with the information in `wemwbs` and `pinfo`.**
 
-### Activity 8: Additional analysis information
 
-You may have noticed that when you ran the chi-square an object appeared in the environment that saved the results of the analysis. This object is a **list** which is a bit different to the type of objects we've worked with so far. Lists don't just contain one data table or a vector of numbers or characters, they can contain multiple different types of information and multiple different tables. We can see that our object `results` is a list of 9, which means it has 9 components. Click on `results` in the environment pane to view the contents of the list (you could also type `str(results)`).
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+## Activity 6: Mean-centering variables
+
+As discussed in the lecture, When you have continuous variables in a regression, it is often sensible to transform them by *mean centering*.  You mean center a predictor `X` simply by subtracting the mean (`X_centered = X - mean(X)`). This has two useful consequences:
+
+- the model intercept reflects the prediction for $Y$ at the mean value of the predictor variable, rather than at the zero value of the unscaled variable;
+
+- if there are interactions in the model, any lower-order effects can be given the same interpretation as they receive in ANOVA (main effects, rather than simple effects).
+
+For categorical predictors with two levels, these become coded as -.5 and .5 (because the mean of these two values is 0).
+
+* Use `mutate` to add two new variables to `smart_wb`: `tothours_c`, calculated as a mean-centered version of the `tothours` predictor; and `male_c`, recoded as -.5 for female and .5 for male.
+* To create `male_c` you will need to use `if_else(male == 1, .5, -.5)` You can read this code as "if the variable `male` equals 1, recode it as .5, if not, recode it as -.5".
+* Finally, recode `male` and `male_c` as factors, so that R knows not to treat them as a real numbers.
+
+
+
+
+## Activity 7: Visualise the relationship
+
+* Reverse-engineer the below plot. Calculate mean well-being scores for each combination of `male` and `tothours`, and then create a scatterplot plot that includes separate regression lines for each gender.
+* You may find it useful to refer to Chapter \@ref(vis). 
+
+
+```
+## `summarise()` regrouping output by 'tothours' (override with `.groups` argument)
+```
+
+```
+## `geom_smooth()` using formula 'y ~ x'
+```
 
 <div class="figure" style="text-align: center">
-<img src="images/lists.png" alt="Contents of a list" width="100%" />
-<p class="caption">(\#fig:img-lists)Contents of a list</p>
+<img src="18-multiple-regression_files/figure-html/plots-1.png" alt="Relationship between mean wellbeing and smartphone use by gender" width="100%" />
+<p class="caption">(\#fig:plots)Relationship between mean wellbeing and smartphone use by gender</p>
 </div>
 
-Each of these components can be viewed separately using the same `object$variable` notation we used above. For example, if we wanted to view the observed frequencies (refer to the lecture), we would run the following code:
+
+Write an interpretation of the above plot in plain English.
 
 
-```r
-results$observed
-```
+<div class='solution'><button>Possible solution</button>
 
-
-|        | donated | no_donation |
-|:-------|:-------:|:-----------:|
-|control |   16    |     22      |
-|rta     |   29    |     10      |
-
-### Assumption checks
-
-The assumptions for chi-square are as follows:
-
-1. The data in the cells should be frequencies, or counts of cases rather than percentages or some other transformation of the data.
-
-2. The levels (or categories) of the variables are mutually exclusive. That is, a particular participant fits into one and only one group of each of the variables.
-
-3. Each subject may contribute data to one and only one cell in the χ2. If, for example, the same subjects are tested over time such that the comparisons are of the same subjects at Time 1, Time 2, Time 3, etc., then χ2 may not be used.
-
-4. The study groups must be independent. This means that a different test must be used if the two groups are related. For example, a different test must be used if the researcher’s data consists of paired samples, such as in studies in which a parent is paired with his or her child.
-
-5. There are 2 variables, and both are measured as categories, usually at the nominal level. While Chi-square has no rule about limiting the number of cells (by limiting the number of categories for each variable), a very large number of cells (over 20) can make it difficult to meet assumption #6 below, and to interpret the meaning of the results.
-
-6. The expected cell frequencies should be greater than 5. 
-
-### Activity 9: Check the expected frequencies
-
-We know that assumptions 1-5 have been met because we know the design of the study and the type of data we have fits these criteria. The final assumption we need to test is that all expected frequencies are greater than 5.  
-
-* Using the same `object$variable` code as in Activity 7, view the expected frequencies
-
-Does the data meet assumption 6? <select class='solveme' data-answer='["Yes - all expected frequencies are > 5"]'> <option></option> <option>Yes - all expected frequencies are > 5</option> <option>No - one or more expected frequencies are < 5</option></select>
-
-### Activity 10: Effect size {#cramer}
-
-Although it wasn't in the original paper, as our last step we will calculate an effect size so that we have a standardised measure of how large the association between our grouping variable is, the effect size measure for chi-square is Cramer's V that you covered in the lecture.
-
-To calculate Cramer's V we're going to use the function `cramersv()` from the `lsr` package. This function is very easy to use - you copy and paste the code you gave to `chisq.test()` in Activity 7.
-
-
-```r
-eff_size <- cramersV(x = intent_recode$condition, y = intent_recode$actualdonate, correct = FALSE)
-eff_size
-```
-
-```
-## [1] 0.327207
-```
-
-### Activity 11: Write-up
-
-Now that you've run all of the analyses you can use inline coding to help you write up your results. This isn't something you're going to be tested on in this course but it's a really cool feature of Markdown so for each statistical test we'll show you the code that does it so that you can use it in the future if you wanted to. We're going to replicate the exact write-up of the results from the original paper (with the addition of the effect size). 
-
-In the **white-space** in your Markdown document, copy and paste the following (do not change anything). Note that this will only work if you have called your variables **exactly** the same as the examples in this book:
-
-
-```r
-Those in the reminder-through-association condition performed the intended behavior at a significantly higher rate (`r round(pluck(intent_percent$percent_condition, 3),0)`%, `r pluck(intent_percent$n, 3)` out of `r pluck(intent_percent$n, 3) + pluck(intent_percent$n, 4)`) than did those in the control condition (`r round(pluck(intent_percent$percent_condition, 1),0)`, `r pluck(intent_percent$n, 1)` out of `r pluck(intent_percent$n, 1) + pluck(intent_percent$n, 2)`)), χ2(`r results$parameter`, N = `r length(intent_recode$id)`) = `r round(results$statistic,2)`, p = `r round(results$p.value, 3)`, V = `r round(eff_size, 2)`.
-```
-
-This will knit as:
-
-> Those in the reminder-through-association condition performed the intended behaviour at a significantly higher rate (74%, 29 out of 39) than did those in the control condition (42, 16 out of 38)), χ2(1, N = 77) = 8.24, p = 0.004,V = 0.33.
-
-If you're feeling comfortable with R at this point, push yourself to reverse-engineer what each bit of this inline code is doing so that you could use it yourself (remember the `?help` function).
-
-#### Finished!
-
-And you're done! The second and final R Portfolio for RM1 will be available on Moodle and again will only assess you on code we have covered in this book. If you need to, take the time over the break to revise what we've covered so far - if you can get comfortable with the content of the last few chapters, RM2 won't pose a problem. If you're OK with, or even enjoying R so far then please feel free to work through this book at your own pace ahead of the scheduled content
-
-### Activity solutions
-
-#### Activity 1
-
-
-<div class='solution'><button>Activity 1</button>
-
-
-```r
-library(tidyverse)
-intent_data <- read_csv("RTA_study1.csv")
-```
+Girls show lower overall well-being compared to boys.  In addition, the slope for girls appears more negative than that for boys; the one for boys appears relatively flat.  This suggests that the negative association between well-being and smartphone use is stronger for girls.
 
 </div>
-  
-
-**click the tab to see the solution**
-<br>
-
-#### Activity 3
 
 
-<div class='solution'><button>Activity 3</button>
+## Activity 8: Running the regression
+
+Now we're going to see if there is statistical support for our above interpretation of the graph.
+
+For the data in `smart_wb`, use the `lm()` function to calculate the multiple regression model:
+
+$Y_i = \beta_0 + \beta_1 X_{1i}  + \beta_2 X_{2i}  + \beta_3 X_{3i} + e_i$
+
+where
+
+- $Y_i$ is the well-being score for participant $i$;
+- $X_{1i}$ is the mean-centered smartphone use variable for participant $i$;
+- $X_{2i}$ is gender (-.5 = female, .5 = male);
+- $X_{3i}$ is the interaction between smartphone use and gender ($= X_{1i} \times X_{2i}$)
+
+Then use `summary()` to view the results and store this in an object called `mod_summary()`.
+
+
+<div class='solution'><button>Hint</button>
+
+- R formulas look like this: `y ~ a + b + a:b` where `a:b` means interaction
+
+</div>
+
+
+
+
+* The interaction between smartphone use and gender is shown by the variable <select class='solveme' data-answer='["thours_c:male_c"]'> <option></option> <option>thours_c</option> <option>male_c</option> <option>thours_c:male_c</option></select>, and this interaction was <select class='solveme' data-answer='["significant"]'> <option></option> <option>significant</option> <option>nonsignificant</option></select> at the $\alpha = .05$ level.
+
+* To 2 decimal places, what proportion of the variance in well-being scores does the overall model explain? <input class='solveme nospaces' size='4' data-answer='["9.38"]'/>
+
+* The p-value for the overall model fit is `< 2.2e-16`. Is this significant? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
+
+* What is the most reasonable interpretation of these results? <select class='solveme' data-answer='["smartphone use was more negatively associated with wellbeing for girls than for boys"]'> <option></option> <option>smartphone use harms girls more than boys</option> <option>smartphone use harms boys more than girls</option> <option>there is no evidence for gender differences in the relationship between smartphone use and well-being</option> <option>smartphone use was more negatively associated with wellbeing for girls than for boys</option></select>
+
+## Activity 9: Assumption checking
+
+Now it's time to test those pesky assumptions. The assumptions for multiple regression are the same as simple regression but there is one additional assumption, that of multicollinearity, the idea that predictor variables should not be too highly correlated.
+
+1. The outcome/DV is a interval/ratio level data 
+2. The predictor variable is interval/ratio or categorical (with two levels)
+3. All values of the outcome variable are independent (i.e., each score should come from a different participant)
+4. The predictors have non-zero variance
+5. The relationship between outcome and predictor is linear
+6. The residuals should be normally distributed
+7. There should be homoscedasticity (homogeneity of variance, but for the residuals)
+8. Multicollinearity: predictor variables should not be too highly correlated
+
+From the work we've done so far we know that assumptions 1 - 4 are met. Unlike when we did simple regression we can't use `crPlots()` to test for linearity when there is an interaction, but we know from looking at the grouped scatterplot that this assumption has been met.
+
+Normally we would test for normality with a qqplot and a Shapiro-Wilk test. However, because this dataset is so large, the Shapiro-Wilk is not appropriate (if you try to run the test it will produce a warning telling you that the sample size must be between 3 and 5000). This is because as we have mentioned before, with extremely large sample sizes the Shapiro-Wilk test will find that any deviation from normality is significant. Therefore we should judge normality based upon the qqplots.
+
+* Create a qqplot of the model residuals. Can we assume normality? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
+
+We also have this problem for testing homoscedasticity with `ncvTest()` so we need to rely on plots again. To check for homoscedasticity we can use `plot()` from Base R that will produce a bunch of helpful plots ([more information here](https://www.r-bloggers.com/how-to-detect-heteroscedasticity-and-rectify-it/)). The residuals vs leverage plot shows a flat red line so, whilst it isn't perfect, we can assume that with such a large sample size regression is still an appropriate analysis. 
 
 
 ```r
-# solution using pipes
-
-intent_recode <- intent_data %>%
-  filter(intend == 1) %>%
-  mutate(condition = recode(condition, "1" = "rta", "2" = "control"),
-         actualdonate = recode(actualdonate, "1" = "donated", "0" = "no_donation"))
-
-# solution using separate steps
-
-intent_filter <- filter(intent_data, intend == 1)
-intent_recode <- mutate(intent_filter, condition = recode(condition, "1" = "rta", "2" = "control"),
-                        actualdonate = recode(actualdonate, "1" = "donated", "0" = "no_donation"))
+par(mfrow=c(2,2)) # 4 charts in 1 panel
+plot(mod)
 ```
 
+<div class="figure" style="text-align: center">
+<img src="18-multiple-regression_files/figure-html/plots2-1.png" alt="Regression assumption plots" width="100%" />
+<p class="caption">(\#fig:plots2)Regression assumption plots</p>
 </div>
-  
 
-**click the tab to see the solution**
-<br>
+Finally, to check for multicollinearity we can use `vif()` to calculate the variance inflation factor. Essentially, this function estimates how much the variance of a coefficient is “inflated” because of linear dependence with other predictors, i.e., that a predictor isn't actually adding any unique variance to the model, it's just really strongly related to other predictors. [You can read more about this here](https://statisticalhorizons.com/multicollinearity). Thankfully, VIF is not affected by large samples like the other tests.
 
-#### Activity 9
+There are various rules of thumb, but most converge on a VIF of above 2 - 2.5 for any one predictor being problematic.
 
-
-<div class='solution'><button>Activity 9</button>
+* Run the below code. Do any of the predictors show evidence of multicollinearity? <select class='solveme' data-answer='["There is no evidence of multicollinearity"]'> <option></option> <option>thours_c</option> <option>male_c</option> <option>thours_c:male_c</option> <option>There is no evidence of multicollinearity</option></select>
 
 
 ```r
-results$expected
+vif(mod)
 ```
 
-</div>
-  
+## Activity 10: Power and effect size
 
-**click the tab to see the solution**
-<br>
+Finally, we'll calculate power and effect size as usual.
 
-### Test yourself
-
-** This question is currently borked
-
-1. You have a dataset where gender has been coded numerically. You want to recode this to use text labels. Which code will work? <select class='solveme' data-answer='["mutate(gender = recode(gender, \"1\" = \"male\", \"2\" = \"female\", \"3\" = \"nonbinary\"))"]'> <option></option> <option>mutate(gender = recode(gender, "male" = "1", "female" = "2", "nonbinary" = "3"))</option> <option>mutate(gender = recode(gender, male = 1, "female = 2, nonbinary = 3))</option> <option>mutate(gender = recode(gender, "1" = "male", "2" = "female", "3" = "nonbinary"))</option></select>
+* Using the code from Week 12 calculate the minimum effect size we could reliably observe given our sample size and design but for 99% power. Report this to 2 decimal places <input class='solveme nospaces' size='0.00' data-answer='[".00"]'/>
 
 
-<div class='solution'><button>Explain this answer</button>
 
-The first option has the new and old codes in the wrong position, the second option is missing quotation marks, the third option is correct.
-    
 
-</div>
- 
 
-<br>
 
-2. From the below code, what would the plot have on the x-axis? <select class='solveme' data-answer='["gender"]'> <option></option> <option>exp_data</option> <option>gender</option> <option>score</option></select>
+
+* What is the observed effect size for the study to 2 decimal places? <input class='solveme nospaces' size='0.10' data-answer='[".10"]'/>  
+* Is the study sufficiently powered? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
+
+## Activity 11: Write-up
+
+Now, copy and paste the below code into **white-space** and then knit the document. Note that the p-values are entered manually because of the APA `p < .001` formatting.
 
 
 ```r
-ggplot(data = exp_data, aes(gender, score))
+All continuous predictors were mean-centered and deviation coding was used for categorical predictors. The results of the regression indicated that the model significantly predicted course engagement (F(`r mod_summary$fstatistic[2]`, `r mod_summary$fstatistic[3] %>% round(2)`) = `r mod_summary$fstatistic[1] %>% round(2)`, p < .001, Adjusted R2 = `r mod_summary$adj.r.squared %>% round(2)`, f^2^ = .63), accounting for `r (mod_summary$adj.r.squared %>% round(2))*100`% of the variance. Total screen time was a significant negative predictor of wellbeing scores (β = `r mod$coefficients[2] %>% round(2)`, p < .001, as was gender (β = `r mod$coefficients[3] %>% round(2)`, p < .001, with girls having lower wellbeing scores than boys. Importantly, there was a significant interaction between screentime and gender (β = `r mod$coefficients[4] %>% round(2)`, p < .001), smartphone use was more negatively associated with wellbeing for girls than for boys. 
 ```
 
-3. From the below code, how would the bars in the plot be positioned? <select class='solveme' data-answer='["On top of each other"]'> <option></option> <option>On top of each other</option> <option>Next to each other</option></select>  
+> All continuous predictors were mean-centered and deviation coding was used for categorical predictors. The results of the regression indicated that the model significantly predicted course engagement (F(3, 7.1029\times 10^{4}) = 2450.89, p < .001, Adjusted R2 = 0.09, f2 = .63), accounting for 9% of the variance. Total screen time was a significant negative predictor of well-being scores (β = -0.77, p < .001, as was gender (β = 5.14, p < .001, with girls having lower well-being scores than boys. Importantly, there was a significant interaction between screen time and gender (β = 0.45, p < .001), smartphone use was more negatively associated with well-being for girls than for boys.
 
+## Finished!
+
+And you're done! Not just with this week but with the R component of RM2! Well, aside from the final portfolio worksheet. The progress that you have made is truly astonishing. Even if you struggled with R and haven't quite understood every single line of code we've shown, what you're capable of with data wrangling and visualisation alone makes you some of the most highly competitive psychology graduates in the world. 
+
+Regardless of whether you continue with quantitative methods and using R, remember the more important critical skills that you have learned as part of this process. The next time you see a dataset or you see data being talked about in the news, think about all work that was put into getting the data into the final format. More importantly, think about all the decisions that the researcher needed to make along the way and how that might have affected the outcome. 
+
+![](https://media.giphy.com/media/ujGfBmVppmgEg/giphy.gif) 
+
+
+## Activity solutions
+
+### Activity 3
+
+<div class="solution"><button>Activity 3</button>
 
 ```r
-ggplot(data, aes(x = condition, fill = actualdonate)) +
-  geom_bar()
+wemwbs <- wellbeing %>%
+  gather("var", "score", -Serial) %>%
+  group_by(Serial) %>%
+  summarise(tot_wellbeing = sum(score))
+
+# sanity check values
+
+wemwbs %>% summarise(mean = mean(tot_wellbeing),
+                     sd = sd(tot_wellbeing),
+                     min = min(tot_wellbeing), 
+                     max = max(tot_wellbeing))
 ```
-
-
-<div class='solution'><button>Explain this answer</button>
-
-
-
 </div>
- 
 
-<br>
+### Activity 5
 
-4. Which of the following is not an argument of `chisq.test()` (you may need to look at the help documentation to answer this question)? <select class='solveme' data-answer='["continuity"]'> <option></option> <option>x</option> <option>y</option> <option>p</option> <option>continuity</option></select>
-  
+<div class="solution"><button>Activity 5</button>
 
-<!--chapter:end:18-chi-square.Rmd-->
+```r
+smarttot <- screen2 %>%
+  filter(variable == "Using Smartphone") %>%
+  group_by(Serial) %>%
+  summarise(tothours = mean(hours))
+
+smart_wb <- smarttot %>%
+  filter(tothours > 1) %>%
+  inner_join(wemwbs, "Serial") %>%
+  inner_join(pinfo, "Serial") 
+```
+</div>
+
+### Activity 6
+
+<div class="solution"><button>Activity 6</button>
+
+```r
+smart_wb <- smarttot %>%
+  filter(tothours > 1) %>%
+  inner_join(wemwbs, "Serial") %>%
+  inner_join(pinfo, "Serial") %>%
+  mutate(thours_c = tothours - mean(tothours),
+         male_c = ifelse(male == 1, .5, -.5))
+```
+</div>
+
+### Activity 7
+
+<div class="solution"><button>Activity 7</button>
+
+```r
+smart_wb_gen <- smart_wb %>%
+  group_by(tothours, male) %>%
+  summarise(mean_wellbeing = mean(tot_wellbeing))
+
+ggplot(smart_wb_gen, aes(tothours, mean_wellbeing, color = male)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  scale_color_discrete(name = "Gender", labels = c("Female", "Male"))+
+  scale_x_continuous(name = "Total hours smartphone use") +
+  scale_y_continuous(name = "Mean well-being score")
+```
+</div>
+
+### Activity 8
+
+<div class="solution"><button>Activity 8</button>
+
+```r
+mod <- lm(tot_wellbeing ~ thours_c * male_c, smart_wb)
+# alternatively: 
+# mod <- lm(tot_wellbeing ~ thours_c + male_c + thours_c:male_c, smart_wb)
+
+mod_summary <- summary(mod)
+```
+</div>
+
+### Activity 9
+
+<div class="solution"><button>Activity 9</button>
+
+```r
+qqPlot(mod$residuals)
+```
+</div>
+
+### Activity 10
+
+<div class="solution"><button>Activity 9</button>
+
+```r
+pwr.f2.test(u = 3, v = 71029, f2 = NULL, sig.level = .05, power = .99)
+f2 <- mod_summary$adj.r.squared/(1 - mod_summary$adj.r.squared)
+```
+</div>
+
+<!--chapter:end:18-multiple-regression.Rmd-->
 
 # (APPENDIX) Appendices {-} 
 
@@ -8530,8 +8550,8 @@ rnorm(10)
 ```
 
 ```
-##  [1]  1.2397429 -1.4201020  0.4149242 -1.5952174  0.5196344 -1.3458929
-##  [7] -0.1458753  2.9262021  0.9843120  1.3156241
+##  [1]  1.05118448 -1.01669936 -0.11301905 -0.09322324 -0.78562780 -1.10413729
+##  [7]  0.10471949  0.01986293  0.29640308 -0.61451967
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -8629,8 +8649,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "c" "k" "s" "e" "m" "f" "a" "z" "p" "r" "n" "i" "j" "u" "g" "l" "t" "b" "o"
-## [20] "d" "y" "q" "w" "h" "x" "v"
+##  [1] "a" "j" "l" "q" "t" "h" "f" "d" "e" "m" "u" "k" "r" "z" "v" "b" "c" "w" "p"
+## [20] "g" "i" "n" "y" "x" "o" "s"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -8667,16 +8687,16 @@ tibble(Y = rnorm(10))
 ## # A tibble: 10 x 1
 ##          Y
 ##      <dbl>
-##  1  0.0520
-##  2 -0.169 
-##  3 -0.428 
-##  4 -1.10  
-##  5 -0.776 
-##  6  1.10  
-##  7 -0.703 
-##  8  0.687 
-##  9 -0.553 
-## 10  0.703
+##  1 -1.08  
+##  2 -1.45  
+##  3  0.236 
+##  4  0.0693
+##  5  0.807 
+##  6 -0.739 
+##  7 -1.42  
+##  8  1.53  
+##  9  0.768 
+## 10  0.426
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -8693,16 +8713,16 @@ tibble(Y = c(rnorm(5, mean = -10),
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1 -11.0 
-##  2  -9.03
-##  3 -11.3 
-##  4  -9.46
-##  5  -9.43
-##  6  19.1 
-##  7  18.9 
-##  8  19.5 
-##  9  17.9 
-## 10  19.1
+##  1  -8.34
+##  2 -10.2 
+##  3  -9.63
+##  4 -10.0 
+##  5  -9.96
+##  6  18.6 
+##  7  19.7 
+##  8  20.5 
+##  9  19.0 
+## 10  21.3
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -8764,16 +8784,16 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A      -9.34
-##  2 A      -9.85
-##  3 A      -9.59
-##  4 A      -9.36
-##  5 A     -10.5 
-##  6 B      21.1 
-##  7 B      20.5 
-##  8 B      20.4 
-##  9 B      21.0 
-## 10 B      19.2
+##  1 A      -9.80
+##  2 A      -9.35
+##  3 A      -9.35
+##  4 A     -10.7 
+##  5 A      -9.98
+##  6 B      20.1 
+##  7 B      19.2 
+##  8 B      19.6 
+##  9 B      21.7 
+## 10 B      21.6
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -8834,11 +8854,11 @@ my_data_means
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      19.2
-## 2 B     -20.7
+## 1 A      20.0
+## 2 B     -20.4
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -20.7 from the first group mean of 19.2, to get a single value, the difference: 39.9.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -20.4 from the first group mean of 20, to get a single value, the difference: 40.4.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -8851,7 +8871,7 @@ vec
 ```
 
 ```
-## [1]  19.20788 -20.69956
+## [1]  19.99364 -20.41929
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -8862,7 +8882,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 39.90745
+## [1] 40.41293
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -8873,7 +8893,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 39.90745
+## [1] 40.41293
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -8886,7 +8906,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 39.90745
+## [1] 40.41293
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -8901,7 +8921,7 @@ my_data_means %>%
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  19.2 -20.7
+## 1  20.0 -20.4
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -8917,7 +8937,7 @@ my_data_means %>%
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  19.2 -20.7  39.9
+## 1  20.0 -20.4  40.4
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -8933,7 +8953,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 39.90745
+## [1] 40.41293
 ```
 
 
@@ -9122,8 +9142,8 @@ ten_samples
 ```
 
 ```
-##  [1] -0.02494462 -0.16641030 -0.08894792  0.02146931  0.01791116  0.13401406
-##  [7]  0.06666060 -0.08390047 -0.01101352 -0.01423931
+##  [1] -0.09709687  0.06866243 -0.02637535 -0.03608997  0.00854264 -0.02494687
+##  [7]  0.12897367 -0.05207761 -0.06001114 -0.15487345
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
