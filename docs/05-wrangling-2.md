@@ -248,16 +248,6 @@ pong_data %>% # take pong_data
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 1 x 1
 ##       n
 ##   <int>
@@ -270,16 +260,6 @@ To count the number of observations in groups:
 ```r
 pong_data %>%
   count(BackgroundColor)
-```
-
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
 ```
 
 ```

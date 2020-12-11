@@ -18,11 +18,9 @@ If our hypothesis is correct then there should be <select class='solveme' data-a
 
 ## Activity 1: Setup
 
-Do the following. If you need help, consult Chapter @\ref(ref3) and Chapter \@(ref2).
-
-* Open R Studio and set the working directory to your Week 12 folder. Ensure the environment is clear.   
-* Open a new R Markdown document and save it in your working directory. Call the file "Week 12".    
-* Download <a href="L3_stars.csv" download>L3_stars.csv</a> and <a href="psess.csv" download>psess.csv</a> and save them in your Week 12 folder. Make sure that you do not change the file name at all.    
+* Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.   
+* Open a new R Markdown document and save it in your working directory. Call the file "Regression".    
+* Download <a href="L3_stars.csv" download>L3_stars.csv</a> and <a href="psess.csv" download>psess.csv</a> and save them in your chapter folder. Make sure that you do not change the file name at all.    
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads `pwr`, `car`, `broom`, and `tidyverse` using the `library()` function.
 * Load the two CSV datasets into variables called `stars` and `engage` using `read_csv()`.
@@ -33,7 +31,7 @@ Do the following. If you need help, consult Chapter @\ref(ref3) and Chapter \@(r
 
 ## Activity 2: Tidy the data
 
-* Take a look at both of the datasets you loaded in (you can use just type the name to output them out to the console).
+* Take a look at both of the datasets you loaded in.
 
 The next thing we need to do is to calculate a mean anxiety score for each student (recall that individual students are identified by the `ID` variable).
 
@@ -72,6 +70,45 @@ Before we calculate means, you need to use `gather()` to restructure the STARS d
 * In order to perform the regression analysis, combine the data from `stars_means` with `engage` using `inner_join()`. Call the resulting table `joined`. It should look like this:
 
 
+| ID  | mean_anxiety | min  | max  |  sd  | n_weeks |
+|:---:|:------------:|:----:|:----:|:----:|:-------:|
+|  3  |     1.06     | 0.99 | 1.12 | 0.24 |    5    |
+|  7  |     2.71     | 2.42 | 2.99 | 1.03 |    2    |
+| 12  |     2.24     |  NA  |  NA  | 1.23 |    3    |
+| 16  |     2.86     |  NA  |  NA  | 1.20 |    2    |
+| 23  |     1.71     | 1.51 | 1.91 | 0.73 |    6    |
+| 29  |     1.80     | 1.51 | 2.10 | 1.08 |    7    |
+| 39  |     1.96     | 1.65 | 2.28 | 1.15 |    2    |
+| 42  |     2.24     | 1.94 | 2.53 | 1.09 |    7    |
+| 43  |     2.69     | 2.40 | 2.97 | 1.05 |    5    |
+| 44  |     1.92     | 1.73 | 2.11 | 0.69 |    4    |
+| 48  |     1.88     | 1.59 | 2.18 | 1.07 |    1    |
+| 50  |     3.18     | 2.89 | 3.47 | 1.05 |    4    |
+| 51  |     1.41     | 1.20 | 1.63 | 0.78 |    2    |
+| 55  |     2.64     |  NA  |  NA  | 1.03 |    2    |
+| 56  |     1.59     |  NA  |  NA  | 0.81 |    8    |
+| 58  |     1.31     | 1.16 | 1.46 | 0.55 |    8    |
+| 59  |     1.39     | 1.25 | 1.54 | 0.53 |    8    |
+| 60  |     1.69     | 1.42 | 1.95 | 0.97 |    3    |
+| 61  |     1.50     |  NA  |  NA  | 0.81 |    8    |
+| 66  |     2.75     | 2.48 | 3.01 | 0.96 |    5    |
+| 67  |     2.76     |  NA  |  NA  | 1.03 |    6    |
+| 68  |     1.80     |  NA  |  NA  | 1.03 |    7    |
+| 70  |     1.55     | 1.25 | 1.85 | 1.08 |    8    |
+| 72  |     2.25     | 1.94 | 2.57 | 1.16 |    5    |
+| 74  |     2.75     | 2.37 | 3.12 | 1.38 |    3    |
+| 77  |     1.49     | 1.27 | 1.71 | 0.78 |    8    |
+| 80  |     2.08     | 1.86 | 2.30 | 0.80 |    7    |
+| 81  |     2.78     |  NA  |  NA  | 1.13 |    1    |
+| 82  |     1.75     | 1.47 | 2.02 | 1.02 |    5    |
+| 89  |     1.53     | 1.29 | 1.76 | 0.86 |    4    |
+| 105 |     2.41     | 2.10 | 2.72 | 1.13 |    6    |
+| 108 |     1.96     | 1.71 | 2.21 | 0.92 |    3    |
+| 109 |     1.78     | 1.47 | 2.10 | 1.15 |    4    |
+| 115 |     2.41     | 2.15 | 2.68 | 0.96 |    1    |
+| 116 |     3.20     | 2.80 | 3.59 | 1.43 |    1    |
+| 117 |     1.55     | 1.34 | 1.76 | 0.76 |    6    |
+| 129 |     2.35     | 2.05 | 2.66 | 1.11 |    1    |
 
 ## Activity 5: Calculate descriptives for the variables overall
 
@@ -95,7 +132,7 @@ descriptives <- joined %>%
 
 ## Activity 6: Visualisations
 
-* Now that youwe have all of the variables in one place, write the code to reproduce the exact scatterplot below (using ggplot2).
+* Now that you've have all of the variables in one place, write the code to reproduce the exact scatterplot below (using ggplot2).
 
 
 ```
@@ -169,6 +206,11 @@ Assumption 5 could also be checked with the scatterplot but there are some nice 
 ```r
 crPlots(mod)
 ```
+
+<div class="figure" style="text-align: center">
+<img src="16-regression_files/figure-html/crplots-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
+<p class="caption">(\#fig:crplots)**CAPTION THIS FIGURE!!**</p>
+</div>
 
 Assumption 6 can be tested as we have done before with a qqplot and a Shapiro-Wilk test.
 

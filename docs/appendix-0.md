@@ -82,13 +82,6 @@ Sometimes you will need or want to statistically compare the strength of two cor
 
 ```r
 library(cocor)
-```
-
-```
-## Warning: package 'cocor' was built under R version 4.0.3
-```
-
-```r
 library(tidyverse)
 library(lsr)
 ```
@@ -512,8 +505,8 @@ rnorm(10)
 ```
 
 ```
-##  [1]  0.99288022  1.21370524 -0.46917103 -0.06163062 -0.39858269 -0.12173078
-##  [7] -0.60358626  0.80298022  0.03303179 -0.01608901
+##  [1]  0.0007786962  0.1865783981  1.0646311575 -1.0192362434 -0.2466992434
+##  [6]  0.2593909217 -1.0077364092  1.0211023328  0.9802219169 -0.1773168836
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -611,8 +604,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "n" "p" "k" "b" "t" "c" "v" "a" "j" "q" "o" "u" "g" "z" "x" "y" "s" "m" "f"
-## [20] "h" "d" "w" "e" "r" "l" "i"
+##  [1] "i" "t" "q" "s" "l" "m" "o" "z" "f" "y" "x" "p" "v" "h" "r" "e" "u" "g" "a"
+## [20] "b" "d" "n" "j" "w" "c" "k"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -646,29 +639,19 @@ tibble(Y = rnorm(10))
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 10 x 1
-##         Y
-##     <dbl>
-##  1 -1.06 
-##  2 -1.27 
-##  3 -0.202
-##  4  0.896
-##  5  1.55 
-##  6  0.429
-##  7 -0.162
-##  8 -0.830
-##  9  0.450
-## 10  1.98
+##          Y
+##      <dbl>
+##  1 -0.226 
+##  2  1.84  
+##  3 -2.90  
+##  4  1.64  
+##  5  0.492 
+##  6 -0.583 
+##  7  0.200 
+##  8 -0.263 
+##  9  1.37  
+## 10  0.0248
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -682,29 +665,19 @@ tibble(Y = c(rnorm(5, mean = -10),
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1  -9.61
-##  2  -9.92
-##  3  -9.82
-##  4 -11.4 
-##  5 -10.2 
-##  6  20.3 
-##  7  20.5 
-##  8  19.8 
-##  9  19.6 
-## 10  19.2
+##  1  -9.18
+##  2 -11.0 
+##  3  -9.07
+##  4  -9.55
+##  5 -10.7 
+##  6  21.0 
+##  7  20.0 
+##  8  19.3 
+##  9  20.4 
+## 10  18.2
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -763,29 +736,19 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A      -9.65
-##  2 A     -10.3 
-##  3 A     -11.1 
-##  4 A     -10.4 
-##  5 A      -9.96
-##  6 B      20.1 
-##  7 B      19.9 
-##  8 B      19.3 
-##  9 B      18.9 
-## 10 B      19.9
+##  1 A      -9.51
+##  2 A      -9.24
+##  3 A     -11.5 
+##  4 A      -9.97
+##  5 A     -11.1 
+##  6 B      18.0 
+##  7 B      19.1 
+##  8 B      20.6 
+##  9 B      20.5 
+## 10 B      18.8
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -794,16 +757,6 @@ You now know how to create this table. Have a look at the code below and make su
 ```r
 tibble(group = rep(c("A", "B"), c(5, 5)),
        Y = c(rnorm(5, mean = -10), rnorm(5, mean =  20)))
-```
-
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
 ```
 
 Be sure to play around with the code chunk to get used to it. Try adding a third group or even a third column? Perhaps you want to give every participant a random age with a mean of 18, and a sd of 1; or even a participant number.
@@ -853,24 +806,14 @@ my_data_means
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      20.0
-## 2 B     -19.7
+## 1 A      21.8
+## 2 B     -20.5
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -19.7 from the first group mean of 20, to get a single value, the difference: 39.7.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -20.5 from the first group mean of 21.8, to get a single value, the difference: 42.3.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -883,7 +826,7 @@ vec
 ```
 
 ```
-## [1]  19.96823 -19.72712
+## [1]  21.80260 -20.51625
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -894,7 +837,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 39.69535
+## [1] 42.31885
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -905,7 +848,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 39.69535
+## [1] 42.31885
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -918,7 +861,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 39.69535
+## [1] 42.31885
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -930,20 +873,10 @@ my_data_means %>%
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  20.0 -19.7
+## 1  21.8 -20.5
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -956,20 +889,10 @@ my_data_means %>%
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  20.0 -19.7  39.7
+## 1  21.8 -20.5  42.3
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -985,7 +908,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 39.69535
+## [1] 42.31885
 ```
 
 
@@ -1174,8 +1097,8 @@ ten_samples
 ```
 
 ```
-##  [1]  0.069918592 -0.031594536 -0.023174892 -0.101748447  0.019963953
-##  [6]  0.153173924  0.082529595 -0.068658450 -0.009662465 -0.002424803
+##  [1]  0.0005864123 -0.0258818949  0.0670752819 -0.0183587768 -0.1042469124
+##  [6]  0.0203483640 -0.0318988921  0.0339357958 -0.0441825395  0.1130606107
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
@@ -1638,16 +1561,6 @@ wine %>%
 
 ```
 ## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
 ```
 
 ```
@@ -2129,19 +2042,7 @@ bigram_counts <- bigrams_separated %>%
   count(word1, word2, sort = TRUE)
 
 bigram_counts
-```
 
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```r
 # filter for only relatively common combinations (more than 20 occurances)
 bigram_graph <- bigram_counts %>%
   filter(n > 20) %>%

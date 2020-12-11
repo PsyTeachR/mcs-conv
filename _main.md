@@ -1,6 +1,6 @@
 --- 
 title: "MSc Conversion in Psychological Studies"
-date: "2020-12-01"
+date: "2020-12-11"
 bibliography:
 - book.bib
 - packages.bib
@@ -286,7 +286,7 @@ mean(data)
 
 ```
 ## [1] 45
-## Time difference of 31 days
+## Time difference of 21 days
 ## [1] 17.66644
 ```
 
@@ -561,7 +561,7 @@ Nearly finished! As our final step we are going to "knit" our file. This simply 
 
 As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created. 
 
-**My name is Emily and I am 35 years old. It is 222 days until my birthday.**
+**My name is Emily and I am 35 years old. It is 212 days until my birthday.**
 
 We're not going to use this function very often in the rest of the course but hopefully you can see just how useful this would be when writing up a report with lots of numbers! R Markdown is an incredibly powerful and flexible format - this book was written using it! If you want to push yourself with R, additional functions and features of R Markdown would be a good place to start.
 
@@ -808,16 +808,6 @@ babynames
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 1,924,665 x 5
 ##     year sex   name          n   prop
 ##    <dbl> <chr> <chr>     <int>  <dbl>
@@ -883,16 +873,6 @@ select(.data = babynames, # the object you want to select variables from
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 1,924,665 x 4
 ##     year sex   name        prop
 ##    <dbl> <chr> <chr>      <dbl>
@@ -914,16 +894,6 @@ Alternatively, you can also tell R which variables you don't want, in this case,
 
 ```r
 select(.data = babynames, -n)
-```
-
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
 ```
 
 ```
@@ -961,16 +931,6 @@ arrange(.data = babynames, # the data you want to sort
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 1,924,665 x 5
 ##     year sex   name      n       prop
 ##    <dbl> <chr> <chr> <int>      <dbl>
@@ -992,16 +952,6 @@ The data are now sorted in ascending alphabetical order by name. The default is 
 
 ```r
 arrange(babynames,desc(year)) 
-```
-
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
 ```
 
 ```
@@ -1076,16 +1026,6 @@ filter(babynames, name == "Mary")
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 268 x 5
 ##     year sex   name      n     prop
 ##    <dbl> <chr> <chr> <int>    <dbl>
@@ -1107,16 +1047,6 @@ If you wanted all the names except Mary, you use the 'not equals' operator:
 
 ```r
 filter(babynames, name!="Mary") 
-```
-
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
 ```
 
 ```
@@ -1144,16 +1074,6 @@ filter(babynames, name %in% c("Mary","Elizabeth","Victoria"))
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 772 x 5
 ##     year sex   name          n      prop
 ##    <dbl> <chr> <chr>     <int>     <dbl>
@@ -1176,16 +1096,6 @@ This gives you data for the names in the vector on the right hand side of `%in%`
 
 ```r
 filter(babynames, !(name %in% c("Mary","Elizabeth","Victoria")))
-```
-
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
 ```
 
 ```
@@ -1218,16 +1128,6 @@ Sometimes we need to create a new variable that doesn’t exist in our dataset. 
 new_dat <- mutate(.data = babynames, # the tibble you want to add a column to
                   decade = floor(year/10) *10) # new column name = what you want it to contain
 new_dat
-```
-
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
 ```
 
 ```
@@ -1264,16 +1164,6 @@ summarise(.data = dat, # the data you want to use
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 1 x 1
 ##     total
 ##     <int>
@@ -1303,16 +1193,6 @@ summarise(.data = group_dat,
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 4 x 2
 ##   name       total
 ##   <chr>      <int>
@@ -1338,16 +1218,6 @@ summarise(group_dat,
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 4 x 3
 ##   name      mean_year median_year
 ##   <chr>         <dbl>       <dbl>
@@ -1369,16 +1239,6 @@ summarise(group_new_dat,
 
 ```
 ## `summarise()` regrouping output by 'sex' (override with `.groups` argument)
-```
-
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
 ```
 
 ```
@@ -1682,16 +1542,6 @@ pong_data %>% # take pong_data
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 1 x 1
 ##       n
 ##   <int>
@@ -1704,16 +1554,6 @@ To count the number of observations in groups:
 ```r
 pong_data %>%
   count(BackgroundColor)
-```
-
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
 ```
 
 ```
@@ -2290,15 +2130,15 @@ sandwich <- pivot_longer(data = responses, names_to = "Jam", values_to = "Strawb
 
 Which function(s) would you use to approach each of the following problems?
 
-* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>summarise()</option> <option>group_by()</option> <option>filter()</option> <option>select()</option> <option>mutate()</option> <option>arrange()</option></select> function.
+* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>arrange()</option> <option>select()</option> <option>mutate()</option> <option>filter()</option> <option>group_by()</option> <option>summarise()</option></select> function.
 
-* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>arrange()</option> <option>group_by()</option> <option>select()</option> <option>filter()</option> <option>mutate()</option> <option>summarise()</option></select> function.
+* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>select()</option> <option>mutate()</option> <option>summarise()</option> <option>arrange()</option> <option>group_by()</option> <option>filter()</option></select> function.
 
-* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>mutate()</option> <option>filter()</option> <option>select()</option> <option>arrange()</option> <option>group_by()</option> <option>summarise()</option></select> function.
+* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>arrange()</option> <option>group_by()</option> <option>summarise()</option> <option>select()</option> <option>filter()</option> <option>mutate()</option></select> function.
 
-* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>filter() and select()</option> <option>arrange() and mutate()</option> <option>group_by() and arrange()</option> <option>group_by() and summarise()</option></select> functions.
+* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>arrange() and mutate()</option> <option>group_by() and summarise()</option> <option>filter() and select()</option> <option>group_by() and arrange()</option></select> functions.
 
-* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["mutate() and filter()","arrange() and select()"]'> <option></option> <option>mutate() and filter()</option> <option>select() and summarise()</option> <option>arrange() and select()</option> <option>group_by() and mutate()</option></select> functions.
+* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["mutate() and filter()","arrange() and select()"]'> <option></option> <option>select() and summarise()</option> <option>mutate() and filter()</option> <option>arrange() and select()</option> <option>group_by() and mutate()</option></select> functions.
 
 ### Data visualisation
 
@@ -2623,10 +2463,10 @@ How you tackle probability depends on the type of data/variables you are working
 
 What types of data are the below measurements?
 
-* Time taken to run a marathon (in seconds): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>ordinal</option> <option>categorical</option> <option>ratio</option> <option>interval</option></select>
-* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ratio</option> <option>categorical</option> <option>ordinal</option> <option>interval</option></select>
-* Which Sesame Street character a runner was dressed as: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>interval</option> <option>ordinal</option> <option>categorical</option> <option>ratio</option></select>
-* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ordinal</option> <option>ratio</option> <option>interval</option> <option>categorical</option></select>
+* Time taken to run a marathon (in seconds): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>categorical</option> <option>ordinal</option> <option>interval</option> <option>ratio</option></select>
+* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>categorical</option> <option>ratio</option> <option>interval</option> <option>ordinal</option></select>
+* Which Sesame Street character a runner was dressed as: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>ratio</option> <option>categorical</option> <option>interval</option> <option>ordinal</option></select>
+* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ratio</option> <option>ordinal</option> <option>interval</option> <option>categorical</option></select>
 
 ### Probability distributions
 
@@ -2712,8 +2552,8 @@ As with any probabilities, real-world data will come close to the normal distrib
 
 Complete the sentences so that they are correct.
 
-* In a normal distribution, the mean, median, and mode <select class='solveme' data-answer='["are all equal"]'> <option></option> <option>sum to zero</option> <option>are always different</option> <option>are all equal</option></select>.
-* In a normal distribution, the further away from the mean an observation is <select class='solveme' data-answer='["the lower its probability of occuring"]'> <option></option> <option>the higher its probability of occuring</option> <option>the lower its probability of occuring</option></select>.
+* In a normal distribution, the mean, median, and mode <select class='solveme' data-answer='["are all equal"]'> <option></option> <option>are all equal</option> <option>sum to zero</option> <option>are always different</option></select>.
+* In a normal distribution, the further away from the mean an observation is <select class='solveme' data-answer='["the lower its probability of occuring"]'> <option></option> <option>the lower its probability of occuring</option> <option>the higher its probability of occuring</option></select>.
 * Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='solveme' data-answer='["is a continuous variable"]'> <option></option> <option>is a categorical variable</option> <option>has three possible values</option> <option>is a continuous variable</option></select>.
 
 ## Activity 4: Distribution test
@@ -4319,9 +4159,6 @@ The function works on a leave one out principle. You give it all the information
 * Run the below code:
 
 
-```
-## Warning: package 'broom' was built under R version 4.0.3
-```
 
 
 
@@ -6948,11 +6785,9 @@ If our hypothesis is correct then there should be <select class='solveme' data-a
 
 ## Activity 1: Setup
 
-Do the following. If you need help, consult Chapter @\ref(ref3) and Chapter \@(ref2).
-
-* Open R Studio and set the working directory to your Week 12 folder. Ensure the environment is clear.   
-* Open a new R Markdown document and save it in your working directory. Call the file "Week 12".    
-* Download <a href="L3_stars.csv" download>L3_stars.csv</a> and <a href="psess.csv" download>psess.csv</a> and save them in your Week 12 folder. Make sure that you do not change the file name at all.    
+* Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.   
+* Open a new R Markdown document and save it in your working directory. Call the file "Regression".    
+* Download <a href="L3_stars.csv" download>L3_stars.csv</a> and <a href="psess.csv" download>psess.csv</a> and save them in your chapter folder. Make sure that you do not change the file name at all.    
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads `pwr`, `car`, `broom`, and `tidyverse` using the `library()` function.
 * Load the two CSV datasets into variables called `stars` and `engage` using `read_csv()`.
@@ -6963,7 +6798,7 @@ Do the following. If you need help, consult Chapter @\ref(ref3) and Chapter \@(r
 
 ## Activity 2: Tidy the data
 
-* Take a look at both of the datasets you loaded in (you can use just type the name to output them out to the console).
+* Take a look at both of the datasets you loaded in.
 
 The next thing we need to do is to calculate a mean anxiety score for each student (recall that individual students are identified by the `ID` variable).
 
@@ -7002,6 +6837,45 @@ Before we calculate means, you need to use `gather()` to restructure the STARS d
 * In order to perform the regression analysis, combine the data from `stars_means` with `engage` using `inner_join()`. Call the resulting table `joined`. It should look like this:
 
 
+| ID  | mean_anxiety | min  | max  |  sd  | n_weeks |
+|:---:|:------------:|:----:|:----:|:----:|:-------:|
+|  3  |     1.06     | 0.99 | 1.12 | 0.24 |    5    |
+|  7  |     2.71     | 2.42 | 2.99 | 1.03 |    2    |
+| 12  |     2.24     |  NA  |  NA  | 1.23 |    3    |
+| 16  |     2.86     |  NA  |  NA  | 1.20 |    2    |
+| 23  |     1.71     | 1.51 | 1.91 | 0.73 |    6    |
+| 29  |     1.80     | 1.51 | 2.10 | 1.08 |    7    |
+| 39  |     1.96     | 1.65 | 2.28 | 1.15 |    2    |
+| 42  |     2.24     | 1.94 | 2.53 | 1.09 |    7    |
+| 43  |     2.69     | 2.40 | 2.97 | 1.05 |    5    |
+| 44  |     1.92     | 1.73 | 2.11 | 0.69 |    4    |
+| 48  |     1.88     | 1.59 | 2.18 | 1.07 |    1    |
+| 50  |     3.18     | 2.89 | 3.47 | 1.05 |    4    |
+| 51  |     1.41     | 1.20 | 1.63 | 0.78 |    2    |
+| 55  |     2.64     |  NA  |  NA  | 1.03 |    2    |
+| 56  |     1.59     |  NA  |  NA  | 0.81 |    8    |
+| 58  |     1.31     | 1.16 | 1.46 | 0.55 |    8    |
+| 59  |     1.39     | 1.25 | 1.54 | 0.53 |    8    |
+| 60  |     1.69     | 1.42 | 1.95 | 0.97 |    3    |
+| 61  |     1.50     |  NA  |  NA  | 0.81 |    8    |
+| 66  |     2.75     | 2.48 | 3.01 | 0.96 |    5    |
+| 67  |     2.76     |  NA  |  NA  | 1.03 |    6    |
+| 68  |     1.80     |  NA  |  NA  | 1.03 |    7    |
+| 70  |     1.55     | 1.25 | 1.85 | 1.08 |    8    |
+| 72  |     2.25     | 1.94 | 2.57 | 1.16 |    5    |
+| 74  |     2.75     | 2.37 | 3.12 | 1.38 |    3    |
+| 77  |     1.49     | 1.27 | 1.71 | 0.78 |    8    |
+| 80  |     2.08     | 1.86 | 2.30 | 0.80 |    7    |
+| 81  |     2.78     |  NA  |  NA  | 1.13 |    1    |
+| 82  |     1.75     | 1.47 | 2.02 | 1.02 |    5    |
+| 89  |     1.53     | 1.29 | 1.76 | 0.86 |    4    |
+| 105 |     2.41     | 2.10 | 2.72 | 1.13 |    6    |
+| 108 |     1.96     | 1.71 | 2.21 | 0.92 |    3    |
+| 109 |     1.78     | 1.47 | 2.10 | 1.15 |    4    |
+| 115 |     2.41     | 2.15 | 2.68 | 0.96 |    1    |
+| 116 |     3.20     | 2.80 | 3.59 | 1.43 |    1    |
+| 117 |     1.55     | 1.34 | 1.76 | 0.76 |    6    |
+| 129 |     2.35     | 2.05 | 2.66 | 1.11 |    1    |
 
 ## Activity 5: Calculate descriptives for the variables overall
 
@@ -7025,7 +6899,7 @@ descriptives <- joined %>%
 
 ## Activity 6: Visualisations
 
-* Now that youwe have all of the variables in one place, write the code to reproduce the exact scatterplot below (using ggplot2).
+* Now that you've have all of the variables in one place, write the code to reproduce the exact scatterplot below (using ggplot2).
 
 
 ```
@@ -7099,6 +6973,11 @@ Assumption 5 could also be checked with the scatterplot but there are some nice 
 ```r
 crPlots(mod)
 ```
+
+<div class="figure" style="text-align: center">
+<img src="16-regression_files/figure-html/crplots-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
+<p class="caption">(\#fig:crplots)**CAPTION THIS FIGURE!!**</p>
+</div>
 
 Assumption 6 can be tested as we have done before with a qqplot and a Shapiro-Wilk test.
 
@@ -7298,9 +7177,6 @@ But the expressive power of regression allows us to do this all within a single 
 * Load the CSV datasets into variables called `pinfo`, `wellbeing` and `screen` using `read_csv()`.
 
 
-```
-## Warning: package 'broom' was built under R version 4.0.3
-```
 
 ## Activity 2: Look at the data
 
@@ -8233,13 +8109,6 @@ Sometimes you will need or want to statistically compare the strength of two cor
 
 ```r
 library(cocor)
-```
-
-```
-## Warning: package 'cocor' was built under R version 4.0.3
-```
-
-```r
 library(tidyverse)
 library(lsr)
 ```
@@ -8663,8 +8532,8 @@ rnorm(10)
 ```
 
 ```
-##  [1]  0.99288022  1.21370524 -0.46917103 -0.06163062 -0.39858269 -0.12173078
-##  [7] -0.60358626  0.80298022  0.03303179 -0.01608901
+##  [1]  0.0007786962  0.1865783981  1.0646311575 -1.0192362434 -0.2466992434
+##  [6]  0.2593909217 -1.0077364092  1.0211023328  0.9802219169 -0.1773168836
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -8762,8 +8631,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "n" "p" "k" "b" "t" "c" "v" "a" "j" "q" "o" "u" "g" "z" "x" "y" "s" "m" "f"
-## [20] "h" "d" "w" "e" "r" "l" "i"
+##  [1] "i" "t" "q" "s" "l" "m" "o" "z" "f" "y" "x" "p" "v" "h" "r" "e" "u" "g" "a"
+## [20] "b" "d" "n" "j" "w" "c" "k"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -8797,29 +8666,19 @@ tibble(Y = rnorm(10))
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 10 x 1
-##         Y
-##     <dbl>
-##  1 -1.06 
-##  2 -1.27 
-##  3 -0.202
-##  4  0.896
-##  5  1.55 
-##  6  0.429
-##  7 -0.162
-##  8 -0.830
-##  9  0.450
-## 10  1.98
+##          Y
+##      <dbl>
+##  1 -0.226 
+##  2  1.84  
+##  3 -2.90  
+##  4  1.64  
+##  5  0.492 
+##  6 -0.583 
+##  7  0.200 
+##  8 -0.263 
+##  9  1.37  
+## 10  0.0248
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -8833,29 +8692,19 @@ tibble(Y = c(rnorm(5, mean = -10),
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1  -9.61
-##  2  -9.92
-##  3  -9.82
-##  4 -11.4 
-##  5 -10.2 
-##  6  20.3 
-##  7  20.5 
-##  8  19.8 
-##  9  19.6 
-## 10  19.2
+##  1  -9.18
+##  2 -11.0 
+##  3  -9.07
+##  4  -9.55
+##  5 -10.7 
+##  6  21.0 
+##  7  20.0 
+##  8  19.3 
+##  9  20.4 
+## 10  18.2
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -8914,29 +8763,19 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A      -9.65
-##  2 A     -10.3 
-##  3 A     -11.1 
-##  4 A     -10.4 
-##  5 A      -9.96
-##  6 B      20.1 
-##  7 B      19.9 
-##  8 B      19.3 
-##  9 B      18.9 
-## 10 B      19.9
+##  1 A      -9.51
+##  2 A      -9.24
+##  3 A     -11.5 
+##  4 A      -9.97
+##  5 A     -11.1 
+##  6 B      18.0 
+##  7 B      19.1 
+##  8 B      20.6 
+##  9 B      20.5 
+## 10 B      18.8
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -8945,16 +8784,6 @@ You now know how to create this table. Have a look at the code below and make su
 ```r
 tibble(group = rep(c("A", "B"), c(5, 5)),
        Y = c(rnorm(5, mean = -10), rnorm(5, mean =  20)))
-```
-
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
 ```
 
 Be sure to play around with the code chunk to get used to it. Try adding a third group or even a third column? Perhaps you want to give every participant a random age with a mean of 18, and a sd of 1; or even a participant number.
@@ -9004,24 +8833,14 @@ my_data_means
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      20.0
-## 2 B     -19.7
+## 1 A      21.8
+## 2 B     -20.5
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -19.7 from the first group mean of 20, to get a single value, the difference: 39.7.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -20.5 from the first group mean of 21.8, to get a single value, the difference: 42.3.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -9034,7 +8853,7 @@ vec
 ```
 
 ```
-## [1]  19.96823 -19.72712
+## [1]  21.80260 -20.51625
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -9045,7 +8864,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 39.69535
+## [1] 42.31885
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -9056,7 +8875,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 39.69535
+## [1] 42.31885
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -9069,7 +8888,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 39.69535
+## [1] 42.31885
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -9081,20 +8900,10 @@ my_data_means %>%
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  20.0 -19.7
+## 1  21.8 -20.5
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -9107,20 +8916,10 @@ my_data_means %>%
 ```
 
 ```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  20.0 -19.7  39.7
+## 1  21.8 -20.5  42.3
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -9136,7 +8935,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 39.69535
+## [1] 42.31885
 ```
 
 
@@ -9325,8 +9124,8 @@ ten_samples
 ```
 
 ```
-##  [1]  0.069918592 -0.031594536 -0.023174892 -0.101748447  0.019963953
-##  [6]  0.153173924  0.082529595 -0.068658450 -0.009662465 -0.002424803
+##  [1]  0.0005864123 -0.0258818949  0.0670752819 -0.0183587768 -0.1042469124
+##  [6]  0.0203483640 -0.0318988921  0.0339357958 -0.0441825395  0.1130606107
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
@@ -9789,16 +9588,6 @@ wine %>%
 
 ```
 ## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
 ```
 
 ```
@@ -10280,19 +10069,7 @@ bigram_counts <- bigrams_separated %>%
   count(word1, word2, sort = TRUE)
 
 bigram_counts
-```
 
-```
-## Warning: `...` is not empty.
-## 
-## We detected these problematic arguments:
-## * `needs_dots`
-## 
-## These dots only exist to allow future extensions and should be empty.
-## Did you misspecify an argument?
-```
-
-```r
 # filter for only relatively common combinations (more than 20 occurances)
 bigram_graph <- bigram_counts %>%
   filter(n > 20) %>%
