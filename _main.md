@@ -2130,15 +2130,15 @@ sandwich <- pivot_longer(data = responses, names_to = "Jam", values_to = "Strawb
 
 Which function(s) would you use to approach each of the following problems?
 
-* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>summarise()</option> <option>arrange()</option> <option>group_by()</option> <option>mutate()</option> <option>select()</option> <option>filter()</option></select> function.
+* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>summarise()</option> <option>filter()</option> <option>arrange()</option> <option>select()</option> <option>group_by()</option> <option>mutate()</option></select> function.
 
-* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>select()</option> <option>mutate()</option> <option>summarise()</option> <option>filter()</option> <option>arrange()</option> <option>group_by()</option></select> function.
+* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>arrange()</option> <option>filter()</option> <option>summarise()</option> <option>mutate()</option> <option>group_by()</option> <option>select()</option></select> function.
 
-* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>group_by()</option> <option>mutate()</option> <option>summarise()</option> <option>select()</option> <option>filter()</option> <option>arrange()</option></select> function.
+* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>mutate()</option> <option>select()</option> <option>group_by()</option> <option>filter()</option> <option>arrange()</option> <option>summarise()</option></select> function.
 
-* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>arrange() and mutate()</option> <option>group_by() and arrange()</option> <option>group_by() and summarise()</option> <option>filter() and select()</option></select> functions.
+* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>group_by() and arrange()</option> <option>filter() and select()</option> <option>arrange() and mutate()</option> <option>group_by() and summarise()</option></select> functions.
 
-* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["mutate() and filter()","arrange() and select()"]'> <option></option> <option>group_by() and mutate()</option> <option>select() and summarise()</option> <option>mutate() and filter()</option> <option>arrange() and select()</option></select> functions.
+* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["mutate() and filter()","arrange() and select()"]'> <option></option> <option>mutate() and filter()</option> <option>select() and summarise()</option> <option>group_by() and mutate()</option> <option>arrange() and select()</option></select> functions.
 
 ### Data visualisation
 
@@ -2463,10 +2463,10 @@ How you tackle probability depends on the type of data/variables you are working
 
 What types of data are the below measurements?
 
-* Time taken to run a marathon (in seconds): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>ordinal</option> <option>interval</option> <option>ratio</option> <option>categorical</option></select>
+* Time taken to run a marathon (in seconds): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>categorical</option> <option>ratio</option> <option>interval</option> <option>ordinal</option></select>
 * Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ratio</option> <option>interval</option> <option>categorical</option> <option>ordinal</option></select>
-* Which Sesame Street character a runner was dressed as: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>ordinal</option> <option>ratio</option> <option>categorical</option> <option>interval</option></select>
-* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>interval</option> <option>ordinal</option> <option>ratio</option> <option>categorical</option></select>
+* Which Sesame Street character a runner was dressed as: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>ordinal</option> <option>interval</option> <option>categorical</option> <option>ratio</option></select>
+* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ordinal</option> <option>interval</option> <option>categorical</option> <option>ratio</option></select>
 
 ### Probability distributions
 
@@ -2552,9 +2552,9 @@ As with any probabilities, real-world data will come close to the normal distrib
 
 Complete the sentences so that they are correct.
 
-* In a normal distribution, the mean, median, and mode <select class='solveme' data-answer='["are all equal"]'> <option></option> <option>are always different</option> <option>are all equal</option> <option>sum to zero</option></select>.
-* In a normal distribution, the further away from the mean an observation is <select class='solveme' data-answer='["the lower its probability of occuring"]'> <option></option> <option>the higher its probability of occuring</option> <option>the lower its probability of occuring</option></select>.
-* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='solveme' data-answer='["is a continuous variable"]'> <option></option> <option>is a continuous variable</option> <option>is a categorical variable</option> <option>has three possible values</option></select>.
+* In a normal distribution, the mean, median, and mode <select class='solveme' data-answer='["are all equal"]'> <option></option> <option>sum to zero</option> <option>are always different</option> <option>are all equal</option></select>.
+* In a normal distribution, the further away from the mean an observation is <select class='solveme' data-answer='["the lower its probability of occuring"]'> <option></option> <option>the lower its probability of occuring</option> <option>the higher its probability of occuring</option></select>.
+* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='solveme' data-answer='["is a continuous variable"]'> <option></option> <option>is a categorical variable</option> <option>has three possible values</option> <option>is a continuous variable</option></select>.
 
 ## Activity 4: Distribution test
 
@@ -8550,8 +8550,8 @@ rnorm(10)
 ```
 
 ```
-##  [1] -0.1621485  0.4343557  0.7075128  0.7272038 -0.4103314 -1.3349484
-##  [7]  0.1364619  0.2537669 -1.3144801  1.2648811
+##  [1]  1.05118448 -1.01669936 -0.11301905 -0.09322324 -0.78562780 -1.10413729
+##  [7]  0.10471949  0.01986293  0.29640308 -0.61451967
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -8649,8 +8649,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "e" "k" "b" "f" "l" "r" "s" "a" "x" "j" "g" "w" "z" "h" "t" "y" "c" "i" "n"
-## [20] "u" "m" "o" "p" "v" "d" "q"
+##  [1] "a" "j" "l" "q" "t" "h" "f" "d" "e" "m" "u" "k" "r" "z" "v" "b" "c" "w" "p"
+## [20] "g" "i" "n" "y" "x" "o" "s"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -8687,16 +8687,16 @@ tibble(Y = rnorm(10))
 ## # A tibble: 10 x 1
 ##          Y
 ##      <dbl>
-##  1 -0.634 
-##  2  0.302 
-##  3  0.0583
-##  4 -0.423 
-##  5  1.61  
-##  6  1.71  
-##  7 -0.943 
-##  8  0.341 
-##  9  1.35  
-## 10  1.51
+##  1 -1.08  
+##  2 -1.45  
+##  3  0.236 
+##  4  0.0693
+##  5  0.807 
+##  6 -0.739 
+##  7 -1.42  
+##  8  1.53  
+##  9  0.768 
+## 10  0.426
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -8713,16 +8713,16 @@ tibble(Y = c(rnorm(5, mean = -10),
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1 -10.3 
-##  2 -11.2 
-##  3  -8.74
-##  4 -10.6 
-##  5 -11.8 
-##  6  20.3 
-##  7  21.0 
-##  8  21.0 
-##  9  21.4 
-## 10  19.0
+##  1  -8.34
+##  2 -10.2 
+##  3  -9.63
+##  4 -10.0 
+##  5  -9.96
+##  6  18.6 
+##  7  19.7 
+##  8  20.5 
+##  9  19.0 
+## 10  21.3
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -8784,16 +8784,16 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A     -10.8 
-##  2 A      -7.63
-##  3 A      -9.64
+##  1 A      -9.80
+##  2 A      -9.35
+##  3 A      -9.35
 ##  4 A     -10.7 
-##  5 A      -9.85
-##  6 B      21.4 
-##  7 B      20.1 
-##  8 B      20.7 
-##  9 B      21.4 
-## 10 B      21.3
+##  5 A      -9.98
+##  6 B      20.1 
+##  7 B      19.2 
+##  8 B      19.6 
+##  9 B      21.7 
+## 10 B      21.6
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -8854,11 +8854,11 @@ my_data_means
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      20.7
-## 2 B     -20.3
+## 1 A      20.0
+## 2 B     -20.4
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -20.3 from the first group mean of 20.7, to get a single value, the difference: 41.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -20.4 from the first group mean of 20, to get a single value, the difference: 40.4.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -8871,7 +8871,7 @@ vec
 ```
 
 ```
-## [1]  20.70269 -20.31401
+## [1]  19.99364 -20.41929
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -8882,7 +8882,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 41.0167
+## [1] 40.41293
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -8893,7 +8893,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 41.0167
+## [1] 40.41293
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -8906,7 +8906,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 41.0167
+## [1] 40.41293
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -8921,7 +8921,7 @@ my_data_means %>%
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  20.7 -20.3
+## 1  20.0 -20.4
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -8937,7 +8937,7 @@ my_data_means %>%
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  20.7 -20.3  41.0
+## 1  20.0 -20.4  40.4
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -8953,7 +8953,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 41.0167
+## [1] 40.41293
 ```
 
 
@@ -9142,8 +9142,8 @@ ten_samples
 ```
 
 ```
-##  [1] -0.092537295  0.063845005 -0.005512765 -0.014538099  0.060601639
-##  [6]  0.088856187  0.251304073 -0.170958136 -0.106241950  0.124314189
+##  [1] -0.09709687  0.06866243 -0.02637535 -0.03608997  0.00854264 -0.02494687
+##  [7]  0.12897367 -0.05207761 -0.06001114 -0.15487345
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
