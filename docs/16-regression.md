@@ -39,7 +39,7 @@ Recall the difference between *wide* and *tidy* data. In wide data, each row rep
 
 * The STARS data are currently in <select class='solveme' data-answer='["wide"]'> <option></option> <option>wide</option> <option>tidy</option></select> format.
 
-Before we calculate means, you need to use `gather()` to restructure the STARS data into the appropriate "tidy" format; i.e., so that it looks like the table below.
+Before we calculate means, you need to use `pivot_longer()` to restructure the STARS data into the appropriate "tidy" format; i.e., so that it looks like the table below.
 
 
 | ID | Question | Score |
@@ -317,10 +317,8 @@ library("tidyverse")
 <div class="solution"><button>Activity 2</button>
 
 ```r
-library("pwr")
-stars2 <- gather(stars, "Question", "Score", Q01:Q51) %>%
+stars2 <- pivot_longer(data = stars, names_to = "Question", values_to = "Score",cols = Q01:Q51) %>%
   arrange(ID)
-head(stars2) %>% knitr::kable(align = 'c')
 ```
 </div>
 
