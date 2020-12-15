@@ -64,13 +64,13 @@ head(stars2) %>% knitr::kable(align = 'c')
 * Now that you've got the data into a tidy format, use `summarise()` and `group_by()` to calculate mean anxiety scores (`mean_anxiety`) for each student (`ID`). Store the resulting table in a variable named `stars_means`. 
 
 
-```{r stars_means, echo = FALSE}
+```{r stars_means, echo = FALSE, message = FALSE}
 stars_means <- stars2 %>%
   group_by(ID) %>%
   summarise(mean_anxiety = mean(Score, na.rm = TRUE),
-            min = mean(Score) - qnorm(0.975)*sd(Score)/sqrt(n()), 
-            max = mean(Score) + qnorm(0.975)*sd(Score)/sqrt(n()),
-            sd = sd(Score, na.rm = TRUE))
+            min = min(Score), 
+            max = min(Score),
+            sd = sd(Score))
 ```
 
 
@@ -107,7 +107,7 @@ descriptives <- joined %>%
 
 * Now that you've have all of the variables in one place, write the code to reproduce the exact scatterplot below (using ggplot2).
 
-```{r scatter, echo = FALSE, fig.cap="Scatteplot of mean anxiety and attendance"}
+```{r scatter, echo = FALSE, message = FALSE, fig.cap="Scatteplot of mean anxiety and attendance"}
 ggplot(joined, aes(mean_anxiety, n_weeks)) +
   geom_point() +
   geom_smooth(method = "lm")
@@ -238,12 +238,12 @@ A simple linear regression was performed with engagement (M = `r descriptives$me
 ```{r a1b, eval = FALSE}
 
 library("pwr")
-library("rcompanion")
 library("car")
 library("broom")
-library("afex")
-library("emmeans")
 library("tidyverse")
+
+stars <- read_csv("LS_stars.csv")
+engage <- read_csv("psess.csv")
 
 ```
 </div>
@@ -271,8 +271,8 @@ stars2 <- pivot_longer(data = stars, names_to = "Question", values_to = "Score",
 stars_means <- stars2 %>%
   group_by(ID) %>%
   summarise(mean_anxiety = mean(Score, na.rm = TRUE),
-            min = mean(Score) - qnorm(0.975)*sd(Score)/sqrt(n()), 
-            max = mean(Score) + qnorm(0.975)*sd(Score)/sqrt(n()),
+            min = min(Score), 
+            max = min(Score),
             sd = sd(Score))
 
 ```
