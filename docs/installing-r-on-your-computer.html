@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>I Dissertation analysis guide | MSc Conversion in Psychological Studies</title>
+  <title>B Installing R on your computer | MSc Conversion in Psychological Studies</title>
   <meta name="description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="I Dissertation analysis guide | MSc Conversion in Psychological Studies" />
+  <meta property="og:title" content="B Installing R on your computer | MSc Conversion in Psychological Studies" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="I Dissertation analysis guide | MSc Conversion in Psychological Studies" />
+  <meta name="twitter:title" content="B Installing R on your computer | MSc Conversion in Psychological Studies" />
   
   <meta name="twitter:description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rtweet.html"/>
-
+<link rel="prev" href="exporting-files-from-the-server.html"/>
+<link rel="next" href="additional-r-resources.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -628,243 +628,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="dissertation-analysis-guide" class="section level1">
-<h1><span class="header-section-number">I</span> Dissertation analysis guide</h1>
-<p>In this chapter we’re going to provide a guide for how to get started working with your dissertation data. It’s important to note that this guide won’t work for every project and every kind of data - and nothing in this chapter should supersede advice your supervisor has given you. Rather, this chapter is here to help guide you through the initial steps of working with quantitative data and to show you how what you have learned in RM2 maps on to your dissertation project.</p>
-<div id="before-r" class="section level2">
-<h2><span class="header-section-number">I.1</span> Before R</h2>
-<p>Before you touch R, you need to make sure you understand your design, data, and analysis plan. This will make your work in R considerably easier. Before you start coding, make sure you have answers to the following questions:</p>
-<div id="study-design" class="section level3">
-<h3><span class="header-section-number">I.1.1</span> Study design</h3>
+<div id="installing-r-on-your-computer" class="section level1">
+<h1><span class="header-section-number">B</span> Installing R on your computer</h1>
+<div id="why-should-i-install-r-on-my-computer" class="section level2">
+<h2><span class="header-section-number">B.1</span> Why should I install R on my computer?</h2>
+<p>The R Server cuts down on a lot of installation problems and it means that you have all the packages and functions you need already installed. However, it requires an internet connection to use and when it comes time to submit your R assessments, if you don’t have R on your computer it means that you won’t be able to open the files you download from the server to check they’re ok before you submit them.</p>
+</div>
+<div id="windows" class="section level2">
+<h2><span class="header-section-number">B.2</span> Windows</h2>
+<p>If you are using Windows, you should download and install the following:</p>
 <ul>
-<li>What is the design of your study?</li>
-<li>What are your variables?
-<ul>
-<li>Are they IVs/predictors/correlation variables?</li>
-<li>How many levels do they have?
-<ul>
-<li>Are they between or within-subject?</li>
-</ul></li>
-</ul></li>
-<li>What are your DVs?
-<ul>
-<li>How will you calculate them? For example, do you need to take a mean of several of questionnaire items or reaction times from multiple trials?</li>
-</ul></li>
-<li>What are your hypotheses?</li>
-<li>Do you have any demographic data included in the data files?</li>
-<li>Thinking back to the concept of tidy data, how many variables will you have?</li>
+<li><a href="https://cran.r-project.org/bin/windows/base/">R</a><br />
+</li>
+<li><a href="https://rstudio.com/products/rstudio/download/#download">R Studio</a><br />
+</li>
+<li><a href="https://cran.r-project.org/bin/windows/Rtools/">RTools</a></li>
 </ul>
+<p>Once you’ve installed all three programs, restart your computer. Then, open RStudio (not R) and run the below code:</p>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="installing-r-on-your-computer.html#cb353-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>This will install the <code>tidyverse</code> package on your computer. You can still use the server to do all your work, but having R on your computer will make it easier to view the files. If you would like to work from your computer, you will also need to install the other packages we use, for example <code>lsr</code>, <code>psych</code>, <code>babynames</code> etc.</p>
 </div>
-<div id="data-wrangling-considerations" class="section level3">
-<h3><span class="header-section-number">I.1.2</span> Data wrangling considerations</h3>
+<div id="mac" class="section level2">
+<h2><span class="header-section-number">B.3</span> Mac</h2>
+<p>If you are using a Mac, you should download and install the following:</p>
 <ul>
-<li>What does each variable in your data set represent?
-<ul>
-<li>Do you want to rename any variables to make them easier to work with?
-<ul>
-<li>Do you have a convention for naming variables? For example, I use all lower-case variables and words are always separated by underscores, e.g., <code>group_data</code>.<br />
+<li><a href="https://www.stats.bris.ac.uk/R/">R</a><br />
 </li>
-</ul></li>
-<li>Are there any variables that are not necessary for the analysis? For example, consent forms.</li>
-<li>Are there minimum and maximum values for any of your variables?</li>
-</ul></li>
-<li>Do you have multiple data sets you need to join together?
-<ul>
-<li>Do they have a common variable? For example, does each file have the participant ID or a question number?</li>
-</ul></li>
-<li>Do you need to create any new variables? For example, the mean or sum of a number of questionnaire items to give a total scale score?<br />
+<li><a href="https://rstudio.com/products/rstudio/download/#download">R Studio</a><br />
 </li>
-<li>What type of data should each variable be?
-<ul>
-<li>Are there any variables that you need to convert to factors?<br />
-</li>
-</ul></li>
-<li>Do you need to recode any variables? For example, 1 = male, 2 = female, or perhaps reverse coding questionnaire responses.</li>
-<li>Do you have a rule for outlier exclusion/replacement?<br />
-</li>
-<li>Do you need to exclude any participants? For example, if they score below a certain threshold, if they are non-native speakers etc.</li>
-<li>Is there any missing data for each variable?
-<ul>
-<li>What will you do about missing data?</li>
-</ul></li>
-<li>Do you need to tidy your data?</li>
+<li><a href="https://www.xquartz.org/">XQuartz</a></li>
 </ul>
+<p>There have been a number of issues installing R on Macs. We recommend you watch this <a href="https://www.youtube.com/watch?v=90IdULVGmYY">walkthrough video</a>.</p>
+<p>If you are using a Mac with the Catalina OS, we also recommend you read this <a href="https://psyteachr.github.io/FAQ/installing-r-and-rstudio.html#i-am-using-macos-10.15-catalina">troubleshooting guide</a></p>
+<p>Once you’ve installed all three programs, restart your computer. Then, open RStudio (not R) and run the below code:</p>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="installing-r-on-your-computer.html#cb354-1"></a><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>This will install the <code>tidyverse</code> package on your computer. You can still use the server to do all your work, but having R on your computer will make it easier to view the files. If you would like to work from your computer, you will also need to install the other packages we use, for example <code>lsr</code>, <code>psych</code>, <code>babynames</code> etc.</p>
 </div>
-<div id="data-analysis" class="section level3">
-<h3><span class="header-section-number">I.1.3</span> Data analysis</h3>
-<ul>
-<li>What descriptive statistics do you need to calculate for each variable?
-<ul>
-<li>Do you need to calculate descriptive by groups?</li>
-<li>Are the descriptive statistics similar to values reported in other studies that have used the same measures. Are they similar? If not, what is the explanation?</li>
-</ul></li>
-<li>How will you visualize your data?</li>
-<li>Do you need to transform your data?</li>
-<li>Do you need to conduct any kind of reliability analysis?</li>
-<li>What type of inferential tests are you going to conduct?
-<ul>
-<li>Where appropriate, do you need to perform one or two-tailed hypothesis testing?<br />
-</li>
-<li>Do you need to do any dummy coding for regression models?<br />
-</li>
-</ul></li>
-<li>What assumptions do you need to test in order to perform your analyses?
-<ul>
-<li>What will you do if your data do not meet these assumptions?</li>
-</ul></li>
-<li>Do you need to apply a correction for multiple comparison testing? If so, which one?</li>
-<li>Do you need to calculate measures of effect size? If so, which ones?</li>
-</ul>
-<p>If this looks like a lot of work - it is. It’s important to remember that a lot of the problems that students face with R are really nothing to do with R. In order to wrangle and analyse your data you first need to understand the data that you have. If you don’t know what your independent and dependent variables are or what analysis you’re supposed to be running, it doesn’t matter what statistical software you are using, you won’t be able to complete your task. Don’t rush or skip any part of the preparation, it will make coding much harder. If you know the answers to all of the above questions then it means you’re ready to get started in R.</p>
-</div>
-<div id="exploring-and-cleaning-your-data" class="section level3">
-<h3><span class="header-section-number">I.1.4</span> Exploring and cleaning your data</h3>
-<p>The following sections will not provide comprehensive instructions on how to use the example code, nor will they cover every function you may need to use. You should refer to the RM2 materials, help documentation, and online resources, however, these examples may give you an idea of where to start.</p>
-<p>As a first step you should explore your dataset to understand its properties and then perform some basic cleaning operations that will facilitate further analysis.</p>
-</div>
-<div id="summary" class="section level3">
-<h3><span class="header-section-number">I.1.5</span> <code>summary()</code></h3>
-<p>A useful first step is to run <code>summary()</code>. Check the output for:</p>
-<ul>
-<li>Missing data<br />
-</li>
-<li>What type of data each variable is<br />
-</li>
-<li>If the variable names are easy to work with, for example <code>Participant Age</code> is difficult to work with because it has two capital letters and a space. Renaming this as <code>age</code> will make your coding easier.<br />
-</li>
-<li>Any suspicious values, for example, if your likert scale is 1-7 you shouldn’t have a maximum score of 10. If you have standardised IQ scores, you may want to check that a score of 200 or 20 isn’t a typo.<br />
-</li>
-<li>If you make any changes, run <code>summary()</code> again</li>
-</ul>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="dissertation-analysis-guide.html#cb489-1"></a><span class="kw">summary</span>(data)</span></code></pre></div>
-</div>
-<div id="visualisations" class="section level3">
-<h3><span class="header-section-number">I.1.6</span> Visualisations</h3>
-<p>To get an overview of the data and spot any potential issues such as outliers you should plot histograms and boxplots to eyeball the distributions.</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="dissertation-analysis-guide.html#cb490-1"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> variable)) <span class="op">+</span></span>
-<span id="cb490-2"><a href="dissertation-analysis-guide.html#cb490-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span>
-<span id="cb490-3"><a href="dissertation-analysis-guide.html#cb490-3"></a></span>
-<span id="cb490-4"><a href="dissertation-analysis-guide.html#cb490-4"></a><span class="kw">ggplot</span>(data, <span class="kw">aes</span>(<span class="dt">x =</span> condition, <span class="dt">y =</span> score)) <span class="op">+</span></span>
-<span id="cb490-5"><a href="dissertation-analysis-guide.html#cb490-5"></a><span class="st">  </span><span class="kw">geom_boxplot</span>()</span></code></pre></div>
-</div>
-<div id="renaming-variables" class="section level3">
-<h3><span class="header-section-number">I.1.7</span> Renaming variables</h3>
-<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="dissertation-analysis-guide.html#cb491-1"></a>data &lt;-<span class="st"> </span><span class="kw">rename</span>(data, <span class="dt">new_name =</span> old_name)</span></code></pre></div>
-</div>
-<div id="converting-to-factors" class="section level3">
-<h3><span class="header-section-number">I.1.8</span> Converting to factors</h3>
-<p>This is incredibly important. Don’t skip this step otherwise things might go very wrong much further down the line.</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="dissertation-analysis-guide.html#cb492-1"></a>data &lt;-<span class="st"> </span><span class="kw">mutate</span>(data, <span class="dt">variable =</span> <span class="kw">as_factor</span>(variable))</span></code></pre></div>
-</div>
-<div id="dropping-irrelevant-variables" class="section level3">
-<h3><span class="header-section-number">I.1.9</span> Dropping irrelevant variables</h3>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="dissertation-analysis-guide.html#cb493-1"></a>data &lt;-<span class="st"> </span><span class="kw">select</span>(data, <span class="op">-</span>consent1)</span></code></pre></div>
-</div>
-<div id="recoding-variables" class="section level3">
-<h3><span class="header-section-number">I.1.10</span> Recoding variables</h3>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="dissertation-analysis-guide.html#cb494-1"></a>data &lt;-<span class="st"> </span><span class="kw">mutate</span>(data, <span class="dt">variable =</span> <span class="kw">recode</span>(variable, <span class="st">&quot;old_code&quot;</span> =<span class="st"> &quot;new_code&quot;</span>))</span></code></pre></div>
-</div>
-<div id="exclude-participantsdata" class="section level3">
-<h3><span class="header-section-number">I.1.11</span> Exclude participants/data</h3>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="dissertation-analysis-guide.html#cb495-1"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">!=</span><span class="st"> &quot;value&quot;</span>) <span class="co"># exclude anyone with value</span></span>
-<span id="cb495-2"><a href="dissertation-analysis-guide.html#cb495-2"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">==</span><span class="st"> &quot;value&quot;</span>) <span class="co"># include only those with value</span></span>
-<span id="cb495-3"><a href="dissertation-analysis-guide.html#cb495-3"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;value1&quot;</span>, <span class="st">&quot;value2&quot;</span>)) <span class="co"># include all specified values</span></span>
-<span id="cb495-4"><a href="dissertation-analysis-guide.html#cb495-4"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>) <span class="co"># keep data if value of variable is more than 10</span></span>
-<span id="cb495-5"><a href="dissertation-analysis-guide.html#cb495-5"></a>data &lt;-<span class="st"> </span><span class="kw">filter</span>(data, variable <span class="op">&lt;=</span><span class="st"> </span><span class="dv">10</span>) <span class="co"># keep data if value of variable is less than or equal to 10</span></span></code></pre></div>
-</div>
-<div id="reliability" class="section level3">
-<h3><span class="header-section-number">I.1.12</span> Reliability</h3>
-<p>If you are using a scale, for example, as part of a questionnaire study you may need to calculate reliability and you should do this before you calculate the aggregated scale scores. There are several options about how you do this and you should consult your supervisor but one option is to use <code>alpha()</code> from the <code>psych</code> package.</p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="dissertation-analysis-guide.html#cb496-1"></a>data <span class="op">%&gt;%</span></span>
-<span id="cb496-2"><a href="dissertation-analysis-guide.html#cb496-2"></a><span class="st">  </span><span class="kw">select</span>(Q1<span class="op">:</span>Q5) <span class="op">%&gt;%</span></span>
-<span id="cb496-3"><a href="dissertation-analysis-guide.html#cb496-3"></a><span class="st">  </span>psych<span class="op">::</span><span class="kw">alpha</span>()</span></code></pre></div>
-</div>
-<div id="transforming-data" class="section level3">
-<h3><span class="header-section-number">I.1.13</span> Transforming data</h3>
-<p>The above steps should leave you with a good understanding of your data and all the variables you need for your analysis. The next step is to correct any problems with the data by replacing or transforming individual values. You may also need to create new variables, for example the total score for a questionnaire or mean reaction times or accuracy.</p>
-</div>
-<div id="replace-missing-values" class="section level3">
-<h3><span class="header-section-number">I.1.14</span> Replace missing values</h3>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="dissertation-analysis-guide.html#cb497-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb497-2"><a href="dissertation-analysis-guide.html#cb497-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">variable =</span> <span class="kw">replace_na</span>(data<span class="op">$</span>variable, <span class="dv">0</span>)) <span class="co"># replace NAs in variable with 0</span></span>
-<span id="cb497-3"><a href="dissertation-analysis-guide.html#cb497-3"></a></span>
-<span id="cb497-4"><a href="dissertation-analysis-guide.html#cb497-4"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">replace_na</span>(<span class="kw">list</span>(<span class="dt">gender =</span> <span class="st">&quot;unknown&quot;</span>, <span class="co"># replace NAs in `gender` with &quot;unknown&quot;</span></span>
-<span id="cb497-5"><a href="dissertation-analysis-guide.html#cb497-5"></a>                              <span class="dt">score =</span> <span class="dv">0</span>,          <span class="co"># replace NAs in `score` with 0  </span></span>
-<span id="cb497-6"><a href="dissertation-analysis-guide.html#cb497-6"></a>                              <span class="dt">rt =</span> <span class="kw">mean</span>(data<span class="op">$</span>rt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))  <span class="co"># replace NAs in `rt` with mean of `rt`</span></span></code></pre></div>
-</div>
-<div id="convert-implausible-values" class="section level3">
-<h3><span class="header-section-number">I.1.15</span> Convert implausible values</h3>
-<p>In the case of implausible values (such as a score or 10 on a 7-point likert scale), you may wish to recode these as missing, or as the mean (or some other value).</p>
-<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="dissertation-analysis-guide.html#cb498-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb498-2"><a href="dissertation-analysis-guide.html#cb498-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">q1=</span> <span class="kw">ifelse</span>(q1 <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>, <span class="ot">NA</span>, q1)) <span class="co"># if the value in q1 is more than 10 replace it with NA, if it&#39;s not, keep the value as it is</span></span>
-<span id="cb498-3"><a href="dissertation-analysis-guide.html#cb498-3"></a></span>
-<span id="cb498-4"><a href="dissertation-analysis-guide.html#cb498-4"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></span>
-<span id="cb498-5"><a href="dissertation-analysis-guide.html#cb498-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rt =</span> <span class="kw">ifelse</span>(rt <span class="op">&gt;</span><span class="st"> </span><span class="dv">1000</span>, <span class="kw">mean</span>(rt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>), rt)) <span class="co"># if the value in rt is more than 1000, replace it with the mean rt, if it&#39;s below 1000, keep the value as it is</span></span></code></pre></div>
-</div>
-<div id="calculate-z-scores" class="section level3">
-<h3><span class="header-section-number">I.1.16</span> Calculate z-scores</h3>
-<p>You may want to calculate z-scores in order to remove outliers. You could then use <code>filter()</code> on the new z-score variable you have created.</p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb499-1"><a href="dissertation-analysis-guide.html#cb499-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">z_scores =</span> <span class="kw">scale</span>(scores))</span></code></pre></div>
-<p>There are a few other types of transformations we can do to correct for problems with normality. <a href="https://rcompanion.org/handbook/I_12.html">This page</a> gives a good overview of all the options.</p>
-</div>
-<div id="log-transformation" class="section level3">
-<h3><span class="header-section-number">I.1.17</span> Log transformation</h3>
-<p>A popular method of transformation is to calculate the log of a variable.</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="dissertation-analysis-guide.html#cb500-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">variable_log =</span> <span class="kw">log</span>(variable))</span></code></pre></div>
-</div>
-<div id="square-root" class="section level3">
-<h3><span class="header-section-number">I.1.18</span> Square root</h3>
-<p>Another popular method is to perform a square root transformation.</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb501-1"><a href="dissertation-analysis-guide.html#cb501-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">variable_sqrt =</span> <span class="kw">sqrt</span>(variable))</span></code></pre></div>
-</div>
-<div id="calculating-new-variables" class="section level3">
-<h3><span class="header-section-number">I.1.19</span> Calculating new variables</h3>
-<p>You may wish to calculate the sum or the mean of a number of variables. For example, if you have 9 questions and you want the sum of questions 1-5 and the mean of questions 6 - 9 and your data is is wide-form:</p>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="dissertation-analysis-guide.html#cb502-1"></a>data &lt;-<span class="st"> </span>data <span class="op">%&gt;%</span></span>
-<span id="cb502-2"><a href="dissertation-analysis-guide.html#cb502-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">sum_scoreq1q5 =</span> <span class="kw">rowSums</span>(<span class="kw">select</span>(., Q1<span class="op">:</span>Q5)),</span>
-<span id="cb502-3"><a href="dissertation-analysis-guide.html#cb502-3"></a>         <span class="dt">mean_scoreq6q10 =</span> <span class="kw">rowMeans</span>(<span class="kw">select</span>(., Q6<span class="op">:</span>Q9)))</span></code></pre></div>
-<p>If your data is in long-form you may want to use functions such as <code>gather()</code>, <code>spread()</code> and <code>summarise()</code>. See RM2 Lab 3 for more info on this.</p>
-</div>
-<div id="tidy-data" class="section level3">
-<h3><span class="header-section-number">I.1.20</span> Tidy data</h3>
-<p>It is at this point that you should tidy the dataset using functions such as <code>gather()</code>. Refer back to the RM1 Lab 2 and RM2 Lab 3. You may also wish to have a wide-form version of your data depending upon the analyses you are conducting.</p>
-</div>
-<div id="summarising-and-visualising-data" class="section level3">
-<h3><span class="header-section-number">I.1.21</span> Summarising and visualising data</h3>
-</div>
-<div id="descriptive-statistics" class="section level3">
-<h3><span class="header-section-number">I.1.22</span> Descriptive statistics</h3>
-<p>At this point you may want to calculate descriptive statistics for variables of interest. Refer back to RM1 Lab 2 and Lab 3 for more information on these functions.</p>
-<div class="sourceCode" id="cb503"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb503-1"><a href="dissertation-analysis-guide.html#cb503-1"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># produce descriptives for the total data set</span></span>
-<span id="cb503-2"><a href="dissertation-analysis-guide.html#cb503-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_score =</span> <span class="kw">mean</span>(score, <span class="dt">na.rm =</span> true),</span>
-<span id="cb503-3"><a href="dissertation-analysis-guide.html#cb503-3"></a>            <span class="dt">sd_score =</span> <span class="kw">sd</span>(score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb503-4"><a href="dissertation-analysis-guide.html#cb503-4"></a>            <span class="dt">median_score =</span> <span class="kw">median</span>(score))</span>
-<span id="cb503-5"><a href="dissertation-analysis-guide.html#cb503-5"></a></span>
-<span id="cb503-6"><a href="dissertation-analysis-guide.html#cb503-6"></a>data <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># produce descriptives for each of the grouping variables</span></span>
-<span id="cb503-7"><a href="dissertation-analysis-guide.html#cb503-7"></a><span class="st">  </span><span class="kw">group_by</span>(gender, condition) <span class="op">%&gt;%</span></span>
-<span id="cb503-8"><a href="dissertation-analysis-guide.html#cb503-8"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_score =</span> <span class="kw">mean</span>(score, <span class="dt">na.rm =</span> true),</span>
-<span id="cb503-9"><a href="dissertation-analysis-guide.html#cb503-9"></a>            <span class="dt">sd_score =</span> <span class="kw">sd</span>(score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb503-10"><a href="dissertation-analysis-guide.html#cb503-10"></a>            <span class="dt">median_score =</span> <span class="kw">median</span>(score))</span></code></pre></div>
-<p>You may also find the function <code>describe()</code> from the <code>psych</code> package useful (you may need to install this package but as always, <strong>do not install packages on university computers</strong>). <code>describe()</code> produces a full range of descriptive statistics including skew, kurtosis and standard error.</p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb504-1"><a href="dissertation-analysis-guide.html#cb504-1"></a><span class="kw">library</span>(psych)</span>
-<span id="cb504-2"><a href="dissertation-analysis-guide.html#cb504-2"></a><span class="kw">describe</span>(data)</span></code></pre></div>
-<p><code>describeBy()</code> produces descriptives by a grouping variable.</p>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb505-1"><a href="dissertation-analysis-guide.html#cb505-1"></a><span class="kw">describeBy</span>(data, <span class="dt">group =</span> <span class="st">&quot;gender&quot;</span>)</span></code></pre></div>
-</div>
-<div id="data-visualisation" class="section level3">
-<h3><span class="header-section-number">I.1.23</span> Data visualisation</h3>
-<p>At this point you should plot your data using a method that reflects the analysis you wish to conduct (e.g., a scatterplot for a correlation, a violn-boxplot for a t-test). For the plots and code specific to each type of analysis, please refer to the relevant chapters. You should ensure that your plots are as informative as possible and display the spread of the data using functions such as <code>geom_violin()</code>, and <code>geom_point()</code>. Avoid purely aggregated plots like bar charts representing means.</p>
-</div>
-<div id="inferential-statistics" class="section level3">
-<h3><span class="header-section-number">I.1.24</span> Inferential statistics</h3>
-<p>You are now ready to conduct your inferential analyses. For details on how to perform different tests, please refer to relevant chapters. Ensure that you understand how each test relates to each of your hypotheses.</p>
-</div>
-<div id="assumption-tests" class="section level3">
-<h3><span class="header-section-number">I.1.25</span> Assumption tests</h3>
-<p>Depending upon the analysis, you may be able to conduct assumption checks before the inferential tests are conducted, however, for methods such as ANOVA and regression, you need to check the model residuals and therefore this can’t be done until afterwards.</p>
-<p>Foe details on what assumption checks to conduct for each statistical test, please refer to the relevant chapters.</p>
-
-</div>
+<div id="chromebooks" class="section level2">
+<h2><span class="header-section-number">B.4</span> Chromebooks</h2>
+<p>Please note that you cannot currently install R on a Chromebook, please continue to use the R Server.</p>
 </div>
 </div>
 <div class="psyteachr_footer">
@@ -977,8 +779,8 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="rtweet.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="exporting-files-from-the-server.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="additional-r-resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
