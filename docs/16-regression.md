@@ -60,9 +60,6 @@ Before we calculate means, you need to use `pivot_longer()` to restructure the S
 
 
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
 
 
 ## Activity 4: Join the datasets together
@@ -70,45 +67,45 @@ Before we calculate means, you need to use `pivot_longer()` to restructure the S
 * In order to perform the regression analysis, combine the data from `stars_means` with `engage` using `inner_join()`. Call the resulting table `joined`. It should look like this:
 
 
-| ID  | mean_anxiety | min  | max  |  sd  | n_weeks |
-|:---:|:------------:|:----:|:----:|:----:|:-------:|
-|  3  |     1.06     | 0.99 | 1.12 | 0.24 |    5    |
-|  7  |     2.71     | 2.42 | 2.99 | 1.03 |    2    |
-| 12  |     2.24     |  NA  |  NA  | 1.23 |    3    |
-| 16  |     2.86     |  NA  |  NA  | 1.20 |    2    |
-| 23  |     1.71     | 1.51 | 1.91 | 0.73 |    6    |
-| 29  |     1.80     | 1.51 | 2.10 | 1.08 |    7    |
-| 39  |     1.96     | 1.65 | 2.28 | 1.15 |    2    |
-| 42  |     2.24     | 1.94 | 2.53 | 1.09 |    7    |
-| 43  |     2.69     | 2.40 | 2.97 | 1.05 |    5    |
-| 44  |     1.92     | 1.73 | 2.11 | 0.69 |    4    |
-| 48  |     1.88     | 1.59 | 2.18 | 1.07 |    1    |
-| 50  |     3.18     | 2.89 | 3.47 | 1.05 |    4    |
-| 51  |     1.41     | 1.20 | 1.63 | 0.78 |    2    |
-| 55  |     2.64     |  NA  |  NA  | 1.03 |    2    |
-| 56  |     1.59     |  NA  |  NA  | 0.81 |    8    |
-| 58  |     1.31     | 1.16 | 1.46 | 0.55 |    8    |
-| 59  |     1.39     | 1.25 | 1.54 | 0.53 |    8    |
-| 60  |     1.69     | 1.42 | 1.95 | 0.97 |    3    |
-| 61  |     1.50     |  NA  |  NA  | 0.81 |    8    |
-| 66  |     2.75     | 2.48 | 3.01 | 0.96 |    5    |
-| 67  |     2.76     |  NA  |  NA  | 1.03 |    6    |
-| 68  |     1.80     |  NA  |  NA  | 1.03 |    7    |
-| 70  |     1.55     | 1.25 | 1.85 | 1.08 |    8    |
-| 72  |     2.25     | 1.94 | 2.57 | 1.16 |    5    |
-| 74  |     2.75     | 2.37 | 3.12 | 1.38 |    3    |
-| 77  |     1.49     | 1.27 | 1.71 | 0.78 |    8    |
-| 80  |     2.08     | 1.86 | 2.30 | 0.80 |    7    |
-| 81  |     2.78     |  NA  |  NA  | 1.13 |    1    |
-| 82  |     1.75     | 1.47 | 2.02 | 1.02 |    5    |
-| 89  |     1.53     | 1.29 | 1.76 | 0.86 |    4    |
-| 105 |     2.41     | 2.10 | 2.72 | 1.13 |    6    |
-| 108 |     1.96     | 1.71 | 2.21 | 0.92 |    3    |
-| 109 |     1.78     | 1.47 | 2.10 | 1.15 |    4    |
-| 115 |     2.41     | 2.15 | 2.68 | 0.96 |    1    |
-| 116 |     3.20     | 2.80 | 3.59 | 1.43 |    1    |
-| 117 |     1.55     | 1.34 | 1.76 | 0.76 |    6    |
-| 129 |     2.35     | 2.05 | 2.66 | 1.11 |    1    |
+| ID  | mean_anxiety | min | max |  sd  | n_weeks |
+|:---:|:------------:|:---:|:---:|:----:|:-------:|
+|  3  |     1.06     |  1  |  1  | 0.24 |    5    |
+|  7  |     2.71     |  1  |  1  | 1.03 |    2    |
+| 12  |     2.24     | NA  | NA  |  NA  |    3    |
+| 16  |     2.86     | NA  | NA  |  NA  |    2    |
+| 23  |     1.71     |  1  |  1  | 0.73 |    6    |
+| 29  |     1.80     |  1  |  1  | 1.08 |    7    |
+| 39  |     1.96     |  1  |  1  | 1.15 |    2    |
+| 42  |     2.24     |  1  |  1  | 1.09 |    7    |
+| 43  |     2.69     |  1  |  1  | 1.05 |    5    |
+| 44  |     1.92     |  1  |  1  | 0.69 |    4    |
+| 48  |     1.88     |  1  |  1  | 1.07 |    1    |
+| 50  |     3.18     |  1  |  1  | 1.05 |    4    |
+| 51  |     1.41     |  1  |  1  | 0.78 |    2    |
+| 55  |     2.64     | NA  | NA  |  NA  |    2    |
+| 56  |     1.59     | NA  | NA  |  NA  |    8    |
+| 58  |     1.31     |  1  |  1  | 0.55 |    8    |
+| 59  |     1.39     |  1  |  1  | 0.53 |    8    |
+| 60  |     1.69     |  1  |  1  | 0.97 |    3    |
+| 61  |     1.50     | NA  | NA  |  NA  |    8    |
+| 66  |     2.75     |  1  |  1  | 0.96 |    5    |
+| 67  |     2.76     | NA  | NA  |  NA  |    6    |
+| 68  |     1.80     | NA  | NA  |  NA  |    7    |
+| 70  |     1.55     |  1  |  1  | 1.08 |    8    |
+| 72  |     2.25     |  1  |  1  | 1.16 |    5    |
+| 74  |     2.75     |  1  |  1  | 1.38 |    3    |
+| 77  |     1.49     |  1  |  1  | 0.78 |    8    |
+| 80  |     2.08     |  1  |  1  | 0.80 |    7    |
+| 81  |     2.78     | NA  | NA  |  NA  |    1    |
+| 82  |     1.75     |  1  |  1  | 1.02 |    5    |
+| 89  |     1.53     |  1  |  1  | 0.86 |    4    |
+| 105 |     2.41     |  1  |  1  | 1.13 |    6    |
+| 108 |     1.96     |  1  |  1  | 0.92 |    3    |
+| 109 |     1.78     |  1  |  1  | 1.15 |    4    |
+| 115 |     2.41     |  1  |  1  | 0.96 |    1    |
+| 116 |     3.20     |  1  |  1  | 1.43 |    1    |
+| 117 |     1.55     |  1  |  1  | 0.76 |    6    |
+| 129 |     2.35     |  1  |  1  | 1.11 |    1    |
 
 ## Activity 5: Calculate descriptives for the variables overall
 
@@ -133,11 +130,6 @@ descriptives <- joined %>%
 ## Activity 6: Visualisations
 
 * Now that you've have all of the variables in one place, write the code to reproduce the exact scatterplot below (using ggplot2).
-
-
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
 
 <div class="figure" style="text-align: center">
 <img src="16-regression_files/figure-html/scatter-1.png" alt="Scatteplot of mean anxiety and attendance" width="100%" />
@@ -301,12 +293,12 @@ A simple linear regression was performed with engagement (M = 4.54, SD = 0.56) a
 
 ```r
 library("pwr")
-library("rcompanion")
 library("car")
 library("broom")
-library("afex")
-library("emmeans")
 library("tidyverse")
+
+stars <- read_csv("LS_stars.csv")
+engage <- read_csv("psess.csv")
 ```
 </div>
 
@@ -332,8 +324,8 @@ stars2 <- pivot_longer(data = stars, names_to = "Question", values_to = "Score",
 stars_means <- stars2 %>%
   group_by(ID) %>%
   summarise(mean_anxiety = mean(Score, na.rm = TRUE),
-            min = mean(Score) - qnorm(0.975)*sd(Score)/sqrt(n()), 
-            max = mean(Score) + qnorm(0.975)*sd(Score)/sqrt(n()),
+            min = min(Score), 
+            max = min(Score),
             sd = sd(Score))
 ```
 </div>
