@@ -72,9 +72,6 @@ Next we want to calculate some descriptive statistics. We're really interested i
 
 
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
 
 ### Activity 5: Visualisation
 

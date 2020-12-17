@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-12-15" />
+<meta name="date" content="2020-12-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -698,6 +698,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Now that you’ve got the data into a tidy format, use <code>summarise()</code> and <code>group_by()</code> to calculate mean anxiety scores (<code>mean_anxiety</code>) for each student (<code>ID</code>). Store the resulting table in a variable named <code>stars_means</code>.</li>
 </ul>
+<p><strong>Please note that in the video walkthrough, Emily calculates the mean, min, max, and sd for anxiety scores. Emily is an idiot. Just ignore her, you only need the mean.</strong></p>
 </div>
 <div id="activity-4-join-the-datasets-together" class="section level2">
 <h2><span class="header-section-number">16.4</span> Activity 4: Join the datasets together</h2>
@@ -709,9 +710,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="header">
 <th align="center">ID</th>
 <th align="center">mean_anxiety</th>
-<th align="center">min</th>
-<th align="center">max</th>
-<th align="center">sd</th>
 <th align="center">n_weeks</th>
 </tr>
 </thead>
@@ -719,297 +717,186 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td align="center">3</td>
 <td align="center">1.06</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.24</td>
 <td align="center">5</td>
 </tr>
 <tr class="even">
 <td align="center">7</td>
 <td align="center">2.71</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.03</td>
 <td align="center">2</td>
 </tr>
 <tr class="odd">
 <td align="center">12</td>
 <td align="center">2.24</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
 <td align="center">3</td>
 </tr>
 <tr class="even">
 <td align="center">16</td>
 <td align="center">2.86</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
 <td align="center">2</td>
 </tr>
 <tr class="odd">
 <td align="center">23</td>
 <td align="center">1.71</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.73</td>
 <td align="center">6</td>
 </tr>
 <tr class="even">
 <td align="center">29</td>
 <td align="center">1.80</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.08</td>
 <td align="center">7</td>
 </tr>
 <tr class="odd">
 <td align="center">39</td>
 <td align="center">1.96</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.15</td>
 <td align="center">2</td>
 </tr>
 <tr class="even">
 <td align="center">42</td>
 <td align="center">2.24</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.09</td>
 <td align="center">7</td>
 </tr>
 <tr class="odd">
 <td align="center">43</td>
 <td align="center">2.69</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.05</td>
 <td align="center">5</td>
 </tr>
 <tr class="even">
 <td align="center">44</td>
 <td align="center">1.92</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.69</td>
 <td align="center">4</td>
 </tr>
 <tr class="odd">
 <td align="center">48</td>
 <td align="center">1.88</td>
 <td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.07</td>
-<td align="center">1</td>
 </tr>
 <tr class="even">
 <td align="center">50</td>
 <td align="center">3.18</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.05</td>
 <td align="center">4</td>
 </tr>
 <tr class="odd">
 <td align="center">51</td>
 <td align="center">1.41</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.78</td>
 <td align="center">2</td>
 </tr>
 <tr class="even">
 <td align="center">55</td>
 <td align="center">2.64</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
 <td align="center">2</td>
 </tr>
 <tr class="odd">
 <td align="center">56</td>
 <td align="center">1.59</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
 <td align="center">8</td>
 </tr>
 <tr class="even">
 <td align="center">58</td>
 <td align="center">1.31</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.55</td>
 <td align="center">8</td>
 </tr>
 <tr class="odd">
 <td align="center">59</td>
 <td align="center">1.39</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.53</td>
 <td align="center">8</td>
 </tr>
 <tr class="even">
 <td align="center">60</td>
 <td align="center">1.69</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.97</td>
 <td align="center">3</td>
 </tr>
 <tr class="odd">
 <td align="center">61</td>
 <td align="center">1.50</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
 <td align="center">8</td>
 </tr>
 <tr class="even">
 <td align="center">66</td>
 <td align="center">2.75</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.96</td>
 <td align="center">5</td>
 </tr>
 <tr class="odd">
 <td align="center">67</td>
 <td align="center">2.76</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
 <td align="center">6</td>
 </tr>
 <tr class="even">
 <td align="center">68</td>
 <td align="center">1.80</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
 <td align="center">7</td>
 </tr>
 <tr class="odd">
 <td align="center">70</td>
 <td align="center">1.55</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.08</td>
 <td align="center">8</td>
 </tr>
 <tr class="even">
 <td align="center">72</td>
 <td align="center">2.25</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.16</td>
 <td align="center">5</td>
 </tr>
 <tr class="odd">
 <td align="center">74</td>
 <td align="center">2.75</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.38</td>
 <td align="center">3</td>
 </tr>
 <tr class="even">
 <td align="center">77</td>
 <td align="center">1.49</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.78</td>
 <td align="center">8</td>
 </tr>
 <tr class="odd">
 <td align="center">80</td>
 <td align="center">2.08</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.80</td>
 <td align="center">7</td>
 </tr>
 <tr class="even">
 <td align="center">81</td>
 <td align="center">2.78</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
-<td align="center">NA</td>
 <td align="center">1</td>
 </tr>
 <tr class="odd">
 <td align="center">82</td>
 <td align="center">1.75</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.02</td>
 <td align="center">5</td>
 </tr>
 <tr class="even">
 <td align="center">89</td>
 <td align="center">1.53</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.86</td>
 <td align="center">4</td>
 </tr>
 <tr class="odd">
 <td align="center">105</td>
 <td align="center">2.41</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.13</td>
 <td align="center">6</td>
 </tr>
 <tr class="even">
 <td align="center">108</td>
 <td align="center">1.96</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.92</td>
 <td align="center">3</td>
 </tr>
 <tr class="odd">
 <td align="center">109</td>
 <td align="center">1.78</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.15</td>
 <td align="center">4</td>
 </tr>
 <tr class="even">
 <td align="center">115</td>
 <td align="center">2.41</td>
 <td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.96</td>
-<td align="center">1</td>
 </tr>
 <tr class="odd">
 <td align="center">116</td>
 <td align="center">3.20</td>
 <td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.43</td>
-<td align="center">1</td>
 </tr>
 <tr class="even">
 <td align="center">117</td>
 <td align="center">1.55</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.76</td>
 <td align="center">6</td>
 </tr>
 <tr class="odd">
 <td align="center">129</td>
 <td align="center">2.35</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1.11</td>
 <td align="center">1</td>
 </tr>
 </tbody>
@@ -1021,15 +908,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Run the below code. Read each line and ensure you understand what is being calculated.</li>
 </ul>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="regression.html#cb299-1"></a>descriptives &lt;-<span class="st"> </span>joined <span class="op">%&gt;%</span></span>
-<span id="cb299-2"><a href="regression.html#cb299-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_anx =</span> <span class="kw">mean</span>(mean_anxiety, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb299-3"><a href="regression.html#cb299-3"></a>            <span class="dt">min_anx =</span> <span class="kw">mean</span>(mean_anxiety,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">-</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(mean_anxiety,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()), </span>
-<span id="cb299-4"><a href="regression.html#cb299-4"></a>            <span class="dt">max_anx =</span> <span class="kw">mean</span>(mean_anxiety,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(mean_anxiety,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()),</span>
-<span id="cb299-5"><a href="regression.html#cb299-5"></a>            <span class="dt">sd_anx =</span> <span class="kw">sd</span>(mean_anxiety, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb299-6"><a href="regression.html#cb299-6"></a>            <span class="dt">mean_weeks =</span> <span class="kw">mean</span>(n_weeks, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb299-7"><a href="regression.html#cb299-7"></a>            <span class="dt">min_weeks =</span> <span class="kw">mean</span>(n_weeks) <span class="op">-</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(n_weeks,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()), </span>
-<span id="cb299-8"><a href="regression.html#cb299-8"></a>            <span class="dt">max_weeks =</span> <span class="kw">mean</span>(n_weeks) <span class="op">+</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(n_weeks,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()),</span>
-<span id="cb299-9"><a href="regression.html#cb299-9"></a>            <span class="dt">sd_weeks =</span> <span class="kw">sd</span>(n_weeks, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="regression.html#cb288-1"></a>descriptives &lt;-<span class="st"> </span>joined <span class="op">%&gt;%</span></span>
+<span id="cb288-2"><a href="regression.html#cb288-2"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_anx =</span> <span class="kw">mean</span>(mean_anxiety, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb288-3"><a href="regression.html#cb288-3"></a>            <span class="dt">min_anx =</span> <span class="kw">mean</span>(mean_anxiety,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">-</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(mean_anxiety,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()), </span>
+<span id="cb288-4"><a href="regression.html#cb288-4"></a>            <span class="dt">max_anx =</span> <span class="kw">mean</span>(mean_anxiety,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>) <span class="op">+</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(mean_anxiety,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()),</span>
+<span id="cb288-5"><a href="regression.html#cb288-5"></a>            <span class="dt">sd_anx =</span> <span class="kw">sd</span>(mean_anxiety, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb288-6"><a href="regression.html#cb288-6"></a>            <span class="dt">mean_weeks =</span> <span class="kw">mean</span>(n_weeks, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb288-7"><a href="regression.html#cb288-7"></a>            <span class="dt">min_weeks =</span> <span class="kw">mean</span>(n_weeks) <span class="op">-</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(n_weeks,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()), </span>
+<span id="cb288-8"><a href="regression.html#cb288-8"></a>            <span class="dt">max_weeks =</span> <span class="kw">mean</span>(n_weeks) <span class="op">+</span><span class="st"> </span><span class="kw">qnorm</span>(<span class="fl">0.975</span>)<span class="op">*</span><span class="kw">sd</span>(n_weeks,<span class="dt">na.rm =</span> <span class="ot">TRUE</span>)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">n</span>()),</span>
+<span id="cb288-9"><a href="regression.html#cb288-9"></a>            <span class="dt">sd_weeks =</span> <span class="kw">sd</span>(n_weeks, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</span></code></pre></div>
 </div>
 <div id="activity-6-visualisations" class="section level2">
 <h2><span class="header-section-number">16.6</span> Activity 6: Visualisations</h2>
@@ -1052,8 +939,8 @@ Figure 16.1: Scatteplot of mean anxiety and attendance
 <ul>
 <li>Use the <code>lm()</code> function to predict <code>n_weeks</code> (DV) from <code>mean_anxiety</code> (predictor). Store the result of the call to <code>lm()</code> in the variable <code>mod</code>. To see the results, use <code>summary(mod)</code>.</li>
 </ul>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="regression.html#cb300-1"></a>mod &lt;-<span class="st"> </span><span class="kw">lm</span>(n_weeks <span class="op">~</span><span class="st"> </span>mean_anxiety, joined)</span>
-<span id="cb300-2"><a href="regression.html#cb300-2"></a>mod_summary &lt;-<span class="st"> </span><span class="kw">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="regression.html#cb289-1"></a>mod &lt;-<span class="st"> </span><span class="kw">lm</span>(n_weeks <span class="op">~</span><span class="st"> </span>mean_anxiety, joined)</span>
+<span id="cb289-2"><a href="regression.html#cb289-2"></a>mod_summary &lt;-<span class="st"> </span><span class="kw">summary</span>(mod)</span></code></pre></div>
 <p>Answer the following questions about the model. You may wish to refer to the lecture notes to help you answer these questions.</p>
 <ol style="list-style-type: decimal">
 <li>The estimate of the y-intercept for the model, rounded to three decimal places, is <input class='solveme nospaces' size='5' data-answer='["9.057"]'/></li>
@@ -1095,7 +982,7 @@ Explain these answers
 <ul>
 <li>Run the below code. It will produce the scatterplot with a linear line and the line that best fits the data. If these two lines are quite similar (they will never be perfect) then you can assume linearity.</li>
 </ul>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="regression.html#cb301-1"></a><span class="kw">crPlots</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="regression.html#cb290-1"></a><span class="kw">crPlots</span>(mod)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:crplots"></span>
 <img src="16-regression_files/figure-html/crplots-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
 <p class="caption">
@@ -1103,14 +990,14 @@ Figure 16.2: <strong>CAPTION THIS FIGURE!!</strong>
 </p>
 </div>
 <p>Assumption 6 can be tested as we have done before with a qqplot and a Shapiro-Wilk test.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="regression.html#cb302-1"></a><span class="kw">qqPlot</span>(mod<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="regression.html#cb291-1"></a><span class="kw">qqPlot</span>(mod<span class="op">$</span>residuals)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:normality"></span>
 <img src="16-regression_files/figure-html/normality-1.png" alt="qqplot for residuals" width="100%" />
 <p class="caption">
 Figure 16.3: qqplot for residuals
 </p>
 </div>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="regression.html#cb303-1"></a><span class="kw">shapiro.test</span>(mod<span class="op">$</span>residuals)</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="regression.html#cb292-1"></a><span class="kw">shapiro.test</span>(mod<span class="op">$</span>residuals)</span></code></pre></div>
 <pre><code>## [1] 13 11
 ## 
 ## 	Shapiro-Wilk normality test
@@ -1122,20 +1009,20 @@ Figure 16.3: qqplot for residuals
 <ul>
 <li>Run the below code. If the test is significant, the assumption has been violated. Based upon the results, can we assume homoscedasticity? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select></li>
 </ul>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="regression.html#cb305-1"></a><span class="kw">ncvTest</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="regression.html#cb294-1"></a><span class="kw">ncvTest</span>(mod)</span></code></pre></div>
 <p>Returning to the issue of normality, all of the other assumptions have been met and the qqplot suggests that any deviation from normality is very mild. Based upon this evidence, it seems justified to proceed with the original regression.</p>
 </div>
 <div id="activity-9-power-and-effect-size" class="section level2">
 <h2><span class="header-section-number">16.9</span> Activity 9: Power and effect size</h2>
 <p>First we can calculate the minimum effect size we were able to detect given the sample size and design of the study using <code>pwr.f2.test()</code>. As usual, we fill in all the information we have and set the effect size argument, in this case <code>f2</code>, to <code>NULL</code>.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="regression.html#cb306-1"></a><span class="kw">pwr.f2.test</span>(<span class="dt">u =</span> <span class="dv">1</span>, <span class="dt">v =</span> <span class="dv">35</span>, <span class="dt">f2 =</span> <span class="ot">NULL</span>, <span class="dt">sig.level =</span> <span class="fl">.05</span>, <span class="dt">power =</span> <span class="fl">.8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="regression.html#cb295-1"></a><span class="kw">pwr.f2.test</span>(<span class="dt">u =</span> <span class="dv">1</span>, <span class="dt">v =</span> <span class="dv">35</span>, <span class="dt">f2 =</span> <span class="ot">NULL</span>, <span class="dt">sig.level =</span> <span class="fl">.05</span>, <span class="dt">power =</span> <span class="fl">.8</span>)</span></code></pre></div>
 <ul>
 <li>Based on the power analysis, what is the minimum effect size we were able to detect rounded to 2 decimal places? <input class='solveme nospaces' size='0.22' data-answer='[".22"]'/><br />
 </li>
 <li>According to Cohen’s guidelines, this would be a <select class='solveme' data-answer='["Medium"]'> <option></option> <option>Small</option> <option>Medium</option> <option>Large</option></select> effect.</li>
 </ul>
 <p>There is no formula to calculate our observed f<sup>2</sup>, we must do it manually using the formula from the lecture.</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="regression.html#cb307-1"></a>f2 &lt;-<span class="st"> </span>mod_summary<span class="op">$</span>adj.r.squared<span class="op">/</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>mod_summary<span class="op">$</span>adj.r.squared)</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="regression.html#cb296-1"></a>f2 &lt;-<span class="st"> </span>mod_summary<span class="op">$</span>adj.r.squared<span class="op">/</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>mod_summary<span class="op">$</span>adj.r.squared)</span></code></pre></div>
 <ul>
 <li>Is the observed effect size larger than the minimum effect size we could detect? <select class='solveme' data-answer='["Yes, our study is sufficiently powered"]'> <option></option> <option>Yes, our study is sufficiently powered</option> <option>No, our study is underpowered</option></select></li>
 </ul>
@@ -1143,11 +1030,11 @@ Figure 16.3: qqplot for residuals
 <div id="activity-10-write-up" class="section level2">
 <h2><span class="header-section-number">16.10</span> Activity 10: Write-up</h2>
 <p>We need to manually calculate the p-value for the inline coding as you can’t extract it from the <code>lm()</code> model. Run the below code to do this.</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="regression.html#cb308-1"></a>f &lt;-mod_summary<span class="op">$</span>fstatistic</span>
-<span id="cb308-2"><a href="regression.html#cb308-2"></a>mod_p &lt;-<span class="st"> </span><span class="kw">pf</span>(f[<span class="dv">1</span>], f[<span class="dv">2</span>], f[<span class="dv">3</span>], <span class="dt">lower=</span><span class="ot">FALSE</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="regression.html#cb297-1"></a>f &lt;-mod_summary<span class="op">$</span>fstatistic</span>
+<span id="cb297-2"><a href="regression.html#cb297-2"></a>mod_p &lt;-<span class="st"> </span><span class="kw">pf</span>(f[<span class="dv">1</span>], f[<span class="dv">2</span>], f[<span class="dv">3</span>], <span class="dt">lower=</span><span class="ot">FALSE</span>) </span></code></pre></div>
 <p>Now, copy and paste the below code into <strong>white-space</strong> and knit the document.</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="regression.html#cb309-1"></a>A simple linear regression was performed with <span class="kw">engagment</span> (<span class="dt">M =</span> <span class="st">`</span><span class="dt">r descriptives$mean_weeks %&gt;% round(2)</span><span class="st">`</span>, <span class="dt">SD =</span> <span class="st">`</span><span class="dt">r descriptives$sd_anx %&gt;% round(2)</span><span class="st">`</span>) as the outcome variable and statistics <span class="kw">anxiety</span> (<span class="dt">M =</span> <span class="st">`</span><span class="dt">r descriptives$mean_anx %&gt;% round(2)</span><span class="st">`</span>, <span class="dt">SD =</span> <span class="st">`</span><span class="dt">r descriptives$sd_anx %&gt;% round(2)</span><span class="st">`</span>) as the predictor variable. The results of the regression indicated that the model significantly predicted course <span class="kw">engagement</span> (<span class="kw">F</span>(<span class="st">`</span><span class="dt">r mod_summary$fstatistic[2]</span><span class="st">`</span>, <span class="st">`</span><span class="dt">r mod_summary$fstatistic[3]</span><span class="st">`</span>) =<span class="st"> `</span><span class="dt">r mod_summary$fstatistic[1] %&gt;% round(2)</span><span class="st">`</span>, p <span class="op">&lt;</span><span class="st"> </span><span class="fl">.001</span>, Adjusted <span class="dt">R2 =</span> <span class="st">`</span><span class="dt">r mod_summary$adj.r.squared %&gt;% round(2)</span><span class="st">`</span>, <span class="dt">f2 =</span> <span class="fl">.63</span>), accounting <span class="cf">for</span> <span class="st">`</span><span class="dt">r (mod_summary$adj.r.squared %&gt;% round(2))*100</span><span class="st">`</span><span class="op">% of the variance. Anxiety was a significant positive predictor (β = `r mod$coefficients[2] %</span><span class="er">&gt;</span><span class="op">% round(2)`, p &lt; `mod_p %</span><span class="er">&gt;</span>% <span class="kw">round</span>(<span class="dv">3</span>)<span class="st">`</span><span class="dt">.</span></span>
-<span id="cb309-2"><a href="regression.html#cb309-2"></a><span class="dt">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="regression.html#cb298-1"></a>A simple linear regression was performed with <span class="kw">engagment</span> (<span class="dt">M =</span> <span class="st">`</span><span class="dt">r descriptives$mean_weeks %&gt;% round(2)</span><span class="st">`</span>, <span class="dt">SD =</span> <span class="st">`</span><span class="dt">r descriptives$sd_anx %&gt;% round(2)</span><span class="st">`</span>) as the outcome variable and statistics <span class="kw">anxiety</span> (<span class="dt">M =</span> <span class="st">`</span><span class="dt">r descriptives$mean_anx %&gt;% round(2)</span><span class="st">`</span>, <span class="dt">SD =</span> <span class="st">`</span><span class="dt">r descriptives$sd_anx %&gt;% round(2)</span><span class="st">`</span>) as the predictor variable. The results of the regression indicated that the model significantly predicted course <span class="kw">engagement</span> (<span class="kw">F</span>(<span class="st">`</span><span class="dt">r mod_summary$fstatistic[2]</span><span class="st">`</span>, <span class="st">`</span><span class="dt">r mod_summary$fstatistic[3]</span><span class="st">`</span>) =<span class="st"> `</span><span class="dt">r mod_summary$fstatistic[1] %&gt;% round(2)</span><span class="st">`</span>, p <span class="op">&lt;</span><span class="st"> </span><span class="fl">.001</span>, Adjusted <span class="dt">R2 =</span> <span class="st">`</span><span class="dt">r mod_summary$adj.r.squared %&gt;% round(2)</span><span class="st">`</span>, <span class="dt">f2 =</span> <span class="fl">.63</span>), accounting <span class="cf">for</span> <span class="st">`</span><span class="dt">r (mod_summary$adj.r.squared %&gt;% round(2))*100</span><span class="st">`</span><span class="op">% of the variance. Anxiety was a significant positive predictor (β = `r mod$coefficients[2] %</span><span class="er">&gt;</span><span class="op">% round(2)`, p &lt; `mod_p %</span><span class="er">&gt;</span>% <span class="kw">round</span>(<span class="dv">3</span>)<span class="st">`</span><span class="dt">.</span></span>
+<span id="cb298-2"><a href="regression.html#cb298-2"></a><span class="dt">)</span></span></code></pre></div>
 <p>A simple linear regression was performed with engagement (M = 4.54, SD = 0.56) as the outcome variable and statistics anxiety (M = 2.08, SD = 0.56) as the predictor variable. The results of the regression indicated that the model significantly predicted course engagement (F(1, 35) = 11.99, p &lt; .001, Adjusted R2 = 0.23, f<sup>2</sup> = .63), accounting for 23% of the variance. Anxiety was a significant positive predictor (β = -2.17, p &lt; 0.001.
 )</p>
 </div>
@@ -1159,13 +1046,13 @@ Figure 16.3: qqplot for residuals
 <button>
 Activity 1
 </button>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="regression.html#cb310-1"></a><span class="kw">library</span>(<span class="st">&quot;pwr&quot;</span>)</span>
-<span id="cb310-2"><a href="regression.html#cb310-2"></a><span class="kw">library</span>(<span class="st">&quot;car&quot;</span>)</span>
-<span id="cb310-3"><a href="regression.html#cb310-3"></a><span class="kw">library</span>(<span class="st">&quot;broom&quot;</span>)</span>
-<span id="cb310-4"><a href="regression.html#cb310-4"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb310-5"><a href="regression.html#cb310-5"></a></span>
-<span id="cb310-6"><a href="regression.html#cb310-6"></a>stars &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;LS_stars.csv&quot;</span>)</span>
-<span id="cb310-7"><a href="regression.html#cb310-7"></a>engage &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;psess.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="regression.html#cb299-1"></a><span class="kw">library</span>(<span class="st">&quot;pwr&quot;</span>)</span>
+<span id="cb299-2"><a href="regression.html#cb299-2"></a><span class="kw">library</span>(<span class="st">&quot;car&quot;</span>)</span>
+<span id="cb299-3"><a href="regression.html#cb299-3"></a><span class="kw">library</span>(<span class="st">&quot;broom&quot;</span>)</span>
+<span id="cb299-4"><a href="regression.html#cb299-4"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb299-5"><a href="regression.html#cb299-5"></a></span>
+<span id="cb299-6"><a href="regression.html#cb299-6"></a>stars &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;LS_stars.csv&quot;</span>)</span>
+<span id="cb299-7"><a href="regression.html#cb299-7"></a>engage &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;psess.csv&quot;</span>)</span></code></pre></div>
 </div>
 <p>** Click tab to see solution **</p>
 </div>
@@ -1175,8 +1062,8 @@ Activity 1
 <button>
 Activity 2
 </button>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="regression.html#cb311-1"></a>stars2 &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">data =</span> stars, <span class="dt">names_to =</span> <span class="st">&quot;Question&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;Score&quot;</span>,<span class="dt">cols =</span> Q01<span class="op">:</span>Q51) <span class="op">%&gt;%</span></span>
-<span id="cb311-2"><a href="regression.html#cb311-2"></a><span class="st">  </span><span class="kw">arrange</span>(ID)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="regression.html#cb300-1"></a>stars2 &lt;-<span class="st"> </span><span class="kw">pivot_longer</span>(<span class="dt">data =</span> stars, <span class="dt">names_to =</span> <span class="st">&quot;Question&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;Score&quot;</span>,<span class="dt">cols =</span> Q01<span class="op">:</span>Q51) <span class="op">%&gt;%</span></span>
+<span id="cb300-2"><a href="regression.html#cb300-2"></a><span class="st">  </span><span class="kw">arrange</span>(ID)</span></code></pre></div>
 </div>
 <p>** Click tab to see solution **</p>
 </div>
@@ -1186,12 +1073,12 @@ Activity 2
 <button>
 Activity 3
 </button>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="regression.html#cb312-1"></a>stars_means &lt;-<span class="st"> </span>stars2 <span class="op">%&gt;%</span></span>
-<span id="cb312-2"><a href="regression.html#cb312-2"></a><span class="st">  </span><span class="kw">group_by</span>(ID) <span class="op">%&gt;%</span></span>
-<span id="cb312-3"><a href="regression.html#cb312-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_anxiety =</span> <span class="kw">mean</span>(Score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
-<span id="cb312-4"><a href="regression.html#cb312-4"></a>            <span class="dt">min =</span> <span class="kw">min</span>(Score), </span>
-<span id="cb312-5"><a href="regression.html#cb312-5"></a>            <span class="dt">max =</span> <span class="kw">min</span>(Score),</span>
-<span id="cb312-6"><a href="regression.html#cb312-6"></a>            <span class="dt">sd =</span> <span class="kw">sd</span>(Score))</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="regression.html#cb301-1"></a>stars_means &lt;-<span class="st"> </span>stars2 <span class="op">%&gt;%</span></span>
+<span id="cb301-2"><a href="regression.html#cb301-2"></a><span class="st">  </span><span class="kw">group_by</span>(ID) <span class="op">%&gt;%</span></span>
+<span id="cb301-3"><a href="regression.html#cb301-3"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_anxiety =</span> <span class="kw">mean</span>(Score, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>),</span>
+<span id="cb301-4"><a href="regression.html#cb301-4"></a>            <span class="dt">min =</span> <span class="kw">min</span>(Score), </span>
+<span id="cb301-5"><a href="regression.html#cb301-5"></a>            <span class="dt">max =</span> <span class="kw">min</span>(Score),</span>
+<span id="cb301-6"><a href="regression.html#cb301-6"></a>            <span class="dt">sd =</span> <span class="kw">sd</span>(Score))</span></code></pre></div>
 </div>
 <p>** Click tab to see solution **</p>
 </div>
@@ -1201,7 +1088,7 @@ Activity 3
 <button>
 Activity 4
 </button>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="regression.html#cb313-1"></a>joined &lt;-<span class="st"> </span><span class="kw">inner_join</span>(stars_means, engage, <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="regression.html#cb302-1"></a>joined &lt;-<span class="st"> </span><span class="kw">inner_join</span>(stars_means, engage, <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
 </div>
 <p>** Click tab to see solution **</p>
 </div>
@@ -1211,9 +1098,9 @@ Activity 4
 <button>
 Activity 5
 </button>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="regression.html#cb314-1"></a><span class="kw">ggplot</span>(joined, <span class="kw">aes</span>(mean_anxiety, n_weeks)) <span class="op">+</span></span>
-<span id="cb314-2"><a href="regression.html#cb314-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
-<span id="cb314-3"><a href="regression.html#cb314-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="regression.html#cb303-1"></a><span class="kw">ggplot</span>(joined, <span class="kw">aes</span>(mean_anxiety, n_weeks)) <span class="op">+</span></span>
+<span id="cb303-2"><a href="regression.html#cb303-2"></a><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></span>
+<span id="cb303-3"><a href="regression.html#cb303-3"></a><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 </div>
 <p>** Click tab to see solution **</p>
 

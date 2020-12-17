@@ -206,7 +206,7 @@ We are going to conduct t-tests for the Intellect, Hire and Impression ratings s
 
 * First, calculate the mean and SD for each condition and category.
 
-```{r means}
+```{r means, message = FALSE}
 group_means <- ratings2 %>%
   group_by(condition, Category) %>%
   summarise(m = mean(Rating), sd = sd(Rating))
@@ -412,7 +412,7 @@ It made sense to keep the data in wide-form until this point to make it easy to 
 
 * Run the below code to tidy the data and calculate descriptives and then create the same violin-boxplot as you did for the independent t-test (hint: it is perfectly acceptable to copy and paste the code from Activity 4 and change the data and variable names).
 
-```{r tidy}
+```{r tidy, message = FALSE}
 gaze_tidy <- gaze %>%
   gather(key = time, value = looking, baseline, test) %>%
   select(-diff) %>%

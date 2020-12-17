@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-12-15" />
+<meta name="date" content="2020-12-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -654,11 +654,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Run the below code</li>
 </ul>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="screening-data.html#cb200-1"></a>messy &lt;-<span class="st"> </span>messy <span class="op">%&gt;%</span></span>
-<span id="cb200-2"><a href="screening-data.html#cb200-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">speaker =</span> <span class="kw">as.factor</span>(speaker), </span>
-<span id="cb200-3"><a href="screening-data.html#cb200-3"></a>         <span class="dt">gender =</span> <span class="kw">as.factor</span>(gender))</span>
-<span id="cb200-4"><a href="screening-data.html#cb200-4"></a></span>
-<span id="cb200-5"><a href="screening-data.html#cb200-5"></a><span class="kw">summary</span>(messy)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="screening-data.html#cb194-1"></a>messy &lt;-<span class="st"> </span>messy <span class="op">%&gt;%</span></span>
+<span id="cb194-2"><a href="screening-data.html#cb194-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">speaker =</span> <span class="kw">as.factor</span>(speaker), </span>
+<span id="cb194-3"><a href="screening-data.html#cb194-3"></a>         <span class="dt">gender =</span> <span class="kw">as.factor</span>(gender))</span>
+<span id="cb194-4"><a href="screening-data.html#cb194-4"></a></span>
+<span id="cb194-5"><a href="screening-data.html#cb194-5"></a><span class="kw">summary</span>(messy)</span></code></pre></div>
 <p>As you can see, there are 20 data points missing (NAs) in each of <code>speaker</code>, <code>gender</code>, and <code>delay</code> (but importantly, this isn’t from just 20 participants).There are several different approaches to dealing with missing data. We will cover the most common.</p>
 </div>
 <div id="activity-4-listwise-deletion" class="section level2">
@@ -667,14 +667,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Run the below code and then view the object.</li>
 </ul>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="screening-data.html#cb201-1"></a>messy_listwise &lt;-<span class="st"> </span><span class="kw">drop_na</span>(messy)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="screening-data.html#cb195-1"></a>messy_listwise &lt;-<span class="st"> </span><span class="kw">drop_na</span>(messy)</span></code></pre></div>
 <p>As you can see <code>messy_listwise</code> now only contains data from participants with a complete set of data. This might seem like a good thing, and sometimes it is the most appropriate option, however, there are a couple of important points to consider.</p>
 <p>First, <code>gender</code> isn’t part of our experiment - it’s not one of the IVs, it’s just there as demographic information. We wouldn’t include <code>gender</code> in any of our analyses but because of listwise deletion we have deleted experimental data if the participant was missing <code>gender</code>. This is related to the second problem which is that using full listwise deletion may result in the loss of a lot of data. Look at the environment pane - the original dataset had 200 participants, after using <code>drop_na()</code> we only have 143 so we’ve lost over 25% of our data by doing this. If this was real data we would also want to check if the missing values were coming from one particular group (i.e., non-random attrition).</p>
 <p>One option is to amend the use of <code>drop_na()</code> so that it doesn’t include <code>gender</code> and we can do this using the same code as we would if we were using <code>select()</code>.</p>
 <ul>
 <li>Run the below code. How many observations does <code>messy_listwise2</code> have? <input class='solveme nospaces' size='3' data-answer='["161"]'/></li>
 </ul>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="screening-data.html#cb202-1"></a>messy_listwise2 &lt;-<span class="st"> </span><span class="kw">drop_na</span>(messy, <span class="op">-</span>gender)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="screening-data.html#cb196-1"></a>messy_listwise2 &lt;-<span class="st"> </span><span class="kw">drop_na</span>(messy, <span class="op">-</span>gender)</span></code></pre></div>
 </div>
 <div id="pairwise-deletion" class="section level2">
 <h2><span class="header-section-number">12.6</span> Pairwise deletion</h2>
@@ -719,11 +719,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Run the below code to calculate the mean score for each testing condition.</li>
 </ul>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="screening-data.html#cb204-1"></a><span class="kw">summarise</span>(messy, </span>
-<span id="cb204-2"><a href="screening-data.html#cb204-2"></a>          <span class="dt">pre_mean =</span> <span class="kw">mean</span>(pre),</span>
-<span id="cb204-3"><a href="screening-data.html#cb204-3"></a>          <span class="dt">post_mean =</span> <span class="kw">mean</span>(post),</span>
-<span id="cb204-4"><a href="screening-data.html#cb204-4"></a>          <span class="dt">delay_mean =</span> <span class="kw">mean</span>(delay)</span>
-<span id="cb204-5"><a href="screening-data.html#cb204-5"></a>          )</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="screening-data.html#cb198-1"></a><span class="kw">summarise</span>(messy, </span>
+<span id="cb198-2"><a href="screening-data.html#cb198-2"></a>          <span class="dt">pre_mean =</span> <span class="kw">mean</span>(pre),</span>
+<span id="cb198-3"><a href="screening-data.html#cb198-3"></a>          <span class="dt">post_mean =</span> <span class="kw">mean</span>(post),</span>
+<span id="cb198-4"><a href="screening-data.html#cb198-4"></a>          <span class="dt">delay_mean =</span> <span class="kw">mean</span>(delay)</span>
+<span id="cb198-5"><a href="screening-data.html#cb198-5"></a>          )</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -772,14 +772,14 @@ Explain these answers
 <h2><span class="header-section-number">12.9</span> Activity 7: Visualising implausible values</h2>
 <p>Whilst <code>summary()</code> can be useful, another key step is to visualise the data to check for implausible values.</p>
 <p>How you do this will depend on the data, and your preferences. You could produce violin-boxplots with the data points on top to check the distributions</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="screening-data.html#cb205-1"></a>messy <span class="op">%&gt;%</span></span>
-<span id="cb205-2"><a href="screening-data.html#cb205-2"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>, <span class="st">&quot;delay&quot;</span>), </span>
-<span id="cb205-3"><a href="screening-data.html#cb205-3"></a>               <span class="dt">names_to =</span> <span class="st">&quot;test&quot;</span>, </span>
-<span id="cb205-4"><a href="screening-data.html#cb205-4"></a>               <span class="dt">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb205-5"><a href="screening-data.html#cb205-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> test, <span class="dt">y =</span> score)) <span class="op">+</span></span>
-<span id="cb205-6"><a href="screening-data.html#cb205-6"></a><span class="st">  </span><span class="kw">geom_violin</span>() <span class="op">+</span></span>
-<span id="cb205-7"><a href="screening-data.html#cb205-7"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
-<span id="cb205-8"><a href="screening-data.html#cb205-8"></a><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="screening-data.html#cb199-1"></a>messy <span class="op">%&gt;%</span></span>
+<span id="cb199-2"><a href="screening-data.html#cb199-2"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>, <span class="st">&quot;delay&quot;</span>), </span>
+<span id="cb199-3"><a href="screening-data.html#cb199-3"></a>               <span class="dt">names_to =</span> <span class="st">&quot;test&quot;</span>, </span>
+<span id="cb199-4"><a href="screening-data.html#cb199-4"></a>               <span class="dt">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb199-5"><a href="screening-data.html#cb199-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> test, <span class="dt">y =</span> score)) <span class="op">+</span></span>
+<span id="cb199-6"><a href="screening-data.html#cb199-6"></a><span class="st">  </span><span class="kw">geom_violin</span>() <span class="op">+</span></span>
+<span id="cb199-7"><a href="screening-data.html#cb199-7"></a><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></span>
+<span id="cb199-8"><a href="screening-data.html#cb199-8"></a><span class="st">  </span><span class="kw">geom_jitter</span>(<span class="dt">width =</span> <span class="fl">.2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="12-missing-data_files/figure-html/unnamed-chunk-4-1.png" alt="Data screening plots" width="100%" />
 <p class="caption">
@@ -787,21 +787,21 @@ Figure 7.5: Data screening plots
 </p>
 </div>
 <p>You could also use histograms:</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="screening-data.html#cb206-1"></a><span class="kw">ggplot</span>(messy, <span class="kw">aes</span>(<span class="dt">x =</span> age)) <span class="op">+</span></span>
-<span id="cb206-2"><a href="screening-data.html#cb206-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="screening-data.html#cb200-1"></a><span class="kw">ggplot</span>(messy, <span class="kw">aes</span>(<span class="dt">x =</span> age)) <span class="op">+</span></span>
+<span id="cb200-2"><a href="screening-data.html#cb200-2"></a><span class="st">  </span><span class="kw">geom_histogram</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5-1"></span>
 <img src="12-missing-data_files/figure-html/unnamed-chunk-5-1.png" alt="Histograms for data screening" width="100%" />
 <p class="caption">
 Figure 12.1: Histograms for data screening
 </p>
 </div>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="screening-data.html#cb207-1"></a>messy <span class="op">%&gt;%</span></span>
-<span id="cb207-2"><a href="screening-data.html#cb207-2"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>, <span class="st">&quot;delay&quot;</span>), </span>
-<span id="cb207-3"><a href="screening-data.html#cb207-3"></a>               <span class="dt">names_to =</span> <span class="st">&quot;test&quot;</span>, </span>
-<span id="cb207-4"><a href="screening-data.html#cb207-4"></a>               <span class="dt">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb207-5"><a href="screening-data.html#cb207-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> score)) <span class="op">+</span></span>
-<span id="cb207-6"><a href="screening-data.html#cb207-6"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1</span>) <span class="op">+</span></span>
-<span id="cb207-7"><a href="screening-data.html#cb207-7"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>test)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="screening-data.html#cb201-1"></a>messy <span class="op">%&gt;%</span></span>
+<span id="cb201-2"><a href="screening-data.html#cb201-2"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;pre&quot;</span>, <span class="st">&quot;post&quot;</span>, <span class="st">&quot;delay&quot;</span>), </span>
+<span id="cb201-3"><a href="screening-data.html#cb201-3"></a>               <span class="dt">names_to =</span> <span class="st">&quot;test&quot;</span>, </span>
+<span id="cb201-4"><a href="screening-data.html#cb201-4"></a>               <span class="dt">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb201-5"><a href="screening-data.html#cb201-5"></a><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> score)) <span class="op">+</span></span>
+<span id="cb201-6"><a href="screening-data.html#cb201-6"></a><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth =</span> <span class="dv">1</span>) <span class="op">+</span></span>
+<span id="cb201-7"><a href="screening-data.html#cb201-7"></a><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>test)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5-2"></span>
 <img src="12-missing-data_files/figure-html/unnamed-chunk-5-2.png" alt="Histograms for data screening" width="100%" />
 <p class="caption">
@@ -817,17 +817,17 @@ Figure 12.2: Histograms for data screening
 <li>For <code>age</code>, we know that we have one very specific data point that is implausible, an age of 470 so we can specify just to replace this one value with NA.</li>
 <li>For <code>post</code>, there are multiple missing values so we specify to replace any data point that is over the maximum plausible value (30) with NA.</li>
 </ul>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="screening-data.html#cb208-1"></a>messy_screen &lt;-<span class="st">  </span>messy <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb208-2"><a href="screening-data.html#cb208-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">age =</span> <span class="kw">replace</span>(age, age <span class="op">==</span><span class="st"> </span><span class="dv">470</span>, <span class="ot">NA</span>),</span>
-<span id="cb208-3"><a href="screening-data.html#cb208-3"></a>         <span class="dt">post =</span> <span class="kw">replace</span>(post, post <span class="op">&gt;</span><span class="st"> </span><span class="dv">30</span>, <span class="ot">NA</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="screening-data.html#cb202-1"></a>messy_screen &lt;-<span class="st">  </span>messy <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb202-2"><a href="screening-data.html#cb202-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">age =</span> <span class="kw">replace</span>(age, age <span class="op">==</span><span class="st"> </span><span class="dv">470</span>, <span class="ot">NA</span>),</span>
+<span id="cb202-3"><a href="screening-data.html#cb202-3"></a>         <span class="dt">post =</span> <span class="kw">replace</span>(post, post <span class="op">&gt;</span><span class="st"> </span><span class="dv">30</span>, <span class="ot">NA</span>))</span></code></pre></div>
 <p>There is no hard and fast rule about what to do with missing data. You should review the missing data to see if there are any patterns, for example, is all the missing data from one condition? Does a single participant have a lot of missing data and should they be removed.</p>
 <p>One method of dealing with implausible data is to <strong>impute</strong> the data, i.e., to replace missing data with substituted values. There are many methods of doing this, for example, you can replace missing values with the mean. We won’t go into which method you should choose this in this chapter but there’s <a href="https://www.theanalysisfactor.com/seven-ways-to-make-up-data-common-methods-to-imputing-missing-data/">more information available</a> online about the various options if you’re interested. The code for imputing missing data is relatively simple and uses <code>mutate()</code> and <code>replace_na()</code>.</p>
 <ul>
 <li>You can read the below code as "create a new variable named <code>post_impute</code> that replaces the values of <code>post</code> if they’re <code>NA</code> with the mean of the values in <code>post</code>.</li>
 </ul>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="screening-data.html#cb209-1"></a>messy_impute &lt;-<span class="st"> </span>messy_screen <span class="op">%&gt;%</span></span>
-<span id="cb209-2"><a href="screening-data.html#cb209-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">post_impute =</span> <span class="kw">replace_na</span>(post, </span>
-<span id="cb209-3"><a href="screening-data.html#cb209-3"></a>                                  <span class="kw">mean</span>(post, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="screening-data.html#cb203-1"></a>messy_impute &lt;-<span class="st"> </span>messy_screen <span class="op">%&gt;%</span></span>
+<span id="cb203-2"><a href="screening-data.html#cb203-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">post_impute =</span> <span class="kw">replace_na</span>(post, </span>
+<span id="cb203-3"><a href="screening-data.html#cb203-3"></a>                                  <span class="kw">mean</span>(post, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)))</span></code></pre></div>
 </div>
 <div id="alternative-descriptive-statistics" class="section level2">
 <h2><span class="header-section-number">12.11</span> Alternative descriptive statistics</h2>
@@ -836,8 +836,8 @@ Figure 12.2: Histograms for data screening
 <ul>
 <li>Run the below code</li>
 </ul>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="screening-data.html#cb210-1"></a>descriptives &lt;-<span class="st"> </span><span class="kw">describe</span>(messy)</span>
-<span id="cb210-2"><a href="screening-data.html#cb210-2"></a>descriptives</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="screening-data.html#cb204-1"></a>descriptives &lt;-<span class="st"> </span><span class="kw">describe</span>(messy)</span>
+<span id="cb204-2"><a href="screening-data.html#cb204-2"></a>descriptives</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1199,11 +1199,11 @@ delay
 <p>You may have noticed when you ran the code you received a number of error messages. This is because <code>describe()</code> doesn’t know how to deal with the data that is in <code>id</code> which has both numbers and letters.</p>
 <p>Additionally, you should see that <code>id</code>, <code>speaker</code> and <code>gender</code> all have a star next to their name. This star signifies that these variables are factors, and so it is not really appropriate to calculate these statistics, but we asked it to apply <code>describe</code> to the entire dataset so it’s done what you asked.</p>
 <p><code>describe()</code> can be used in conjunction with <code>select()</code> to remove these variables.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="screening-data.html#cb211-1"></a>descriptives2 &lt;-<span class="st"> </span>messy <span class="op">%&gt;%</span></span>
-<span id="cb211-2"><a href="screening-data.html#cb211-2"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>id, <span class="op">-</span>speaker, <span class="op">-</span>gender) <span class="op">%&gt;%</span></span>
-<span id="cb211-3"><a href="screening-data.html#cb211-3"></a><span class="st">  </span><span class="kw">describe</span>()</span>
-<span id="cb211-4"><a href="screening-data.html#cb211-4"></a></span>
-<span id="cb211-5"><a href="screening-data.html#cb211-5"></a>descriptives2</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="screening-data.html#cb205-1"></a>descriptives2 &lt;-<span class="st"> </span>messy <span class="op">%&gt;%</span></span>
+<span id="cb205-2"><a href="screening-data.html#cb205-2"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>id, <span class="op">-</span>speaker, <span class="op">-</span>gender) <span class="op">%&gt;%</span></span>
+<span id="cb205-3"><a href="screening-data.html#cb205-3"></a><span class="st">  </span><span class="kw">describe</span>()</span>
+<span id="cb205-4"><a href="screening-data.html#cb205-4"></a></span>
+<span id="cb205-5"><a href="screening-data.html#cb205-5"></a>descriptives2</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1430,11 +1430,11 @@ delay
 </tbody>
 </table>
 <p>A variant of <code>describe()</code> is <code>describeBy</code> which works very much like using <code>summarise()</code> and <code>group_by()</code> together.</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="screening-data.html#cb212-1"></a>descriptives3 &lt;-<span class="st"> </span>messy <span class="op">%&gt;%</span></span>
-<span id="cb212-2"><a href="screening-data.html#cb212-2"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>id, <span class="op">-</span>speaker) <span class="op">%&gt;%</span></span>
-<span id="cb212-3"><a href="screening-data.html#cb212-3"></a><span class="st">  </span><span class="kw">describeBy</span>(<span class="dt">group =</span> <span class="st">&quot;gender&quot;</span>)</span>
-<span id="cb212-4"><a href="screening-data.html#cb212-4"></a></span>
-<span id="cb212-5"><a href="screening-data.html#cb212-5"></a>descriptives3</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="screening-data.html#cb206-1"></a>descriptives3 &lt;-<span class="st"> </span>messy <span class="op">%&gt;%</span></span>
+<span id="cb206-2"><a href="screening-data.html#cb206-2"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>id, <span class="op">-</span>speaker) <span class="op">%&gt;%</span></span>
+<span id="cb206-3"><a href="screening-data.html#cb206-3"></a><span class="st">  </span><span class="kw">describeBy</span>(<span class="dt">group =</span> <span class="st">&quot;gender&quot;</span>)</span>
+<span id="cb206-4"><a href="screening-data.html#cb206-4"></a></span>
+<span id="cb206-5"><a href="screening-data.html#cb206-5"></a>descriptives3</span></code></pre></div>
 <pre><code>## 
 ##  Descriptive statistics by group 
 ## gender: female
@@ -1479,9 +1479,9 @@ delay
 ## post    0.96
 ## delay   0.93</code></pre>
 <p>If you look in the environment you will see that <code>descriptives3</code> is saved as a <code>List of 3</code>. What this means is that the table of descriptives for each gender is saved as a separate table, one for female, one for male, one for non-binary. To get access to them individually, you need to use the <code>object$variable</code> notation.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="screening-data.html#cb214-1"></a>descriptives3<span class="op">$</span>male</span>
-<span id="cb214-2"><a href="screening-data.html#cb214-2"></a>descriptives3<span class="op">$</span>female</span>
-<span id="cb214-3"><a href="screening-data.html#cb214-3"></a>descriptives3<span class="op">$</span>nonbinary</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="screening-data.html#cb208-1"></a>descriptives3<span class="op">$</span>male</span>
+<span id="cb208-2"><a href="screening-data.html#cb208-2"></a>descriptives3<span class="op">$</span>female</span>
+<span id="cb208-3"><a href="screening-data.html#cb208-3"></a>descriptives3<span class="op">$</span>nonbinary</span></code></pre></div>
 <p>The output of <code>describe()</code> is a little harder to work with in terms of manipulating the table and using the data in subsequent plots and analyses, so we still strongly recommend that you use <code>summarise()</code> and <code>group_by()</code> for these operations, however, for getting a comprehensive overview of your data, <code>describe()</code> is a good function to know about.</p>
 </div>
 <div id="finished" class="section level2">
@@ -1496,9 +1496,9 @@ delay
 <button>
 Activity 1
 </button>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="screening-data.html#cb215-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb215-2"><a href="screening-data.html#cb215-2"></a><span class="kw">library</span>(<span class="st">&quot;psych&quot;</span>)</span>
-<span id="cb215-3"><a href="screening-data.html#cb215-3"></a>messy &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;messy.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="screening-data.html#cb209-1"></a><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb209-2"><a href="screening-data.html#cb209-2"></a><span class="kw">library</span>(<span class="st">&quot;psych&quot;</span>)</span>
+<span id="cb209-3"><a href="screening-data.html#cb209-3"></a>messy &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;messy.csv&quot;</span>)</span></code></pre></div>
 </div>
 <p><strong>click the tab to see the solution</strong>
 <br></p>

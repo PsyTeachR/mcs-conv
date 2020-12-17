@@ -639,13 +639,7 @@ summary_data3<-zhang_data%>%
             max = mean(interest) + sd(interest)/sqrt(n()),
             sd = sd(interest)
             )
-```
 
-```
-## `summarise()` regrouping output by 'Condition' (override with `.groups` argument)
-```
-
-```r
 ggplot(zhang_data, aes(x = Condition, y = interest, fill = Gender))+
   geom_split_violin(trim = FALSE, alpha = .5)+
   geom_boxplot(width = .2, position = position_dodge(.25))+

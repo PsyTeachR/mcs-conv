@@ -202,7 +202,7 @@ Often it is helpful to know how many observations you have, either in total, or 
 
 There are two ways of counting the number of observations. The first uses `summarise()` and the function `n()`. The below code is the same as above, but with an extra line that will add a column called `n` to the table that contains the number of observations in each group. This is useful for when you want to add a column of counts to a table of other descriptive statistics.
 
-```{r}
+```{r message = FALSE}
 pong_count <- pong_data %>% 
   group_by(BackgroundColor, PaddleLength) %>% 
   summarise(total_hits = sum(HitOrMiss, na.rm = TRUE),
