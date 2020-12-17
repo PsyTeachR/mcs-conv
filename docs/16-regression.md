@@ -58,6 +58,8 @@ Before we calculate means, you need to use `pivot_longer()` to restructure the S
 
 * Now that you've got the data into a tidy format, use `summarise()` and `group_by()` to calculate mean anxiety scores (`mean_anxiety`) for each student (`ID`). Store the resulting table in a variable named `stars_means`. 
 
+**Please note that in the video walkthrough, Emily calculates the mean, min, max, and sd for anxiety scores. Emily is an idiot. Just ignore her, you only need the mean.**
+
 
 
 
@@ -67,45 +69,45 @@ Before we calculate means, you need to use `pivot_longer()` to restructure the S
 * In order to perform the regression analysis, combine the data from `stars_means` with `engage` using `inner_join()`. Call the resulting table `joined`. It should look like this:
 
 
-| ID  | mean_anxiety | min | max |  sd  | n_weeks |
-|:---:|:------------:|:---:|:---:|:----:|:-------:|
-|  3  |     1.06     |  1  |  1  | 0.24 |    5    |
-|  7  |     2.71     |  1  |  1  | 1.03 |    2    |
-| 12  |     2.24     | NA  | NA  |  NA  |    3    |
-| 16  |     2.86     | NA  | NA  |  NA  |    2    |
-| 23  |     1.71     |  1  |  1  | 0.73 |    6    |
-| 29  |     1.80     |  1  |  1  | 1.08 |    7    |
-| 39  |     1.96     |  1  |  1  | 1.15 |    2    |
-| 42  |     2.24     |  1  |  1  | 1.09 |    7    |
-| 43  |     2.69     |  1  |  1  | 1.05 |    5    |
-| 44  |     1.92     |  1  |  1  | 0.69 |    4    |
-| 48  |     1.88     |  1  |  1  | 1.07 |    1    |
-| 50  |     3.18     |  1  |  1  | 1.05 |    4    |
-| 51  |     1.41     |  1  |  1  | 0.78 |    2    |
-| 55  |     2.64     | NA  | NA  |  NA  |    2    |
-| 56  |     1.59     | NA  | NA  |  NA  |    8    |
-| 58  |     1.31     |  1  |  1  | 0.55 |    8    |
-| 59  |     1.39     |  1  |  1  | 0.53 |    8    |
-| 60  |     1.69     |  1  |  1  | 0.97 |    3    |
-| 61  |     1.50     | NA  | NA  |  NA  |    8    |
-| 66  |     2.75     |  1  |  1  | 0.96 |    5    |
-| 67  |     2.76     | NA  | NA  |  NA  |    6    |
-| 68  |     1.80     | NA  | NA  |  NA  |    7    |
-| 70  |     1.55     |  1  |  1  | 1.08 |    8    |
-| 72  |     2.25     |  1  |  1  | 1.16 |    5    |
-| 74  |     2.75     |  1  |  1  | 1.38 |    3    |
-| 77  |     1.49     |  1  |  1  | 0.78 |    8    |
-| 80  |     2.08     |  1  |  1  | 0.80 |    7    |
-| 81  |     2.78     | NA  | NA  |  NA  |    1    |
-| 82  |     1.75     |  1  |  1  | 1.02 |    5    |
-| 89  |     1.53     |  1  |  1  | 0.86 |    4    |
-| 105 |     2.41     |  1  |  1  | 1.13 |    6    |
-| 108 |     1.96     |  1  |  1  | 0.92 |    3    |
-| 109 |     1.78     |  1  |  1  | 1.15 |    4    |
-| 115 |     2.41     |  1  |  1  | 0.96 |    1    |
-| 116 |     3.20     |  1  |  1  | 1.43 |    1    |
-| 117 |     1.55     |  1  |  1  | 0.76 |    6    |
-| 129 |     2.35     |  1  |  1  | 1.11 |    1    |
+| ID  | mean_anxiety | n_weeks |
+|:---:|:------------:|:-------:|
+|  3  |     1.06     |    5    |
+|  7  |     2.71     |    2    |
+| 12  |     2.24     |    3    |
+| 16  |     2.86     |    2    |
+| 23  |     1.71     |    6    |
+| 29  |     1.80     |    7    |
+| 39  |     1.96     |    2    |
+| 42  |     2.24     |    7    |
+| 43  |     2.69     |    5    |
+| 44  |     1.92     |    4    |
+| 48  |     1.88     |    1    |
+| 50  |     3.18     |    4    |
+| 51  |     1.41     |    2    |
+| 55  |     2.64     |    2    |
+| 56  |     1.59     |    8    |
+| 58  |     1.31     |    8    |
+| 59  |     1.39     |    8    |
+| 60  |     1.69     |    3    |
+| 61  |     1.50     |    8    |
+| 66  |     2.75     |    5    |
+| 67  |     2.76     |    6    |
+| 68  |     1.80     |    7    |
+| 70  |     1.55     |    8    |
+| 72  |     2.25     |    5    |
+| 74  |     2.75     |    3    |
+| 77  |     1.49     |    8    |
+| 80  |     2.08     |    7    |
+| 81  |     2.78     |    1    |
+| 82  |     1.75     |    5    |
+| 89  |     1.53     |    4    |
+| 105 |     2.41     |    6    |
+| 108 |     1.96     |    3    |
+| 109 |     1.78     |    4    |
+| 115 |     2.41     |    1    |
+| 116 |     3.20     |    1    |
+| 117 |     1.55     |    6    |
+| 129 |     2.35     |    1    |
 
 ## Activity 5: Calculate descriptives for the variables overall
 

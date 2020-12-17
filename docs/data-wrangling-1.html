@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2020-12-15" />
+<meta name="date" content="2020-12-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -973,7 +973,6 @@ Figure 4.1: Proportion of four baby names from 1880 to 2014
 <p>If you look at this object in the viewer, it won’t look any different to the original <code>dat</code>, however, the underlying structure has changed. Let’s run the above summarise code again, but now using the grouped data.</p>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data-wrangling-1.html#cb56-1"></a><span class="kw">summarise</span>(<span class="dt">.data =</span> group_dat, </span>
 <span id="cb56-2"><a href="data-wrangling-1.html#cb56-2"></a>          <span class="dt">total =</span> <span class="kw">sum</span>(n)) </span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>## # A tibble: 4 x 2
 ##   name       total
 ##   &lt;chr&gt;      &lt;int&gt;
@@ -983,10 +982,9 @@ Figure 4.1: Proportion of four baby names from 1880 to 2014
 ## 4 Kathleen  711605</code></pre>
 <p><code>summarise()</code> has performed exactly the same operation as before - adding up the total number in the column <code>n</code> - but this time it has done is separately for each group, which in this case was the variable <code>name</code>.</p>
 <p>You can request multiple summary calculations to be performed in the same function. For example, the following code calculates the mean and median number of babies given each name every year.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-wrangling-1.html#cb59-1"></a><span class="kw">summarise</span>(group_dat,</span>
-<span id="cb59-2"><a href="data-wrangling-1.html#cb59-2"></a>          <span class="dt">mean_year =</span> <span class="kw">mean</span>(n),</span>
-<span id="cb59-3"><a href="data-wrangling-1.html#cb59-3"></a>          <span class="dt">median_year =</span> <span class="kw">median</span>(n))</span></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-wrangling-1.html#cb58-1"></a><span class="kw">summarise</span>(group_dat,</span>
+<span id="cb58-2"><a href="data-wrangling-1.html#cb58-2"></a>          <span class="dt">mean_year =</span> <span class="kw">mean</span>(n),</span>
+<span id="cb58-3"><a href="data-wrangling-1.html#cb58-3"></a>          <span class="dt">median_year =</span> <span class="kw">median</span>(n))</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 3
 ##   name      mean_year median_year
 ##   &lt;chr&gt;         &lt;dbl&gt;       &lt;dbl&gt;
@@ -995,11 +993,10 @@ Figure 4.1: Proportion of four baby names from 1880 to 2014
 ## 3 Emily         6098.       1392.
 ## 4 Kathleen      5157.       3098</code></pre>
 <p>You can also add multiple grouping variables. For example, the following code groups <code>new_dat</code> by <code>sex</code> and <code>decade</code> and then calculates the summary statistics to give us the mean and median number of male and female babies in each decade.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="data-wrangling-1.html#cb62-1"></a>group_new_dat &lt;-<span class="st"> </span><span class="kw">group_by</span>(new_dat, sex, decade)</span>
-<span id="cb62-2"><a href="data-wrangling-1.html#cb62-2"></a><span class="kw">summarise</span>(group_new_dat,</span>
-<span id="cb62-3"><a href="data-wrangling-1.html#cb62-3"></a>          <span class="dt">mean_year =</span> <span class="kw">mean</span>(n),</span>
-<span id="cb62-4"><a href="data-wrangling-1.html#cb62-4"></a>          <span class="dt">median_year =</span> <span class="kw">median</span>(n))</span></code></pre></div>
-<pre><code>## `summarise()` regrouping output by &#39;sex&#39; (override with `.groups` argument)</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="data-wrangling-1.html#cb60-1"></a>group_new_dat &lt;-<span class="st"> </span><span class="kw">group_by</span>(new_dat, sex, decade)</span>
+<span id="cb60-2"><a href="data-wrangling-1.html#cb60-2"></a><span class="kw">summarise</span>(group_new_dat,</span>
+<span id="cb60-3"><a href="data-wrangling-1.html#cb60-3"></a>          <span class="dt">mean_year =</span> <span class="kw">mean</span>(n),</span>
+<span id="cb60-4"><a href="data-wrangling-1.html#cb60-4"></a>          <span class="dt">median_year =</span> <span class="kw">median</span>(n))</span></code></pre></div>
 <pre><code>## # A tibble: 28 x 4
 ## # Groups:   sex [2]
 ##    sex   decade mean_year median_year
@@ -1026,10 +1023,10 @@ If you get what looks like an error that says <code>summarise() ungrouping outpu
 <p>The final activity for this chapter essentially repeats what we’ve already covered but in a slightly different way. In the previous activities, you created new objects with new variables or groupings and then you called <code>summarise()</code> on those new objects in separate lines of code. As a result, you had multiple objects in your environment pane and you need to make sure that you keep track of the different names.</p>
 <p>Instead, you can use <strong>pipes</strong>. Pipes are written as <code>%&gt;%</code>and they should be read as “and then”. Pipes allow you to string together ‘sentences’ of code into ‘paragraphs’ so that you don’t need to create intermediary objects. Again, it is easier to show than tell.</p>
 <p>The below code does <strong>exactly</strong> the same as all the code we wrote above but it only creates one object.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data-wrangling-1.html#cb65-1"></a>pipe_summary &lt;-<span class="st"> </span><span class="kw">mutate</span>(babynames, <span class="dt">decade =</span> <span class="kw">floor</span>(year<span class="op">/</span><span class="dv">10</span>) <span class="op">*</span><span class="dv">10</span>) <span class="op">%&gt;%</span></span>
-<span id="cb65-2"><a href="data-wrangling-1.html#cb65-2"></a><span class="st">  </span><span class="kw">filter</span>(name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Emily&quot;</span>,<span class="st">&quot;Kathleen&quot;</span>,<span class="st">&quot;Alexandra&quot;</span>,<span class="st">&quot;Beverly&quot;</span>), sex<span class="op">==</span><span class="st">&quot;F&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb65-3"><a href="data-wrangling-1.html#cb65-3"></a><span class="st">  </span><span class="kw">group_by</span>(name, decade) <span class="op">%&gt;%</span></span>
-<span id="cb65-4"><a href="data-wrangling-1.html#cb65-4"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_decade =</span> <span class="kw">mean</span>(n))</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="data-wrangling-1.html#cb62-1"></a>pipe_summary &lt;-<span class="st"> </span><span class="kw">mutate</span>(babynames, <span class="dt">decade =</span> <span class="kw">floor</span>(year<span class="op">/</span><span class="dv">10</span>) <span class="op">*</span><span class="dv">10</span>) <span class="op">%&gt;%</span></span>
+<span id="cb62-2"><a href="data-wrangling-1.html#cb62-2"></a><span class="st">  </span><span class="kw">filter</span>(name <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Emily&quot;</span>,<span class="st">&quot;Kathleen&quot;</span>,<span class="st">&quot;Alexandra&quot;</span>,<span class="st">&quot;Beverly&quot;</span>), sex<span class="op">==</span><span class="st">&quot;F&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb62-3"><a href="data-wrangling-1.html#cb62-3"></a><span class="st">  </span><span class="kw">group_by</span>(name, decade) <span class="op">%&gt;%</span></span>
+<span id="cb62-4"><a href="data-wrangling-1.html#cb62-4"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_decade =</span> <span class="kw">mean</span>(n))</span></code></pre></div>
 <p>The reason that this function is called a pipe is because it ‘pipes’ the data through to the next function. When you wrote the code previously, the first argument of each function was the dataset you wanted to work on. When you use pipes it will automatically take the data from the previous line of code so you don’t need to specify it again.</p>
 <div class="try">
 <p>

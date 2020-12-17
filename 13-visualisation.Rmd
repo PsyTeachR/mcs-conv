@@ -341,7 +341,7 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = Condition))+
 
 `ggplot2` contains a facet function that produces different plots for each level of a grouping variable which can be very useful when you have more than two factors, for example, for a three-way ANOVA. The following code displays produces violin-boxplots for Condition ~ interest, but separately for male and female participants. 
 
-```{r facet1, fig.cap = "Violin-boxplot facetted by gender"}
+```{r facet1, fig.cap = "Violin-boxplot facetted by gender", message = FALSE}
 ggplot(zhang_data, aes(x = Condition, y = interest, fill = time))+
   geom_violin(alpha = .6, trim = FALSE)+
   geom_boxplot(width = .2, alpha = .6, position = position_dodge(.9))+
@@ -459,7 +459,7 @@ geom_split_violin <- function (mapping = NULL,
 
 The split-violin is a version of the violin-boxplot that is good for visualising interactions. If you look at the faceted graph we made, there's actually quite a lot of unnecessary space used up because we only need half of the violin to see the distribution - the other half is just repeating the same information. 
 
-```{r sv1, fig.cap = "Split-violin plot"}
+```{r sv1, fig.cap = "Split-violin plot", message = FALSE}
 summary_data3<-zhang_data%>%
   group_by(Condition, Gender)%>% # add Gender to group_by()
   summarise(mean = mean(interest, na.rm = TRUE),

@@ -63,14 +63,13 @@ head(stars2) %>% knitr::kable(align = 'c')
 
 * Now that you've got the data into a tidy format, use `summarise()` and `group_by()` to calculate mean anxiety scores (`mean_anxiety`) for each student (`ID`). Store the resulting table in a variable named `stars_means`. 
 
+**Please note that in the video walkthrough, Emily calculates the mean, min, max, and sd for anxiety scores. Emily is an idiot. Just ignore her, you only need the mean.**
+
 
 ```{r stars_means, echo = FALSE, message = FALSE}
 stars_means <- stars2 %>%
   group_by(ID) %>%
-  summarise(mean_anxiety = mean(Score, na.rm = TRUE),
-            min = min(Score), 
-            max = min(Score),
-            sd = sd(Score))
+  summarise(mean_anxiety = mean(Score, na.rm = TRUE))
 ```
 
 

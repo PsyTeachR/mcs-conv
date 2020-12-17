@@ -249,7 +249,7 @@ group_dat <- group_by(.data = dat, # the data you want to group
 
 If you look at this object in the viewer, it won't look any different to the original `dat`, however, the underlying structure has changed. Let's run the above summarise code again, but now using the grouped data.
 
-```{r}
+```{r message = FALSE}
 summarise(.data = group_dat, 
           total = sum(n)) 
 ```
@@ -258,7 +258,7 @@ summarise(.data = group_dat,
 
 You can request multiple summary calculations to be performed in the same function. For example, the following code calculates the mean and median number of babies given each name every year.
 
-```{r}
+```{r message = FALSE}
 summarise(group_dat,
           mean_year = mean(n),
           median_year = median(n))
@@ -266,7 +266,7 @@ summarise(group_dat,
 
 You can also add multiple grouping variables. For example, the following code groups `new_dat` by `sex` and `decade` and then calculates the summary statistics to give us the mean and median number of male and female babies in each decade.
 
-```{r}
+```{r message = FALSE}
 group_new_dat <- group_by(new_dat, sex, decade)
 summarise(group_new_dat,
           mean_year = mean(n),

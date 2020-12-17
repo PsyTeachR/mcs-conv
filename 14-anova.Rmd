@@ -83,7 +83,7 @@ cat("
 ```
 `r unhide()`
 
-```{r summary data, echo = FALSE}
+```{r summary data, echo = FALSE, message = FALSE}
 sum_dat<-dat2%>%
   group_by(Condition)%>%
   summarise(mean = mean(intrusions),

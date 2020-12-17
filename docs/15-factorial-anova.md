@@ -49,9 +49,6 @@ factorial <- read_csv("Zhang et al. 2014 Study 3.csv")%>%
 
 
 
-```
-## `summarise()` regrouping output by 'Condition' (override with `.groups` argument)
-```
 
 ### Activity 3: Violin-boxplots
 
@@ -224,10 +221,6 @@ time_descrip <- factorial %>%
             sd_interest = sd(interest, na.rm = TRUE),
             min = mean(interest) - qnorm(0.975)*sd(interest)/sqrt(n()),
             max = mean(interest) + qnorm(0.975)*sd(interest)/sqrt(n()))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 Copy and paste the below into **white-space**.

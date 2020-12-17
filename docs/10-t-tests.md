@@ -204,10 +204,6 @@ group_means <- ratings2 %>%
   summarise(m = mean(Rating), sd = sd(Rating))
 ```
 
-```
-## `summarise()` regrouping output by 'condition' (override with `.groups` argument)
-```
-
 * Next, create separate data sets for the intellect, hire, and impression data using `filter()`. We have completed intellect for you.
 
 
@@ -421,10 +417,6 @@ gaze_descriptives <- gaze_tidy %>%
   group_by(time) %>%
   summarise(mean_looking = mean(looking, na.rm = TRUE),
             sd_looking = sd(looking, na.rm = TRUE))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
 ```
 
 ## Activity 14: Paired-samples t-test

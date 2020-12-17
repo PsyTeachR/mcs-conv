@@ -58,7 +58,7 @@ factorial <- read_csv("Zhang et al. 2014 Study 3.csv")%>%
 * Hint: for the standard error code, refer back to \@ref(viobox)
 
 
-```{r descrip_factorial, echo=FALSE}
+```{r descrip_factorial, echo=FALSE, message = FALSE}
 sum_dat_factorial<-factorial%>%
   group_by(Condition, time)%>%
   summarise(mean = mean(interest, na.rm = TRUE),
@@ -240,7 +240,7 @@ contrasts_factorial2 <- contrasts_factorial %>%
 
 First we need to calculate descriptives for the main effect of time as we didn't do this earlier.
 
-```{r time_descrip}
+```{r time_descrip, message = FALSE}
 time_descrip <- factorial %>% 
   group_by(time) %>%
   summarise(mean_interest = mean(interest, na.rm = TRUE),
