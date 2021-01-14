@@ -299,7 +299,8 @@ Where piping becomes most useful is when we **string a series of functions toget
 
 We have now learned a number of functions and verbs that you will need as you progress through this book.  You will use them in the next chapter so be sure to go over these and try them out to make yourself more comfortable with them.  If you have any questions please post them on Teams. **Happy Wrangling!**
 
-## Activity solutions {.tabset .tabset-fade .tabset-pills}
+## Activity solutions - Data wrangling 2
+
 Below you will find the solutions to the above questions. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
 
 ### Activity 3
@@ -391,13 +392,13 @@ pong_data_hits <- summarise(pong_data_group, total_hits = sum(HitOrMiss))
 **click the tab to see the solution**
 <br>
 
-## Debugging tips
+## Debugging tips - Data wrangling 2
 
 * Make sure you have spelt the data file name **exactly** as it is shown. Spaces and everything. Do not change the name of the csv file, fix your code instead. If you have a different name for your file than someone else then your code is not reproducible.
 * Remember when uploading data we use `read_csv()` which has an underscore, whereas the data file itself will have a dot in its name, `filename.csv`. 
 * Finally, check that the datafile is actually in the folder you have set as your working directory. 
 
-## Test yourself
+## Test yourself - Data wrangling 2
 
 1. What type of data would these most likely be:
 

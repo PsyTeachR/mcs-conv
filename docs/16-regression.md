@@ -287,7 +287,7 @@ A simple linear regression was performed with engagement (M = 4.54, SD = 0.56) a
 )
 
 
-## Activity solutions
+## Activity solutions - Regression
 
 ### Activity 1
 

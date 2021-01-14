@@ -270,7 +270,7 @@ The output of `describe()` is a little harder to work with in terms of manipulat
 
 And you're done! This isn't a comprehensive tutorial on every type of dataset you will come across and the concept of tidy data will take practice but hopefully this should give you a good starting point for when you have your own real, messy data.
 
-## Activity solutions
+## Activity solutions - Screening data
 
 ### Activity 1
 

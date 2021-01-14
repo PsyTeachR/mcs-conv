@@ -215,7 +215,7 @@ You have now recapped one-table and two-table verbs. These are great to know as 
 
 If you have any questions, please post them on Teams.
 
-## Activity solutions
+## Activity solutions - Data wrangling 3
 
 Below you will find the solutions to the above questions. Only look at them after giving the questions a good try and trying to find help on Google or Teams about any issues.
 
@@ -289,7 +289,7 @@ aq_scores2 <- responses %>% # take the data in `responses` and then
 
 **Click the tab to see the solution**
 
-## Test yourself
+## Test yourself - Data wrangling 3
 
 * You want to put the first three columns of a file called `responses` (Q1, Q2, Q3) into long-form, put the question numbers in a column called `Jam`, the responses in a column called `Strawberry`, and store everything in a tibble called `sandwich`. Fill in the box with what you would write: <input class='solveme nospaces' size='60' data-answer='["sandwich <- pivot_longer(data = responses, names_to = Jam, values_to = Strawberry, Q1:Q3)"]'/>
 

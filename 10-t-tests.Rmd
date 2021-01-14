@@ -470,7 +470,7 @@ At test, however, the infants selectively attended to the now-silent singer of t
 
 That was a long chapter but now that you've done all the statistical tests you need to complete your quantitative project - hopefully you will see that it really is true that the hardest part is the set-up and the data wrangling. As we've said before, you don't need to memorise lines of code - you just need to remember where to find examples and to understand which bits of them you need to change. Play around with the examples we have given you and see what changing the values does.
 
-## Activity solutions
+## Activity solutions - t-test
 
 ### Activity 1
 

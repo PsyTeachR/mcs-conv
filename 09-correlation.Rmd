@@ -339,7 +339,7 @@ cat("1. Negative correlations are denoted by a negative r value.
 
 Well done! You can now add correlations to the list of things you can do in R. If you have any questions, please post them on Teams.
 
-## Activity solutions
+## Activity solutions - Correlation
 
 ### Activity 1
 

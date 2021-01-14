@@ -336,7 +336,7 @@ Regardless of whether you continue with quantitative methods and using R, rememb
 ![](https://media.giphy.com/media/ujGfBmVppmgEg/giphy.gif) 
 
 
-## Activity solutions
+## Activity solutions - Multiple regression
 
 ### Activity 3
 

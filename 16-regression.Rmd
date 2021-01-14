@@ -229,7 +229,7 @@ A simple linear regression was performed with engagement (M = `r descriptives$me
 )
 
 
-## Activity solutions
+## Activity solutions - Regression
 
 ### Activity 1
 
