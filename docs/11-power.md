@@ -243,22 +243,7 @@ Answer the following questions to check your answers. The solutions are at the b
 * According to Cohen (1988), the effect size for this correlation is <select class='solveme' data-answer='["medium"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>
 * Say you run the study and find that the effect size determined is d = .24. Given what you know about power, select the statement that is true: <select class='solveme' data-answer='["the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .34"]'> <option></option> <option>the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than d = .24</option> <option>the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .34</option></select>
 
-## Activity 10: Effect size for chi-square
-
-Again, `pwr.chisq.test()` is very similar to the t-test and correlation functions. 
-
-* **w** - Effect size (you can enter Cramer's V which we calculated in Chapter \@ref(cramer))
-* **N	** - Total number of observations
-* **df** - degree of freedom 
-* **sig.level** - Significance level (Type I error probability)
-* **power** - Power of test (1 minus Type II error probability)
-
-Imagine you were conducting a chi-square analysis with 30 observations, 1 df, and conventional alpha and power.
-
-* Using `pwr.chisq.test()`, what is the smallest effect size that you could reliably detect, rounded to 2 decimal places? <input class='solveme nospaces' size='.51' data-answer='["0.51"]'/>
-
-
-## Activity 11: Power of published research
+## Activity 10: Power of published research
 
 Thus far we have used hypothetical situations - now go look at the paper on the [Open Stats Lab](https://sites.trinity.edu/osl/data-sets-and-activities/t-test-activities) website called Does Music Convey Social Information to Infants? (we have used this dataset in the t-test chapter). You can download the pdf and look at it, but here we will determine the power of the significant t-tests reported in Experiment 1 under the Results section on Pg489. There is a one-sample t-test and a paired-samples t-test to consider, summarised below. Assume testing was at power = .8, alpha = .05. Based on your calculations are either of the stated effects underpowered?
 
@@ -466,32 +451,6 @@ Click on the tab to reveal the solution
 
 ### Activity 10
 
-<div class='solution'><button>Activity 10</button>
-
-
-```r
-pwr.chisq.test(N = 30,
-               df = 1,
-           sig.level = .05, 
-           power = .8)
-```
-
-     Chi squared power calculation 
-
-              w = 0.5114954
-              N = 30
-             df = 1
-      sig.level = 0.05
-          power = 0.8
-
-NOTE: N is the number of observations
-
-</div>
-
-<br>
-Click on the tab to reveal the solution
-
-### Activity 11
 
 <div class='solution'><button>Activity 11</button>
 

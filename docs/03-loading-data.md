@@ -14,7 +14,7 @@ As part of your skill development, it is important that you work with data so th
 
 ### Getting data ready to work with
 
-In this chapter you will learn how to load the packages required to work with the data. You'll then load the data into R Studio before getting it organised into a sensible format that relates to our research question. If you can't remember what packages are, go back and revise \@ref(packages). 
+In this chapter you will learn how to load the packages required to work with the data. You'll then load the data into R Studio before getting it organised into a sensible format that relates to our research question. If you can't remember what packages are, go back and revise Programming Basics.
 
 ### Activity 1: Set-up
 
@@ -74,7 +74,7 @@ You should now see that the objects `dat` and `pinfo` have appeared in the envir
 * Use `head(pinfo)`
 * Just type the name of the object you want to view, e.g., `dat`.
 
-### Activity 5: Join the files together {#join}
+### Activity 5: Join the files together
 
 We have two files, `dat` and `info` but what we really want is a single file that has both the data and the demographic information about the participants. R makes this very easy by using the function `inner_join()`.
 
@@ -91,7 +91,7 @@ all_dat <- inner_join(x = dat, # the first table you want to join
                       by = c("id", "intervention")) # columns the two tables have in common
 ```
 
-### Activity 6: Pull out variables of interest {#ref1}
+### Activity 6: Pull out variables of interest
 
 Our final step is to pull our variables of interest. Very frequently, datasets will have more variables and data than you actually want to use and it can make life easier to create a new object with just the data you need.
 
@@ -121,7 +121,7 @@ Finally, try knitting the file to HTML. And that's it, well done! Remember to sa
 
 #### Finished!
 
-There is no portfolio assessment this week, instead, use the time to get comfortable with what we've covered already and revise the activities and support materials presented so far if needed. If you're feeling comfortable with R, you can work your way through this book at your own pace or push yourself by using the additional resources highlighted in \@ref(ref3).
+There is no portfolio assessment this week, instead, use the time to get comfortable with what we've covered already and revise the activities and support materials presented so far if needed. If you're feeling comfortable with R, you can work your way through this book at your own pace or push yourself by using the additional resources highlighted in Programming Basics.
 
 If you're using the R server, we strongly recommend that you download a copy of any files you have been working on so that you have a local back-up.
 

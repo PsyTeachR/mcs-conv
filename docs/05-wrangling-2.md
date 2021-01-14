@@ -84,7 +84,7 @@ Either by inclusion (telling R all the variables you want to keep) or exclusion 
 
 `select()` can also be used to reorder the columns in a table as the new table will display the variables in the order that you wrote them. Use `select()` to keep only the columns `Participant`, `JudgedSpeed`, `BallSpeed`, `TrialNumber`, and `HitOrMiss` but have them display in alphabetical order, left to right. Save this table in a new object named `reorder_dat`.
 
-## Activity 5: **`arrange()`** F
+## Activity 5: **`arrange()`** 
 
 Arrange the data by two variables: `HitOrMiss` (putting hits - 1 - first), and `JudgedSpeed` (fast judgement - 1 - first). Do not store this output in a new object.   
 
@@ -124,7 +124,7 @@ You could do this in three filters where each one uses the output of the precedi
 </div>
 
 
-## Activity 7: `mutate()` {#recode}
+## Activity 7: `mutate()`
 
 In Chapter \@ref(mutate), you learned how the `mutate()` function lets us create a new variable in our dataset. However, it also has another useful function in that it can be combined with `recode()` to create new columns with recoded values. For example, let's add a new column to `pong_data` in which the judged speed  is converted into a text label where `1` will become `Fast`, and `0` will become "Slow". Note that if you gave the recoded variable the same name as the original it would overwrite it.
 

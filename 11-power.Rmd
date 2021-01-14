@@ -246,22 +246,7 @@ Answer the following questions to check your answers. The solutions are at the b
 * According to Cohen (1988), the effect size for this correlation is `r mcq(c("small", answer = "medium", "large"))`
 * Say you run the study and find that the effect size determined is d = .24. Given what you know about power, select the statement that is true: `r mcq(c("the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than d = .24",answer = "the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .34"))`
 
-## Activity 10: Effect size for chi-square
-
-Again, `pwr.chisq.test()` is very similar to the t-test and correlation functions. 
-
-* **w** - Effect size (you can enter Cramer's V which we calculated in Chapter \@ref(cramer))
-* **N	** - Total number of observations
-* **df** - degree of freedom 
-* **sig.level** - Significance level (Type I error probability)
-* **power** - Power of test (1 minus Type II error probability)
-
-Imagine you were conducting a chi-square analysis with 30 observations, 1 df, and conventional alpha and power.
-
-* Using `pwr.chisq.test()`, what is the smallest effect size that you could reliably detect, rounded to 2 decimal places? `r fitb("0.51", ".51")`
-
-
-## Activity 11: Power of published research
+## Activity 10: Power of published research
 
 Thus far we have used hypothetical situations - now go look at the paper on the [Open Stats Lab](https://sites.trinity.edu/osl/data-sets-and-activities/t-test-activities) website called Does Music Convey Social Information to Infants? (we have used this dataset in the t-test chapter). You can download the pdf and look at it, but here we will determine the power of the significant t-tests reported in Experiment 1 under the Results section on Pg489. There is a one-sample t-test and a paired-samples t-test to consider, summarised below. Assume testing was at power = .8, alpha = .05. Based on your calculations are either of the stated effects underpowered?
 
@@ -414,18 +399,7 @@ pwr.r.test(n = 50,
 Click on the tab to reveal the solution
 
 ### Activity 10
-`r hide("Activity 10")`
-```{r a10, results='asis'}
-pwr.chisq.test(N = 30,
-               df = 1,
-           sig.level = .05, 
-           power = .8)
-```
-`r unhide()`
-<br>
-Click on the tab to reveal the solution
 
-### Activity 11
 `r hide("Activity 11")`
 ```{r a11, results='asis'}
 # Achievable Cohen d for Example 1

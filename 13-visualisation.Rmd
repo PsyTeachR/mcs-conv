@@ -1,4 +1,4 @@
-# Visualisation {#vis}
+# Visualisation
 
 In this chapter we are going to focus on visualising data using `ggplot2`. You've already created a number of different plots including bar charts, scatterplots, histograms, qq-plots, and violin-boxplots, but now we will show you how to customise your plots further to give you a better idea of the range and flexibility of visualising data in R. 
 
@@ -307,7 +307,7 @@ ggplot(zhang_data, aes(x = Condition, y = interest))+
 It's important to remember that R is very literal. `ggplot2` works on a system of layers. It will add new geoms on top of existing ones and it won't stop to think whether this is a good idea. Try running the above code but put `geom_jitter()` first and then add `geom_violin()`. The order of your layers matters.
 ```
 
-## Activity 8: Violin-boxplots {#viobox}
+## Activity 8: Violin-boxplots
 
 One increasingly common graph is a violin + boxplot + summary plot that shows a huge amount of information about your data in a single plot. You've already come across these when you looked at t-tests.
 

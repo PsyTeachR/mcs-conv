@@ -47,10 +47,10 @@ How you tackle probability depends on the type of data/variables you are working
 
 What types of data are the below measurements?
 
-* Time taken to run a marathon (in seconds): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>ordinal</option> <option>interval</option> <option>ratio</option> <option>categorical</option></select>
-* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>categorical</option> <option>interval</option> <option>ordinal</option> <option>ratio</option></select>
-* Which Sesame Street character a runner was dressed as: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>ratio</option> <option>interval</option> <option>ordinal</option> <option>categorical</option></select>
-* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ordinal</option> <option>ratio</option> <option>categorical</option> <option>interval</option></select>
+* Time taken to run a marathon (in seconds): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>ratio</option> <option>interval</option> <option>categorical</option> <option>ordinal</option></select>
+* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>categorical</option> <option>interval</option> <option>ratio</option> <option>ordinal</option></select>
+* Which Sesame Street character a runner was dressed as: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>ordinal</option> <option>categorical</option> <option>interval</option> <option>ratio</option></select>
+* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>categorical</option> <option>interval</option> <option>ratio</option> <option>ordinal</option></select>
 
 ### Probability distributions
 
@@ -136,9 +136,9 @@ As with any probabilities, real-world data will come close to the normal distrib
 
 Complete the sentences so that they are correct.
 
-* In a normal distribution, the mean, median, and mode <select class='solveme' data-answer='["are all equal"]'> <option></option> <option>are always different</option> <option>are all equal</option> <option>sum to zero</option></select>.
+* In a normal distribution, the mean, median, and mode <select class='solveme' data-answer='["are all equal"]'> <option></option> <option>are all equal</option> <option>sum to zero</option> <option>are always different</option></select>.
 * In a normal distribution, the further away from the mean an observation is <select class='solveme' data-answer='["the lower its probability of occuring"]'> <option></option> <option>the lower its probability of occuring</option> <option>the higher its probability of occuring</option></select>.
-* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='solveme' data-answer='["is a continuous variable"]'> <option></option> <option>is a categorical variable</option> <option>is a continuous variable</option> <option>has three possible values</option></select>.
+* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='solveme' data-answer='["is a continuous variable"]'> <option></option> <option>has three possible values</option> <option>is a continuous variable</option> <option>is a categorical variable</option></select>.
 
 ## Activity 4: Distribution test
 
@@ -150,7 +150,7 @@ Which distribution is likely to be associated with the following?
 
 ## Activity 5: Binomial distribution
 
-Now, we're going to calculate probabilities based on the binomial distribution. In this chapter, for the first time we don't need to load the tidyverse. All of the functions we need are contained in Base R. If you want a refresher on the difference between Base R and packages, see Chapter \@ref(packages).
+Now, we're going to calculate probabilities based on the binomial distribution. In this chapter, for the first time we don't need to load the tidyverse. All of the functions we need are contained in Base R. If you want a refresher on the difference between Base R and packages, see Programming Basics.
 
 * Open a new R Markdown document, call it "Probability" and save it in the relevant chapter folder.
 

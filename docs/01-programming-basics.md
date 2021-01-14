@@ -1,4 +1,4 @@
-# Programming basics {#ref3}
+# Programming basics
 
 In this chapter, we will cover how to use R and RStudio at the University of Glasgow as well as some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get help. Those of you who have no programming experience should find this chapter particularly helpful, however, even if you've used R before there may be some helpful hints and tips so please make sure you read through this chapter before the moving on.
 
@@ -130,7 +130,7 @@ One very useful feature of R Studio is the tab auto-complete for functions (see 
 <p class="caption">(\#fig:img-autocomplete)Tab auto-complete</p>
 </div>
 
-### Base R and packages {#packages}
+### Base R and packages
 
 When you install R you will have access to a range of functions including options for data wrangling and statistical analysis. The functions that are included in the default installation are typically referred to as **Base R** and there is a useful cheat sheet that shows many Base R functions [here](https://www.rstudio.com/wp-content/uploads/2016/05/base-r.pdf).
 
@@ -177,7 +177,7 @@ In addition to updates to R and R Studio, the creators of packages also sometime
 <p>To avoid accidentally overwriting a package with a later version, you should <strong>never</strong> include <code>install.packages()</code> in your analysis scripts in case you, or someone else runs the code by mistake. Remember, the server will already have all of the packages you need for this course so you only need to install packages if you are using your own machine.</p>
 </div>
 
-### Package conflicts {#conflicts}
+### Package conflicts
 
 There are thousands of different R packages with even more functions. Unfortunately, sometimes different packages have the same function names. For example, the packages `dplyr` and `MASS` both have a function named `select()`. If you load both of these packages, R will produce a warning telling you that there is a conflict.
 
@@ -245,7 +245,7 @@ mean(data)
 
 ```
 ## [1] 45
-## Time difference of 15 days
+## Time difference of -12 days
 ## [1] 17.66644
 ```
 
@@ -288,6 +288,7 @@ By default, when you open R Studio it will show you what you were last working o
 <img src="images/global_options.jpg" alt="Global options" width="100%" />
 <p class="caption">(\#fig:img-options)Global options</p>
 </div>
+
 ### R sessions
 
 When you open up R and start writing code, loading packages, and creating objects, you're doing so in a new **session**. In addition to clearing the workspace, it can sometimes be useful to start a new session. This will happen automatically each time you start R, however, if you find your code isn't working and you can't figure out why, it might be worth starting a new session. This will clear the environment and detach all loaded packages - think of it like restarting your phone.

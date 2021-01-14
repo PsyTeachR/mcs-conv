@@ -5,7 +5,7 @@ In this chapter we're going to focus on how to screen datasets for  potential is
 
 ## Activity 1: Set-up
 
-Do the following. If you need help, consult Chapter \@ref(ref3) and Chapter \@ref(ref2).
+Do the following. 
 
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear. 
 * Open a new R Markdown document and save it in your working directory. Call the file "Screening Data".    

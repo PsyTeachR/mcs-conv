@@ -112,7 +112,7 @@ ggplot(data = mh, aes(x = Abil)) +
 <p class="caption">(\#fig:abil-hist)Histogram of Abil</p>
 </div>
 
-This code should look very similar to the code you used to create a bar plot in Chapter \@ref(bar). We have specified that we want to display `Abil` on the x-axis and that the shape we want to produce is a histogram, hence `geom_histogram()`. Just like `geom_bar()`, you do not need to specify the y-axis because if it's a histogram, it's always a count.
+This code should look very similar to the code you used to create a bar plot in Intro to Data Viz. We have specified that we want to display `Abil` on the x-axis and that the shape we want to produce is a histogram, hence `geom_histogram()`. Just like `geom_bar()`, you do not need to specify the y-axis because if it's a histogram, it's always a count.
 
 * Write and run the code to produce another histogram for the variable `IQ`.
 
@@ -364,7 +364,7 @@ corr_results$correlation
 <br>  
 
 
-### Finished!
+## Finished!
 
 Well done! You can now add correlations to the list of things you can do in R. If you have any questions, please post them on Teams.
 
