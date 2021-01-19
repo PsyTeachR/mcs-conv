@@ -10,7 +10,7 @@ Fortunately, the authors made the data from this study openly available, which a
 
 The dependent measure used in the study was the [Warwick-Edinburgh Mental Well-Being Scale (WEMWBS)](https://warwick.ac.uk/fac/med/research/platform/wemwbs/). This is a 14-item scale with 5 response categories, summed together to form a single score ranging from 14-70.
 
-At [Przybylski & Weinstein's page for this study on the Open Science Framework](https://osf.io/82ybd/), you can find the [participant survey](https://osf.io/82ybd/) which asks a large number of additional questions (see page 14 for the WEMWBS questions and pages 4-5 for the questions about screen time). Within the same page you can also find the [raw data](https://osf.io/82ybd/); however, for the purpose of this exercise, you will be using local pre-processed copies of the data which can be downloaded from Moodle.
+At [Przybylski & Weinstein's page for this study on the Open Science Framework](https://osf.io/82ybd/), you can find the [participant survey](https://osf.io/82ybd/) which asks a large number of additional questions (see page 14 for the WEMWBS questions and pages 4-5 for the questions about screen time). Within the same page you can also find the [raw data](https://osf.io/82ybd/); however, for the purpose of this exercise, you will be using local pre-processed copies of the data which we will provide.
 
 Przybylski and Weinstein looked at multiple measures of screen time, but we will be focusing on smartphone use.  They found that decrements in well-being started to appear when respondents reported more than one hour of weekly smartphone use.  Our question: Does the negative association between hours of use and well-being (beyond the one-hour point) differ for boys and girls?
 
@@ -24,15 +24,15 @@ Note that in this analysis, we have:
 
 $^*$these variables are only quasi-continuous, inasmuch as only discrete values are possible. However, there are a sufficient number of discrete categories that we can treat them as effectively continuous.
 
-What we want to do is to estimate two slopes relating screen time to well-being, one for girls and one for boys, and then statistically compare these slopes. So this problem seems simultaneously like a situation where you would run a regression (to estimate the slopes) but also one where you would need a t-test (to compare two groups).
+We want to estimate two slopes relating screen time to well-being, one for girls and one for boys, and then statistically compare these slopes. So this problem seems simultaneously like a situation where you would run a regression (to estimate the slopes) but also one where you would need a t-test (to compare two groups).
 
 But the expressive power of regression allows us to do this all within a single model. As the [Bishop blog showed](http://deevybee.blogspot.com/2017/11/anova-t-tests-and-regression-different.html), *an independent groups t-test is just a special case of ordinary regression with a single categorical predictor; ANOVA is just a special case of regression where all predictors are categorical.*  So although we can express any ANOVA design using regression, the converse is not true: we cannot express every regression design in ANOVA. Regression allows us to have any combination of continuous and categorical predictors in the model. The only inconvenience with running ANOVA models as regression models is that you have to take care in how you numerically code the categorical predictors.
 
-## Activity 1: Set-up
+## Activity 1: Set-up Multiple Regression
 
-* Open R Studio and set the working directory to your Week 13 folder. Ensure the environment is clear.    
-* Open a new R Markdown document and save it in your working directory. Call the file "Week 13".    
-* Download <a href="wellbeing.csv" download>wellbeing.csv</a>, <a href="participant_info.csv" download>participant_info.csv</a> and <a href="screen_time.csv" download>screen_time.csv</a> and save them in your Week 13 folder. Make sure that you do not change the file names at all.    
+* Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.    
+* Open a new R Markdown document and save it in your working directory. Call the file "Multiple Regression".    
+* Download <a href="wellbeing.csv" download>wellbeing.csv</a>, <a href="participant_info.csv" download>participant_info.csv</a> and <a href="screen_time.csv" download>screen_time.csv</a> and save them in your Chapter folder. Make sure that you do not change the file names at all.    
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads `pwr`, `car`, `broom`, and `tidyverse` using the `library()` function.
 * Load the CSV datasets into variables called `pinfo`, `wellbeing` and `screen` using `read_csv()`.
@@ -56,12 +56,12 @@ Take a look at the resulting tibbles `pinfo`, `wellbeing`, and `screen`.  The `w
 
 The WEMWBS well-being score is simply the *sum* of all the items. 
 
-* Write the code to create a new table called `wemwbs`, with two variables: `Serial`, and `tot_wellbeing`, the total WEMWBS score.
+* Write the code to create a new table called `wemwbs`, with two variables: `Serial` (the participant ID), and `tot_wellbeing`, the total WEMWBS score.
 
 
 <div class='solution'><button>Hint</button>
 
-- "gather" the table from wide to long
+- "pivot" the table from wide to long
 
 </div>
 
@@ -75,9 +75,6 @@ The WEMWBS well-being score is simply the *sum* of all the items.
 
 
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
 
 **Sanity check:** Verify for yourself that the scores all fall in the 14-70 range.  Przybylski and Weinstein reported a mean of 47.52 with a standard deviation of 9.55. Can you reproduce these values?
 
@@ -89,7 +86,8 @@ The WEMWBS well-being score is simply the *sum* of all the items.
 </div>
 
 <br>
-* Now visualise the distribution of `tot_wellbeing` in a histogram using ggplot2.
+
+* Now visualise the distribution of `tot_wellbeing` in a histogram using ggplot2.  
 
 
 <div class='solution'><button>Hint</button>
@@ -131,7 +129,7 @@ Let's take a quick look at the relationship between screen time (for the four di
 
 ```r
 screen_long <- screen %>%
-  gather("var", "hours", -Serial) %>%
+  pivot_longer(names_to = "var", values_to = "hours", -Serial) %>%
   separate(var, c("variable", "day"), "_")
 
 screen2 <- screen_long %>%
@@ -147,13 +145,7 @@ screen2 <- screen_long %>%
 dat_means <- inner_join(wemwbs, screen2, "Serial") %>%
   group_by(variable, day, hours) %>%
   summarise(mean_wellbeing = mean(tot_wellbeing))
-```
 
-```
-## `summarise()` regrouping output by 'variable', 'day' (override with `.groups` argument)
-```
-
-```r
 ggplot(dat_means, aes(hours, mean_wellbeing, linetype = day)) +
   geom_line() +
   geom_point() +
@@ -176,17 +168,28 @@ For this analysis, we are going to collapse weekday and weekend use for smartpho
 * Create a new table, `smarttot`, that has the that has mean number of hours per day of smartphone use for each participant, averaged over weekends/weekdays. 
 * You will need to filter the dataset to only include smartphone use and not other technologies. 
 * You will also need to group the results by the participant ID (i.e., `serial`). 
-* The final data-set should have two variables: `Serial` (the participant) and `hours_per_day`.
+* The final data-set should have two variables: `Serial` (the participant) and `tothours`.
 * You will need to use the data-set `screen2` to do this.
 
-<br>
+
+<div class='solution'><button>Hint</button>
+
+- `filter()` then `group_by()` then `summarise()`
+
+</div>
+
 
 * Next, create a new tibble called `smart_wb` that only includes (filters) participants from `smarttot` who used a smartphone for more than one hour per day each week, and then combine (join) this table with the information in `wemwbs` and `pinfo`.**
 
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
+<div class='solution'><button>Hint</button>
+
+- `filter()` then `inner_join()` then another `inner_join()`
+
+</div>
+
+
+
 
 ## Activity 6: Mean-centering variables
 
@@ -208,22 +211,21 @@ For categorical predictors with two levels, these become coded as -.5 and .5 (be
 ## Activity 7: Visualise the relationship
 
 * Reverse-engineer the below plot. Calculate mean well-being scores for each combination of `male` and `tothours`, and then create a scatterplot plot that includes separate regression lines for each gender.
-* You may find it useful to refer to Chapter \@ref(vis). 
+* You may find it useful to refer to the Visualisation chapter.
 
 
-```
-## `summarise()` regrouping output by 'tothours' (override with `.groups` argument)
-```
+<div class='solution'><button>Hint</button>
 
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
+- `group_by()` both variables then `summarise()`
+- `colour = variable_you_want_different_colours_for`
+
+</div>
+
 
 <div class="figure" style="text-align: center">
 <img src="17-multiple-regression_files/figure-html/plots-1.png" alt="Relationship between mean wellbeing and smartphone use by gender" width="100%" />
 <p class="caption">(\#fig:plots)Relationship between mean wellbeing and smartphone use by gender</p>
 </div>
-
 
 Write an interpretation of the above plot in plain English.
 
@@ -317,7 +319,7 @@ vif(mod)
 
 Finally, we'll calculate power and effect size as usual.
 
-* Using the code from Week 12 calculate the minimum effect size we could reliably observe given our sample size and design but for 99% power. Report this to 2 decimal places <input class='solveme nospaces' size='0.00' data-answer='[".00"]'/>
+* Using the code from Power and Effect Size calculate the minimum effect size we could reliably observe given our sample size and design but for 99% power. Report this to 2 decimal places <input class='solveme nospaces' size='0.00' data-answer='[".00"]'/>
 
 
 
@@ -348,7 +350,7 @@ Regardless of whether you continue with quantitative methods and using R, rememb
 ![](https://media.giphy.com/media/ujGfBmVppmgEg/giphy.gif) 
 
 
-## Activity solutions
+## Activity solutions - Multiple regression
 
 ### Activity 3
 
@@ -356,7 +358,7 @@ Regardless of whether you continue with quantitative methods and using R, rememb
 
 ```r
 wemwbs <- wellbeing %>%
-  gather("var", "score", -Serial) %>%
+  pivot_longer(names_to = "var", values_to = "score", -Serial) %>%
   group_by(Serial) %>%
   summarise(tot_wellbeing = sum(score))
 
@@ -396,7 +398,9 @@ smart_wb <- smarttot %>%
   inner_join(wemwbs, "Serial") %>%
   inner_join(pinfo, "Serial") %>%
   mutate(thours_c = tothours - mean(tothours),
-         male_c = ifelse(male == 1, .5, -.5))
+         male_c = ifelse(male == 1, .5, -.5),
+         male_c = as.factor(male_c),
+         male = as.factor(male))
 ```
 </div>
 

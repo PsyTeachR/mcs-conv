@@ -2,7 +2,7 @@
 
 For the second week of ANOVA we're going to look at an example of a factorial ANOVA. You'll learn more about interpreting these in the second lecture, but for now, we'll just focus on the code. 
 
-We're going to reproduce the analysis from Experiment 3 of [Zhang, T., Kim, T., Brooks, A. W., Gino, F., & Norton, M. I. (2014). A "present" for the future: The unexpected value of rediscovery. Psychological Science, 25, 1851-1860.](https://journals.sagepub.com/doi/abs/10.1177/0956797614542274). You may remember this study from the Chapter \@ref(vis) pre-class activity. 
+We're going to reproduce the analysis from Experiment 3 of [Zhang, T., Kim, T., Brooks, A. W., Gino, F., & Norton, M. I. (2014). A "present" for the future: The unexpected value of rediscovery. Psychological Science, 25, 1851-1860.](https://journals.sagepub.com/doi/abs/10.1177/0956797614542274). You may remember this study from the Chapter Visualisation chapter. 
 
 This experiment has a 2 x 2 mixed design:
 
@@ -10,7 +10,7 @@ This experiment has a 2 x 2 mixed design:
 * The second IV is type of event (ordinary vs. extraordinary) and is a between-subjects factor 
 * The DV we will use is `interest` 
 
-### Activity 1: Set-up
+### Activity 1: Set-up Factorial ANOVA
 
 * Open R Studio and set the working directory to your chpter folder. Ensure the environment is clear. 
 * Open a new R Markdown document and save it in your working directory. Call the file "Factorial ANOVA". 
@@ -45,7 +45,7 @@ factorial <- read_csv("Zhang et al. 2014 Study 3.csv")%>%
 ### Activity 2: Descriptive statistics
 
 * Calculate descriptive statistics (mean, the minumum and maximum standard error values for using with a plot, and SD) for `interest`  for each `Condition` for each `time` (hint: you will need to `group_by()` two variables) and store it in an object named `sum_dat_factorial`. These are known as the cells means.
-* Hint: for the standard error code, refer back to \@ref(viobox)
+* Hint: for the standard error code, refer back to Visualisation.
 
 
 
@@ -234,7 +234,7 @@ We conducted the same repeated measures ANOVA with interest as the dependent mea
 
 ### Activity 9: Transforming data
 
-In this chapter we decided that the violation of the assumption of normality was ok so that we could replicate the results in the paper. But what if we weren't happy with this or if the violation had been more extreme? One option to deal with normality is to **transform your data**. If you want more information on this you should consult Chapter \@ref(refsup). 
+In this chapter we decided that the violation of the assumption of normality was ok so that we could replicate the results in the paper. But what if we weren't happy with this or if the violation had been more extreme? One option to deal with normality is to **transform your data**. If you want more information on this you should consult the Appendix chapter on data transformation.
 
 There are various options for how you can transform data but we're going to use Tukeys Ladder of Powers transformation. This finds the power transformation that makes the data fit the normal distribution as closely as possible with this type of transformation.
 
@@ -269,7 +269,7 @@ Notice that doing this hasn't changed the pattern of the ANOVA results, the p-va
 
 And we're done! There's only one more week of R left. I know that for some of you, you will be breathing a sigh of relief but we really want you to reflect on just how far you've come and the skills that you've learned. Even if you don't continue with quantitative research, your understanding of how data is manipulated and how the final results of journal articles actually happen will have substantially increased and that level of critical awareness is an all-round good skill to have. 
 
-### Activity solutions
+### Activity solutions - Factorial ANOVA
 
 #### Activity 1
 

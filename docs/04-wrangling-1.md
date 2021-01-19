@@ -32,7 +32,7 @@ These six functions are known as ’single table verbs’ because they only oper
 
 To demonstrate the power of the six `dplyr` verbs, we will use them to work with the babynames data from the `babynames` package. The babynames dataset has historical information about births of babies in the U.S.
 
-## Activity 1: Set-up
+## Activity 1: Set-up Data Wrangling 1
 
 Do the following. If you need help, consult Intro to R or Programming Basics.
 
@@ -116,7 +116,7 @@ ggplot(data = dat,aes(x = year,y = prop, colour=name))+
 
 There are two numeric measurements of name popularity, `prop` (the proportion of all babies with each name) is probably more useful than `n`  (total number of babies with that name), because it takes into account that different numbers of babies are born in different years. 
 
-Just like in Chapter \@ref(ref1), if we wanted to create a dataset that only includes certain variables, we can use the `select()` function from the `dplyr` package. Run the below code to only select the columns `year`, `sex`, `name` and `prop`.  
+Just like in Loading Data, if we wanted to create a dataset that only includes certain variables, we can use the `select()` function from the `dplyr` package. Run the below code to only select the columns `year`, `sex`, `name` and `prop`.  
 
 
 ```r
@@ -371,7 +371,7 @@ You can include as many expressions as you like as additional arguments to `filt
 
 **Remember that this section exists. It will contain a lot of the answers to problems you face when wrangling data!**
 
-## Activity 7: Creating new variables {#mutate}
+## Activity 7: Creating new variables
 
 Sometimes we need to create a new variable that doesn’t exist in our dataset. For instance, we might want to figure out what decade a particular year belongs to. To create new variables, we use the function `mutate()`. Note that if you want to save this new column, you need to save it to an object. Here, you are mutating a new column and attaching it to the `new_dat` object you created in Activity 4.
 

@@ -29,7 +29,7 @@ To actually carry out a correlation is very simple and we will show you that tod
 
 **Note:** When dealing with correlations you should always refer to relationships and not predictions. In a correlation, X does not predict Y, that is regression which you will cover in later in this course. In a correlation, all we can say is whether X and Y are related. 
 
-## Activity 1: Set-up
+## Activity 1: Set-up Correlation
 
 In this chapter we will use the examples in Miller and Haden (2013), Chapter 11, looking at the relationship between four variables: reading ability, intelligence (IQ), the number of minutes per week spent reading at home (Home); and the number of minutes per week spent watching TV at home (TV). You can see in this situation that it would be unethical to manipulate these variables so measuring them as they exist in the environment is most appropriate; hence the use of correlations.
 
@@ -112,7 +112,7 @@ ggplot(data = mh, aes(x = Abil)) +
   geom_histogram()
 ```
 
-This code should look very similar to the code you used to create a bar plot in Chapter \@ref(bar). We have specified that we want to display `Abil` on the x-axis and that the shape we want to produce is a histogram, hence `geom_histogram()`. Just like `geom_bar()`, you do not need to specify the y-axis because if it's a histogram, it's always a count.
+This code should look very similar to the code you used to create a bar plot in Intro to Data Viz. We have specified that we want to display `Abil` on the x-axis and that the shape we want to produce is a histogram, hence `geom_histogram()`. Just like `geom_bar()`, you do not need to specify the y-axis because if it's a histogram, it's always a count.
 
 * Write and run the code to produce another histogram for the variable `IQ`.
 
@@ -335,11 +335,11 @@ cat("1. Negative correlations are denoted by a negative r value.
 <br>  
 
 
-### Finished!
+## Finished!
 
 Well done! You can now add correlations to the list of things you can do in R. If you have any questions, please post them on Teams.
 
-## Activity solutions
+## Activity solutions - Correlation
 
 ### Activity 1
 

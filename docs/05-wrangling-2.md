@@ -22,7 +22,7 @@ Today we are going to be using data from this paper: [Is there a Chastity Belt o
 
 This experiment does not use tennis players however, they used the Pong task: "a computerised game in which participants aim to block moving balls with various sizes of paddles". A bit like a very classic retro arcade game. Participants tend to estimate the balls as moving faster when they have to block it with a smaller paddle as opposed to when they have a bigger paddle. You can read the paper to get more details if you wish but hopefully that gives enough of an idea to help you understand the wrangling we will do on the data. We have cleaned up the data a little to start with. Let's begin!
 
-## Activity 1: Set-up
+## Activity 1: Set-up Data Wrangling 2
 
 * Download <a href="PongBlueRedBack 1-16 Codebook.csv" download>PongBlueRedBack 1-16 Codebook.csv</a> into your chapter folder.  
 * Set the working directory to your chapter folder. Ensure the environment is clear.    
@@ -84,7 +84,7 @@ Either by inclusion (telling R all the variables you want to keep) or exclusion 
 
 `select()` can also be used to reorder the columns in a table as the new table will display the variables in the order that you wrote them. Use `select()` to keep only the columns `Participant`, `JudgedSpeed`, `BallSpeed`, `TrialNumber`, and `HitOrMiss` but have them display in alphabetical order, left to right. Save this table in a new object named `reorder_dat`.
 
-## Activity 5: **`arrange()`** F
+## Activity 5: **`arrange()`** 
 
 Arrange the data by two variables: `HitOrMiss` (putting hits - 1 - first), and `JudgedSpeed` (fast judgement - 1 - first). Do not store this output in a new object.   
 
@@ -124,7 +124,7 @@ You could do this in three filters where each one uses the output of the precedi
 </div>
 
 
-## Activity 7: `mutate()` {#recode}
+## Activity 7: `mutate()`
 
 In Chapter \@ref(mutate), you learned how the `mutate()` function lets us create a new variable in our dataset. However, it also has another useful function in that it can be combined with `recode()` to create new columns with recoded values. For example, let's add a new column to `pong_data` in which the judged speed  is converted into a text label where `1` will become `Fast`, and `0` will become "Slow". Note that if you gave the recoded variable the same name as the original it would overwrite it.
 
@@ -335,7 +335,8 @@ data_arrange <- pong_data %>%
 
 We have now learned a number of functions and verbs that you will need as you progress through this book.  You will use them in the next chapter so be sure to go over these and try them out to make yourself more comfortable with them.  If you have any questions please post them on Teams. **Happy Wrangling!**
 
-## Activity solutions {.tabset .tabset-fade .tabset-pills}
+## Activity solutions - Data wrangling 2
+
 Below you will find the solutions to the above questions. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
 
 ### Activity 3
@@ -455,13 +456,13 @@ pong_data_hits <- summarise(pong_data_group, total_hits = sum(HitOrMiss))
 **click the tab to see the solution**
 <br>
 
-## Debugging tips
+## Debugging tips - Data wrangling 2
 
 * Make sure you have spelt the data file name **exactly** as it is shown. Spaces and everything. Do not change the name of the csv file, fix your code instead. If you have a different name for your file than someone else then your code is not reproducible.
 * Remember when uploading data we use `read_csv()` which has an underscore, whereas the data file itself will have a dot in its name, `filename.csv`. 
 * Finally, check that the datafile is actually in the folder you have set as your working directory. 
 
-## Test yourself
+## Test yourself - Data wrangling 2
 
 1. What type of data would these most likely be:
 

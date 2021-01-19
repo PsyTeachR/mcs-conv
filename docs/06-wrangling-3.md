@@ -50,9 +50,9 @@ There are four data files to work with that you should download into your chapte
 </div>
 
 
-## Activity 1: Set-up
+## Activity 1: Set-up Data Wrangling 3
 
-Do the following. If you need help, consult Chapter \@ref(ref2) and Chapter \@ref(ref3).
+Do the following. If you need help, consult Programming Basics and Loading Data.
 
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.  
 * Open a new R Markdown document and save it in your working directory. Call the file "Data wrangling 3".    
@@ -96,7 +96,7 @@ The `responses` tibble is far from being tidy; each row represents multiple obse
 </div>
   
 
-## Activity 4: Tidying data {#gather}
+## Activity 4: Tidying data
 
 We now have all the data we need loaded in, but in order to make it easier for us to get the AQ score for each participant, we need to change the layout of the `responses` tibble to Tidy Data using the `pivot_longer()` function. 
 
@@ -131,7 +131,7 @@ Now the `responses` data is in tidy format, you are closer to being able to calc
 
 This is a typical analysis situation where different information is in different tables and you need to join them altogether. Both these pieces of information are contained in `qformats` and `scoring` respectively, but we want to join them to `responses` to create one informative tidy table with all the information we need. We can do this through the function `inner_join()`; a function to combine information in two tibbles using a column common to both tibbles.
 
-* Replace the `NULL` values in the below code with the necessary variable names to join `rlong` and `qformats` by `Question`. If you need extra help, revisit Chapter \@ref(join) - you used the same function then! You can also check the solutions for the answer (but make sure you try yourself first).
+* Replace the `NULL` values in the below code with the necessary variable names to join `rlong` and `qformats` by `Question`. If you need extra help, revisit Loading Data - you used the same function then! You can also check the solutions for the answer (but make sure you try yourself first).
 
 
 ```r
@@ -215,7 +215,7 @@ You have now recapped one-table and two-table verbs. These are great to know as 
 
 If you have any questions, please post them on Teams.
 
-## Activity solutions
+## Activity solutions - Data wrangling 3
 
 Below you will find the solutions to the above questions. Only look at them after giving the questions a good try and trying to find help on Google or Teams about any issues.
 
@@ -289,7 +289,7 @@ aq_scores2 <- responses %>% # take the data in `responses` and then
 
 **Click the tab to see the solution**
 
-## Test yourself
+## Test yourself - Data wrangling 3
 
 * You want to put the first three columns of a file called `responses` (Q1, Q2, Q3) into long-form, put the question numbers in a column called `Jam`, the responses in a column called `Strawberry`, and store everything in a tibble called `sandwich`. Fill in the box with what you would write: <input class='solveme nospaces' size='60' data-answer='["sandwich <- pivot_longer(data = responses, names_to = Jam, values_to = Strawberry, Q1:Q3)"]'/>
 
