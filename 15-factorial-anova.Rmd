@@ -10,7 +10,7 @@ This experiment has a 2 x 2 mixed design:
 * The second IV is type of event (ordinary vs. extraordinary) and is a between-subjects factor 
 * The DV we will use is `interest` 
 
-### Activity 1: Set-up
+### Activity 1: Set-up Factorial ANOVA
 
 * Open R Studio and set the working directory to your chpter folder. Ensure the environment is clear. 
 * Open a new R Markdown document and save it in your working directory. Call the file "Factorial ANOVA". 

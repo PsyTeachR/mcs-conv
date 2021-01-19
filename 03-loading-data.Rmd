@@ -16,7 +16,7 @@ As part of your skill development, it is important that you work with data so th
 
 In this chapter you will learn how to load the packages required to work with the data. You'll then load the data into R Studio before getting it organised into a sensible format that relates to our research question. If you can't remember what packages are, go back and revise Programming Basics.
 
-### Activity 1: Set-up
+### Activity 1: Set-up Loading Data
 
 Before we begin working with the data we need to do some set-up. If you need help with any of these steps, you should refer to Intro to R and Programming Basics: 
 

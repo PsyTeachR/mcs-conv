@@ -40,7 +40,7 @@ We will focus on effect sizes for t-tests for this worksheet.  There are a numbe
 
 Let's now try out some calculations. We will start with just looking at effect sizes from t-tests before calculating power in later tasks.
 
-## Activity 1: Set-up
+## Activity 1: Set-up power and Effect Size
 
 Do the following. 
 
@@ -278,7 +278,7 @@ There are additional functions in the `pwr` package for other types of statistic
 If you want more examples of power to reinforce your understanding, go back and calculate the power of the t-tests, correlations, and chi-squares from earlier chapters. 
 
 
-## Activity solutions
+## Activity solutions - Power
 
 Below you will find possible solutions to the above tasks. But first, be sure to try the tasks before looking at the solutions and only look at them when you have exhausted all possibilities and yourself.  If that is the case, and you are sure you want to do this, then here are the potential solutions.
 

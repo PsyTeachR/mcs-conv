@@ -22,7 +22,7 @@ The abstract from this article explains more about the different experiments con
 
 To summarise, 39 professional recruiters from Fortune 500 companies evaluated job pitches of M.B.A. candidates from the University of Chicago Booth School of Business. The methods and results appear on pages 887--889 of the article if you want to look at them specifically for more details. The original data, in **wide** format, can be found at the [Open Stats Lab](https://drive.google.com/open?id=0Bz-rhZ21ShvOei1MM24xNndnQ00) website for later self-directed learning. Today however, we will be working with a modified version in "tidy" format which can be downloaded from Moodle. 
 
-## Activity 1: Set-up
+## Activity 1: Set-up t-test
 
 Your task is to reproduce the results from the article (p. 887). 
 

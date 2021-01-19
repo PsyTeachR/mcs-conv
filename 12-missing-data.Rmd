@@ -3,7 +3,7 @@
 
 In this chapter we're going to focus on how to screen datasets for  potential issues and to reinforce the concept of tidy data. So far, we've given you complete datasets to work with, however, you will find that real data is often much messier than this, for example, participants may not answer some items in your questionnaire or there may be errors or implausible values in your dataset. We're also going to show you a different function to make calculating descriptive statistics easier. 
 
-## Activity 1: Set-up
+## Activity 1: Set-up Screening Data
 
 Do the following. 
 

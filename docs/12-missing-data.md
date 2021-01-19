@@ -3,7 +3,7 @@
 
 In this chapter we're going to focus on how to screen datasets for  potential issues and to reinforce the concept of tidy data. So far, we've given you complete datasets to work with, however, you will find that real data is often much messier than this, for example, participants may not answer some items in your questionnaire or there may be errors or implausible values in your dataset. We're also going to show you a different function to make calculating descriptive statistics easier. 
 
-## Activity 1: Set-up
+## Activity 1: Set-up Screening Data
 
 Do the following. 
 
@@ -570,7 +570,7 @@ The output of `describe()` is a little harder to work with in terms of manipulat
 
 And you're done! This isn't a comprehensive tutorial on every type of dataset you will come across and the concept of tidy data will take practice but hopefully this should give you a good starting point for when you have your own real, messy data.
 
-## Activity solutions
+## Activity solutions - Screening data
 
 ### Activity 1
 

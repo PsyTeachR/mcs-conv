@@ -40,7 +40,7 @@ We will focus on effect sizes for t-tests for this worksheet.  There are a numbe
 
 Let's now try out some calculations. We will start with just looking at effect sizes from t-tests before calculating power in later tasks.
 
-## Activity 1: Set-up
+## Activity 1: Set-up power and Effect Size
 
 Do the following. 
 

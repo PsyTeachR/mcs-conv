@@ -22,7 +22,7 @@ Today we are going to be using data from this paper: [Is there a Chastity Belt o
 
 This experiment does not use tennis players however, they used the Pong task: "a computerised game in which participants aim to block moving balls with various sizes of paddles". A bit like a very classic retro arcade game. Participants tend to estimate the balls as moving faster when they have to block it with a smaller paddle as opposed to when they have a bigger paddle. You can read the paper to get more details if you wish but hopefully that gives enough of an idea to help you understand the wrangling we will do on the data. We have cleaned up the data a little to start with. Let's begin!
 
-## Activity 1: Set-up
+## Activity 1: Set-up Data Wrangling 2
 
 * Download <a href="PongBlueRedBack 1-16 Codebook.csv" download>PongBlueRedBack 1-16 Codebook.csv</a> into your chapter folder.  
 * Set the working directory to your chapter folder. Ensure the environment is clear.    

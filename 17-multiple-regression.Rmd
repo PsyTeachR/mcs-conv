@@ -28,7 +28,7 @@ We want to estimate two slopes relating screen time to well-being, one for girls
 
 But the expressive power of regression allows us to do this all within a single model. As the [Bishop blog showed](http://deevybee.blogspot.com/2017/11/anova-t-tests-and-regression-different.html), *an independent groups t-test is just a special case of ordinary regression with a single categorical predictor; ANOVA is just a special case of regression where all predictors are categorical.*  So although we can express any ANOVA design using regression, the converse is not true: we cannot express every regression design in ANOVA. Regression allows us to have any combination of continuous and categorical predictors in the model. The only inconvenience with running ANOVA models as regression models is that you have to take care in how you numerically code the categorical predictors.
 
-## Activity 1: Set-up
+## Activity 1: Set-up Multiple Regression
 
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.    
 * Open a new R Markdown document and save it in your working directory. Call the file "Multiple Regression".    
@@ -147,7 +147,7 @@ For this analysis, we are going to collapse weekday and weekend use for smartpho
 * Create a new table, `smarttot`, that has the that has mean number of hours per day of smartphone use for each participant, averaged over weekends/weekdays. 
 * You will need to filter the dataset to only include smartphone use and not other technologies. 
 * You will also need to group the results by the participant ID (i.e., `serial`). 
-* The final data-set should have two variables: `Serial` (the participant) and `hours_per_day`.
+* The final data-set should have two variables: `Serial` (the participant) and `tothours`.
 * You will need to use the data-set `screen2` to do this.
 
 `r hide("Hint")`
@@ -381,7 +381,9 @@ smart_wb <- smarttot %>%
   inner_join(wemwbs, "Serial") %>%
   inner_join(pinfo, "Serial") %>%
   mutate(thours_c = tothours - mean(tothours),
-         male_c = ifelse(male == 1, .5, -.5))
+         male_c = ifelse(male == 1, .5, -.5),
+         male_c = as.factor(male_c),
+         male = as.factor(male))
 ```
 </div>
 

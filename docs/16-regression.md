@@ -16,7 +16,7 @@ Our hypothesis was that greater anxiety would be reflected in lower engagement. 
 
 If our hypothesis is correct then there should be <select class='solveme' data-answer='["a negative"]'> <option></option> <option>a positive</option> <option>no</option> <option>a negative</option></select> correlation between students' mean anxiety levels and `n_weeks`.
 
-## Activity 1: Setup
+## Activity 1: Setup Regression
 
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.   
 * Open a new R Markdown document and save it in your working directory. Call the file "Regression".    

@@ -50,7 +50,7 @@ There are four data files to work with that you should download into your chapte
 </div>
 
 
-## Activity 1: Set-up
+## Activity 1: Set-up Data Wrangling 3
 
 Do the following. If you need help, consult Programming Basics and Loading Data.
 

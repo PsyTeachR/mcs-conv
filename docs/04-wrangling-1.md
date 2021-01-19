@@ -32,7 +32,7 @@ These six functions are known as ’single table verbs’ because they only oper
 
 To demonstrate the power of the six `dplyr` verbs, we will use them to work with the babynames data from the `babynames` package. The babynames dataset has historical information about births of babies in the U.S.
 
-## Activity 1: Set-up
+## Activity 1: Set-up Data Wrangling 1
 
 Do the following. If you need help, consult Intro to R or Programming Basics.
 
