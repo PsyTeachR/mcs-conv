@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-01-19" />
+<meta name="date" content="2021-01-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -1071,7 +1071,7 @@ important social information to infants. Specifically, melodies convey informati
 <li>Run the below code to tidy the data and calculate descriptives and then create the same violin-boxplot as you did for the independent t-test (hint: it is perfectly acceptable to copy and paste the code from Activity 4 and change the data and variable names).</li>
 </ul>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="t-tests.html#cb165-1"></a>gaze_tidy &lt;-<span class="st"> </span>gaze <span class="op">%&gt;%</span></span>
-<span id="cb165-2"><a href="t-tests.html#cb165-2"></a><span class="st">  </span><span class="kw">gather</span>(<span class="dt">key =</span> time, <span class="dt">value =</span> looking, baseline, test) <span class="op">%&gt;%</span></span>
+<span id="cb165-2"><a href="t-tests.html#cb165-2"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">names_to =</span> <span class="st">&quot;time&quot;</span>, <span class="dt">values_to =</span> <span class="st">&quot;looking&quot;</span>, <span class="dt">cols =</span> <span class="kw">c</span>(baseline, test)) <span class="op">%&gt;%</span></span>
 <span id="cb165-3"><a href="t-tests.html#cb165-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>diff) <span class="op">%&gt;%</span></span>
 <span id="cb165-4"><a href="t-tests.html#cb165-4"></a><span class="st">  </span><span class="kw">arrange</span>(time, id)</span>
 <span id="cb165-5"><a href="t-tests.html#cb165-5"></a></span>

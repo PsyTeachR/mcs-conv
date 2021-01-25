@@ -409,7 +409,7 @@ It made sense to keep the data in wide-form until this point to make it easy to 
 
 ```r
 gaze_tidy <- gaze %>%
-  gather(key = time, value = looking, baseline, test) %>%
+  pivot_longer(names_to = "time", values_to = "looking", cols = c(baseline, test)) %>%
   select(-diff) %>%
   arrange(time, id)
 
