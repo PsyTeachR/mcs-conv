@@ -10,7 +10,7 @@ To help you understand the data we're visualising, here is the abstract:
 
 > Although documenting everyday activities may seem trivial, four studies reveal that creating records of the present generates unexpected benefits by allowing future rediscoveries. In Study 1, we used a time-capsule paradigm to show that individuals underestimate the extent to which rediscovering experiences from the past will be curiosity provoking and interesting in the future. In Studies 2 and 3, we found that people are particularly likely to underestimate the pleasure of rediscovering ordinary, mundane experiences, as opposed to extraordinary experiences. Finally, Study 4 demonstrates that underestimating the pleasure of rediscovery leads to time-inconsistent choices: Individuals forgo opportunities to document the present but then prefer rediscovering those moments in the future to engaging in an alternative fun activity. Underestimating the value of rediscovery is linked to people’s erroneous faith in their memory of everyday events. By documenting the present, people provide themselves with the opportunity to rediscover mundane moments that may otherwise have been forgotten.
 
-## Activity 1: Set-up Visualisation
+## Viz Activity 1: Set-up Visualisation
 
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.   
 * Open a new R Markdown document and save it in your working directory. Call the file "Visualisation".    
@@ -33,7 +33,7 @@ zhang_data <- read_csv("Zhang et al. 2014 Study 3.csv")%>%
   filter(Gender %in% c("male", "female"))
 ```
 
-## Activity 2: Histograms
+## Viz Activity 2: Histograms
 
 First, let's create histograms for `interest` to check the distribution. 
 The first line of code creates the `ggplot()` object and specifies which dataset is being used, and what should be represented on the x and y-axis. Because this is a histogram, you only need to specify the variable on the x-axis because y is always frequency
@@ -130,7 +130,7 @@ ggplot(zhang_data, aes(interest))+
 <p class="caption">(\#fig:hist4)Histogram with normal density curve</p>
 </div>
 
-## Activity 3: Scatterplots
+## Viz Activity 3: Scatterplots
 
 ### Basic scatterplot
 
@@ -237,7 +237,7 @@ ggplot(zhang_data, aes(x = interest,y = Age, colour = Gender))+
 <p class="caption">(\#fig:scat5)Grouped scatterplot with adjusted labels</p>
 </div>
 
-## Activity 4: Boxplots
+## Viz Activity 4: Boxplots
 
 ### Basic boxplot
 
@@ -342,7 +342,7 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = time))+
 <p class="caption">(\#fig:unnamed-chunk-2)Boxplots with friendly colours</p>
 </div>
 
-## Activity 5: Reordering factors
+## Viz Activity 5: Reordering factors
 
 R orders categorical variables alphabetically. For gender it didn't really matter whether male or female was represented first and for time 1 and 2 it makes sense for them to be in this order but we may want to change the order of Condition (in my mind it makes more sense for Ordinary to come first, but that may just be me).
 
@@ -369,7 +369,7 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = time))+
 <p class="caption">(\#fig:bp6)Boxplot with reordered factors</p>
 </div>
 
-## Activity 6: Bar Charts  
+## Viz Activity 6: Bar Charts  
 
 ### Basic bar chart
 
@@ -404,7 +404,7 @@ ggplot(zhang_data, aes(x=Gender, fill = Condition))+
 <p class="caption">(\#fig:bc2)Bar chart with two factors</p>
 </div>
 
-## Activity 7: Violin plots 
+## Viz Activity 7: Violin plots 
 
 ### Basic violin plot
 
@@ -441,7 +441,7 @@ ggplot(zhang_data, aes(x = Condition, y = interest))+
 <p>It’s important to remember that R is very literal. <code>ggplot2</code> works on a system of layers. It will add new geoms on top of existing ones and it won’t stop to think whether this is a good idea. Try running the above code but put <code>geom_jitter()</code> first and then add <code>geom_violin()</code>. The order of your layers matters.</p>
 </div>
 
-## Activity 8: Violin-boxplots
+## Viz Activity 8: Violin-boxplots
 
 One increasingly common graph is a violin + boxplot + summary plot that shows a huge amount of information about your data in a single plot. You've already come across these when you looked at t-tests.
 
@@ -482,7 +482,7 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = Condition))+
 <p class="caption">(\#fig:vbp1)Violin-boxplot with summary data</p>
 </div>
 
-## Activity 9: Faceting
+## Viz Activity 9: Faceting
 
 `ggplot2` contains a facet function that produces different plots for each level of a grouping variable which can be very useful when you have more than two factors, for example, for a three-way ANOVA. The following code displays produces violin-boxplots for Condition ~ interest, but separately for male and female participants. 
 
@@ -556,7 +556,7 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = Condition))+
 <p class="caption">(\#fig:facet2)Facetted plot with updated labels</p>
 </div>
 
-## Activity 10: Split-violins and raincloud plots
+## Viz Activity 10: Split-violins and raincloud plots
 
 Finally, we're going to do something a bit snazzy. As well as the functions that are included in packages, anyone can also write custom functions and share the code. One such custom function allows us to create **raincloud plots** which are highly informative and very pretty. See [here](https://wellcomeopenresearch.org/articles/4-63) for more information about their creation and function.
 
@@ -779,7 +779,7 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = Gender))+
 <p class="caption">(\#fig:rc2)Raincloud plot for two factors</p>
 </div>
 
-### Finished!
+### Viz Finished!
 
 And you're done! As we've said throughout this chapter, you do not need to remember all of this code, you just need to remember what's possible and where to find the examples that you can modify. 
 

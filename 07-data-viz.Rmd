@@ -1,6 +1,6 @@
 # Intro to Data Viz
 
-## Activity 1: dplyr recap
+## DV Activity 1: dplyr recap
 
 Which function(s) would you use to approach each of the following problems?
 
@@ -36,7 +36,7 @@ knitr::include_graphics("images/layers.png")
 
 ```
 
-## Activity 2: Set-up
+## DV Activity 2: Set-up
 
 We will use the same data files as in Loading Data when you uploaded files to the server. This data contains happiness and depression scores:
 
@@ -75,7 +75,7 @@ summarydata <- select(.data = all_dat,
 
 ```
 
-## Activity 3: Factors
+## DV Activity 3: Factors
 
 Before we go any further we need to perform an additional step of data processing that we have glossed over up until this point. First, run the below code to look at the structure of the dataset:
 
@@ -98,7 +98,7 @@ You can read this code as "overwrite the data that is in the column sex with sex
 
 **Remember this. It's a really important step and if your graphs are looking weird this might be the reason.**
 
-## Activity 4: Bar plot
+## DV Activity 4: Bar plot
 
 For our first example we will recreate the bar plot showing the number of male and female participants from Loading Data by showing you how the layers of code build up.
 
@@ -194,7 +194,7 @@ In R terms, `ggplot2` is a fairly old package. As a result, the use of pipes was
 
 ```
 
-## Activity 5: Violin-boxplot
+## DV Activity 5: Violin-boxplot
 
 As our final activity we will create a violin-boxplot, hopefully now you will be able to see how similar it is in structure to the bar chart code. In fact, there are only three differences:
 
@@ -214,7 +214,7 @@ ggplot(summarydata, aes(x = income, y = ahiTotal, fill = income)) +
 
 ```
 
-## Activity 6: Layers part 2
+## DV Activity 6: Layers part 2
 
 The key thing to note about `ggplot` is the use of layers. Whilst we've built this up step-by-step, they are independent and you could remove any of them except for the first layer. Additionally, although they are independent, the order you put them in does matter. Try running the two code examples below and see what happens.
 
@@ -228,6 +228,6 @@ ggplot(summarydata, aes(x = income, y = ahiTotal)) +
   geom_violin()
 ```
 
-### Finished!
+### DV Finished!
 
 Well done! `ggplot` can be a bit difficult to get your head around at first, particularly if you've been used to making graphs a different way. But once it clicks, you'll be able to make informative and professional visualisations with ease, which, amongst other things, will make your reports look FANCY.

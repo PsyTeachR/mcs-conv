@@ -1,6 +1,6 @@
 # Probability
 
-## Activity 1: Prep
+## P Activity 1: Prep
 
 The first half of this chapter doesn't contain any coding, instead, we're going to recap some core statistical concepts. If you need any additional resources beyond what has been discussed in the lectures, you may find the below useful.
 
@@ -38,7 +38,7 @@ How you tackle probability depends on the type of data/variables you are working
 
 **Ratio** data is very like interval but has a true zero point. With our interval temperature example above, we have been experiencing negative temperatures (-1,-2 degrees) in Glasgow but with ratio data you don't see negative values such as these i.e. you can't be -10 cm tall. 
 
-## Activity 2: Types of data
+## P Activity 2: Types of data
 
 What types of data are the below measurements?
 
@@ -392,9 +392,9 @@ And that's it! The key concepts to take away from this chapter are that differen
 
 For example, if you want to compare whether the scores from two groups are different, that is, whether they come from different distributions, you can calculate the probability that the scores from group 2 would be in the same distribution as group 1. If this probability is less than 5% (p = .05), you might conclude that the scores were significantly different. That's an oversimplification obviously, but if you can develop a good understanding of probability distributions it will stand you in good stead for the rest of the statistics content.  
 
-## Activity solutions
+## P Activity solutions
 
-### Activity 6
+### P Activity 6
 
 `r webex::hide()`
 ```{r eval = FALSE}
@@ -402,7 +402,7 @@ For example, if you want to compare whether the scores from two groups are diffe
 ```
 `r webex::unhide()`
 
-### Activity 7
+### P Activity 7
 
 `r webex::hide()`
 ```{r eval = FALSE}
@@ -410,7 +410,7 @@ For example, if you want to compare whether the scores from two groups are diffe
 ```
 `r webex::unhide()`
 
-### Activity 8
+### P Activity 8
 
 `r webex::hide()`
 ```{r eval = FALSE}
@@ -418,7 +418,7 @@ For example, if you want to compare whether the scores from two groups are diffe
 ```
 `r webex::unhide()`
 
-### Activity 10
+### P Activity 10
 
 `r webex::hide()`
 ```{r eval = FALSE}
@@ -426,7 +426,7 @@ pnorm(q = 176.2, mean = 163.8, sd = 6.931, lower.tail = FALSE)
 ```
 `r webex::unhide()`
 
-### Activity 11
+### P Activity 11
 
 `r webex::hide()`
 ```{r eval = FALSE}
@@ -434,7 +434,7 @@ pnorm(q = 181.12, mean = 176.2, sd = 6.748, lower.tail = FALSE)
 ```
 `r webex::unhide()`
 
-### Activity 12
+### P Activity 12
 
 `r webex::hide()`
 ```{r eval = FALSE}
@@ -442,7 +442,7 @@ pnorm(q = 181.12, mean = 163.8, sd = 6.931, lower.tail = TRUE)
 ```
 `r webex::unhide()`
 
-### Activity 13
+### P Activity 13
 
 `r webex::hide()`
 ```{r eval = FALSE}

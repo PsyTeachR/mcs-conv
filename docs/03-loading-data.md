@@ -16,7 +16,7 @@ As part of your skill development, it is important that you work with data so th
 
 In this chapter you will learn how to load the packages required to work with the data. You'll then load the data into R Studio before getting it organised into a sensible format that relates to our research question. If you can't remember what packages are, go back and revise Programming Basics.
 
-### Activity 1: Set-up Loading Data
+### LD Activity 1: Set-up Loading Data
 
 Before we begin working with the data we need to do some set-up. If you need help with any of these steps, you should refer to Intro to R and Programming Basics: 
 
@@ -28,7 +28,7 @@ Before we begin working with the data we need to do some set-up. If you need hel
 * Delete the default R Markdown welcome text and insert a new code chunk.  
 * You can use the white space to take any notes that might help you for each activity.
 
-### Activity  2: Load in the package
+### LD Activity  2: Load in the package
 
 Today we need to use the `tidyverse` package. You will use this package in almost every single chapter of this course as the functions it contains are those we use for data wrangling, descriptive statistics, and visualisation.
 
@@ -47,7 +47,7 @@ For this chapter we are going to be using real data from the following paper:
 
 We recommend that you read through this paper and open up the .csv files in order to understand the data better but briefly, the files contains data from two scales, the  Authentic Happiness Inventory (AHI) and the Center for Epidemiological Studies Depression (CES-D) scale, as well as demographic information about participants. 
 
-### Activity 3: Read in data
+### LD Activity 3: Read in data
 
 Now we can read in the data. To do this we will use the function `read_csv()` that allows us to read in .csv files. There are also functions that allow you to read in .xlsx files and other formats, however in this course we will only use .csv files.
 
@@ -64,7 +64,7 @@ pinfo <- read_csv("participant-info.csv")
 <p>There is also a function called <code>read.csv()</code>. Be very careful NOT to use this function instead of <code>read_csv()</code> as they have different ways of naming columns. For the portfolio tasks, unless your results match our exactly you will not get the marks which means you need to be careful to use the right functions.</p>
 </div>
 
-### Activity 4: Check yo' data
+### LD Activity 4: Check yo' data
 
 You should now see that the objects `dat` and `pinfo` have appeared in the environment pane. Whenever you read data into R you should always do an initial check to see that your data looks like you expected. There are several ways you can do this, try them all out to see how the results differ.
 
@@ -74,7 +74,7 @@ You should now see that the objects `dat` and `pinfo` have appeared in the envir
 * Use `head(pinfo)`
 * Just type the name of the object you want to view, e.g., `dat`.
 
-### Activity 5: Join the files together
+### LD Activity 5: Join the files together
 
 We have two files, `dat` and `info` but what we really want is a single file that has both the data and the demographic information about the participants. R makes this very easy by using the function `inner_join()`.
 
@@ -91,7 +91,7 @@ all_dat <- inner_join(x = dat, # the first table you want to join
                       by = c("id", "intervention")) # columns the two tables have in common
 ```
 
-### Activity 6: Pull out variables of interest
+### LD Activity 6: Pull out variables of interest
 
 Our final step is to pull our variables of interest. Very frequently, datasets will have more variables and data than you actually want to use and it can make life easier to create a new object with just the data you need.
 
@@ -119,20 +119,20 @@ summarydata <- select(.data = all_dat, # name of the object to take data from
 
 Finally, try knitting the file to HTML. And that's it, well done! Remember to save your Markdown in your chapter folder and make a note of any mistakes you made and how you fixed them. You have started on your journey to become a confident and competent member of the open scientific community! 
 
-#### Finished!
+#### LD Finished!
 
 There is no portfolio assessment this week, instead, use the time to get comfortable with what we've covered already and revise the activities and support materials presented so far if needed. If you're feeling comfortable with R, you can work your way through this book at your own pace or push yourself by using the additional resources highlighted in Programming Basics.
 
 If you're using the R server, we strongly recommend that you download a copy of any files you have been working on so that you have a local back-up.
 
-## Debugging tips
+### LD Debugging tips
 
 * When you downloaded the files did you save the file names **exactly** as they were originally? If you download the file more than once you will find your computer may automatically add a number to the end of the file name. `data.csv` is not the same as `data(1).csv`. Pay close attention to names!
 * Have you used the **exact** same object names as we did in each activity? Remember, `name` is different to `Name`. In order to make sure you can follow along with this book, pay special attention to ensuring you use the same object names as we do.  
 * Have you used quotation marks where needed?  
 * Have you accidentally deleted any back ticks (```) from the beginning or end of code chunks?
 
-## Test yourself
+### LD Test yourself
 
 1. When loading in a .csv file, which function should you use? 
 

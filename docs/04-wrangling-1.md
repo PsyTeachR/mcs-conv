@@ -32,7 +32,7 @@ These six functions are known as ’single table verbs’ because they only oper
 
 To demonstrate the power of the six `dplyr` verbs, we will use them to work with the babynames data from the `babynames` package. The babynames dataset has historical information about births of babies in the U.S.
 
-## Activity 1: Set-up Data Wrangling 1
+## DS1 Activity 1: Set-up 
 
 Do the following. If you need help, consult Intro to R or Programming Basics.
 
@@ -48,7 +48,7 @@ library(tidyverse)
 library(babynames)
 ```
 
-## Activity 2: Look at the data
+## DS1 Activity 2: Look at the data
 
 The package `babynames` contains an object of the same name that contains all the data about babynames. 
 
@@ -92,7 +92,7 @@ variable|type             |description
 
 The first row of the table tells us that in the year 1880, there were 7065 baby girls born in the U.S. who were given the name Mary, and this accounted for about 7% of all baby girls.
 
-## Activity 3: Your first plot
+## DS1 Activity 3: Your first plot
 
 * Type the code below into the Activity 3 code chunk and run it. 
 
@@ -112,7 +112,7 @@ ggplot(data = dat,aes(x = year,y = prop, colour=name))+
 <p class="caption">(\#fig:babynames-plot)Proportion of four baby names from 1880 to 2014</p>
 </div>
 
-## Activity 4: Selecting variables of interest
+## DS1 Activity 4: Selecting variables of interest
 
 There are two numeric measurements of name popularity, `prop` (the proportion of all babies with each name) is probably more useful than `n`  (total number of babies with that name), because it takes into account that different numbers of babies are born in different years. 
 
@@ -172,7 +172,7 @@ Note that `select()` does not change the original tibble, but makes a new tibble
 new_dat <- select(.data = babynames, -n)
 ```
 
-## Activity 5: Arranging the data
+## DS1 Activity 5: Arranging the data
 
 The function `arrange()` will sort the rows in the table according to the columns you supply. Try running the following code:
 
@@ -230,7 +230,7 @@ You can also sort by more than one column. What do you think the following code 
 arrange(babynames, desc(year), desc(sex), desc(prop)) 
 ```
 
-## Activity 6: Using filter to select observations
+## DS1 Activity 6: Using filter to select observations
 
 We have previously used `select()` to select certain variables or columns, however, frequently you will also want to select only certain observations or rows, for example, only babies born after 1999, or only babies named "Mary". You do this using the verb `filter()`. The `filter()` function is a bit more involved than the other verbs, and requires more detailed explanation, but this is because it is also extremely powerful. 
 
@@ -371,7 +371,7 @@ You can include as many expressions as you like as additional arguments to `filt
 
 **Remember that this section exists. It will contain a lot of the answers to problems you face when wrangling data!**
 
-## Activity 7: Creating new variables
+## DS1 Activity 7: Creating new variables
 
 Sometimes we need to create a new variable that doesn’t exist in our dataset. For instance, we might want to figure out what decade a particular year belongs to. To create new variables, we use the function `mutate()`. Note that if you want to save this new column, you need to save it to an object. Here, you are mutating a new column and attaching it to the `new_dat` object you created in Activity 4.
 
@@ -401,7 +401,7 @@ new_dat
 
 In this case, you are creating a new column decade  which has the decade each year appears in. This is calculated using the command `decade = floor(year/10)*10`.
 
-## Activity 8: Grouping and summarising
+## DS1 Activity 8: Grouping and summarising
 
 Most quantitative analyses will require you to summarise your data somehow, for example, by calculating the mean, median or a sum total of your data. You can perform all of these operations using the function `summarise()`.
 
@@ -503,7 +503,7 @@ summarise(group_new_dat,
 <p>If you get what looks like an error that says <code>summarise() ungrouping output (override with .groups argument)</code>don’t worry, this isn’t an error it’s just R telling you what it’s done. This message was included in a very recent update to the <code>tidyverse</code> which is why it doesn’t appear on some of the walkthrough vidoes.</p>
 </div>
 
-## Activity 9: Pipes
+## DS1 Activity 9: Pipes
 
 The final activity for this chapter essentially repeats what we've already covered but in a slightly different way. In the previous activities, you created new objects with new variables or groupings and then you called `summarise()` on those new objects in separate lines of code. As a result, you had multiple objects in your environment pane and you need to make sure that you keep track of the different names. 
 
