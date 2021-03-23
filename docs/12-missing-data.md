@@ -3,7 +3,7 @@
 
 In this chapter we're going to focus on how to screen datasets for  potential issues and to reinforce the concept of tidy data. So far, we've given you complete datasets to work with, however, you will find that real data is often much messier than this, for example, participants may not answer some items in your questionnaire or there may be errors or implausible values in your dataset. We're also going to show you a different function to make calculating descriptive statistics easier. 
 
-## Activity 1: Set-up Screening Data
+## Screening Activity 1: Set-up
 
 Do the following. 
 
@@ -15,7 +15,7 @@ Do the following.
 
 
 
-## Activity 2: Look at the data
+## Screening Activity 2: Look at the data
 
 `messy` is simulated data for an experiment looking at the effect of note-taking on test performance and whether this is affected by being a native speaker. Participants are first given a pre-test to judge their baseline knowledge, then they watch a lecture and take notes. Immediately after the lecture is finished they take another test. Finally, they are tested after a week delay. The maximum score for any test is 30. Participants lose marks for incorrect answers so minus scores are also possible. The dataset has six variables:
 
@@ -31,7 +31,7 @@ Do the following.
 
 The first issue we will cover is missing data. Data can be missing because your participants accidentally didn't fill in a question, it can be missing because they intentionally didn't want to answer, or that they didn't turn up to a final testing session, or it could be that you did something wrong whilst setting up your questionnaire/experiment and it didn't save. Real data frequently contains missing values and it's important that you know how to identify missing data and what you can do with it.
 
-## Activity 3: `summary()`
+## Screening Activity 3: `summary()`
 
 A good way to get a sense of how many missing data points you have is to use `summary()`. Because `speaker` and `gender` are text rather than numbers, in order to see how many values are missing we first need to convert them to factors.
 
@@ -48,7 +48,7 @@ summary(messy)
 
 As you can see, there are 20 data points missing (NAs) in each of `speaker`, `gender`, and `delay` (but importantly, this isn't from just 20 participants).There are several different approaches to dealing with missing data. We will cover the most common.
 
-## Activity 4: Listwise deletion
+## Screening Activity 4: Listwise deletion
 
 One method for dealing with missing data is **listwise deletion**. This approach removes any participant with a single missing value. So if there is missing data in any of the columns in the dataset, that participant will be removed and you will only be left with complete datasets. We can achieve this using `drop_na`
 
@@ -113,7 +113,7 @@ The alternative to listwise deletion is **pairwise deletion** when cases are rem
 ## delay 180  180   180
 ```
 
-## Activity 5: `na.rm = TRUE`
+## Screening Activity 5: `na.rm = TRUE`
 
 When running inferential tests like correlations and t-tests, R will usually know when to ignore missing values. However, if you're calculating descriptive statistics or if you want to calculate the average score of a number of different items, you need to explicitly tell R to ignore the missing values.
 
@@ -143,7 +143,7 @@ The mean score for `delay` shows as `NA`. This is because R is trying to calcula
 <p>It’s really important that you think about whether you want to calculate your descriptives from participants that have missing data. For example, if you are calculating the average reaction time from hundreds of trials, a few missing data points won’t affect the validity of the mean. However, if you are using a standardised questionnaire that has been validated using complete responses but your participants didn’t answer 3/10 questions, it may not be appropriate to calculate a mean score from the remaining data.</p>
 </div>
 
-## Activity 6: Implausible values
+## Screening Activity 6: Implausible values
 
 A crucial step of data screening is checking for implausible values. What is implausible depends on the data you've collected! `summary()` can also help you out here by looking at the minimum and maximum values.
 
@@ -164,7 +164,7 @@ The maximum value for pre, post, and delay should be 30, as we described at the 
 </div>
 
 
-## Activity 7: Visualising implausible values
+## Screening Activity 7: Visualising implausible values
 
 Whilst `summary()` can be useful, another key step is to visualise the data to check for implausible values.
 
@@ -566,13 +566,13 @@ descriptives3$nonbinary
 
 The output of `describe()` is a little harder to work with in terms of manipulating the table and using the data in subsequent plots and analyses, so we still strongly recommend that you use `summarise()` and `group_by()` for these operations, however, for getting a comprehensive overview of your data, `describe()` is a good function to know about.
 
-## Finished!
+## Screening Finished!
 
 And you're done! This isn't a comprehensive tutorial on every type of dataset you will come across and the concept of tidy data will take practice but hopefully this should give you a good starting point for when you have your own real, messy data.
 
 ## Activity solutions - Screening data
 
-### Activity 1
+### Screening Activity 1
 
 
 <div class='solution'><button>Activity 1</button>

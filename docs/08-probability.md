@@ -1,6 +1,6 @@
 # Probability
 
-## Activity 1: Prep
+## P Activity 1: Prep
 
 The first half of this chapter doesn't contain any coding, instead, we're going to recap some core statistical concepts. If you need any additional resources beyond what has been discussed in the lectures, you may find the below useful.
 
@@ -43,14 +43,14 @@ How you tackle probability depends on the type of data/variables you are working
 
 **Ratio** data is very like interval but has a true zero point. With our interval temperature example above, we have been experiencing negative temperatures (-1,-2 degrees) in Glasgow but with ratio data you don't see negative values such as these i.e. you can't be -10 cm tall. 
 
-## Activity 2: Types of data
+## P Activity 2: Types of data
 
 What types of data are the below measurements?
 
-* Time taken to run a marathon (in seconds): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>ratio</option> <option>ordinal</option> <option>interval</option> <option>categorical</option></select>
-* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ordinal</option> <option>interval</option> <option>ratio</option> <option>categorical</option></select>
-* Which Sesame Street character a runner was dressed as: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>ratio</option> <option>interval</option> <option>ordinal</option> <option>categorical</option></select>
-* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ordinal</option> <option>ratio</option> <option>interval</option> <option>categorical</option></select>
+* Time taken to run a marathon (in seconds): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>ordinal</option> <option>ratio</option> <option>categorical</option> <option>interval</option></select>
+* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ordinal</option> <option>ratio</option> <option>categorical</option> <option>interval</option></select>
+* Which Sesame Street character a runner was dressed as: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>ordinal</option> <option>interval</option> <option>categorical</option> <option>ratio</option></select>
+* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>ordinal</option> <option>ratio</option> <option>categorical</option> <option>interval</option></select>
 
 ### Probability distributions
 
@@ -136,9 +136,9 @@ As with any probabilities, real-world data will come close to the normal distrib
 
 Complete the sentences so that they are correct.
 
-* In a normal distribution, the mean, median, and mode <select class='solveme' data-answer='["are all equal"]'> <option></option> <option>are always different</option> <option>are all equal</option> <option>sum to zero</option></select>.
-* In a normal distribution, the further away from the mean an observation is <select class='solveme' data-answer='["the lower its probability of occuring"]'> <option></option> <option>the lower its probability of occuring</option> <option>the higher its probability of occuring</option></select>.
-* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='solveme' data-answer='["is a continuous variable"]'> <option></option> <option>is a categorical variable</option> <option>has three possible values</option> <option>is a continuous variable</option></select>.
+* In a normal distribution, the mean, median, and mode <select class='solveme' data-answer='["are all equal"]'> <option></option> <option>are always different</option> <option>sum to zero</option> <option>are all equal</option></select>.
+* In a normal distribution, the further away from the mean an observation is <select class='solveme' data-answer='["the lower its probability of occuring"]'> <option></option> <option>the higher its probability of occuring</option> <option>the lower its probability of occuring</option></select>.
+* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='solveme' data-answer='["is a continuous variable"]'> <option></option> <option>has three possible values</option> <option>is a categorical variable</option> <option>is a continuous variable</option></select>.
 
 ## Activity 4: Distribution test
 
@@ -398,9 +398,9 @@ And that's it! The key concepts to take away from this chapter are that differen
 
 For example, if you want to compare whether the scores from two groups are different, that is, whether they come from different distributions, you can calculate the probability that the scores from group 2 would be in the same distribution as group 1. If this probability is less than 5% (p = .05), you might conclude that the scores were significantly different. That's an oversimplification obviously, but if you can develop a good understanding of probability distributions it will stand you in good stead for the rest of the statistics content.  
 
-## Activity solutions
+## P Activity solutions
 
-### Activity 6
+### P Activity 6
 
 
 <div class='solution'><button>Solution</button>
@@ -413,7 +413,7 @@ For example, if you want to compare whether the scores from two groups are diffe
 </div>
 
 
-### Activity 7
+### P Activity 7
 
 
 <div class='solution'><button>Solution</button>
@@ -426,7 +426,7 @@ For example, if you want to compare whether the scores from two groups are diffe
 </div>
 
 
-### Activity 8
+### P Activity 8
 
 
 <div class='solution'><button>Solution</button>
@@ -439,7 +439,7 @@ For example, if you want to compare whether the scores from two groups are diffe
 </div>
 
 
-### Activity 10
+### P Activity 10
 
 
 <div class='solution'><button>Solution</button>
@@ -452,7 +452,7 @@ pnorm(q = 176.2, mean = 163.8, sd = 6.931, lower.tail = FALSE)
 </div>
 
 
-### Activity 11
+### P Activity 11
 
 
 <div class='solution'><button>Solution</button>
@@ -465,7 +465,7 @@ pnorm(q = 181.12, mean = 176.2, sd = 6.748, lower.tail = FALSE)
 </div>
 
 
-### Activity 12
+### P Activity 12
 
 
 <div class='solution'><button>Solution</button>
@@ -478,7 +478,7 @@ pnorm(q = 181.12, mean = 163.8, sd = 6.931, lower.tail = TRUE)
 </div>
 
 
-### Activity 13
+### P Activity 13
 
 
 <div class='solution'><button>Solution</button>

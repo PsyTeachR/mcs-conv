@@ -29,7 +29,7 @@ To actually carry out a correlation is very simple and we will show you that tod
 
 **Note:** When dealing with correlations you should always refer to relationships and not predictions. In a correlation, X does not predict Y, that is regression which you will cover in later in this course. In a correlation, all we can say is whether X and Y are related. 
 
-## Activity 1: Set-up Correlation
+## Correlation Activity 1: Set-up 
 
 In this chapter we will use the examples in Miller and Haden (2013), Chapter 11, looking at the relationship between four variables: reading ability, intelligence (IQ), the number of minutes per week spent reading at home (Home); and the number of minutes per week spent watching TV at home (TV). You can see in this situation that it would be unethical to manipulate these variables so measuring them as they exist in the environment is most appropriate; hence the use of correlations.
 
@@ -40,7 +40,7 @@ In this chapter we will use the examples in Miller and Haden (2013), Chapter 11,
 * If you are working on your own computer, install the packages `Hmisc`, `car`, and `broom`. Remember **do not install packages on university computers, they are already installed**.
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `broom`, `car`, `lsr`, `Hmisc`, and `tidyverse` (in that order) using the `library()` function and loads the data into an object named `mh` using `read_csv()`
 
-## Activity 2: Look at your data
+## Correlation Activity 2: Look at your data
 
 * Look at your data, you can do this by clicking on the object in the environment, or using `summary(mh)` or `head(mh)`. 
 
@@ -132,7 +132,7 @@ The QQ-plot includes a **confidence envelope** (the blue dotted lines). The simp
 
 In order to assess linearity and homoscedasticity, we can create a scatterplot using `ggplot2`. 
 
-## Scatterplot
+## Correlation Scatterplot
 
 The `ggplot2` code is very similar to what you have already encountered with the bar chart and violin-boxplot. The first line of data sets up the base of the plot and we specify that we wish to display `Abil` on the x-axis, `IQ` on the y-axis, and use the dataset `mh`. 
 
@@ -164,7 +164,7 @@ Many students become fixated with needing a 'perfect' dataset that follows an ex
 
 Look at the scatterplot and think back to the lecture, how would you describe this correlation in terms of direction and strength? 
 
-## Activity 4: Descriptive statistics
+## Correlation Activity 4: Descriptive statistics
 
 Many researchers (and indeed members of the School of Psychology!) disagree as to whether you need to report descriptive statistics such as the mean and SD for a correlation. The argument against reporting them is that the scatterplot is actually the descriptive of the correlation that you would use to describe the potential relationship in regards to your hypothesis. 
 
@@ -190,7 +190,7 @@ descriptives%>%
 ```
 
 
-## Activity 5: Correlation
+## Correlation Activity 5: Run the correlation
 
 Finally we will run the correlation using the `cor.test()` function.  Remember that for help on any function you can type `?cor.test` in the console window.  The `cor.test()` function requires:
 
@@ -218,7 +218,7 @@ results <- results %>% # take the object results and then
   tidy()              # tidy it up
 ```
 
-## Activity 6: Interpreting the correlation 
+## Correlation Activity 6: Interpreting the correlation 
 
 You should now have a tibble called `results` that gives you the output of the correlation between Reading Ability and IQ for the school children measured in Miller and Haden (2013) Chapter 11. All that is left to do now, is interpret the output. 
 
@@ -242,7 +242,7 @@ cat("
 ```
 `r unhide()`  
 
-## Activity 7: Write-up
+## Correlation Activity 7: Write-up
 
 Copy and paste the below **exactly** into **white space** in your R Markdown document and then knit the file. 
 
@@ -254,7 +254,7 @@ It will magically transform into:
 
 >The mean IQ score was `r round(pluck(descriptives$IQ_mean),2)`(`r round(pluck(descriptives$IQ_SD),2)`) and the mean reading ability score was `r round(pluck(descriptives$Abil_mean),2)`(`r round(pluck(descriptives$Abil_SD),2)`). A Pearson\`s correlation found a significant, medium positive correlation between the two variables (r (`r results$parameter`) = `r round(results$estimate, 2)`, *p* = `r round(results$p.value, 3)`)
 
-## Activity 8: Scatterplot matrix
+## Correlation Activity 8: Scatterplot matrix
 
 Above we ran one correlation and if we wanted to do a different correlation then we would have to edit the `cor.test()` line and run it again. However, when you have lots of variables in a dataset, to get a quick overview of patterns, one thing you might want to do is run all the correlations at the same time or create a matrix of scatterplots at the one time. You can do this with functions from the `Hmisc` and `lsr` packages. We will use the Miller and Haden data here again which you should still have in a tibble called `mh`. 
 
@@ -270,7 +270,7 @@ Notice something wrong? `pairs()` will create scatterplots for **all** variables
 * Overwrite `mh` and use `select()` to get rid of the `Participant` column then run `pairs(mh)` again.
 
 
-## Activity 9: Multiple correlations
+## Correlation Activity 9: Multiple correlations
 
 To perform multiple correlations in one go, we will use the `correlate()` function from the `lsr` package. If you look at the help documentation for `correlate()` you will see that it takes the following form:
 
@@ -335,13 +335,13 @@ cat("1. Negative correlations are denoted by a negative r value.
 <br>  
 
 
-## Finished!
+## Correlation Finished!
 
 Well done! You can now add correlations to the list of things you can do in R. If you have any questions, please post them on Teams.
 
 ## Activity solutions - Correlation
 
-### Activity 1
+### Correlation Activity 1
 
 `r hide("Activity 1")`
 ```{r eval=FALSE}
@@ -357,7 +357,7 @@ mh <- read_csv("MillerHadenData.csv")
 **click the tab to see the solution**
 <br>
 
-### Activity 3
+### Correlation Activity 3
 
 `r hide("Activity 3")`
 ```{r eval = FALSE}
@@ -379,7 +379,7 @@ ggplot(data = mh, aes(x = Abil, y = IQ)) +
 **click the tab to see the solution**
 <br>
 
-### Activity 4
+### Correlation Activity 4
 
 `r hide("Activity 4")`
 ```{r}
@@ -394,7 +394,7 @@ descriptives <- summarise(mh,
 **click the tab to see the solution**
 <br>
 
-### Activity 5
+### Correlation Activity 5
 
 `r hide("Activity 5")`
 ```{r}
@@ -406,7 +406,7 @@ results <- cor.test(mh$Abil, mh$IQ, method = "pearson", alternative = "two.sided
 <br>
 
 
-### Activity 8
+### Correlation Activity 8
 
 `r hide("Activity 8")`
 ```{r a8, eval=FALSE}

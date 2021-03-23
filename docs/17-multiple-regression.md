@@ -28,7 +28,7 @@ We want to estimate two slopes relating screen time to well-being, one for girls
 
 But the expressive power of regression allows us to do this all within a single model. As the [Bishop blog showed](http://deevybee.blogspot.com/2017/11/anova-t-tests-and-regression-different.html), *an independent groups t-test is just a special case of ordinary regression with a single categorical predictor; ANOVA is just a special case of regression where all predictors are categorical.*  So although we can express any ANOVA design using regression, the converse is not true: we cannot express every regression design in ANOVA. Regression allows us to have any combination of continuous and categorical predictors in the model. The only inconvenience with running ANOVA models as regression models is that you have to take care in how you numerically code the categorical predictors.
 
-## Activity 1: Set-up Multiple Regression
+## MR Activity 1: Set-up
 
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.    
 * Open a new R Markdown document and save it in your working directory. Call the file "Multiple Regression".    
@@ -39,7 +39,7 @@ But the expressive power of regression allows us to do this all within a single 
 
 
 
-## Activity 2: Look at the data
+## MR Activity 2: Look at the data
 
 Take a look at the resulting tibbles `pinfo`, `wellbeing`, and `screen`.  The `wellbeing` tibble has information from the WEMWBS questionnaire; `screen` has information about screen time use on weekends (variables ending with `we`) and weekdays (variables ending with `wk`) for four types of activities: using a computer (variables starting with `Comph`; Q10 on the survey), playing video games (variables starting with `Comp`; Q9 on the survey), using a smartphone (variables starting with `Smart`; Q11 on the survey) and watching TV (variables starting with `Watch`; Q8 on the survey).  If you want more information about these variables, look at the items 8-11 on pages 4-5 of the the [PDF version of the survey on the OSF website](https://osf.io/82ybd/).
 
@@ -52,7 +52,7 @@ Take a look at the resulting tibbles `pinfo`, `wellbeing`, and `screen`.  The `w
 * Run `summary()` on the three data-sets. Are there any missing data points? <select class='solveme' data-answer='["No"]'> <option></option> <option>Yes</option> <option>No</option></select>
 
 
-## Activity 3: Compute the well-being score for each respondent
+## MR Activity 3: Compute the well-being score for each respondent
 
 The WEMWBS well-being score is simply the *sum* of all the items. 
 
@@ -120,7 +120,7 @@ ggplot(wemwbs, aes(tot_wellbeing)) + geom_histogram()
 
 The distribution of well-being scores is <select class='solveme' data-answer='["negatively skewed"]'> <option></option> <option>symmetric</option> <option>negatively skewed</option> <option>positively skewed</option></select>.
 
-## Activity 4: Visualise the relationship
+## MR Activity 4: Visualise the relationship
 
 Let's take a quick look at the relationship between screen time (for the four different technologies) and measures of well-being.  Here is code to do this. 
 
@@ -161,7 +161,7 @@ The graph makes it evident that smartphone use of more than 1 hour per day is as
 
 In the next step, we are going to focus in on the smartphone/well-being relationship.
 
-## Activity 5: Smartphone and well-being for boys and girls
+## MR Activity 5: Smartphone and well-being for boys and girls
 
 For this analysis, we are going to collapse weekday and weekend use for smartphones.
 
@@ -191,7 +191,7 @@ For this analysis, we are going to collapse weekday and weekend use for smartpho
 
 
 
-## Activity 6: Mean-centering variables
+## MR Activity 6: Mean-centering variables
 
 As discussed in the lecture, When you have continuous variables in a regression, it is often sensible to transform them by *mean centering*.  You mean center a predictor `X` simply by subtracting the mean (`X_centered = X - mean(X)`). This has two useful consequences:
 
@@ -208,7 +208,7 @@ For categorical predictors with two levels, these become coded as -.5 and .5 (be
 
 
 
-## Activity 7: Visualise the relationship
+## MR Activity 7: Visualise the relationship
 
 * Reverse-engineer the below plot. Calculate mean well-being scores for each combination of `male` and `tothours`, and then create a scatterplot plot that includes separate regression lines for each gender.
 * You may find it useful to refer to the Visualisation chapter.
@@ -237,7 +237,7 @@ Girls show lower overall well-being compared to boys.  In addition, the slope fo
 </div>
 
 
-## Activity 8: Running the regression
+## MR Activity 8: Running the regression
 
 Now we're going to see if there is statistical support for our above interpretation of the graph.
 
@@ -272,7 +272,7 @@ Then use `summary()` to view the results and store this in an object called `mod
 
 * What is the most reasonable interpretation of these results? <select class='solveme' data-answer='["smartphone use was more negatively associated with wellbeing for girls than for boys"]'> <option></option> <option>smartphone use harms girls more than boys</option> <option>smartphone use harms boys more than girls</option> <option>there is no evidence for gender differences in the relationship between smartphone use and well-being</option> <option>smartphone use was more negatively associated with wellbeing for girls than for boys</option></select>
 
-## Activity 9: Assumption checking
+## MR Activity 9: Assumption checking
 
 Now it's time to test those pesky assumptions. The assumptions for multiple regression are the same as simple regression but there is one additional assumption, that of multicollinearity, the idea that predictor variables should not be too highly correlated.
 
@@ -315,7 +315,7 @@ There are various rules of thumb, but most converge on a VIF of above 2 - 2.5 fo
 vif(mod)
 ```
 
-## Activity 10: Power and effect size
+## MR Activity 10: Power and effect size
 
 Finally, we'll calculate power and effect size as usual.
 
@@ -330,7 +330,7 @@ Finally, we'll calculate power and effect size as usual.
 * What is the observed effect size for the study to 2 decimal places? <input class='solveme nospaces' size='0.10' data-answer='[".10"]'/>  
 * Is the study sufficiently powered? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
 
-## Activity 11: Write-up
+## MR Activity 11: Write-up
 
 Now, copy and paste the below code into **white-space** and then knit the document. Note that the p-values are entered manually because of the APA `p < .001` formatting.
 
@@ -341,7 +341,7 @@ All continuous predictors were mean-centered and deviation coding was used for c
 
 > All continuous predictors were mean-centered and deviation coding was used for categorical predictors. The results of the regression indicated that the model significantly predicted course engagement (F(3, 7.1029\times 10^{4}) = 2450.89, p < .001, Adjusted R2 = 0.09, f2 = .63), accounting for 9% of the variance. Total screen time was a significant negative predictor of well-being scores (β = -0.77, p < .001, as was gender (β = 5.14, p < .001, with girls having lower well-being scores than boys. Importantly, there was a significant interaction between screen time and gender (β = 0.45, p < .001), smartphone use was more negatively associated with well-being for girls than for boys.
 
-## Finished!
+## MR Finished!
 
 And you're done! Not just with this week but with the R component of RM2! Well, aside from the final portfolio worksheet. The progress that you have made is truly astonishing. Even if you struggled with R and haven't quite understood every single line of code we've shown, what you're capable of with data wrangling and visualisation alone makes you some of the most highly competitive psychology graduates in the world. 
 
@@ -352,7 +352,7 @@ Regardless of whether you continue with quantitative methods and using R, rememb
 
 ## Activity solutions - Multiple regression
 
-### Activity 3
+### MR Activity 3
 
 <div class="solution"><button>Activity 3</button>
 
@@ -371,7 +371,7 @@ wemwbs %>% summarise(mean = mean(tot_wellbeing),
 ```
 </div>
 
-### Activity 5
+### MR Activity 5
 
 <div class="solution"><button>Activity 5</button>
 
@@ -388,7 +388,7 @@ smart_wb <- smarttot %>%
 ```
 </div>
 
-### Activity 6
+### MR Activity 6
 
 <div class="solution"><button>Activity 6</button>
 
@@ -404,7 +404,7 @@ smart_wb <- smarttot %>%
 ```
 </div>
 
-### Activity 7
+### MR Activity 7
 
 <div class="solution"><button>Activity 7</button>
 
@@ -422,7 +422,7 @@ ggplot(smart_wb_gen, aes(tothours, mean_wellbeing, color = male)) +
 ```
 </div>
 
-### Activity 8
+### MR Activity 8
 
 <div class="solution"><button>Activity 8</button>
 
@@ -435,7 +435,7 @@ mod_summary <- summary(mod)
 ```
 </div>
 
-### Activity 9
+### MR Activity 9
 
 <div class="solution"><button>Activity 9</button>
 
@@ -444,7 +444,7 @@ qqPlot(mod$residuals)
 ```
 </div>
 
-### Activity 10
+### MR Activity 10
 
 <div class="solution"><button>Activity 9</button>
 
