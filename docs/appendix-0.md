@@ -76,7 +76,7 @@ Click `Help - Check for updates`
 
 If an update is available, it will prompt you to download it and you can install it as usual.
 
-### Updating packages
+## Updating packages
 
 Package developers will occasionally release updates to their packages. This is typically to add in new functions to the package, or to fix or amend existing functions. **Be aware that some package updates may cause your previous code to stop working**. This does not tend to happen with minor updates to packages, but occasionally with major updates, you can have serious issues if the developer has made fundamental changes to how the code works. For this reason, we recommend updating all your packages once at the beginning of each academic year (or semester) - don't do it before an assessment or deadline just in case!
 
@@ -90,25 +90,9 @@ install.packages("tidyverse")
 To update multiple packages, or indeed all packages, RStudio provides helpful tools. Click `Tools - Check for Package Updates`. A dialogue box will appear and you can select the packages you wish to update. Be aware that if you select all packages, this may take some time and you will be unable to use R whilst the process completes.
 
 <div class="figure" style="text-align: center">
-<img src="images/update_rstudio.jpg" alt="Updating packages with RStudio" width="100%" />
+<img src="images/update_packages.jpg" alt="Updating packages with RStudio" width="100%" />
 <p class="caption">(\#fig:img-updateall)Updating packages with RStudio</p>
 </div>
-
-### Updating R
-
-Finally, you may also wish to update R itself. The key thing to be aware of is that when you update R, if you just download the latest version from the website, you will lose all your packages. The easiest way to update R and not cause yourself a huge headache is to use the `installr` package. When you use the `updateR()` function, a series of dialogue boxes will appear. These should be fairly self-explanatory but there is a [full step-by-step guide available](https://www.r-statistics.com/2015/06/a-step-by-step-screenshots-tutorial-for-upgrading-r-on-windows/) for how to use `installr`, the important bit is to select "Yes" when it asked if you would like to copy your packages from the older version of R.
-
-
-```r
-# Install the installr package
-install.packages("installr")
-
-# Load installr
-library(installr)
-
-# Run the update function
-updateR()
-```
 
 Occasionally, you might have a few problem packages that seemingly refuse to update, for me, `rlang` and `vctrs` cause me no end of trouble. These aren't packages that you will likely every explicitly load, but they're required beneath the surface for R to do things like knit your Markdown files etc.
 
@@ -126,6 +110,22 @@ uninstall.packages("package_name")
 # Then install the package fresh
 
 install.packages("package")
+```
+
+## Updating R
+
+Finally, you may also wish to update R itself. The key thing to be aware of is that when you update R, if you just download the latest version from the website, you will lose all your packages. The easiest way to update R and not cause yourself a huge headache is to use the `installr` package. When you use the `updateR()` function, a series of dialogue boxes will appear. These should be fairly self-explanatory but there is a [full step-by-step guide available](https://www.r-statistics.com/2015/06/a-step-by-step-screenshots-tutorial-for-upgrading-r-on-windows/) for how to use `installr`, the important bit is to select "Yes" when it asked if you would like to copy your packages from the older version of R.
+
+
+```r
+# Install the installr package
+install.packages("installr")
+
+# Load installr
+library(installr)
+
+# Run the update function
+updateR()
 ```
 
 As always, if you're having issues, please ask on Teams or book into a GTA session.
@@ -578,8 +578,8 @@ rnorm(10)
 ```
 
 ```
-##  [1]  0.08041287 -1.65841662  0.32633038  0.65066858  0.52561770 -0.36249692
-##  [7] -0.06781541  0.30778080 -0.37371808 -0.49059406
+##  [1]  0.9288365 -1.9366264 -0.6425775 -0.6590575 -0.5952749 -0.4282233
+##  [7] -0.1814361 -0.3611768 -0.5939354 -0.2385948
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -677,8 +677,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "e" "y" "l" "g" "q" "j" "k" "h" "f" "o" "m" "v" "b" "u" "p" "n" "r" "z" "i"
-## [20] "a" "w" "s" "t" "d" "x" "c"
+##  [1] "s" "d" "x" "z" "r" "m" "b" "c" "f" "u" "h" "q" "o" "p" "v" "t" "k" "l" "g"
+## [20] "a" "y" "j" "i" "n" "e" "w"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -713,18 +713,18 @@ tibble(Y = rnorm(10))
 
 ```
 ## # A tibble: 10 x 1
-##          Y
-##      <dbl>
-##  1 -1.44  
-##  2 -1.21  
-##  3  0.592 
-##  4 -0.0665
-##  5  1.95  
-##  6 -0.473 
-##  7  0.630 
-##  8  0.259 
-##  9 -0.353 
-## 10 -3.13
+##         Y
+##     <dbl>
+##  1  1.58 
+##  2 -0.218
+##  3  0.158
+##  4  1.17 
+##  5 -0.558
+##  6 -0.138
+##  7  0.524
+##  8 -1.07 
+##  9 -1.26 
+## 10  1.30
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -741,16 +741,16 @@ tibble(Y = c(rnorm(5, mean = -10),
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1  -8.80
-##  2 -10.9 
-##  3 -10.9 
-##  4  -9.05
-##  5 -10.9 
-##  6  20.2 
-##  7  19.5 
-##  8  21.3 
-##  9  21.1 
-## 10  19.8
+##  1  -9.62
+##  2  -9.91
+##  3 -10.2 
+##  4 -11.1 
+##  5 -10.6 
+##  6  18.8 
+##  7  20.0 
+##  8  20.0 
+##  9  20.2 
+## 10  20.2
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -812,16 +812,16 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A     -10.5 
-##  2 A     -10.6 
-##  3 A     -10.4 
-##  4 A      -8.62
-##  5 A     -10.4 
-##  6 B      20.7 
-##  7 B      21.6 
-##  8 B      19.0 
-##  9 B      18.3 
-## 10 B      19.3
+##  1 A     -11.9 
+##  2 A     -10.3 
+##  3 A      -9.56
+##  4 A      -9.50
+##  5 A      -8.76
+##  6 B      20.0 
+##  7 B      19.6 
+##  8 B      19.2 
+##  9 B      18.8 
+## 10 B      21.7
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -876,11 +876,11 @@ my_data_means
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      20.8
-## 2 B     -17.8
+## 1 A      21.0
+## 2 B     -19.5
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -17.8 from the first group mean of 20.8, to get a single value, the difference: 38.5.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -19.5 from the first group mean of 21, to get a single value, the difference: 40.5.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -893,7 +893,7 @@ vec
 ```
 
 ```
-## [1]  20.75003 -17.76021
+## [1]  21.00915 -19.46072
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -904,7 +904,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 38.51024
+## [1] 40.46987
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -915,7 +915,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 38.51024
+## [1] 40.46987
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -928,7 +928,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 38.51024
+## [1] 40.46987
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -943,7 +943,7 @@ my_data_means %>%
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  20.8 -17.8
+## 1  21.0 -19.5
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -959,7 +959,7 @@ my_data_means %>%
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  20.8 -17.8  38.5
+## 1  21.0 -19.5  40.5
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -975,7 +975,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 38.51024
+## [1] 40.46987
 ```
 
 
@@ -1164,8 +1164,8 @@ ten_samples
 ```
 
 ```
-##  [1]  0.14615548 -0.18881914 -0.03233676  0.05478634  0.06444240  0.16551170
-##  [7] -0.03325261 -0.02194457  0.10627511  0.07696680
+##  [1]  0.127797233 -0.012588914  0.017663254  0.048494753  0.007956367
+##  [6]  0.043671924  0.054945852 -0.043432002  0.024452080  0.011047098
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
