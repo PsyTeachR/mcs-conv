@@ -1,6 +1,6 @@
 # (APPENDIX) Appendices {-} 
 
-# Exporting files from the server
+## Exporting files from the server
 
 If you are using the R server, you may need to export files to share them with other people or submit them for your assignments.
 
@@ -9,19 +9,21 @@ If you are using the R server, you may need to export files to share them with o
 * If you do not have R installed, DO NOT try to open it on your computer. If you do, it will open in Word, Endnote or similar, and it may corrupt your code. Only open the file if you have R and R Studio installed.  
 * If you want to double check that this file is definitely the right one to submit for an assignment, you can re-upload it to the server and open it again to make sure it has the answers in it.  
 
-# Installing R on your computer
+## Installing R 
 
-## Why should I install R on my computer?
+### Why should I install R on my computer?
 
-The R Server cuts down on a lot of installation problems and it means that you have all the packages and functions you need already installed. However, it requires an internet connection to use and when it comes time to submit your R assessments, if you don't have R on your computer it means that you won't be able to open the files you download from the server to check they're ok before you submit them.
+The R Server is cuts down on a lot of installation problems and it means that you have all the packages and functions you need already installed. However, it requires an internet connection to use and additional when it comes time to submit your R assessments, if you don't have R on your computer it means that you won't be able to open the files you download from the server to check they're ok before you submit them.
 
-## Windows
+There are some great detailed walkthrough videos by [Danielle Narvarro on YouTube](https://www.youtube.com/playlist?list=PLRPB0ZzEYegOZivdelOuEn-R-XUN-DOjd) re: how to install R on both Windows and Mac.
+
+### Windows
 
 If you are using Windows, you should download and install the following:
 
-* [R](https://cran.r-project.org/bin/windows/base/)  
-* [R Studio](https://rstudio.com/products/rstudio/download/#download)  
-* [RTools](https://cran.r-project.org/bin/windows/Rtools/)  
+* [R](https://cran.r-project.org/bin/windows/base/)
+* [R Studio](https://rstudio.com/products/rstudio/download/#download)
+* [RTools](https://cran.r-project.org/bin/windows/Rtools/)
 
 Once you've installed all three programs, restart your computer. Then, open RStudio (not R) and run the below code:
 
@@ -30,9 +32,9 @@ Once you've installed all three programs, restart your computer. Then, open RStu
 install.packages("tidyverse")
 ```
 
-This will install the `tidyverse` package on your computer. You can still use the server to do all your work, but having R on your computer will make it easier to view the files. If you would like to work from your computer, you will also need to install the other packages we use, for example `lsr`, `psych`, `babynames` etc.
+This will install the `tidyverse` package on your computer. If you have any problems installing R, please book into a GTA session as they should be able to help you with any installation problems.
 
-## Mac
+### Mac
 
 If you are using a Mac, you should download and install the following:
 
@@ -40,9 +42,9 @@ If you are using a Mac, you should download and install the following:
 * [R Studio](https://rstudio.com/products/rstudio/download/#download)  
 * [XQuartz](https://www.xquartz.org/)  
 
-There have been a number of issues installing R on Macs. We recommend you watch this [walkthrough video](https://www.youtube.com/watch?v=90IdULVGmYY).  
+If you have any issues installing R on your Mac, first, we recommend that you watch the [walkthrough by Danielle Navarro](https://www.youtube.com/watch?v=ay25o485YXs&list=PLRPB0ZzEYegOZivdelOuEn-R-XUN-DOjd&index=1&t=113s). 
 
-If you are using a Mac with the Catalina OS, we also recommend you read this [troubleshooting guide](https://psyteachr.github.io/FAQ/installing-r-and-rstudio.html#i-am-using-macos-10.15-catalina)  
+If you have further issues on Mac, you may find this video helpful [walkthrough video](https://www.youtube.com/watch?v=90IdULVGmYY). Additionally, if you are using a Mac with the Catalina OS, we also recommend you read this [troubleshooting guide](https://psyteachr.github.io/FAQ/installing-r-and-rstudio.html#i-am-using-macos-10.15-catalina)
 
 Once you've installed all three programs, restart your computer. Then, open RStudio (not R) and run the below code:
 
@@ -51,13 +53,84 @@ Once you've installed all three programs, restart your computer. Then, open RStu
 install.packages("tidyverse")
 ```
 
-This will install the `tidyverse` package on your computer. You can still use the server to do all your work, but having R on your computer will make it easier to view the files. If you would like to work from your computer, you will also need to install the other packages we use, for example `lsr`, `psych`, `babynames` etc.
+This will install the `tidyverse` package on your computer. If you have any problems installing R, please book into a GTA session as they should be able to help you with any installation problems.
 
-## Chromebooks
+### Chromebooks
 
-Please note that you cannot currently install R on a Chromebook, please continue to use the R Server.
+Please note that you cannot currently install R on a Chromebook, please use the R Server.
 
-# Additional R resources
+## Updating R, RStudio, and packages
+
+From time-to-time, updated version of R, RStudio, and the packages you use (e.g., ggplot) will become available. Remember that each of these are separate, so they each have a different process and come with different considerations. We recommend updating to the latest version of all three at the start of each academic year.
+
+### Updating RStudio
+
+RStudio is the easiest component to update. Typically, updates to RStudio won't affect your code, instead they add in new features, like spell-check or upgrades to what RStudio can do. There's usually very little downside to updating RStudio and it's easy to do.
+
+Click `Help - Check for updates`
+
+<div class="figure" style="text-align: center">
+<img src="images/update_rstudio.jpg" alt="Updating RStudio" width="100%" />
+<p class="caption">(\#fig:img-updaterstudio)Updating RStudio</p>
+</div>
+
+If an update is available, it will prompt you to download it and you can install it as usual.
+
+### Updating packages
+
+Package developers will occasionally release updates to their packages. This is typically to add in new functions to the package, or to fix or amend existing functions. **Be aware that some package updates may cause your previous code to stop working**. This does not tend to happen with minor updates to packages, but occasionally with major updates, you can have serious issues if the developer has made fundamental changes to how the code works. For this reason, we recommend updating all your packages once at the beginning of each academic year (or semester) - don't do it before an assessment or deadline just in case!
+
+To update an individual package, the easiest way is to use the `install.packages()` function, as this always installs the most recent version of the package.
+
+
+```r
+install.packages("tidyverse")
+```
+
+To update multiple packages, or indeed all packages, RStudio provides helpful tools. Click `Tools - Check for Package Updates`. A dialogue box will appear and you can select the packages you wish to update. Be aware that if you select all packages, this may take some time and you will be unable to use R whilst the process completes.
+
+<div class="figure" style="text-align: center">
+<img src="images/update_rstudio.jpg" alt="Updating packages with RStudio" width="100%" />
+<p class="caption">(\#fig:img-updateall)Updating packages with RStudio</p>
+</div>
+
+### Updating R
+
+Finally, you may also wish to update R itself. The key thing to be aware of is that when you update R, if you just download the latest version from the website, you will lose all your packages. The easiest way to update R and not cause yourself a huge headache is to use the `installr` package. When you use the `updateR()` function, a series of dialogue boxes will appear. These should be fairly self-explanatory but there is a [full step-by-step guide available](https://www.r-statistics.com/2015/06/a-step-by-step-screenshots-tutorial-for-upgrading-r-on-windows/) for how to use `installr`, the important bit is to select "Yes" when it asked if you would like to copy your packages from the older version of R.
+
+
+```r
+# Install the installr package
+install.packages("installr")
+
+# Load installr
+library(installr)
+
+# Run the update function
+updateR()
+```
+
+Occasionally, you might have a few problem packages that seemingly refuse to update, for me, `rlang` and `vctrs` cause me no end of trouble. These aren't packages that you will likely every explicitly load, but they're required beneath the surface for R to do things like knit your Markdown files etc.
+
+If you try to update a package and get an error message that says something like `Warning in install.packages : installation of package ‘vctrs’ had non-zero exit status` or perhaps `Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) :  namespace 'rlang' 0.4.9 is being loaded, but >= 0.4.10 is required` one solution I have found is to manually uninstall the package, restart R, and then install the package new, rather than trying to update an existing version. The `installr` package also has a useful function for uninstalling packages.
+
+
+```r
+# Load installr
+library(installr)
+
+# Uninstall the problem package
+uninstall.packages("package_name")
+
+# Then restart R using session - restart R
+# Then install the package fresh
+
+install.packages("package")
+```
+
+As always, if you're having issues, please ask on Teams or book into a GTA session.
+
+## Additional R resources
 
 If you would like additional practice, you can check out the other UofG PsyTeachR course books. 
 
@@ -75,7 +148,7 @@ We also highly recommend the following, they will help practice your data wrangl
 * [Data Vizualisation](https://socviz.co/) - this is an entire book on data visualisation and goes into detail on how to take `ggplot` to its limits. 
 
 
-# Comparing two correlations
+## Comparing two correlations
 
 Sometimes you will need or want to statistically compare the strength of two correlation coefficients to help determine whether they are statistically different (rather than just comparing r values). For this set of analyses you will need to install and load the `cocor` package as well as the `tidyverse` and `lsr`.
 
@@ -133,7 +206,7 @@ dat_list <- list(sample1 = as.data.frame(sample1),
 
 This is somewhat convoluted but the key takeaway is that if you want to use `cocor` to compare correlations, you need to ensure your data is in a list object and that may require the above transformation.
 
-## Compare two correlations based on two independent groups
+### Compare two correlations based on two independent groups
 
 In this example we want to compare two correlations from two independent groups, i.e., where the participants involved in each correlation are completely different. Let's run the correlations for the full dataset, and then for sample 1 and sample 2 separately.
 
@@ -216,7 +289,7 @@ cocor(formula = ~logic + intelligence.a | logic + intelligence.a,
 
 The full paper by [Diedenhofen and Musch (2015)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0121945#sec003) explains the output in detail, for our purposes, Fisher's z-test tells us that our correlations are not significantly different (z = 1.59, p = .113) and Zou's confidence intervals gives us the CI for the size of the difference between the two correlations (which at -0.0281 - 0.2637 is quite a range and so isn't surprising that the two are not statistically different).
 
-### Visualising two groups correlations
+#### Visualising two groups correlations
 
 Rather than producing two separate scatterplots, it can be useful to display the data from bot groups on the same plot. For the dataset we have, this requires a little bit of wrangling first, if you have all the data from both groups in one object, you could skip step one.
 
@@ -244,7 +317,7 @@ ggplot(full_dat, aes(x = logic, y = intelligence.a,
 </div>
 
 
-## Compare two overlapping correlations based on two dependent groups
+### Compare two overlapping correlations based on two dependent groups
 
 In this example, we want to compare two correlations from two dependent groups (i.e., the participants are the same) and where one of the variables is also the same, i.e., it overlaps.
 
@@ -372,7 +445,7 @@ cocor(formula = ~logic + intelligence.a | logic + intelligence.b,
 
 This produces a large number of tests, the mathematics of which are described in the [`cocor` documentation.](https://cran.r-project.org/web/packages/cocor/cocor.pdf). The `cocor` documentation suggests basing the decision on convergence - in this case all tests indicated the null hypothesis should be retained, i.e., the correlations are not significantly different. For the purposes of writing up such a comparison, [Silver, Hittner & May (2004)]((https://www.tandfonline.com/doi/abs/10.3200/JEXE.71.1.53-70) suggest that Dunn & Clark's performs best so you can report that (z = .94, p = .349) as well as Zou's confidence intervals. 
 
-## Compare two non-overlapping correlations from two dependent groups
+### Compare two non-overlapping correlations from two dependent groups
 
 The final comparison we could make is to compare two non-overlapping (none of the variables are the same) correlations from two dependent groups (the same sample).
 
@@ -422,7 +495,7 @@ cocor(formula = ~logic + intelligence.b | knowledge + intelligence.a,
 
 Again the output produces a number of tests, although in this case they all converge on the conclusion that the null hypothesis should be rejected, i.e., the correlations are significantly different. Again following [Silver et al.](https://www.tandfonline.com/doi/abs/10.1080/00221300309601282), if you need to pick one to report, I'd suggest Dunn and Clark's z with Zou's confidence intervals. 
 
-# Data transformation
+## Data transformation
 
 This section has been adapted from materials made available by [Greg Anderson at Bates College](http://abacus.bates.edu/~ganderso/biology/bio270/homework_files/Data_Transformation.pdf). 
 
@@ -463,11 +536,11 @@ Also see:
   
 Hoaglin, D. C., Mosteller, F., & Tukey, J. W. (1983). *Understanding robust and exploratory data analysis*. New York: Wiley.
 
-# Permutation tests
+## Permutation tests
 
 This section has been adapated from the Level 2 class on permutation tests written by Dr. Phil McAleer. The original [can be viewed here](https://psyteachr.github.io/ug2-practical/permutation-tests-a-skill-set.html).
 
-## Overview
+### Overview
 
 In this week's lab you will perform your first hypothesis test using a procedure known as a **permutation test**. We will help you learn how to do this through building and running data simulation procedures. In order to complete this lab you will require the following skills which we will teach you today:
 
@@ -486,7 +559,7 @@ To many, a lot of statistics must seem a bit like blind faith as it deals with e
 
 We will now take each skill in turn. Be sure to try them all out. It looks a lot of reading but it is mainly just showing you the output of the functions so you can see you are doing it correctly. The key thing is to try them yourselves and don't be scared to change things to see what might happen if you do it slightly differently. We will also ask a couple of questions along the way to make sure you understand the skills.
 
-## Skill 1: Generating Random Numbers
+### Skill 1: Generating Random Numbers
 
 The `base::rnorm()` function generates values from a normal distribution and takes the following arguments:
 
@@ -505,8 +578,8 @@ rnorm(10)
 ```
 
 ```
-##  [1] -0.42518704  1.20936251  1.36443660 -0.36677283  0.27208636  0.02931161
-##  [7] -0.38830658  0.58736041  0.22262313 -0.24034685
+##  [1]  0.08041287 -1.65841662  0.32633038  0.65066858  0.52561770 -0.36249692
+##  [7] -0.06781541  0.30778080 -0.37371808 -0.49059406
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -557,7 +630,7 @@ length(random_numbers)
 ```
 <br>
 
-## Skill 2: Permuting Values
+### Skill 2: Permuting Values
 
 Another thing that is useful to be able to do is to generate **permutations** of values.  
 
@@ -604,8 +677,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "x" "o" "m" "i" "q" "n" "p" "l" "b" "s" "d" "u" "z" "k" "w" "v" "h" "y" "c"
-## [20] "e" "r" "t" "a" "f" "j" "g"
+##  [1] "e" "y" "l" "g" "q" "j" "k" "h" "f" "o" "m" "v" "b" "u" "p" "n" "r" "z" "i"
+## [20] "a" "w" "s" "t" "d" "x" "c"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -625,11 +698,11 @@ If `month.name` contains the names of the twelve months of the year, how many po
 
 <br>
 
-## Skill 3: Creating Tibbles
+### Skill 3: Creating Tibbles
 
 Tables are important because most of the data we want to analyze comes in a table, i.e. tabular form. There are different ways to get tabular data into R for analysis.  One common way is to load existing data in from a data file (for example, using `readr::read_csv()` which you have seen before).  But other times you might want to just type in data directly.  You can do this using the `tibble::tibble()` function. Being able to create a tibble is a useful data analysis skill because sometimes you will want to create some data on the fly just to try certain codes or functions. 
 
-## Entering Data into a Tibble
+### Entering Data into a Tibble
 
 The `tibble()` function takes named arguments - this means that the name you give each argument within the tibble function, e.g. `Y = rnorm(10)` will be the name of the column that appears in the table, i.e. `Y`.  It's best to see how it works through an example.
 
@@ -642,16 +715,16 @@ tibble(Y = rnorm(10))
 ## # A tibble: 10 x 1
 ##          Y
 ##      <dbl>
-##  1  0.0763
-##  2  0.0367
-##  3  0.0367
-##  4 -1.26  
-##  5  1.07  
-##  6  1.50  
-##  7 -0.178 
-##  8  0.197 
-##  9  0.162 
-## 10  1.39
+##  1 -1.44  
+##  2 -1.21  
+##  3  0.592 
+##  4 -0.0665
+##  5  1.95  
+##  6 -0.473 
+##  7  0.630 
+##  8  0.259 
+##  9 -0.353 
+## 10 -3.13
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -668,23 +741,23 @@ tibble(Y = c(rnorm(5, mean = -10),
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1  -8.37
-##  2  -9.76
-##  3  -9.82
-##  4 -11.7 
-##  5  -8.93
-##  6  20.1 
-##  7  19.9 
-##  8  19.8 
-##  9  19.5 
-## 10  18.9
+##  1  -8.80
+##  2 -10.9 
+##  3 -10.9 
+##  4  -9.05
+##  5 -10.9 
+##  6  20.2 
+##  7  19.5 
+##  8  21.3 
+##  9  21.1 
+## 10  19.8
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
 
 But, of course, it would be good to know which population each data point refers to and so we should add some group names. We can do this with some additional trickery using the `rep()` function.
 
-## Repeating Values to Save Typing
+### Repeating Values to Save Typing
 
 Before finalising our table let's learn a little about the base R function, `rep()`.  This is most useful for automatically repeating values in order to save typing.  For instance, if we wanted 20 letter "A"s in a row, we would type:
 
@@ -730,25 +803,25 @@ The best way to learn about this function is to play around with it in the conso
 
 2. `rep(1:5, 5:1)` - <select class='solveme' data-answer='["1 1 1 1 1 2 2 2 2 3 3 3 4 4 5"]'> <option></option> <option>1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</option> <option>5 5 5 5 5 4 4 4 4 3 3 3 2 2 1</option> <option>1 1 1 1 1 2 2 2 2 3 3 3 4 4 5</option> <option>1 1 1 1 1 1 1 1 5 5 5 5 5 5 5</option></select>  
  
-## Bringing it Together in a Tibble
+### Bringing it Together in a Tibble
 
 Now we know `rep()`, we can complete our table of simulated data by combining what we've learned about generating random numbers and repeating values. We want our table to look like this:
 
 
 ```
 ## # A tibble: 10 x 2
-##    group     Y
-##    <chr> <dbl>
-##  1 A     -10.3
-##  2 A     -12.8
-##  3 A     -10.9
-##  4 A     -10.1
-##  5 A     -10.1
-##  6 B      18.8
-##  7 B      20.2
-##  8 B      19.9
-##  9 B      18.8
-## 10 B      20.0
+##    group      Y
+##    <chr>  <dbl>
+##  1 A     -10.5 
+##  2 A     -10.6 
+##  3 A     -10.4 
+##  4 A      -8.62
+##  5 A     -10.4 
+##  6 B      20.7 
+##  7 B      21.6 
+##  8 B      19.0 
+##  9 B      18.3 
+## 10 B      19.3
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -783,7 +856,7 @@ my_data <- tibble(ID = row_number(1:10),
 <br>
 <span style="font-size: 18px; font-weight: bold; color: var(--blue);">Skill 3 out of 6 Complete!</span>
 
-## Skill 4: Computing Differences in Group Means
+### Skill 4: Computing Differences in Group Means
 
 You have already learned how to calculate group means using `group_by()` and `summarise()`. For example, you might want to calculate sample means for a randomly generated dataset like so:
 
@@ -795,13 +868,7 @@ my_data <- tibble(group = rep(c("A", "B"), c(20, 20)),
 my_data_means <- my_data %>%
   group_by(group) %>%
   summarise(m = mean(Y))
-```
 
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```r
 my_data_means
 ```
 
@@ -809,11 +876,11 @@ my_data_means
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      19.5
-## 2 B     -20.9
+## 1 A      20.8
+## 2 B     -17.8
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -20.9 from the first group mean of 19.5, to get a single value, the difference: 40.5.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -17.8 from the first group mean of 20.8, to get a single value, the difference: 38.5.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -826,7 +893,7 @@ vec
 ```
 
 ```
-## [1]  19.51178 -20.93852
+## [1]  20.75003 -17.76021
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -837,7 +904,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 40.45029
+## [1] 38.51024
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -848,7 +915,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 40.45029
+## [1] 38.51024
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -861,7 +928,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 40.45029
+## [1] 38.51024
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -876,7 +943,7 @@ my_data_means %>%
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  19.5 -20.9
+## 1  20.8 -17.8
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -892,7 +959,7 @@ my_data_means %>%
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  19.5 -20.9  40.5
+## 1  20.8 -17.8  38.5
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -908,7 +975,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 40.45029
+## [1] 38.51024
 ```
 
 
@@ -923,7 +990,7 @@ my_data_means %>%
 
 <br>
 
-## Skill 5: Creating Your Own Functions
+### Skill 5: Creating Your Own Functions
 
 In Skills 1 to 4, we have looked at creating and sampling data, storing it in a tibble, and extracting information from that tibble. Now say we wanted to do this over and over again. For instance, we might want to generate 100 random datasets just like the one in Skill 4. It would be a pain to have to type out the `tibble()` function 100 times or even to copy and paste it 100 times.  We'd likely make an error somewhere and it would be hard to read.  To help us, we can create a custom function that performs the action you want; in our case, creating a tibble of random data.  
 
@@ -1063,7 +1130,7 @@ gen_data <- function(n = 20, m1 = 20, m2 = -20) {
 
 <br>
 
-## Skill 6: Replicating Operations
+### Skill 6: Replicating Operations
 
 The last skill you will need for the upcoming lab is knowing how to repeat an action (or expression) multiple times. You saw this in Lab 4 so we will only briefly recap here. Here, we use the  base function `replicate()`.  For instance, say you wanted to calculate the mean from `rnorm(100)` ten times, you could write it like this:
 
@@ -1097,8 +1164,8 @@ ten_samples
 ```
 
 ```
-##  [1]  0.02178270  0.14067827 -0.02261585  0.05784322  0.07343841 -0.03287960
-##  [7] -0.08073310  0.05220377 -0.16377902 -0.05779997
+##  [1]  0.14615548 -0.18881914 -0.03233676  0.05478634  0.06444240  0.16551170
+##  [7] -0.03325261 -0.02194457  0.10627511  0.07696680
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
@@ -1123,7 +1190,7 @@ replicate(1000, hello("Goodbye"))
 
 <br>
 
-## Finished!
+### Finished!
 
 To recap, we have shown you the following six skills:
 
@@ -1136,7 +1203,7 @@ To recap, we have shown you the following six skills:
 
 You will need these skills in the coming lab to help you perform a real **permutation test**. Through these skills and the permutation test you will learn about null hypothesis significance testing. 
 
-## Permutation Tests of Hypotheses
+### Permutation Tests of Hypotheses
 
 A common statistical question when comparing two groups might be, "**Is there a real difference between the group means?**" From this we can establish two contrasting hypotheses: 
 
@@ -1159,7 +1226,7 @@ This logic works because if the null hypothesis is true (there is no difference 
 
 Let's get started!
 
-## Step 1: Load in Add-on Packages and Data {#Ch5InClassQueT1}
+### Step 1: Load in Add-on Packages and Data {#Ch5InClassQueT1}
 
 1.1.  Open a new script and call the `tidyverse` into your library.  
 
@@ -1204,7 +1271,7 @@ Have a look at the resulting tibble, `dat`.
 * The column `group` is your independent variable (IV).
 * The columns `subj_id` is the participant number.
 
-## Step 2: Calculate the Original Mean Difference - $D_{orig}$ {#Ch5InClassQueT2}
+### Step 2: Calculate the Original Mean Difference - $D_{orig}$ {#Ch5InClassQueT2}
 
 We now need to write a pipeline of five functions that calculates the mean difference between the groups in `dat`, Group A minus Group B. Broken down into steps this would be: 
 
@@ -1284,7 +1351,7 @@ is.numeric(d_orig)
 
 So we now have the original difference between the groups stored in `d_orig`. Next we need to create a distribution of all possible differences to see where our original difference lies in this distribution. But first we need to shuffle the `group` letters (A or B) in our dataset and find the difference...a few hundred times!
 
-## Step 3: Permute the Group Labels {#Ch5InClassQueT3}
+### Step 3: Permute the Group Labels {#Ch5InClassQueT3}
 
 3.1.  Create a new function called `permute()` that takes as input a dataset `x` and returns the same dataset transformed such that the group labels (the values in the column `group`) are shuffled: started below for you.  This will require using the `sample()` function within a `mutate()`. You have used `mutate()` twice already today and you saw how to `sample()` **letters** in the PreClass.
 
@@ -1319,7 +1386,7 @@ Now would be an excellent time to spend five minutes as a group recapping what y
 
 Do you understand why? If not, go back to the principles of the permutation test at the start of the lab then read on...
 
-## Step 4: Create the Null-Hypothesis Distribution (NHD) for the Difference {#Ch5InClassQueT4}
+### Step 4: Create the Null-Hypothesis Distribution (NHD) for the Difference {#Ch5InClassQueT4}
 
 Now that we have the original difference and our two functions, one to shuffle group labels and one to calculate the difference between two groups, we need to actually create the distribution of possible differences and see where the original difference lies in it.
 
@@ -1379,7 +1446,7 @@ ggplot(data = tibble(x = NULL), aes(x)) + NULL
 
 Before moving on stop to think about what this means - that the difference between the two original groups is rather uncommon in this permuted distribution, i.e. is in the tails! Again, if unsure, go back to the principles of NHST or discuss it with your tutor!
 
-## Step 5: Compare the Observed Mean Difference to the NHD {#Ch5InClassQueT5}
+### Step 5: Compare the Observed Mean Difference to the NHD {#Ch5InClassQueT5}
 
 If the null hypothesis is false, and there is a real difference between the groups, then the difference in means we observed for the original data (`d_orig`) should be somewhere in either tail of the null-hypothesis distribution we just estimated; it should be an "extreme" value.  How can we test this beyond a visual inspection?
 
@@ -1425,12 +1492,12 @@ p <- NULL
 
 **" The difference between Group A and Group B (M = `XXX`) was found to be have a probability of p = `XXX`. This means that the original mean difference was ...... and the null hypothesis is ....." **
 
-## Finished!
+### Finished!
 
 Well done in completing this lab. Let's recap before finishing. We had two groups, A and B, that we had tested in an experiment. We calculated the mean difference between A and B and wanted to know if this was a significant difference. To test this we created a distribution of all possible differences between A and B using the premise of permutation tests and then found the probability of our original value in that permuted distribution. The more extreme the value in a distribution the more likely that the difference is significant. And that is exactly what we found; an $\alpha < .05$. Next time we will look at using functions and inferential tests to perform this analysis but by understanding the above you now know how probability is determined.
 
 
-# Non-parametric tests
+## Non-parametric tests
 
 First, before Dale Barr shouts at me, it needs to be noted that non-parametric tests are problematic. Because they are based on rank data:
 
@@ -1442,7 +1509,7 @@ Additionally, with large sample sizes the parametric options (t-tests, one-way A
 
 However, the textbooks still teach them and there may be situations in which you are called to perform non-parametric tests, so here we are.
 
-### Two independent groups
+#### Two independent groups
 
 The non-parametric equivalent of a independent-samples t-test is known as the *Mann-Whitney-U* test also referred to as the *Wilcoxon Rank Sum* test. It uses ranked data to test the null hypothesis that the median ranks of two groups are different.
 
@@ -1560,10 +1627,6 @@ wine %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 2 x 4
 ##   temp  median_response min_response max_response
 ##   <fct>           <dbl>        <dbl>        <dbl>
@@ -1635,7 +1698,7 @@ The great thing about this method is because it randomizes the data thousands of
 
 The other way is to use the normal approximation and this is where rather than using the distribution of the data, it assumes that the distribution of the test statistic, so in this case `W`, is normally distributed, and calculates the probability the observed test statistic. Because the normal distribution is smooth, whereas ranked data increases in increments of .5 and 1, this can reduce the p-values so by default a correction is applied to counteract this which is what the continuity correction refers to. 
 
-#### Effect size
+##### Effect size
 
 The effect size for a Mann-wWitney is actually pearson’s R, the same r we use in correlation and is calculated by extracting the z score from the p-value. First, we create a new function to do this for us (from Field et al., 2013) that specifies we want to calculate r for the Mann-Whitney test we stored in `np_test`:
 
@@ -1660,11 +1723,11 @@ rFromWilcox(np_test1, 72)
 ```
 
 
-### APA write-up
+#### APA write-up
 
 > A Mann-Whitney U test found that cold wines recieved significantly higher bitterness ratings than warm wines (**W** = 214.5, **p** <.001, **r** = -.58).
 
-### Spearman's correlations
+#### Spearman's correlations
 
 The `cocor` package comes with a dataset called `aptitude`. This dataset contains scores on four aptitude tests `knowledge`, `logic`, `intelligence.a`, and `intelligence.b` for two separate samples and we'll also load `lsr` for correlations
 
@@ -1797,481 +1860,15 @@ sample1 %>%
 ## intelligence.a       291   291            291            291
 ```
 
-### APA write-up 
+#### APA write-up 
 
 > A Spearman’s correlation found a weak,non-significant, positive correlation (rs (289) = .03, p = .658) between knowledge and logic test scores.
 
-# rtweet
-
-### Packages
-
-In order to run these analyses you will need `tidyverse` for data wrangling,`rtweet` for getting the twitter data, `tidytext` for working with text, `knitr` for tidy tables, and `igraph` and `ggraph` for making pretty network plots.
-
-In order to get data from Twitter you will need to have a twitter account and gain access to Twitter's API. There are instructions [for doing so here](https://rtweet.info/).
-
-
-```r
-library(tidyverse)
-library(knitr)
-library(tidytext)
-library(rtweet)
-library(igraph)
-library(ggraph)
-```
-
-### Hashtag search
-
-We can use rtweet to search for all tweets containing particular words or hashtags. It will return the last 18,000 tweets and only from the last 6-9 days. Be careful, there is a 15 minute time-out which means you can only retrieve 18,000 tweets every 15 minutes (there are various limits on what Twitter allows you to do with the data).
-
-First, let's search for all tweets that contain #GoT and #ForTheThrone.
-
-There are various arguments to the `search_tweets` function, you can specify how many tweets you want to retrive with `n`, whether retweets should be included in the search results with `include_rts` and you can also specify the language of the user's account with `lang`. Note that this doesn't tell you what language the tweets are written in, only that the account language is set to e.g., English, so it's not perfect. For additional options, see the help documentation.
-
-
-
-```r
-tweets <- search_tweets(q = "#GoT OR #ForTheThrone", n = 18000, include_rts = FALSE, lang = "en")
-```
-
-
-
-### Data wrangling
-
-The output of `search_tweets()` is a list which makes it difficult to share. We need to do a little bit of tidying to turn it into a tibble, and additionally there's a lot of data and we don't need it all. I'm also going to add a tweet counter which will help when we move between wide and long-form. `rtweet` provides a huge amount of data, more than we're going to use in this example so have a look through to see what you have access to - there are some great examples of how this data can be used [here](https://mkearney.github.io/nicar_tworkshop/) and [here](https://rud.is/books/21-recipes/index.html) .
-
-In the following code, I have added an identifier column `tweet_number` and then selected `text` (the actual text of the tweets), `created_at` (the timestamp of the tweet), `source` (iphone/android etc), `followers_count` (how many followers the accounts the tweets came from have), and `country` (like `lang`, the is the country specified on the account, not necessarily the country the tweeter is in).
-
-
-```r
-dat <- tweets %>%
-  mutate(tweet_number = row_number())%>%
-  select(tweet_number, text, created_at, source, followers_count, country)%>%
-  as_tibble()
-```
-
-You can <a href="all_data.zip" download>download this file here</a> so that you can reproduce my exact analyses (or you can use your own, but the results will look a bit different).
-
-The first thing we need to do is tidy up the text by getting rid of punctuation, numbers, and links that aren't of any interest to us. We can also remove the hashtags because we don't want those to be included in any analysis. This code uses **regular expressions** which quite frankly make very little sense to me, I have copied and pasted this code from the Tidy Text book.
-
-
-```r
-dat <- dat %>%
-  mutate(text = str_replace_all(text, "[^\x01-\x7F]", ""),
-         text = str_replace_all(text, "#GoT", ""),
-         text = str_replace_all(text, "#ForTheThrone", ""),
-         text = str_replace_all(text, "\\.|[[:digit:]]+", ""),
-         text = str_replace_all(text, "https|amp|t.co", ""))
-```
-
-### Time series
-
-We can plot when the tweets were sent. This is somewhat uninteresting because it's no longer airing, but it's worth highlighting this as a feature. If you were watching live, you could use this to see the spikes in tweets when people are watching each episode live (different timezones will muddle this a little, you could filter by `country` perhaps).
-
-
-
-```r
-ts_plot(tweets, by = "1 hours")
-```
-
-<div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-46-1.png" alt="Time series plot by hour" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-46)Time series plot by hour</p>
-</div>
-
-You can change the time interval with the `by` argument and you can also change the time zone. `ts_plot` creates a `ggplot` object so you can also add the usual ggplot layers to customise apperance. 
-
-
-```r
-ts_plot(tweets, by = "10 mins", tz = "GMT") +
-  theme_minimal()+
-  scale_y_continuous(name = "Number of tweets")
-```
-
-<div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-47-1.png" alt="Time series plot by 10 minute intervals" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-47)Time series plot by 10 minute intervals</p>
-</div>
-
-### Tidy text and word frequencies
-
-First, we can produce frequency plots for words used in all tweets to see which words are used most often in #GoT and #ForTheThrone tweets. To do this, we have to create a tidy dataset, just like we do when working with numerical data. We're going to use the `unnest_tokens` function from `tidytext` which will separate each word on to a new line, something similar to like using `gather` (or `pivot_longer` as it will soon be known). Helpfully, this function will also convert all of our words to lower case which makes them a bit easier to work with.
-
-The second part of the code removes all the stop words. Stop words are words that are commonly used but are of not real interest, for example function words like "the", "a", "it". You can make your own list but `tidytext` helpfully comes with several databases. Look at the help documentation if you want to know more about these or change the defaults.
-
-
-
-```r
-# create tidy text
-dat_token <- dat %>%  
-  unnest_tokens(word, text) %>%
-  anti_join(stop_words, by = "word")
-```
-
-We can plot the 20 most frequent words used in all the tweets.
-
-
-```r
-dat_token%>%
-  na.omit()%>%
-  count(word, sort = TRUE)%>%
-  head(20) %>%
-  mutate(word = reorder(word, n))%>%
-  ggplot(aes(x = word, y = n))+
-  geom_col()+
-  coord_flip()
-```
-
-<div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-49-1.png" alt="Most frequent words" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-49)Most frequent words</p>
-</div>
-
-There's quite a few words here that aren't that helpful to us so it might be best to get rid of them (essentially we're building our own list of stop words).
-
-
-```r
-custom_stop <- c("gameofthrones", "hbo", "season", "game", "thrones", "lol", "tco", "https", "watch", "watching", "im", "amp")
-
-dat_token <- dat_token %>%
-  filter(!word %in% custom_stop)
-```
-
-Now we can try plotting the words again and make them pretty. 
-
-
-```r
-dat_token%>%
-  na.omit()%>%
-  count(word, sort = TRUE)%>%
-  head(20) %>%
-  mutate(word = reorder(word, n))%>%
-  ggplot(aes(x = word, y = n, fill = word))+
-  geom_col(show.legend = FALSE)+
-  coord_flip()+
-  scale_fill_viridis(discrete = TRUE)
-```
-
-<div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-51-1.png" alt="Most frequent words (edited)" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-51)Most frequent words (edited)</p>
-</div>
-
-To be honest, this isn't that interesting because it's so general, it might be more interesting to see how often each of the main characters are being mentioned. 
-
-One problem is that people on the internet are terrible at spelling and we need to have the exact spellings which means that for Daenerys, Jon, and Jaime, the chances that people will have spelled their names wrong is quite high (as my level 2 students who watched me live code the first version of this will attest) so first we're going to correct those. 
-
-
-```r
-dat_token2 <- dat_token %>%
-  mutate(word = recode(word, "khaleesi" = "daenerys",
-                       "dany" = "daenerys",
-                       "jamie" = "jaime",
-                       "john" = "jon"))
-
-characters <- c("jon", "daenerys", "bran", "arya", "sansa", "tyrion", "cersei", "jaime")
-```
-
-Now we can plot a count of how many times each name has been mentioned.
-
-
-```r
-dat_token2 %>%
-  filter(word %in% characters)%>%
-  count(word, sort = TRUE) %>%
-  mutate(word = reorder(word, n))%>%
-  ggplot(aes(x = word, y = n, fill = word)) +
-  geom_col(show.legend = FALSE) +
-  coord_flip()+
-  scale_y_continuous(name = "Number of mentions")+
-  scale_x_discrete(name = "Character")+
-  scale_fill_viridis(discrete = TRUE)
-```
-
-<div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-53-1.png" alt="Frequecy of mentions for each character" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-53)Frequecy of mentions for each character</p>
-</div>
-
-### Bigram analysis
-
-Rather than looking at individual words we can look at what words tend to co-occur. We want to use the data set where we've corrected the spelling so this is going to require us to transform from long to wide and then back to long because the night is dark and full of terror. DID YOU SEE WHAT I DID THERE.
-
-
-```r
-dat_bigram <- dat_token2 %>%
-  group_by(tweet_number) %>%  summarise(text = str_c(word, collapse = " "))%>% # this puts it back into wide-form
-  unnest_tokens(bigram, text, token = "ngrams", n = 2, collapse = FALSE)%>% # and then this turns it into bigrams in a tidy format
-  na.omit()
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```r
-dat_bigram %>%
-  count(bigram, sort = TRUE)%>%
-  head(10)%>%
-  kable(align = "c")
-```
-
-
-
-|      bigram      |  n  |
-|:----------------:|:---:|
-|   freefolk gt    | 165 |
-| togive freefolk  | 164 |
-|    se tvtime     | 103 |
-| watched episode  | 88  |
-|    episode se    | 86  |
-|     ice fire     | 85  |
-|     song ice     | 81  |
-| jonsnow daenerys | 73  |
-|  bracelets fef   | 71  |
-| connected matter | 71  |
-
-Again there's a bit of nonsense here and it's a bit uninteresting but it's worth highlighting this is something you can do. Now that we've got our bigrams we can plot these to see the connections between the different words. First, we're going to use `separate` to put the two words into different columns, then we'll count them up and plot them. If you want more information about this see the [tidytext book online](https://www.tidytextmining.com/ngrams.html) as I am entirely cribbing this from that book. The plot requires the packages `igraph` and `ggraph`.
-
-
-```r
-bigrams_separated <- dat_bigram %>%
-  separate(bigram, c("word1", "word2"), sep = " ")
-
-# new bigram counts:
-bigram_counts <- bigrams_separated %>% 
-  count(word1, word2, sort = TRUE)
-
-bigram_counts
-
-# filter for only relatively common combinations (more than 20 occurances)
-bigram_graph <- bigram_counts %>%
-  filter(n > 20) %>%
-  graph_from_data_frame()
-
-# make a pretty network plot
-
-ggraph(bigram_graph, layout = "fr") +
-  geom_edge_link() +
-  geom_node_point() +
-  geom_node_text(aes(label = name), vjust = 1, hjust = 1)+
-  theme_void()
-```
-
-<div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-55-1.png" alt="Network graph of bigrams" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-55)Network graph of bigrams</p>
-</div>
-
-```
-## # A tibble: 30,134 x 3
-##    word1     word2        n
-##    <chr>     <chr>    <int>
-##  1 freefolk  gt         165
-##  2 togive    freefolk   164
-##  3 se        tvtime     103
-##  4 watched   episode     88
-##  5 episode   se          86
-##  6 ice       fire        85
-##  7 song      ice         81
-##  8 jonsnow   daenerys    73
-##  9 bracelets fef         71
-## 10 connected matter      71
-## # ... with 30,124 more rows
-```
-
-I am still figuring out how to customise the aesthetics of `ggraph`. 
-
-### Sentiment analysis
-
-Sentiment analyses look at whether the expressed opinion in a bit of text is positive, negative, or neutral, using information from databases about the valance of different words. We can perform a sentiment analysis on the tweets that contain each character's name to see whether e.g., Jon is mentioned in tweets that are largely positive or if Jaime is mentioned in tweets that are largely negative. 
-
-To do this, we first need to do a bit of wrangling. We're going to transform it back to wide-form, then we're going to add in in a column that says whether each character was mentioned in the tweet, then we're going to transform it back to long-form.
-
-
-```r
-dat_mentions <- dat_token2 %>%
-  group_by(tweet_number) %>%
-  summarise(text = str_c(word, collapse = " "))%>%
-  mutate(jon = case_when(str_detect(text, ".jon") ~ TRUE, TRUE ~ FALSE),
-         daenerys = case_when(str_detect(text, ".daenerys") ~ TRUE, TRUE ~ FALSE),
-         bran = case_when(str_detect(text, ".bran") ~ TRUE, TRUE ~ FALSE),
-         arya = case_when(str_detect(text, ".arya") ~ TRUE, TRUE ~ FALSE),
-         sansa = case_when(str_detect(text, ".sansa") ~ TRUE, TRUE ~ FALSE),
-         tyrion = case_when(str_detect(text, ".tyrion") ~ TRUE, TRUE ~ FALSE),
-         cersei = case_when(str_detect(text, ".cersei") ~ TRUE, TRUE ~ FALSE),
-         jaime = case_when(str_detect(text, ".jaime") ~ TRUE, TRUE ~ FALSE))%>%
-  unnest_tokens(word, text) %>%
-  anti_join(stop_words, by = "word")
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-Once we've done this, we can then run a sentiment analysis on the tweets for each character. I still haven't quite cracked iteration so this code is a bit repetitive, if you can give me the better way of doing this that's less prone to copy and paste errors, please do.
-
-
-```r
-jon <- dat_mentions %>%
-  filter(jon)%>%
-  inner_join(get_sentiments("bing"))%>%
-  count(index = tweet_number, sentiment) %>%
-  spread(sentiment, n, fill = 0) %>%
-  mutate(sentiment = positive - negative)%>%
-  mutate(character = "jon")
-
-daenerys <- dat_mentions %>%
-  filter(daenerys == "TRUE")%>%
-  inner_join(get_sentiments("bing"))%>%
-  count(index = tweet_number, sentiment) %>%
-  spread(sentiment, n, fill = 0) %>%
-  mutate(sentiment = positive - negative)%>%
-  mutate(character = "daenerys")
-
-
-bran <- dat_mentions %>%
-  filter(bran == "TRUE")%>%
-  inner_join(get_sentiments("bing"))%>%
-  count(index = tweet_number, sentiment) %>%
-  spread(sentiment, n, fill = 0) %>%
-  mutate(sentiment = positive - negative)%>%
-  mutate(character = "bran")
-
-arya <- dat_mentions %>%
-  filter(arya == "TRUE")%>%
-  inner_join(get_sentiments("bing"))%>%
-  count(index = tweet_number, sentiment) %>%
-  spread(sentiment, n, fill = 0) %>%
-  mutate(sentiment = positive - negative)%>%
-  mutate(character = "arya")
-
-sansa <- dat_mentions %>%
-  filter(sansa == "TRUE")%>%
-  inner_join(get_sentiments("bing"))%>%
-  count(index = tweet_number, sentiment) %>%
-  spread(sentiment, n, fill = 0) %>%
-  mutate(sentiment = positive - negative)%>%
-  mutate(character = "sansa")
-
-tyrion <- dat_mentions %>%
-  filter(tyrion == "TRUE")%>%
-  inner_join(get_sentiments("bing"))%>%
-  count(index = tweet_number, sentiment) %>%
-  spread(sentiment, n, fill = 0) %>%
-  mutate(sentiment = positive - negative)%>%
-  mutate(character = "tyrion")
-
-cersei <- dat_mentions %>%
-  filter(cersei == "TRUE")%>%
-  inner_join(get_sentiments("bing"))%>%
-  count(index = tweet_number, sentiment) %>%
-  spread(sentiment, n, fill = 0) %>%
-  mutate(sentiment = positive - negative)%>%
-  mutate(character = "cersei")
-
-jaime <- dat_mentions %>%
-  filter(jaime == "TRUE")%>%
-  inner_join(get_sentiments("bing"))%>%
-  count(index = tweet_number, sentiment) %>%
-  spread(sentiment, n, fill = 0) %>%
-  mutate(sentiment = positive - negative)%>%
-  mutate(character = "jaime")
-
-
-dat_sentiment <- bind_rows(jon,daenerys,bran,arya,sansa,tyrion,cersei,jaime) %>%
-  group_by(character) %>%
-  summarise(positive = sum(positive),
-            negative = sum(negative),
-            overall = sum(sentiment))%>%
-  gather(positive:overall, key = type, value = score)%>%
-  mutate(type = factor(type, levels = c("positive", "negative", "overall")))
-```
-
-Now that we've done all that we can display a table of positive, negative and overall sentiment scores. Bear in mind that not all words have an associated sentiment score, particularly if they're a non-standard usage of English (as an aside, this makes RuPaul's Drag Race very difficult to analyse because tidytext will think a sickening death drop is a bad thing).
-
-
-```r
-dat_sentiment %>%
-  spread(type, score)%>%
-  arrange(desc(overall))%>%
-  kable(align = "c")
-```
-
-
-
-| character | positive | negative | overall |
-|:---------:|:--------:|:--------:|:-------:|
-|   jaime   |    16    |    29    |   -13   |
-|  tyrion   |    15    |    30    |   -15   |
-|   sansa   |    26    |    44    |   -18   |
-|  cersei   |    28    |    55    |   -27   |
-|   arya    |    26    |    58    |   -32   |
-|   bran    |    32    |    66    |   -34   |
-| daenerys  |    62    |   155    |   -93   |
-|    jon    |    90    |   185    |   -95   |
-
-Because there's diferent numbers of tweets for each character, it might be more helpful to convert it to percentages to make it easier to compare.
-
-
-```r
-dat_sentiment %>%
-  spread(type, score)%>%
-  group_by(character)%>%
-  mutate(total = positive + negative)%>%
-  mutate(positive_percent = positive/total*100,
-         negative_percent = negative/total*100,
-         sentiment = positive_percent - negative_percent)%>%
-  select(character, positive_percent, negative_percent, sentiment)%>%
-  arrange(desc(sentiment))%>%
-  kable(align = "c")
-```
-
-
-
-| character | positive_percent | negative_percent | sentiment |
-|:---------:|:----------------:|:----------------:|:---------:|
-|   sansa   |     37.14286     |     62.85714     | -25.71429 |
-|   jaime   |     35.55556     |     64.44444     | -28.88889 |
-|  cersei   |     33.73494     |     66.26506     | -32.53012 |
-|  tyrion   |     33.33333     |     66.66667     | -33.33333 |
-|    jon    |     32.72727     |     67.27273     | -34.54545 |
-|   bran    |     32.65306     |     67.34694     | -34.69388 |
-|   arya    |     30.95238     |     69.04762     | -38.09524 |
-| daenerys  |     28.57143     |     71.42857     | -42.85714 |
-
-They're all quite negative because there's no pleasing some people but there's some face validity to the analysis given the order of the rankings. If you'd been watching this live you could have repeated this each episode to see how the reactions to the characters changes.
-
-Let's make that into a graph cause graphs are great.
-
-
-```r
-dat_sentiment %>%
-  spread(type, score)%>%
-  group_by(character)%>%
-  mutate(total = positive + negative)%>%
-  mutate(positive_percent = positive/total*100,
-         negative_percent = negative/total*100,
-         sentiment = positive_percent - negative_percent)%>%
-  select(character, positive_percent, negative_percent, sentiment)%>%
-  arrange(desc(sentiment))%>%
-  ggplot(aes(x = reorder(character,sentiment), y = sentiment)) +
-  geom_col(show.legend = FALSE) +
-  scale_y_continuous(name = "Overall sentiment (percent)")+
-  scale_x_discrete(name = "Character")
-```
-
-<div class="figure" style="text-align: center">
-<img src="appendix-0_files/figure-html/unnamed-chunk-60-1.png" alt="Sentiment scores for each character" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-60)Sentiment scores for each character</p>
-</div>
-
-`rtweet` is such a cool package and I've found that the limits of what you can do with it are much more about one's imagination. There's much more you could do with this package but when I first ran these analyses I found that tracking RuPaul's Drag Race was a fun way to learn a new package as it did give an insight into the fan reactions of one of my favourite shows. I also use this package to look at swearing on Twitter (replace the hashtags with swear words). The best way to learn what `rtweet` and `tidytext` can do for you is to find a topic you care about and explore the options it gives you. If you have any feedback on this tutorial you can find me on twitter: [emilynordmann](https://twitter.com/emilynordmann).
-
-# Dissertation analysis guide
+## Dissertation analysis guide
 
 In this  chapter we're going to provide a guide for how to get started working with your dissertation data. It's important to note that this guide won't work for every project and every kind of data - and nothing in this chapter should supersede advice your supervisor has given you. Rather, this chapter is here to help guide you through the initial steps of working with quantitative data and to show you how what you have learned in RM2 maps on to your dissertation project. 
 
-## Before R
+### Before R
 
 Before you touch R, you need to make sure you understand your design, data, and analysis plan. This will make your work in R considerably easier. Before you start coding, make sure you have answers to the following questions:
 

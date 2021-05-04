@@ -10,7 +10,7 @@ The abstract for the paper is as follows:
 
 > Memory of a traumatic event becomes consolidated within hours. Intrusive memories can then flash back repeatedly into the mind's eye and cause distress. We investigated whether reconsolidation - the process during which memories become malleable when recalled - can be blocked using a cognitive task and whether such an approach can reduce these unbidden intrusions. We predicted that reconsolidation of a reactivated visual memory of experimental trauma could be disrupted by engaging in a visuospatial task that would compete for visual working memory resources. We showed that intrusive memories were virtually abolished by playing the computer game Tetris following a memory-reactivation task 24 hr after initial exposure to experimental trauma. Furthermore, both memory reactivation and playing Tetris were required to reduce subsequent intrusions (Experiment 2), consistent with reconsolidation-update mechanisms. A simple, non-invasive cognitive-task procedure administered after emotional memory has already consolidated (i.e., > 24 hours after exposure to experimental trauma) may prevent the recurrence of intrusive memories of those emotional events.
 
-### ANOVA Activity 1: Set-up 
+### Activity 1: Set-up {#anova-a1}  
 
 Do the following:
 
@@ -25,7 +25,7 @@ Do the following:
 
 
 
-### ANOVA Activity 2: Data wrangling
+### Activity 2: Data wrangling {#anova-a2}  
 
 There are a lot of columns in this data set that we don't need for this analysis and the names of the variable are also long and difficult to work with. 
 
@@ -36,7 +36,7 @@ There are a lot of columns in this data set that we don't need for this analysis
 
 
 
-### ANOVA Activity 3: Numbers and factors
+### Activity 3: Numbers and factors {#anova-a3}
 
 In addition to the names of the variables being too long, the levels of `Condition` are named 1,2,3,4 which R will think is a number rather than a category. We're going to overwrite the column `Condition` with a column that recodes these numbers as a factor. Copy and paste the code below into your Markdown and then run it.
 
@@ -48,7 +48,7 @@ dat2 <- dat2 %>%
 
 **This is a really important step**. If you forget to recode variables as factors and R treats them as numbers, a lot of things won't work. Trust us, we've spent a lot of time trying to figure out what was wrong because we forgot to do this step!
 
-### ANOVA Activity 4: Create summary statistics
+### Activity 4: Create summary statistics {#anova-a4}
 
 Next we want to calculate some descriptive statistics. We're really interested in the scores from each experimental group rather than overall.
 
@@ -73,7 +73,7 @@ Next we want to calculate some descriptive statistics. We're really interested i
 
 
 
-### ANOVA Activity 5: Visualisation
+### Activity 5: Visualisation {#anova-a5}
 
 Now we can visualise the data. In the original paper they use a bar plot, which we will reproduce later but for now let's use a better plot that gives us more information about the data. 
 
@@ -109,7 +109,7 @@ ggplot(sum_dat, aes(x = Condition, y = mean, fill = Condition))+
 <p class="caption">(\#fig:bar-plot)Bar plot of instrusions by condition</p>
 </div>
 
-### ANOVA Activity 6: One-way ANOVA
+### Activity 6: One-way ANOVA {#anova-a6}
 
 Now we can run the one-way ANOVA using `aov_ez` from the `afex` package and save it to the object `mod`. As well as running the ANOVA, the `aov_ez` function also conducts a Levene's test for homogeneity of variance so that we can test our final assumption.
 
@@ -158,7 +158,7 @@ You should refer to the lecture for more information on what each variable means
 * According to the rules of thumb, the effect size is <select class='solveme' data-answer='["Large"]'> <option></option> <option>Small</option> <option>Medium</option> <option>Large</option></select>
 
 
-### ANOVA Activity 7: Assumption checking
+### Activity 7: Assumption checking {#anova-a7}
 
 You may be wondering why we haven't yet checked the assumptions. Well, unlike the t-tests and correlations, in order to test the assumptions we need to use the model we created with `aov_ez()`, so we couldn't assess them all until this point. For a one-way independent ANOVA, the assumptions are the same as for a Student's t-test:
 
@@ -247,7 +247,7 @@ Whilst all of this might seem very confusing - we imagine you might be wondering
 3. To reinforce the importance of pre-registration where these decisions could be made in advance, and/or open data and code so that analyses can be reproduced exactly to avoid any ambiguity about exactly what was done. In this example, given the equal sample sizes and the difference in variance between the groups isn't too extreme, it looks like it is still  appropriate to use an ANOVA but the decisions and justification for those decisions could have been more transparent.
 
 
-### ANOVA Activity 8: Post-hoc tests
+### Activity 8: Post-hoc tests {#anova-a8}
 
 For post-hoc comparisons, as mentioned, the paper appears to have computed Welch t-tests but there is no mention of any multiple comparison correction. We could reproduce these results by using `t.test` for each of the contrasts.
 
@@ -281,7 +281,7 @@ mod_contrasts <- mod_pairwise$contrasts %>% tidy()
 <p>The inquisitive amongst you may have noticed that <code>mod</code> is a list of 5 and seemingly contains the same thing three times: <code>anova_table</code>, <code>aov</code> and <code>Anova</code>. The reasons behind the differences are too complex to go into detail on this course (see <a href="https://rcompanion.org/rcompanion/d_04.html">here</a> for more info) but the simple version is that <code>anova_table</code> and <code>Anova</code>use one method of calculating the results (type 3 sum of squares) and <code>aov</code> uses a different method (type 1 sum of squares). What’s important for your purposes is that you need to use <code>anova_table</code> to view the overall results (and replicate the results from papers) and <code>aov</code>to run the follow-up tests and to get access to the residuals (or <code>lm()</code> for factorial ANOVA). As always, precision and attention to detail is key.</p>
 </div>
 
-### ANOVA Activity 9: Power and effect size
+### Activity 9: Power and effect size {#anova-a9}
 
 Finally, we can replicate their power analysis using `pwr.anova.test`.
 
@@ -349,7 +349,7 @@ mod_contrasts <- mod_contrasts %>%
 </ol>
 </div>
 
-### ANOVA Activity 10: Write-up
+### Activity 10: Write-up {#anova-a10}
 
 The below code replicates the write-up in the paper, although has changed the Welch t-test to the pairwise comparisons from `emmeans`.
 
@@ -360,11 +360,11 @@ Second, and critically, for the 7-day diary postintervention, there was a signif
 
 Second, and critically, for the 7-day diary postintervention, there was a significant difference between groups in overall intrusion frequency in daily life, F(3, 68) = 3.79, p = 0.014, ηp2 = .0.14. Planned comparisons demonstrated that relative to the no-task control group, only those in the reactivation-plus-Tetris group, t(68) = 3.04, p = 0.02, d = 1, experienced significantly fewer intrusive memories; this finding replicated Experiment 1. Critically, as predicted by reconsolidation theory, the reactivation-plus-Tetris group had significantly fewer intrusive memories than the Tetris-only group, t(68) = -1.89, p = 0.38, d = 0.84, as well as the reactivation-only group, t(68) = -2.78, p = 0.04, d = 1.11. Further, there were no significant differences between the no-task control group and the reactivation-only group, t(68) = 0.26, p = 1, or between the no-task control group and the Tetris-only group, t(68) = 1.15, p = 1
 
-### Activity solutions - ANOVA
+### Activity solutions {#anova-sols}
 
 Below this line you will find the solutions to the above tasks. Only look at them after giving the tasks a good try yourself!
 
-#### ANOVA Activity 1
+#### Activity 1 {#anova-1sol}
 
 <div class="solution"><button>Activity 1</button>
 
@@ -384,7 +384,7 @@ dat <- read_csv("James Holmes_Expt 2_DATA.csv")%>%
 
 ** Click tab to see solution **
 
-#### ANOVA Activity 2
+#### Activity 2 {#anova-a2sol}
 
 <div class="solution"><button>Activity 2</button>
 
@@ -413,7 +413,7 @@ sum_dat<-dat2%>%
 
 ** Click tab to see solution **
 
-#### ANOVA Activity 5
+#### Activity 5 {#anova-a5sol}
 
 <div class="solution"><button>Activity 5</button>
 

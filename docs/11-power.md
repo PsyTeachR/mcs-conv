@@ -40,7 +40,7 @@ We will focus on effect sizes for t-tests for this worksheet.  There are a numbe
 
 Let's now try out some calculations. We will start with just looking at effect sizes from t-tests before calculating power in later tasks.
 
-## P&E Activity 1: Set-up
+## Activity 1: Set-up {#power-a1}
 
 Do the following. 
 
@@ -49,7 +49,7 @@ Do the following.
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `pwr`, `broom`, and `tidyverse` using the `library()` function. You may need to install `pwr` if you are working on your own machine but remember **never install packages on a university machine**.
 
-## P&E Activity 2: Effect size from a one-sample t-test
+## Activity 2: Effect size from a one-sample t-test {#power-a2}
 
 * You run a one-sample t-test and discover a significant effect, t(25) = 3.24, p < .05. Using the above formulas, calculate `d` and determine whether the effect size is small, medium or large.
 
@@ -74,7 +74,7 @@ Answering the following questions to check your answers. The solutions are at th
 * Enter the correct value of `d` for this analysis rounded to 2 decimal places: <input class='solveme nospaces' size='4' data-answer='["0.64",".64"]'/>
 * According to Cohen (1988), the effect size for this t-test would probably be considered: <select class='solveme' data-answer='["medium"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>  
 
-## P&E Activity 3: Effect size from between-subjects t-test
+## Activity 3: Effect size from between-subjects t-test {#power-a3}
 
 * You run a between-subjects t-test and discover a significant effect, t(30) = 2.9, p < .05. Calculate `d` and determine whether the effect size is small, medium or large.
 
@@ -99,7 +99,7 @@ Answer the following questions to check your answers. The solutions are at the b
 * According to Cohen (1988), the effect size for this t-test would probably be considered: <select class='solveme' data-answer='["large"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>
 
 
-## P&E Activity 4: t-value and effect size for a between-subjects Experiment
+## Activity 4: t-value and effect size for a between-subjects Experiment {#power-a4}
 
 * You run a between-subjects design study and the descriptives tell you: **Group 1**, M = 10, SD = 1.3, n = 30; **Group 2**, M = 11, SD = 1.7, n = 30. Calculate `t` and `d` for this between-subjects experiment.
 
@@ -135,7 +135,7 @@ We've asked you to calculate Cohen's D by hand above to reinforce your understan
 
 **Excellent!** Now that you are comfortable with calculating effect sizes, we will look at using them to establish appropriate sample sizes for a given power. Remember, in analysis, in nearly all occasions we should set the effect size as the minimum effect size we are interested. This can be determined through discussion, through previous studies, through pilots studies, or through rules of thumb like Cohen (1988). However, also keep in mind that the lower the effect size, the larger the sample size you will need. Everything is a trade-off.
 
-## P&E Activity 5: `pwr.t.test()`
+## Activity 5: `pwr.t.test()` {#power-a5}
 
 Today we will use the functions `pwr.t.test()`, `pwr.r.test()` and `pwr.chisq.test` from the package `pwr` to run power calculations for t-tests, correlations and chi-square.
 
@@ -184,7 +184,7 @@ pwr.t.test(d = .4,
   ceiling()
 ```
 
-## P&E Activity 6: Sample size for standard power one-sample t-test
+## Activity 6: Sample size for standard power one-sample t-test {#power-a6}
 
 * Assuming you are interested in detecting a minimum Cohen's d of **d = .23**, what would be the minimum number of participants you would need in a one-sample t-test, assuming **power = .8**, $\alpha$ **= .05**, on a two-sided hypothesis? 
 
@@ -216,7 +216,7 @@ Answer the following questions to check your answers. The solutions are at the b
 * According to Cohen (1988), the effect size for this t-test is <select class='solveme' data-answer='["medium"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>
 * Say you run the study and find that the effect size determined is d = .50. Given what you know about power, select the statement that is true: <select class='solveme' data-answer='["the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .65"]'> <option></option> <option>the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than d = .65</option> <option>the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .65</option></select>
 
-## P&E Activity 8: Sample size for a correlation
+## Activity 8: Sample size for a correlation {#power-a8}
 
 Now, we're going to do the same thing but for a correlation analysis using `pwr.r.test`. The structure of this function is very similar to `pwr.t.test()` and works on the same leave-one-out principle:
 
@@ -232,7 +232,7 @@ Using a pipeline, store the answer as a single, rounded value called `sample_siz
 
 * Enter the minimum number of participants you would need in this correlation: <input class='solveme nospaces' size='2' data-answer='["46"]'/>
 
-## P&E Activity 9: Effect size for a correlation analysis
+## Activity 9: Effect size for a correlation analysis {#power-a9}
 
 * You run a correlation analysis with 50 participants and the standard power and alpha levels and you have hypothesised a positive correlation, what would be the minimum effect size you can reliably detect? 
 
@@ -243,7 +243,7 @@ Answer the following questions to check your answers. The solutions are at the b
 * According to Cohen (1988), the effect size for this correlation is <select class='solveme' data-answer='["medium"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>
 * Say you run the study and find that the effect size determined is d = .24. Given what you know about power, select the statement that is true: <select class='solveme' data-answer='["the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .34"]'> <option></option> <option>the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than d = .24</option> <option>the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .34</option></select>
 
-## P&E Activity 10: Power of published research
+## Activity 10: Power of published research {#power-a10}
 
 Thus far we have used hypothetical situations - now go look at the paper on the [Open Stats Lab](https://sites.trinity.edu/osl/data-sets-and-activities/t-test-activities) website called Does Music Convey Social Information to Infants? (we have used this dataset in the t-test chapter). You can download the pdf and look at it, but here we will determine the power of the significant t-tests reported in Experiment 1 under the Results section on Pg489. There is a one-sample t-test and a paired-samples t-test to consider, summarised below. Assume testing was at power = .8, alpha = .05. Based on your calculations are either of the stated effects underpowered?
 
@@ -263,7 +263,7 @@ Thus far we have used hypothetical situations - now go look at the paper on the 
 
 Which of the t-tests do you believe to be underpowered? Why do you think this may be? Additional information about this can be found in the solution to task 8 at the end of this activity.
 
-### P&E Finished!
+### Finished! {#power-fin}
 
 **Great!** Hopefully you are now starting to see the interaction between alpha, power, effect sizes, and sample size. We should always want really high powered studies and depending on the size of the effect we are interested in (small to large), and our $\alpha$ level, this will mean we will need to run more or less participants to make sure our study is well powered. Points to note:
 
@@ -278,11 +278,11 @@ There are additional functions in the `pwr` package for other types of statistic
 If you want more examples of power to reinforce your understanding, go back and calculate the power of the t-tests, correlations, and chi-squares from earlier chapters. 
 
 
-## Activity solutions - Power
+## Activity solutions {#power-sols}
 
 Below you will find possible solutions to the above tasks. But first, be sure to try the tasks before looking at the solutions and only look at them when you have exhausted all possibilities and yourself.  If that is the case, and you are sure you want to do this, then here are the potential solutions.
 
-### P&E Activity 1
+### Activity 1 {#power-a1sol}
 
 
 <div class='solution'><button>Activity 1</button>
@@ -299,7 +299,7 @@ library(tidyverse)
 <br>
 Click on the tab to reveal the solution
 
-### P&E Activity 2
+### Activity 2 {#power-a2sol}
 
 
 <div class='solution'><button>Activity 2</button>
@@ -316,7 +316,7 @@ d <- 3.24 / sqrt(25 +1)
 <br>
 Click on the tab to reveal the solution
 
-### P&E Activity 3
+### Activity 3 {#power-a3sol}
 
 
 <div class='solution'><button>Activity 3</button>
@@ -333,7 +333,7 @@ d <- (2*2.9) / sqrt(30)
 <br>
 Click on the tab to reveal the solution
 
-### P&E Activity 4
+### Activity 4 {#power-a4sol}
 
 <div class='solution'><button>Activity 4</button>
 
@@ -354,7 +354,7 @@ d = (2*t)/sqrt((30-1) + (30-1))
 <br>
 Click on the tab to reveal the solution
 
-### P&E Activity 6
+### Activity 6 {#power-a6sol}
 
 <div class='solution'><button>Activity 6</button>
 
@@ -376,7 +376,7 @@ sample_size_t
 <br>
 Click on the tab to reveal the solution
 
-### P&E Activity 7
+### Activity 7 {#power-a7sol}
 
 <div class='solution'><button>Activity 7</button>
 
@@ -405,7 +405,7 @@ NOTE: n is number in *each* group
 Click on the tab to reveal the solution
 
 
-### P&E Activity 8
+### Activity 8 {#power-a8sol}
 
 <div class='solution'><button>Activity 8</button>
 
@@ -424,7 +424,7 @@ sample_size_r <- pwr.r.test(r = .4,
 Click on the tab to reveal the solution
 
 
-### P&E Activity 9
+### Activity 9 {#power-a9sol}
 
 <div class='solution'><button>Activity 9</button>
 
@@ -449,7 +449,7 @@ pwr.r.test(n = 50,
 <br>
 Click on the tab to reveal the solution
 
-### P&E Activity 10
+### Activity 10 {#power-a10sol}
 
 
 <div class='solution'><button>Activity 11</button>
