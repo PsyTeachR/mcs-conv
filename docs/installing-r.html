@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 24 Data transformation | MSc Conversion in Psychological Studies</title>
+  <title>Chapter 20 Installing R | MSc Conversion in Psychological Studies</title>
   <meta name="description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 24 Data transformation | MSc Conversion in Psychological Studies" />
+  <meta property="og:title" content="Chapter 20 Installing R | MSc Conversion in Psychological Studies" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 24 Data transformation | MSc Conversion in Psychological Studies" />
+  <meta name="twitter:title" content="Chapter 20 Installing R | MSc Conversion in Psychological Studies" />
   
   <meta name="twitter:description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="comparing-two-correlations.html"/>
-<link rel="next" href="permutation-tests.html"/>
+<link rel="prev" href="exporting-files-from-the-server.html"/>
+<link rel="next" href="updating-r-rstudio-and-packages.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -647,67 +647,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-transformation" class="section level1" number="24">
-<h1><span class="header-section-number">Chapter 24</span> Data transformation</h1>
-<p>This section has been adapted from materials made available by <a href="http://abacus.bates.edu/~ganderso/biology/bio270/homework_files/Data_Transformation.pdf">Greg Anderson at Bates College</a>.</p>
-<p>The following brief overview of Data Transformation is compiled from Howell (pp. 318-324,
-2007) and Tabachnick and Fidell (pp. 86-89, 2007). See the references at the end of this handout for a more complete discussion of data transformation. Most people find it difficult to accept the idea of transforming data. Tukey (1977) probably had the right idea when he called data transformation calculations “reexpressions” rather than “transformations.” A researcher is merely reexpressing what the data have to say in other terms. However, it is important to recognize that conclusions that you draw on transformed data do not always transfer neatly to the original measurements. Grissom (2000) reports that the means of transformed variables can occasionally reverse the difference of means of the original variables. While this is disturbing, and it is important to think about the meaning of what you are doing, but it is not, in itself, a reason to rule out the use of transformations as a viable option.</p>
-<p>If you are willing to accept that is it permissible to transform one set of measures into another, then many possibilities become available for modifying the data to fit more closely the underlying assumptions of statistical tests. An added benefit about most of the transformations is that when we transform the data to meet one assumption, we often come closer to meeting other assumptions as well. For example, a square-root transformation may help equate group variances, and because it compresses the upper end of a distribution more than it compresses the lower end, it may also have the effect of making positively skewed distributions more nearly normal in shape. If you decide to transform, it is important to check that the variable is normally or nearly normally distributed after transformation. That is, make sure it worked.</p>
-<p>When it comes to reporting our data… although it is legitimate and proper to run a statistical test, such as the one-way analysis of variance, on the transformed values, we often report means in the unit of the untransformed scale. This is especially true when the original units are intrinsically meaningful. Howell (2007) urges researchers to look at both the converted (transformed) and unconverted (original) means and make sure that they are telling the same basic story. Do not convert standard deviations – you will do serious injustice if you try that. And be sure to indicate to your readers what you have done. It is not uncommon to see both the converted and unconverted values reported. Tabachnick and Fidell (2007) point out that, although data transformations are recommended as a remedy for outliers and for failures of normality, linearity, and homoscedasticity, they are not universally recommended. The reason is that an analysis is interpreted from the variables that are in it, and transformed variables are sometimes harder to interpret.</p>
-<p>You should not get the impression that data transformations should be applied routinely to all your data. As a rule of thumb, “If it’s not broken, don’t fix it.” If your data are reasonably distributed (i.e., are more or less symmetrical and have few, if any, outliers) and if your variances are reasonably homogeneous, there is probably nothing to be gained by applying a transformation. If you have markedly skewed data or heterogeneous variances, however, some form of data transformation may be useful. Furthermore, it is perfectly legitimate to shop around for a transformation that makes the necessary changes to the variance and shape. The only thing you should not do it to try out every transformation, looking for one that gives you a significant result. You are trying to optimize the data, not the resulting F.</p>
-<p>As suggested by Tabachnick and Fidell (2007) and Howell (2007), the following guidelines
-should be used when transforming data.</p>
-<table>
-<colgroup>
-<col width="57%" />
-<col width="23%" />
-<col width="19%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Problem</th>
-<th align="left">Transformation</th>
-<th align="left">R function</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Moderately positive skewness</td>
-<td align="left">Square-root</td>
-<td align="left"><code>sqrt(var)</code></td>
-</tr>
-<tr class="even">
-<td align="left">Substantially positive skewness</td>
-<td align="left">Logarithmic (Log 10)</td>
-<td align="left"><code>log10(var)</code></td>
-</tr>
-<tr class="odd">
-<td align="left">Substantially positive skewness (with zero values)</td>
-<td align="left">Logarithmic (Log 10)</td>
-<td align="left"><code>log10(var + C)</code></td>
-</tr>
-<tr class="even">
-<td align="left">Moderately negative skewness</td>
-<td align="left">Square-Root</td>
-<td align="left"><code>sqrt(var + K)</code></td>
-</tr>
-<tr class="odd">
-<td align="left">Substantially negative skewness</td>
-<td align="left">Logarithmic (Log 10)</td>
-<td align="left"><code>log10(K - var)</code></td>
-</tr>
-</tbody>
-</table>
-<p><code>C</code> = a constant added to each score so that the smallest score is 1.<br />
-<code>K</code> = a constant from which each score is subtracted so that the smallest score is 1; usually equal to the largest score + 1.</p>
-<p><strong>References</strong></p>
-<p>Howell, D. C. (2007). Statistical methods for psychology (6th ed.). Belmont, CA: Thomson
-Wadsworth.<br />
-Grissom, R. J. (2000). Heterogeneity of variance in clinical data. <em>Journal of Consulting and Clinical Psychology, 68</em>, 155-165.<br />
-Tabachnick, B. G., &amp; Fidell, L. S. (2007). <em>Using multivariate statistics (5th ed.)</em>. Boston: Allyn and Bacon.<br />
-Tukey, J. W. (1977). <em>Exploratory data analysis</em>. Reading, MA: Addison-Wesley.</p>
-<p>Also see:</p>
-<p>Hoaglin, D. C., Mosteller, F., &amp; Tukey, J. W. (1983). <em>Understanding robust and exploratory data analysis</em>. New York: Wiley.</p>
+<div id="installing-r" class="section level1" number="20">
+<h1><span class="header-section-number">Chapter 20</span> Installing R</h1>
+<div id="why-should-i-install-r-on-my-computer" class="section level3" number="20.0.1">
+<h3><span class="header-section-number">20.0.1</span> Why should I install R on my computer?</h3>
+<p>The R Server is cuts down on a lot of installation problems and it means that you have all the packages and functions you need already installed. However, it requires an internet connection to use and additional when it comes time to submit your R assessments, if you don’t have R on your computer it means that you won’t be able to open the files you download from the server to check they’re ok before you submit them.</p>
+<p>There are some great detailed walkthrough videos by <a href="https://www.youtube.com/playlist?list=PLRPB0ZzEYegOZivdelOuEn-R-XUN-DOjd">Danielle Narvarro on YouTube</a> re: how to install R on both Windows and Mac.</p>
+</div>
+<div id="windows" class="section level3" number="20.0.2">
+<h3><span class="header-section-number">20.0.2</span> Windows</h3>
+<p>If you are using Windows, you should download and install the following:</p>
+<ul>
+<li><a href="https://cran.r-project.org/bin/windows/base/">R</a></li>
+<li><a href="https://rstudio.com/products/rstudio/download/#download">R Studio</a></li>
+<li><a href="https://cran.r-project.org/bin/windows/Rtools/">RTools</a></li>
+</ul>
+<p>Once you’ve installed all three programs, restart your computer. Then, open RStudio (not R) and run the below code:</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="installing-r.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>This will install the <code>tidyverse</code> package on your computer. If you have any problems installing R, please book into a GTA session as they should be able to help you with any installation problems.</p>
+</div>
+<div id="mac" class="section level3" number="20.0.3">
+<h3><span class="header-section-number">20.0.3</span> Mac</h3>
+<p>If you are using a Mac, you should download and install the following:</p>
+<ul>
+<li><a href="https://www.stats.bris.ac.uk/R/">R</a><br />
+</li>
+<li><a href="https://rstudio.com/products/rstudio/download/#download">R Studio</a><br />
+</li>
+<li><a href="https://www.xquartz.org/">XQuartz</a></li>
+</ul>
+<p>If you have any issues installing R on your Mac, first, we recommend that you watch the <a href="https://www.youtube.com/watch?v=ay25o485YXs&amp;list=PLRPB0ZzEYegOZivdelOuEn-R-XUN-DOjd&amp;index=1&amp;t=113s">walkthrough by Danielle Navarro</a>.</p>
+<p>If you have further issues on Mac, you may find this video helpful <a href="https://www.youtube.com/watch?v=90IdULVGmYY">walkthrough video</a>. Additionally, if you are using a Mac with the Catalina OS, we also recommend you read this <a href="https://psyteachr.github.io/FAQ/installing-r-and-rstudio.html#i-am-using-macos-10.15-catalina">troubleshooting guide</a></p>
+<p>Once you’ve installed all three programs, restart your computer. Then, open RStudio (not R) and run the below code:</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="installing-r.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>This will install the <code>tidyverse</code> package on your computer. If you have any problems installing R, please book into a GTA session as they should be able to help you with any installation problems.</p>
+</div>
+<div id="chromebooks" class="section level3" number="20.0.4">
+<h3><span class="header-section-number">20.0.4</span> Chromebooks</h3>
+<p>Please note that you cannot currently install R on a Chromebook, please use the R Server.</p>
+</div>
 </div>
 <div class="psyteachr_footer">
   
@@ -819,8 +797,8 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="comparing-two-correlations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="permutation-tests.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="exporting-files-from-the-server.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="updating-r-rstudio-and-packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

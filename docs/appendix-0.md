@@ -1,6 +1,6 @@
-# (APPENDIX) Appendices {-} 
+# (APPENDIX) Appendices 
 
-## Exporting files from the server
+# Exporting files from the server
 
 If you are using the R server, you may need to export files to share them with other people or submit them for your assignments.
 
@@ -9,7 +9,7 @@ If you are using the R server, you may need to export files to share them with o
 * If you do not have R installed, DO NOT try to open it on your computer. If you do, it will open in Word, Endnote or similar, and it may corrupt your code. Only open the file if you have R and R Studio installed.  
 * If you want to double check that this file is definitely the right one to submit for an assignment, you can re-upload it to the server and open it again to make sure it has the answers in it.  
 
-## Installing R 
+# Installing R 
 
 ### Why should I install R on my computer?
 
@@ -59,7 +59,7 @@ This will install the `tidyverse` package on your computer. If you have any prob
 
 Please note that you cannot currently install R on a Chromebook, please use the R Server.
 
-## Updating R, RStudio, and packages
+# Updating R, RStudio, and packages
 
 From time-to-time, updated versions of R, RStudio, and the packages you use (e.g., ggplot) will become available. Remember that each of these are separate, so they each have a different process and come with different considerations. We recommend updating to the latest version of all three at the start of each academic year.
 
@@ -130,7 +130,7 @@ updateR()
 
 As always, if you're having issues, please ask on Teams or book into a GTA session.
 
-## Additional R resources
+# Additional R resources
 
 If you would like additional practice, you can check out the other UofG PsyTeachR course books. 
 
@@ -148,7 +148,7 @@ We also highly recommend the following, they will help practice your data wrangl
 * [Data Vizualisation](https://socviz.co/) - this is an entire book on data visualisation and goes into detail on how to take `ggplot` to its limits. 
 
 
-## Comparing two correlations
+# Comparing two correlations
 
 Sometimes you will need or want to statistically compare the strength of two correlation coefficients to help determine whether they are statistically different (rather than just comparing r values). For this set of analyses you will need to install and load the `cocor` package as well as the `tidyverse` and `lsr`.
 
@@ -495,7 +495,7 @@ cocor(formula = ~logic + intelligence.b | knowledge + intelligence.a,
 
 Again the output produces a number of tests, although in this case they all converge on the conclusion that the null hypothesis should be rejected, i.e., the correlations are significantly different. Again following [Silver et al.](https://www.tandfonline.com/doi/abs/10.1080/00221300309601282), if you need to pick one to report, I'd suggest Dunn and Clark's z with Zou's confidence intervals. 
 
-## Data transformation
+# Data transformation
 
 This section has been adapted from materials made available by [Greg Anderson at Bates College](http://abacus.bates.edu/~ganderso/biology/bio270/homework_files/Data_Transformation.pdf). 
 
@@ -536,7 +536,7 @@ Also see:
   
 Hoaglin, D. C., Mosteller, F., & Tukey, J. W. (1983). *Understanding robust and exploratory data analysis*. New York: Wiley.
 
-## Permutation tests
+# Permutation tests
 
 This section has been adapated from the Level 2 class on permutation tests written by Dr. Phil McAleer. The original [can be viewed here](https://psyteachr.github.io/ug2-practical/permutation-tests-a-skill-set.html).
 
@@ -578,8 +578,8 @@ rnorm(10)
 ```
 
 ```
-##  [1]  0.4107336 -2.3137465 -0.4567339 -1.1958743 -0.6091073  0.9734550
-##  [7] -1.6631409 -0.2289093 -0.7833809 -0.6083957
+##  [1]  0.005476268 -1.961391069 -0.747940889  0.190361803 -0.564608768
+##  [6] -2.532140909 -0.919376447  0.581325284 -0.664083641  0.417757161
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -677,8 +677,8 @@ sample(letters)
 ```
 
 ```
-##  [1] "r" "p" "e" "z" "y" "l" "w" "g" "h" "k" "v" "u" "a" "m" "q" "n" "i" "o" "b"
-## [20] "t" "s" "x" "j" "d" "c" "f"
+##  [1] "v" "t" "h" "i" "p" "z" "c" "b" "x" "e" "d" "w" "m" "f" "q" "k" "y" "j" "o"
+## [20] "r" "n" "s" "u" "a" "l" "g"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
@@ -713,18 +713,18 @@ tibble(Y = rnorm(10))
 
 ```
 ## # A tibble: 10 x 1
-##         Y
-##     <dbl>
-##  1  0.443
-##  2  0.535
-##  3 -1.01 
-##  4  0.141
-##  5 -2.48 
-##  6 -0.246
-##  7  1.54 
-##  8  1.23 
-##  9 -1.50 
-## 10 -0.739
+##           Y
+##       <dbl>
+##  1 -2.45   
+##  2  0.0864 
+##  3 -0.618  
+##  4  1.14   
+##  5 -0.0861 
+##  6 -0.00868
+##  7 -0.417  
+##  8 -0.533  
+##  9  1.54   
+## 10  0.141
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -741,16 +741,16 @@ tibble(Y = c(rnorm(5, mean = -10),
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1 -11.5 
-##  2 -10.1 
-##  3 -10.6 
-##  4  -8.64
-##  5 -11.1 
-##  6  21.9 
-##  7  17.9 
-##  8  19.9 
-##  9  17.5 
-## 10  20.5
+##  1  -9.50
+##  2 -10.8 
+##  3 -12.0 
+##  4 -11.1 
+##  5 -11.2 
+##  6  19.3 
+##  7  18.5 
+##  8  20.5 
+##  9  21.0 
+## 10  19.6
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -812,16 +812,16 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A      -9.61
-##  2 A     -10.2 
-##  3 A      -9.84
-##  4 A      -9.28
-##  5 A      -8.95
-##  6 B      19.9 
+##  1 A      -9.67
+##  2 A     -10.1 
+##  3 A     -10.2 
+##  4 A     -10.9 
+##  5 A     -11.0 
+##  6 B      18.4 
 ##  7 B      19.3 
-##  8 B      20.0 
-##  9 B      20.0 
-## 10 B      19.1
+##  8 B      19.6 
+##  9 B      18.1 
+## 10 B      20.6
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -876,11 +876,11 @@ my_data_means
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      19.8
-## 2 B     -18.9
+## 1 A      18.6
+## 2 B     -21.2
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -18.9 from the first group mean of 19.8, to get a single value, the difference: 38.7.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -21.2 from the first group mean of 18.6, to get a single value, the difference: 39.7.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -893,7 +893,7 @@ vec
 ```
 
 ```
-## [1]  19.77509 -18.91037
+## [1]  18.59284 -21.15407
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -904,7 +904,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 38.68546
+## [1] 39.74691
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -915,7 +915,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 38.68546
+## [1] 39.74691
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -928,7 +928,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 38.68546
+## [1] 39.74691
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -943,7 +943,7 @@ my_data_means %>%
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  19.8 -18.9
+## 1  18.6 -21.2
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -959,7 +959,7 @@ my_data_means %>%
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  19.8 -18.9  38.7
+## 1  18.6 -21.2  39.7
 ```
 
 * What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
@@ -975,7 +975,7 @@ my_data_means %>%
 ```
 
 ```
-## [1] 38.68546
+## [1] 39.74691
 ```
 
 
@@ -1164,8 +1164,8 @@ ten_samples
 ```
 
 ```
-##  [1]  0.110735195  0.005729656 -0.004077818  0.027126192 -0.035080774
-##  [6] -0.093025492  0.168094486  0.153473305 -0.164497179 -0.136390585
+##  [1] -0.17361148  0.19272504 -0.04199242 -0.08576567 -0.07300011  0.05302431
+##  [7] -0.01628914 -0.02921551 -0.16468259  0.22365547
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
@@ -1497,7 +1497,7 @@ p <- NULL
 Well done in completing this lab. Let's recap before finishing. We had two groups, A and B, that we had tested in an experiment. We calculated the mean difference between A and B and wanted to know if this was a significant difference. To test this we created a distribution of all possible differences between A and B using the premise of permutation tests and then found the probability of our original value in that permuted distribution. The more extreme the value in a distribution the more likely that the difference is significant. And that is exactly what we found; an $\alpha < .05$. Next time we will look at using functions and inferential tests to perform this analysis but by understanding the above you now know how probability is determined.
 
 
-## Non-parametric tests
+# Non-parametric tests
 
 First, before Dale Barr shouts at me, it needs to be noted that non-parametric tests are problematic. Because they are based on rank data:
 
@@ -1864,7 +1864,7 @@ sample1 %>%
 
 > A Spearman’s correlation found a weak,non-significant, positive correlation (rs (289) = .03, p = .658) between knowledge and logic test scores.
 
-## Dissertation analysis guide
+# Dissertation analysis guide
 
 In this  chapter we're going to provide a guide for how to get started working with your dissertation data. It's important to note that this guide won't work for every project and every kind of data - and nothing in this chapter should supersede advice your supervisor has given you. Rather, this chapter is here to help guide you through the initial steps of working with quantitative data and to show you how what you have learned in RM2 maps on to your dissertation project. 
 
