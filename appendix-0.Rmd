@@ -1,6 +1,6 @@
-# (APPENDIX) Appendices {-} 
+# (APPENDIX) Appendices 
 
-## Exporting files from the server
+# Exporting files from the server
 
 If you are using the R server, you may need to export files to share them with other people or submit them for your assignments.
 
@@ -9,7 +9,7 @@ If you are using the R server, you may need to export files to share them with o
 * If you do not have R installed, DO NOT try to open it on your computer. If you do, it will open in Word, Endnote or similar, and it may corrupt your code. Only open the file if you have R and R Studio installed.  
 * If you want to double check that this file is definitely the right one to submit for an assignment, you can re-upload it to the server and open it again to make sure it has the answers in it.  
 
-## Installing R 
+# Installing R 
 
 ### Why should I install R on my computer?
 
@@ -57,7 +57,7 @@ This will install the `tidyverse` package on your computer. If you have any prob
 
 Please note that you cannot currently install R on a Chromebook, please use the R Server.
 
-## Updating R, RStudio, and packages
+# Updating R, RStudio, and packages
 
 From time-to-time, updated versions of R, RStudio, and the packages you use (e.g., ggplot) will become available. Remember that each of these are separate, so they each have a different process and come with different considerations. We recommend updating to the latest version of all three at the start of each academic year.
 
@@ -124,7 +124,7 @@ updateR()
 
 As always, if you're having issues, please ask on Teams or book into a GTA session.
 
-## Additional R resources
+# Additional R resources
 
 If you would like additional practice, you can check out the other UofG PsyTeachR course books. 
 
@@ -142,7 +142,7 @@ We also highly recommend the following, they will help practice your data wrangl
 * [Data Vizualisation](https://socviz.co/) - this is an entire book on data visualisation and goes into detail on how to take `ggplot` to its limits. 
 
 
-## Comparing two correlations
+# Comparing two correlations
 
 Sometimes you will need or want to statistically compare the strength of two correlation coefficients to help determine whether they are statistically different (rather than just comparing r values). For this set of analyses you will need to install and load the `cocor` package as well as the `tidyverse` and `lsr`.
 
@@ -268,7 +268,7 @@ cocor(formula = ~logic + intelligence.b | knowledge + intelligence.a,
 
 Again the output produces a number of tests, although in this case they all converge on the conclusion that the null hypothesis should be rejected, i.e., the correlations are significantly different. Again following [Silver et al.](https://www.tandfonline.com/doi/abs/10.1080/00221300309601282), if you need to pick one to report, I'd suggest Dunn and Clark's z with Zou's confidence intervals. 
 
-## Data transformation
+# Data transformation
 
 This section has been adapted from materials made available by [Greg Anderson at Bates College](http://abacus.bates.edu/~ganderso/biology/bio270/homework_files/Data_Transformation.pdf). 
 
@@ -304,7 +304,7 @@ Also see:
   
 Hoaglin, D. C., Mosteller, F., & Tukey, J. W. (1983). *Understanding robust and exploratory data analysis*. New York: Wiley.
 
-## Permutation tests
+# Permutation tests
 
 This section has been adapated from the Level 2 class on permutation tests written by Dr. Phil McAleer. The original [can be viewed here](https://psyteachr.github.io/ug2-practical/permutation-tests-a-skill-set.html).
 
@@ -1030,7 +1030,7 @@ p <- NULL
 Well done in completing this lab. Let's recap before finishing. We had two groups, A and B, that we had tested in an experiment. We calculated the mean difference between A and B and wanted to know if this was a significant difference. To test this we created a distribution of all possible differences between A and B using the premise of permutation tests and then found the probability of our original value in that permuted distribution. The more extreme the value in a distribution the more likely that the difference is significant. And that is exactly what we found; an $\alpha < .05$. Next time we will look at using functions and inferential tests to perform this analysis but by understanding the above you now know how probability is determined.
 
 
-## Non-parametric tests
+# Non-parametric tests
 
 First, before Dale Barr shouts at me, it needs to be noted that non-parametric tests are problematic. Because they are based on rank data:
 
@@ -1176,7 +1176,7 @@ sample1 %>%
 
 > A Spearman’s correlation found a weak,non-significant, positive correlation (rs (289) = .03, p = .658) between knowledge and logic test scores.
 
-## Dissertation analysis guide
+# Dissertation analysis guide
 
 In this  chapter we're going to provide a guide for how to get started working with your dissertation data. It's important to note that this guide won't work for every project and every kind of data - and nothing in this chapter should supersede advice your supervisor has given you. Rather, this chapter is here to help guide you through the initial steps of working with quantitative data and to show you how what you have learned in RM2 maps on to your dissertation project. 
 

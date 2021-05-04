@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 24 Data transformation | MSc Conversion in Psychological Studies</title>
+  <title>Chapter 21 Updating R, RStudio, and packages | MSc Conversion in Psychological Studies</title>
   <meta name="description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 24 Data transformation | MSc Conversion in Psychological Studies" />
+  <meta property="og:title" content="Chapter 21 Updating R, RStudio, and packages | MSc Conversion in Psychological Studies" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 24 Data transformation | MSc Conversion in Psychological Studies" />
+  <meta name="twitter:title" content="Chapter 21 Updating R, RStudio, and packages | MSc Conversion in Psychological Studies" />
   
   <meta name="twitter:description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="comparing-two-correlations.html"/>
-<link rel="next" href="permutation-tests.html"/>
+<link rel="prev" href="installing-r.html"/>
+<link rel="next" href="additional-r-resources.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -647,67 +647,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="data-transformation" class="section level1" number="24">
-<h1><span class="header-section-number">Chapter 24</span> Data transformation</h1>
-<p>This section has been adapted from materials made available by <a href="http://abacus.bates.edu/~ganderso/biology/bio270/homework_files/Data_Transformation.pdf">Greg Anderson at Bates College</a>.</p>
-<p>The following brief overview of Data Transformation is compiled from Howell (pp. 318-324,
-2007) and Tabachnick and Fidell (pp. 86-89, 2007). See the references at the end of this handout for a more complete discussion of data transformation. Most people find it difficult to accept the idea of transforming data. Tukey (1977) probably had the right idea when he called data transformation calculations “reexpressions” rather than “transformations.” A researcher is merely reexpressing what the data have to say in other terms. However, it is important to recognize that conclusions that you draw on transformed data do not always transfer neatly to the original measurements. Grissom (2000) reports that the means of transformed variables can occasionally reverse the difference of means of the original variables. While this is disturbing, and it is important to think about the meaning of what you are doing, but it is not, in itself, a reason to rule out the use of transformations as a viable option.</p>
-<p>If you are willing to accept that is it permissible to transform one set of measures into another, then many possibilities become available for modifying the data to fit more closely the underlying assumptions of statistical tests. An added benefit about most of the transformations is that when we transform the data to meet one assumption, we often come closer to meeting other assumptions as well. For example, a square-root transformation may help equate group variances, and because it compresses the upper end of a distribution more than it compresses the lower end, it may also have the effect of making positively skewed distributions more nearly normal in shape. If you decide to transform, it is important to check that the variable is normally or nearly normally distributed after transformation. That is, make sure it worked.</p>
-<p>When it comes to reporting our data… although it is legitimate and proper to run a statistical test, such as the one-way analysis of variance, on the transformed values, we often report means in the unit of the untransformed scale. This is especially true when the original units are intrinsically meaningful. Howell (2007) urges researchers to look at both the converted (transformed) and unconverted (original) means and make sure that they are telling the same basic story. Do not convert standard deviations – you will do serious injustice if you try that. And be sure to indicate to your readers what you have done. It is not uncommon to see both the converted and unconverted values reported. Tabachnick and Fidell (2007) point out that, although data transformations are recommended as a remedy for outliers and for failures of normality, linearity, and homoscedasticity, they are not universally recommended. The reason is that an analysis is interpreted from the variables that are in it, and transformed variables are sometimes harder to interpret.</p>
-<p>You should not get the impression that data transformations should be applied routinely to all your data. As a rule of thumb, “If it’s not broken, don’t fix it.” If your data are reasonably distributed (i.e., are more or less symmetrical and have few, if any, outliers) and if your variances are reasonably homogeneous, there is probably nothing to be gained by applying a transformation. If you have markedly skewed data or heterogeneous variances, however, some form of data transformation may be useful. Furthermore, it is perfectly legitimate to shop around for a transformation that makes the necessary changes to the variance and shape. The only thing you should not do it to try out every transformation, looking for one that gives you a significant result. You are trying to optimize the data, not the resulting F.</p>
-<p>As suggested by Tabachnick and Fidell (2007) and Howell (2007), the following guidelines
-should be used when transforming data.</p>
-<table>
-<colgroup>
-<col width="57%" />
-<col width="23%" />
-<col width="19%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Problem</th>
-<th align="left">Transformation</th>
-<th align="left">R function</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Moderately positive skewness</td>
-<td align="left">Square-root</td>
-<td align="left"><code>sqrt(var)</code></td>
-</tr>
-<tr class="even">
-<td align="left">Substantially positive skewness</td>
-<td align="left">Logarithmic (Log 10)</td>
-<td align="left"><code>log10(var)</code></td>
-</tr>
-<tr class="odd">
-<td align="left">Substantially positive skewness (with zero values)</td>
-<td align="left">Logarithmic (Log 10)</td>
-<td align="left"><code>log10(var + C)</code></td>
-</tr>
-<tr class="even">
-<td align="left">Moderately negative skewness</td>
-<td align="left">Square-Root</td>
-<td align="left"><code>sqrt(var + K)</code></td>
-</tr>
-<tr class="odd">
-<td align="left">Substantially negative skewness</td>
-<td align="left">Logarithmic (Log 10)</td>
-<td align="left"><code>log10(K - var)</code></td>
-</tr>
-</tbody>
-</table>
-<p><code>C</code> = a constant added to each score so that the smallest score is 1.<br />
-<code>K</code> = a constant from which each score is subtracted so that the smallest score is 1; usually equal to the largest score + 1.</p>
-<p><strong>References</strong></p>
-<p>Howell, D. C. (2007). Statistical methods for psychology (6th ed.). Belmont, CA: Thomson
-Wadsworth.<br />
-Grissom, R. J. (2000). Heterogeneity of variance in clinical data. <em>Journal of Consulting and Clinical Psychology, 68</em>, 155-165.<br />
-Tabachnick, B. G., &amp; Fidell, L. S. (2007). <em>Using multivariate statistics (5th ed.)</em>. Boston: Allyn and Bacon.<br />
-Tukey, J. W. (1977). <em>Exploratory data analysis</em>. Reading, MA: Addison-Wesley.</p>
-<p>Also see:</p>
-<p>Hoaglin, D. C., Mosteller, F., &amp; Tukey, J. W. (1983). <em>Understanding robust and exploratory data analysis</em>. New York: Wiley.</p>
+<div id="updating-r-rstudio-and-packages" class="section level1" number="21">
+<h1><span class="header-section-number">Chapter 21</span> Updating R, RStudio, and packages</h1>
+<p>From time-to-time, updated versions of R, RStudio, and the packages you use (e.g., ggplot) will become available. Remember that each of these are separate, so they each have a different process and come with different considerations. We recommend updating to the latest version of all three at the start of each academic year.</p>
+<div id="updating-rstudio" class="section level3" number="21.0.1">
+<h3><span class="header-section-number">21.0.1</span> Updating RStudio</h3>
+<p>RStudio is the easiest component to update. Typically, updates to RStudio won’t affect your code, instead they add in new features, like spell-check or upgrades to what RStudio can do. There’s usually very little downside to updating RStudio and it’s easy to do.</p>
+<p>Click <code>Help - Check for updates</code></p>
+<div class="figure" style="text-align: center"><span id="fig:img-updaterstudio"></span>
+<img src="images/update_rstudio.jpg" alt="Updating RStudio" width="100%" />
+<p class="caption">
+Figure 21.1: Updating RStudio
+</p>
+</div>
+<p>If an update is available, it will prompt you to download it and you can install it as usual.</p>
+</div>
+<div id="updating-packages" class="section level2" number="21.1">
+<h2><span class="header-section-number">21.1</span> Updating packages</h2>
+<p>Package developers will occasionally release updates to their packages. This is typically to add in new functions to the package, or to fix or amend existing functions. <strong>Be aware that some package updates may cause your previous code to stop working</strong>. This does not tend to happen with minor updates to packages, but occasionally with major updates, you can have serious issues if the developer has made fundamental changes to how the code works. For this reason, we recommend updating all your packages once at the beginning of each academic year (or semester) - don’t do it before an assessment or deadline just in case!</p>
+<p>To update an individual package, the easiest way is to use the <code>install.packages()</code> function, as this always installs the most recent version of the package.</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="updating-r-rstudio-and-packages.html#cb324-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span></code></pre></div>
+<p>To update multiple packages, or indeed all packages, RStudio provides helpful tools. Click <code>Tools - Check for Package Updates</code>. A dialogue box will appear and you can select the packages you wish to update. Be aware that if you select all packages, this may take some time and you will be unable to use R whilst the process completes.</p>
+<div class="figure" style="text-align: center"><span id="fig:img-updateall"></span>
+<img src="images/update_packages.jpg" alt="Updating packages with RStudio" width="100%" />
+<p class="caption">
+Figure 21.2: Updating packages with RStudio
+</p>
+</div>
+<p>Occasionally, you might have a few problem packages that seemingly refuse to update, for me, <code>rlang</code> and <code>vctrs</code> cause me no end of trouble. These aren’t packages that you will likely ever explicitly load, but they’re required beneath the surface for R to do things like knit your Markdown files etc.</p>
+<p>If you try to update an existing package and get an error message that says something like <code>Warning in install.packages : installation of package ‘vctrs’ had non-zero exit status</code> or perhaps <code>Error in loadNamespace(i, c(lib.loc, .libPaths()), versionCheck = vI[[i]]) :  namespace 'rlang' 0.4.9 is being loaded, but &gt;= 0.4.10 is required</code> one solution I have found is to manually uninstall the package, restart R, and then install the package new, rather than trying to update an existing version. The <code>installr</code> package also has a useful function for uninstalling packages.</p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="updating-r-rstudio-and-packages.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load installr</span></span>
+<span id="cb325-2"><a href="updating-r-rstudio-and-packages.html#cb325-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(installr)</span>
+<span id="cb325-3"><a href="updating-r-rstudio-and-packages.html#cb325-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-4"><a href="updating-r-rstudio-and-packages.html#cb325-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Uninstall the problem package</span></span>
+<span id="cb325-5"><a href="updating-r-rstudio-and-packages.html#cb325-5" aria-hidden="true" tabindex="-1"></a><span class="fu">uninstall.packages</span>(<span class="st">&quot;package_name&quot;</span>)</span>
+<span id="cb325-6"><a href="updating-r-rstudio-and-packages.html#cb325-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-7"><a href="updating-r-rstudio-and-packages.html#cb325-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Then restart R using session - restart R</span></span>
+<span id="cb325-8"><a href="updating-r-rstudio-and-packages.html#cb325-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Then install the package fresh</span></span>
+<span id="cb325-9"><a href="updating-r-rstudio-and-packages.html#cb325-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb325-10"><a href="updating-r-rstudio-and-packages.html#cb325-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;package&quot;</span>)</span></code></pre></div>
+</div>
+<div id="updating-r" class="section level2" number="21.2">
+<h2><span class="header-section-number">21.2</span> Updating R</h2>
+<p>Finally, you may also wish to update R itself. The key thing to be aware of is that when you update R, if you just download the latest version from the website, you will lose all your packages. The easiest way to update R and not cause yourself a huge headache is to use the <code>installr</code> package. When you use the <code>updateR()</code> function, a series of dialogue boxes will appear. These should be fairly self-explanatory but there is a <a href="https://www.r-statistics.com/2015/06/a-step-by-step-screenshots-tutorial-for-upgrading-r-on-windows/">full step-by-step guide available</a> for how to use <code>installr</code>, the important bit is to select “Yes” when it asked if you would like to copy your packages from the older version of R.</p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="updating-r-rstudio-and-packages.html#cb326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the installr package</span></span>
+<span id="cb326-2"><a href="updating-r-rstudio-and-packages.html#cb326-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;installr&quot;</span>)</span>
+<span id="cb326-3"><a href="updating-r-rstudio-and-packages.html#cb326-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb326-4"><a href="updating-r-rstudio-and-packages.html#cb326-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load installr</span></span>
+<span id="cb326-5"><a href="updating-r-rstudio-and-packages.html#cb326-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(installr)</span>
+<span id="cb326-6"><a href="updating-r-rstudio-and-packages.html#cb326-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb326-7"><a href="updating-r-rstudio-and-packages.html#cb326-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the update function</span></span>
+<span id="cb326-8"><a href="updating-r-rstudio-and-packages.html#cb326-8" aria-hidden="true" tabindex="-1"></a><span class="fu">updateR</span>()</span></code></pre></div>
+<p>As always, if you’re having issues, please ask on Teams or book into a GTA session.</p>
+</div>
 </div>
 <div class="psyteachr_footer">
   
@@ -819,8 +811,8 @@ window.onload = function() {
           </div>
         </div>
       </div>
-<a href="comparing-two-correlations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="permutation-tests.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="installing-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="additional-r-resources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
