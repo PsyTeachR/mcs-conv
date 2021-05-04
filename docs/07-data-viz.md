@@ -1,18 +1,18 @@
 # Intro to Data Viz
 
-## DV Activity 1: dplyr recap
+## Activity 1: dplyr recap {#introviz-a1}
 
 Which function(s) would you use to approach each of the following problems?
 
-* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>mutate()</option> <option>select()</option> <option>arrange()</option> <option>summarise()</option> <option>filter()</option> <option>group_by()</option></select> function.
+* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>mutate()</option> <option>select()</option> <option>filter()</option> <option>group_by()</option> <option>arrange()</option> <option>summarise()</option></select> function.
 
-* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>arrange()</option> <option>mutate()</option> <option>summarise()</option> <option>select()</option> <option>filter()</option> <option>group_by()</option></select> function.
+* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>group_by()</option> <option>arrange()</option> <option>mutate()</option> <option>summarise()</option> <option>filter()</option> <option>select()</option></select> function.
 
-* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>group_by()</option> <option>filter()</option> <option>summarise()</option> <option>mutate()</option> <option>select()</option> <option>arrange()</option></select> function.
+* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>summarise()</option> <option>filter()</option> <option>group_by()</option> <option>mutate()</option> <option>arrange()</option> <option>select()</option></select> function.
 
-* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>group_by() and arrange()</option> <option>group_by() and summarise()</option> <option>arrange() and mutate()</option> <option>filter() and select()</option></select> functions.
+* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>arrange() and mutate()</option> <option>filter() and select()</option> <option>group_by() and summarise()</option> <option>group_by() and arrange()</option></select> functions.
 
-* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["arrange() and select()","mutate() and filter()"]'> <option></option> <option>arrange() and select()</option> <option>group_by() and mutate()</option> <option>mutate() and filter()</option> <option>select() and summarise()</option></select> functions.
+* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["mutate() and filter()","arrange() and select()"]'> <option></option> <option>mutate() and filter()</option> <option>select() and summarise()</option> <option>arrange() and select()</option> <option>group_by() and mutate()</option></select> functions.
 
 ### Data visualisation
 
@@ -35,7 +35,7 @@ Being able to visualise our variables, and relationships between our variables, 
 <p class="caption">(\#fig:img-layers)ggplot2 layers from Field et al. (2012)</p>
 </div>
 
-## DV Activity 2: Set-up
+## Activity 2: Set-up {#introviz-a2}
 
 We will use the same data files as in Loading Data when you uploaded files to the server. This data contains happiness and depression scores:
 
@@ -63,7 +63,7 @@ summarydata <- select(.data = all_dat,
 
 
 
-## DV Activity 3: Factors
+## Activity 3: Factors {#introviz-a3}
 
 Before we go any further we need to perform an additional step of data processing that we have glossed over up until this point. First, run the below code to look at the structure of the dataset:
 
@@ -73,7 +73,7 @@ str(summarydata)
 ```
 
 ```
-## tibble [992 x 8] (S3: tbl_df/tbl/data.frame)
+## tibble[,8] [992 x 8] (S3: tbl_df/tbl/data.frame)
 ##  $ ahiTotal    : num [1:992] 32 34 34 35 36 37 38 38 38 38 ...
 ##  $ cesdTotal   : num [1:992] 50 49 47 41 36 35 50 55 47 39 ...
 ##  $ sex         : num [1:992] 1 1 1 1 1 1 2 1 2 2 ...
@@ -100,7 +100,7 @@ You can read this code as "overwrite the data that is in the column sex with sex
 
 **Remember this. It's a really important step and if your graphs are looking weird this might be the reason.**
 
-## DV Activity 4: Bar plot
+## Activity 4: Bar plot {#introviz-a4}
 
 For our first example we will recreate the bar plot showing the number of male and female participants from Loading Data by showing you how the layers of code build up.
 
@@ -242,7 +242,7 @@ ggplot(summarydata, aes(x = sex, fill = sex)) +
 <p>In R terms, <code>ggplot2</code> is a fairly old package. As a result, the use of pipes wasn’t included when it was originally written. As you can see in the code above, the layers of the code are separated by <code>+</code> rather than <code>%&gt;%</code>. In this case, <code>+</code> is doing essentially the same job as a pipe - be careful not to confuse them.</p>
 </div>
 
-## DV Activity 5: Violin-boxplot
+## Activity 5: Violin-boxplot {#introviz-a5}
 
 As our final activity we will create a violin-boxplot, hopefully now you will be able to see how similar it is in structure to the bar chart code. In fact, there are only three differences:
 
@@ -267,7 +267,7 @@ ggplot(summarydata, aes(x = income, y = ahiTotal, fill = income)) +
 <p class="caption">(\#fig:unnamed-chunk-10)Violin-boxplot</p>
 </div>
 
-## DV Activity 6: Layers part 2
+## Activity 6: Layers part 2 {#introviz-a6}
 
 The key thing to note about `ggplot` is the use of layers. Whilst we've built this up step-by-step, they are independent and you could remove any of them except for the first layer. Additionally, although they are independent, the order you put them in does matter. Try running the two code examples below and see what happens.
 
@@ -282,6 +282,6 @@ ggplot(summarydata, aes(x = income, y = ahiTotal)) +
   geom_violin()
 ```
 
-### DV Finished!
+### Finished! {#introviz-fin}
 
 Well done! `ggplot` can be a bit difficult to get your head around at first, particularly if you've been used to making graphs a different way. But once it clicks, you'll be able to make informative and professional visualisations with ease, which, amongst other things, will make your reports look FANCY.

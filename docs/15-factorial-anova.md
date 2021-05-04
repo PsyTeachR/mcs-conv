@@ -10,7 +10,7 @@ This experiment has a 2 x 2 mixed design:
 * The second IV is type of event (ordinary vs. extraordinary) and is a between-subjects factor 
 * The DV we will use is `interest` 
 
-### Factorial Activity 1: Set-up
+### Activity 1: Set-up {#factorial-a1}
 
 * Open R Studio and set the working directory to your chpter folder. Ensure the environment is clear. 
 * Open a new R Markdown document and save it in your working directory. Call the file "Factorial ANOVA". 
@@ -42,7 +42,7 @@ factorial <- read_csv("Zhang et al. 2014 Study 3.csv")%>%
   mutate(Condition = as.factor(Condition))
 ```
 
-### Factorial Activity 2: Descriptive statistics
+### Activity 2: Descriptive statistics {#factorial-a2}
 
 * Calculate descriptive statistics (mean, the minimum and maximum standard error values for using with a plot, and SD) for `interest`  for each `Condition` for each `time` (hint: you will need to `group_by()` two variables) and store it in an object named `sum_dat_factorial`. These are known as the cells means.
 * Hint: for the standard error code, refer back to Visualisation.
@@ -50,7 +50,7 @@ factorial <- read_csv("Zhang et al. 2014 Study 3.csv")%>%
 
 
 
-### Factorial Activity 3: Violin-boxplots
+### Activity 3: Violin-boxplots {#factorial-a3}
 
 We're going to produce two kinds of plots to visualise our data. First, we'll produce violin-boxplots so that we can see the distribution of our data.
 
@@ -65,7 +65,7 @@ You don't need to replicate the exact colour scheme used below, see if you can p
 <p class="caption">(\#fig:plt1)Violin-boxplot by condition and time</p>
 </div>
 
-### Factorial Activity 4: Interaction plots
+### Activity 4: Interaction plots {#factorial-a4}
 
 Now we're going to produce an interaction plot that makes it easier to see how the IVs are interacting, which requires some ggplot2 functions we haven't come across yet. Rather than using the raw data in `dat_factorial`, we use the means that we produced in `sum_dat_factorial`. This type of plot requires two geoms, one to draw the points, and one to draw the lines that connect them. 
 
@@ -87,7 +87,7 @@ ggplot(sum_dat_factorial, aes(x = time, y = mean, group = Condition, shape = Con
 <p class="caption">(\#fig:plot2)Interaction plot</p>
 </div>
 
-### Factorial Activity 5: ANOVA
+### Activity 5: ANOVA {#factorial-a5}
 
 * Complete the below code to run the factorial ANOVA. Remember that you will need to specify both IVs and that one of them is between-subjects and one of them is within-subjects. Look up the help documentation for `aov_ez` to find out how to do this. 
 
@@ -116,7 +116,7 @@ Look at the results. Remember the pre-class information about how to read p-valu
 * Is the main effect of time significant? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
 * Is the two-way interaction significant? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
 
-### Factorial Activity 6: Assumption checking
+### Activity 6: Assumption checking {#factorial-a6}
 
 The assumptions for a factorial ANOVA are the same as the one-way ANOVA.
 
@@ -138,7 +138,7 @@ For the final assumption, we can again use `test_levene()` to test homogeneity o
 * Conduct Levene's test. Is assumption 4 met? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
 
 
-### Factorial Activity 7: Post-hoc tests
+### Activity 7: Post-hoc tests {#factorial-a7}
 
 Because the interaction is significant, we should follow this up with post-hoc tests using `emmeans()` to determine which comparisons are significant. If the overall interaction is not significant, you should not conduct additional tests.
 
@@ -205,7 +205,7 @@ contrasts_factorial2 <- contrasts_factorial %>%
   mutate(eff_size = time_ds)
 ```
 
-### Factorial Activity 8: Write-up
+### Activity 8: Write-up {#factorial-a8}
 
 * p-values of < .001 have been entered manually. There is a way to get R to produce this formatting but it's overly complicated for our purposes. If you want to push yourself, look up the [papaja](https://github.com/crsh/papaja) package. 
 * The values of partial eta-squared do not match between our analysis and those reported in the paper. I haven't figured out why this is yet - if you know, please get in touch!
@@ -232,7 +232,7 @@ We conducted the same repeated measures ANOVA with interest as the dependent mea
 
 > We conducted the same repeated measures ANOVA with interest as the dependent measure and again found a main effect of time, F(1, 128) = 25.88, p < .001, ηp2 = 0.044; anticipated interest at Time 1 (M = 4.2), SD = 1.12), 95% CI = [4.01, 4.4]) was lower than actual interest at Time 2 (M = 4.69, SD = 1.19, 95% CI = [4.49, 4.9]).We also observed an interaction between time and type of experience, F(1, 128) = 4.445, p = 0.04, ηp2 = 0.008. Pairwise comparisons revealed that for ordinary events, predicted interest at Time 1 (M = 4.04, SD = 1.09, 95% CI = [3.9, 4.18]) was lower than experienced interest at Time 2 (M = 4.73, SD = 1.24, 95% CI = [4.58, 4.89]), t(128) = -5.05, p < .001, d = 0.59. Although predicted interest for extraordinary events at Time 1 (M = 4.36, SD = 1.13, 95% CI = [4.22, 4.5]) was lower than experienced interest at Time 2 (M = 4.65, SD = 1.14, 95% CI = [4.51, 4.79), t(128) = -2.12, p < .001, d = 0.25 , the magnitude of underestimation was smaller than for ordinary events.
 
-### Factorial Activity 9: Transforming data
+### Activity 9: Transforming data {#factorial-a9}
 
 In this chapter we decided that the violation of the assumption of normality was ok so that we could replicate the results in the paper. But what if we weren't happy with this or if the violation had been more extreme? One option to deal with normality is to **transform your data**. If you want more information on this you should consult the Appendix chapter on data transformation.
 
@@ -265,13 +265,13 @@ tukey_factorial
 
 Notice that doing this hasn't changed the pattern of the ANOVA results, the p-values for the main effects and interactions are very slightly different but the overall conclusions remain the same. This is likely because the violations of normality was quite mild and there is a large sample size, however, with the transformation we can be more confident in our results and it may not always be the case that the transformed ANOVA is the same if the violations were more extreme. 
 
-#### Factorial Finished!
+#### Finished! {#factorial-fin}
 
 And we're done! There's only one more week of R left. I know that for some of you, you will be breathing a sigh of relief but we really want you to reflect on just how far you've come and the skills that you've learned. Even if you don't continue with quantitative research, your understanding of how data is manipulated and how the final results of journal articles actually happen will have substantially increased and that level of critical awareness is an all-round good skill to have. 
 
-### Activity solutions - Factorial ANOVA
+### Activity solutions {#factorial-sols}
 
-#### Factorial Activity 1
+#### Activity 1 {#factorial-a1sol}
 
 <div class="solution"><button>Activity 1</button>
 
@@ -290,7 +290,7 @@ library("tidyverse")
 ** Click tab to see solution **
 
 
-#### Factorial Activity 2
+#### Activity 2 {#factorial-a2sol}
 
 <div class="solution"><button>Activity 2</button>
 
@@ -308,7 +308,7 @@ sum_dat_factorial<-factorial%>%
 ** Click tab to see solution **
 
 
-#### Factorial Activity 3
+#### Activity 3 {#factorial-a3sol}
 
 <div class="solution"><button>Activity 3</button>
 
@@ -327,7 +327,7 @@ ggplot(factorial, aes(x = time , y = interest, fill = Condition))+
 
 ** Click tab to see solution **
 
-#### Factorial Activity 5
+#### Activity 5 {#factorial-a5sol}
 
 <div class="solution"><button>Activity 5</button>
 
@@ -350,7 +350,7 @@ factorial_output <- mod_factorial$anova_table %>% tidy()
 
 ** Click tab to see solution **
 
-#### Factorial Activity 6
+#### Activity 6 {#factorial-a6sol}
 
 <div class="solution"><button>Activity 6</button>
 

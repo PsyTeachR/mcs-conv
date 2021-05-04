@@ -4,19 +4,15 @@ Part of becoming a psychologist is asking questions and gathering data to enable
 
 In this chapter, you will continue to develop reproducible scripts. This means scripts that completely and transparently perform an analysis from start to finish in a way that yields the same result for different people using the same software on different computers. And transparency is a key value of science, as embodied in the “trust but verify” motto. When you do things reproducibly, others can understand and check your work. 
 
-This benefits science, but there is a selfish reason, too: the most important person who will benefit from a reproducible script is your future self. When you return to an analysis after two weeks of vacation, you will thank your earlier self for doing things in a transparent, reproducible way, as you can easily pick up right where you left off. The topic of open science is a big debate in the scientific community at the moment. Some classic psychological experiments have been found not to be replicable and part of the explanation for this has been a historical lack of transparency about data and analysis methods. If you'd like more information on this, you may find the following articles interesting:
-
-[Study delivers bleak verdict on validity of psychology experiment results](https://www.theguardian.com/science/2015/aug/27/study-delivers-bleak-verdict-on-validity-of-psychology-experiment-results)
-
-[Low replicability in psychological science](http://www.apa.org/science/about/psa/2015/09/low-replicability.aspx)
+This benefits science, but there is a selfish reason, too: the most important person who will benefit from a reproducible script is your future self. When you return to an analysis after two weeks of vacation, you will thank your earlier self for doing things in a transparent, reproducible way, as you can easily pick up right where you left off. The topic of open science is a big debate in the scientific community at the moment. Some classic psychological experiments have been found not to be replicable and part of the explanation for this has been a historical lack of transparency about data and analysis methods and this is a topic we're going to cover more in the lectures and in your reading.
 
 As part of your skill development, it is important that you work with data so that you can become confident and competent in your management and analysis of data. In this course, we will work with real data that has been shared by other researchers. 
 
-### Getting data ready to work with
+## Getting data ready to work with
 
 In this chapter you will learn how to load the packages required to work with the data. You'll then load the data into R Studio before getting it organised into a sensible format that relates to our research question. If you can't remember what packages are, go back and revise Programming Basics.
 
-### LD Activity 1: Set-up Loading Data
+## Activity 1: Set-up Loading Data {#ld-a1}
 
 Before we begin working with the data we need to do some set-up. If you need help with any of these steps, you should refer to Intro to R and Programming Basics: 
 
@@ -28,7 +24,7 @@ Before we begin working with the data we need to do some set-up. If you need hel
 * Delete the default R Markdown welcome text and insert a new code chunk.  
 * You can use the white space to take any notes that might help you for each activity.
 
-### LD Activity  2: Load in the package
+## Activity  2: Load in the package {#ld-a2}
 
 Today we need to use the `tidyverse` package. You will use this package in almost every single chapter of this course as the functions it contains are those we use for data wrangling, descriptive statistics, and visualisation.
 
@@ -39,7 +35,7 @@ Today we need to use the `tidyverse` package. You will use this package in almos
 library(tidyverse)
 ```
 
-### Open data
+## Open data
 
 For this chapter we are going to be using real data from the following paper:
 
@@ -47,7 +43,7 @@ For this chapter we are going to be using real data from the following paper:
 
 We recommend that you read through this paper and open up the .csv files in order to understand the data better but briefly, the files contains data from two scales, the  Authentic Happiness Inventory (AHI) and the Center for Epidemiological Studies Depression (CES-D) scale, as well as demographic information about participants. 
 
-### LD Activity 3: Read in data
+## Activity 3: Read in data {#ld-a3}
 
 Now we can read in the data. To do this we will use the function `read_csv()` that allows us to read in .csv files. There are also functions that allow you to read in .xlsx files and other formats, however in this course we will only use .csv files.
 
@@ -64,7 +60,7 @@ pinfo <- read_csv("participant-info.csv")
 <p>There is also a function called <code>read.csv()</code>. Be very careful NOT to use this function instead of <code>read_csv()</code> as they have different ways of naming columns. For the portfolio tasks, unless your results match our exactly you will not get the marks which means you need to be careful to use the right functions.</p>
 </div>
 
-### LD Activity 4: Check yo' data
+## Activity 4: Check yo' data {#ld-a4}
 
 You should now see that the objects `dat` and `pinfo` have appeared in the environment pane. Whenever you read data into R you should always do an initial check to see that your data looks like you expected. There are several ways you can do this, try them all out to see how the results differ.
 
@@ -74,7 +70,7 @@ You should now see that the objects `dat` and `pinfo` have appeared in the envir
 * Use `head(pinfo)`
 * Just type the name of the object you want to view, e.g., `dat`.
 
-### LD Activity 5: Join the files together
+## Activity 5: Join the files together {#ld-a5}
 
 We have two files, `dat` and `info` but what we really want is a single file that has both the data and the demographic information about the participants. R makes this very easy by using the function `inner_join()`.
 
@@ -91,7 +87,7 @@ all_dat <- inner_join(x = dat, # the first table you want to join
                       by = c("id", "intervention")) # columns the two tables have in common
 ```
 
-### LD Activity 6: Pull out variables of interest
+## Activity 6: Pull out variables of interest {#ld-a6}
 
 Our final step is to pull our variables of interest. Very frequently, datasets will have more variables and data than you actually want to use and it can make life easier to create a new object with just the data you need.
 
@@ -119,20 +115,215 @@ summarydata <- select(.data = all_dat, # name of the object to take data from
 
 Finally, try knitting the file to HTML. And that's it, well done! Remember to save your Markdown in your chapter folder and make a note of any mistakes you made and how you fixed them. You have started on your journey to become a confident and competent member of the open scientific community! 
 
-#### LD Finished!
+### Finished! {#ld-fin}
 
 There is no portfolio assessment this week, instead, use the time to get comfortable with what we've covered already and revise the activities and support materials presented so far if needed. If you're feeling comfortable with R, you can work your way through this book at your own pace or push yourself by using the additional resources highlighted in Programming Basics.
 
 If you're using the R server, we strongly recommend that you download a copy of any files you have been working on so that you have a local back-up.
 
-### LD Debugging tips
+## Debugging tips {#ld-debug}
 
 * When you downloaded the files did you save the file names **exactly** as they were originally? If you download the file more than once you will find your computer may automatically add a number to the end of the file name. `data.csv` is not the same as `data(1).csv`. Pay close attention to names!
 * Have you used the **exact** same object names as we did in each activity? Remember, `name` is different to `Name`. In order to make sure you can follow along with this book, pay special attention to ensuring you use the same object names as we do.  
 * Have you used quotation marks where needed?  
 * Have you accidentally deleted any back ticks (```) from the beginning or end of code chunks?
 
-### LD Test yourself
+
+## Debugging exercises {#ld-debugex}
+
+These exercises will produce errors. Try to solve the errors yourself, and then make a note of what the error message was and how you solved it - you might find it helpful to create a new file just for error solving notes. You will find that you make the same errors in R over and over again so whilst this might slow you down initially, it will greatly speed you up in the long-run. 
+
+1. Restart the R session (`Session - Restart R`). This should unload any packages you had loaded and also clear the environment. Make sure that the working directory is set to the right folder and then run the below code:
+
+
+```r
+dat <- read_csv ("ahi-cesd.csv")
+```
+
+This will produce the error `could not find function "read_csv"`. Once you figure out how to fix this error, make a note of it.
+
+
+<div class='solution'><button>Solution</button>
+
+When you restarted the session, you unloaded all the packages you previously had loaded. The function `read_csv()` is part of the `tidyverse` package which means that in order for the code to run, you need to run `library(tidyverse)` to reload the package so that you can use the function.
+
+</div>
+ 
+
+2. Make sure that the working directory is set to the right folder and then run the below code:
+
+
+```r
+library(tidyverse)
+dat <- read_csv("ahi-cesd")
+```
+
+This will produce the error `Error: 'ahi-cesd' does not exist in current working directory`. Once you figure out how to fix this error, make a note of it.
+
+
+<div class='solution'><button>Solution</button>
+
+When loading data, you need to provide the full file name, including the file extension. In this case, the error was caused by writing `ahi-cesd` instead of `ahi-cesd.csv`. As far as R is concerned, these are two completely different files and only one of them exists in the working directory.
+
+</div>
+ 
+
+3. Make sure that the working directory is set to the right folder and then run the below code:
+
+
+```r
+library(tidyverse)
+dat <- read_csv ("ahi-cesd.csv")
+```
+
+```
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   .default = col_double()
+## )
+## i Use `spec()` for the full column specifications.
+```
+
+```r
+pinfo <- read_csv("participant-info.csv")
+```
+
+```
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   id = col_double(),
+##   intervention = col_double(),
+##   sex = col_double(),
+##   age = col_double(),
+##   educ = col_double(),
+##   income = col_double()
+## )
+```
+
+```r
+all_dat <- inner_join(x = dat, 
+                      y = pinfo, 
+                      by = "id", "intervention") 
+summary(all_dat)
+```
+
+```
+##        id            occasion     elapsed.days    intervention.x 
+##  Min.   :  1.00   Min.   :0.00   Min.   :  0.00   Min.   :1.000  
+##  1st Qu.: 74.75   1st Qu.:0.00   1st Qu.:  0.00   1st Qu.:2.000  
+##  Median :147.00   Median :2.00   Median : 14.79   Median :2.000  
+##  Mean   :147.36   Mean   :2.03   Mean   : 44.31   Mean   :2.504  
+##  3rd Qu.:218.25   3rd Qu.:4.00   3rd Qu.: 90.96   3rd Qu.:4.000  
+##  Max.   :295.00   Max.   :5.00   Max.   :223.82   Max.   :4.000  
+##      ahi01           ahi02           ahi03           ahi04      
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:3.000  
+##  Median :3.000   Median :3.000   Median :3.000   Median :4.000  
+##  Mean   :2.771   Mean   :2.809   Mean   :2.723   Mean   :3.488  
+##  3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:4.000  
+##  Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+##      ahi05           ahi06           ahi07           ahi08      
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:2.000   1st Qu.:3.000   1st Qu.:3.000   1st Qu.:2.000  
+##  Median :3.000   Median :3.000   Median :3.000   Median :3.000  
+##  Mean   :2.995   Mean   :3.119   Mean   :3.358   Mean   :2.824  
+##  3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:3.000  
+##  Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+##      ahi09           ahi10           ahi11           ahi12      
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:3.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:3.000  
+##  Median :3.500   Median :3.000   Median :3.000   Median :3.000  
+##  Mean   :3.395   Mean   :2.762   Mean   :2.866   Mean   :3.089  
+##  3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:3.000  
+##  Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+##      ahi13           ahi14           ahi15           ahi16      
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:3.000   1st Qu.:2.000   1st Qu.:3.000   1st Qu.:3.000  
+##  Median :4.000   Median :3.000   Median :3.000   Median :3.000  
+##  Mean   :3.462   Mean   :2.883   Mean   :3.092   Mean   :3.173  
+##  3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:4.000  
+##  Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+##      ahi17           ahi18           ahi19           ahi20      
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:2.000   1st Qu.:2.000   1st Qu.:3.000   1st Qu.:3.000  
+##  Median :3.000   Median :3.000   Median :3.000   Median :3.000  
+##  Mean   :2.977   Mean   :2.714   Mean   :3.191   Mean   :3.052  
+##  3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:4.000  
+##  Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+##      ahi21           ahi22           ahi23           ahi24      
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:3.000  
+##  Median :3.000   Median :3.000   Median :3.000   Median :3.000  
+##  Mean   :2.947   Mean   :3.072   Mean   :2.771   Mean   :3.257  
+##  3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:4.000  
+##  Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+##      cesd01          cesd02          cesd03          cesd04     
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.:2.000  
+##  Median :1.000   Median :1.000   Median :1.000   Median :3.000  
+##  Mean   :1.682   Mean   :1.363   Mean   :1.541   Mean   :3.098  
+##  3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:4.000  
+##  Max.   :4.000   Max.   :4.000   Max.   :4.000   Max.   :4.000  
+##      cesd05          cesd06          cesd07         cesd08          cesd09    
+##  Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.000   Min.   :1.00  
+##  1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.00   1st Qu.:2.000   1st Qu.:1.00  
+##  Median :2.000   Median :1.000   Median :1.00   Median :3.000   Median :1.00  
+##  Mean   :1.876   Mean   :1.624   Mean   :1.71   Mean   :3.006   Mean   :1.28  
+##  3rd Qu.:2.250   3rd Qu.:2.000   3rd Qu.:2.00   3rd Qu.:4.000   3rd Qu.:1.00  
+##  Max.   :4.000   Max.   :4.000   Max.   :4.00   Max.   :4.000   Max.   :4.00  
+##      cesd10          cesd11          cesd12          cesd13     
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:1.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:1.000  
+##  Median :1.000   Median :2.000   Median :3.000   Median :1.000  
+##  Mean   :1.481   Mean   :2.117   Mean   :3.024   Mean   :1.676  
+##  3rd Qu.:2.000   3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:2.000  
+##  Max.   :4.000   Max.   :4.000   Max.   :4.000   Max.   :4.000  
+##      cesd14          cesd15          cesd16          cesd17     
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+##  1st Qu.:1.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:1.000  
+##  Median :1.000   Median :1.000   Median :3.000   Median :1.000  
+##  Mean   :1.662   Mean   :1.252   Mean   :3.088   Mean   :1.306  
+##  3rd Qu.:2.000   3rd Qu.:1.000   3rd Qu.:4.000   3rd Qu.:1.000  
+##  Max.   :4.000   Max.   :4.000   Max.   :4.000   Max.   :4.000  
+##      cesd18          cesd19          cesd20         ahiTotal     
+##  Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   : 32.00  
+##  1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.000   1st Qu.: 63.00  
+##  Median :1.000   Median :1.000   Median :1.000   Median : 74.00  
+##  Mean   :1.666   Mean   :1.367   Mean   :1.749   Mean   : 72.79  
+##  3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.: 83.00  
+##  Max.   :4.000   Max.   :4.000   Max.   :4.000   Max.   :114.00  
+##    cesdTotal     intervention.y       sex            age             educ      
+##  Min.   : 0.00   Min.   :1.000   Min.   :1.00   Min.   :18.00   Min.   :1.000  
+##  1st Qu.: 4.00   1st Qu.:2.000   1st Qu.:1.00   1st Qu.:35.00   1st Qu.:3.000  
+##  Median :10.00   Median :2.000   Median :1.00   Median :46.00   Median :4.000  
+##  Mean   :13.14   Mean   :2.504   Mean   :1.15   Mean   :45.04   Mean   :3.968  
+##  3rd Qu.:19.00   3rd Qu.:4.000   3rd Qu.:1.00   3rd Qu.:54.00   3rd Qu.:5.000  
+##  Max.   :55.00   Max.   :4.000   Max.   :2.00   Max.   :83.00   Max.   :5.000  
+##      income     
+##  Min.   :1.000  
+##  1st Qu.:2.000  
+##  Median :2.000  
+##  Mean   :2.053  
+##  3rd Qu.:3.000  
+##  Max.   :3.000
+```
+
+
+Look at the summary for `all_dat`. You will see that R has duplicated the `intervention` variable, so that there is now an `intervention.x` and an `intervention.y` that contain the same data. Once you figure out how to fix this error, make a note of it.
+
+
+
+<div class='solution'><button>Solution</button>
+
+If you want to join two tables that have mulitple columns in common, you need to use the `c()` command to list all of the variables. The code above hasn't done this, it's just listed `id` and `intervention` without enclosing them with `c()`.
+
+</div>
+ 
+
+
+## Test yourself {#ld-test}
 
 1. When loading in a .csv file, which function should you use? 
 

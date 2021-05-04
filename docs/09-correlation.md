@@ -1,3 +1,4 @@
+# Correlation
 
 
 
@@ -13,15 +14,15 @@ You can now:
 
 That's amazing! Now we're going to move on to performing a correlation and to create a plot to visualise the data. 
 
-# Correlations
+## Correlation
 
 As [Miller and Haden (2013)](https://drive.google.com/file/d/0B1fyuTuvj3YoaFdUR3FZaXNuNXc/view) state at the start of Chapter 11, correlations are **used to detect and quantify relationships among numerical variables**. In short, you measure two variables and the correlation analysis tells you whether or not they are related in some manner - positively or negatively; one increases as the other increases; one decreases as the other increases; etc.. 
 
-To actually carry out a correlation is very simple and we will show you that today in a little while: you just need the `cor.test()` function.  The harder part of correlations is really wrangling the data and interpreting what the results mean. You are going to run a few correlations in this chapter to give you good practice at running and interpreting the relationships between two variables. 
+To actually carry out a correlation is very simple and we will show you that today in a little while: you just need the `correlation()` function from the `correlation` package.  The harder part of correlations is really wrangling the data and interpreting what the results mean. You are going to run a few correlations in this chapter to give you good practice at running and interpreting the relationships between two variables. 
 
 **Note:** When dealing with correlations you should always refer to relationships and not predictions. In a correlation, X does not predict Y, that is regression which you will cover in later in this course. In a correlation, all we can say is whether X and Y are related. 
 
-## Correlation Activity 1: Set-up 
+## Activity 1: Set-up {#corr-a1}
 
 In this chapter we will use the examples in Miller and Haden (2013), Chapter 11, looking at the relationship between four variables: reading ability, intelligence (IQ), the number of minutes per week spent reading at home (Home); and the number of minutes per week spent watching TV at home (TV). You can see in this situation that it would be unethical to manipulate these variables so measuring them as they exist in the environment is most appropriate; hence the use of correlations.
 
@@ -29,10 +30,10 @@ In this chapter we will use the examples in Miller and Haden (2013), Chapter 11,
 * Open a new R Markdown document and save it in your working directory. Call the file "Correlation".    
 * Download <a href="MillerHadenData.csv" download>MillerHadenData.csv</a> and save it in your Correlation folder and/or upload to to the R server. Make sure that you do not change the file name at all.  
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
-* If you are working on your own computer, install the packages `Hmisc`, `car`, and `broom`. Remember **do not install packages on university computers, they are already installed**.
-* Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `broom`, `car`, `lsr`, `Hmisc`, and `tidyverse` (in that order) using the `library()` function and loads the data into an object named `mh` using `read_csv()`
+* If you are working on your own computer, install the packages `psych`, `car`, and `broom`. Remember **do not install packages on university computers, they are already installed**.
+* Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `car`, `correlation`, `psych`, and `tidyverse` (in that order) using the `library()` function and loads the data into an object named `mh` using `read_csv()`. You may need to install some of these packages if you don't already have them. 
 
-## Correlation Activity 2: Look at your data
+## Activity 2: Look at your data {#corr-a2}
 
 * Look at your data, you can do this by clicking on the object in the environment, or using `summary(mh)` or `head(mh)`. 
 
@@ -46,9 +47,9 @@ As in Miller and Haden, we have 5 columns:
 
 For the chapter we will focus on Reading Ability and IQ but for further practice you can look at other relationships in your free time.  
 
-A probable hypothesis could be that as Reading Ability increases so does Intelligence (think of the issue with causality and direction). Phrasing the hypothesis more formally, we hypothesise that the reading ability of school children, as measured through a standardized test, and intelligence, again measured through a standardized test, are positively correlated.  
+A probable hypothesis could be that as Reading Ability increases so does Intelligence (but think of the issue with causality and direction). Phrasing the hypothesis more formally, we hypothesise that the reading ability of school children, as measured through a standardized test, and intelligence, again measured through a standardized test, are positively correlated.  
 
-## Activity 3: Assumptions
+## Activity 3: Assumptions {#corr-a3}
 
 First, however, we must check some assumptions of the correlation tests. The main assumptions we need to check are:
 
@@ -77,6 +78,7 @@ If we want to run a Pearson correlation then we need interval or ratio data; Spe
   
 
 ### Assumption 2: Pairs of Data
+
 All correlations must have a data point for each participant in the two variables being correlated. This should make sense as to why - you can't correlate against an empty cell! So now go check that you have a data point in both columns for each participant. 
 
 It looks like that everyone has data in all the columns but let's test our skills a little whilst we are here.  Answer the following questions:
@@ -186,7 +188,7 @@ Many students become fixated with needing a 'perfect' dataset that follows an ex
 
 Look at the scatterplot and think back to the lecture, how would you describe this correlation in terms of direction and strength? 
 
-## Correlation Activity 4: Descriptive statistics
+## Activity 4: Descriptive statistics {#corr-a4}
 
 Many researchers (and indeed members of the School of Psychology!) disagree as to whether you need to report descriptive statistics such as the mean and SD for a correlation. The argument against reporting them is that the scatterplot is actually the descriptive of the correlation that you would use to describe the potential relationship in regards to your hypothesis. 
 
@@ -204,37 +206,30 @@ There's no fixed answer to this question but the person writing this book takes 
 |   55.12   |  6.08   | 100.04  | 9.04  |
 
 
-## Correlation Activity 5: Run the correlation
+## Activity 5: Run the correlation {#corr-a5}
 
-Finally we will run the correlation using the `cor.test()` function.  Remember that for help on any function you can type `?cor.test` in the console window.  The `cor.test()` function requires:
+Finally we will run the correlation using the `correlation()` function from the `correlation` package.  Remember that for help on any function you can type e.g., `?correlation` in the console window.  The `correlation()` function requires:
 
-* the column name of Variable 1
-* the column name of Variable 2
-* the type of correlation you want to run: e.g. `pearson`, `spearman`
-* the type of NHST tail you want to run: e.g. `"less"`,`"greater"1`, `"two.sided"`
+* The name of the data set you are using
+* The name of the first variable you want to select for the correlation
+* The name of the second variable you want to select for the correlation
+* The type of correlation you want to run: e.g. `pearson`, `spearman`
+* The type of NHST tail you want to run: e.g. `"less"`,`"greater"`, `"two.sided"`
 
 For example, if your data is stored in `dat` and you want to do a two-sided pearson correlation of the variables (columns) `X` and `Y`, then you would do:
 
 
 ```r
-cor.test(dat$X, dat$Y, method = "pearson", alternative = "two.sided")
+correlation(data = dat, select = "X", select2 = "Y",  method = "pearson", alternative = "two.sided")
 ```
 
-* Based on your answers to the assumption tests, spend a couple of minutes deciding with your group which correlation method to use (e.g. pearson or spearman) and the type of NHST tail to set (e.g. two.sided or one.sided). 
+* Based on your answers to the assumption tests, decide which correlation method to use (e.g. pearson or spearman) and the type of NHST tail to set (e.g. two.sided or one.sided). 
 * Run the correlation between IQ and Ability and save it in an object called `results`.
 * View the output by typing `results` in the console
 
 As you can see from the environment, the output from the correlation has saved as a list. This can make it a little more difficult to work with so we're going to use a function from the `broom` package that we loaded to make the table a bit tidier. The following code is going to overwrite the object results with the tidy version.
 
-* Run the below code and then view the object by clicking on `results` in the environment.
-
-
-```r
-results <- results %>% # take the object results and then
-  tidy()              # tidy it up
-```
-
-## Correlation Activity 6: Interpreting the correlation 
+## Activity 6: Interpreting the correlation {#corr-a6}
 
 You should now have a tibble called `results` that gives you the output of the correlation between Reading Ability and IQ for the school children measured in Miller and Haden (2013) Chapter 11. All that is left to do now, is interpret the output. 
 
@@ -259,29 +254,28 @@ Look at `results`and then with your group, answer the following questions:
 </div>
   
 
-## Correlation Activity 7: Write-up
+## Activity 7: Write-up {#corr-a7}
 
 Copy and paste the below **exactly** into **white space** in your R Markdown document and then knit the file. 
 
 
 ```r
-The mean IQ score was `r round(pluck(descriptives$IQ_mean),2)` (`r round(pluck(descriptives$IQ_SD),2)`) and the mean reading ability score was `r round(pluck(descriptives$Abil_mean),2)` (`r round(pluck(descriptives$Abil_SD),2)`). A Pearson\`s correlation found a significant, medium positive correlation between the two variables (r (`r results$parameter`) = `r round(results$estimate, 2)`, *p* = `r round(results$p.value, 3)`).
+The mean IQ score was `r round(pluck(descriptives$IQ_mean),2)` (`r round(pluck(descriptives$IQ_SD),2)`) and the mean reading ability score was `r round(pluck(descriptives$Abil_mean),2)` (`r round(pluck(descriptives$Abil_SD),2)`). A Pearson\`s correlation found a significant, medium positive correlation between the two variables (r (`r results$df_error`) = `r round(results$r, 2)`, *p* = `r round(results$p, 3)`).
 ```
 
 It will magically transform into:
 
 >The mean IQ score was 100.04(9.04) and the mean reading ability score was 55.12(6.08). A Pearson\`s correlation found a significant, medium positive correlation between the two variables (r (23) = 0.45, *p* = 0.024)
 
-## Correlation Activity 8: Scatterplot matrix
+## Activity 8: Scatterplot matrix {#corr-a8}
 
-Above we ran one correlation and if we wanted to do a different correlation then we would have to edit the `cor.test()` line and run it again. However, when you have lots of variables in a dataset, to get a quick overview of patterns, one thing you might want to do is run all the correlations at the same time or create a matrix of scatterplots at the one time. You can do this with functions from the `Hmisc` and `lsr` packages. We will use the Miller and Haden data here again which you should still have in a tibble called `mh`. 
+Above we ran one correlation. However, when you have lots of variables in a dataset, to get a quick overview of patterns, you might want to run all the correlations at the same time or create a matrix of scatterplots at the one time. You can do this with functions from the `psych` and `correlation` packages. We will use the Miller and Haden data here again which you should still have in a tibble called `mh`. 
 
-
-* Run the following line. The `pairs()` function from the `Hmisc` library creates a matrix of scatterplots which you can then use to view all the relationships at the one time.
+* Run the following line. The `pairs.panels)` function from the `psych` library creates a matrix of scatterplots, with the histograms, and correlation coefficients which you can then use to give you an overview of all the relationships at the one time. 
 
 
 ```r
-pairs(mh)
+pairs.panels(mh)
 ```
 
 <div class="figure" style="text-align: center">
@@ -289,56 +283,50 @@ pairs(mh)
 <p class="caption">(\#fig:pairs)Scatterplot matrix</p>
 </div>
 
-Notice something wrong? `pairs()` will create scatterplots for **all** variables in your data (as will `correlate()` below). This means that it has correlated the Participant ID number as well, which is totally meaningless.
+Notice something wrong? `pairs.panels()` will create plots for **all** variables in your data (as will `correlation()` below). This means that it has correlated the Participant ID number as well, which is totally meaningless.
 
-* Overwrite `mh` and use `select()` to get rid of the `Participant` column then run `pairs(mh)` again.
+Instead, we can use pipes to help us out here. This code:
 
-
-## Correlation Activity 9: Multiple correlations
-
-To perform multiple correlations in one go, we will use the `correlate()` function from the `lsr` package. If you look at the help documentation for `correlate()` you will see that it takes the following form:
+* Takes the dataset `mh` and then;
+* Uses `select()` to drop the `Participant` column and then;
+* Pipes this adjusted data into the `pairs.panels()` function
+* The additional arguments turn off the [correlation ellipses](https://analyse-it.com/docs/user-guide/multivariate/scatter-plot#:~:text=If%20the%20association%20is%20a,more%20the%20variables%20are%20uncorrelated.), use a linear line of best fit, and specify a Pearson's correlation.
 
 
 ```r
-correlate(x, y=NULL, test=FALSE, corr.method="pearson", p.adjust.method="holm") 
+mh %>%
+  select(-Participant) %>%
+  pairs.panels(ellipses = T, lm = TRUE, method = "pearson")
 ```
 
-You can use `correlate()` similar to `cor.test()` and specify a specific variable for both `x` and `y` to perform a single correlation. However, you can also provide a data frame that has multiple variables as `x` and it will run all possible correlations between the variables.   
+<div class="figure" style="text-align: center">
+<img src="09-correlation_files/figure-html/pairs-pipes-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
+<p class="caption">(\#fig:pairs-pipes)**CAPTION THIS FIGURE!!**</p>
+</div>
 
-* `test` controls whether or not p-values will be computed. The default setting for this is `FALSE`. You will almost always want to change this to `TRUE`.  
-* `corr.method()` controls which correlation is computed, the default is `pearson` but if you needed to run the non-parametric version you could change this to `spearman`.  
-* `p.adjust.method` is the reason we are using the `lsr` package. In the lectures we discussed the problem of multiple comparisons - the idea that if you run lots and lots of tests you're likely to produce a significant p-value just by chance. This argument applies a correction to the p-value that adjusts for the number of correlations you have performed. There are several different methods which you can look up in the help documentation, the default setting is a Bonferroni-Holm correction.  
+There are addtional arguments to adjust the plot `pairs.panel` creates that you can look up in the help documentation if you are interested.
+
+## Activity 9: Multiple correlations {#corr-a9}
+
+To perform multiple correlations in one go, we will again use the `correlation()` function. package. Rather than specifying two variables to correlation, you can also provide a data frame that has multiple variables  and it will run all possible correlations between the variables. Similar to above, we want to remove the `Participant` column before we do this.   
+
+* * `method` controls which correlation is computed, the default is `pearson` but if you needed to run the non-parametric version you could change this to `spearman`.  
+* `p_adjust` is the reason we are using the `correlation` package. In the lectures we discussed the problem of multiple comparisons - the idea that if you run lots and lots of tests you're likely to produce a significant p-value just by chance. This argument applies a correction to the p-value that adjusts for the number of correlations you have performed. There are several different methods which you can look up in the help documentation, the default setting is a Bonferroni-Holm correction.  
 * Because you're running multiple correlations and some may be positive and some may be negative, there is no option to specify a one or two-tailed test.   
 
-There's one last thing we need to do before we run the correlation. `lsr` is an older package and doesn't like working with tibbles, so we need to convert our tibble to a data frame, an older type of object.   
-
-* Run the below code. It will overwrite the tibble `mh` with a data frame.  
-
-
-```r
-mh <- as.data.frame(mh)
-```
-
-OK, finally let's run the correlations.  
 
 * Run the below code to calculate then view the correlation results
 
 
 ```r
-corr_results <- correlate(x = mh, # our data
-                          test = TRUE, # compute p-values
-                          corr.method = "pearson", # run a pearson test 
-                          p.adjust.method = "holm") # use the holm correction
+corr_results <- mh %>%
+  select(-Participant) %>%
+  correlation(method = "pearson", p_adjust = "holm")
+
 corr_results
 ```
 
-`corr_results` is a list with 5 components and you can view each of these separately just like you did with chi-square, for example, trying running the below code to view just the correlation values:
-
-
-```r
-corr_results$correlation
-```
-
+`corr_results` is a tibble that lists the results of each correlation with its corresponding statistics. Look through the table and then answer the following questions:
 
 1. Is the correlation between `Abil` and `Home` positive or negative? <select class='solveme' data-answer='["Positive"]'> <option></option> <option>Positive</option> <option>Negative</option></select>
 2. This means that as `Abil` scores increase, `Home` scores will <select class='solveme' data-answer='["Increase"]'> <option></option> <option>Increase</option> <option>Decrease</option></select>
@@ -364,23 +352,22 @@ corr_results$correlation
 <br>  
 
 
-## Correlation Finished!
+## Finished! {#corr-fin}
 
 Well done! You can now add correlations to the list of things you can do in R. If you have any questions, please post them on Teams.
 
-## Activity solutions - Correlation
+## Activity solutions {#corr-sols}
 
-### Correlation Activity 1
+### Activity 1 {#corr-a1sol}
 
 
 <div class='solution'><button>Activity 1</button>
 
 
 ```r
-library("broom")
 library("car")
-library("lsr")
-library("Hmisc")
+library("correlation")
+library("psych")
 library("tidyverse")
 mh <- read_csv("MillerHadenData.csv")
 ```
@@ -391,7 +378,7 @@ mh <- read_csv("MillerHadenData.csv")
 **click the tab to see the solution**
 <br>
 
-### Correlation Activity 3
+### Activity 3 {#corr-a3sol}
 
 
 <div class='solution'><button>Activity 3</button>
@@ -418,7 +405,7 @@ ggplot(data = mh, aes(x = Abil, y = IQ)) +
 **click the tab to see the solution**
 <br>
 
-### Correlation Activity 4
+### Activity 4 {#corr-a4sol}
 
 
 <div class='solution'><button>Activity 4</button>
@@ -438,14 +425,14 @@ descriptives <- summarise(mh,
 **click the tab to see the solution**
 <br>
 
-### Correlation Activity 5
+### Activity 5 {#corr-a5sol}
 
 
 <div class='solution'><button>Activity 5</button>
 
 
 ```r
-results <- cor.test(mh$Abil, mh$IQ, method = "pearson", alternative = "two.sided")
+results <- correlation(data = dat, select = "IQ", select2 = "Abil",  method = "pearson", alternative = "two.sided")
 ```
 
 </div>
@@ -454,21 +441,3 @@ results <- cor.test(mh$Abil, mh$IQ, method = "pearson", alternative = "two.sided
 **click the tab to see the solution**
 <br>
 
-
-### Correlation Activity 8
-
-
-<div class='solution'><button>Activity 8</button>
-
-
-```r
-mh <- mh %>%
-  select(-Participant)
-pairs(mh)
-```
-
-</div>
-  
-
-**click the tab to see the solution**
-<br>

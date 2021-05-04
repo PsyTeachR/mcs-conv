@@ -22,7 +22,7 @@ Today we are going to be using data from this paper: [Is there a Chastity Belt o
 
 This experiment does not use tennis players however, they used the Pong task: "a computerised game in which participants aim to block moving balls with various sizes of paddles". A bit like a very classic retro arcade game. Participants tend to estimate the balls as moving faster when they have to block it with a smaller paddle as opposed to when they have a bigger paddle. You can read the paper to get more details if you wish but hopefully that gives enough of an idea to help you understand the wrangling we will do on the data. We have cleaned up the data a little to start with. Let's begin!
 
-## DS2 Activity 1: Set-up Data Wrangling 2
+## Activity 1: Set-up Data Wrangling 2 {#dw2-a1}
 
 * Download <a href="PongBlueRedBack 1-16 Codebook.csv" download>PongBlueRedBack 1-16 Codebook.csv</a> into your chapter folder.  
 * Set the working directory to your chapter folder. Ensure the environment is clear.    
@@ -56,7 +56,7 @@ summary(pong_data)
 ```
   
 
-## DS2 Activity 2: Look at your data
+## Activity 2: Look at your data {#dw2-a2}
 
 Let's have a look at the `pong_data` and see how it is organized. Click on `pong_data` in your environment.
 
@@ -76,19 +76,19 @@ In the dataset you will see that each row (observation) represents one trial per
 We will use this data to master our skills of the Wickham Six verbs, taking each verb in turn. You should refer to the explanations and example code in Data Wrangling 1 to help you complete these. There are **6 verbs to work through** and  after that we will briefly recap on two other functions before finishing with a quick look at pipes. Try each activity and ask your peers or your tutor if you need help.
 
 
-## DS2 Activity 3: **`select()`**
+## Activity 3: **`select()`** {#dw2-a3}
 
 Either by inclusion (telling R all the variables you want to keep) or exclusion (telling R which variables you want to drop), select only the `Participant`, `PaddleLength`, `TrialNumber`, `BackgroundColor` and `HitOrMiss` columns from `pong_data` and store it in a new object named `select_dat`.  
 
-## DS2 Activity 4: Reorder the variables
+## Activity 4: Reorder the variables {#dw2-a4}
 
 `select()` can also be used to reorder the columns in a table as the new table will display the variables in the order that you wrote them. Use `select()` to keep only the columns `Participant`, `JudgedSpeed`, `BallSpeed`, `TrialNumber`, and `HitOrMiss` but have them display in alphabetical order, left to right. Save this table in a new object named `reorder_dat`.
 
-## DS2 Activity 5: **`arrange()`** 
+## Activity 5: **`arrange()`** {#dw2-a5}
 
 Arrange the data by two variables: `HitOrMiss` (putting hits - 1 - first), and `JudgedSpeed` (fast judgement - 1 - first). Do not store this output in a new object.   
 
-## DS2 Activity 6: `filter()`
+## Activity 6: `filter()` {#dw2-a6}
 
 Use `filter()` to extract all Participants in the original `pong_data` that had a fast speed judgement, for speeds 2, 4, 5, and 7, but missed the ball. Store this remaining data in a new object called `pong_fast_miss`
 
@@ -124,7 +124,7 @@ You could do this in three filters where each one uses the output of the precedi
 </div>
 
 
-## DS2 Activity 7: `mutate()`
+## Activity 7: `mutate()` {#dw2-a7}
 
 In Chapter \@ref(mutate), you learned how the `mutate()` function lets us create a new variable in our dataset. However, it also has another useful function in that it can be combined with `recode()` to create new columns with recoded values. For example, let's add a new column to `pong_data` in which the judged speed  is converted into a text label where `1` will become `Fast`, and `0` will become "Slow". Note that if you gave the recoded variable the same name as the original it would overwrite it.
 
@@ -169,7 +169,7 @@ Step 2. mutate(`TrialNumber` = TrialNumber minus 1)
 </div>
   
 
-## DS2 Activity 8: Summarising data
+## Activity 8: Summarising data {#dw2-a8}
 
 Now we're going to calculate descriptive statistics for the data using `summarise()`. In this exercise we will calculate the total number of hits there were for each paddle lengths as well as the mean number of hits, or number of hits there were for each background colour.
 
@@ -209,7 +209,7 @@ pong_data_hits<- pong_data %>% # take pong_data
 <p>After grouping data together using the <code>group_by()</code> function and then performing a task on it, e.g. <code>filter()</code>, it can be very good practice to ungroup the data before performing another function. Forgetting to ungroup the dataset won’t always affect further processing, but can really mess up other things. Again just a good reminder to always check the data you are getting out of a function a) makes sense and b) is what you expect.</p>
 </div>
 
-## DS2 Activity 9: Counting observations
+## Activity 9: Counting observations {#dw2-a9}
 
 Often it is helpful to know how many observations you have, either in total, or broken down by groups. This can help you spot if something has gone wrong in a calculation, for example, if you've done something with the code and your mean or median is only being calculated using a subset of the values you intended.
 
@@ -268,7 +268,7 @@ pong_data %>%
 
 Which method you use will depend on whether you want to add the counts to a table of other descriptives, but both functions are useful to know.
 
-## DS2 `bind_rows()`
+## `bind_rows()` {#dw2-bind}
 
 The Wickham Six verbs let you to do a lot of things with data, however there are thousands of other functions at your disposal. If you want to do something with your data that you are not sure how to do using these functions, do a Google search for an alternative function - chances are someone else has had the same problem and has a help guide. For example, one additional function is `bind_rows()` which is useful if you want to combine two tibbles together into one larger tibble that have the same column structure. For example:    
 
@@ -284,7 +284,7 @@ fast_ball <- filter(pong_data, BallSpeed >= 6)
 extreme_balls <- bind_rows(slow_ball, fast_ball) 
 ```
 
-## DS2 Pipes (**`%>%`**) 
+## Pipes (**`%>%`**) {#dw2-pipes}  
 
 Finally, a quick recap on pipes. Here is an example of code that doesn't use pipes to find how many hits there were with the large paddle length and the red background.
 
@@ -331,7 +331,7 @@ data_arrange <- pong_data %>%
 <p>Where piping becomes most useful is when we <strong>string a series of functions together</strong>, rather than using them as separate steps and having to save the data each time under a new variable name and getting ourselves all confused. In the non-piped version we have to create a new variable each time, for example, <code>data</code>, <code>data_filtered</code>, <code>data_arranged</code>, <code>data_grouped</code>, <code>data_summarised</code> just to get to the final one we actually want, which was <code>data_summarised</code>. This creates a lot of variables and tibbles in our environment and can make everything unclear and eventually slow down our computer. The piped version however uses one variable name, saving space in the environment, and is clear and easy to read. With pipes we skip unnecessary steps and avoid cluttering our environment.</p>
 </div>
 
-### DS2 Finished!
+### Finished! {#dw2-fin}
 
 We have now learned a number of functions and verbs that you will need as you progress through this book.  You will use them in the next chapter so be sure to go over these and try them out to make yourself more comfortable with them.  If you have any questions please post them on Teams. **Happy Wrangling!**
 
@@ -339,7 +339,7 @@ We have now learned a number of functions and verbs that you will need as you pr
 
 Below you will find the solutions to the above questions. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
 
-### DS2 Activity 3
+### Activity 3 {#dw2-a3sol}
 
 
 <div class='solution'><button>Solution Task 3</button>
@@ -359,7 +359,7 @@ select_dat <-select(pong_data, -JudgedSpeed, -BallSpeed, -BlockNumber)
 **click the tab to see the solution**
 <br>
 
-### DS2 Activity 4
+### Activity 4 {#dw2-a4sol}
 
 
 <div class='solution'><button>Solution Activity 4</button>
@@ -376,7 +376,7 @@ reorder_dat <- select(pong_data, BallSpeed, HitOrMiss, JudgedSpeed, Participant,
 <br>
 
 
-### DS2 Activity 5
+### Activity 5 {#dw2-a5sol}
 
 
 <div class='solution'><button>Solution Task 2</button>
@@ -392,7 +392,7 @@ arrange(pong_data, desc(HitOrMiss), desc(JudgedSpeed))
 **click the tab to see the solution**
 <br>
 
-### DS2 Activity 6
+### Activity 6 {#dw2-a6sol}
 
 
 <div class='solution'><button>Solution Activity 6</button>
@@ -411,7 +411,7 @@ pong_fast_miss< - filter(pong_data,
 **click the tab to see the solution**
 <br>
 
-### DS2 Activity 7
+### Activity 7 {#dw2-a7sol}
 
 
 <div class='solution'><button>Solution Activity 7 4</button>
@@ -437,7 +437,7 @@ pong_data<- filter(pong_data, TrialNumber >= 2) %>%
 **click the tab to see the solution**
 <br>
 
-### DS2 Activity 8
+### Activity 8 {#dw2-a8sol}
 
 
 <div class='solution'><button>Solution Activity 9</button>
@@ -456,13 +456,13 @@ pong_data_hits <- summarise(pong_data_group, total_hits = sum(HitOrMiss))
 **click the tab to see the solution**
 <br>
 
-## Debugging tips - Data wrangling 2
+## Debugging tips {#dw2-debug}
 
 * Make sure you have spelt the data file name **exactly** as it is shown. Spaces and everything. Do not change the name of the csv file, fix your code instead. If you have a different name for your file than someone else then your code is not reproducible.
 * Remember when uploading data we use `read_csv()` which has an underscore, whereas the data file itself will have a dot in its name, `filename.csv`. 
 * Finally, check that the datafile is actually in the folder you have set as your working directory. 
 
-## Test yourself - Data wrangling 2
+## Test yourself {#dw2-test}
 
 1. What type of data would these most likely be:
 

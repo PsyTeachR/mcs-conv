@@ -16,7 +16,7 @@ Our hypothesis was that greater anxiety would be reflected in lower engagement. 
 
 If our hypothesis is correct then there should be <select class='solveme' data-answer='["a negative"]'> <option></option> <option>a positive</option> <option>no</option> <option>a negative</option></select> correlation between students' mean anxiety levels and `n_weeks`.
 
-## Regression Activity 1: Setup 
+## Activity 1: Setup {#regression-a1}
 
 * Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.   
 * Open a new R Markdown document and save it in your working directory. Call the file "Regression".    
@@ -29,7 +29,7 @@ If our hypothesis is correct then there should be <select class='solveme' data-a
 
 
 
-## Regression Activity 2: Tidy the data
+## Activity 2: Tidy the data {#regression-a2}
 
 * Take a look at both of the datasets you loaded in.
 
@@ -54,7 +54,7 @@ Before we calculate means, you need to use `pivot_longer()` to restructure the S
 * Write and run the code to do tidy the STARS data, and store the resulting table as `stars2`.
 
 
-## Regression Activity 3: Calculate mean anxiety for each student
+## Activity 3: Calculate mean anxiety for each student {#regression-a3}
 
 * Now that you've got the data into a tidy format, use `summarise()` and `group_by()` to calculate mean anxiety scores (`mean_anxiety`) for each student (`ID`). Store the resulting table in a variable named `stars_means`. 
 
@@ -64,7 +64,7 @@ Before we calculate means, you need to use `pivot_longer()` to restructure the S
 
 
 
-## Regression Activity 4: Join the datasets together
+## Activity 4: Join the datasets together {#regression-a4}
 
 * In order to perform the regression analysis, combine the data from `stars_means` with `engage` using `inner_join()`. Call the resulting table `joined`. It should look like this:
 
@@ -109,7 +109,7 @@ Before we calculate means, you need to use `pivot_longer()` to restructure the S
 | 117 |     1.55     |    6    |
 | 129 |     2.35     |    1    |
 
-## Regression Activity 5: Calculate descriptives for the variables overall
+## Activity 5: Calculate descriptives for the variables overall {#regression-a5}
 
 It is also useful to calculate descriptives statistics for the sample overall so that you can check that the sample scores are what you were expecting (e.g., are they comparable to previous studies and samples?). This is also useful for the write-up.
 
@@ -129,7 +129,7 @@ descriptives <- joined %>%
 ```
 
 
-## Regression Activity 6: Visualisations
+## Activity 6: Visualisations {#regression-a6}
 
 * Now that you've have all of the variables in one place, write the code to reproduce the exact scatterplot below (using ggplot2).
 
@@ -141,7 +141,7 @@ descriptives <- joined %>%
 * According to the scatterplot, <select class='solveme' data-answer='["as anxiety increases, engagement decreases"]'> <option></option> <option>there is no apparent relationship</option> <option>as anxiety increases, engagement decreases</option> <option>as anxiety increases, engagement increases</option></select>
 
 
-## Regression Activity 7: Run the regression
+## Activity 7: Run the regression {#regression-a7}
 
 The `lm()` function from Base R is the main function to estimate a *L*inear *M*odel (hence the function name `lm`). `lm()` uses formula syntax that you have seen before, i.e., `DV ~ predictor`.  
 
@@ -178,7 +178,7 @@ Answer the following questions about the model. You may wish to refer to the lec
   
 <br>
 
-## Regression Activity 8: Assumption checking
+## Activity 8: Assumption checking {#regression-a8}
 
 It's now time to check the assumptions, which for regression are a little bit more involved than they were for ANOVA.
 
@@ -244,7 +244,7 @@ ncvTest(mod)
 
 Returning to the issue of normality, all of the other assumptions have been met and the qqplot suggests that any deviation from normality is very mild. Based upon this evidence, it seems justified to proceed with the original regression.
 
-## Regression Activity 9: Power and effect size
+## Activity 9: Power and effect size {#regression-a9}
 
 First we can calculate the minimum effect size we were able to detect given the sample size and design of the study using `pwr.f2.test()`. As usual, we fill in all the information we have and set the effect size argument, in this case `f2`, to `NULL`.
 
@@ -265,7 +265,7 @@ f2 <- mod_summary$adj.r.squared/(1 - mod_summary$adj.r.squared)
 
 * Is the observed effect size larger than the minimum effect size we could detect? <select class='solveme' data-answer='["Yes, our study is sufficiently powered"]'> <option></option> <option>Yes, our study is sufficiently powered</option> <option>No, our study is underpowered</option></select>
 
-## Regression Activity 10: Write-up
+## Activity 10: Write-up {#regression-a10}
 
 We need to manually calculate the p-value for the inline coding as you can't extract it from the `lm()` model. Run the below code to do this.
 
@@ -287,9 +287,9 @@ A simple linear regression was performed with engagement (M = 4.54, SD = 0.56) a
 )
 
 
-## Activity solutions - Regression
+## Activity solutions {#regression-sols}
 
-### Regression Activity 1
+### Activity 1 {#regression-a1sol}
 
 <div class="solution"><button>Activity 1</button>
 
@@ -306,7 +306,7 @@ engage <- read_csv("psess.csv")
 
 ** Click tab to see solution **
 
-### Regression Activity 2
+### Activity 2 {#regression-a2sol}
 
 <div class="solution"><button>Activity 2</button>
 
@@ -318,7 +318,7 @@ stars2 <- pivot_longer(data = stars, names_to = "Question", values_to = "Score",
 
 ** Click tab to see solution **
 
-### Regression Activity 3
+### Activity 3 {#regression-a3sol}
 
 <div class="solution"><button>Activity 3</button>
 
@@ -334,7 +334,7 @@ stars_means <- stars2 %>%
 
 ** Click tab to see solution **
 
-### Regression Activity 4
+### Activity 4 {#regression-a4sol}
 
 <div class="solution"><button>Activity 4</button>
 
@@ -345,7 +345,7 @@ joined <- inner_join(stars_means, engage, "ID")
 
 ** Click tab to see solution **
 
-### Regression Activity 5
+### Activity 5 {#regression-a5sol}
 
 <div class="solution"><button>Activity 5</button>
 

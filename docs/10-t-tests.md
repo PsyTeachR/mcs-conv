@@ -23,7 +23,7 @@ The abstract from this article explains more about the different experiments con
 
 To summarise, 39 professional recruiters from Fortune 500 companies evaluated job pitches of M.B.A. candidates from the University of Chicago Booth School of Business. The methods and results appear on pages 887--889 of the article if you want to look at them specifically for more details. The original data, in **wide** format, can be found at the [Open Stats Lab](https://drive.google.com/open?id=0Bz-rhZ21ShvOei1MM24xNndnQ00) website for later self-directed learning. Today however, we will be working with a modified version in "tidy" format which can be downloaded from Moodle. 
 
-## t-tests Activity 1: Set-up
+## Activity 1: Set-up {#ttest-a1}
 
 Your task is to reproduce the results from the article (p. 887). 
 
@@ -35,7 +35,7 @@ Your task is to reproduce the results from the article (p. 887).
 
 
 
-## t-tests Activity 2: Explore the dataset
+## Activity 2: Explore the dataset {#ttest-a2}
 
 There are a few things we should do to explore the dataset and make working with it a bit easier. 
 
@@ -55,7 +55,7 @@ evaluators <- evaluators %>%
 * How many participants were noted as being male: <input class='solveme nospaces' size='1' data-answer='["4"]'/>
 * How many data points are missing for `sex`? <input class='solveme nospaces' size='1' data-answer='["5"]'/>
 
-## t-tests Activity 3: Ratings
+## Activity 3: Ratings {#ttest-a3}
 
 We are now going calculate an overall intellect rating given by each evaluator - how intellectual the evaluators thought candidates were overall depending on whether or not the evaluators **read** or **listened** to the candidates' resume pitches. This is calculated by averaging the ratings of `competent`, `thoughtful` and `intelligent` for each evaluator; held within `ratings.csv`. **Note:** we are not looking at ratings to individual candidates; we are looking at overall ratings for each evaluator. This is a bit confusing but makes sense if you stop to think about it a little.
 
@@ -113,7 +113,7 @@ ratings2 <- ratings %>%
   arrange(eval_id, Category)
 ```
 
-## t-tests Activity 4: Visualisation
+## Activity 4: Visualisation {#ttest-a4}
 
 You should **always** visualise your data before you run a statistical analysis. Not only will it help you interpret the results of the test but it will give you a better understanding of the spread of your data. For comparing two means, we can take advantage of the many plotting options R provides so we don't have to settle for a boring (and more importantly, uninformative, bar plot).
 
@@ -147,7 +147,7 @@ ggplot(ratings2, aes(x = condition, y = Rating)) +
 
 * Look at the plot. In which condition did the evaluators give the higher ratings? <select class='solveme' data-answer='["listened"]'> <option></option> <option>listened</option> <option>read</option></select>
 
-## t-tests Activity 5: Assumptions
+## Activity 5: Assumptions {#ttest-a5}
 
 Before we run the t-test we need to check that the data meet the assumptions for a Welch t-test.
 
@@ -191,7 +191,7 @@ The p-value is .2088 which is more than .05, the cut-off for statistical signifi
 * Think back to the lecture. If you ran a Student's t-test instead of a Welch t-test, what would the 4th assumption be? <select class='solveme' data-answer='["Homogeneity of variance"]'> <option></option> <option>Homogeneity of variance</option> <option>Homoscedascity</option> <option>Nominal data</option></select>    
 * Why should you always use a Welch test instead of a Student t-test? <select class='solveme' data-answer='["Because it performs better if sample sizes and variances are unequal and gives the same result when sample sizes and variances are equal"]'> <option></option> <option>Because it rhymes with squelch which is a funny word</option> <option>Because you are more likely to obtain a signifcant p-value than with Student's t-test when sample sizes and variances are equal</option> <option>Because it performs better if sample sizes and variances are unequal and gives the same result when sample sizes and variances are equal</option></select>.
 
-## t-tests Activity 6: Running the t-test
+## Activity 6: Running the t-test {#ttest-a6}
 
 We are going to conduct t-tests for the Intellect, Hire and Impression ratings separately; each time comparing evaluators' overall ratings for the listened group versus overall ratings for the read group to see if there was a significant difference between the two conditions: i.e. did the evaluators who **listened** to pitches give a significant higher or lower rating than evaluators that **read** pitches.
 
@@ -263,14 +263,12 @@ results_impression <-
 </ol>
 </div>
 
-## t-tests Activity 7: Correcting for multiple comparisons
+## Activity 7: Correcting for multiple comparisons {#ttest-a7}
 
 Because we've run three t-tests we risk inflating our chances of a Type 1 errors due to familywise error. To correct for this we can apply a correction for multiple comparisons.
 
 To do this first of all we need to join all the results of the t-tests 
 together using `bind_rows()`. First, you specify all of the individual tibbles you want to join and give them a label, and then you specify what the ID column should be named.
-
-
 
 
 ```r
@@ -295,7 +293,7 @@ results <- results %>%
                                method = "bonferroni")) # type of correction to apply
 ```
 
-## t-tests Activity 8: Effect size
+## Activity 8: Effect size {#ttest-a8}
 
 Before we interpret and write-up the results our last task is to calculate the effect size which for a t-test is Cohen's D. To do this, we will use the function `cohensD()` from the `lsr` package. The code is very simple, it is very similar to the syntax for `t.test()`. The only difference is rather than `paired = FALSE`, you must specify `method = "unequal"` which indicates that we conducted a Welch test (see the help documentation for more information). 
 
@@ -310,7 +308,7 @@ hire_d <-
 impression_d <- 
 ```
 
-## t-tests Activity 9: Interpreting the results
+## Activity 9: Interpreting the results {#ttest-a9}
 
 * Were your results for `hire` significant? Enter the mean estimates and t-test results (means and t-value to 2 decimal places, p-value to 3 decimal places). Use the adjusted p-values:
 
@@ -331,7 +329,7 @@ impression_d <-
 
 * According to Cohen's (1988) guidelines, the effect sizes for all three tests are <select class='solveme' data-answer='["Large"]'> <option></option> <option>Small</option> <option>Medium</option> <option>Large</option></select>
 
-## t-tests Activity 10: Write-up
+## Activity 10: Write-up {#ttest-a10}
 
 Copy and paste the below **exactly** into **white space** in your R Markdown document and then knit the file to replicate the results section in the paper (p.887). 
 
@@ -353,7 +351,7 @@ Finally, they also reported being more likely to hire the candidates when they l
 
 > Finally, they also reported being more likely to hire the candidates when they listened to pitches (M = 4.71, SD = 2.26) than when they read the same pitches (M = 2.89, SD = 2.05), t(36.86) = 2.64, p < 0.036, 95% CI of the difference = [0.42, 3.23], d = 0.84.
 
-## t-tests Activity 11: Paired-samples t-test
+## Activity 11: Paired-samples t-test {#ttest-a11}
 
 For the final activity we will run a paired-samples t-test for a within-subject design but we will do this much quicker than for the Welch test and just point out the differences in the code.
 
@@ -380,7 +378,7 @@ gaze <- read_csv("Mehr Song and Spelke 2016 Experiment 1.csv") %>%
          test = Test_Proportion_Gaze_to_Singer)
 ```
 
-## t-tests Activity 12: Assumptions
+## Activity 12: Assumptions {#ttest-a12}
 
 The assumptions for the paired-samples t-test are a little different (although very similar) to the independent t-test.
 
@@ -400,7 +398,7 @@ gaze <- gaze %>%
 
 As you can see, from both the Shapiro-Wilk test and the QQ-plot, the data meet the assumption of normality so we can proceed.
 
-## t-tests Activity 13: Descriptives and visualisations
+## Activity 13: Descriptives and visualisations {#ttest-a13}
 
 It made sense to keep the data in wide-form until this point to make it easy to calculate a column for the difference score, but now we will transform it to tidy data so that we can easily create descriptives and plot the data using `tidyverse` tools.
 
@@ -419,7 +417,7 @@ gaze_descriptives <- gaze_tidy %>%
             sd_looking = sd(looking, na.rm = TRUE))
 ```
 
-## t-tests Activity 14: Paired-samples t-test
+## Activity 14: Paired-samples t-test {#ttest-a14}
 
 Finally, we can calculate the t-test and the effect size. The code is almost identical to the independent code with two differences:
 
@@ -449,7 +447,7 @@ The output of the paired-samples t-test is very similar to the independent test,
     
     + t(<input class='solveme nospaces' size='2' data-answer='["31"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.42"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.022",".022"]'/> 
     
-## t-tests Activity 15: Write-up
+## Activity 15: Write-up {#ttest-a15}
 
 Copy and paste the below **exactly** into **white space** in your R Markdown document and then knit the file to replicate the results section in the paper (p.489). 
 
@@ -460,13 +458,13 @@ At test, however, the infants selectively attended to the now-silent singer of t
 
 >At test, however, the infants selectively attended to the now-silent singer of the song with the familiar melody; the proportion of time during which they looked toward her was...greater than the proportion at baseline (difference in proportion of looking: M = -0.07, SD = 0.17, 95% CI = [-0.13, -0.01]), t(31) = -2.42, p = 0.022, d = 0.43.
 
-### t-tests Finished!
+### Finished! {#ttest-fin}
 
 That was a long chapter but now that you've done all the statistical tests you need to complete your quantitative project - hopefully you will see that it really is true that the hardest part is the set-up and the data wrangling. As we've said before, you don't need to memorise lines of code - you just need to remember where to find examples and to understand which bits of them you need to change. Play around with the examples we have given you and see what changing the values does.
 
-## Activity solutions - t-test
+## Activity solutions {#ttest-sols}
 
-### t-tests Activity 1
+### Activity 1 {#ttest-a1sol}
 
 
 <div class='solution'><button>Activity 1</button>
@@ -486,7 +484,7 @@ evaluators <- read_csv("evaluators.csv")
 **click the tab to see the solution**
 <br>
 
-### t-tests Activity 2
+### Activity 2 {#ttest-a2sol}
 
 
 <div class='solution'><button>Activity 2</button>
@@ -524,7 +522,7 @@ impression <- filter(ratings2, Category == "impression")
 **click the tab to see the solution**
 <br>
 
-### t-tests Activity 7
+### Activity 7 {#ttest-a7sol}
 
 
 <div class='solution'><button>Activity 7</button>
@@ -539,7 +537,7 @@ impression_d <- cohensD(Rating ~ condition, method = "unequal", data = impressio
 </div>
   
 
-### t-tests Activity 12
+### Activity 12 {#ttest-a12sol}
 
 
 <div class='solution'><button>Activity 12</button>
@@ -557,7 +555,7 @@ qqPlot(gaze$diff)
 **click the tab to see the solution**
 <br>
 
-### t-tests Activity 13
+### Activity 13 {#ttest-a13sol}
 
 
 <div class='solution'><button>Activity 13</button>
@@ -587,7 +585,7 @@ ggplot(gaze_tidy, aes(x = time, y = looking)) +
 **click the tab to see the solution**
 <br>
 
-### t-tests Activity 14
+### Activity 14 {#ttest-a14sol}
 
 
 <div class='solution'><button>Activity 14</button>
