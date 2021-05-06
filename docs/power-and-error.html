@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-05-04" />
+<meta name="date" content="2021-05-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -792,11 +792,11 @@ Helpful hint
 <ul>
 <li>Run the below code:</li>
 </ul>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="power-and-error.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> .<span class="dv">4</span>,</span>
-<span id="cb183-2"><a href="power-and-error.html#cb183-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> .<span class="dv">8</span>,</span>
-<span id="cb183-3"><a href="power-and-error.html#cb183-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> .<span class="dv">05</span>,</span>
-<span id="cb183-4"><a href="power-and-error.html#cb183-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,</span>
-<span id="cb183-5"><a href="power-and-error.html#cb183-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;two.sample&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="power-and-error.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> .<span class="dv">4</span>,</span>
+<span id="cb185-2"><a href="power-and-error.html#cb185-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> .<span class="dv">8</span>,</span>
+<span id="cb185-3"><a href="power-and-error.html#cb185-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> .<span class="dv">05</span>,</span>
+<span id="cb185-4"><a href="power-and-error.html#cb185-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,</span>
+<span id="cb185-5"><a href="power-and-error.html#cb185-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;two.sample&quot;</span>)</span></code></pre></div>
 <p>The output tells you that you would need 99.0803248 people <strong>per condition</strong>. But you only get whole people and we like to be conservative on our estimates so we would actually run 100 <strong>per condition</strong>. That is a lot of people!!!</p>
 <p>To make the output of <code>pwr.t.test()</code> easier to work with, we’re going to amend the code to just give us exactly the number that we want.</p>
 <ul>
@@ -804,14 +804,14 @@ Helpful hint
 <li><code>pull()</code> will pull out a single value (in this case <code>n</code> but it could be anything)</li>
 <li><code>ceiling()</code> rounds up to give us the next highest whole number</li>
 </ul>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="power-and-error.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> .<span class="dv">4</span>,</span>
-<span id="cb184-2"><a href="power-and-error.html#cb184-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> .<span class="dv">8</span>,</span>
-<span id="cb184-3"><a href="power-and-error.html#cb184-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> .<span class="dv">05</span>,</span>
-<span id="cb184-4"><a href="power-and-error.html#cb184-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,</span>
-<span id="cb184-5"><a href="power-and-error.html#cb184-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;two.sample&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb184-6"><a href="power-and-error.html#cb184-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb184-7"><a href="power-and-error.html#cb184-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(n) <span class="sc">%&gt;%</span></span>
-<span id="cb184-8"><a href="power-and-error.html#cb184-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ceiling</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="power-and-error.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d =</span> .<span class="dv">4</span>,</span>
+<span id="cb186-2"><a href="power-and-error.html#cb186-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> .<span class="dv">8</span>,</span>
+<span id="cb186-3"><a href="power-and-error.html#cb186-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> .<span class="dv">05</span>,</span>
+<span id="cb186-4"><a href="power-and-error.html#cb186-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,</span>
+<span id="cb186-5"><a href="power-and-error.html#cb186-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;two.sample&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb186-6"><a href="power-and-error.html#cb186-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb186-7"><a href="power-and-error.html#cb186-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(n) <span class="sc">%&gt;%</span></span>
+<span id="cb186-8"><a href="power-and-error.html#cb186-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ceiling</span>()</span></code></pre></div>
 </div>
 <div id="power-a6" class="section level2" number="11.7">
 <h2><span class="header-section-number">11.7</span> Activity 6: Sample size for standard power one-sample t-test</h2>
@@ -914,9 +914,9 @@ Helpful hint
 <button>
 Activity 1
 </button>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="power-and-error.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwr)</span>
-<span id="cb185-2"><a href="power-and-error.html#cb185-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb185-3"><a href="power-and-error.html#cb185-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="power-and-error.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pwr)</span>
+<span id="cb187-2"><a href="power-and-error.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb187-3"><a href="power-and-error.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
 <p><br>
 Click on the tab to reveal the solution</p>
@@ -927,9 +927,9 @@ Click on the tab to reveal the solution</p>
 <button>
 Activity 2
 </button>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="power-and-error.html#cb186-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fl">3.24</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">25</span> <span class="sc">+</span><span class="dv">1</span>)</span>
-<span id="cb186-2"><a href="power-and-error.html#cb186-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-3"><a href="power-and-error.html#cb186-3" aria-hidden="true" tabindex="-1"></a><span class="co"># effect is medium to large; d = .64</span></span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="power-and-error.html#cb188-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fl">3.24</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">25</span> <span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb188-2"><a href="power-and-error.html#cb188-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-3"><a href="power-and-error.html#cb188-3" aria-hidden="true" tabindex="-1"></a><span class="co"># effect is medium to large; d = .64</span></span></code></pre></div>
 </div>
 <p><br>
 Click on the tab to reveal the solution</p>
@@ -940,9 +940,9 @@ Click on the tab to reveal the solution</p>
 <button>
 Activity 3
 </button>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="power-and-error.html#cb187-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> (<span class="dv">2</span><span class="sc">*</span><span class="fl">2.9</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">30</span>)</span>
-<span id="cb187-2"><a href="power-and-error.html#cb187-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb187-3"><a href="power-and-error.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="co"># effect is large; d = 1.06</span></span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="power-and-error.html#cb189-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> (<span class="dv">2</span><span class="sc">*</span><span class="fl">2.9</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">30</span>)</span>
+<span id="cb189-2"><a href="power-and-error.html#cb189-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb189-3"><a href="power-and-error.html#cb189-3" aria-hidden="true" tabindex="-1"></a><span class="co"># effect is large; d = 1.06</span></span></code></pre></div>
 </div>
 <p><br>
 Click on the tab to reveal the solution</p>
@@ -953,14 +953,14 @@ Click on the tab to reveal the solution</p>
 <button>
 Activity 4
 </button>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="power-and-error.html#cb188-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">=</span> (<span class="dv">10</span> <span class="sc">-</span> <span class="dv">11</span>)<span class="sc">/</span><span class="fu">sqrt</span>((<span class="fl">1.3</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">30</span>) <span class="sc">+</span> (<span class="fl">1.7</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">30</span>))</span>
-<span id="cb188-2"><a href="power-and-error.html#cb188-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-3"><a href="power-and-error.html#cb188-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> (<span class="dv">2</span><span class="sc">*</span>t)<span class="sc">/</span><span class="fu">sqrt</span>((<span class="dv">30-1</span>) <span class="sc">+</span> (<span class="dv">30-1</span>))</span>
-<span id="cb188-4"><a href="power-and-error.html#cb188-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-5"><a href="power-and-error.html#cb188-5" aria-hidden="true" tabindex="-1"></a><span class="co"># t = 2.56</span></span>
-<span id="cb188-6"><a href="power-and-error.html#cb188-6" aria-hidden="true" tabindex="-1"></a><span class="co"># d = .67</span></span>
-<span id="cb188-7"><a href="power-and-error.html#cb188-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb188-8"><a href="power-and-error.html#cb188-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember that convention is that people report the t and d as positive.</span></span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="power-and-error.html#cb190-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">=</span> (<span class="dv">10</span> <span class="sc">-</span> <span class="dv">11</span>)<span class="sc">/</span><span class="fu">sqrt</span>((<span class="fl">1.3</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">30</span>) <span class="sc">+</span> (<span class="fl">1.7</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">30</span>))</span>
+<span id="cb190-2"><a href="power-and-error.html#cb190-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-3"><a href="power-and-error.html#cb190-3" aria-hidden="true" tabindex="-1"></a>d <span class="ot">=</span> (<span class="dv">2</span><span class="sc">*</span>t)<span class="sc">/</span><span class="fu">sqrt</span>((<span class="dv">30-1</span>) <span class="sc">+</span> (<span class="dv">30-1</span>))</span>
+<span id="cb190-4"><a href="power-and-error.html#cb190-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-5"><a href="power-and-error.html#cb190-5" aria-hidden="true" tabindex="-1"></a><span class="co"># t = 2.56</span></span>
+<span id="cb190-6"><a href="power-and-error.html#cb190-6" aria-hidden="true" tabindex="-1"></a><span class="co"># d = .67</span></span>
+<span id="cb190-7"><a href="power-and-error.html#cb190-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-8"><a href="power-and-error.html#cb190-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Remember that convention is that people report the t and d as positive.</span></span></code></pre></div>
 </div>
 <p><br>
 Click on the tab to reveal the solution</p>
@@ -971,13 +971,13 @@ Click on the tab to reveal the solution</p>
 <button>
 Activity 6
 </button>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="power-and-error.html#cb189-1" aria-hidden="true" tabindex="-1"></a>sample_size_t <span class="ot">&lt;-</span> <span class="fu">pwr.t.test</span>(<span class="at">d =</span> .<span class="dv">23</span>,</span>
-<span id="cb189-2"><a href="power-and-error.html#cb189-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">power =</span> .<span class="dv">8</span>, </span>
-<span id="cb189-3"><a href="power-and-error.html#cb189-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">sig.level =</span> .<span class="dv">05</span>, </span>
-<span id="cb189-4"><a href="power-and-error.html#cb189-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, </span>
-<span id="cb189-5"><a href="power-and-error.html#cb189-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">type =</span> <span class="st">&quot;one.sample&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(n) <span class="sc">%&gt;%</span> <span class="fu">ceiling</span>()</span>
-<span id="cb189-6"><a href="power-and-error.html#cb189-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-7"><a href="power-and-error.html#cb189-7" aria-hidden="true" tabindex="-1"></a>sample_size_t</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="power-and-error.html#cb191-1" aria-hidden="true" tabindex="-1"></a>sample_size_t <span class="ot">&lt;-</span> <span class="fu">pwr.t.test</span>(<span class="at">d =</span> .<span class="dv">23</span>,</span>
+<span id="cb191-2"><a href="power-and-error.html#cb191-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">power =</span> .<span class="dv">8</span>, </span>
+<span id="cb191-3"><a href="power-and-error.html#cb191-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">sig.level =</span> .<span class="dv">05</span>, </span>
+<span id="cb191-4"><a href="power-and-error.html#cb191-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, </span>
+<span id="cb191-5"><a href="power-and-error.html#cb191-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">type =</span> <span class="st">&quot;one.sample&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(n) <span class="sc">%&gt;%</span> <span class="fu">ceiling</span>()</span>
+<span id="cb191-6"><a href="power-and-error.html#cb191-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-7"><a href="power-and-error.html#cb191-7" aria-hidden="true" tabindex="-1"></a>sample_size_t</span></code></pre></div>
 <p>[1] 151</p>
 </div>
 <p><br>
@@ -989,11 +989,11 @@ Click on the tab to reveal the solution</p>
 <button>
 Activity 7
 </button>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="power-and-error.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">n =</span> <span class="dv">50</span>,</span>
-<span id="cb190-2"><a href="power-and-error.html#cb190-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> .<span class="dv">9</span>, </span>
-<span id="cb190-3"><a href="power-and-error.html#cb190-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> .<span class="dv">05</span>, </span>
-<span id="cb190-4"><a href="power-and-error.html#cb190-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, </span>
-<span id="cb190-5"><a href="power-and-error.html#cb190-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;two.sample&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="power-and-error.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">n =</span> <span class="dv">50</span>,</span>
+<span id="cb192-2"><a href="power-and-error.html#cb192-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> .<span class="dv">9</span>, </span>
+<span id="cb192-3"><a href="power-and-error.html#cb192-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> .<span class="dv">05</span>, </span>
+<span id="cb192-4"><a href="power-and-error.html#cb192-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, </span>
+<span id="cb192-5"><a href="power-and-error.html#cb192-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;two.sample&quot;</span>)</span></code></pre></div>
 <pre><code> Two-sample t test power calculation 
 
           n = 50
@@ -1012,11 +1012,11 @@ Click on the tab to reveal the solution</p>
 <button>
 Activity 8
 </button>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="power-and-error.html#cb192-1" aria-hidden="true" tabindex="-1"></a>sample_size_r <span class="ot">&lt;-</span> <span class="fu">pwr.r.test</span>(<span class="at">r =</span> .<span class="dv">4</span>, </span>
-<span id="cb192-2"><a href="power-and-error.html#cb192-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">sig.level =</span> .<span class="dv">05</span>, </span>
-<span id="cb192-3"><a href="power-and-error.html#cb192-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">power =</span> .<span class="dv">8</span>, </span>
-<span id="cb192-4"><a href="power-and-error.html#cb192-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb192-5"><a href="power-and-error.html#cb192-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(n) <span class="sc">%&gt;%</span> <span class="fu">ceiling</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="power-and-error.html#cb194-1" aria-hidden="true" tabindex="-1"></a>sample_size_r <span class="ot">&lt;-</span> <span class="fu">pwr.r.test</span>(<span class="at">r =</span> .<span class="dv">4</span>, </span>
+<span id="cb194-2"><a href="power-and-error.html#cb194-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">sig.level =</span> .<span class="dv">05</span>, </span>
+<span id="cb194-3"><a href="power-and-error.html#cb194-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">power =</span> .<span class="dv">8</span>, </span>
+<span id="cb194-4"><a href="power-and-error.html#cb194-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb194-5"><a href="power-and-error.html#cb194-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(n) <span class="sc">%&gt;%</span> <span class="fu">ceiling</span>()</span></code></pre></div>
 </div>
 <p><br>
 Click on the tab to reveal the solution</p>
@@ -1027,10 +1027,10 @@ Click on the tab to reveal the solution</p>
 <button>
 Activity 9
 </button>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="power-and-error.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.r.test</span>(<span class="at">n =</span> <span class="dv">50</span>,</span>
-<span id="cb193-2"><a href="power-and-error.html#cb193-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> .<span class="dv">05</span>, </span>
-<span id="cb193-3"><a href="power-and-error.html#cb193-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> .<span class="dv">8</span>, </span>
-<span id="cb193-4"><a href="power-and-error.html#cb193-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="power-and-error.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.r.test</span>(<span class="at">n =</span> <span class="dv">50</span>,</span>
+<span id="cb195-2"><a href="power-and-error.html#cb195-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> .<span class="dv">05</span>, </span>
+<span id="cb195-3"><a href="power-and-error.html#cb195-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">power =</span> .<span class="dv">8</span>, </span>
+<span id="cb195-4"><a href="power-and-error.html#cb195-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
 <pre><code> approximate correlation power calculation (arctangh transformation) 
 
           n = 50
@@ -1048,12 +1048,12 @@ Click on the tab to reveal the solution</p>
 <button>
 Activity 11
 </button>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="power-and-error.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Achievable Cohen d for Example 1</span></span>
-<span id="cb195-2"><a href="power-and-error.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">power =</span> .<span class="dv">8</span>, </span>
-<span id="cb195-3"><a href="power-and-error.html#cb195-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">n =</span> <span class="dv">32</span>, </span>
-<span id="cb195-4"><a href="power-and-error.html#cb195-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;one.sample&quot;</span>, </span>
-<span id="cb195-5"><a href="power-and-error.html#cb195-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, </span>
-<span id="cb195-6"><a href="power-and-error.html#cb195-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> .<span class="dv">05</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="power-and-error.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Achievable Cohen d for Example 1</span></span>
+<span id="cb197-2"><a href="power-and-error.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">power =</span> .<span class="dv">8</span>, </span>
+<span id="cb197-3"><a href="power-and-error.html#cb197-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">n =</span> <span class="dv">32</span>, </span>
+<span id="cb197-4"><a href="power-and-error.html#cb197-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;one.sample&quot;</span>, </span>
+<span id="cb197-5"><a href="power-and-error.html#cb197-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, </span>
+<span id="cb197-6"><a href="power-and-error.html#cb197-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> .<span class="dv">05</span>)</span></code></pre></div>
 <pre><code> One-sample t test power calculation 
 
           n = 32
@@ -1061,14 +1061,14 @@ Activity 11
   sig.level = 0.05
       power = 0.8
 alternative = two.sided</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="power-and-error.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This study seems ok as the authors could achieve an effect size as low as .51 and found an effect size at .52</span></span>
-<span id="cb197-2"><a href="power-and-error.html#cb197-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb197-3"><a href="power-and-error.html#cb197-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Achievable Cohen d for Example 2</span></span>
-<span id="cb197-4"><a href="power-and-error.html#cb197-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">power =</span> .<span class="dv">8</span>, </span>
-<span id="cb197-5"><a href="power-and-error.html#cb197-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">n =</span> <span class="dv">32</span>, </span>
-<span id="cb197-6"><a href="power-and-error.html#cb197-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;paired&quot;</span>, </span>
-<span id="cb197-7"><a href="power-and-error.html#cb197-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, </span>
-<span id="cb197-8"><a href="power-and-error.html#cb197-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> .<span class="dv">05</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="power-and-error.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This study seems ok as the authors could achieve an effect size as low as .51 and found an effect size at .52</span></span>
+<span id="cb199-2"><a href="power-and-error.html#cb199-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-3"><a href="power-and-error.html#cb199-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Achievable Cohen d for Example 2</span></span>
+<span id="cb199-4"><a href="power-and-error.html#cb199-4" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">power =</span> .<span class="dv">8</span>, </span>
+<span id="cb199-5"><a href="power-and-error.html#cb199-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">n =</span> <span class="dv">32</span>, </span>
+<span id="cb199-6"><a href="power-and-error.html#cb199-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">&quot;paired&quot;</span>, </span>
+<span id="cb199-7"><a href="power-and-error.html#cb199-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, </span>
+<span id="cb199-8"><a href="power-and-error.html#cb199-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">sig.level =</span> .<span class="dv">05</span>) </span></code></pre></div>
 <pre><code> Paired t test power calculation 
 
           n = 32
@@ -1077,18 +1077,18 @@ alternative = two.sided</code></pre>
       power = 0.8
 alternative = two.sided</code></pre>
 <p>NOTE: n is number of <em>pairs</em></p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="power-and-error.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this effect might not be reliable given that the effect size found was much lower than the achievable effect size. The issue here is that the researchers established their sample size based on a previous effect size and not on the minimum effect size that they would find important. If an effect size as small as .4 was important then they should have powered all studies to that level and ran the appropriate n ~52 babies (see below). Flipside of course is that obtaining 52 babies isnt easy; hence why some people consider the Many Labs approach a good way ahead.</span></span>
-<span id="cb199-2"><a href="power-and-error.html#cb199-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb199-3"><a href="power-and-error.html#cb199-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Below you could calculate the actual sample size required to achieve a power of .8:</span></span>
-<span id="cb199-4"><a href="power-and-error.html#cb199-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb199-5"><a href="power-and-error.html#cb199-5" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="fu">pwr.t.test</span>(<span class="at">power =</span> .<span class="dv">8</span>,</span>
-<span id="cb199-6"><a href="power-and-error.html#cb199-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">d =</span> .<span class="dv">4</span>, </span>
-<span id="cb199-7"><a href="power-and-error.html#cb199-7" aria-hidden="true" tabindex="-1"></a>                          <span class="at">type =</span> <span class="st">&quot;paired&quot;</span>, </span>
-<span id="cb199-8"><a href="power-and-error.html#cb199-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, </span>
-<span id="cb199-9"><a href="power-and-error.html#cb199-9" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sig.level =</span> .<span class="dv">05</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb199-10"><a href="power-and-error.html#cb199-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(n) <span class="sc">%&gt;%</span> <span class="fu">ceiling</span>()</span>
-<span id="cb199-11"><a href="power-and-error.html#cb199-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb199-12"><a href="power-and-error.html#cb199-12" aria-hidden="true" tabindex="-1"></a>sample_size</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="power-and-error.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># this effect might not be reliable given that the effect size found was much lower than the achievable effect size. The issue here is that the researchers established their sample size based on a previous effect size and not on the minimum effect size that they would find important. If an effect size as small as .4 was important then they should have powered all studies to that level and ran the appropriate n ~52 babies (see below). Flipside of course is that obtaining 52 babies isnt easy; hence why some people consider the Many Labs approach a good way ahead.</span></span>
+<span id="cb201-2"><a href="power-and-error.html#cb201-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-3"><a href="power-and-error.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Below you could calculate the actual sample size required to achieve a power of .8:</span></span>
+<span id="cb201-4"><a href="power-and-error.html#cb201-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-5"><a href="power-and-error.html#cb201-5" aria-hidden="true" tabindex="-1"></a>sample_size <span class="ot">&lt;-</span> <span class="fu">pwr.t.test</span>(<span class="at">power =</span> .<span class="dv">8</span>,</span>
+<span id="cb201-6"><a href="power-and-error.html#cb201-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">d =</span> .<span class="dv">4</span>, </span>
+<span id="cb201-7"><a href="power-and-error.html#cb201-7" aria-hidden="true" tabindex="-1"></a>                          <span class="at">type =</span> <span class="st">&quot;paired&quot;</span>, </span>
+<span id="cb201-8"><a href="power-and-error.html#cb201-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, </span>
+<span id="cb201-9"><a href="power-and-error.html#cb201-9" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sig.level =</span> .<span class="dv">05</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb201-10"><a href="power-and-error.html#cb201-10" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>() <span class="sc">%&gt;%</span> <span class="fu">pull</span>(n) <span class="sc">%&gt;%</span> <span class="fu">ceiling</span>()</span>
+<span id="cb201-11"><a href="power-and-error.html#cb201-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-12"><a href="power-and-error.html#cb201-12" aria-hidden="true" tabindex="-1"></a>sample_size</span></code></pre></div>
 <p>[1] 52</p>
 </div>
 <p><br>
