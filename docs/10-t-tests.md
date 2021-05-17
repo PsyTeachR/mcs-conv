@@ -504,7 +504,7 @@ summary(evaluators)
 **click the tab to see the solution**
 <br>
 
-### t-tests Activity 6
+### Activity 6 {#ttest-a6sol}
 
 
 <div class='solution'><button>Activity 6</button>
