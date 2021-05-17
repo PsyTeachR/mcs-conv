@@ -98,7 +98,7 @@ ggplot(data = dat,aes(x = year,y = prop, colour=name))+
 
 This is more complicated than you might first imagine so only read on if you're feeling confident. If you  remove the filter for `sex` when creating `dat` and then run the plot code again, it will make a very messy looking plot (try it). This is because for most names there will be two data points because although the numbers might be small for gendered names, there is usually always at least one baby of the non-dominant name gender that has been assigned that name.
 
-You can get around this by adding an additional line of code that produces separate plots by sex. The scale argument tells R that it can use different scales on the y-axis for each plot - when there's a large difference between the two scales this is helpful to allow you to see the data in both sets (run this code and then remove the scales argument and run it again to see the difference)
+You can get around this by adding an additional line of code that produces separate plots by sex. The scale argument tells R that it can use different scales on the y-axis for each plot - when there's a large difference between the two scales this is helpful to allow you to see the data in both sets (run this code and then remove the scales argument and run it again to see the difference) although it does run the risk of people misinterpreting the data if the difference between the scales isn't made clear.
 
 ```{r, echo = TRUE, results = 'asis', fig.cap= "Plots by sex with different scales"}
 dat2 <- babynames %>% 

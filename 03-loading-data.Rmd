@@ -16,7 +16,7 @@ In this chapter you will learn how to load the packages required to work with th
 
 Before we begin working with the data we need to do some set-up. If you need help with any of these steps, you should refer to Intro to R and Programming Basics: 
 
-* Download <a href="ahi-cesd.csv" download>`ahi-cesd.csv`</a> and <a href="participant-info.csv" download>`participant-info.csv`</a> into your chapter folder. If you are working on the server, you will need to uploaded the files to the server as well.  
+* Download <a href="ahi-cesd.csv" download>`ahi-cesd.csv`</a> and <a href="participant-info.csv" download>`participant-info.csv`</a> into your chapter folder. If you are working on the server, you will need to upload the files to the server as well.  
 * Open R and ensure the environment is clear.
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
 * Set the working directory to your chapter folder.  
@@ -129,7 +129,7 @@ These exercises will produce errors. Try to solve the errors yourself, and then 
 1. Restart the R session (`Session - Restart R`). This should unload any packages you had loaded and also clear the environment. Make sure that the working directory is set to the right folder and then run the below code:
 
 ```{r debugging1, eval=FALSE}
-dat <- read_csv ("ahi-cesd.csv")
+dat <- read_csv("ahi-cesd.csv")
 ```
 
 This will produce the error `could not find function "read_csv"`. Once you figure out how to fix this error, make a note of it.
@@ -157,7 +157,7 @@ cat("When loading data, you need to provide the full file name, including the fi
 
 3. Make sure that the working directory is set to the right folder and then run the below code:
 
-```{r}
+```{r, eval=FALSE}
 library(tidyverse)
 dat <- read_csv ("ahi-cesd.csv")
 pinfo <- read_csv("participant-info.csv")

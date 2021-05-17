@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-05-06" />
+<meta name="date" content="2021-05-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -371,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.16.1" data-path="t-tests.html"><a href="t-tests.html#ttest-a1sol"><i class="fa fa-check"></i><b>10.16.1</b> Activity 1</a></li>
 <li class="chapter" data-level="10.16.2" data-path="t-tests.html"><a href="t-tests.html#ttest-a2sol"><i class="fa fa-check"></i><b>10.16.2</b> Activity 2</a></li>
-<li class="chapter" data-level="10.16.3" data-path="t-tests.html"><a href="t-tests.html#t-tests-activity-6"><i class="fa fa-check"></i><b>10.16.3</b> t-tests Activity 6</a></li>
+<li class="chapter" data-level="10.16.3" data-path="t-tests.html"><a href="t-tests.html#ttest-a6sol"><i class="fa fa-check"></i><b>10.16.3</b> Activity 6</a></li>
 <li class="chapter" data-level="10.16.4" data-path="t-tests.html"><a href="t-tests.html#ttest-a7sol"><i class="fa fa-check"></i><b>10.16.4</b> Activity 7</a></li>
 <li class="chapter" data-level="10.16.5" data-path="t-tests.html"><a href="t-tests.html#ttest-a12sol"><i class="fa fa-check"></i><b>10.16.5</b> Activity 12</a></li>
 <li class="chapter" data-level="10.16.6" data-path="t-tests.html"><a href="t-tests.html#ttest-a13sol"><i class="fa fa-check"></i><b>10.16.6</b> Activity 13</a></li>
@@ -751,8 +751,8 @@ Hints on removing missing data points
 <ul>
 <li>Run the below code to create a histogram for <code>Abil</code>.</li>
 </ul>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="correlation.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mh, <span class="fu">aes</span>(<span class="at">x =</span> Abil)) <span class="sc">+</span></span>
-<span id="cb146-2"><a href="correlation.html#cb146-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="correlation.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mh, <span class="fu">aes</span>(<span class="at">x =</span> Abil)) <span class="sc">+</span></span>
+<span id="cb141-2"><a href="correlation.html#cb141-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:abil-hist"></span>
 <img src="09-correlation_files/figure-html/abil-hist-1.png" alt="Histogram of Abil" width="100%" />
 <p class="caption">
@@ -767,7 +767,7 @@ Figure 9.1: Histogram of Abil
 <ul>
 <li>Run the below code to create a QQ-plot for <code>Abil</code>.</li>
 </ul>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="correlation.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(<span class="at">x =</span> mh<span class="sc">$</span>Abil)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="correlation.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(<span class="at">x =</span> mh<span class="sc">$</span>Abil)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:qq-abil"></span>
 <img src="09-correlation_files/figure-html/qq-abil-1.png" alt="QQ-plot for Abil" width="100%" />
 <p class="caption">
@@ -787,9 +787,9 @@ Figure 9.2: QQ-plot for Abil
 <h2><span class="header-section-number">9.5</span> Correlation Scatterplot</h2>
 <p>The <code>ggplot2</code> code is very similar to what you have already encountered with the bar chart and violin-boxplot. The first line of data sets up the base of the plot and we specify that we wish to display <code>Abil</code> on the x-axis, <code>IQ</code> on the y-axis, and use the dataset <code>mh</code>.</p>
 <p>The first geom, <code>geom_point()</code> adds in the data points, the second geom, <code>geom_smooth</code> adds in the line of best fit. The shaded area around the line is a <strong>confidence interval</strong>.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="correlation.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mh, <span class="fu">aes</span>(<span class="at">x =</span> Abil, <span class="at">y =</span> IQ)) <span class="sc">+</span></span>
-<span id="cb149-2"><a href="correlation.html#cb149-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb149-3"><a href="correlation.html#cb149-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="co"># if you don&#39;t want the shaded CI, add se = FALSE to this</span></span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="correlation.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mh, <span class="fu">aes</span>(<span class="at">x =</span> Abil, <span class="at">y =</span> IQ)) <span class="sc">+</span></span>
+<span id="cb144-2"><a href="correlation.html#cb144-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb144-3"><a href="correlation.html#cb144-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm) <span class="co"># if you don&#39;t want the shaded CI, add se = FALSE to this</span></span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
 <img src="09-correlation_files/figure-html/unnamed-chunk-4-1.png" alt="Scatterplot of scores" width="100%" />
@@ -856,7 +856,7 @@ Explain these answers
 <li>The type of NHST tail you want to run: e.g. <code>"less"</code>,<code>"greater"</code>, <code>"two.sided"</code></li>
 </ul>
 <p>For example, if your data is stored in <code>dat</code> and you want to do a two-sided pearson correlation of the variables (columns) <code>X</code> and <code>Y</code>, then you would do:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="correlation.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">correlation</span>(<span class="at">data =</span> dat, <span class="at">select =</span> <span class="st">&quot;X&quot;</span>, <span class="at">select2 =</span> <span class="st">&quot;Y&quot;</span>,  <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="correlation.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">correlation</span>(<span class="at">data =</span> dat, <span class="at">select =</span> <span class="st">&quot;X&quot;</span>, <span class="at">select2 =</span> <span class="st">&quot;Y&quot;</span>,  <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Based on your answers to the assumption tests, decide which correlation method to use (e.g. pearson or spearman) and the type of NHST tail to set (e.g. two.sided or one.sided).</li>
 <li>Run the correlation between IQ and Ability and save it in an object called <code>results</code>.</li>
@@ -891,7 +891,7 @@ Explain these answers
 <div id="corr-a7" class="section level2" number="9.9">
 <h2><span class="header-section-number">9.9</span> Activity 7: Write-up</h2>
 <p>Copy and paste the below <strong>exactly</strong> into <strong>white space</strong> in your R Markdown document and then knit the file.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="correlation.html#cb152-1" aria-hidden="true" tabindex="-1"></a>The mean IQ score was <span class="st">`</span><span class="at">r round(pluck(descriptives$IQ_mean),2)</span><span class="st">`</span> (<span class="st">`</span><span class="at">r round(pluck(descriptives$IQ_SD),2)</span><span class="st">`</span>) and the mean reading ability score was <span class="st">`</span><span class="at">r round(pluck(descriptives$Abil_mean),2)</span><span class="st">`</span> (<span class="st">`</span><span class="at">r round(pluck(descriptives$Abil_SD),2)</span><span class="st">`</span>). A Pearson\<span class="st">`</span><span class="at">s correlation found a significant, medium positive correlation between the two variables (r (</span><span class="st">`</span>r results<span class="sc">$</span>df_error<span class="st">`</span><span class="at">) = </span><span class="st">`</span>r <span class="fu">round</span>(results<span class="sc">$</span>r, <span class="dv">2</span>)<span class="st">`</span><span class="at">, *p* = </span><span class="st">`</span>r <span class="fu">round</span>(results<span class="sc">$</span>p, <span class="dv">3</span>)<span class="st">`</span><span class="at">).</span></span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="correlation.html#cb147-1" aria-hidden="true" tabindex="-1"></a>The mean IQ score was <span class="st">`</span><span class="at">r round(pluck(descriptives$IQ_mean),2)</span><span class="st">`</span> (<span class="st">`</span><span class="at">r round(pluck(descriptives$IQ_SD),2)</span><span class="st">`</span>) and the mean reading ability score was <span class="st">`</span><span class="at">r round(pluck(descriptives$Abil_mean),2)</span><span class="st">`</span> (<span class="st">`</span><span class="at">r round(pluck(descriptives$Abil_SD),2)</span><span class="st">`</span>). A Pearson\<span class="st">`</span><span class="at">s correlation found a significant, medium positive correlation between the two variables (r (</span><span class="st">`</span>r results<span class="sc">$</span>df_error<span class="st">`</span><span class="at">) = </span><span class="st">`</span>r <span class="fu">round</span>(results<span class="sc">$</span>r, <span class="dv">2</span>)<span class="st">`</span><span class="at">, *p* = </span><span class="st">`</span>r <span class="fu">round</span>(results<span class="sc">$</span>p, <span class="dv">3</span>)<span class="st">`</span><span class="at">).</span></span></code></pre></div>
 <p>It will magically transform into:</p>
 <blockquote>
 <p>The mean IQ score was 100.04(9.04) and the mean reading ability score was 55.12(6.08). A Pearson`s correlation found a significant, medium positive correlation between the two variables (r (23) = 0.45, <em>p</em> = 0.024)</p>
@@ -903,7 +903,7 @@ Explain these answers
 <ul>
 <li>Run the following line. The <code>pairs.panels)</code> function from the <code>psych</code> library creates a matrix of scatterplots, with the histograms, and correlation coefficients which you can then use to give you an overview of all the relationships at the one time.</li>
 </ul>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="correlation.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(mh)</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="correlation.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairs.panels</span>(mh)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:pairs"></span>
 <img src="09-correlation_files/figure-html/pairs-1.png" alt="Scatterplot matrix" width="100%" />
 <p class="caption">
@@ -918,9 +918,9 @@ Figure 9.3: Scatterplot matrix
 <li>Pipes this adjusted data into the <code>pairs.panels()</code> function</li>
 <li>The additional arguments turn off the <a href="https://analyse-it.com/docs/user-guide/multivariate/scatter-plot#:~:text=If%20the%20association%20is%20a,more%20the%20variables%20are%20uncorrelated.">correlation ellipses</a>, use a linear line of best fit, and specify a Pearson’s correlation.</li>
 </ul>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="correlation.html#cb154-1" aria-hidden="true" tabindex="-1"></a>mh <span class="sc">%&gt;%</span></span>
-<span id="cb154-2"><a href="correlation.html#cb154-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Participant) <span class="sc">%&gt;%</span></span>
-<span id="cb154-3"><a href="correlation.html#cb154-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pairs.panels</span>(<span class="at">ellipses =</span> T, <span class="at">lm =</span> <span class="cn">TRUE</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="correlation.html#cb149-1" aria-hidden="true" tabindex="-1"></a>mh <span class="sc">%&gt;%</span></span>
+<span id="cb149-2"><a href="correlation.html#cb149-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Participant) <span class="sc">%&gt;%</span></span>
+<span id="cb149-3"><a href="correlation.html#cb149-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pairs.panels</span>(<span class="at">ellipses =</span> T, <span class="at">lm =</span> <span class="cn">TRUE</span>, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:pairs-pipes"></span>
 <img src="09-correlation_files/figure-html/pairs-pipes-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
 <p class="caption">
@@ -942,11 +942,11 @@ Figure 9.4: <strong>CAPTION THIS FIGURE!!</strong>
 <li><p>Because you’re running multiple correlations and some may be positive and some may be negative, there is no option to specify a one or two-tailed test.</p></li>
 <li><p>Run the below code to calculate then view the correlation results</p></li>
 </ul>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="correlation.html#cb155-1" aria-hidden="true" tabindex="-1"></a>corr_results <span class="ot">&lt;-</span> mh <span class="sc">%&gt;%</span></span>
-<span id="cb155-2"><a href="correlation.html#cb155-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Participant) <span class="sc">%&gt;%</span></span>
-<span id="cb155-3"><a href="correlation.html#cb155-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>(<span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">p_adjust =</span> <span class="st">&quot;holm&quot;</span>)</span>
-<span id="cb155-4"><a href="correlation.html#cb155-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb155-5"><a href="correlation.html#cb155-5" aria-hidden="true" tabindex="-1"></a>corr_results</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="correlation.html#cb150-1" aria-hidden="true" tabindex="-1"></a>corr_results <span class="ot">&lt;-</span> mh <span class="sc">%&gt;%</span></span>
+<span id="cb150-2"><a href="correlation.html#cb150-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Participant) <span class="sc">%&gt;%</span></span>
+<span id="cb150-3"><a href="correlation.html#cb150-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlation</span>(<span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">p_adjust =</span> <span class="st">&quot;holm&quot;</span>)</span>
+<span id="cb150-4"><a href="correlation.html#cb150-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb150-5"><a href="correlation.html#cb150-5" aria-hidden="true" tabindex="-1"></a>corr_results</span></code></pre></div>
 <p><code>corr_results</code> is a tibble that lists the results of each correlation with its corresponding statistics. Look through the table and then answer the following questions:</p>
 <ol style="list-style-type: decimal">
 <li>Is the correlation between <code>Abil</code> and <code>Home</code> positive or negative? <select class='solveme' data-answer='["Positive"]'> <option></option> <option>Positive</option> <option>Negative</option></select></li>
@@ -989,11 +989,11 @@ Explain these answers
 <button>
 Activity 1
 </button>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="correlation.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;car&quot;</span>)</span>
-<span id="cb156-2"><a href="correlation.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;correlation&quot;</span>)</span>
-<span id="cb156-3"><a href="correlation.html#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;psych&quot;</span>)</span>
-<span id="cb156-4"><a href="correlation.html#cb156-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb156-5"><a href="correlation.html#cb156-5" aria-hidden="true" tabindex="-1"></a>mh <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;MillerHadenData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="correlation.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;car&quot;</span>)</span>
+<span id="cb151-2"><a href="correlation.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;correlation&quot;</span>)</span>
+<span id="cb151-3"><a href="correlation.html#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;psych&quot;</span>)</span>
+<span id="cb151-4"><a href="correlation.html#cb151-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb151-5"><a href="correlation.html#cb151-5" aria-hidden="true" tabindex="-1"></a>mh <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;MillerHadenData.csv&quot;</span>)</span></code></pre></div>
 </div>
 <p><strong>click the tab to see the solution</strong>
 <br></p>
@@ -1004,18 +1004,18 @@ Activity 1
 <button>
 Activity 3
 </button>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="correlation.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram</span></span>
-<span id="cb157-2"><a href="correlation.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mh, <span class="fu">aes</span>(<span class="at">x =</span> IQ)) <span class="sc">+</span></span>
-<span id="cb157-3"><a href="correlation.html#cb157-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
-<span id="cb157-4"><a href="correlation.html#cb157-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-5"><a href="correlation.html#cb157-5" aria-hidden="true" tabindex="-1"></a><span class="co"># qqplot</span></span>
-<span id="cb157-6"><a href="correlation.html#cb157-6" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(<span class="at">x =</span> mh<span class="sc">$</span>IQ)</span>
-<span id="cb157-7"><a href="correlation.html#cb157-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb157-8"><a href="correlation.html#cb157-8" aria-hidden="true" tabindex="-1"></a><span class="co"># edited scatterplot</span></span>
-<span id="cb157-9"><a href="correlation.html#cb157-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mh, <span class="fu">aes</span>(<span class="at">x =</span> Abil, <span class="at">y =</span> IQ)) <span class="sc">+</span></span>
-<span id="cb157-10"><a href="correlation.html#cb157-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb157-11"><a href="correlation.html#cb157-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)<span class="sc">+</span></span>
-<span id="cb157-12"><a href="correlation.html#cb157-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Reading Ability&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="correlation.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># histogram</span></span>
+<span id="cb152-2"><a href="correlation.html#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mh, <span class="fu">aes</span>(<span class="at">x =</span> IQ)) <span class="sc">+</span></span>
+<span id="cb152-3"><a href="correlation.html#cb152-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb152-4"><a href="correlation.html#cb152-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-5"><a href="correlation.html#cb152-5" aria-hidden="true" tabindex="-1"></a><span class="co"># qqplot</span></span>
+<span id="cb152-6"><a href="correlation.html#cb152-6" aria-hidden="true" tabindex="-1"></a><span class="fu">qqPlot</span>(<span class="at">x =</span> mh<span class="sc">$</span>IQ)</span>
+<span id="cb152-7"><a href="correlation.html#cb152-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-8"><a href="correlation.html#cb152-8" aria-hidden="true" tabindex="-1"></a><span class="co"># edited scatterplot</span></span>
+<span id="cb152-9"><a href="correlation.html#cb152-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mh, <span class="fu">aes</span>(<span class="at">x =</span> Abil, <span class="at">y =</span> IQ)) <span class="sc">+</span></span>
+<span id="cb152-10"><a href="correlation.html#cb152-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb152-11"><a href="correlation.html#cb152-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> lm)<span class="sc">+</span></span>
+<span id="cb152-12"><a href="correlation.html#cb152-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">name =</span> <span class="st">&quot;Reading Ability&quot;</span>)</span></code></pre></div>
 </div>
 <p><strong>click the tab to see the solution</strong>
 <br></p>
@@ -1026,11 +1026,11 @@ Activity 3
 <button>
 Activity 4
 </button>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="correlation.html#cb158-1" aria-hidden="true" tabindex="-1"></a>descriptives <span class="ot">&lt;-</span> <span class="fu">summarise</span>(mh, </span>
-<span id="cb158-2"><a href="correlation.html#cb158-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">Abil_mean =</span> <span class="fu">mean</span>(Abil),</span>
-<span id="cb158-3"><a href="correlation.html#cb158-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">Abil_SD =</span> <span class="fu">sd</span>(Abil),</span>
-<span id="cb158-4"><a href="correlation.html#cb158-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">IQ_mean =</span> <span class="fu">mean</span>(IQ),</span>
-<span id="cb158-5"><a href="correlation.html#cb158-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">IQ_SD =</span> <span class="fu">sd</span>(IQ))</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="correlation.html#cb153-1" aria-hidden="true" tabindex="-1"></a>descriptives <span class="ot">&lt;-</span> <span class="fu">summarise</span>(mh, </span>
+<span id="cb153-2"><a href="correlation.html#cb153-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">Abil_mean =</span> <span class="fu">mean</span>(Abil),</span>
+<span id="cb153-3"><a href="correlation.html#cb153-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">Abil_SD =</span> <span class="fu">sd</span>(Abil),</span>
+<span id="cb153-4"><a href="correlation.html#cb153-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">IQ_mean =</span> <span class="fu">mean</span>(IQ),</span>
+<span id="cb153-5"><a href="correlation.html#cb153-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">IQ_SD =</span> <span class="fu">sd</span>(IQ))</span></code></pre></div>
 </div>
 <p><strong>click the tab to see the solution</strong>
 <br></p>
@@ -1041,7 +1041,7 @@ Activity 4
 <button>
 Activity 5
 </button>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="correlation.html#cb159-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">correlation</span>(<span class="at">data =</span> dat, <span class="at">select =</span> <span class="st">&quot;IQ&quot;</span>, <span class="at">select2 =</span> <span class="st">&quot;Abil&quot;</span>,  <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="correlation.html#cb154-1" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">correlation</span>(<span class="at">data =</span> dat, <span class="at">select =</span> <span class="st">&quot;IQ&quot;</span>, <span class="at">select2 =</span> <span class="st">&quot;Abil&quot;</span>,  <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>)</span></code></pre></div>
 </div>
 <p><strong>click the tab to see the solution</strong>
 <br></p>
