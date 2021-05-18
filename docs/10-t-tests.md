@@ -31,7 +31,7 @@ Your task is to reproduce the results from the article (p. 887).
 * Open a new R Markdown document and save it in your working directory. Call the file "t-tests".    
 * Download <a href="evaluators.csv" download>evaluators.csv</a> and <a href="ratings.csv" download>rating.csv</a> and save them in your t-test folder. Make sure that you do not change the file names at all.    
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
-* Delete the default R Markdown welcome text and insert a new code chunk that loads `broom`, `car`, `lsr`,  and `tidyverse` using the `library()` function and loads the data into an object named `evaluators` using `read_csv()`
+* Delete the default R Markdown welcome text and insert a new code chunk that loads `broom`, `car`, `effectsize`, `report`  and `tidyverse` using the `library()` function and loads the data into an object named `evaluators` using `read_csv()`. You may need to install some of these packages if you don't already have them.
 
 
 
@@ -119,30 +119,19 @@ You should **always** visualise your data before you run a statistical analysis.
 
 To visualise our data we are going to create a violin-boxplot.
 
-`geom_violin()` represents density. The fatter the plot, the more data points there are for that . The reason it is called a violin plot is because if your data are normally distributed it should look something like a violin.  
-`geom_boxplot()` shows the median and inter-quartile range (see [here](https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51) if you would like more information). The boxplot can also give you a good idea if the data are skewed - the median line should be in the middle of the box, if it's not, chances are the data are skewed.  
-`geom_pointrange()` will show the mean and confidence intervals. If you're conducting a test that is comparing means, it's a good idea to add in the means.  
+* `geom_violin()` represents density. The fatter the plot, the more data points there are for that . The reason it is called a violin plot is because if your data are normally distributed it should look something like a violin.  
+* `geom_boxplot()` shows the median and inter-quartile range (see [here](https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51) if you would like more information). The boxplot can also give you a good idea if the data are skewed - the median line should be in the middle of the box, if it's not, chances are the data are skewed.  
+* `geom_pointrange()` will show the mean and confidence intervals. If you're conducting a test that is comparing means, it's a good idea to add in the means.  
 
-* Run the below code to produce the plot. It is a good idea to save code 'recipes' for tasks that you will likely want to repeat in the future. You do not need to memorise lines of code, you only need to understand how to alter examples to work with your specific data set.
+Run the below code to produce the plot. It is a good idea to save code 'recipes' for tasks that you will likely want to repeat in the future. You do not need to memorise lines of code, you only need to understand how to alter examples to work with your specific data set.
 * Try setting `trim = TRUE`, `show.legend = FALSE` and altering the value of `width` to see what these arguments do.  
 
 
 ```r
-# create summary data to use with `geom_pointrange()`
-summary_dat<-ratings2%>%
-  group_by(condition)%>%
-  summarise(mean = mean(Rating),
-            min = mean(Rating) - qnorm(0.975)*sd(Rating)/sqrt(n()), #confidence intervals
-            max = mean(Rating) + qnorm(0.975)*sd(Rating)/sqrt(n()))
-
-
 ggplot(ratings2, aes(x = condition, y = Rating)) +
   geom_violin(trim = FALSE) +
   geom_boxplot(aes(fill = condition), width = .2, show.legend = FALSE) + 
-  geom_pointrange(data = summary_dat,
-                  aes(x = condition, y = mean, ymin=min, ymax=max),
-                  shape = 20, 
-                  position = position_dodge(width = 0.1), show.legend = FALSE)
+  stat_summary(geom = "pointrange", fun.data = "mean_cl_normal")
 ```
 
 * Look at the plot. In which condition did the evaluators give the higher ratings? <select class='solveme' data-answer='["listened"]'> <option></option> <option>listened</option> <option>read</option></select>
@@ -195,7 +184,7 @@ The p-value is .2088 which is more than .05, the cut-off for statistical signifi
 
 We are going to conduct t-tests for the Intellect, Hire and Impression ratings separately; each time comparing evaluators' overall ratings for the listened group versus overall ratings for the read group to see if there was a significant difference between the two conditions: i.e. did the evaluators who **listened** to pitches give a significant higher or lower rating than evaluators that **read** pitches.
 
-* First, calculate the mean and SD for each condition and category.
+* First, calculate the mean and SD for each condition and category to help with reporting the descriptive statistics.
 
 
 ```r
@@ -215,22 +204,33 @@ hire <-
 impression <- 
 ```
 
-As you may have realised by now, most of the work of statistics involves the set-up - running the tests is generally very simple. To conduct the t-test we will use `t.test()` from Base R. This function uses a style of code you haven't come across yet but that is very important to get used to, **formula syntax**.
+As you may have realised by now, most of the work of statistics involves the set-up - running the tests is generally very simple. To conduct the t-test we will use `t.test()` from Base R. This function uses **formula syntax** which you also saw in `cor.test()`.
+
+* `~` is called a tilde. It can be read as 'by'.  
+* The variable on the left of the tilde is the dependent or outcome variable.
+* The variable(s) on the right of the tilde is the independent or predictor variable.  
+* You can read the below code as 'run a t-test for rating score by condition'.
+* `paired = FALSE` indicates that we do not want to run a paired-samples test and that our data is from a between-subjects design.
+* Run the below code and view the output by typing `intellect_t` in the console.
 
 
 ```r
-results_intellect <- t.test(Rating ~ condition, paired = FALSE, data = intellect) %>% tidy()
+intellect_t <- t.test(Rating ~ condition, 
+                      paired = FALSE, 
+                      data = intellect)
 ```
 
-* `~` is called a tilde. It can be read as 'by'.  
-* The variable on the left of the tilde is the dependent or outcome variable. 
-* The variable(s) on the right of the tilde is the independent or predictor variable.  
-* You can read the below code as 'run a t-test for rating score by condition'.
-* `paired = FALSE` indicates that we do not want to run a paired-samples test and that our data is from a between-subjects design.  
+Just like with `cor.test()`, the output of `t.test()` is a list type object which can make it harder to work with. This time, we are also going to use the function `tidy()` from the `broom` package to convert the output to a tidyverse format.
 
-Just like we did with the correlation, we are also going to use `tidy()` to convert the output to a more manageable format.
+* Run the below code. You can read it as "take object intellect_t, and then tidy it".  
+* View the object by clicking on `results_intellect` in the environment.  
 
-* Run the above code and then view the `results_intellect`.
+
+```r
+results_intellect <- intellect_t %>%
+  tidy()
+```
+
 
 The output is in a nice table format that makes it easy to extract individual values but it is worth explaining what each variable means:
 
@@ -250,8 +250,13 @@ The output is in a nice table format that makes it easy to extract individual va
 
 
 ```r
-results_hire <- 
-results_impression <- 
+# t-tests
+hire_t <- 
+impression_t <- 
+  
+# tidy the output
+results_hire <-
+results_impression <-
 ```
 
 <div class="warning">
@@ -268,11 +273,16 @@ results_impression <-
 Because we've run three t-tests we risk inflating our chances of a Type 1 errors due to familywise error. To correct for this we can apply a correction for multiple comparisons.
 
 To do this first of all we need to join all the results of the t-tests 
-together using `bind_rows()`. First, you specify all of the individual tibbles you want to join and give them a label, and then you specify what the ID column should be named.
+together using `bind_rows()` which is one of the reasons why it was useful to `tidy()` the t-test ouput. 
+
+First, you specify all of the individual tibbles you want to join and give them a label, and then you specify what the ID column should be named.
 
 
 ```r
-results <- bind_rows(hire = results_hire, impression = results_impression, intellect = results_intellect, .id = "test")
+results <- bind_rows(hire = results_hire, 
+                     impression = results_impression, 
+                     intellect = results_intellect, 
+                     .id = "test")
 ```
 
 
@@ -295,15 +305,19 @@ results <- results %>%
 
 ## Activity 8: Effect size {#ttest-a8}
 
-Before we interpret and write-up the results our last task is to calculate the effect size which for a t-test is Cohen's D. To do this, we will use the function `cohensD()` from the `lsr` package. The code is very simple, it is very similar to the syntax for `t.test()`. The only difference is rather than `paired = FALSE`, you must specify `method = "unequal"` which indicates that we conducted a Welch test (see the help documentation for more information). 
+Before we interpret and write-up the results our last task is to calculate the effect size which for a t-test is Cohen's D. To do this, we will use the function `cohens_d()` from the `effectsize` package. The code is similar to the syntax for `t.test()`. 
 
+* The first argument should specify the formula, using the same syntax as `t.test()`, that is `dv ~ iv`.
+* `pooled_sd` should be `FALSE` if you ran a Welch test where the variances are not assumed to be equal and `TRUE` if you ran a regular Student's t-test.
 * Run the below code and then calculate the effect sizes for hire and impression
 
 
 
 
 ```r
-intellect_d <- cohensD(Rating ~ condition, method = "unequal", data = intellect)
+intellect_d <- cohens_d(Rating ~ condition, 
+                      pooled_sd = FALSE, 
+                      data = intellect)
 hire_d <- 
 impression_d <- 
 ```
@@ -337,19 +351,33 @@ Copy and paste the below **exactly** into **white space** in your R Markdown doc
 
 
 ```r
-The pattern of evaluations by professional recruiters replicated the pattern observed in Experiments 1 through 3b (see Fig. 7). Bonferroni-corrected t-tests found that in particular, the recruiters believed that the job candidates had greater intellect---were more competent, thoughtful, and intelligent---when they listened to pitches (M = `r results_intellect$estimate1%>% round(2)`, SD = `r round(group_means$sd[3], 2)`) than when they read pitches (M = `r results_intellect$estimate1%>% round(2)`, SD = `r round(group_means$sd[6], 2)`), t(`r round(results_intellect$parameter, 2)`) = `r round(results$statistic,2)`, p < `r results$p.adjusted[3] %>% round(3)`, 95% CI of the difference = [`r round(results_intellect$conf.low, 2)`, `r round(results_intellect$conf.high, 2)`], d = `r round(intellect_d,2)`. 
+The pattern of evaluations by professional recruiters replicated the pattern observed in Experiments 1 through 3b (see Fig. 7). Bonferroni-corrected t-tests found that in particular, the recruiters believed that the job candidates had greater intellect---were more competent, thoughtful, and intelligent---when they listened to pitches (M = `r results_intellect$estimate1%>% round(2)`, SD = `r round(group_means$sd[3], 2)`) than when they read pitches (M = `r results_intellect$estimate1%>% round(2)`, SD = `r round(group_means$sd[6], 2)`), t(`r round(results_intellect$parameter, 2)`) = `r round(results$statistic,2)`, p < `r results$p.adjusted[3] %>% round(3)`, 95% CI of the difference = [`r round(results_intellect$conf.low, 2)`, `r round(results_intellect$conf.high, 2)`], d = `r round(intellect_d$Cohens_d,2)`. 
 
-The recruiters also formed more positive impressions of the candidates---rated them as more likeable and had a more positive and less negative impression of them---when they listened to pitches (M = `r results_impression$estimate1%>% round(2)`, SD = `r round(group_means$sd[2], 2)`) than when they read pitches (M = `r results_impression$estimate2%>% round(2)`, SD = `r round(group_means$sd[5], 2)`, t(`r round(results_impression$parameter,2)`) = `r round(results_impression$statistic,2)`, p < `r results$p.adjusted[2] %>% round(3)`, 95% CI of the difference = [`r round(results_impression$conf.low, 2)`, `r round(results_impression$conf.high, 2)`], d = `r round(impression_d, 2)`. 
+The recruiters also formed more positive impressions of the candidates---rated them as more likeable and had a more positive and less negative impression of them---when they listened to pitches (M = `r results_impression$estimate1%>% round(2)`, SD = `r round(group_means$sd[2], 2)`) than when they read pitches (M = `r results_impression$estimate2%>% round(2)`, SD = `r round(group_means$sd[5], 2)`, t(`r round(results_impression$parameter,2)`) = `r round(results_impression$statistic,2)`, p < `r results$p.adjusted[2] %>% round(3)`, 95% CI of the difference = [`r round(results_impression$conf.low, 2)`, `r round(results_impression$conf.high, 2)`], d = `r round(impression_dintellect_d$Cohens_d, 2)`. 
 
-Finally, they also reported being more likely to hire the candidates when they listened to pitches (M = `r results_hire$estimate1 %>% round(2)`, SD = `r round(group_means$sd[1], 2)`) than when they read the same pitches (M = `r results_hire$estimate2 %>% round(2)`, SD = `r round(group_means$sd[4],2)`), t(`r round(results_hire$parameter,2)`) = `r round(results_hire$statistic,2)`, p < `r results$p.adjusted[1] %>% round(3)`, 95% CI of the difference = [`r round(results_hire$conf.low, 2)`, `r round(results_hire$conf.high, 2)`], d = `r round(hire_d,2)`.
+Finally, they also reported being more likely to hire the candidates when they listened to pitches (M = `r results_hire$estimate1 %>% round(2)`, SD = `r round(group_means$sd[1], 2)`) than when they read the same pitches (M = `r results_hire$estimate2 %>% round(2)`, SD = `r round(group_means$sd[4],2)`), t(`r round(results_hire$parameter,2)`) = `r round(results_hire$statistic,2)`, p < `r results$p.adjusted[1] %>% round(3)`, 95% CI of the difference = [`r round(results_hire$conf.low, 2)`, `r round(results_hire$conf.high, 2)`], d = `r round(hire_dintellect_d$Cohens_d,2)`.
 ```
 
 
-> The pattern of evaluations by professional recruiters replicated the pattern observed in Experiments 1 through 3b (see Fig. 7). Bonferroni-corrected t-tests found that in particular, the recruiters believed that the job candidates had greater intellect---were more competent, thoughtful, and intelligent---when they listened to pitches (M = 5.64, SD = 1.61) than when they read pitches (M = 5.64, SD = 1.91), t(33.43) = 2.64, 2.82, 3.48, p < 0.004, 95% CI of the difference = [0.83, 3.15], d = 1.12. 
+> The pattern of evaluations by professional recruiters replicated the pattern observed in Experiments 1 through 3b (see Fig. 7). Bonferroni-corrected t-tests found that in particular, the recruiters believed that the job candidates had greater intellect---were more competent, thoughtful, and intelligent---when they listened to pitches (M = 5.64, SD = 1.61) than when they read pitches (M = 5.64, SD = 1.91), t(33.43) = 2.64, 2.82, 3.48, p < 0.004, 95% CI of the difference = [0.83, 3.15], d = 1.12, 0.95, 0.43, 1.79. 
 
-> The recruiters also formed more positive impressions of the candidates---rated them as more likeable and had a more positive and less negative impression of them---when they listened to pitches (M = 5.97, SD = 1.92) than when they read pitches (M = 4.07, SD = 2.23, t(33.8) = 2.82, p < 0.024, 95% CI of the difference = [0.53, 3.26], d = 0.91. 
+> The recruiters also formed more positive impressions of the candidates---rated them as more likeable and had a more positive and less negative impression of them---when they listened to pitches (M = 5.97, SD = 1.92) than when they read pitches (M = 4.07, SD = 2.23, t(33.8) = 2.82, p < 0.024, 95% CI of the difference = [0.53, 3.26], d = 0.91, 0.95, 0.23, 1.56. 
 
-> Finally, they also reported being more likely to hire the candidates when they listened to pitches (M = 4.71, SD = 2.26) than when they read the same pitches (M = 2.89, SD = 2.05), t(36.86) = 2.64, p < 0.036, 95% CI of the difference = [0.42, 3.23], d = 0.84.
+> Finally, they also reported being more likely to hire the candidates when they listened to pitches (M = 4.71, SD = 2.26) than when they read the same pitches (M = 2.89, SD = 2.05), t(36.86) = 2.64, p < 0.036, 95% CI of the difference = [0.42, 3.23], d = 0.84, 0.95, 0.18, 1.5.
+
+Just like with correlations, you can also used the `report()` function to produce a report of the individual t-tests. Again, the output it produces is fixed and it must be used with the original list type object, rather than the tidied output. Additionally, `report()` only takes one t-test at a time, which means that you can't use the adjusted p-values, but it's a useful function to know about.
+
+
+```r
+report(intellect_t)
+```
+
+```
+## Effect sizes were labelled following Cohen's (1988) recommendations.
+## 
+## The Welch Two Sample t-test testing the difference of Rating by condition (mean in group listened = 5.63, mean in group read = 3.65) suggests that the effect is negative, statistically significant, and large (difference = -1.99, 95% CI [0.83, 3.15], t(33.43) = 3.48, p < .01; Cohen's d = 1.20, 95% CI [0.46, 1.93])
+```
+
 
 ## Activity 11: Paired-samples t-test {#ttest-a11}
 
@@ -422,22 +450,18 @@ gaze_descriptives <- gaze_tidy %>%
 Finally, we can calculate the t-test and the effect size. The code is almost identical to the independent code with two differences:
 
 1. In `t.test()` you should specify `paired = TRUE` rather than `FALSE`
-2. In `cohensD()` you should specify `method = paired` rather than `unequal`
+2. In `cohens_d()` you should specify `method = paired` rather than `pooled_sd`
 
-* Run the t-test and calculate the effect size. Remember to use `tidy()`.
+* Run the t-test and calculate the effect size. Store the list output version in `gaze_t` and then use `tidy()` for `gaze_test`.
 
 
 
 
 ```r
+gaze_t <- 
 gaze_test <- 
 gaze_d <- 
 ```
-
-
-<div class="warning">
-<p>When you run <code>cohensD</code> you will get a warning that tells you “Results will be incorrect if cases do not appear in the same order for both levels of the grouping factor”. What this means it that R has to figure out which pairs of data belong together and it does this by position. It will assume that the first data point in the baseline condition will be the same participant as the first data point in the test condition. The easiest way to ensure this is the case is to use <code>arrange()</code> to sort your data. If you look back at the code we used to tidy the data above you will see that we manually sorted the data at the end. This will avoid any problems.</p>
-</div>
 
 The output of the paired-samples t-test is very similar to the independent test, with one exception. Rather than providing the means of both conditions, there is a single `estimate`. This is the mean *difference* score between the two conditions.
 
@@ -453,10 +477,24 @@ Copy and paste the below **exactly** into **white space** in your R Markdown doc
 
 
 ```r
-At test, however, the infants selectively attended to the now-silent singer of the song with the familiar melody; the proportion of time during which they looked toward her was...greater than the proportion at baseline (difference in proportion of looking: M = `r gaze_test$estimate %>% round(2)`, SD = `r sd(gaze$diff, na.rm = TRUE) %>% round(2)`, 95% CI = [`r gaze_test$conf.low %>% round(2)`, `r gaze_test$conf.high %>% round(2)`]), t(`r gaze_test$parameter`) = `r gaze_test$statistic %>% round(2)`, p = `r gaze_test$p.value %>% round(3)`, d = `r gaze_d %>% round(2)`.
+At test, however, the infants selectively attended to the now-silent singer of the song with the familiar melody; the proportion of time during which they looked toward her was...greater than the proportion at baseline (difference in proportion of looking: M = `r gaze_test$estimate %>% round(2)`, SD = `r sd(gaze$diff, na.rm = TRUE) %>% round(2)`, 95% CI = [`r gaze_test$conf.low %>% round(2)`, `r gaze_test$conf.high %>% round(2)`]), t(`r gaze_test$parameter`) = `r gaze_test$statistic %>% round(2)`, p = `r gaze_test$p.value %>% round(3)`, d = `r gaze_d$Cohens_d %>% round(2)`.
 ```
 
->At test, however, the infants selectively attended to the now-silent singer of the song with the familiar melody; the proportion of time during which they looked toward her was...greater than the proportion at baseline (difference in proportion of looking: M = -0.07, SD = 0.17, 95% CI = [-0.13, -0.01]), t(31) = -2.42, p = 0.022, d = 0.43.
+>At test, however, the infants selectively attended to the now-silent singer of the song with the familiar melody; the proportion of time during which they looked toward her was...greater than the proportion at baseline (difference in proportion of looking: M = -0.07, SD = 0.17, 95% CI = [-0.13, -0.01]), t(31) = -2.42, p = 0.022, d = -0.41.
+
+Similarly, we can use `report()` on the original list object to produce an automated write-up.
+
+
+```r
+report(gaze_t)
+```
+
+```
+## Effect sizes were labelled following Cohen's (1988) recommendations.
+## 
+## The Paired t-test testing the difference of looking by time (mean of the differences = -0.07) suggests that the effect is negative, statistically significant, and small (difference = -0.07, 95% CI [-0.13, -0.01], t(31) = -2.42, p < .05; Cohen's d = -0.43, 95% CI [-0.80, -0.06])
+```
+
 
 ### Finished! {#ttest-fin}
 
@@ -473,7 +511,8 @@ That was a long chapter but now that you've done all the statistical tests you n
 ```r
 library("broom")
 library("car")
-library("lsr")
+library("effectsize")
+library("report")
 library("tidyverse")
 evaluators <- read_csv("evaluators.csv")
 ```
@@ -522,16 +561,22 @@ impression <- filter(ratings2, Category == "impression")
 **click the tab to see the solution**
 <br>
 
-### Activity 7 {#ttest-a7sol}
+### Activity 8 {#ttest-a8sol}
 
 
 <div class='solution'><button>Activity 7</button>
 
 
 ```r
-intellect_d <- cohensD(Rating ~ condition, method = "unequal", data = intellect)
-hire_d <- cohensD(Rating ~ condition, method = "unequal", data = hire)
-impression_d <- cohensD(Rating ~ condition, method = "unequal", data = impression)
+intellect_d <- cohens_d(Rating ~ condition, 
+                      pooled_sd = FALSE, 
+                      data = intellect)
+hire_d <- cohens_d(Rating ~ condition, 
+                      pooled_sd = FALSE, 
+                      data = hire)
+impression_d <- cohens_d(Rating ~ condition, 
+                      pooled_sd = FALSE, 
+                      data = impression)
 ```
 
 </div>
@@ -592,8 +637,9 @@ ggplot(gaze_tidy, aes(x = time, y = looking)) +
 
 
 ```r
-gaze_test <- t.test(looking ~ time, paired = TRUE, data = gaze_tidy) %>% tidy()
-gaze_d <- cohensD(looking ~ time, method = "paired", data = gaze_tidy)
+gaze_t <- t.test(looking ~ time, paired = TRUE, data = gaze_tidy)
+gaze_test <-  gaze_t %>% tidy()
+gaze_d <- cohens_d(looking ~ time, method = "paired", data = gaze_tidy)
 ```
 
 </div>
