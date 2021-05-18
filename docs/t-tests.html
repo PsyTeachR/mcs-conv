@@ -811,7 +811,7 @@ Mixed design is when there is a combination of within-subjects and between-subje
 </li>
 <li><code>geom_boxplot()</code> shows the median and inter-quartile range (see <a href="https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51">here</a> if you would like more information). The boxplot can also give you a good idea if the data are skewed - the median line should be in the middle of the box, if it’s not, chances are the data are skewed.<br />
 </li>
-<li><code>geom_pointrange()</code> will show the mean and confidence intervals. If you’re conducting a test that is comparing means, it’s a good idea to add in the means.</li>
+<li>For displaying the mean and confidence intervals, rather than calling a specified geom, we call stat_summary(). <code>fun.data</code> specifies the a summary function that gives us the summary of the data we want to plot, in this case, <code>mean_cl_normal</code> which will calculate the mean plus the upper and lower confidence interval limits. You could also specify <code>mean_se</code> here if you wanted standard error. Finally, <code>geom</code> specifies what shape or plot we want to use to display the summary, in this case we want a <code>pointrange</code> (literally a point (the mean) with a range (the CI)).</li>
 </ul>
 <p>Run the below code to produce the plot. It is a good idea to save code ‘recipes’ for tasks that you will likely want to repeat in the future. You do not need to memorise lines of code, you only need to understand how to alter examples to work with your specific data set.
 * Try setting <code>trim = TRUE</code>, <code>show.legend = FALSE</code> and altering the value of <code>width</code> to see what these arguments do.</p>

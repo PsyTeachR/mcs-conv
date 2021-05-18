@@ -135,7 +135,7 @@ To visualise our data we are going to create a violin-boxplot.
 
 * `geom_violin()` represents density. The fatter the plot, the more data points there are for that . The reason it is called a violin plot is because if your data are normally distributed it should look something like a violin.  
 * `geom_boxplot()` shows the median and inter-quartile range (see [here](https://towardsdatascience.com/understanding-boxplots-5e2df7bcbd51) if you would like more information). The boxplot can also give you a good idea if the data are skewed - the median line should be in the middle of the box, if it's not, chances are the data are skewed.  
-* `geom_pointrange()` will show the mean and confidence intervals. If you're conducting a test that is comparing means, it's a good idea to add in the means.  
+* For displaying the mean and confidence intervals, rather than calling a specified geom, we call stat_summary(). `fun.data` specifies the a summary function that gives us the summary of the data we want to plot, in this case, `mean_cl_normal` which will calculate the mean plus the upper and lower confidence interval limits. You could also specify `mean_se` here if you wanted standard error. Finally, `geom` specifies what shape or plot we want to use to display the summary, in this case we want a `pointrange` (literally a point (the mean) with a range (the CI)).
 
 Run the below code to produce the plot. It is a good idea to save code 'recipes' for tasks that you will likely want to repeat in the future. You do not need to memorise lines of code, you only need to understand how to alter examples to work with your specific data set.
 * Try setting `trim = TRUE`, `show.legend = FALSE` and altering the value of `width` to see what these arguments do.  
