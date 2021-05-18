@@ -3,10 +3,12 @@
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 library("car")
 library("correlation")
+library("report")
 library("psych")
 library("tidyverse")
 mh <- read_csv("MillerHadenData.csv")
 results <- correlation(data = mh, select = "IQ", select2 = "Abil",  method = "pearson", alternative = "two.sided")
+results2 <- cor.test(~ IQ + Abil, data = mh,  method = "pearson", alternative = "two.sided")
 ```
 
 We have spent the chapters so far focusing on the basics of R and data wrangling. You may think that the tasks we ask you to do in R will get harder as this course progresses but that isn't true. The hardest part of learning R is at the very beginning, trying to learn the new terminology, figuring out how to load in data and wrangle it into the format you need. It may feel like you are still struggling so it's worth reflecting on just how far you've come in a short time.
@@ -25,7 +27,7 @@ That's amazing! Now we're going to move on to performing a correlation and to cr
 
 As [Miller and Haden (2013)](https://drive.google.com/file/d/0B1fyuTuvj3YoaFdUR3FZaXNuNXc/view) state at the start of Chapter 11, correlations are **used to detect and quantify relationships among numerical variables**. In short, you measure two variables and the correlation analysis tells you whether or not they are related in some manner - positively or negatively; one increases as the other increases; one decreases as the other increases; etc.. 
 
-To actually carry out a correlation is very simple and we will show you that today in a little while: you just need the `correlation()` function from the `correlation` package.  The harder part of correlations is really wrangling the data and interpreting what the results mean. You are going to run a few correlations in this chapter to give you good practice at running and interpreting the relationships between two variables. 
+To actually carry out a correlation is very simple and we will show you that today in a little while.  The harder part of correlations is really wrangling the data and interpreting what the results mean. You are going to run a few correlations in this chapter to give you good practice at running and interpreting the relationships between two variables. 
 
 **Note:** When dealing with correlations you should always refer to relationships and not predictions. In a correlation, X does not predict Y, that is regression which you will cover in later in this course. In a correlation, all we can say is whether X and Y are related. 
 
@@ -37,8 +39,7 @@ In this chapter we will use the examples in Miller and Haden (2013), Chapter 11,
 * Open a new R Markdown document and save it in your working directory. Call the file "Correlation".    
 * Download <a href="MillerHadenData.csv" download>MillerHadenData.csv</a> and save it in your Correlation folder and/or upload to to the R server. Make sure that you do not change the file name at all.  
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
-* If you are working on your own computer, install the packages `psych`, `car`, and `broom`. Remember **do not install packages on university computers, they are already installed**.
-* Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `car`, `correlation`, `psych`, and `tidyverse` (in that order) using the `library()` function and loads the data into an object named `mh` using `read_csv()`. You may need to install some of these packages if you don't already have them. 
+* Delete the default R Markdown welcome text and insert a new code chunk that loads the packages `car`, `correlation`, `report`, `psych`, and `tidyverse` (in that order) using the `library()` function and loads the data into an object named `mh` using `read_csv()`. You may need to install some of these packages if you don't already have them. 
 
 ## Activity 2: Look at your data {#corr-a2}
 
@@ -193,7 +194,9 @@ descriptives%>%
 
 ## Activity 5: Run the correlation {#corr-a5}
 
-Finally we will run the correlation using the `correlation()` function from the `correlation` package.  Remember that for help on any function you can type e.g., `?correlation` in the console window.  The `correlation()` function requires:
+Finally we will run the correlation. There are often many different functions that can be used to achieve the same thing in R, and we're actually going to show you two ways of running a correlation.
+
+First, we'll use the `correlation()` function from the `correlation` package. Remember that for help on any function you can type e.g., `?correlation` in the console window.  The `correlation()` function requires:
 
 * The name of the data set you are using
 * The name of the first variable you want to select for the correlation
@@ -209,15 +212,23 @@ correlation(data = dat, select = "X", select2 = "Y",  method = "pearson", altern
 
 * Based on your answers to the assumption tests, decide which correlation method to use (e.g. pearson or spearman) and the type of NHST tail to set (e.g. two.sided or one.sided). 
 * Run the correlation between IQ and Ability and save it in an object called `results`.
-* View the output by typing `results` in the console
+* View the output by typing `View(results)` in the console
 
-As you can see from the environment, the output from the correlation has saved as a list. This can make it a little more difficult to work with so we're going to use a function from the `broom` package that we loaded to make the table a bit tidier. The following code is going to overwrite the object results with the tidy version.
+The second method is to use `cor.test()` which is a Base R function and uses similar code as `correlation()` except for how the variables are specified. `cor.test()` use formula syntax in the form `~ x + y` where x and y are the two variables you wish to correlate.
+
+* Run the below code and then view the output by typing `results2` in the console. Look at how the output differs from `results`.
+
+```{r}
+results2 <-  cor.test(~ IQ + Abil, data = mh,  method = "pearson", alternative = "two.sided")
+```
+
+We'll come back to why we've shown you two ways shortly.
 
 ## Activity 6: Interpreting the correlation {#corr-a6}
 
 You should now have a tibble called `results` that gives you the output of the correlation between Reading Ability and IQ for the school children measured in Miller and Haden (2013) Chapter 11. All that is left to do now, is interpret the output. 
 
-Look at `results`and then with your group, answer the following questions:
+Look at `results`and then answer the following questions:
 
 1. What is the value of Pearson's *r* to 2 decimal places? `r fitb(c(".45", "0.45"), width = 20, ignore_ws = TRUE)`
 2. The direction of the relationship between Ability and IQ is: `r mcq(c(answer = "positive", "negative","no relationship"))`
@@ -249,11 +260,23 @@ It will magically transform into:
 
 >The mean IQ score was `r round(pluck(descriptives$IQ_mean),2)`(`r round(pluck(descriptives$IQ_SD),2)`) and the mean reading ability score was `r round(pluck(descriptives$Abil_mean),2)`(`r round(pluck(descriptives$Abil_SD),2)`). A Pearson\`s correlation found a significant, medium positive correlation between the two variables (r (`r results$df_error`) = `r round(results$r, 2)`, *p* = `r round(results$p, 3)`)
 
+The reason that we have shown you two methods of performing correlations is because of the way each outputs the results. `correlation()` produces a tibble which means it is very easy to work with and pull out values or join to another table as needed because it is already in tidyverse format. 
+
+`cor.test()` on the other hand produces a `list` type object, which is a bit harder to work with. However, the output of `cor.test()` also happens to work with functions from the `report` package, `report()` and `report_table()` that automatically reports the results of statistical analyses for you.
+
+`report()` presents a fixed write-up of the correlation with all the available information. For correlations, this is perhaps less than useful, however, for more complex statistics this reporting function can really help and so we're introducing it now. 
+
+```{r}
+report(results2)
+```
+
+`report()` doesn't currently work with the output of `correlation()` which is why we showed you both ways. 
+
 ## Activity 8: Scatterplot matrix {#corr-a8}
 
-Above we ran one correlation. However, when you have lots of variables in a dataset, to get a quick overview of patterns, you might want to run all the correlations at the same time or create a matrix of scatterplots at the one time. You can do this with functions from the `psych` and `correlation` packages. We will use the Miller and Haden data here again which you should still have in a tibble called `mh`. 
+Above we ran one correlation. However, when you have lots of variables in a dataset, to get a quick overview of patterns, you might want to run all the correlations at the same time or create a matrix of scatterplots at the one time. You can do this with functions from the `psych` and `correlation` packages (`cor.test()` only works for one correlation at a time). We will use the Miller and Haden data here again which you should still have in a tibble called `mh`. 
 
-* Run the following line. The `pairs.panels)` function from the `psych` library creates a matrix of scatterplots, with the histograms, and correlation coefficients which you can then use to give you an overview of all the relationships at the one time. 
+* Run the following code The `pairs.panels())` function from the `psych` library creates a matrix of scatterplots, with the histograms, and correlation coefficients which you can then use to give you an overview of all the relationships at the one time. 
 
 ```{r pairs, fig.cap = "Scatterplot matrix"}
 pairs.panels(mh)
@@ -271,19 +294,18 @@ Instead, we can use pipes to help us out here. This code:
 ```{r pairs-pipes}
 mh %>%
   select(-Participant) %>%
-  pairs.panels(ellipses = T, lm = TRUE, method = "pearson")
+  pairs.panels(ellipses = F, lm = TRUE, method = "pearson")
 ```
 
-There are addtional arguments to adjust the plot `pairs.panel` creates that you can look up in the help documentation if you are interested.
+There are additional arguments to adjust the plot `pairs.panel` creates that you can look up in the help documentation if you are interested.
 
 ## Activity 9: Multiple correlations {#corr-a9}
 
 To perform multiple correlations in one go, we will again use the `correlation()` function. package. Rather than specifying two variables to correlation, you can also provide a data frame that has multiple variables  and it will run all possible correlations between the variables. Similar to above, we want to remove the `Participant` column before we do this.   
 
-* * `method` controls which correlation is computed, the default is `pearson` but if you needed to run the non-parametric version you could change this to `spearman`.  
+* `method` controls which correlation is computed, the default is `pearson` but if you needed to run the non-parametric version you could change this to `spearman`.  
 * `p_adjust` is the reason we are using the `correlation` package. In the lectures we discussed the problem of multiple comparisons - the idea that if you run lots and lots of tests you're likely to produce a significant p-value just by chance. This argument applies a correction to the p-value that adjusts for the number of correlations you have performed. There are several different methods which you can look up in the help documentation, the default setting is a Bonferroni-Holm correction.  
 * Because you're running multiple correlations and some may be positive and some may be negative, there is no option to specify a one or two-tailed test.   
-
 
 * Run the below code to calculate then view the correlation results
 
@@ -332,6 +354,7 @@ Well done! You can now add correlations to the list of things you can do in R. I
 ```{r eval=FALSE}
 library("car")
 library("correlation")
+library("report")
 library("psych")
 library("tidyverse")
 mh <- read_csv("MillerHadenData.csv")
@@ -382,7 +405,7 @@ descriptives <- summarise(mh,
 
 `r hide("Activity 5")`
 ```{r eval = FALSE}
-results <- correlation(data = dat, select = "IQ", select2 = "Abil",  method = "pearson", alternative = "two.sided")
+results <- correlation(data = mh, select = "IQ", select2 = "Abil",  method = "pearson", alternative = "two.sided")
 ```
 `r unhide()`  
 
