@@ -187,9 +187,8 @@ You now have a complete code to load in your data, convert it to Tidy, combine t
 Go back through your code and try to rewrite it using pipes `%>%` so that it is as efficient as possible. 
 
 `r hide("Helpful Hint")`
-```{r, results='asis', eval = FALSE}
 At any point where the first argument of your function is the name of a variable created before that line, there is a good chance you could have used a pipe! Here are all the bits of this code that could be piped together into one chain:
-    
+```{r, results='asis', eval = FALSE}
 `rlong <- pivot_longer(responses, names_to = "Question", values_to = "Response", Q1:Q10)`
 
 `rlong2 <- inner_join(rlong, qformats, \"Question\")`
@@ -283,15 +282,14 @@ sandwich <- pivot_longer(data = responses, names_to = "Jam", values_to = "Strawb
 
 `r hide("Explain these answers")`
 ```{r, echo = FALSE, results='asis'}
-cat("1. From the link above you can see that an appropriate citation for the AQ10 would be (Allison, Auyeung, and Baron-Cohen, (2012))
+cat("
+1. As mentioned, the higher the score on the AQ10 the more autistic-like traits a participant is said to show.
 
-2. As mentioned, the higher the score on the AQ10 the more autistic-like traits a participant is said to show.
+2. You could do this by code with `filter(aq_scores, Id == 87)`, which would give you a tibble of 1x2 showing the ID number and score. If you just wanted the score you could use `pull()` which we haven't shown you that yet: `filter(aq_scores, Id == 87) %>% pull(AQ)`. The answer is an AQ score of 2.
 
-3. You could do this by code with `filter(aq_scores, Id == 87)`, which would give you a tibble of 1x2 showing the ID number and score. If you just wanted the score you could use `pull()` which we haven't shown you that yet: `filter(aq_scores, Id == 87) %>% pull(AQ)`. The answer is an AQ score of 2.
+3. Same as above but changing the argument of the filter. `filter(aq_scores, AQ == 3) %>% count()`. The answer is 13. Remember you can do this by counting but the code makes it reproducible and accurate every time. You might make mistakes.
 
-4. Same as above but changing the argument of the filter. `filter(aq_scores, AQ == 3) %>% count()`. The answer is 13. Remember you can do this by counting but the code makes it reproducible and accurate every time. You might make mistakes.
-
-5. `filter(aq_scores, AQ > 6) %>% count()` or `filter(aq_scores, AQ >= 7) %>% count()`. The answer is 6.
+4. `filter(aq_scores, AQ > 6) %>% count()` or `filter(aq_scores, AQ >= 7) %>% count()`. The answer is 6.
         ")
 ```
 `r unhide()`  
