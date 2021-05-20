@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-05-18" />
+<meta name="date" content="2021-05-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -827,15 +827,14 @@ Helpful Hint
 <button>
 Helpful Hint
 </button>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="data-wrangling-3.html#cb100-1" aria-hidden="true" tabindex="-1"></a>At any point where the first argument of your <span class="cf">function</span> is the name of a variable created before that line, there is a good chance you could have used a pipe<span class="sc">!</span> Here are all the bits of this code that could be piped together into one chain<span class="sc">:</span></span>
-<span id="cb100-2"><a href="data-wrangling-3.html#cb100-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb100-3"><a href="data-wrangling-3.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">rlong &lt;- pivot_longer(responses, names_to = &quot;Question&quot;, values_to = &quot;Response&quot;, Q1:Q10)</span><span class="st">`</span></span>
+<p>At any point where the first argument of your function is the name of a variable created before that line, there is a good chance you could have used a pipe! Here are all the bits of this code that could be piped together into one chain:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="data-wrangling-3.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">rlong &lt;- pivot_longer(responses, names_to = &quot;Question&quot;, values_to = &quot;Response&quot;, Q1:Q10)</span><span class="st">`</span></span>
+<span id="cb100-2"><a href="data-wrangling-3.html#cb100-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-3"><a href="data-wrangling-3.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">rlong2 &lt;- inner_join(rlong, qformats, </span><span class="sc">\&quot;</span><span class="at">Question</span><span class="sc">\&quot;</span><span class="at">)</span><span class="st">`</span></span>
 <span id="cb100-4"><a href="data-wrangling-3.html#cb100-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-5"><a href="data-wrangling-3.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">rlong2 &lt;- inner_join(rlong, qformats, </span><span class="sc">\&quot;</span><span class="at">Question</span><span class="sc">\&quot;</span><span class="at">)</span><span class="st">`</span></span>
+<span id="cb100-5"><a href="data-wrangling-3.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">rscores &lt;- inner_join(rlong2, scoring, c(</span><span class="sc">\&quot;</span><span class="at">QFormat</span><span class="sc">\&quot;</span><span class="at">, </span><span class="sc">\&quot;</span><span class="at">Response</span><span class="sc">\&quot;</span><span class="at">))</span><span class="st">`</span></span>
 <span id="cb100-6"><a href="data-wrangling-3.html#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-7"><a href="data-wrangling-3.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">rscores &lt;- inner_join(rlong2, scoring, c(</span><span class="sc">\&quot;</span><span class="at">QFormat</span><span class="sc">\&quot;</span><span class="at">, </span><span class="sc">\&quot;</span><span class="at">Response</span><span class="sc">\&quot;</span><span class="at">))</span><span class="st">`</span></span>
-<span id="cb100-8"><a href="data-wrangling-3.html#cb100-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-9"><a href="data-wrangling-3.html#cb100-9" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">aq_scores &lt;- rscores %&gt;% group_by(Id) %&gt;% summarise(AQ = sum(Score))</span><span class="st">`</span></span></code></pre></div>
+<span id="cb100-7"><a href="data-wrangling-3.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">aq_scores &lt;- rscores %&gt;% group_by(Id) %&gt;% summarise(AQ = sum(Score))</span><span class="st">`</span></span></code></pre></div>
 </div>
 <p><br></p>
 <p>You have now recapped one-table and two-table verbs. These are great to know as for example, in the above, it actually only took a handful of reproducible steps to get from messy data to tidy data; could you imagine doing this by hand in Excel through cutting and pasting? Not to mention the mistakes you could make!</p>
@@ -919,7 +918,6 @@ Explain this answer
 Explain these answers
 </button>
 <ol style="list-style-type: decimal">
-<li><p>From the link above you can see that an appropriate citation for the AQ10 would be (Allison, Auyeung, and Baron-Cohen, (2012))</p></li>
 <li><p>As mentioned, the higher the score on the AQ10 the more autistic-like traits a participant is said to show.</p></li>
 <li><p>You could do this by code with <code>filter(aq_scores, Id == 87)</code>, which would give you a tibble of 1x2 showing the ID number and score. If you just wanted the score you could use <code>pull()</code> which we haven’t shown you that yet: <code>filter(aq_scores, Id == 87) %&gt;% pull(AQ)</code>. The answer is an AQ score of 2.</p></li>
 <li><p>Same as above but changing the argument of the filter. <code>filter(aq_scores, AQ == 3) %&gt;% count()</code>. The answer is 13. Remember you can do this by counting but the code makes it reproducible and accurate every time. You might make mistakes.</p></li>
