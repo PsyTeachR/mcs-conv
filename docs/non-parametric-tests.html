@@ -661,15 +661,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">H.0.0.1</span> Two independent groups</h4>
 <p>The non-parametric equivalent of a independent-samples t-test is known as the <em>Mann-Whitney-U</em> test also referred to as the <em>Wilcoxon Rank Sum</em> test. It uses ranked data to test the null hypothesis that the median ranks of two groups are different.</p>
 <p>For this example we’re going to use the <code>wine</code> dataset from the <code>ordinal</code> package that has ratings for different wines.</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="non-parametric-tests.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb412-2"><a href="non-parametric-tests.html#cb412-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ordinal)</span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="non-parametric-tests.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb411-2"><a href="non-parametric-tests.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ordinal)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;ordinal&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
 ## 
 ##     slice</code></pre>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="non-parametric-tests.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(wine)</span>
-<span id="cb415-2"><a href="non-parametric-tests.html#cb415-2" aria-hidden="true" tabindex="-1"></a><span class="fu">force</span>(wine)</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="non-parametric-tests.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(wine)</span>
+<span id="cb414-2"><a href="non-parametric-tests.html#cb414-2" aria-hidden="true" tabindex="-1"></a><span class="fu">force</span>(wine)</span></code></pre></div>
 <pre><code>##    response rating temp contact bottle judge
 ## 1        36      2 cold      no      1     1
 ## 2        48      3 cold      no      2     1
@@ -745,21 +745,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 72       65      4 warm     yes      8     9</code></pre>
 <p>Each wine is given a bitterness rating on a 0-100 scale (<code>response</code> variable) and one of the grouping variables is whether the wine was served cold or warm (<code>temp</code>).</p>
 <p>First, we can calculate descriptive statistics. For ordinal data the median and range are most suitable.</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="non-parametric-tests.html#cb417-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
-<span id="cb417-2"><a href="non-parametric-tests.html#cb417-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(temp) <span class="sc">%&gt;%</span></span>
-<span id="cb417-3"><a href="non-parametric-tests.html#cb417-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">median_response =</span> <span class="fu">median</span>(response),</span>
-<span id="cb417-4"><a href="non-parametric-tests.html#cb417-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_response =</span> <span class="fu">min</span>(response),</span>
-<span id="cb417-5"><a href="non-parametric-tests.html#cb417-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_response =</span> <span class="fu">max</span>(response))</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="non-parametric-tests.html#cb416-1" aria-hidden="true" tabindex="-1"></a>wine <span class="sc">%&gt;%</span></span>
+<span id="cb416-2"><a href="non-parametric-tests.html#cb416-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(temp) <span class="sc">%&gt;%</span></span>
+<span id="cb416-3"><a href="non-parametric-tests.html#cb416-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">median_response =</span> <span class="fu">median</span>(response),</span>
+<span id="cb416-4"><a href="non-parametric-tests.html#cb416-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_response =</span> <span class="fu">min</span>(response),</span>
+<span id="cb416-5"><a href="non-parametric-tests.html#cb416-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_response =</span> <span class="fu">max</span>(response))</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 4
 ##   temp  median_response min_response max_response
 ##   &lt;fct&gt;           &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
 ## 1 cold               36           12           67
 ## 2 warm               58           22           90</code></pre>
 <p>And to visualise, grouped histograms:</p>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="non-parametric-tests.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wine, <span class="fu">aes</span>(<span class="at">x =</span> response, <span class="at">fill =</span> temp)) <span class="sc">+</span></span>
-<span id="cb419-2"><a href="non-parametric-tests.html#cb419-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>,<span class="at">alpha =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
-<span id="cb419-3"><a href="non-parametric-tests.html#cb419-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;E&quot;</span>) <span class="sc">+</span></span>
-<span id="cb419-4"><a href="non-parametric-tests.html#cb419-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="non-parametric-tests.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(wine, <span class="fu">aes</span>(<span class="at">x =</span> response, <span class="at">fill =</span> temp)) <span class="sc">+</span></span>
+<span id="cb418-2"><a href="non-parametric-tests.html#cb418-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">colour =</span> <span class="st">&quot;black&quot;</span>,<span class="at">alpha =</span> .<span class="dv">8</span>) <span class="sc">+</span></span>
+<span id="cb418-3"><a href="non-parametric-tests.html#cb418-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;E&quot;</span>) <span class="sc">+</span></span>
+<span id="cb418-4"><a href="non-parametric-tests.html#cb418-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-30"></span>
 <img src="appendix-0_files/figure-html/unnamed-chunk-30-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
@@ -768,15 +768,15 @@ Figure H.1: <strong>CAPTION THIS FIGURE!!</strong>
 </p>
 </div>
 <p>The Mann-Whitney code takes the following form:</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="non-parametric-tests.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(dv <span class="sc">~</span> iv, data, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">correct =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="non-parametric-tests.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wilcox.test</span>(dv <span class="sc">~</span> iv, data, <span class="at">paired =</span> <span class="cn">FALSE</span>, <span class="at">correct =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Therefore to test whether bitterness ratings are significantly different between temperate groups.</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="non-parametric-tests.html#cb422-1" aria-hidden="true" tabindex="-1"></a>np_test1 <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(response <span class="sc">~</span> temp, </span>
-<span id="cb422-2"><a href="non-parametric-tests.html#cb422-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> wine, </span>
-<span id="cb422-3"><a href="non-parametric-tests.html#cb422-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">paired =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb422-4"><a href="non-parametric-tests.html#cb422-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">correct =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="non-parametric-tests.html#cb421-1" aria-hidden="true" tabindex="-1"></a>np_test1 <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(response <span class="sc">~</span> temp, </span>
+<span id="cb421-2"><a href="non-parametric-tests.html#cb421-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> wine, </span>
+<span id="cb421-3"><a href="non-parametric-tests.html#cb421-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">paired =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb421-4"><a href="non-parametric-tests.html#cb421-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">correct =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Warning in wilcox.test.default(x = c(36, 48, 47, 67, 17, 22, 14, 50, 36, :
 ## cannot compute exact p-value with ties</code></pre>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="non-parametric-tests.html#cb424-1" aria-hidden="true" tabindex="-1"></a>np_test1</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="non-parametric-tests.html#cb423-1" aria-hidden="true" tabindex="-1"></a>np_test1</span></code></pre></div>
 <pre><code>## 
 ## 	Wilcoxon rank sum test with continuity correction
 ## 
@@ -791,13 +791,13 @@ Figure H.1: <strong>CAPTION THIS FIGURE!!</strong>
 <div id="effect-size" class="section level5" number="25.0.0.1.1">
 <h5><span class="header-section-number">H.0.0.1.1</span> Effect size</h5>
 <p>The effect size for a Mann-wWitney is actually pearson’s R, the same r we use in correlation and is calculated by extracting the z score from the p-value. First, we create a new function to do this for us (from Field et al., 2013) that specifies we want to calculate r for the Mann-Whitney test we stored in <code>np_test</code>:</p>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="non-parametric-tests.html#cb426-1" aria-hidden="true" tabindex="-1"></a>rFromWilcox <span class="ot">&lt;-</span>  <span class="cf">function</span>(np_test1, N){</span>
-<span id="cb426-2"><a href="non-parametric-tests.html#cb426-2" aria-hidden="true" tabindex="-1"></a>  Z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(np_test1<span class="sc">$</span>p.value<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb426-3"><a href="non-parametric-tests.html#cb426-3" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> Z<span class="sc">/</span><span class="fu">sqrt</span>(N)</span>
-<span id="cb426-4"><a href="non-parametric-tests.html#cb426-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(np_test1<span class="sc">$</span>data.name, <span class="st">&quot;Effect Size, r = &quot;</span>, r)</span>
-<span id="cb426-5"><a href="non-parametric-tests.html#cb426-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb425-1"><a href="non-parametric-tests.html#cb425-1" aria-hidden="true" tabindex="-1"></a>rFromWilcox <span class="ot">&lt;-</span>  <span class="cf">function</span>(np_test1, N){</span>
+<span id="cb425-2"><a href="non-parametric-tests.html#cb425-2" aria-hidden="true" tabindex="-1"></a>  Z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(np_test1<span class="sc">$</span>p.value<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb425-3"><a href="non-parametric-tests.html#cb425-3" aria-hidden="true" tabindex="-1"></a>  r <span class="ot">&lt;-</span> Z<span class="sc">/</span><span class="fu">sqrt</span>(N)</span>
+<span id="cb425-4"><a href="non-parametric-tests.html#cb425-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(np_test1<span class="sc">$</span>data.name, <span class="st">&quot;Effect Size, r = &quot;</span>, r)</span>
+<span id="cb425-5"><a href="non-parametric-tests.html#cb425-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Next, we use this new function to calculate the effect size by specifying the model object and the sample size.:</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb427-1"><a href="non-parametric-tests.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rFromWilcox</span>(np_test1, <span class="dv">72</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="non-parametric-tests.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rFromWilcox</span>(np_test1, <span class="dv">72</span>)</span></code></pre></div>
 <pre><code>## response by temp Effect Size, r =  -0.5748666</code></pre>
 </div>
 </div>
@@ -810,19 +810,19 @@ Figure H.1: <strong>CAPTION THIS FIGURE!!</strong>
 <div id="spearmans-correlations" class="section level4" number="25.0.0.3">
 <h4><span class="header-section-number">H.0.0.3</span> Spearman’s correlations</h4>
 <p>The <code>cocor</code> package comes with a dataset called <code>aptitude</code>. This dataset contains scores on four aptitude tests <code>knowledge</code>, <code>logic</code>, <code>intelligence.a</code>, and <code>intelligence.b</code> for two separate samples and we’ll also load <code>lsr</code> for correlations</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="non-parametric-tests.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cocor)</span>
-<span id="cb429-2"><a href="non-parametric-tests.html#cb429-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb429-3"><a href="non-parametric-tests.html#cb429-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr)</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="non-parametric-tests.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cocor)</span>
+<span id="cb428-2"><a href="non-parametric-tests.html#cb428-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb428-3"><a href="non-parametric-tests.html#cb428-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr)</span></code></pre></div>
 <p>First, let’s load the full dataset and then pull out just the data for one sample.</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="non-parametric-tests.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(aptitude)</span>
-<span id="cb430-2"><a href="non-parametric-tests.html#cb430-2" aria-hidden="true" tabindex="-1"></a>sample1 <span class="ot">&lt;-</span> aptitude<span class="sc">$</span>sample1</span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="non-parametric-tests.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(aptitude)</span>
+<span id="cb429-2"><a href="non-parametric-tests.html#cb429-2" aria-hidden="true" tabindex="-1"></a>sample1 <span class="ot">&lt;-</span> aptitude<span class="sc">$</span>sample1</span></code></pre></div>
 <p>We can use <code>ggplot()</code> to look at the distributions of the data. Looking at all four variables, we might conclude that the distributions for <code>intelligence.b</code> and <code>logic</code> do not meet the assumption of normality as so we want to do a non-parametric Spearman’s correlation (although if N &gt; 100, Spearman and Pearson correlations are basically identical but let’s ignore that for now).</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb431-1"><a href="non-parametric-tests.html#cb431-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="sc">%&gt;%</span></span>
-<span id="cb431-2"><a href="non-parametric-tests.html#cb431-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">subject =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb431-3"><a href="non-parametric-tests.html#cb431-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> knowledge<span class="sc">:</span>intelligence.a, <span class="at">names_to =</span> <span class="st">&quot;test&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb431-4"><a href="non-parametric-tests.html#cb431-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> score)) <span class="sc">+</span></span>
-<span id="cb431-5"><a href="non-parametric-tests.html#cb431-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
-<span id="cb431-6"><a href="non-parametric-tests.html#cb431-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>test, <span class="at">scales =</span> <span class="st">&quot;free_x&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="non-parametric-tests.html#cb430-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="sc">%&gt;%</span></span>
+<span id="cb430-2"><a href="non-parametric-tests.html#cb430-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">subject =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb430-3"><a href="non-parametric-tests.html#cb430-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> knowledge<span class="sc">:</span>intelligence.a, <span class="at">names_to =</span> <span class="st">&quot;test&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;score&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb430-4"><a href="non-parametric-tests.html#cb430-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> score)) <span class="sc">+</span></span>
+<span id="cb430-5"><a href="non-parametric-tests.html#cb430-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb430-6"><a href="non-parametric-tests.html#cb430-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>test, <span class="at">scales =</span> <span class="st">&quot;free_x&quot;</span>)</span></code></pre></div>
 <pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-37"></span>
 <img src="appendix-0_files/figure-html/unnamed-chunk-37-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
@@ -831,7 +831,7 @@ Figure H.2: <strong>CAPTION THIS FIGURE!!</strong>
 </p>
 </div>
 <p>To run a single Spearman’s correlation we can use <code>cor.test()</code>. The code is the same as we have used previously with one edit, we change <code>method</code> to <code>spearman</code>.</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="non-parametric-tests.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(sample1<span class="sc">$</span>knowledge, sample1<span class="sc">$</span>logic, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="non-parametric-tests.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(sample1<span class="sc">$</span>knowledge, sample1<span class="sc">$</span>logic, <span class="at">method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in cor.test.default(sample1$knowledge, sample1$logic, method =
 ## &quot;spearman&quot;): Cannot compute exact p-value with ties</code></pre>
 <pre><code>## 
@@ -844,7 +844,7 @@ Figure H.2: <strong>CAPTION THIS FIGURE!!</strong>
 ##        rho 
 ## 0.02608352</code></pre>
 <p>For reasons I am unclear about, the Spearman test doesn’t produce degrees of freedom, the easiest way to do this is probably just to run the test again using <code>method = "pearson"</code> and take the DF from there.</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="non-parametric-tests.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(sample1<span class="sc">$</span>knowledge, sample1<span class="sc">$</span>logic, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb435-1"><a href="non-parametric-tests.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(sample1<span class="sc">$</span>knowledge, sample1<span class="sc">$</span>logic, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## 	Pearson&#39;s product-moment correlation
 ## 
@@ -857,8 +857,8 @@ Figure H.2: <strong>CAPTION THIS FIGURE!!</strong>
 ##        cor 
 ## 0.02567615</code></pre>
 <p>If you want to run multiple correlations using <code>correlate()</code> from <code>lsr</code>, again, you just need to amend the method.</p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="non-parametric-tests.html#cb438-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="sc">%&gt;%</span></span>
-<span id="cb438-2"><a href="non-parametric-tests.html#cb438-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">test =</span> <span class="cn">TRUE</span>, <span class="at">corr.method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="non-parametric-tests.html#cb437-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="sc">%&gt;%</span></span>
+<span id="cb437-2"><a href="non-parametric-tests.html#cb437-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">test =</span> <span class="cn">TRUE</span>, <span class="at">corr.method =</span> <span class="st">&quot;spearman&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## CORRELATIONS
 ## ============

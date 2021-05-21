@@ -37,6 +37,7 @@ pong_data <- read_csv("PongBlueRedBack 1-16 Codebook.csv")
 summary(pong_data)
 ``` 
   
+`summary()` provides a quick overview of the variables in your dataset and can be a useful quick check that you have indeed imported the correct data. It will also provide some basic descriptive statistics or whether the data is character (text) data which can also be useful to check.
 
 ## Activity 2: Look at your data {#dw2-a2}
 
@@ -64,15 +65,21 @@ Either by inclusion (telling R all the variables you want to keep) or exclusion 
 
 ## Activity 4: Reorder the variables {#dw2-a4}
 
-`select()` can also be used to reorder the columns in a table as the new table will display the variables in the order that you wrote them. Use `select()` to keep only the columns `Participant`, `JudgedSpeed`, `BallSpeed`, `TrialNumber`, and `HitOrMiss` but have them display in alphabetical order, left to right. Save this table in a new object named `reorder_dat`.
+`select()` can also be used to reorder the columns in a table as the new table will display the variables in the order that you wrote them. Use `select()` to keep only the columns `Participant`, `JudgedSpeed`, `BallSpeed`, `TrialNumber`, and `HitOrMiss` from `pong_data` but have them display in alphabetical order, left to right. Save this table in a new object named `reorder_dat`.
 
 ## Activity 5: **`arrange()`** {#dw2-a5}
 
-Arrange the data by two variables: `HitOrMiss` (putting hits - 1 - first), and `JudgedSpeed` (fast judgement - 1 - first). Do not store this output in a new object.   
+Arrange the data by two variables: `HitOrMiss` (putting hits - 1 - first), and `JudgedSpeed` (fast judgement - 1 - first) and store this in an object named `arrange_dat`.
 
 ## Activity 6: `filter()` {#dw2-a6}
 
-Use `filter()` to extract all Participants in the original `pong_data` that had a fast speed judgement, for speeds 2, 4, 5, and 7, but missed the ball. Store this remaining data in a new object called `pong_fast_miss`
+Use `filter()` to extract all Participants in the original `pong_data` that had:
+
+* a fast speed judgement;
+* for speeds 2, 4, 5, and 7;
+* but missed the ball.   
+
+Store this remaining data in a new object called `pong_fast_miss`
 
 `r hide("Helpful Hint")`
 ```{r, echo = FALSE, results='asis'}
@@ -113,7 +120,7 @@ You used this code when producing your own graph of babynames, it's a very helpf
 
 ## Activity 7: `mutate()` {#dw2-a7}
 
-In Chapter \@ref(mutate), you learned how the `mutate()` function lets us create a new variable in our dataset. However, it also has another useful function in that it can be combined with `recode()` to create new columns with recoded values. For example, let's add a new column to `pong_data` in which the judged speed  is converted into a text label where `1` will become `Fast`, and `0` will become "Slow". Note that if you gave the recoded variable the same name as the original it would overwrite it.
+In Data Wrangling 1, you learned how the `mutate()` function lets us create a new variable in our dataset. However, it also has another useful function in that it can be combined with `recode()` to create new columns with recoded values. For example, let's add a new column to `pong_data` in which the judged speed  is converted into a text label where `1` will become `Fast`, and `0` will become "Slow". Note that if you gave the recoded variable the same name as the original it would overwrite it.
 
 ``` {r mutatedata, eval = FALSE}
 pong_data <- mutate(pong_data, 
@@ -157,10 +164,15 @@ Step 2. mutate(`TrialNumber` = TrialNumber minus 1)
 
 ## Activity 8: Summarising data {#dw2-a8}
 
-Now we're going to calculate descriptive statistics for the data using `summarise()`. In this exercise we will calculate the total number of hits there were for each paddle lengths as well as the mean number of hits, or number of hits there were for each background colour.
+Now we're going to calculate descriptive statistics for the data using `summarise()`. In this exercise we will calculate:
 
-* First, group the data by `BackgroundColor` and `PaddleLength` so that the descriptives statistics we produce will be broken down by group using `group_by()`.
-* Then, use `summarise()` to calculate the total number of hits (`HitOrMiss`)
+* The total (sum) number of hits for each combination of background colour and paddle length.
+* The mean number of hits for each combination of background colour and paddle length
+
+Because we want to produce descriptive statistics by groups (background colour and paddle length), there are two steps:
+
+* Group the data by `BackgroundColor` and `PaddleLength` using `group_by()`.
+* Then, use `summarise()` to calculate the total and mean number of hits (`HitOrMiss`) using the grouped data
 
 We will do this using pipes to reduce the amount of code we write. Remember to try and read the code out loud and to pronounce `%>%` as 'and then'. Copy and paste the below code into a new code chunk and run the code.
 
@@ -210,24 +222,16 @@ pong_count <- pong_data %>%
             n = n())
 ```
 
-However, if you're just interested in counts rather than also calculating descriptives, `this method is a bit clunky. For example, if we wanted to count the number of observations in each BackgroundColor group, we would need the following code which is a bit clunky for a relatively simple task.
+However, if you're just interested in counts rather than also calculating descriptives, this method is a bit clunky. Instead, we can use the function `count()` which is specifically designed to count observations and doesn't require the use of `summarise()` or `group_by()`.
 
-```{r eval = FALSE}
-pong_data %>%
-  group_by(BackgroundColor) %>%
-  summarise(n = n())
-```
-
-Instead, we can use the function `count()` which is specifically designed to count observations and doesn't require the use of `summarise()` or `group_by()`.
-
-To count the total number of obseverations in the dataset:
+To count the total number of observations in the dataset:
 
 ```{r}
 pong_data %>% # take pong_data
   count() # and then count the observations in it
 ```
 
-To count the number of observations in groups:
+To count the number of observations in each level of a variable:
 
 ```{r}
 pong_data %>%
@@ -248,7 +252,7 @@ slow_ball<- filter(pong_data, BallSpeed < 3)
 fast_ball <- filter(pong_data, BallSpeed >= 6) 
 
 # a combined tibble of extreme ball speeds
-extreme_balls <- bind_rows(slow_ball, fast_ball) 
+combined_data <- bind_rows(slow_ball, fast_ball) 
 ```
 
 ## Pipes (**`%>%`**) {#dw2-pipes}  
@@ -334,7 +338,7 @@ reorder_dat <- select(pong_data, BallSpeed, HitOrMiss, JudgedSpeed, Participant,
 
 `r hide("Solution Task 2")`
 ```{r eval = FALSE}
-arrange(pong_data, desc(HitOrMiss), desc(JudgedSpeed))
+arrange_dat <- arrange(pong_data, desc(HitOrMiss), desc(JudgedSpeed))
 ```
 `r unhide()`  
 

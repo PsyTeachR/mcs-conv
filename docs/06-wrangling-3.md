@@ -4,7 +4,7 @@
 
 In the last chapter, we looked at using one-table Wickham verbs to `filter`, `arrange`, `group_by`, `select`, `mutate` and `summarise`. Now we will focus on working with data across two or more tables. The two main verbs we will practice adding to the Wickham six in this chapter are `pivot_longer()` and `inner_join()`and these will help you process your data for your quantitative project.
 
-* `pivot_longer()` allows us to **transform** a table from wide format to long format (more on this below).
+* `pivot_longer()` allows us to **transform** a table from wide format to tidy-format (more on this below).
 * `inner_join()` allows us to **combine** two tables together based on common columns.
 
 <div class="try">
@@ -17,17 +17,16 @@ In the last chapter, we looked at using one-table Wickham verbs to `filter`, `ar
 
 ## Tidy data 
 
-We will use a type of data organisation known as **tidy data** or sometimes **long-form data**. Any data in this format is easily processed through the `tidyverse` package. However, the data you work with will not always be formatted this way. If that happens then your first step is to put it into tidy data format. There are three fundamental rules defining Tidy Data:
+We will use a type of data organisation known as **tidy data**. Any data in this format is easily processed through the `tidyverse` package. However, the data you work with will not always be formatted this way. If that happens then your first step is to put it into tidy data format. There are three fundamental rules defining Tidy Data:
 
 1. Each variable must have its own column.
 2. Each observation must have its own row.
-3. Each value must have its own cell (i.e. no grouping two variables together, e.g. time/date in one cell). 
-    i) A cell is where any specific row and column meet; a single data point in a tibble is a cell. 
+3. Each value must have its own cell 
 
 
 <div class="try">
 <p>If you’ve worked with any kind of data before, particularly if you’ve used Excel, it’s very likely that you will have used <strong>wide format</strong> data. In wide format, each participant’s data is all in one row with multiple columns for different data points. This means that the data set tends to be very wide and you will have as many rows as you have participants.</p>
-<p>This layout can be easy to read, however, it makes programming quite difficult. Whilst Tidy Data can be conceptually more difficult to understand at first, it means you can manipulate your data in whatever way you want very easily.</p>
+<p>This layout can be easy to read, however, it makes programming quite difficult. Whilst Tidy Data can be conceptually more difficult to understand at first, it means you can manipulate your data in whatever way you want very easily. There is more information about <a href="https://r4ds.had.co.nz/tidy-data.html">tidy data available here</a>.</p>
 </div>
 
 ## Analysing the Autism Spectrum Quotient (AQ)
@@ -98,29 +97,26 @@ The `responses` tibble is far from being tidy; each row represents multiple obse
 
 ## Activity 4: Tidying data {#dw3-a4}
 
-We now have all the data we need loaded in, but in order to make it easier for us to get the AQ score for each participant, we need to change the layout of the `responses` tibble to Tidy Data using the `pivot_longer()` function. 
+We now have all the data we need loaded in, but in order to make it easier for us to get the AQ score for each participant, we need to change the layout of the `responses` tibble to Tidy Data. 
 
-* Type the below code line into the Activity 4 code chunk and run it.
+The first step is to use the function `pivot_longer()` to transform the data. The pivot functions can be easier to show than tell - you may find it a useful exercise to run the below code and compare the newly created object `rlong` with the original `respones` before reading on.
 
 
 ```r
-rlong <- pivot_longer(data = responses, # the dataset we want to work on
-                names_to = "Question", # the name of the column that will store what is currently the names of each column (question numbers)
-                values_to = "Response", # the name of the new column that will store the values (data points)
-                Q1:Q10) # the columns we want to put into long-form
+rlong <- pivot_longer(data = responses,
+                      cols = Q1:Q10,
+                      names_to = "Question", 
+                      values_to = "Response")
 ```
 
-<div class="warning">
-<p><code>pivot_longer()</code> is a relatively new function in the tidyverse package. If you get an error message that says <code>could not find function pivot_longer()</code> you will need to update the tidyverse package by reinstalling it. You may also need to update R itself and other packages such a <code>rlang</code>.</p>
-</div>
 
-In case you are wondering if we wanted to go back the way,we would use the `pivot_wider()` function: e.g. `rwide <- pivot_wider(rlong, names_from = Questions, values_from = Response)`. But we do not want to do that here so let's not add this to the code. 
+-   As with the other tidyverse functions, the first argument specifies the dataset to use as the base, in this case `dat`. This argument name is often dropped in examples.
 
-<div class="warning">
-<p>In the code above we have used the notation <code>Q1:Q10</code>. This means ’select all the columns from Q1 to Q10. We could have written out the name of each column individually, for example <code>Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10</code> but obviously it is much easier to use the shorthand notation. You must be careful though to know what you are selecting. R isn’t clever enough to realise that what you want is all the Question columns - it would take any and all columns that exist between Q1 and Q10. This means that if your dataset is out of order you may end up selecting columns you didn’t mean to. Always look at your data and make sure you know the layout.</p>
-</div>
+-   `cols` specifies all the columns you want to transform. The easiest way to visualise this is to think about which columns would be the same in the new long-form dataset and which will change. In this case, we only have a single column `Id` that will remain constant, we will transform all the ther columns that contain participant's responses to each question. The colon notation `first_column:last_column` is used to select all variables from the first column specified to the second.  In our code, `cols` specifies that the columns we want to transform are `Q1` to `Q10`.
 
-* Look at the new dataset `rlong`. Compare it to the original dataset `responses` and try to understand how they relate to each other. 
+-   `names_to` specifies the names of the new columns that will be created. 
+
+-   Finally, `values_to` names the new column that will contain the measurements, in this case we'll call it `Response`. At this point you may find it helpful to go back and compare `rlong` and `responses`` again to see how each argument matches up with the output of the table.
 
 ## Activity 5: Combining data {#dw3-a5}
 
@@ -148,8 +144,11 @@ rlong2 <- inner_join(x = NULL, y = NULL, by = "NULL")
   
 ## Activity 6: Combining more data {#dw3-a6}  
 
-Now you need to combine the information in our new table, `rlong2`, with the `scoring` table so you know how many points to attribute each question based on the answer the participant gave, and whether the question was forward or reverse coded. Again, you can use the `inner_join()` function, but this time the common columns found in `rlong2` and `scoring` are `QFormat` and `Response`. To combine by two columns you just write them in sequence as shown below. **Note: when there is more than one common column between two tibbles you are joining, it is best to combine by all the columns to avoid repeat columns names in the new tibble.
+Now you need to combine the information in our new table, `rlong2`, with the `scoring` table so you know how many points to attribute each question based on the answer the participant gave, and whether the question was forward or reverse coded. Again, you can use the `inner_join()` function, but this time the common columns found in `rlong2` and `scoring` are `QFormat` and `Response`. To combine by two columns you just write them in sequence as shown below. 
 
+* You can only ever join two tables with `inner_join()` at once, so if you have multiple tables like we do, you need to do multiple calls to `inner_join()`
+* When there is more than one common column between two tibbles you are joining, it is best to combine by all the columns to avoid repeat columns names in the new tibble. If you run a join and it produces columns named `variable.x` and `variable.y` it means that there was another column that was the same in both datasets that you didn't add to `by`.
+* You have to be very careful to use `c()` if you have multiple variables for `by`. This is a common error and results in the `variable.x`/`variable.y` issue above.
 * Type the below line into the Activity 6 code chunk, run it, and then view the new object. 
 
 
