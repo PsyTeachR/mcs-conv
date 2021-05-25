@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-05-20" />
+<meta name="date" content="2021-05-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -650,38 +650,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="comparing-two-correlations" class="section level1" number="22">
 <h1><span class="header-section-number">E</span> Comparing two correlations</h1>
 <p>Sometimes you will need or want to statistically compare the strength of two correlation coefficients to help determine whether they are statistically different (rather than just comparing r values). For this set of analyses you will need to install and load the <code>cocor</code> package as well as the <code>tidyverse</code> and <code>lsr</code>.</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="comparing-two-correlations.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cocor)</span>
-<span id="cb332-2"><a href="comparing-two-correlations.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb332-3"><a href="comparing-two-correlations.html#cb332-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="comparing-two-correlations.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cocor)</span>
+<span id="cb331-2"><a href="comparing-two-correlations.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb331-3"><a href="comparing-two-correlations.html#cb331-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lsr)</span></code></pre></div>
 <p>The <code>cocor</code> package comes with a built-in dataset called <code>aptitude</code>. This dataset contains scores on four aptitude tests <code>knowledge</code>, <code>logic</code>, <code>intelligence.a</code>, and <code>intelligence.b</code> for two separate samples. This data is stored in a <code>list</code> object that then contains two separate data frames <code>sample1</code> and <code>sample2</code>. We haven’t worked with lists much in this book but <code>cocor</code> requires the data to be in list format so it’s worth spending a little time on this before we get going.</p>
 <p>First, load the built-in aptitude dataset.</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="comparing-two-correlations.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;aptitude&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="comparing-two-correlations.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;aptitude&quot;</span>)</span></code></pre></div>
 <p>You can view the contents of each dataset by calling them separately:</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="comparing-two-correlations.html#cb334-1" aria-hidden="true" tabindex="-1"></a>aptitude<span class="sc">$</span>sample1</span>
-<span id="cb334-2"><a href="comparing-two-correlations.html#cb334-2" aria-hidden="true" tabindex="-1"></a>aptitude<span class="sc">$</span>sample2</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="comparing-two-correlations.html#cb333-1" aria-hidden="true" tabindex="-1"></a>aptitude<span class="sc">$</span>sample1</span>
+<span id="cb333-2"><a href="comparing-two-correlations.html#cb333-2" aria-hidden="true" tabindex="-1"></a>aptitude<span class="sc">$</span>sample2</span></code></pre></div>
 <p>However, it may that your research dataset isn’t structured like this and that the data for the two groups or samples you want to compare is in the same dataset (for example, for the data for your quantitative report).</p>
 <p>The below code transforms the data to the format you’re likely to have so that we can show you how to put it back into list form by using the <code>bind_rows()</code> function to pull out the two datasets, bind them together, and add on a column called <code>sample</code> that identifies which dataset the data is from.</p>
 <ul>
 <li>Run the below code and then view <code>full_dat</code> to see how it is structured.</li>
 </ul>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="comparing-two-correlations.html#cb335-1" aria-hidden="true" tabindex="-1"></a>full_dat <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(aptitude<span class="sc">$</span>sample1, aptitude<span class="sc">$</span>sample2, <span class="at">.id =</span> <span class="st">&quot;sample&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="comparing-two-correlations.html#cb334-1" aria-hidden="true" tabindex="-1"></a>full_dat <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(aptitude<span class="sc">$</span>sample1, aptitude<span class="sc">$</span>sample2, <span class="at">.id =</span> <span class="st">&quot;sample&quot;</span>)</span></code></pre></div>
 <p>This is how the data for your quantitative report is structured. All the data you have is in a single table and there is a column that tells you what group it is from (in this case <code>sample</code> but for the quant report this might be gender or whether the student is mature).</p>
 <p>To use <code>cocor</code> to compare the correlations you will need to transform it into a list object. We achieve this by creating two separate objects for each sample using <code>filter()</code> and then we combine them back into a <code>list</code>. We’ve also added in the code to ensure that the table is a data frame because <code>cocor</code> is a bit fussy about what it needs.</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="comparing-two-correlations.html#cb336-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="ot">&lt;-</span> full_dat <span class="sc">%&gt;%</span></span>
-<span id="cb336-2"><a href="comparing-two-correlations.html#cb336-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sample <span class="sc">==</span> <span class="dv">1</span>)</span>
-<span id="cb336-3"><a href="comparing-two-correlations.html#cb336-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb336-4"><a href="comparing-two-correlations.html#cb336-4" aria-hidden="true" tabindex="-1"></a>sample2 <span class="ot">&lt;-</span> full_dat <span class="sc">%&gt;%</span></span>
-<span id="cb336-5"><a href="comparing-two-correlations.html#cb336-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sample <span class="sc">==</span> <span class="dv">2</span>)</span>
-<span id="cb336-6"><a href="comparing-two-correlations.html#cb336-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb336-7"><a href="comparing-two-correlations.html#cb336-7" aria-hidden="true" tabindex="-1"></a>dat_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">sample1 =</span> <span class="fu">as.data.frame</span>(sample1),</span>
-<span id="cb336-8"><a href="comparing-two-correlations.html#cb336-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">sample2 =</span> <span class="fu">as.data.frame</span>(sample2))</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="comparing-two-correlations.html#cb335-1" aria-hidden="true" tabindex="-1"></a>sample1 <span class="ot">&lt;-</span> full_dat <span class="sc">%&gt;%</span></span>
+<span id="cb335-2"><a href="comparing-two-correlations.html#cb335-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sample <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb335-3"><a href="comparing-two-correlations.html#cb335-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb335-4"><a href="comparing-two-correlations.html#cb335-4" aria-hidden="true" tabindex="-1"></a>sample2 <span class="ot">&lt;-</span> full_dat <span class="sc">%&gt;%</span></span>
+<span id="cb335-5"><a href="comparing-two-correlations.html#cb335-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sample <span class="sc">==</span> <span class="dv">2</span>)</span>
+<span id="cb335-6"><a href="comparing-two-correlations.html#cb335-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb335-7"><a href="comparing-two-correlations.html#cb335-7" aria-hidden="true" tabindex="-1"></a>dat_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">sample1 =</span> <span class="fu">as.data.frame</span>(sample1),</span>
+<span id="cb335-8"><a href="comparing-two-correlations.html#cb335-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">sample2 =</span> <span class="fu">as.data.frame</span>(sample2))</span></code></pre></div>
 <p>This is somewhat convoluted but the key takeaway is that if you want to use <code>cocor</code> to compare correlations, you need to ensure your data is in a list object and that may require the above transformation.</p>
 <div id="compare-two-correlations-based-on-two-independent-groups" class="section level3" number="22.0.1">
 <h3><span class="header-section-number">E.0.1</span> Compare two correlations based on two independent groups</h3>
 <p>In this example we want to compare two correlations from two independent groups, i.e., where the participants involved in each correlation are completely different. Let’s run the correlations for the full dataset, and then for sample 1 and sample 2 separately.</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="comparing-two-correlations.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(full_dat<span class="sc">$</span>logic, full_dat<span class="sc">$</span>intelligence.a, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
-<span id="cb337-2"><a href="comparing-two-correlations.html#cb337-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(sample1<span class="sc">$</span>logic, sample1<span class="sc">$</span>intelligence.a, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
-<span id="cb337-3"><a href="comparing-two-correlations.html#cb337-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(sample2<span class="sc">$</span>logic, sample2<span class="sc">$</span>intelligence.a, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="comparing-two-correlations.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(full_dat<span class="sc">$</span>logic, full_dat<span class="sc">$</span>intelligence.a, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb336-2"><a href="comparing-two-correlations.html#cb336-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(sample1<span class="sc">$</span>logic, sample1<span class="sc">$</span>intelligence.a, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span>
+<span id="cb336-3"><a href="comparing-two-correlations.html#cb336-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(sample2<span class="sc">$</span>logic, sample2<span class="sc">$</span>intelligence.a, <span class="at">method =</span> <span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## 	Pearson&#39;s product-moment correlation
 ## 
@@ -722,8 +722,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The left-hand side of the formula (before the <code>|</code>) refers to variables in the first dataset in the list, the right-hand side of the formula (after the <code>|</code>) refers to variables in the second dataset in the list.</li>
 <li>This comparison requires us to use the list object we created.</li>
 </ul>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="comparing-two-correlations.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cocor</span>(<span class="at">formula =</span> <span class="sc">~</span>logic <span class="sc">+</span> intelligence.a <span class="sc">|</span> logic <span class="sc">+</span> intelligence.a, </span>
-<span id="cb339-2"><a href="comparing-two-correlations.html#cb339-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> dat_list)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="comparing-two-correlations.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cocor</span>(<span class="at">formula =</span> <span class="sc">~</span>logic <span class="sc">+</span> intelligence.a <span class="sc">|</span> logic <span class="sc">+</span> intelligence.a, </span>
+<span id="cb338-2"><a href="comparing-two-correlations.html#cb338-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> dat_list)</span></code></pre></div>
 <pre><code>## 
 ##   Results of a comparison of two correlations based on independent groups
 ## 
@@ -751,12 +751,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>We’re using <code>geom_jitter()</code> instead of <code>geom_point()</code> because many of the data points overlap - try changing it to <code>geom_point()</code> and see how it looks.</li>
 <li></li>
 </ul>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="comparing-two-correlations.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(full_dat, <span class="fu">aes</span>(<span class="at">x =</span> logic, <span class="at">y =</span> intelligence.a, </span>
-<span id="cb341-2"><a href="comparing-two-correlations.html#cb341-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">colour =</span> sample)) <span class="sc">+</span></span>
-<span id="cb341-3"><a href="comparing-two-correlations.html#cb341-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
-<span id="cb341-4"><a href="comparing-two-correlations.html#cb341-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb341-5"><a href="comparing-two-correlations.html#cb341-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb341-6"><a href="comparing-two-correlations.html#cb341-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;E&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="comparing-two-correlations.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(full_dat, <span class="fu">aes</span>(<span class="at">x =</span> logic, <span class="at">y =</span> intelligence.a, </span>
+<span id="cb340-2"><a href="comparing-two-correlations.html#cb340-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">colour =</span> sample)) <span class="sc">+</span></span>
+<span id="cb340-3"><a href="comparing-two-correlations.html#cb340-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb340-4"><a href="comparing-two-correlations.html#cb340-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb340-5"><a href="comparing-two-correlations.html#cb340-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb340-6"><a href="comparing-two-correlations.html#cb340-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;E&quot;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-9"></span>
 <img src="appendix-0_files/figure-html/unnamed-chunk-9-1.png" alt="Scatterplot comparing correlation between two variables for two groups" width="100%" />
@@ -770,8 +770,8 @@ Figure 8.2: Scatterplot comparing correlation between two variables for two grou
 <h3><span class="header-section-number">E.0.2</span> Compare two overlapping correlations based on two dependent groups</h3>
 <p>In this example, we want to compare two correlations from two dependent groups (i.e., the participants are the same) and where one of the variables is also the same, i.e., it overlaps.</p>
 <p>For example, let’s run all possible correlations for sample 2:</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="comparing-two-correlations.html#cb343-1" aria-hidden="true" tabindex="-1"></a>sample2 <span class="sc">%&gt;%</span></span>
-<span id="cb343-2"><a href="comparing-two-correlations.html#cb343-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">test =</span> <span class="cn">TRUE</span>, <span class="at">p.adjust.method =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="comparing-two-correlations.html#cb342-1" aria-hidden="true" tabindex="-1"></a>sample2 <span class="sc">%&gt;%</span></span>
+<span id="cb342-2"><a href="comparing-two-correlations.html#cb342-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">correlate</span>(<span class="at">test =</span> <span class="cn">TRUE</span>, <span class="at">p.adjust.method =</span> <span class="st">&quot;holm&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## CORRELATIONS
 ## ============
@@ -821,8 +821,8 @@ Figure 8.2: Scatterplot comparing correlation between two variables for two grou
 <ul>
 <li>Note that the the <code>data</code> argument now specifies which dataset of the list to use. We could also have just used the <code>sample1</code> data that we extracted earlier.</li>
 </ul>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="comparing-two-correlations.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cocor</span>(<span class="at">formula =</span> <span class="sc">~</span>logic <span class="sc">+</span> intelligence.a <span class="sc">|</span> logic <span class="sc">+</span> intelligence.b,</span>
-<span id="cb345-2"><a href="comparing-two-correlations.html#cb345-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> dat_list<span class="sc">$</span>sample1)</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="comparing-two-correlations.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cocor</span>(<span class="at">formula =</span> <span class="sc">~</span>logic <span class="sc">+</span> intelligence.a <span class="sc">|</span> logic <span class="sc">+</span> intelligence.b,</span>
+<span id="cb344-2"><a href="comparing-two-correlations.html#cb344-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> dat_list<span class="sc">$</span>sample1)</span></code></pre></div>
 <pre><code>## 
 ##   Results of a comparison of two overlapping correlations based on dependent groups
 ## 
@@ -881,8 +881,8 @@ Figure 8.2: Scatterplot comparing correlation between two variables for two grou
 <div id="compare-two-non-overlapping-correlations-from-two-dependent-groups" class="section level3" number="22.0.3">
 <h3><span class="header-section-number">E.0.3</span> Compare two non-overlapping correlations from two dependent groups</h3>
 <p>The final comparison we could make is to compare two non-overlapping (none of the variables are the same) correlations from two dependent groups (the same sample).</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="comparing-two-correlations.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cocor</span>(<span class="at">formula =</span> <span class="sc">~</span>logic <span class="sc">+</span> intelligence.b <span class="sc">|</span> knowledge <span class="sc">+</span> intelligence.a, </span>
-<span id="cb347-2"><a href="comparing-two-correlations.html#cb347-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> dat_list<span class="sc">$</span>sample1)</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="comparing-two-correlations.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cocor</span>(<span class="at">formula =</span> <span class="sc">~</span>logic <span class="sc">+</span> intelligence.b <span class="sc">|</span> knowledge <span class="sc">+</span> intelligence.a, </span>
+<span id="cb346-2"><a href="comparing-two-correlations.html#cb346-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> dat_list<span class="sc">$</span>sample1)</span></code></pre></div>
 <pre><code>## 
 ##   Results of a comparison of two nonoverlapping correlations based on dependent groups
 ## 

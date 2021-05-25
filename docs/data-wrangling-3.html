@@ -23,7 +23,7 @@
 
 
 
-<meta name="date" content="2021-05-20" />
+<meta name="date" content="2021-05-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -653,7 +653,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.1</span> Data wrangling recap</h2>
 <p>In the last chapter, we looked at using one-table Wickham verbs to <code>filter</code>, <code>arrange</code>, <code>group_by</code>, <code>select</code>, <code>mutate</code> and <code>summarise</code>. Now we will focus on working with data across two or more tables. The two main verbs we will practice adding to the Wickham six in this chapter are <code>pivot_longer()</code> and <code>inner_join()</code>and these will help you process your data for your quantitative project.</p>
 <ul>
-<li><code>pivot_longer()</code> allows us to <strong>transform</strong> a table from wide format to long format (more on this below).</li>
+<li><code>pivot_longer()</code> allows us to <strong>transform</strong> a table from wide format to tidy-format (more on this below).</li>
 <li><code>inner_join()</code> allows us to <strong>combine</strong> two tables together based on common columns.</li>
 </ul>
 <div class="try">
@@ -668,21 +668,18 @@ In terms of remembering all the functions, the truth is you don’t have to know
 </div>
 <div id="tidy-data" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Tidy data</h2>
-<p>We will use a type of data organisation known as <strong>tidy data</strong> or sometimes <strong>long-form data</strong>. Any data in this format is easily processed through the <code>tidyverse</code> package. However, the data you work with will not always be formatted this way. If that happens then your first step is to put it into tidy data format. There are three fundamental rules defining Tidy Data:</p>
+<p>We will use a type of data organisation known as <strong>tidy data</strong>. Any data in this format is easily processed through the <code>tidyverse</code> package. However, the data you work with will not always be formatted this way. If that happens then your first step is to put it into tidy data format. There are three fundamental rules defining Tidy Data:</p>
 <ol style="list-style-type: decimal">
 <li>Each variable must have its own column.</li>
 <li>Each observation must have its own row.</li>
-<li>Each value must have its own cell (i.e. no grouping two variables together, e.g. time/date in one cell).
-<ol style="list-style-type: lower-roman">
-<li>A cell is where any specific row and column meet; a single data point in a tibble is a cell.</li>
-</ol></li>
+<li>Each value must have its own cell</li>
 </ol>
 <div class="try">
 <p>
 If you’ve worked with any kind of data before, particularly if you’ve used Excel, it’s very likely that you will have used <strong>wide format</strong> data. In wide format, each participant’s data is all in one row with multiple columns for different data points. This means that the data set tends to be very wide and you will have as many rows as you have participants.
 </p>
 <p>
-This layout can be easy to read, however, it makes programming quite difficult. Whilst Tidy Data can be conceptually more difficult to understand at first, it means you can manipulate your data in whatever way you want very easily.
+This layout can be easy to read, however, it makes programming quite difficult. Whilst Tidy Data can be conceptually more difficult to understand at first, it means you can manipulate your data in whatever way you want very easily. There is more information about <a href="https://r4ds.had.co.nz/tidy-data.html">tidy data available here</a>.
 </p>
 </div>
 </div>
@@ -720,14 +717,14 @@ This layout can be easy to read, however, it makes programming quite difficult. 
 <div id="dw3-a2" class="section level2" number="6.5">
 <h2><span class="header-section-number">6.5</span> Activity 2: Load in the data</h2>
 <p>Now you need to load in the <code>.csv</code> data files using the <code>read_csv()</code> function and save them as variables in the environment. For example, to load in the <code>responses</code> file we would type:</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="data-wrangling-3.html#cb94-1" aria-hidden="true" tabindex="-1"></a>responses <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;responses.csv&quot;</span>) </span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="data-wrangling-3.html#cb93-1" aria-hidden="true" tabindex="-1"></a>responses <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;responses.csv&quot;</span>) </span></code></pre></div>
 <ul>
 <li>Add the following lines of code to your Markdown and complete them to load in all four <code>.csv</code> data files. Use the above code as an example and name each variable the same as its original file name (minus the .csv part), again as above, e.g. <code>responses.csv</code> gets saved as <code>responses</code>. Remember to run the lines so that the data loaded in and is stored in your environment.</li>
 </ul>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="data-wrangling-3.html#cb95-1" aria-hidden="true" tabindex="-1"></a>responses <span class="ot">&lt;-</span>  <span class="fu">read_csv</span>()    <span class="co"># survey responses</span></span>
-<span id="cb95-2"><a href="data-wrangling-3.html#cb95-2" aria-hidden="true" tabindex="-1"></a>qformats <span class="ot">&lt;-</span>                 <span class="co"># question formats</span></span>
-<span id="cb95-3"><a href="data-wrangling-3.html#cb95-3" aria-hidden="true" tabindex="-1"></a>scoring <span class="ot">&lt;-</span>                  <span class="co"># scoring info</span></span>
-<span id="cb95-4"><a href="data-wrangling-3.html#cb95-4" aria-hidden="true" tabindex="-1"></a>pinfo <span class="ot">&lt;-</span>                    <span class="co"># participant information</span></span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="data-wrangling-3.html#cb94-1" aria-hidden="true" tabindex="-1"></a>responses <span class="ot">&lt;-</span>  <span class="fu">read_csv</span>()    <span class="co"># survey responses</span></span>
+<span id="cb94-2"><a href="data-wrangling-3.html#cb94-2" aria-hidden="true" tabindex="-1"></a>qformats <span class="ot">&lt;-</span>                 <span class="co"># question formats</span></span>
+<span id="cb94-3"><a href="data-wrangling-3.html#cb94-3" aria-hidden="true" tabindex="-1"></a>scoring <span class="ot">&lt;-</span>                  <span class="co"># scoring info</span></span>
+<span id="cb94-4"><a href="data-wrangling-3.html#cb94-4" aria-hidden="true" tabindex="-1"></a>pinfo <span class="ot">&lt;-</span>                    <span class="co"># participant information</span></span></code></pre></div>
 </div>
 <div id="dw3-a3" class="section level2" number="6.6">
 <h2><span class="header-section-number">6.6</span> Activity 3: Look at your data</h2>
@@ -744,27 +741,17 @@ Explain this answer
 </div>
 <div id="dw3-a4" class="section level2" number="6.7">
 <h2><span class="header-section-number">6.7</span> Activity 4: Tidying data</h2>
-<p>We now have all the data we need loaded in, but in order to make it easier for us to get the AQ score for each participant, we need to change the layout of the <code>responses</code> tibble to Tidy Data using the <code>pivot_longer()</code> function.</p>
+<p>We now have all the data we need loaded in, but in order to make it easier for us to get the AQ score for each participant, we need to change the layout of the <code>responses</code> tibble to Tidy Data.</p>
+<p>The first step is to use the function <code>pivot_longer()</code> to transform the data. The pivot functions can be easier to show than tell - you may find it a useful exercise to run the below code and compare the newly created object <code>rlong</code> with the original <code>respones</code> before reading on.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="data-wrangling-3.html#cb95-1" aria-hidden="true" tabindex="-1"></a>rlong <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data =</span> responses,</span>
+<span id="cb95-2"><a href="data-wrangling-3.html#cb95-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">cols =</span> Q1<span class="sc">:</span>Q10,</span>
+<span id="cb95-3"><a href="data-wrangling-3.html#cb95-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">names_to =</span> <span class="st">&quot;Question&quot;</span>, </span>
+<span id="cb95-4"><a href="data-wrangling-3.html#cb95-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">values_to =</span> <span class="st">&quot;Response&quot;</span>)</span></code></pre></div>
 <ul>
-<li>Type the below code line into the Activity 4 code chunk and run it.</li>
-</ul>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="data-wrangling-3.html#cb96-1" aria-hidden="true" tabindex="-1"></a>rlong <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data =</span> responses, <span class="co"># the dataset we want to work on</span></span>
-<span id="cb96-2"><a href="data-wrangling-3.html#cb96-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">names_to =</span> <span class="st">&quot;Question&quot;</span>, <span class="co"># the name of the column that will store what is currently the names of each column (question numbers)</span></span>
-<span id="cb96-3"><a href="data-wrangling-3.html#cb96-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">values_to =</span> <span class="st">&quot;Response&quot;</span>, <span class="co"># the name of the new column that will store the values (data points)</span></span>
-<span id="cb96-4"><a href="data-wrangling-3.html#cb96-4" aria-hidden="true" tabindex="-1"></a>                Q1<span class="sc">:</span>Q10) <span class="co"># the columns we want to put into long-form</span></span></code></pre></div>
-<div class="warning">
-<p>
-<code>pivot_longer()</code> is a relatively new function in the tidyverse package. If you get an error message that says <code>could not find function pivot_longer()</code> you will need to update the tidyverse package by reinstalling it. You may also need to update R itself and other packages such a <code>rlang</code>.
-</p>
-</div>
-<p>In case you are wondering if we wanted to go back the way,we would use the <code>pivot_wider()</code> function: e.g. <code>rwide &lt;- pivot_wider(rlong, names_from = Questions, values_from = Response)</code>. But we do not want to do that here so let’s not add this to the code.</p>
-<div class="warning">
-<p>
-In the code above we have used the notation <code>Q1:Q10</code>. This means ’select all the columns from Q1 to Q10. We could have written out the name of each column individually, for example <code>Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10</code> but obviously it is much easier to use the shorthand notation. You must be careful though to know what you are selecting. R isn’t clever enough to realise that what you want is all the Question columns - it would take any and all columns that exist between Q1 and Q10. This means that if your dataset is out of order you may end up selecting columns you didn’t mean to. Always look at your data and make sure you know the layout.
-</p>
-</div>
-<ul>
-<li>Look at the new dataset <code>rlong</code>. Compare it to the original dataset <code>responses</code> and try to understand how they relate to each other.</li>
+<li><p>As with the other tidyverse functions, the first argument specifies the dataset to use as the base, in this case <code>dat</code>. This argument name is often dropped in examples.</p></li>
+<li><p><code>cols</code> specifies all the columns you want to transform. The easiest way to visualise this is to think about which columns would be the same in the new long-form dataset and which will change. In this case, we only have a single column <code>Id</code> that will remain constant, we will transform all the ther columns that contain participant’s responses to each question. The colon notation <code>first_column:last_column</code> is used to select all variables from the first column specified to the second. In our code, <code>cols</code> specifies that the columns we want to transform are <code>Q1</code> to <code>Q10</code>.</p></li>
+<li><p><code>names_to</code> specifies the names of the new columns that will be created.</p></li>
+<li><p>Finally, <code>values_to</code> names the new column that will contain the measurements, in this case we’ll call it <code>Response</code>. At this point you may find it helpful to go back and compare <code>rlong</code> and `responses`` again to see how each argument matches up with the output of the table.</p></li>
 </ul>
 </div>
 <div id="dw3-a5" class="section level2" number="6.8">
@@ -778,7 +765,7 @@ In the code above we have used the notation <code>Q1:Q10</code>. This means ’s
 <ul>
 <li>Replace the <code>NULL</code> values in the below code with the necessary variable names to join <code>rlong</code> and <code>qformats</code> by <code>Question</code>. If you need extra help, revisit Loading Data - you used the same function then! You can also check the solutions for the answer (but make sure you try yourself first).</li>
 </ul>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="data-wrangling-3.html#cb97-1" aria-hidden="true" tabindex="-1"></a>rlong2 <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">by =</span> <span class="st">&quot;NULL&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="data-wrangling-3.html#cb96-1" aria-hidden="true" tabindex="-1"></a>rlong2 <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">by =</span> <span class="st">&quot;NULL&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Now view <code>rlong2</code>. You have matched each question with its scoring format, <code>forward</code> or <code>reverse</code>.</li>
 </ul>
@@ -793,12 +780,15 @@ The reasoning behind this shift is that sometimes agreeing or disagreeing might 
 </div>
 <div id="dw3-a6" class="section level2" number="6.9">
 <h2><span class="header-section-number">6.9</span> Activity 6: Combining more data</h2>
-<p>Now you need to combine the information in our new table, <code>rlong2</code>, with the <code>scoring</code> table so you know how many points to attribute each question based on the answer the participant gave, and whether the question was forward or reverse coded. Again, you can use the <code>inner_join()</code> function, but this time the common columns found in <code>rlong2</code> and <code>scoring</code> are <code>QFormat</code> and <code>Response</code>. To combine by two columns you just write them in sequence as shown below. **Note: when there is more than one common column between two tibbles you are joining, it is best to combine by all the columns to avoid repeat columns names in the new tibble.</p>
+<p>Now you need to combine the information in our new table, <code>rlong2</code>, with the <code>scoring</code> table so you know how many points to attribute each question based on the answer the participant gave, and whether the question was forward or reverse coded. Again, you can use the <code>inner_join()</code> function, but this time the common columns found in <code>rlong2</code> and <code>scoring</code> are <code>QFormat</code> and <code>Response</code>. To combine by two columns you just write them in sequence as shown below.</p>
 <ul>
+<li>You can only ever join two tables with <code>inner_join()</code> at once, so if you have multiple tables like we do, you need to do multiple calls to <code>inner_join()</code></li>
+<li>When there is more than one common column between two tibbles you are joining, it is best to combine by all the columns to avoid repeat columns names in the new tibble. If you run a join and it produces columns named <code>variable.x</code> and <code>variable.y</code> it means that there was another column that was the same in both datasets that you didn’t add to <code>by</code>.</li>
+<li>You have to be very careful to use <code>c()</code> if you have multiple variables for <code>by</code>. This is a common error and results in the <code>variable.x</code>/<code>variable.y</code> issue above.</li>
 <li>Type the below line into the Activity 6 code chunk, run it, and then view the new object.</li>
 </ul>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="data-wrangling-3.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># combine rows in rlong2 and scoring based on QFormat and Response</span></span>
-<span id="cb98-2"><a href="data-wrangling-3.html#cb98-2" aria-hidden="true" tabindex="-1"></a>rscores <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(rlong2, scoring, <span class="fu">c</span>(<span class="st">&quot;QFormat&quot;</span>, <span class="st">&quot;Response&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="data-wrangling-3.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># combine rows in rlong2 and scoring based on QFormat and Response</span></span>
+<span id="cb97-2"><a href="data-wrangling-3.html#cb97-2" aria-hidden="true" tabindex="-1"></a>rscores <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(rlong2, scoring, <span class="fu">c</span>(<span class="st">&quot;QFormat&quot;</span>, <span class="st">&quot;Response&quot;</span>))</span></code></pre></div>
 </div>
 <div id="dw3-a7" class="section level2" number="6.10">
 <h2><span class="header-section-number">6.10</span> Activity 7: Calculating the AQ scores</h2>
@@ -808,9 +798,9 @@ The reasoning behind this shift is that sometimes agreeing or disagreeing might 
 </li>
 <li>Save your Markdown and knit it to make sure all your code works.</li>
 </ol>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="data-wrangling-3.html#cb99-1" aria-hidden="true" tabindex="-1"></a>aq_scores <span class="ot">&lt;-</span> rscores <span class="sc">%&gt;%</span> </span>
-<span id="cb99-2"><a href="data-wrangling-3.html#cb99-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">group_by</span>(<span class="cn">NULL</span>) <span class="sc">%&gt;%</span> <span class="co"># how will you group individual participants?</span></span>
-<span id="cb99-3"><a href="data-wrangling-3.html#cb99-3" aria-hidden="true" tabindex="-1"></a>             <span class="fu">summarise</span>(<span class="at">AQ =</span> <span class="fu">sum</span>(<span class="cn">NULL</span>)) <span class="co"># which column will you sum to obtain AQ scores?</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="data-wrangling-3.html#cb98-1" aria-hidden="true" tabindex="-1"></a>aq_scores <span class="ot">&lt;-</span> rscores <span class="sc">%&gt;%</span> </span>
+<span id="cb98-2"><a href="data-wrangling-3.html#cb98-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">group_by</span>(<span class="cn">NULL</span>) <span class="sc">%&gt;%</span> <span class="co"># how will you group individual participants?</span></span>
+<span id="cb98-3"><a href="data-wrangling-3.html#cb98-3" aria-hidden="true" tabindex="-1"></a>             <span class="fu">summarise</span>(<span class="at">AQ =</span> <span class="fu">sum</span>(<span class="cn">NULL</span>)) <span class="co"># which column will you sum to obtain AQ scores?</span></span></code></pre></div>
 <div class="solution">
 <button>
 Helpful Hint
@@ -828,13 +818,13 @@ Helpful Hint
 Helpful Hint
 </button>
 <p>At any point where the first argument of your function is the name of a variable created before that line, there is a good chance you could have used a pipe! Here are all the bits of this code that could be piped together into one chain:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="data-wrangling-3.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">rlong &lt;- pivot_longer(responses, names_to = &quot;Question&quot;, values_to = &quot;Response&quot;, Q1:Q10)</span><span class="st">`</span></span>
-<span id="cb100-2"><a href="data-wrangling-3.html#cb100-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-3"><a href="data-wrangling-3.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">rlong2 &lt;- inner_join(rlong, qformats, </span><span class="sc">\&quot;</span><span class="at">Question</span><span class="sc">\&quot;</span><span class="at">)</span><span class="st">`</span></span>
-<span id="cb100-4"><a href="data-wrangling-3.html#cb100-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-5"><a href="data-wrangling-3.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">rscores &lt;- inner_join(rlong2, scoring, c(</span><span class="sc">\&quot;</span><span class="at">QFormat</span><span class="sc">\&quot;</span><span class="at">, </span><span class="sc">\&quot;</span><span class="at">Response</span><span class="sc">\&quot;</span><span class="at">))</span><span class="st">`</span></span>
-<span id="cb100-6"><a href="data-wrangling-3.html#cb100-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb100-7"><a href="data-wrangling-3.html#cb100-7" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">aq_scores &lt;- rscores %&gt;% group_by(Id) %&gt;% summarise(AQ = sum(Score))</span><span class="st">`</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="data-wrangling-3.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">rlong &lt;- pivot_longer(responses, names_to = &quot;Question&quot;, values_to = &quot;Response&quot;, Q1:Q10)</span><span class="st">`</span></span>
+<span id="cb99-2"><a href="data-wrangling-3.html#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-3"><a href="data-wrangling-3.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">rlong2 &lt;- inner_join(rlong, qformats, </span><span class="sc">\&quot;</span><span class="at">Question</span><span class="sc">\&quot;</span><span class="at">)</span><span class="st">`</span></span>
+<span id="cb99-4"><a href="data-wrangling-3.html#cb99-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-5"><a href="data-wrangling-3.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">rscores &lt;- inner_join(rlong2, scoring, c(</span><span class="sc">\&quot;</span><span class="at">QFormat</span><span class="sc">\&quot;</span><span class="at">, </span><span class="sc">\&quot;</span><span class="at">Response</span><span class="sc">\&quot;</span><span class="at">))</span><span class="st">`</span></span>
+<span id="cb99-6"><a href="data-wrangling-3.html#cb99-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-7"><a href="data-wrangling-3.html#cb99-7" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">aq_scores &lt;- rscores %&gt;% group_by(Id) %&gt;% summarise(AQ = sum(Score))</span><span class="st">`</span></span></code></pre></div>
 </div>
 <p><br></p>
 <p>You have now recapped one-table and two-table verbs. These are great to know as for example, in the above, it actually only took a handful of reproducible steps to get from messy data to tidy data; could you imagine doing this by hand in Excel through cutting and pasting? Not to mention the mistakes you could make!</p>
@@ -849,10 +839,10 @@ Helpful Hint
 <button>
 Activity 2
 </button>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="data-wrangling-3.html#cb101-1" aria-hidden="true" tabindex="-1"></a>responses <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;responses.csv&quot;</span>)                  </span>
-<span id="cb101-2"><a href="data-wrangling-3.html#cb101-2" aria-hidden="true" tabindex="-1"></a>qformats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;qformats.csv&quot;</span>)                 </span>
-<span id="cb101-3"><a href="data-wrangling-3.html#cb101-3" aria-hidden="true" tabindex="-1"></a>scoring <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;scoring.csv&quot;</span>)                  </span>
-<span id="cb101-4"><a href="data-wrangling-3.html#cb101-4" aria-hidden="true" tabindex="-1"></a>pinfo <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;pinfo.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="data-wrangling-3.html#cb100-1" aria-hidden="true" tabindex="-1"></a>responses <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;responses.csv&quot;</span>)                  </span>
+<span id="cb100-2"><a href="data-wrangling-3.html#cb100-2" aria-hidden="true" tabindex="-1"></a>qformats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;qformats.csv&quot;</span>)                 </span>
+<span id="cb100-3"><a href="data-wrangling-3.html#cb100-3" aria-hidden="true" tabindex="-1"></a>scoring <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;scoring.csv&quot;</span>)                  </span>
+<span id="cb100-4"><a href="data-wrangling-3.html#cb100-4" aria-hidden="true" tabindex="-1"></a>pinfo <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;pinfo.csv&quot;</span>)</span></code></pre></div>
 </div>
 <p><strong>Click the tab to see the solution</strong></p>
 </div>
@@ -862,7 +852,7 @@ Activity 2
 <button>
 Solution Task 5
 </button>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="data-wrangling-3.html#cb102-1" aria-hidden="true" tabindex="-1"></a>rlong2 <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(<span class="at">x =</span> rlong, <span class="at">y =</span> qformats, <span class="at">by =</span> <span class="st">&quot;Question&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="data-wrangling-3.html#cb101-1" aria-hidden="true" tabindex="-1"></a>rlong2 <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(<span class="at">x =</span> rlong, <span class="at">y =</span> qformats, <span class="at">by =</span> <span class="st">&quot;Question&quot;</span>)</span></code></pre></div>
 </div>
 <p><strong>Click the tab to see the solution</strong></p>
 </div>
@@ -872,9 +862,9 @@ Solution Task 5
 <button>
 Solution Task 7
 </button>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="data-wrangling-3.html#cb103-1" aria-hidden="true" tabindex="-1"></a>aq_scores <span class="ot">&lt;-</span> rscores <span class="sc">%&gt;%</span> </span>
-<span id="cb103-2"><a href="data-wrangling-3.html#cb103-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">group_by</span>(Id) <span class="sc">%&gt;%</span> <span class="co"># group by the ID number in column Id</span></span>
-<span id="cb103-3"><a href="data-wrangling-3.html#cb103-3" aria-hidden="true" tabindex="-1"></a>             <span class="fu">summarise</span>(<span class="at">AQ =</span> <span class="fu">sum</span>(Score)) <span class="co"># sum column Score to obtain AQ scores.</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="data-wrangling-3.html#cb102-1" aria-hidden="true" tabindex="-1"></a>aq_scores <span class="ot">&lt;-</span> rscores <span class="sc">%&gt;%</span> </span>
+<span id="cb102-2"><a href="data-wrangling-3.html#cb102-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">group_by</span>(Id) <span class="sc">%&gt;%</span> <span class="co"># group by the ID number in column Id</span></span>
+<span id="cb102-3"><a href="data-wrangling-3.html#cb102-3" aria-hidden="true" tabindex="-1"></a>             <span class="fu">summarise</span>(<span class="at">AQ =</span> <span class="fu">sum</span>(Score)) <span class="co"># sum column Score to obtain AQ scores.</span></span></code></pre></div>
 </div>
 <p><strong>Click the tab to see the solution</strong></p>
 </div>
@@ -884,12 +874,12 @@ Solution Task 7
 <button>
 Activity 8
 </button>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="data-wrangling-3.html#cb104-1" aria-hidden="true" tabindex="-1"></a>aq_scores2 <span class="ot">&lt;-</span> responses <span class="sc">%&gt;%</span> <span class="co"># take the data in `responses` and then</span></span>
-<span id="cb104-2"><a href="data-wrangling-3.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;Question&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Response&quot;</span>, Q1<span class="sc">:</span>Q10) <span class="sc">%&gt;%</span>  <span class="co"># gather up columns Q1 to Q10, put the column names in Question and the scores in Response and then</span></span>
-<span id="cb104-3"><a href="data-wrangling-3.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(qformats, <span class="st">&quot;Question&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># join with `qformats` and match the data by the column `Question` and then</span></span>
-<span id="cb104-4"><a href="data-wrangling-3.html#cb104-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(scoring, <span class="fu">c</span>(<span class="st">&quot;QFormat&quot;</span>, <span class="st">&quot;Response&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># join with `scoring` and match the data by the columns `Qformat` and `Response` and then</span></span>
-<span id="cb104-5"><a href="data-wrangling-3.html#cb104-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Id) <span class="sc">%&gt;%</span> <span class="co"># group by participant ID and then</span></span>
-<span id="cb104-6"><a href="data-wrangling-3.html#cb104-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AQ =</span> <span class="fu">sum</span>(Score)) <span class="co"># calculate the total AQ score</span></span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="data-wrangling-3.html#cb103-1" aria-hidden="true" tabindex="-1"></a>aq_scores2 <span class="ot">&lt;-</span> responses <span class="sc">%&gt;%</span> <span class="co"># take the data in `responses` and then</span></span>
+<span id="cb103-2"><a href="data-wrangling-3.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">names_to =</span> <span class="st">&quot;Question&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Response&quot;</span>, Q1<span class="sc">:</span>Q10) <span class="sc">%&gt;%</span>  <span class="co"># gather up columns Q1 to Q10, put the column names in Question and the scores in Response and then</span></span>
+<span id="cb103-3"><a href="data-wrangling-3.html#cb103-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(qformats, <span class="st">&quot;Question&quot;</span>) <span class="sc">%&gt;%</span> <span class="co"># join with `qformats` and match the data by the column `Question` and then</span></span>
+<span id="cb103-4"><a href="data-wrangling-3.html#cb103-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(scoring, <span class="fu">c</span>(<span class="st">&quot;QFormat&quot;</span>, <span class="st">&quot;Response&quot;</span>)) <span class="sc">%&gt;%</span> <span class="co"># join with `scoring` and match the data by the columns `Qformat` and `Response` and then</span></span>
+<span id="cb103-5"><a href="data-wrangling-3.html#cb103-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Id) <span class="sc">%&gt;%</span> <span class="co"># group by participant ID and then</span></span>
+<span id="cb103-6"><a href="data-wrangling-3.html#cb103-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">AQ =</span> <span class="fu">sum</span>(Score)) <span class="co"># calculate the total AQ score</span></span></code></pre></div>
 </div>
 <p><strong>Click the tab to see the solution</strong></p>
 </div>
@@ -903,9 +893,9 @@ Activity 8
 <button>
 Explain this answer
 </button>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="data-wrangling-3.html#cb105-1" aria-hidden="true" tabindex="-1"></a>sandwich <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data =</span> responses, <span class="at">names_to =</span> <span class="st">&quot;Jam&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Strawberry&quot;</span>, Q1<span class="sc">:</span>Q3)</span>
-<span id="cb105-2"><a href="data-wrangling-3.html#cb105-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb105-3"><a href="data-wrangling-3.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co">#`pivot_longer` wants the data first, then the name of the new column to store the column names, then the name of the new column to store the data, and then finally which columns to tidy</span></span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="data-wrangling-3.html#cb104-1" aria-hidden="true" tabindex="-1"></a>sandwich <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data =</span> responses, <span class="at">names_to =</span> <span class="st">&quot;Jam&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Strawberry&quot;</span>, Q1<span class="sc">:</span>Q3)</span>
+<span id="cb104-2"><a href="data-wrangling-3.html#cb104-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb104-3"><a href="data-wrangling-3.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="co">#`pivot_longer` wants the data first, then the name of the new column to store the column names, then the name of the new column to store the data, and then finally which columns to tidy</span></span></code></pre></div>
 </div>
 <ul>
 <li><p>Complete the sentence, the higher the AQ score…<select class='solveme' data-answer='["the more autistic-like traits displayed"]'> <option></option> <option>the less autistic-like traits displayed</option> <option>has no relation to autistic-like traits</option> <option>the more autistic-like traits displayed</option></select></p></li>
