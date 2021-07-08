@@ -443,34 +443,28 @@ ggplot(zhang_data, aes(x = Condition, y = interest))+
 
 ## Activity 8: Violin-boxplots {#viz-a8}
 
-One increasingly common graph is a violin + boxplot + summary plot that shows a huge amount of information about your data in a single plot. You've already come across these when you looked at t-tests.
+One increasingly common graph is a violin + boxplot + summary plot that shows a huge amount of information about your data in a single plot. 
 
-This plot first requires you to calculate summary data for the variables that you want to plot. We need to calculate the mean of our DV, standard error, and SD and we need to do this grouped by the IV.
-
-
-```r
-summary_data<-zhang_data%>%
-  group_by(Condition)%>%
-  summarise(mean = mean(interest, na.rm = TRUE),
-            min = mean(interest) - sd(interest)/sqrt(n()), # standard error
-            max = mean(interest) + sd(interest)/sqrt(n()),
-            sd = sd(interest)
-            )
-```
-
-Once you've done this you can then create the plot. By now you should have a good understanding of what each of the layers are doing. Change them to make the plot look how you want.
+* This code uses two calls to `stat_summary()` that was introduced during the t-test chapter. The first draws a `point` to represent the mean, and the second draws an `errorbar` that represents standard error (`mean_se`).  
+* `guides` is a new function and can be used to adjust whether legends are displayed. This has the same effect as specifying `show.legend = FALSE` in both `geom_violin()` and `geom_boxplot()` but it uses less code to do so.  
+* `fatten = NULL` removes the median line from the boxplots. This can be useful if you're running a test where you're comparing means as it makes it easier to see the point range. 
 
 
 ```r
 ggplot(zhang_data, aes(x = Condition, y = interest, fill = Condition))+
   geom_violin(alpha = .6, trim = FALSE)+
-  geom_boxplot(width = .2, alpha = .7)+
-  geom_pointrange(data = summary_data,
-                  aes(Condition, mean, ymin=min, ymax=max),
-                  shape = 20, 
-                  position = position_dodge(width = 0.9)) +
+  geom_boxplot(width = .2, alpha = .7, fatten = NULL)+
+  stat_summary(fun = "mean", geom = "point") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = .1) +
   scale_fill_viridis_d(option = "E", label = c("Ordinary", "Extraordinary"))+
-  scale_y_continuous(name = "Mean interest rating (1-7)")
+  scale_y_continuous(name = "Mean interest rating (1-7)") +
+  guides(fill = FALSE)
+```
+
+```
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
 ```
 
 <div class="figure" style="text-align: center">
@@ -482,52 +476,45 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = Condition))+
 
 `ggplot2` contains a facet function that produces different plots for each level of a grouping variable which can be very useful when you have more than two factors, for example, for a three-way ANOVA. The following code displays produces violin-boxplots for Condition ~ interest, but separately for male and female participants. 
 
+* This code adds an extra argument `position = position_dodge(.9)` to align the layers with the violin plots. Try removing this argument from each layer to see what happens, and also try adjusting the value from `.9` to another number.
+
 
 ```r
 ggplot(zhang_data, aes(x = Condition, y = interest, fill = time))+
   geom_violin(alpha = .6, trim = FALSE)+
-  geom_boxplot(width = .2, alpha = .6, position = position_dodge(.9))+
+  geom_boxplot(width = .2, 
+               alpha = .6, 
+               fatten = NULL,
+               position = position_dodge(.9))+
+  stat_summary(fun = "mean", geom = "point",
+               position = position_dodge(.9)) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = .1,
+               position = position_dodge(.9))+
   scale_fill_viridis_d(option = "E") +
   facet_wrap(~Gender)
+```
+
+```
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
 ```
 
 <div class="figure" style="text-align: center">
 <img src="13-visualisation_files/figure-html/facet1-1.png" alt="Violin-boxplot facetted by gender" width="100%" />
 <p class="caption">(\#fig:facet1)Violin-boxplot facetted by gender</p>
-</div>
-
-If you want to add `geom_pointrange()` to this then you would need to calculate a new `summary_data` that also grouped by Gender (because it requires the mean, se, and SD for all four combinations, rather than just two).
-
-
-```r
-summary_data2<-zhang_data%>%
-  group_by(Condition, Gender, time)%>% # add Gender to group_by()
-  summarise(mean = mean(interest, na.rm = TRUE),
-            min = mean(interest) - sd(interest)/sqrt(n()),
-            max = mean(interest) + sd(interest)/sqrt(n()),
-            sd = sd(interest)
-            )
-```
-
-```
-## `summarise()` has grouped output by 'Condition', 'Gender'. You can override using the `.groups` argument.
-```
-
-```r
-ggplot(zhang_data, aes(x = Condition, y = interest, fill = time))+
-  geom_violin(alpha = .6, trim = FALSE)+
-  geom_boxplot(width = .2, alpha = .6, position = position_dodge(.9))+
-  scale_fill_viridis_d(option = "E") +
-  facet_wrap(~Gender)+
-  geom_pointrange(data = summary_data2,
-                  aes(Condition, mean, ymin=min, ymax=max),
-                  shape = 20, 
-                  position = position_dodge(width = 0.9))
-```
-
-<div class="figure" style="text-align: center">
-<img src="13-visualisation_files/figure-html/sumdat2-1.png" alt="Violin-boxplot facetted by gender with summary data" width="100%" />
-<p class="caption">(\#fig:sumdat2)Violin-boxplot facetted by gender with summary data</p>
 </div>
 
 ### Facet labelling
@@ -536,15 +523,36 @@ Finally, changing the labels within the facets is a little more complicated - th
 
 
 ```r
-ggplot(zhang_data, aes(x = Condition, y = interest, fill = Condition))+
+ggplot(zhang_data, aes(x = Condition, y = interest, fill = time))+
   geom_violin(alpha = .6, trim = FALSE)+
-  geom_boxplot(width = .2, alpha = .6)+
+  geom_boxplot(width = .2, 
+               alpha = .6, 
+               fatten = NULL,
+               position = position_dodge(.9))+
+  stat_summary(fun = "mean", geom = "point",
+               position = position_dodge(.9)) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = .1,
+               position = position_dodge(.9))+
   scale_fill_viridis_d(option = "E") +
-  facet_wrap(~Gender, labeller = labeller(Gender = (c(female = "Female", male = "Male"))))+
-  geom_pointrange(data = summary_data,
-                  aes(Condition, mean, ymin=min, ymax=max),
-                  shape = 20, 
-                  position = position_dodge(width = 0.9))
+  facet_wrap(~Gender, labeller = labeller(Gender = (c(female = "Female", male = "Male"))))
+```
+
+```
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
 ```
 
 <div class="figure" style="text-align: center">
@@ -554,7 +562,7 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = Condition))+
 
 ## Activity 10: Split-violins and raincloud plots {#viz-a10}
 
-Finally, we're going to do something a bit snazzy. As well as the functions that are included in packages, anyone can also write custom functions and share the code. One such custom function allows us to create **raincloud plots** which are highly informative and very pretty. See [here](https://wellcomeopenresearch.org/articles/4-63) for more information about their creation and function.
+Finally, we're going to do something a bit snazzy. As well as the functions that are included in packages, anyone can also write custom functions and share the code. One such custom function allows us to create **raincloud plots** which are highly informative and very pretty. See [here](https://wellcomeopenresearch.org/articles/4-63) for more information about their creation and function (and to cite them if you use them in a publication or report).
 
 In order to use this custom function code you will need to install the `plyr` package, although crucially, don't load it like you normally would using `library()`. The custom function code will just use one very specific function, if you load the entire package you risk creating a function conflict.
 
@@ -566,7 +574,7 @@ install.packages("plyr")
 
 ### Split-violin plots
 
-Because the functions we need don't exist in a package we can load, we need to create them. Copy and paste all of the below code without changing anything. You do not need to understand this code. I certainly don't. When you run this, you should see `geom_split_violin` appear in the Environment pane under Functions. 
+Because the functions we need don't exist in a package we can load, we need to create them. Copy and paste all  the below code without changing anything. You do not need to understand this code. I certainly don't. When you run this, you should see `geom_split_violin` appear in the Environment pane under Functions. 
 
 
 ```r
@@ -628,23 +636,15 @@ The split-violin is a version of the violin-boxplot that is good for visualising
 
 
 ```r
-summary_data3<-zhang_data%>%
-  group_by(Condition, Gender)%>% # add Gender to group_by()
-  summarise(mean = mean(interest, na.rm = TRUE),
-            min = mean(interest) - sd(interest)/sqrt(n()),
-            max = mean(interest) + sd(interest)/sqrt(n()),
-            sd = sd(interest)
-            )
-
 ggplot(zhang_data, aes(x = Condition, y = interest, fill = Gender))+
-  geom_split_violin(trim = FALSE, alpha = .5)+
-  geom_boxplot(width = .2, position = position_dodge(.25))+
+  geom_split_violin(trim = FALSE, alpha = .4)+
+  geom_boxplot(width = .2, alpha = .6,
+               position = position_dodge(.25))+
   scale_fill_viridis_d(option = "E") +
-  geom_pointrange(data = summary_data3,
-                  aes(Condition, mean, ymin=min, ymax=max),
-                  shape = 20, 
-                  position = position_dodge(width = 0.25),
-                  colour = "white")
+  stat_summary(fun = "mean", geom = "point",
+               position = position_dodge(width = 0.25)) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = .1,
+               position = position_dodge(width = 0.25))
 ```
 
 <div class="figure" style="text-align: center">
@@ -724,23 +724,27 @@ GeomFlatViolin <-
 
 This plot is similar to the split-violin, but it adds in the raw data points and looks a bit like a raincloud as a result. 
   
-First, we will run the plot for just one variable, Condition, so we'll use summary_data. Again, try changing the arguments to see how you can control different aspects of the plot, in particular, try removing `coord_flip()` to see what happens.
+First, we will run the plot for just one variable, Condition. Again, try changing the arguments (adjust any numbers and change FALSE to TRUE) to see how you can control different aspects of the plot, in particular, try removing `coord_flip()` to see what happens.
 
 
 ```r
 ggplot(zhang_data, aes(x = Condition, y = interest))+
   geom_flat_violin(position = position_nudge(x = .25, y = 0), 
                    trim=FALSE, alpha = 0.75) +
-  geom_point(aes(color = Condition), 
-             position = position_jitter(width = .2, height = 0.05), 
-             size = .5, alpha = .75, show.legend = FALSE)+
-  geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.5)+
-  coord_flip()+
-  geom_pointrange(
-    data = summary_data,
-    aes(Condition, mean, ymin=min, ymax=max),
-    shape = 20, 
-    position = position_dodge(width = 0.9))
+  geom_jitter(aes(color = Condition), 
+             width = .2, size = .5, alpha = .75, show.legend = FALSE)+
+  geom_boxplot(width = .1, alpha = 0.5, fatten = NULL)+
+  stat_summary(fun = "mean", geom = "point",
+               position = position_dodge(width = 0.25)) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = .1,
+               position = position_dodge(width = 0.3)) +
+  coord_flip()
+```
+
+```
+## Warning: Removed 1 rows containing missing values (geom_segment).
+
+## Warning: Removed 1 rows containing missing values (geom_segment).
 ```
 
 <div class="figure" style="text-align: center">
@@ -750,22 +754,27 @@ ggplot(zhang_data, aes(x = Condition, y = interest))+
 
 ### Raincloud plots with multiple factors
 
-Now we can run the code for a 2 x 2 plot, adding in Gender to `fill` argument and changing to `summary_data2`. This is quite a complicated plot, do not worry if you are struggling to understand the code but remember, you just need to understand which bits to change. 
+Now we can run the code for a 2 x 2 plot, adding in Gender to `fill` argument. This is quite a complicated plot, do not worry if you are struggling to understand the code but remember, you just need to understand which bits to change. 
   
 
 ```r
-ggplot(zhang_data, aes(x = Condition, y = interest, fill = Gender))+
+ggplot(zhang_data, 
+       aes(x = Condition, y = interest, fill = Gender))+
   geom_flat_violin(position = position_nudge(x = .25, y = 0), 
-                   trim=FALSE, alpha = 0.6) +
+                   trim=FALSE, 
+                   alpha = 0.6) +
   geom_point(position = position_jitter(width = .05, height = 0.05), 
-             size = .5, alpha = .7, show.legend = FALSE, aes(colour = Gender))+
-  geom_boxplot(width = .1, outlier.shape = NA, alpha = 0.5, position = "dodge")+
-  geom_pointrange(
-    data = summary_data2,
-    aes(Condition, mean, ymin=min, ymax=max),
-    shape = 20, 
-    position = position_dodge(width = 0.1),
-    show.legend = FALSE) +
+             size = .5, 
+             alpha = .7, 
+             show.legend = FALSE, 
+             aes(colour = Gender))+
+  geom_boxplot(width = .3, 
+               alpha = 0.5, 
+               position = "dodge")+
+  stat_summary(fun = "mean", geom = "point",
+               position = position_dodge(width = 0.3)) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = .1,
+               position = position_dodge(width = 0.3)) +
   scale_fill_viridis_d(option = "E") +
   scale_colour_viridis_d(option = "E")
 ```

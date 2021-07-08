@@ -435,18 +435,13 @@ As you can see, from both the Shapiro-Wilk test and the QQ-plot, the data meet t
 
 It made sense to keep the data in wide-form until this point to make it easy to calculate a column for the difference score, but now we will transform it to tidy data so that we can easily create descriptives and plot the data using `tidyverse` tools.
 
-* Run the below code to tidy the data and calculate descriptives and then create the same violin-boxplot as you did for the independent t-test (hint: it is perfectly acceptable to copy and paste the code from Activity 4 and change the data and variable names).
+* Run the below code to tidy the data and then create the same violin-boxplot as you did for the independent t-test (hint: it is perfectly acceptable to copy and paste the code from Activity 4 and change the data and variable names).
 
 ```{r tidy, message = FALSE}
 gaze_tidy <- gaze %>%
   pivot_longer(names_to = "time", values_to = "looking", cols = c(baseline, test)) %>%
   select(-diff) %>%
   arrange(time, id)
-
-gaze_descriptives <- gaze_tidy %>%
-  group_by(time) %>%
-  summarise(mean_looking = mean(looking, na.rm = TRUE),
-            sd_looking = sd(looking, na.rm = TRUE))
 ```
 
 ## Activity 14: Paired-samples t-test {#ttest-a14}
@@ -578,21 +573,10 @@ qqPlot(gaze$diff)
 
 `r hide("Activity 13")`
 ```{r eval=FALSE}
-# create summary data to use with `geom_pointrange()`
-summary_gaze<-gaze_tidy%>%
-  group_by(time)%>%
-  summarise(mean = mean(looking),
-            min = mean(looking) - qnorm(0.975)*sd(looking)/sqrt(n()), #confidence intervals
-            max = mean(looking) + qnorm(0.975)*sd(looking)/sqrt(n()))
-
-
 ggplot(gaze_tidy, aes(x = time, y = looking)) +
   geom_violin(trim = FALSE) +
   geom_boxplot(aes(fill = time), width = .2, show.legend = FALSE) + 
-  geom_pointrange(data = summary_gaze,
-                  aes(x = time, y = mean, ymin=min, ymax=max),
-                  shape = 20, 
-                  position = position_dodge(width = 0.1), show.legend = FALSE)
+  stat_summary(geom = "pointrange", fun.data = "mean_cl_normal")
 ```
 `r unhide()`
 
