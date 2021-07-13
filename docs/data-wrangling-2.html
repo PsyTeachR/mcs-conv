@@ -232,14 +232,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.11.1" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#dw2-fin"><i class="fa fa-check"></i><b>5.11.1</b> Finished!</a></li>
 </ul></li>
-<li class="chapter" data-level="5.12" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#dw2-sols"><i class="fa fa-check"></i><b>5.12</b> ctivity solutions</a>
+<li class="chapter" data-level="5.12" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#dw2-sols"><i class="fa fa-check"></i><b>5.12</b> Activity solutions</a>
 <ul>
 <li class="chapter" data-level="5.12.1" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#dw2-a3sol"><i class="fa fa-check"></i><b>5.12.1</b> Activity 3</a></li>
 <li class="chapter" data-level="5.12.2" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#dw2-a4sol"><i class="fa fa-check"></i><b>5.12.2</b> Activity 4</a></li>
 <li class="chapter" data-level="5.12.3" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#dw2-a5sol"><i class="fa fa-check"></i><b>5.12.3</b> Activity 5</a></li>
 <li class="chapter" data-level="5.12.4" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#dw2-a6sol"><i class="fa fa-check"></i><b>5.12.4</b> Activity 6</a></li>
 <li class="chapter" data-level="5.12.5" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#dw2-a7sol"><i class="fa fa-check"></i><b>5.12.5</b> Activity 7</a></li>
-<li class="chapter" data-level="5.12.6" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#dw2-a8sol"><i class="fa fa-check"></i><b>5.12.6</b> Activity 8</a></li>
 </ul></li>
 <li class="chapter" data-level="5.13" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#dw2-debug"><i class="fa fa-check"></i><b>5.13</b> Debugging tips</a></li>
 <li class="chapter" data-level="5.14" data-path="data-wrangling-2.html"><a href="data-wrangling-2.html#dw2-test"><i class="fa fa-check"></i><b>5.14</b> Test yourself</a></li>
@@ -972,7 +971,7 @@ Where piping becomes most useful is when we <strong>string a series of functions
 </div>
 </div>
 <div id="dw2-sols" class="section level2" number="5.12">
-<h2><span class="header-section-number">5.12</span> ctivity solutions</h2>
+<h2><span class="header-section-number">5.12</span> Activity solutions</h2>
 <p>Below you will find the solutions to the above questions. Only look at them after giving the questions a good try and speaking to the tutor about any issues.</p>
 <div id="dw2-a3sol" class="section level3" number="5.12.1">
 <h3><span class="header-section-number">5.12.1</span> Activity 3</h3>
@@ -1042,20 +1041,6 @@ Solution Activity 7 4
 <span id="cb90-9"><a href="data-wrangling-2.html#cb90-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb90-10"><a href="data-wrangling-2.html#cb90-10" aria-hidden="true" tabindex="-1"></a>pong_data<span class="ot">&lt;-</span> <span class="fu">filter</span>(pong_data, TrialNumber <span class="sc">&gt;=</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb90-11"><a href="data-wrangling-2.html#cb90-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">TrialNumber =</span> TrialNumber <span class="sc">-</span> <span class="dv">1</span>)</span></code></pre></div>
-</div>
-<p><strong>click the tab to see the solution</strong>
-<br></p>
-</div>
-<div id="dw2-a8sol" class="section level3" number="5.12.6">
-<h3><span class="header-section-number">5.12.6</span> Activity 8</h3>
-<div class="solution">
-<button>
-Solution Activity 9
-</button>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="data-wrangling-2.html#cb91-1" aria-hidden="true" tabindex="-1"></a>pong_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PongBlueRedBack 1-16 Codebook.csv&quot;</span>)</span>
-<span id="cb91-2"><a href="data-wrangling-2.html#cb91-2" aria-hidden="true" tabindex="-1"></a>pong_data_group <span class="ot">&lt;-</span> <span class="fu">group_by</span>(pong_data, BackgroundColor, PaddleLength)</span>
-<span id="cb91-3"><a href="data-wrangling-2.html#cb91-3" aria-hidden="true" tabindex="-1"></a>pong_data_hits <span class="ot">&lt;-</span> <span class="fu">summarise</span>(pong_data_group, <span class="at">total_hits =</span> <span class="fu">sum</span>(HitOrMiss))</span>
-<span id="cb91-4"><a href="data-wrangling-2.html#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="co"># the answer should give 517</span></span></code></pre></div>
 </div>
 <p><strong>click the tab to see the solution</strong>
 <br></p>

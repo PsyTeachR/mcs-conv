@@ -322,7 +322,7 @@ data_arrange <- pong_data %>%
 
 We have now learned a number of functions and verbs that you will need as you progress through this book.  You will use them in the next chapter so be sure to go over these and try them out to make yourself more comfortable with them.  If you have any questions please post them on Teams. **Happy Wrangling!**
 
-## ctivity solutions {#dw2-sols}
+## Activity solutions {#dw2-sols}
 
 Below you will find the solutions to the above questions. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
 
@@ -424,24 +424,6 @@ pong_data<- filter(pong_data, TrialNumber >= 2) %>%
 **click the tab to see the solution**
 <br>
 
-### Activity 8 {#dw2-a8sol}
-
-
-<div class='solution'><button>Solution Activity 9</button>
-
-
-```r
-pong_data <- read_csv("PongBlueRedBack 1-16 Codebook.csv")
-pong_data_group <- group_by(pong_data, BackgroundColor, PaddleLength)
-pong_data_hits <- summarise(pong_data_group, total_hits = sum(HitOrMiss))
-# the answer should give 517
-```
-
-</div>
- 
-
-**click the tab to see the solution**
-<br>
 
 ## Debugging tips {#dw2-debug}
 

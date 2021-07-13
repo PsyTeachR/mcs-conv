@@ -1,5 +1,7 @@
 # Visualisation
 
+
+
 In this chapter we are going to focus on visualising data using `ggplot2`. You've already created a number of different plots including bar charts, scatterplots, histograms, qq-plots, and violin-boxplots, but now we will show you how to customise your plots further to give you a better idea of the range and flexibility of visualising data in R. 
 
 In this chapter, you won't be asked to write any code yourself, we will give you all the example code. Instead, play with the arguments, change TRUE to FALSE and vice-versa, change the values and colours. This will help you learn what each bit does. 
@@ -177,10 +179,6 @@ ggplot(zhang_data, aes(x = interest,y = Age))+
   geom_smooth(method=lm) # if you don't want the shaded CI, add se = FALSE to this
 ```
 
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
-
 <div class="figure" style="text-align: center">
 <img src="13-visualisation_files/figure-html/scat3-1.png" alt="Scatterplot with regression line" width="100%" />
 <p class="caption">(\#fig:scat3)Scatterplot with regression line</p>
@@ -200,10 +198,6 @@ zhang_data %>%
   scale_x_continuous(name = "Mean interest score (1-7)") + 
   scale_y_continuous(name = "Age")+
   geom_smooth(method=lm)
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
 ```
 
 <div class="figure" style="text-align: center">
@@ -226,10 +220,6 @@ ggplot(zhang_data, aes(x = interest,y = Age, colour = Gender))+
   geom_smooth(method=lm)+
   scale_color_discrete(name = "Gender",
                        labels = c("Female", "Male"))
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
 ```
 
 <div class="figure" style="text-align: center">
@@ -448,6 +438,7 @@ One increasingly common graph is a violin + boxplot + summary plot that shows a 
 * This code uses two calls to `stat_summary()` that was introduced during the t-test chapter. The first draws a `point` to represent the mean, and the second draws an `errorbar` that represents standard error (`mean_se`).  
 * `guides` is a new function and can be used to adjust whether legends are displayed. This has the same effect as specifying `show.legend = FALSE` in both `geom_violin()` and `geom_boxplot()` but it uses less code to do so.  
 * `fatten = NULL` removes the median line from the boxplots. This can be useful if you're running a test where you're comparing means as it makes it easier to see the point range. 
+* You may get warning messages telling you that R has removed rows containing missing values, you do not need to worry about this.
 
 
 ```r
@@ -459,12 +450,6 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = Condition))+
   scale_fill_viridis_d(option = "E", label = c("Ordinary", "Extraordinary"))+
   scale_y_continuous(name = "Mean interest rating (1-7)") +
   guides(fill = FALSE)
-```
-
-```
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
 ```
 
 <div class="figure" style="text-align: center">
@@ -494,24 +479,6 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = time))+
   facet_wrap(~Gender)
 ```
 
-```
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-```
-
 <div class="figure" style="text-align: center">
 <img src="13-visualisation_files/figure-html/facet1-1.png" alt="Violin-boxplot facetted by gender" width="100%" />
 <p class="caption">(\#fig:facet1)Violin-boxplot facetted by gender</p>
@@ -535,24 +502,6 @@ ggplot(zhang_data, aes(x = Condition, y = interest, fill = time))+
                position = position_dodge(.9))+
   scale_fill_viridis_d(option = "E") +
   facet_wrap(~Gender, labeller = labeller(Gender = (c(female = "Female", male = "Male"))))
-```
-
-```
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
 ```
 
 <div class="figure" style="text-align: center">
@@ -739,12 +688,6 @@ ggplot(zhang_data, aes(x = Condition, y = interest))+
   stat_summary(fun.data = "mean_se", geom = "errorbar", width = .1,
                position = position_dodge(width = 0.3)) +
   coord_flip()
-```
-
-```
-## Warning: Removed 1 rows containing missing values (geom_segment).
-
-## Warning: Removed 1 rows containing missing values (geom_segment).
 ```
 
 <div class="figure" style="text-align: center">
