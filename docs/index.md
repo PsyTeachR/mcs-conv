@@ -1,6 +1,6 @@
 ---
 title: "MSc Conversion in Psychological Studies"
-date: "2021-05-25"
+date: "2021-07-13"
 bibliography:
 - book.bib
 - packages.bib
@@ -10,8 +10,6 @@ link-citations: yes
 site: bookdown::bookdown_site
 biblio-style: apalike
 ---
-
-
 
 
 
@@ -41,4 +39,4 @@ By the end of this course students will be able to:
 
 * Clean and wrangle data into appropriate forms for analysis
 * Visualise data using a range of plots
-* Conduct and interpret a core set of statistical tests (t-test, correlation, ANOVA, regression, chi-square)
+* Conduct and interpret a core set of statistical tests (t-test, correlation, ANOVA, regression)

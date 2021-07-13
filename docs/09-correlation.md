@@ -137,7 +137,7 @@ qqPlot(x = mh$Abil)
 
 This code looks a little different to code you've used up until this point as it comes from Base R. It uses the notation `object$variable` so our x variable could be read as "use the variable `Abil` from the object `mh`.
 
-The QQ-plot includes a **confidence envelope** (the blue dotted lines). The simple version is that if your data points fall within these dotted lines then you can assume normality. The `ggplot2` version of QQ-plots make it more difficult to add on this confidence envelope, which is why we're using a different package. `qqPlot()` will also print the IDs of the data points that are potentially problematic. In this case, the 4th and 15th data point in `Abil` are flagged to review.
+The QQ-plot includes a **confidence envelope** (the blue dotted lines). The simple version is that if your data points fall within these dotted lines then you can assume normality. The `ggplot2` version of QQ-plots make it more difficult to add on this confidence envelope, which is why we're using a different package. `qqPlot()` will also print the IDs of the most extreme data points. In this case, the 4th and 15th data point in `Abil` are flagged, although because they fall within the confidence envelope, they don't appear problematic.
 
 * Write and run the code to create a QQ-plot for `IQ`.
 
@@ -329,8 +329,8 @@ mh %>%
 ```
 
 <div class="figure" style="text-align: center">
-<img src="09-correlation_files/figure-html/pairs-pipes-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
-<p class="caption">(\#fig:pairs-pipes)**CAPTION THIS FIGURE!!**</p>
+<img src="09-correlation_files/figure-html/pairs-pipes-1.png" alt="Adjusted scatterplot matrix" width="100%" />
+<p class="caption">(\#fig:pairs-pipes)Adjusted scatterplot matrix</p>
 </div>
 
 There are additional arguments to adjust the plot `pairs.panel` creates that you can look up in the help documentation if you are interested.

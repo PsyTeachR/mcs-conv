@@ -110,7 +110,7 @@ rlong <- pivot_longer(data = responses,
 ```
 
 
--   As with the other tidyverse functions, the first argument specifies the dataset to use as the base, in this case `dat`. This argument name is often dropped in examples.
+-   As with the other tidyverse functions, the first argument specifies the dataset to use as the base, in this case `responses`. This argument name is often dropped in examples.
 
 -   `cols` specifies all the columns you want to transform. The easiest way to visualise this is to think about which columns would be the same in the new long-form dataset and which will change. In this case, we only have a single column `Id` that will remain constant, we will transform all the ther columns that contain participant's responses to each question. The colon notation `first_column:last_column` is used to select all variables from the first column specified to the second.  In our code, `cols` specifies that the columns we want to transform are `Q1` to `Q10`.
 
@@ -220,7 +220,7 @@ Below you will find the solutions to the above questions. Only look at them afte
 ### Activity 2 {#dw3-a2sol}
 
 
-<div class='solution'><button>Activity 2</button>
+<div class='solution'><button>Solution Activity 2</button>
 
 
 ```r
@@ -270,14 +270,20 @@ aq_scores <- rscores %>%
 ### Activity 8 {#dw3-a8sol}
 
 
-<div class='solution'><button>Activity 8</button>
+<div class='solution'><button>Solution Activity 8</button>
 
 
 ```r
-aq_scores2 <- responses %>% # take the data in `responses` and then
-  pivot_longer(names_to = "Question", values_to = "Response", Q1:Q10) %>%  # gather up columns Q1 to Q10, put the column names in Question and the scores in Response and then
-  inner_join(qformats, "Question") %>% # join with `qformats` and match the data by the column `Question` and then
-  inner_join(scoring, c("QFormat", "Response")) %>% # join with `scoring` and match the data by the columns `Qformat` and `Response` and then
+aq_scores2 <- responses %>% 
+  # take the data in `responses` and then
+  pivot_longer(cols = Q1:Q10,
+               names_to = "Question", 
+               values_to = "Response") %>%  
+  # take columns Q1 to Q10, put the column names in Question and the scores in Response and then
+  inner_join(qformats, "Question") %>% 
+  # join with `qformats` and match the data by the column `Question` and then
+  inner_join(scoring, c("QFormat", "Response")) %>% 
+  # join with `scoring` and match the data by the columns `Qformat` and `Response` and then
   group_by(Id) %>% # group by participant ID and then
   summarise(AQ = sum(Score)) # calculate the total AQ score
 ```
@@ -288,21 +294,6 @@ aq_scores2 <- responses %>% # take the data in `responses` and then
 **Click the tab to see the solution**
 
 ## Test yourself {#dw3-test}
-
-* You want to put the first three columns of a file called `responses` (Q1, Q2, Q3) into long-form, put the question numbers in a column called `Jam`, the responses in a column called `Strawberry`, and store everything in a tibble called `sandwich`. Fill in the box with what you would write: <input class='solveme nospaces' size='60' data-answer='["sandwich <- pivot_longer(data = responses, names_to = Jam, values_to = Strawberry, Q1:Q3)"]'/>
-
-
-<div class='solution'><button>Explain this answer</button>
-
-
-```r
-sandwich <- pivot_longer(data = responses, names_to = "Jam", values_to = "Strawberry", Q1:Q3)
-    
-#`pivot_longer` wants the data first, then the name of the new column to store the column names, then the name of the new column to store the data, and then finally which columns to tidy
-```
-
-</div>
-
 
 * Complete the sentence, the higher the AQ score...<select class='solveme' data-answer='["the more autistic-like traits displayed"]'> <option></option> <option>the less autistic-like traits displayed</option> <option>has no relation to autistic-like traits</option> <option>the more autistic-like traits displayed</option></select>  
 

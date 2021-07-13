@@ -20,8 +20,6 @@ knitr::write_bib(c(
 
 ```
 
-
-
 # Overview {-}
 
 <img src="images/msc_conv.png" style="width: 200px">
@@ -48,4 +46,4 @@ By the end of this course students will be able to:
 
 * Clean and wrangle data into appropriate forms for analysis
 * Visualise data using a range of plots
-* Conduct and interpret a core set of statistical tests (t-test, correlation, ANOVA, regression, chi-square)
+* Conduct and interpret a core set of statistical tests (t-test, correlation, ANOVA, regression)

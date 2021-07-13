@@ -4,15 +4,15 @@
 
 Which function(s) would you use to approach each of the following problems?
 
-* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>filter()</option> <option>mutate()</option> <option>summarise()</option> <option>group_by()</option> <option>arrange()</option> <option>select()</option></select> function.
+* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>mutate()</option> <option>arrange()</option> <option>filter()</option> <option>group_by()</option> <option>select()</option> <option>summarise()</option></select> function.
 
-* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>arrange()</option> <option>summarise()</option> <option>mutate()</option> <option>group_by()</option> <option>select()</option> <option>filter()</option></select> function.
+* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>summarise()</option> <option>mutate()</option> <option>group_by()</option> <option>arrange()</option> <option>select()</option> <option>filter()</option></select> function.
 
-* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>filter()</option> <option>group_by()</option> <option>mutate()</option> <option>arrange()</option> <option>select()</option> <option>summarise()</option></select> function.
+* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>group_by()</option> <option>arrange()</option> <option>mutate()</option> <option>select()</option> <option>filter()</option> <option>summarise()</option></select> function.
 
-* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>filter() and select()</option> <option>group_by() and arrange()</option> <option>arrange() and mutate()</option> <option>group_by() and summarise()</option></select> functions.
+* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>arrange() and mutate()</option> <option>group_by() and summarise()</option> <option>filter() and select()</option> <option>group_by() and arrange()</option></select> functions.
 
-* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["arrange() and select()","mutate() and filter()"]'> <option></option> <option>group_by() and mutate()</option> <option>select() and summarise()</option> <option>arrange() and select()</option> <option>mutate() and filter()</option></select> functions.
+* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["mutate() and filter()","arrange() and select()"]'> <option></option> <option>select() and summarise()</option> <option>group_by() and mutate()</option> <option>mutate() and filter()</option> <option>arrange() and select()</option></select> functions.
 
 ### Data visualisation
 
@@ -53,8 +53,8 @@ We will use the same data files as in Loading Data when you uploaded files to th
 ```r
 library(tidyverse) 
 
-dat <- read_csv('ahi-cesd.csv')
-pinfo <- read_csv('participant-info.csv')
+dat <- read_csv("ahi-cesd.csv")
+pinfo <- read_csv("participant-info.csv")
 all_dat <- inner_join(dat, pinfo, by= c("id", "intervention"))
 summarydata <- select(.data = all_dat, 
                       ahiTotal, cesdTotal, sex, age, 
@@ -280,6 +280,69 @@ ggplot(summarydata, aes(x = income, y = ahiTotal)) +
 ggplot(summarydata, aes(x = income, y = ahiTotal)) +
   geom_boxplot() +
   geom_violin()
+```
+
+## Activity 7: Daving plots (#introviz-a7)
+
+Finally, it's useful to be able to save a copy of your plots as an image file so that you can use it in a presentation or word document and to do this we can use the function `ggsave()`.
+
+There are two ways you can use `ggsave()`. If you don't tell `ggsave()` which plot you want to save, by default it will save a copy of **the last plot you created**. If you've been following this chapter in order, the last plot you created will have been the messy violin plot in Activity 6, so let's run the code from Activity 5 again tp produce the nice violin-boxplot:
+
+
+```r
+ggplot(summarydata, aes(x = income, y = ahiTotal, fill = income)) +
+  geom_violin(trim = FALSE, show.legend = FALSE, alpha = .4) +
+  geom_boxplot(width = .2, show.legend = FALSE, alpha = .7)+
+  scale_x_discrete(name = "Income",
+                   labels = c("Below Average", "Average", "Above Average")) +
+  scale_y_continuous(name = "Authentic Happiness Inventory Score")+
+  theme_minimal() +
+  scale_fill_viridis_d()
+```
+
+<div class="figure" style="text-align: center">
+<img src="07-data-viz_files/figure-html/unnamed-chunk-12-1.png" alt="Violin-boxplot2" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-12)Violin-boxplot2</p>
+</div>
+
+Now that we've got the plot we want to save as our last produced plot, all that `ggsave()` requires is for you to tell it what file name it should save the plot to and the type of image file you want to create (the below example uses .png but you could also use e.g., .jpeg and other image types).
+
+* Copy, paste and run the below code into a new code chunk.
+* Check your chapter folder, you should now see the saved image file.
+
+
+```r
+ggsave("violin-boxplot.png")
+```
+
+The default size for an image is 7 x 7, you can change this manually if you think that the dimensions of the plot are not correct or if you need a particular size.
+
+* Copy paste and run the below code to overwrite the image file with new dimensions.
+
+
+```r
+ggsave("violin-boxplot", width = 10, height = 8)
+```
+
+The second way of using `ggsave()` is to save your plot as an object and then tell it which object to write to a file. The below code saves the pipe plot from Activity 5 into an object named `viobox` and then saves it to an image file "violin-boxplot.png". 
+
+Note that when you save a plot to an object, it won't display in R Studio. To get it to display you need to type the object name in the console (i.e., `viobox`). The benefit of doing it this way is that if you are making lots of plots, you can't accidentally save the wrong one because you are explicitly specifying which plot to save rather than just saving the last one.
+
+* Copy, paste and run the below code and then check your Data Skills folder for the image file. Resize the plot if you think it needs it.
+
+
+```r
+viobox <- ggplot(summarydata, aes(x = income, y = ahiTotal, fill = income)) +
+  geom_violin(trim = FALSE, show.legend = FALSE, alpha = .4) +
+  geom_boxplot(width = .2, show.legend = FALSE, alpha = .7)+
+  scale_x_discrete(name = "Income",
+                   labels = c("Below Average", "Average", "Above Average")) +
+  scale_y_continuous(name = "Authentic Happiness Inventory Score")+
+  theme_minimal() +
+  scale_fill_viridis_d()
+
+
+ggsave("violin-boxplot.png", plot = viobox)
 ```
 
 ### Finished! {#introviz-fin}

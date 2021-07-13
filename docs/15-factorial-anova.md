@@ -44,8 +44,7 @@ factorial <- read_csv("Zhang et al. 2014 Study 3.csv")%>%
 
 ### Activity 2: Descriptive statistics {#factorial-a2}
 
-* Calculate descriptive statistics (mean, the minimum and maximum standard error values for using with a plot, and SD) for `interest`  for each `Condition` for each `time` (hint: you will need to `group_by()` two variables) and store it in an object named `sum_dat_factorial`. These are known as the cells means.
-* Hint: for the standard error code, refer back to Visualisation.
+* Calculate descriptive statistics (mean and SD) for `interest`  for each `Condition` for each `time` (hint: you will need to `group_by()` two variables) and store it in an object named `sum_dat_factorial`. These are known as the cells means.
 
 
 
@@ -227,10 +226,10 @@ Copy and paste the below into **white-space**.
 
 
 ```r
-We conducted the same repeated measures ANOVA with interest as the dependent measure and again found a main effect of time, F(`r factorial_output$num.Df[2]`, `r factorial_output$den.Df[2]`) = `r factorial_output$statistic[2] %>% round(2)`, p < .001, ηp2 = `r factorial_output$ges[2] %>% round(3)`; anticipated interest at Time 1 (M = `r time_descrip$mean_interest[1] %>% round(2)`), SD = `r time_descrip$sd_interest[1]%>% round(2)`), 95% CI = [`r time_descrip$min[1]%>% round(2)`, `r time_descrip$max[1]%>% round(2)`]) was lower than actual interest at Time 2 (M = `r time_descrip$mean_interest[2]%>% round(2)`, SD = `r time_descrip$sd_interest[2]%>% round(2)`, 95% CI = [`r time_descrip$min[2]%>% round(2)`, `r time_descrip$max[2]%>% round(2)`]).We also observed an interaction between time and type of experience, F(`r factorial_output$num.Df[3]`, `r factorial_output$den.Df[3]`) = `r factorial_output$statistic[3] %>% round(3)`, p = `r factorial_output$p.value[3] %>% round(2)`, ηp2 = `r factorial_output$ges[3] %>% round(3)`. Pairwise comparisons revealed that for ordinary events, predicted interest at Time 1 (M = `r sum_dat_factorial$mean[3]%>% round(2)`, SD = `r sum_dat_factorial$sd[3]%>% round(2)`, 95% CI = [`r sum_dat_factorial$min[3]%>% round(2)`, `r sum_dat_factorial$max[3]%>% round(2)`]) was lower than experienced interest at Time 2 (M = `r sum_dat_factorial$mean[4]%>% round(2)`, SD = `r sum_dat_factorial$sd[4]%>% round(2)`, 95% CI = [`r sum_dat_factorial$min[4]%>% round(2)`, `r sum_dat_factorial$max[4]%>% round(2)`]), t(`r contrasts_factorial$df[2]%>% round(2)`) = `r contrasts_factorial$statistic[2]%>% round(2)`, p < .001, d = `r contrasts_factorial$eff_size[2]%>% round(2)`. Although predicted interest for extraordinary events at Time 1 (M = `r sum_dat_factorial$mean[1]%>% round(2)`, SD = `r sum_dat_factorial$sd[1]%>% round(2)`, 95% CI = [`r sum_dat_factorial$min[1]%>% round(2)`, `r sum_dat_factorial$max[1]%>% round(2)`]) was lower than experienced interest at Time 2 (M = `r sum_dat_factorial$mean[2]%>% round(2)`, SD = `r sum_dat_factorial$sd[2]%>% round(2)`, 95% CI = [`r sum_dat_factorial$min[2]%>% round(2)`, `r sum_dat_factorial$max[2]%>% round(2)`), t(`r contrasts_factorial$df[1]%>% round(2)`) = `r contrasts_factorial$statistic[1]%>% round(2)`, p < .001, d = `r contrasts_factorial$eff_size[1]%>% round(2)` , the magnitude of underestimation was smaller than for ordinary events.
+We conducted the same repeated measures ANOVA with interest as the dependent measure and again found a main effect of time, F(`r factorial_output$num.Df[2]`, `r factorial_output$den.Df[2]`) = `r factorial_output$statistic[2] %>% round(2)`, p < .001, ηp2 = `r factorial_output$ges[2] %>% round(3)`; anticipated interest at Time 1 (M = `r time_descrip$mean_interest[1] %>% round(2)`), SD = `r time_descrip$sd_interest[1]%>% round(2)`)) was lower than actual interest at Time 2 (M = `r time_descrip$mean_interest[2]%>% round(2)`, SD = `r time_descrip$sd_interest[2]%>% round(2)`).We also observed an interaction between time and type of experience, F(`r factorial_output$num.Df[3]`, `r factorial_output$den.Df[3]`) = `r factorial_output$statistic[3] %>% round(3)`, p = `r factorial_output$p.value[3] %>% round(2)`, ηp2 = `r factorial_output$ges[3] %>% round(3)`. Pairwise comparisons revealed that for ordinary events, predicted interest at Time 1 (M = `r sum_dat_factorial$mean[3]%>% round(2)`, SD = `r sum_dat_factorial$sd[3]%>% round(2)`) was lower than experienced interest at Time 2 (M = `r sum_dat_factorial$mean[4]%>% round(2)`, SD = `r sum_dat_factorial$sd[4]%>% round(2)`), t(`r contrasts_factorial$df[2]%>% round(2)`) = `r contrasts_factorial$statistic[2]%>% round(2)`, p < .001, d = `r contrasts_factorial$eff_size[2]%>% round(2)`. Although predicted interest for extraordinary events at Time 1 (M = `r sum_dat_factorial$mean[1]%>% round(2)`, SD = `r sum_dat_factorial$sd[1]%>% round(2)`) was lower than experienced interest at Time 2 (M = `r sum_dat_factorial$mean[2]%>% round(2)`, SD = `r sum_dat_factorial$sd[2]%>% round(2)`), t(`r contrasts_factorial$df[1]%>% round(2)`) = `r contrasts_factorial$statistic[1]%>% round(2)`, p < .001, d = `r contrasts_factorial$eff_size[1]%>% round(2)` , the magnitude of underestimation was smaller than for ordinary events.
 ```
 
-> We conducted the same repeated measures ANOVA with interest as the dependent measure and again found a main effect of time, F(1, 128) = 25.88, p < .001, ηp2 = 0.044; anticipated interest at Time 1 (M = 4.2), SD = 1.12), 95% CI = [4.01, 4.4]) was lower than actual interest at Time 2 (M = 4.69, SD = 1.19, 95% CI = [4.49, 4.9]).We also observed an interaction between time and type of experience, F(1, 128) = 4.445, p = 0.04, ηp2 = 0.008. Pairwise comparisons revealed that for ordinary events, predicted interest at Time 1 (M = 4.04, SD = 1.09, 95% CI = [3.9, 4.18]) was lower than experienced interest at Time 2 (M = 4.73, SD = 1.24, 95% CI = [4.58, 4.89]), t(128) = -5.05, p < .001, d = 0.59. Although predicted interest for extraordinary events at Time 1 (M = 4.36, SD = 1.13, 95% CI = [4.22, 4.5]) was lower than experienced interest at Time 2 (M = 4.65, SD = 1.14, 95% CI = [4.51, 4.79), t(128) = -2.12, p < .001, d = 0.25 , the magnitude of underestimation was smaller than for ordinary events.
+> We conducted the same repeated measures ANOVA with interest as the dependent measure and again found a main effect of time, F(1, 128) = 25.88, p < .001, ηp2 = 0.044; anticipated interest at Time 1 (M = 4.2), SD = 1.12)) was lower than actual interest at Time 2 (M = 4.69, SD = 1.19).We also observed an interaction between time and type of experience, F(1, 128) = 4.445, p = 0.04, ηp2 = 0.008. Pairwise comparisons revealed that for ordinary events, predicted interest at Time 1 (M = 4.04, SD = 1.09) was lower than experienced interest at Time 2 (M = 4.73, SD = 1.24), t(128) = -5.05, p < .001, d = 0.59. Although predicted interest for extraordinary events at Time 1 (M = 4.36, SD = 1.13) was lower than experienced interest at Time 2 (M = 4.65, SD = 1.14), t(128) = -2.12, p < .001, d = 0.25 , the magnitude of underestimation was smaller than for ordinary events.
 
 ### Activity 9: Transforming data {#factorial-a9}
 
@@ -298,9 +297,7 @@ library("tidyverse")
 sum_dat_factorial<-factorial%>%
   group_by(Condition, time)%>%
   summarise(mean = mean(interest, na.rm = TRUE),
-            min = mean(interest) - sd(interest)/sqrt(n()), 
-            max = mean(interest) + sd(interest)/sqrt(n()),
-            sd = sd(interest)
+            sd = sd(interest, na.rm = TRUE)
             )
 ```
 </div>
@@ -313,15 +310,20 @@ sum_dat_factorial<-factorial%>%
 <div class="solution"><button>Activity 3</button>
 
 ```r
-ggplot(factorial, aes(x = time , y = interest, fill = Condition))+
-  geom_violin(trim = FALSE, alpha = .6)+
-  geom_boxplot(position = position_dodge(.9), width = .2, colour = "white", alpha = .7)+
+ggplot(factorial, 
+       aes(x = time , y = interest, fill = Condition))+
+  geom_violin(trim = FALSE, 
+              alpha = .4)+
+  geom_boxplot(position = position_dodge(.9), 
+               width = .2, 
+               alpha = .6)+
   scale_x_discrete(labels = c("Time 1", "Time 2"))+
   scale_fill_viridis_d(option = "E")+
-  geom_pointrange(data = sum_dat_factorial,
-                  aes(time, mean, ymin=min, ymax=max),
-                  shape = 20, 
-                  position = position_dodge(width = 0.9))
+  stat_summary(fun = "mean", geom = "point",
+               position = position_dodge(width = 0.9)) +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", width = .1,
+               position = position_dodge(width = 0.9)) +
+  theme_minimal()
 ```
 </div>
 

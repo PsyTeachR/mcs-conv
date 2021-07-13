@@ -271,22 +271,6 @@ pong_data %>%
 
 Which method you use will depend on whether you want to add the counts to a table of other descriptives, but both functions are useful to know.
 
-## `bind_rows()` {#dw2-bind}
-
-The Wickham Six verbs let you to do a lot of things with data, however there are thousands of other functions at your disposal. If you want to do something with your data that you are not sure how to do using these functions, do a Google search for an alternative function - chances are someone else has had the same problem and has a help guide. For example, one additional function is `bind_rows()` which is useful if you want to combine two tibbles together into one larger tibble that have the same column structure. For example:    
-
-
-```r
-# a tibble of ball speeds 1 and 2
-slow_ball<- filter(pong_data, BallSpeed < 3) 
-
-# a tibble of ball speeds 6 and 7
-fast_ball <- filter(pong_data, BallSpeed >= 6) 
-
-# a combined tibble of extreme ball speeds
-combined_data <- bind_rows(slow_ball, fast_ball) 
-```
-
 ## Pipes (**`%>%`**) {#dw2-pipes}  
 
 Finally, a quick recap on pipes. Here is an example of code that doesn't use pipes to find how many hits there were with the large paddle length and the red background.
@@ -338,7 +322,7 @@ data_arrange <- pong_data %>%
 
 We have now learned a number of functions and verbs that you will need as you progress through this book.  You will use them in the next chapter so be sure to go over these and try them out to make yourself more comfortable with them.  If you have any questions please post them on Teams. **Happy Wrangling!**
 
-## DS2 Activity solutions - Data wrangling 2
+## Activity solutions {#dw2-sols}
 
 Below you will find the solutions to the above questions. Only look at them after giving the questions a good try and speaking to the tutor about any issues.
 
@@ -440,24 +424,6 @@ pong_data<- filter(pong_data, TrialNumber >= 2) %>%
 **click the tab to see the solution**
 <br>
 
-### Activity 8 {#dw2-a8sol}
-
-
-<div class='solution'><button>Solution Activity 9</button>
-
-
-```r
-pong_data <- read_csv("PongBlueRedBack 1-16 Codebook.csv")
-pong_data_group <- group_by(pong_data, BackgroundColor, PaddleLength)
-pong_data_hits <- summarise(pong_data_group, total_hits = sum(HitOrMiss))
-# the answer should give 517
-```
-
-</div>
- 
-
-**click the tab to see the solution**
-<br>
 
 ## Debugging tips {#dw2-debug}
 

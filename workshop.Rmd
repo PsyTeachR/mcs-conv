@@ -1,0 +1,48 @@
+---
+title: "Untitled"
+author: "Nordmann"
+date: "25/05/2021"
+output: html_document
+---
+
+```{r}
+library("car")
+library("correlation")
+library("report")
+library("psych")
+library("tidyverse")
+mh <- read_csv("MillerHadenData.csv")
+results <- correlation(data = mh, select = "IQ", select2 = "Abil",  method = "pearson", alternative = "two.sided")
+results2 <- cor.test(~ IQ + Abil, data = mh,  method = "pearson", alternative = "two.sided")
+```
+
+```{r}
+ggplot(data = mh, aes(x = Abil)) +
+  geom_histogram()
+```
+
+```{r}
+qqPlot(x = mh$Abil)
+```
+
+```{r}
+ggplot(data = mh, aes(x = Abil, y = IQ)) +
+  geom_point()+
+  geom_smooth(method = lm) # if you don't want the shaded CI, add se = FALSE to this
+```
+
+```{r}
+descriptives <- summarise(mh, 
+                          Abil_mean = mean(Abil),
+                          Abil_SD = sd(Abil),
+                          IQ_mean = mean(IQ),
+                          IQ_SD = sd(IQ))
+descriptives
+```
+
+The mean IQ score was `r round(pluck(descriptives$IQ_mean),2)` (`r round(pluck(descriptives$IQ_SD),2)`) and the mean reading ability score was `r round(pluck(descriptives$Abil_mean),2)` (`r round(pluck(descriptives$Abil_SD),2)`). A Pearson\`s correlation found a significant, medium positive correlation between the two variables (r (`r results$df_error`) = `r round(results$r, 2)`, *p* = `r round(results$p, 3)`).
+
+```{r}
+report(results2)
+```
+

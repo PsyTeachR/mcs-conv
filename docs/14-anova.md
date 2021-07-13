@@ -91,17 +91,13 @@ We can see from this plot that there are outliers in each of the groups. This in
 
 ```r
 ggplot(sum_dat, aes(x = Condition, y = mean, fill = Condition))+
-  stat_summary(fun.y = mean, geom = "bar", show.legend = FALSE)+
+  stat_summary(fun = "mean", geom = "bar", show.legend = FALSE)+
   geom_errorbar(aes(ymin = mean - se, ymax = mean + se), width = 0.25)+
   scale_y_continuous(limits = c(0,7), 
                      breaks = c(0,1,2,3,4,5,6,7), 
                      name = "Intrusive-Memory Frequency (Mean for the Week")+
   scale_x_discrete(labels = c("No-task control", "Reactivation plus Tetris", "Tetris only",
                                 "Reactivation only"))
-```
-
-```
-## Warning: `fun.y` is deprecated. Use `fun` instead.
 ```
 
 <div class="figure" style="text-align: center">
@@ -398,7 +394,7 @@ dat2 <- dat%>%
 ** Click tab to see solution **
 
 
-#### ANOVA Activity 4
+#### Activity 4 {#anova-a5sol}
 
 <div class="solution"><button>Activity 4</button>
 
