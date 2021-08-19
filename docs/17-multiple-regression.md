@@ -34,7 +34,7 @@ But the expressive power of regression allows us to do this all within a single 
 * Open a new R Markdown document and save it in your working directory. Call the file "Multiple Regression".    
 * Download <a href="wellbeing.csv" download>wellbeing.csv</a>, <a href="participant_info.csv" download>participant_info.csv</a> and <a href="screen_time.csv" download>screen_time.csv</a> and save them in your Chapter folder. Make sure that you do not change the file names at all.    
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
-* Delete the default R Markdown welcome text and insert a new code chunk that loads `pwr`, `car`, `broom`, and `tidyverse` using the `library()` function.
+* Delete the default R Markdown welcome text and insert a new code chunk that loads `pwr`, `see`, `performance`, `report`, and `tidyverse` using the `library()` function.
 * Load the CSV datasets into variables called `pinfo`, `wellbeing` and `screen` using `read_csv()`.
 
 
@@ -285,34 +285,97 @@ Now it's time to test those pesky assumptions. The assumptions for multiple regr
 7. There should be homoscedasticity (homogeneity of variance, but for the residuals)
 8. Multicollinearity: predictor variables should not be too highly correlated
 
-From the work we've done so far we know that assumptions 1 - 4 are met. Unlike when we did simple regression we can't use `crPlots()` to test for linearity when there is an interaction, but we know from looking at the grouped scatterplot that this assumption has been met.
+From the work we've done so far we know that assumptions 1 - 4 are met and we can use the functions from the `performance` package again to check the rest, like we did with the simple linear regression chapter.
 
-Normally we would test for normality with a qqplot and a Shapiro-Wilk test. However, because this dataset is so large, the Shapiro-Wilk is not appropriate (if you try to run the test it will produce a warning telling you that the sample size must be between 3 and 5000). This is because as we have mentioned before, with extremely large sample sizes the Shapiro-Wilk test will find that any deviation from normality is significant. Therefore we should judge normality based upon the qqplots.
-
-* Create a qqplot of the model residuals. Can we assume normality? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
-
-We also have this problem for testing homoscedasticity with `ncvTest()` so we need to rely on plots again. To check for homoscedasticity we can use `plot()` from Base R that will produce a bunch of helpful plots ([more information here](https://www.r-bloggers.com/how-to-detect-heteroscedasticity-and-rectify-it/)). The residuals vs leverage plot shows a flat red line so, whilst it isn't perfect, we can assume that with such a large sample size regression is still an appropriate analysis. 
+One difference from when we used `check_model()` previously is that rather than just letting it run all the tests it wants, we're going to specify which tests, to stop it throwing an error. A word of warning - these assumptions tests will take longer than usual to run, because it's such a big dataset. The first line of code will run the assumption tests and save it to an object, calling the object name will then display the plots.
 
 
 ```r
-par(mfrow=c(2,2)) # 4 charts in 1 panel
-plot(mod)
+assumptions <- check_model(mod, check = c("vif", "qq", "normality", "linearity", "homogeneity"))
+
+assumptions
 ```
 
 <div class="figure" style="text-align: center">
-<img src="17-multiple-regression_files/figure-html/plots2-1.png" alt="Regression assumption plots" width="100%" />
-<p class="caption">(\#fig:plots2)Regression assumption plots</p>
+<img src="17-multiple-regression_files/figure-html/unnamed-chunk-1-1.png" alt="Assumption plots" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-1)Assumption plots</p>
 </div>
 
-Finally, to check for multicollinearity we can use `vif()` to calculate the variance inflation factor. Essentially, this function estimates how much the variance of a coefficient is “inflated” because of linear dependence with other predictors, i.e., that a predictor isn't actually adding any unique variance to the model, it's just really strongly related to other predictors. [You can read more about this here](https://statisticalhorizons.com/multicollinearity). Thankfully, VIF is not affected by large samples like the other tests.
+For assumption 5, linearity, we already know from looking at the scatterplot that the relationship is linear, but the residual plot also confirms this.
 
-There are various rules of thumb, but most converge on a VIF of above 2 - 2.5 for any one predictor being problematic.
-
-* Run the below code. Do any of the predictors show evidence of multicollinearity? <select class='solveme' data-answer='["There is no evidence of multicollinearity"]'> <option></option> <option>thours_c</option> <option>male_c</option> <option>thours_c:male_c</option> <option>There is no evidence of multicollinearity</option></select>
+For assumption 6, normality of residuals, again the residuals look good in both plots and this provides an excellent example of why it's often better to visualise than rely on statistics because if we use `check_normality()` which calls the Shapiro-Wilk test:
 
 
 ```r
-vif(mod)
+check_normality(mod)
+```
+
+```
+## Warning: Non-normality of residuals detected (p < .001).
+```
+
+It tells us that the residuals are not normal, despite the fact that the plots look almost perfect. And that's because with large sample sizes, any deviation from perfect normality can be flagged as non-normal.
+
+For assumption 7, homoscedasticity, the plot is missing the reference line - fun fact, this took us several days of our lives and asking for help on Twitter to figure out. The reason the line isn't there is because the dataset is so large that is creates a memory issue so we need to create the plot ourselves using code the developers of the package `see` provided to us on Twitter. The default code would try to draw confidence intervals around the line which is what causes the memory issue, this code removes that with `se = FALSE`.
+
+Please note that with most datasets you wouldn't have to do this extra step, but it's a good example that when it comes to programming, it doesn't matter how long you've been doing it, there will always be a problem you haven't come across and that asking for help is part of the process.
+
+
+```r
+ggplot(assumptions$HOMOGENEITY, aes(x, y)) +
+    geom_point2() +
+    stat_smooth(
+      method = "loess",
+      se = FALSE,
+      formula = y ~ x,
+    ) +
+    labs(
+      title = "Homogeneity of Variance",
+      subtitle = "Reference line should be flat and horizontal",
+      y = expression(sqrt("|Std. residuals|")),
+      x = "Fitted values"
+    ) 
+```
+
+<div class="figure" style="text-align: center">
+<img src="17-multiple-regression_files/figure-html/unnamed-chunk-3-1.png" alt="Adjusted homogeneity plot that will produce reference line" width="100%" />
+<p class="caption">(\#fig:unnamed-chunk-3)Adjusted homogeneity plot that will produce reference line</p>
+</div>
+
+Again like normality, the plot isn't perfect but it is pretty good and another example of why visualisation is better than running statistical tests as we see the same significant result if we run:
+
+
+```r
+check_homogeneity(mod)
+```
+
+```
+## Warning: Variances differ between groups (Bartlett Test, p = 0.000).
+```
+
+
+For assumption 8, linearity, again the plot looks fine, and we could also have used the grouped scatterplots above to look at this. 
+
+Finally, for assumption 9, multicollinearity, the plot also indicates no issues but we can also test this statistically using `check_collinearity()`.
+
+Essentially, this function estimates how much the variance of a coefficient is “inflated” because of linear dependence with other predictors, i.e., that a predictor isn't actually adding any unique variance to the model, it's just really strongly related to other predictors. [You can read more about this here](https://statisticalhorizons.com/multicollinearity). Thankfully, VIF is not affected by large samples like the other tests.
+
+There are various rules of thumb, but most converge on a VIF of above 2 - 2.5 for any one predictor being problematic.
+
+
+```r
+check_collinearity(mod)
+```
+
+```
+## # Check for Multicollinearity
+## 
+## Low Correlation
+## 
+##             Term  VIF Increased SE Tolerance
+##         thours_c 1.72         1.31      0.58
+##           male_c 1.04         1.02      0.97
+##  thours_c:male_c 1.72         1.31      0.58
 ```
 
 ## Activity 10: Power and effect size {#mulregression-a10}
@@ -332,7 +395,7 @@ Finally, we'll calculate power and effect size as usual.
 
 ## Activity 11: Write-up {#mulregression-a11}
 
-Now, copy and paste the below code into **white-space** and then knit the document. Note that the p-values are entered manually because of the APA `p < .001` formatting.
+Same as the simple regression, we can use inline coding or the `report()` function to help with the write-up. First, copy and paste the below code into **white-space** and then knit the document. Note that the p-values are entered manually because of the APA `p < .001` formatting.
 
 
 ```r
@@ -341,9 +404,26 @@ All continuous predictors were mean-centered and deviation coding was used for c
 
 > All continuous predictors were mean-centered and deviation coding was used for categorical predictors. The results of the regression indicated that the model significantly predicted course engagement (F(3, 7.1029\times 10^{4}) = 2450.89, p < .001, Adjusted R2 = 0.09, f2 = .63), accounting for 9% of the variance. Total screen time was a significant negative predictor of well-being scores (β = -0.77, p < .001, as was gender (β = 5.14, p < .001, with girls having lower well-being scores than boys. Importantly, there was a significant interaction between screen time and gender (β = 0.45, p < .001), smartphone use was more negatively associated with well-being for girls than for boys.
 
+Now, we can use `report()` to produce an automated summary. Again, it would need some editing but may be useful to aid interpretation and reporting.
+
+
+```r
+report(mod)
+```
+
+```
+## We fitted a linear model (estimated using OLS) to predict tot_wellbeing with thours_c and male_c (formula: tot_wellbeing ~ thours_c * male_c). The model explains a statistically significant and weak proportion of variance (R2 = 0.09, F(3, 71029) = 2450.89, p < .001, adj. R2 = 0.09). The model's intercept, corresponding to thours_c = 0 and male_c = -0.5, is at 44.87 (95% CI [44.78, 44.96], t(71029) = 1001.87, p < .001). Within this model:
+## 
+##   - The effect of thours_c is statistically significant and negative (beta = -0.77, 95% CI [-0.82, -0.73], t(71029) = -32.96, p < .001; Std. beta = -0.15, 95% CI [-0.16, -0.15])
+##   - The effect of male_c [0.5] is statistically significant and positive (beta = 5.14, 95% CI [5.00, 5.28], t(71029) = 72.25, p < .001; Std. beta = 0.54, 95% CI [0.52, 0.55])
+##   - The interaction effect of male_c [0.5] on thours_c is statistically significant and positive (beta = 0.45, 95% CI [0.38, 0.52], t(71029) = 12.24, p < .001; Std. beta = 0.09, 95% CI [0.08, 0.11])
+## 
+## Standardized parameters were obtained by fitting the model on a standardized version of the dataset.
+```
+
 ## Finished! {#mulregression-fin}
 
-And you're done! Not just with this week but with the R component of RM2! Well, aside from the final portfolio worksheet. The progress that you have made is truly astonishing. Even if you struggled with R and haven't quite understood every single line of code we've shown, what you're capable of with data wrangling and visualisation alone makes you some of the most highly competitive psychology graduates in the world. 
+And you're done! Not just with this week but with the R component of RM2!  The progress that you have made is truly astonishing. Even if you struggled with R and haven't quite understood every single line of code we've shown, what you're capable of with data wrangling and visualisation alone makes you some of the most highly competitive psychology graduates in the world. 
 
 Regardless of whether you continue with quantitative methods and using R, remember the more important critical skills that you have learned as part of this process. The next time you see a dataset or you see data being talked about in the news, think about all work that was put into getting the data into the final format. More importantly, think about all the decisions that the researcher needed to make along the way and how that might have affected the outcome. 
 

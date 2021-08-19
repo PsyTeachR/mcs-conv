@@ -359,9 +359,9 @@ Finally, they also reported being more likely to hire the candidates when they l
 ```
 
 
-> The pattern of evaluations by professional recruiters replicated the pattern observed in Experiments 1 through 3b (see Fig. 7). Bonferroni-corrected t-tests found that in particular, the recruiters believed that the job candidates had greater intellect---were more competent, thoughtful, and intelligent---when they listened to pitches (M = 5.64, SD = 1.61) than when they read pitches (M = 5.64, SD = 1.91), t(33.43) = 2.64, 2.82, 3.48, p < 0.004, 95% CI of the difference = [0.83, 3.15], d = 1.12, 0.95, 0.43, 1.79. 
+> The pattern of evaluations by professional recruiters replicated the pattern observed in Experiments 1 through 3b (see Fig. 7). Bonferroni-corrected t-tests found that in particular, the recruiters believed that the job candidates had greater intellect---were more competent, thoughtful, and intelligent---when they listened to pitches (M = 5.64, SD = 1.61) than when they read pitches (M = 5.64, SD = 1.91), t(33.43) = 2.64, 2.82, 3.48, p < 0.004, 95% CI of the difference = [0.83, 3.15], d = 1.12, 0.95, 0.43, 1.81. 
 
-> The recruiters also formed more positive impressions of the candidates---rated them as more likeable and had a more positive and less negative impression of them---when they listened to pitches (M = 5.97, SD = 1.92) than when they read pitches (M = 4.07, SD = 2.23, t(33.8) = 2.82, p < 0.024, 95% CI of the difference = [0.53, 3.26], d = 0.91, 0.95, 0.23, 1.56. 
+> The recruiters also formed more positive impressions of the candidates---rated them as more likeable and had a more positive and less negative impression of them---when they listened to pitches (M = 5.97, SD = 1.92) than when they read pitches (M = 4.07, SD = 2.23, t(33.8) = 2.82, p < 0.024, 95% CI of the difference = [0.53, 3.26], d = 0.91, 0.95, 0.24, 1.57. 
 
 > Finally, they also reported being more likely to hire the candidates when they listened to pitches (M = 4.71, SD = 2.26) than when they read the same pitches (M = 2.89, SD = 2.05), t(36.86) = 2.64, p < 0.036, 95% CI of the difference = [0.42, 3.23], d = 0.84, 0.95, 0.18, 1.5.
 
@@ -375,7 +375,7 @@ report(intellect_t)
 ```
 ## Effect sizes were labelled following Cohen's (1988) recommendations.
 ## 
-## The Welch Two Sample t-test testing the difference of Rating by condition (mean in group listened = 5.63, mean in group read = 3.65) suggests that the effect is negative, statistically significant, and large (difference = -1.99, 95% CI [0.83, 3.15], t(33.43) = 3.48, p < .01; Cohen's d = 1.20, 95% CI [0.46, 1.93])
+## The Welch Two Sample t-test testing the difference of Rating by condition (mean in group listened = 5.63, mean in group read = 3.65) suggests that the effect is negative, statistically significant, and large (difference = -1.99, 95% CI [0.83, 3.15], t(33.43) = 3.48, p = 0.001; Cohen's d = 1.20, 95% CI [0.46, 1.93])
 ```
 
 
@@ -487,7 +487,7 @@ report(gaze_t)
 ```
 ## Effect sizes were labelled following Cohen's (1988) recommendations.
 ## 
-## The Paired t-test testing the difference of looking by time (mean of the differences = -0.07) suggests that the effect is negative, statistically significant, and small (difference = -0.07, 95% CI [-0.13, -0.01], t(31) = -2.42, p < .05; Cohen's d = -0.43, 95% CI [-0.80, -0.06])
+## The Paired t-test testing the difference of looking by time (mean of the differences = -0.07) suggests that the effect is negative, statistically significant, and small (difference = -0.07, 95% CI [-0.13, -0.01], t(31) = -2.42, p = 0.022; Cohen's d = -0.43, 95% CI [-0.80, -0.06])
 ```
 
 

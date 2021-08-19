@@ -123,6 +123,7 @@ mod_factorial <- aov_ez(id = "subject",
                within = "time",
                dv = "interest", 
                type = 3,
+               include_aov = TRUE,
                es = "pes") 
 
 factorial_output <- mod_factorial$anova_table %>% tidy()

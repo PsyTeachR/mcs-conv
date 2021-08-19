@@ -148,6 +148,6 @@ report(results2)
 ```
 ## Effect sizes were labelled following Funder's (2019) recommendations.
 ## 
-## The Pearson's product-moment correlation between IQ and Abil is positive, statistically significant, and very large (r = 0.45, 95% CI [0.07, 0.72], t(23) = 2.42, p < .05)
+## The Pearson's product-moment correlation between IQ and Abil is positive, statistically significant, and very large (r = 0.45, 95% CI [0.07, 0.72], t(23) = 2.42, p = 0.024)
 ```
 
