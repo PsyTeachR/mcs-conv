@@ -22,15 +22,16 @@ If our hypothesis is correct then there should be `r mcq(c("a positive", "no", "
 * Open a new R Markdown document and save it in your working directory. Call the file "Regression".    
 * Download <a href="L3_stars.csv" download>L3_stars.csv</a> and <a href="psess.csv" download>psess.csv</a> and save them in your chapter folder. Make sure that you do not change the file name at all.    
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R` 
-* Delete the default R Markdown welcome text and insert a new code chunk that loads `pwr`, `car`, `broom`, and `tidyverse` using the `library()` function.
+* Delete the default R Markdown welcome text and insert a new code chunk that loads `pwr`, `broom`, `see`, `performance`, `report` and `tidyverse` using the `library()` function.
 * Load the two CSV datasets into variables called `stars` and `engage` using `read_csv()`.
 
 
 ```{r lib_data, echo = FALSE, message=FALSE, warning=FALSE}
 library("pwr")
-library("car")
 library("broom")
-library("afex")
+library("see")
+library("performance")
+library("report")
 library("tidyverse")
 
 stars <- read_csv("L3_stars.csv")
@@ -63,9 +64,6 @@ head(stars2) %>% knitr::kable(align = 'c')
 
 * Now that you've got the data into a tidy format, use `summarise()` and `group_by()` to calculate mean anxiety scores (`mean_anxiety`) for each student (`ID`). Store the resulting table in a variable named `stars_means`. 
 
-**Please note that in the video walkthrough, Emily calculates the mean, min, max, and sd for anxiety scores. Emily is an idiot. Just ignore her, you only need the mean.**
-
-
 ```{r stars_means, echo = FALSE, message = FALSE}
 stars_means <- stars2 %>%
   group_by(ID) %>%
@@ -79,7 +77,7 @@ stars_means <- stars2 %>%
 
 ```{r combine_ex, echo = FALSE}
 joined <- inner_join(stars_means, engage, "ID")
-joined %>%
+head(joined) %>%
   knitr::kable(align = 'c', digits = 2)
 ```
 
@@ -92,12 +90,8 @@ It is also useful to calculate descriptives statistics for the sample overall so
 ```{r descrips2}
 descriptives <- joined %>%
   summarise(mean_anx = mean(mean_anxiety, na.rm = TRUE),
-            min_anx = mean(mean_anxiety,na.rm = TRUE) - qnorm(0.975)*sd(mean_anxiety,na.rm = TRUE)/sqrt(n()), 
-            max_anx = mean(mean_anxiety,na.rm = TRUE) + qnorm(0.975)*sd(mean_anxiety,na.rm = TRUE)/sqrt(n()),
             sd_anx = sd(mean_anxiety, na.rm = TRUE),
             mean_weeks = mean(n_weeks, na.rm = TRUE),
-            min_weeks = mean(n_weeks) - qnorm(0.975)*sd(n_weeks,na.rm = TRUE)/sqrt(n()), 
-            max_weeks = mean(n_weeks) + qnorm(0.975)*sd(n_weeks,na.rm = TRUE)/sqrt(n()),
             sd_weeks = sd(n_weeks, na.rm = TRUE))
 ```
 
@@ -137,21 +131,18 @@ Answer the following questions about the model. You may wish to refer to the lec
 6. What proportion of the variance does the model explain? `r fitb("23.39")`
 
 `r hide("Explain these answers")`
-```{r, echo = FALSE, results='asis'}
-cat("1. In the summary table, this is the estimate of the intercept.
+1. In the summary table, this is the estimate of the intercept.
 2. In the summary table, this is the estimate of mean_anxiety, i.e., the slope.
 3. In the summary table, this is also the estimate of mean_anxiety, the slope is how much it decreases so you just remove the - sign. 
 4. In the summary table, the F-ratio is noted as he F-statistic.
 5. The overall model p.value is .001428 which is less than .05, therefore significant. 
 6. The variance explained is determined by R-squared, you simply multiple it by 100 to get the percent. You should always use the adjusted R-squared value.
-    ")
-```
 `r unhide()`  
 <br>
 
 ## Activity 8: Assumption checking {#regression-a8}
 
-It's now time to check the assumptions, which for regression are a little bit more involved than they were for ANOVA.
+Just like with ANOVA, you can't check the assumptions until you've run the regression so now we'll do that to check whether there's anything to be concerned about. As we covered in the lecture, the assumptions for regression are a little bit more involved than they were for ANOVA.
 
 1. The outcome/DV is a interval/ratio level data 
 2. The predictor variable is interval/ratio or categorical (with two levels)
@@ -163,32 +154,73 @@ It's now time to check the assumptions, which for regression are a little bit mo
 
 Assumptions 1-3 are nice and easy. We know this from the data we have and the design of the study. Assumption 4 simply means that there is some spread in the data - for example, there's no point running a regression with age as a variable if all your participants are 20 years old. We can check this using the scatterplot we created in Activity 4 and we can see that this assumption is met, we do indeed have a spread of scores. 
 
-Assumption 5 could also be checked with the scatterplot but there are some nice regression-specific functions from `car` that we can use.
+For the rest of the assumptions, we're going to use functions from the packages `see` and `performance` that make life a whole lot easier. 
 
-* Run the below code. It will produce the scatterplot with a linear line and the line that best fits the data. If these two lines are quite similar (they will never be perfect) then you can assume linearity.
+First, we can use `check_model()` to produce a range of assumption test visualisations. Helpfully, this function also provides a brief explanation of what you should be looking for in each plot - if only all functions in R were so helpful!
 
-```{r crplots, eval = TRUE}
-crPlots(mod)
+* If you get the error message `Failed with error:  ‘there is no package called ‘qqplotr’’`, install the package `qqplotr`, you don't need to load it using `library()`, but `check_model()` uses it in the background.
+
+```{r check_model, fig.cap="Visual assumption checks", warning=FALSE, message=FALSE}
+check_model(mod)
 ```
 
-Assumption 6 can be tested as we have done before with a qqplot and a Shapiro-Wilk test.
+For Assumption 5, linearity, the plot suggests it's not perfect but it looks pretty good.
 
-```{r normality, fig.cap="qqplot for residuals"}
-qqPlot(mod$residuals)
-shapiro.test(mod$residuals)
+As we've already noted, it's good to visualise your assumption checks because just relying on statistics can be problematic, as they can be sensitive to small or large sample sizes. However, it can also be reassuring to have a statistical test to back up your intuitions from the plot.
+
+For Assumption 6, normality of residuals, the plot does suggest that the residuals might not be normal, so we can check this with `check_normality()` which runs a Shapiro-Wilk test.
+
+```{r}
+check_normality(mod)
 ```
 
-The qqplot doesn't look too bad, on the basis of this alone we would probably assume normality. However, the Shapiro-Wilk test is significant which suggests something isn't quite right. The Shaprio-Wilk has been criticised for rejecting the null hypothesis (i.e., concluding that the data are not normal) too often and it's argued that if the qqplot and the Shapiro test disagree, it's better to rely on the qqplot. There is a good discussion [about it here](https://stats.stackexchange.com/questions/2492/is-normality-testing-essentially-useless) if you'd like to know more. For now, we will proceed cautiously and check the final assumption before we make a decision about what to do.
+The result confirms that the residuals are not normally distributed, something that is likely being exacerbated by the relatively small sample size. If you're feeling confident, you can see how we might resolve this below, but for the core aims of this chapter we'll conclude that it's because of the sample and continue.
 
-The final assumption of homoscedasticity means that the error in the model is fairly constant at all points (i.e., if you looked at the scatterplot, the data points wouldn't be bunched together at one end and spread out at the other). We can test this using the non-constant error variance test from `car`.
+`r hide("Transforming the data to correct for non-normality")`
 
-* Run the below code. If the test is significant, the assumption has been violated. Based upon the results, can we assume homoscedasticity? `r mcq(c(answer = "Yes", "No"))`
+There are multiple ways you can transform data to deal with non-normality, you can find more information about data transformation in the [Appendix here](https://psyteachr.github.io/msc-conv/data-transformation.html).
 
-```{r ncv, eval = FALSE}
-ncvTest(mod)
+First, we need to get a sense of what the issue is with our dependent variable, in this case `n_weeks`. A simple histogram shows that the DV isn't a normal distribution, instead, it looks more like a [uniform distribution](https://openstax.org/books/introductory-statistics/pages/5-2-the-uniform-distribution).
+
+```{r}
+ggplot(joined, aes(x = n_weeks)) +
+  geom_histogram(binwidth = 1)
 ```
 
-Returning to the issue of normality, all of the other assumptions have been met and the qqplot suggests that any deviation from normality is very mild. Based upon this evidence, it seems justified to proceed with the original regression.
+It's important to remember that the assumptions of regression are that the residuals are normally distributed, not the raw data, however, transforming the DV can help.
+
+To transform the uniform distribution to a normal distribution, we're going to use the `unif2norm` function from the `faux` package (which you may need to install).
+
+This code uses `mutate()` to create a new variable `n_weeks_transformed` that is the result of the transformation. 
+
+```{r message=FALSE, warning=FALSE}
+library(faux)
+joined <- mutate(joined, 
+                 n_weeks_transformed = unif2norm(n_weeks))
+
+ggplot(joined, aes(x = n_weeks_transformed)) +
+  geom_histogram()
+```
+
+You'll notice that the histogram for the transformed variable still doesn't look amazing, but remember it's the residuals, not the raw data that matters. If we re-run the regression with the transformed data and then check the model again, things are looking much better.
+
+```{r message=FALSE, warning=FALSE}
+mod_transformed <- lm(n_weeks_transformed ~ mean_anxiety, joined)
+check_normality(mod_transformed)
+check_model(mod_transformed)
+```
+
+It's worth saying at this point that which transformation you use, and whether it works, can be a bit of trial-and-error.
+
+`r unhide()`
+<br>
+
+For homoscedasticity, the plot looks mostly fine, but we can double check this with `check_heteroscedasticity()` and the result confirms that the data have met this assumption.
+
+```{r}
+check_heteroscedasticity(mod)
+```
+
 
 ## Activity 9: Power and effect size {#regression-a9}
 
@@ -211,6 +243,8 @@ f2 <- mod_summary$adj.r.squared/(1 - mod_summary$adj.r.squared)
 
 ## Activity 10: Write-up {#regression-a10}
 
+There's two ways we can use R to help with the write-up. The first is inline coding like we've done in the other chapters, and the second is to use the `report` package. Which one you use is entirely up to you but it's nice to have options.
+
 We need to manually calculate the p-value for the inline coding as you can't extract it from the `lm()` model. Run the below code to do this.
 
 ```{r pvalue}
@@ -228,6 +262,13 @@ A simple linear regression was performed with engagment (M = `r descriptives$mea
 A simple linear regression was performed with engagement (M = `r descriptives$mean_weeks %>% round(2)`, SD = `r descriptives$sd_anx %>% round(2)`) as the outcome variable and statistics anxiety (M = `r descriptives$mean_anx %>% round(2)`, SD = `r descriptives$sd_anx %>% round(2)`) as the predictor variable. The results of the regression indicated that the model significantly predicted course engagement (F(`r mod_summary$fstatistic[2]`, `r mod_summary$fstatistic[3]`) = `r mod_summary$fstatistic[1] %>% round(2)`, p < .001, Adjusted R2 = `r mod_summary$adj.r.squared %>% round(2)`, f^2^ = .63), accounting for `r (mod_summary$adj.r.squared %>% round(2))*100`% of the variance. Anxiety was a significant positive predictor (β = `r mod$coefficients[2] %>% round(2)`, p < `r mod_p %>% round(3)`.
 )
 
+The second option uses `report`. Just like with the t-test, the output of these functions doesn't tend to be useable without some editing but particularly when you're first learning how to write-up stats it can be useful to have this kind of template (and also to see that there's different ways of reporting stats).
+
+Running `report()` will output a summary of the results which you could copy and past into your Word document.
+
+```{r}
+report(mod)
+```
 
 ## Activity solutions {#regression-sols}
 
@@ -237,8 +278,10 @@ A simple linear regression was performed with engagement (M = `r descriptives$me
 ```{r a1b, eval = FALSE}
 
 library("pwr")
-library("car")
 library("broom")
+library("see")
+library("performance")
+library("report")
 library("tidyverse")
 
 stars <- read_csv("LS_stars.csv")

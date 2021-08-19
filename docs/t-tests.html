@@ -32,7 +32,7 @@
   
 <link rel="prev" href="correlation.html"/>
 <link rel="next" href="power-and-error.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -1070,10 +1070,10 @@ together using <code>bind_rows()</code> which is one of the reasons why it was u
 <span id="cb171-4"><a href="t-tests.html#cb171-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb171-5"><a href="t-tests.html#cb171-5" aria-hidden="true" tabindex="-1"></a>Finally, they also reported being more likely to hire the candidates when they listened to <span class="fu">pitches</span> (<span class="at">M =</span> <span class="st">`</span><span class="at">r results_hire$estimate1 %&gt;% round(2)</span><span class="st">`</span>, <span class="at">SD =</span> <span class="st">`</span><span class="at">r round(group_means$sd[1], 2)</span><span class="st">`</span>) than when they read the same <span class="fu">pitches</span> (<span class="at">M =</span> <span class="st">`</span><span class="at">r results_hire$estimate2 %&gt;% round(2)</span><span class="st">`</span>, <span class="at">SD =</span> <span class="st">`</span><span class="at">r round(group_means$sd[4],2)</span><span class="st">`</span>), <span class="fu">t</span>(<span class="st">`</span><span class="at">r round(results_hire$parameter,2)</span><span class="st">`</span>) <span class="ot">=</span> <span class="st">`</span><span class="at">r round(results_hire$statistic,2)</span><span class="st">`</span>, p <span class="sc">&lt;</span> <span class="st">`</span><span class="at">r results$p.adjusted[1] %&gt;% round(3)</span><span class="st">`</span>, <span class="dv">95</span>% CI of the <span class="at">difference =</span> [<span class="st">`</span><span class="at">r round(results_hire$conf.low, 2)</span><span class="st">`</span>, <span class="st">`</span><span class="at">r round(results_hire$conf.high, 2)</span><span class="st">`</span>], <span class="at">d =</span> <span class="st">`</span><span class="at">r round(hire_dintellect_d$Cohens_d,2)</span><span class="st">`</span>.</span></code></pre></div>
 <blockquote>
-<p>The pattern of evaluations by professional recruiters replicated the pattern observed in Experiments 1 through 3b (see Fig. 7). Bonferroni-corrected t-tests found that in particular, the recruiters believed that the job candidates had greater intellect—were more competent, thoughtful, and intelligent—when they listened to pitches (M = 5.64, SD = 1.61) than when they read pitches (M = 5.64, SD = 1.91), t(33.43) = 2.64, 2.82, 3.48, p &lt; 0.004, 95% CI of the difference = [0.83, 3.15], d = 1.12, 0.95, 0.43, 1.79.</p>
+<p>The pattern of evaluations by professional recruiters replicated the pattern observed in Experiments 1 through 3b (see Fig. 7). Bonferroni-corrected t-tests found that in particular, the recruiters believed that the job candidates had greater intellect—were more competent, thoughtful, and intelligent—when they listened to pitches (M = 5.64, SD = 1.61) than when they read pitches (M = 5.64, SD = 1.91), t(33.43) = 2.64, 2.82, 3.48, p &lt; 0.004, 95% CI of the difference = [0.83, 3.15], d = 1.12, 0.95, 0.43, 1.81.</p>
 </blockquote>
 <blockquote>
-<p>The recruiters also formed more positive impressions of the candidates—rated them as more likeable and had a more positive and less negative impression of them—when they listened to pitches (M = 5.97, SD = 1.92) than when they read pitches (M = 4.07, SD = 2.23, t(33.8) = 2.82, p &lt; 0.024, 95% CI of the difference = [0.53, 3.26], d = 0.91, 0.95, 0.23, 1.56.</p>
+<p>The recruiters also formed more positive impressions of the candidates—rated them as more likeable and had a more positive and less negative impression of them—when they listened to pitches (M = 5.97, SD = 1.92) than when they read pitches (M = 4.07, SD = 2.23, t(33.8) = 2.82, p &lt; 0.024, 95% CI of the difference = [0.53, 3.26], d = 0.91, 0.95, 0.24, 1.57.</p>
 </blockquote>
 <blockquote>
 <p>Finally, they also reported being more likely to hire the candidates when they listened to pitches (M = 4.71, SD = 2.26) than when they read the same pitches (M = 2.89, SD = 2.05), t(36.86) = 2.64, p &lt; 0.036, 95% CI of the difference = [0.42, 3.23], d = 0.84, 0.95, 0.18, 1.5.</p>
@@ -1082,7 +1082,7 @@ together using <code>bind_rows()</code> which is one of the reasons why it was u
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="t-tests.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="fu">report</span>(intellect_t)</span></code></pre></div>
 <pre><code>## Effect sizes were labelled following Cohen&#39;s (1988) recommendations.
 ## 
-## The Welch Two Sample t-test testing the difference of Rating by condition (mean in group listened = 5.63, mean in group read = 3.65) suggests that the effect is negative, statistically significant, and large (difference = -1.99, 95% CI [0.83, 3.15], t(33.43) = 3.48, p &lt; .01; Cohen&#39;s d = 1.20, 95% CI [0.46, 1.93])</code></pre>
+## The Welch Two Sample t-test testing the difference of Rating by condition (mean in group listened = 5.63, mean in group read = 3.65) suggests that the effect is negative, statistically significant, and large (difference = -1.99, 95% CI [0.83, 3.15], t(33.43) = 3.48, p = 0.001; Cohen&#39;s d = 1.20, 95% CI [0.46, 1.93])</code></pre>
 </div>
 <div id="ttest-a11" class="section level2" number="10.11">
 <h2><span class="header-section-number">10.11</span> Activity 11: Paired-samples t-test</h2>
@@ -1163,7 +1163,7 @@ important social information to infants. Specifically, melodies convey informati
 <div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="t-tests.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="fu">report</span>(gaze_t)</span></code></pre></div>
 <pre><code>## Effect sizes were labelled following Cohen&#39;s (1988) recommendations.
 ## 
-## The Paired t-test testing the difference of looking by time (mean of the differences = -0.07) suggests that the effect is negative, statistically significant, and small (difference = -0.07, 95% CI [-0.13, -0.01], t(31) = -2.42, p &lt; .05; Cohen&#39;s d = -0.43, 95% CI [-0.80, -0.06])</code></pre>
+## The Paired t-test testing the difference of looking by time (mean of the differences = -0.07) suggests that the effect is negative, statistically significant, and small (difference = -0.07, 95% CI [-0.13, -0.01], t(31) = -2.42, p = 0.022; Cohen&#39;s d = -0.43, 95% CI [-0.80, -0.06])</code></pre>
 <div id="ttest-fin" class="section level3" number="10.15.1">
 <h3><span class="header-section-number">10.15.1</span> Finished!</h3>
 <p>That was a long chapter but now that you’ve done all the statistical tests you need to complete your quantitative project - hopefully you will see that it really is true that the hardest part is the set-up and the data wrangling. As we’ve said before, you don’t need to memorise lines of code - you just need to remember where to find examples and to understand which bits of them you need to change. Play around with the examples we have given you and see what changing the values does.</p>

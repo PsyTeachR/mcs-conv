@@ -18,7 +18,7 @@ Do the following:
 * Open a new R Markdown document and save it in your working directory. Call the file "One-way ANOVA".  
 * Download <a href="James Holmes_Expt 2_DATA.csv" download>James Holmes_Expt 2_DATA.csv</a> and save it in your chapter folder.  
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R`   
-* In a new code chunk, type and run the code that loads `pwr`, `lsr`, `car`, `broom`, `afex`, `emmeans` and `tidyverse` using the `library()` function and loads the data into an object named `dat` using `read_csv()`. If you are working on your own machine you may need to install `afex` and `emmeans` but as always **do not install packages on university machines**.    
+* In a new code chunk, type and run the code that loads `pwr`, `lsr`, `car`, `broom`, `afex`, `emmeans`, `performance` and `tidyverse` using the `library()` function and loads the data into an object named `dat` using `read_csv()`. If you are working on your own machine you may need to install `afex` and `emmeans` but as always **do not install packages on university machines**.    
 * Add (hint: mutate) a column to `dat` called `subject`that equals `row_number()` to act as a participant ID which is currently missing from the data set.  
 
 
@@ -120,6 +120,7 @@ mod <- aov_ez(id = "subject", # the column containing the subject IDs
               between = "Condition", # the between-subject variable
               es = "pes", # sets effect size to partial eta-squared
               type = 3, # this affects how the sum of squares is calculated, set this to 3
+              include_aov = TRUE,
               data = dat2)
 
 anova(mod)
@@ -226,12 +227,12 @@ test_levene(mod)
 ```
 
 ```
-## Levene's Test for Homogeneity of Variance (center = center)
-##       Df F value  Pr(>F)  
-## group  3  2.9551 0.03854 *
-##       68                  
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## Warning: Functionality has moved to the 'performance' package.
+## Calling 'performance::check_homogeneity()'.
+```
+
+```
+## Warning: Variances differ between groups (Levene's Test, p = 0.039).
 ```
 
 The results from Levene's test show that the assumption of homogeneity of variance has also not been met. The paper does indicate this might be the case as it specifies that the ANOVAs do not assume equal variance, however, the results of the ANOVA that are reported are identical to our results above where no correction has been made although the post-hoc tests are Welch tests (you can tell this because the degrees of freedom have been adjusted and are not whole numbers).
@@ -371,6 +372,7 @@ library("car")
 library("broom")
 library("afex")
 library("emmeans")
+libr\ry("performance")
 library("tidyverse")
 
 dat <- read_csv("James Holmes_Expt 2_DATA.csv")%>%
@@ -394,7 +396,7 @@ dat2 <- dat%>%
 ** Click tab to see solution **
 
 
-#### Activity 4 {#anova-a5sol}
+#### Activity 4 {#anova-a4sol}
 
 <div class="solution"><button>Activity 4</button>
 
