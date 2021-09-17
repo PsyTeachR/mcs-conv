@@ -96,7 +96,7 @@ This time R has still produced 5 random numbers, but now this set of numbers has
 
 
 <div class="info">
-<p>If you’re looking up examples of code online, you may often see code that starts with the function <code>set.seed()</code>. This function controls the random number generator - if you’re using any functions that generate numbers randomly (such as <code>rnorm()</code>), running <code>set.seed()</code> will ensure that you get the same result (in some cases this may not be what you want to do). We call <code>set.seed()</code> in this example because it means that you will get the same random numbers as this book.</p>
+<p>If you're looking up examples of code online, you may often see code that starts with the function <code>set.seed()</code>. This function controls the random number generator - if you're using any functions that generate numbers randomly (such as <code>rnorm()</code>), running <code>set.seed()</code> will ensure that you get the same result (in some cases this may not be what you want to do). We call <code>set.seed()</code> in this example because it means that you will get the same random numbers as this book.</p>
 </div>
 
 ## Argument names
@@ -151,7 +151,7 @@ install.packages("tidyverse")
 You only need to install a package once, however, each time you start R you need to load the packages you want to use, in a similar way that you need to install an app on your phone once, but you need to open it every time you want to use it.
 
 <div class="danger">
-<p>If you get an error message that says something like “WARNING: Rtools is required to build R packages” you may need to download and install an extra bit of software called <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> (this is one of the many reasons why using the server can be easier).</p>
+<p>If you get an error message that says something like "WARNING: Rtools is required to build R packages" you may need to download and install an extra bit of software called <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> (this is one of the many reasons why using the server can be easier).</p>
 </div>
 
 To load packages we use the function `library()`. Typically you would start any analysis script by loading all of the packages you need, but we will come back to that in the next chapter.
@@ -246,7 +246,7 @@ mean(data)
 
 ```
 ## [1] 45
-## Time difference of -230 days
+## Time difference of -259 days
 ## [1] 17.66644
 ```
 
@@ -264,7 +264,7 @@ decade <- age + 10
 You will constantly be creating objects throughout this course and you will learn more about them and how they behave as we go along, however, for now it is enough to understand that they are a way of saving values, that these values can be numbers, text, or the result of operations, and that they can be used in further operations to create new variables.
 
 <div class="info">
-<p>You may also see objects referred to as ‘variables’. There is a difference between the two in programming terms, however, they are used synonymously very frequently.</p>
+<p>You may also see objects referred to as 'variables'. There is a difference between the two in programming terms, however, they are used synonymously very frequently.</p>
 </div>
 
 ## Looking after the environment
@@ -407,11 +407,11 @@ A large part of coding is trying to figure why your code doesn't work and this i
 
 ## Test yourself
 
-**Question 1.** Why should you never include the code `install.packages()` in your analysis scripts? <select class='solveme' data-answer='["You (or someone else) may accidentally install a package update that stops your code working"]'> <option></option> <option>You should use library() instead</option> <option>Packages are already part of Base R</option> <option>You (or someone else) may accidentally install a package update that stops your code working</option> <option>You already have the latest version of the package</option></select> 
+**Question 1.** Why should you never include the code `install.packages()` in your analysis scripts? <select class='webex-select'><option value='blank'></option><option value=''>You should use library() instead</option><option value=''>Packages are already part of Base R</option><option value='answer'>You (or someone else) may accidentally install a package update that stops your code working</option><option value=''>You already have the latest version of the package</option></select> 
 
 
 
-<div class='solution'><button>Explain This Answer</button>
+<div class='webex-solution'><button>Explain This Answer</button>
 
 Remember, when you run `install.packages()` it will always install the latest version of the package and it will overwrite any older versions of the package you may have installed.
 
@@ -426,10 +426,10 @@ Remember, when you run `install.packages()` it will always install the latest ve
 rnorm(6, 50, 10)
 ```
 
-<select class='solveme' data-answer='["A dataset with 6 numbers that has a mean of 50 and an SD of 10"]'> <option></option> <option>A dataset with 10 numbers that has a mean of 6 and an SD of 50</option> <option>A dataset with 6 numbers that has a mean of 50 and an SD of 10</option> <option>A dataset with 50 numbers that has a mean of 10 and an SD of 6</option> <option>A dataset with 50 numbers that has a mean of 10 and an SD of 6</option></select>  
+<select class='webex-select'><option value='blank'></option><option value=''>A dataset with 10 numbers that has a mean of 6 and an SD of 50</option><option value='answer'>A dataset with 6 numbers that has a mean of 50 and an SD of 10</option><option value=''>A dataset with 50 numbers that has a mean of 10 and an SD of 6</option><option value=''>A dataset with 50 numbers that has a mean of 10 and an SD of 6</option></select>  
 
 
-<div class='solution'><button>Explain This Answer</button>
+<div class='webex-solution'><button>Explain This Answer</button>
 
 The default form for `rnorm()` is `rnorm(n, mean, sd)`. If you need help remembering what each argument of a function does, look up the help documentation by running `?rnorm`
 
@@ -438,21 +438,21 @@ The default form for `rnorm()` is `rnorm(n, mean, sd)`. If you need help remembe
 <br>
 **Question 3.** If you have two packages that have functions with the same name and you want to specify exactly which package to use, what code would you use? 
 
-<select class='solveme' data-answer='["package::function"]'> <option></option> <option>package::function</option> <option>function::package</option> <option>library(package)</option> <option>install.packages(package)</option></select>  
+<select class='webex-select'><option value='blank'></option><option value='answer'>package::function</option><option value=''>function::package</option><option value=''>library(package)</option><option value=''>install.packages(package)</option></select>  
 
 
-<div class='solution'><button>Explain This Answer</button>
+<div class='webex-solution'><button>Explain This Answer</button>
 
 You should use the form `package::function`, for example `dplyr::select`. Remember that when you first load your packages R will warn you if any functions have the same name - remember to look out for this!
 
 </div>
   
 
-**Question 4.** Which of the following is most likely to be an argument? <select class='solveme' data-answer='["35"]'> <option></option> <option>35</option> <option>read_csv()</option> <option><-</option></select>
+**Question 4.** Which of the following is most likely to be an argument? <select class='webex-select'><option value='blank'></option><option value='answer'>35</option><option value=''>read_csv()</option><option value=''><-</option></select>
 
-**Question 5.** An easy way to spot functions is to look for <select class='solveme' data-answer='["brackets"]'> <option></option> <option>brackets</option> <option>numbers</option> <option>computers</option></select>.
+**Question 5.** An easy way to spot functions is to look for <select class='webex-select'><option value='blank'></option><option value='answer'>brackets</option><option value=''>numbers</option><option value=''>computers</option></select>.
 
-**Question 6.** The job of `<-` is to send the output from the function to a/an <select class='solveme' data-answer='["object"]'> <option></option> <option>argument</option> <option>assignment</option> <option>object</option></select>.
+**Question 6.** The job of `<-` is to send the output from the function to a/an <select class='webex-select'><option value='blank'></option><option value=''>argument</option><option value=''>assignment</option><option value='answer'>object</option></select>.
 
 
 

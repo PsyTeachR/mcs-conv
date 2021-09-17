@@ -47,10 +47,10 @@ How you tackle probability depends on the type of data/variables you are working
 
 What types of data are the below measurements?
 
-* Time taken to run a marathon (in seconds): <select class='solveme' data-answer='["ratio"]'> <option></option> <option>interval</option> <option>ratio</option> <option>ordinal</option> <option>categorical</option></select>
-* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='solveme' data-answer='["ordinal"]'> <option></option> <option>ordinal</option> <option>ratio</option> <option>categorical</option> <option>interval</option></select>
-* Which Sesame Street character a runner was dressed as: <select class='solveme' data-answer='["categorical"]'> <option></option> <option>categorical</option> <option>ordinal</option> <option>ratio</option> <option>interval</option></select>
-* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='solveme' data-answer='["interval"]'> <option></option> <option>categorical</option> <option>ratio</option> <option>interval</option> <option>ordinal</option></select>
+* Time taken to run a marathon (in seconds): <select class='webex-select'><option value='blank'></option><option value='answer'>ratio</option><option value=''>categorical</option><option value=''>ordinal</option><option value=''>interval</option></select>
+* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='webex-select'><option value='blank'></option><option value='answer'>ordinal</option><option value=''>interval</option><option value=''>ratio</option><option value=''>categorical</option></select>
+* Which Sesame Street character a runner was dressed as: <select class='webex-select'><option value='blank'></option><option value=''>ratio</option><option value='answer'>categorical</option><option value=''>interval</option><option value=''>ordinal</option></select>
+* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='webex-select'><option value='blank'></option><option value=''>ratio</option><option value=''>ordinal</option><option value=''>categorical</option><option value='answer'>interval</option></select>
 
 ### Probability distributions
 
@@ -81,7 +81,7 @@ Let’s say we flip a coin 10 times. Assuming the coin is fair (probability of h
 </div>
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 
 
@@ -131,17 +131,17 @@ As with any probabilities, real-world data will come close to the normal distrib
 
 Complete the sentences so that they are correct.
 
-* In a normal distribution, the mean, median, and mode <select class='solveme' data-answer='["are all equal"]'> <option></option> <option>are all equal</option> <option>sum to zero</option> <option>are always different</option></select>.
-* In a normal distribution, the further away from the mean an observation is <select class='solveme' data-answer='["the lower its probability of occuring"]'> <option></option> <option>the higher its probability of occuring</option> <option>the lower its probability of occuring</option></select>.
-* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='solveme' data-answer='["is a continuous variable"]'> <option></option> <option>has three possible values</option> <option>is a categorical variable</option> <option>is a continuous variable</option></select>.
+* In a normal distribution, the mean, median, and mode <select class='webex-select'><option value='blank'></option><option value='answer'>are all equal</option><option value=''>sum to zero</option><option value=''>are always different</option></select>.
+* In a normal distribution, the further away from the mean an observation is <select class='webex-select'><option value='blank'></option><option value=''>the higher its probability of occuring</option><option value='answer'>the lower its probability of occuring</option></select>.
+* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='webex-select'><option value='blank'></option><option value='answer'>is a continuous variable</option><option value=''>has three possible values</option><option value=''>is a categorical variable</option></select>.
 
 ## Activity 4: Distribution test {#prob-a4}
 
 Which distribution is likely to be associated with the following?
 
-* Scores on an IQ test <select class='solveme' data-answer='["Normal distribution"]'> <option></option> <option>Uniform distribution</option> <option>Binomial distribution</option> <option>Normal distribution</option></select>
-* Whether a country has won or lost the Eurovision song contest <select class='solveme' data-answer='["Binomial distribution"]'> <option></option> <option>Uniform distribution</option> <option>Binomial distribution</option> <option>Normal distribution</option></select>
-* Picking a spade card out of a normal pack of playing cards<select class='solveme' data-answer='["Uniform distribution"]'> <option></option> <option>Uniform distribution</option> <option>Binomial distribution</option> <option>Normal distribution</option></select>
+* Scores on an IQ test <select class='webex-select'><option value='blank'></option><option value=''>Uniform distribution</option><option value=''>Binomial distribution</option><option value='answer'>Normal distribution</option></select>
+* Whether a country has won or lost the Eurovision song contest <select class='webex-select'><option value='blank'></option><option value=''>Uniform distribution</option><option value='answer'>Binomial distribution</option><option value=''>Normal distribution</option></select>
+* Picking a spade card out of a normal pack of playing cards<select class='webex-select'><option value='blank'></option><option value='answer'>Uniform distribution</option><option value=''>Binomial distribution</option><option value=''>Normal distribution</option></select>
 
 ## Activity 5: Binomial distribution {#prob-a5}
 
@@ -183,8 +183,8 @@ Copy, paste and run the below code in a new code chunk:
 dbinom(x = 5, size = 10, prob = 0.5)
 ```
 
-* What is the probability of getting 5 heads out of 10 coin flips to 2 decimal places? <input class='solveme nospaces' size='4' data-answer='["0.25",".25"]'/>  
-* What is this probability expressed in percent? <select class='solveme' data-answer='["25%"]'> <option></option> <option>0.25%</option> <option>2.5%</option> <option>25%</option></select>
+* What is the probability of getting 5 heads out of 10 coin flips to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.25",".25"]'/>  
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.25%</option><option value=''>2.5%</option><option value='answer'>25%</option></select>
 
 ## Activity 7: `pbinom()` {#prob-a7}
 
@@ -202,8 +202,8 @@ pbinom(q = 2, size = 10, prob = 0.5)
 ```
 
 
-* What is the probability of getting a maximum of 2 heads on 10 coin flips to 2 decimal places? <input class='solveme nospaces' size='4' data-answer='["0.05",".05"]'/>  
-* What is this probability expressed in percent? <select class='solveme' data-answer='["5%"]'> <option></option> <option>0.05%</option> <option>0.5%</option> <option>5%</option></select>
+* What is the probability of getting a maximum of 2 heads on 10 coin flips to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.05",".05"]'/>  
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.05%</option><option value=''>0.5%</option><option value='answer'>5%</option></select>
 
 ## Activity 8: `pbinom()` 2 {#prob-a8}
 
@@ -236,8 +236,8 @@ Copy, paste and run the below code in a new code chunk:
 pbinom(q = 6, size = 10, prob = .5, lower.tail = FALSE) 
 ```
 
-* What is the probability of getting between 7 and 10 heads from 10 coin flips to 2 decimal places? <input class='solveme nospaces' size='4' data-answer='["0.17",".17"]'/>  
-* What is this probability expressed in percent? <select class='solveme' data-answer='["17%"]'> <option></option> <option>0.017%</option> <option>0.17</option> <option>17%</option></select> 
+* What is the probability of getting between 7 and 10 heads from 10 coin flips to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.17",".17"]'/>  
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.017%</option><option value=''>0.17</option><option value='answer'>17%</option></select> 
 
 ## Activity 9: `qbinom()` {#prob-a9}
 
@@ -264,9 +264,9 @@ And it tells you the answer is 2. If the magician flipped fewer than two heads o
  
 However, ten trials is probably far too few if you want to accuse the magician of being a bit dodge. Run the below code and then answer the following questions:
 
-* What would your cut-off be if you ran 100 trials? <input class='solveme nospaces' size='2' data-answer='["42"]'/>
-* What would your cut-off be if you ran 1000 trials? <input class='solveme nospaces' size='3' data-answer='["474"]'/>
-* What would your cut-off be if you ran 10,000 trials? <input class='solveme nospaces' size='4' data-answer='["4918"]'/>
+* What would your cut-off be if you ran 100 trials? <input class='webex-solveme nospaces' size='2' data-answer='["42"]'/>
+* What would your cut-off be if you ran 1000 trials? <input class='webex-solveme nospaces' size='3' data-answer='["474"]'/>
+* What would your cut-off be if you ran 10,000 trials? <input class='webex-solveme nospaces' size='4' data-answer='["4918"]'/>
 
 
 ```r
@@ -282,7 +282,7 @@ Notice that the more trials you run, the more precise the estimates become, that
 Have a go at playing around with different numbers of coin flips and probabilities in our `dbinom()` and `pbinom()` app!
 
 <div class="figure" style="text-align: center">
-<iframe src="https://shannon-mcnee19.shinyapps.io/binomial_shiny/" width="100%" height="800px"></iframe>
+<iframe src="https://shannon-mcnee19.shinyapps.io/binomial_shiny/" width="100%" height="800px" data-external="1"></iframe>
 <p class="caption">(\#fig:unnamed-chunk-7)Binomial distribution app</p>
 </div>
 
@@ -311,7 +311,7 @@ Data from the [Scottish Health Survey (2008)](http://www.scotland.gov.uk/Resourc
 The below figure is a simulation of this data - you can see the code used to run this simulation by clicking the solution button.
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 
 ```r
@@ -353,22 +353,22 @@ pnorm(q = NULL, mean = NULL, sd = NULL, lower.tail = NULL)
 
 Replace the NULLs in the above code to calculate the probability of meeting a 16-24 y.o. Scottish woman who is taller than the average 16-24 y.o. Scottish man.
 
-* What is the probability of meeting a 16-24 y.o. Scottish woman who is taller than the average 16-24 y.o. Scottish man? <input class='solveme nospaces' size='4' data-answer='["0.04",".04"]'/>  
-* What is this probability expressed in percent? <select class='solveme' data-answer='["4%"]'> <option></option> <option>0.04%</option> <option>0.4%</option> <option>4%</option></select>
+* What is the probability of meeting a 16-24 y.o. Scottish woman who is taller than the average 16-24 y.o. Scottish man? <input class='webex-solveme nospaces' size='4' data-answer='["0.04",".04"]'/>  
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.04%</option><option value=''>0.4%</option><option value='answer'>4%</option></select>
 
 ## Activity 11: `pnorm` 2 {#prob-a11}
 
 Fiona is a very tall Scottish woman (181.12\nbsp{}cm) in the 16-24 y.o. range who will only date men who are taller than her.  
 
-* Using `pnorm()` again, what is the proportion of Scottish men Fiona would be willing to date to 2 decimal places? <input class='solveme nospaces' size='4' data-answer='["0.23",".23"]'/>  
-* What is this probability expressed in percent? <select class='solveme' data-answer='["23%"]'> <option></option> <option>0.23%</option> <option>2.3%</option> <option>23%</option></select>
+* Using `pnorm()` again, what is the proportion of Scottish men Fiona would be willing to date to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.23",".23"]'/>  
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.23%</option><option value=''>2.3%</option><option value='answer'>23%</option></select>
 
 ## Activity 12: `pnorm` 3 {#prob-a12}
 
 On the other hand, Fiona will only date women who are shorter than her. 
 
-* What is the proportion of Scottish women would Fiona be willing to date to 2 decimal places? <input class='solveme nospaces' size='4' data-answer='["0.99",".99"]'/>  
-* What is this probability expressed in percent? <select class='solveme' data-answer='["99%"]'> <option></option> <option>0.99%</option> <option>9.9%</option> <option>99%</option></select>
+* What is the proportion of Scottish women would Fiona be willing to date to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.99",".99"]'/>  
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.99%</option><option value=''>9.9%</option><option value='answer'>99%</option></select>
 
 ## Activity 13: `qnorm()` {#prob-a13}
 
@@ -398,7 +398,7 @@ For example, if you want to compare whether the scores from two groups are diffe
 ### Activity 6 {#prob-a6sol}
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 
 ```r
@@ -411,7 +411,7 @@ For example, if you want to compare whether the scores from two groups are diffe
 ### Activity 7 {#prob-a7sol}
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 
 ```r
@@ -424,7 +424,7 @@ For example, if you want to compare whether the scores from two groups are diffe
 ### Activity 8 {#prob-a8sol}
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 
 ```r
@@ -437,7 +437,7 @@ For example, if you want to compare whether the scores from two groups are diffe
 ### Activity 10 {#prob-a10sol}
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 
 ```r
@@ -450,7 +450,7 @@ pnorm(q = 176.2, mean = 163.8, sd = 6.931, lower.tail = FALSE)
 ### Activity 11 {#prob-a11sol}
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 
 ```r
@@ -463,7 +463,7 @@ pnorm(q = 181.12, mean = 176.2, sd = 6.748, lower.tail = FALSE)
 ### Activity 12 {#prob-a12sol}
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 
 ```r
@@ -476,7 +476,7 @@ pnorm(q = 181.12, mean = 163.8, sd = 6.931, lower.tail = TRUE)
 ### Activity 13 {#prob-a13sol}
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 
 ```r

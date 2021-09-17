@@ -9,7 +9,7 @@ In the last chapter, we looked at using one-table Wickham verbs to `filter`, `ar
 
 <div class="try">
 <p>A function is a tool that takes an input, performs some action, and gives an output. They are nothing more than that. If you think about it your toaster is a function: it takes bread as an input; it performs the action of heating it up; and it gives an output, the toast. A good thing about the Wickham six functions is that they are nicely named as verbs to describe what they do - <code>mutate()</code> mutates (adds on a column); <code>arrange()</code> arranges columns, <code>summarise()</code> summarises, etc.</p>
-<p>In terms of remembering all the functions, the truth is you don’t have to know them all. However, through practice and repetition, you will quickly learn to remember which ones are which and what package they come from. Sort of like where to find your spoons in your kitchen - you don’t look in the fridge, and then the washing machine, and then the drawer. Nope, you learnt, by repetition, to look in the drawer first time. It’s the same with functions. Keep in mind that research methods is like a language in that the more you use it and work with it the more it makes sense.</p>
+<p>In terms of remembering all the functions, the truth is you don't have to know them all. However, through practice and repetition, you will quickly learn to remember which ones are which and what package they come from. Sort of like where to find your spoons in your kitchen - you don't look in the fridge, and then the washing machine, and then the drawer. Nope, you learnt, by repetition, to look in the drawer first time. It's the same with functions. Keep in mind that research methods is like a language in that the more you use it and work with it the more it makes sense.</p>
 </div>
 
 </div>
@@ -25,7 +25,7 @@ We will use a type of data organisation known as **tidy data**. Any data in this
 
 
 <div class="try">
-<p>If you’ve worked with any kind of data before, particularly if you’ve used Excel, it’s very likely that you will have used <strong>wide format</strong> data. In wide format, each participant’s data is all in one row with multiple columns for different data points. This means that the data set tends to be very wide and you will have as many rows as you have participants.</p>
+<p>If you've worked with any kind of data before, particularly if you've used Excel, it's very likely that you will have used <strong>wide format</strong> data. In wide format, each participant's data is all in one row with multiple columns for different data points. This means that the data set tends to be very wide and you will have as many rows as you have participants.</p>
 <p>This layout can be easy to read, however, it makes programming quite difficult. Whilst Tidy Data can be conceptually more difficult to understand at first, it means you can manipulate your data in whatever way you want very easily. There is more information about <a href="https://r4ds.had.co.nz/tidy-data.html">tidy data available here</a>.</p>
 </div>
 
@@ -45,7 +45,7 @@ There are four data files to work with that you should download into your chapte
 <br>
 
 <div class="try">
-<p><code>csv</code> stands for ‘comma separated variable’, and is a very basic way of transferring data. It really just stores numbers and text and nothing else. The great thing about being this basic is that it can be read by many different machines and does not need expensive licenses to open it.</p>
+<p><code>csv</code> stands for 'comma separated variable', and is a very basic way of transferring data. It really just stores numbers and text and nothing else. The great thing about being this basic is that it can be read by many different machines and does not need expensive licenses to open it.</p>
 </div>
 
 
@@ -84,10 +84,10 @@ pinfo <-                    # participant information
 
 Now that we have the data loaded in it is always best to have a look at it to get an idea of its layout. We showed you ways of doing this before, but you can also use the `glimpse()` or `View()` functions in your Console window and put the name of the data between the brackets to see how it is arranged. Don't add these to your script though they are just one-offs for testing.
 
-* Have a look at the data in `responses` to see if you think it is Tidy or not and answer the following question: The data in `responses` is in <select class='solveme' data-answer='["Wide"]'> <option></option> <option>Tidy</option> <option>Wide</option></select> format
+* Have a look at the data in `responses` to see if you think it is Tidy or not and answer the following question: The data in `responses` is in <select class='webex-select'><option value='blank'></option><option value=''>Tidy</option><option value='answer'>Wide</option></select> format
 
 
-<div class='solution'><button>Explain this answer</button>
+<div class='webex-solution'><button>Explain this answer</button>
 
 The `responses` tibble is far from being tidy; each row represents multiple observations from the same participant, i.e. each row shows responses to multiple questions and there are the same number of rows as there are participants (66) - `wide format`. Remember we want the data in tidy format as described above.
     
@@ -172,7 +172,7 @@ aq_scores <- rscores %>%
 ```
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 Each participant could be grouped by their Id.
 
@@ -190,7 +190,7 @@ You now have a complete code to load in your data, convert it to Tidy, combine t
 Go back through your code and try to rewrite it using pipes `%>%` so that it is as efficient as possible. 
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 At any point where the first argument of your function is the name of a variable created before that line, there is a good chance you could have used a pipe! Here are all the bits of this code that could be piped together into one chain:
 
@@ -220,7 +220,7 @@ Below you will find the solutions to the above questions. Only look at them afte
 ### Activity 2 {#dw3-a2sol}
 
 
-<div class='solution'><button>Solution Activity 2</button>
+<div class='webex-solution'><button>Solution Activity 2</button>
 
 
 ```r
@@ -238,7 +238,7 @@ pinfo <- read_csv("pinfo.csv")
 ### Activity 5 {#dw3-a5sol}
 
 
-<div class='solution'><button>Solution Task 5</button>
+<div class='webex-solution'><button>Solution Task 5</button>
 
 
 ```r
@@ -253,7 +253,7 @@ rlong2 <- inner_join(x = rlong, y = qformats, by = "Question")
 ### Activity 7 {#dw3-a7sol}
 
 
-<div class='solution'><button>Solution Task 7</button>
+<div class='webex-solution'><button>Solution Task 7</button>
 
 
 ```r
@@ -270,7 +270,7 @@ aq_scores <- rscores %>%
 ### Activity 8 {#dw3-a8sol}
 
 
-<div class='solution'><button>Solution Activity 8</button>
+<div class='webex-solution'><button>Solution Activity 8</button>
 
 
 ```r
@@ -295,16 +295,16 @@ aq_scores2 <- responses %>%
 
 ## Test yourself {#dw3-test}
 
-* Complete the sentence, the higher the AQ score...<select class='solveme' data-answer='["the more autistic-like traits displayed"]'> <option></option> <option>the less autistic-like traits displayed</option> <option>has no relation to autistic-like traits</option> <option>the more autistic-like traits displayed</option></select>  
+* Complete the sentence, the higher the AQ score...<select class='webex-select'><option value='blank'></option><option value=''>the less autistic-like traits displayed</option><option value=''>has no relation to autistic-like traits</option><option value='answer'>the more autistic-like traits displayed</option></select>  
 
-* Type in the AQ score (just the number) of Participant ID No. 87: <input class='solveme nospaces' size='10' data-answer='["2"]'/>  
+* Type in the AQ score (just the number) of Participant ID No. 87: <input class='webex-solveme nospaces' size='10' data-answer='["2"]'/>  
 
-* Type how many participants had an AQ score of 3 (again just the number): <input class='solveme nospaces' size='10' data-answer='["13"]'/>  
+* Type how many participants had an AQ score of 3 (again just the number): <input class='webex-solveme nospaces' size='10' data-answer='["13"]'/>  
 
-* The cut-off for the AQ10 is usually said to be around 6 meaning that anyone with a score of more than 6 should be referred for diagnostic assessment. Type in how many participants we should refer from our sample: <input class='solveme nospaces' size='10' data-answer='["6"]'/>  
+* The cut-off for the AQ10 is usually said to be around 6 meaning that anyone with a score of more than 6 should be referred for diagnostic assessment. Type in how many participants we should refer from our sample: <input class='webex-solveme nospaces' size='10' data-answer='["6"]'/>  
 
 
-<div class='solution'><button>Explain these answers</button>
+<div class='webex-solution'><button>Explain these answers</button>
 
 
 1. As mentioned, the higher the score on the AQ10 the more autistic-like traits a participant is said to show.

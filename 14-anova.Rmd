@@ -324,7 +324,7 @@ Below this line you will find the solutions to the above tasks. Only look at the
 
 #### Activity 1 {#anova-1sol}
 
-<div class="solution"><button>Activity 1</button>
+<div class="webex-solution"><button>Activity 1</button>
 ```{r a1, eval=FALSE}
 library("pwr")
 library("lsr")
@@ -344,7 +344,7 @@ dat <- read_csv("James Holmes_Expt 2_DATA.csv")%>%
 
 #### Activity 2 {#anova-a2sol}
 
-<div class="solution"><button>Activity 2</button>
+<div class="webex-solution"><button>Activity 2</button>
 ```{r a2,eval=FALSE}
 dat2 <- dat%>%
   select(subject,Condition,Days_One_to_Seven_Image_Based_Intrusions_in_Intrusion_Diary)%>%
@@ -358,7 +358,7 @@ dat2 <- dat%>%
 
 #### Activity 4 {#anova-a4sol}
 
-<div class="solution"><button>Activity 4</button>
+<div class="webex-solution"><button>Activity 4</button>
 ```{r a4, eval=FALSE}
 
 sum_dat<-dat2%>%
@@ -374,7 +374,7 @@ sum_dat<-dat2%>%
 
 #### Activity 5 {#anova-a5sol}
 
-<div class="solution"><button>Activity 5</button>
+<div class="webex-solution"><button>Activity 5</button>
 ```{r a5, eval=FALSE}
 ggplot(dat2, aes(x = Condition, y = intrusions))+
   geom_violin(trim = FALSE)+

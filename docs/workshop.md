@@ -34,6 +34,25 @@ library("car")
 ```r
 library("correlation")
 library("report")
+```
+
+```
+## Registered S3 methods overwritten by 'parameters':
+##   method                           from      
+##   as.double.parameters_kurtosis    datawizard
+##   as.double.parameters_skewness    datawizard
+##   as.double.parameters_smoothness  datawizard
+##   as.numeric.parameters_kurtosis   datawizard
+##   as.numeric.parameters_skewness   datawizard
+##   as.numeric.parameters_smoothness datawizard
+##   print.parameters_distribution    datawizard
+##   print.parameters_kurtosis        datawizard
+##   print.parameters_skewness        datawizard
+##   summary.parameters_kurtosis      datawizard
+##   summary.parameters_skewness      datawizard
+```
+
+```r
 library("psych")
 ```
 
@@ -61,7 +80,7 @@ mh <- read_csv("MillerHadenData.csv")
 
 ```
 ## 
-## -- Column specification --------------------------------------------------------
+## ── Column specification ────────────────────────────────────────────────────────
 ## cols(
 ##   Participant = col_double(),
 ##   Abil = col_double(),

@@ -1,21 +1,27 @@
-bookdown::gitbook: 
-  default: true
-  smart: false
+bookdown::gitbook:
+  default: yes
+  md_extensions: -smart
   includes:
-    after_body: [include/footer.html, include/webex.js]
-  css: [include/psyteachr.css, include/style.css]
+    after_body:
+    - include/footer.html
+    - include/webex.js
+  css:
+  - include/psyteachr.css
+  - include/style.css
+  - include/webex.css
   config:
     toc:
       collapse: section
       scroll_highlight: yes
       before: |
         <li><a href="./">MSc Conversion in Psychological Studies/Science (face-to-face)</a></li>
+        <li><a href="https://psyteachr.github.io/quant-fun/" style="color: red;">Access the most up-to-date version</a></li>
       after: |
-        <li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
-            target="blank"><img alt="Creative Commons License" 
-            style="border-width:0" 
-            src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><li>
-        <li><a href="https://psyteachr.github.io/" target="blank">PsyTeachR</a></li>
+        <li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"
+               target="_blank"><img alt="Creative Commons License"
+               style="border-width:0"
+               src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><li>
+        <li><a href="https://psyteachr.github.io/" target="_blank">PsyTeachR</a></li>
     download: []
     fontsettings:
       theme: white
@@ -29,7 +35,13 @@ bookdown::gitbook:
       weibo: no
       instapaper: no
       vk: no
-      all: ['facebook', 'google', 'twitter', 'linkedin', 'weibo', 'instapaper']
+      all:
+      - facebook
+      - google
+      - twitter
+      - linkedin
+      - weibo
+      - instapaper
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

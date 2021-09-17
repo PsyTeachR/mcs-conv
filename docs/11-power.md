@@ -54,7 +54,7 @@ Do the following.
 * You run a one-sample t-test and discover a significant effect, t(25) = 3.24, p < .05. Using the above formulas, calculate `d` and determine whether the effect size is small, medium or large.
 
 
-<div class='solution'><button>Helpful hint</button>
+<div class='webex-solution'><button>Helpful hint</button>
 
 
     
@@ -69,17 +69,17 @@ Do the following.
 
 Answering the following questions to check your answers. The solutions are at the bottom if you need them:
 
-* Enter, in digits, how many people were run in this study: <input class='solveme nospaces' size='2' data-answer='["26"]'/>
-* Which of these codes is the appropriate calculation of `d` in this instance:<select class='solveme' data-answer='["d = t/sqrt(N)"]'> <option></option> <option>d = t/sqrt(N)</option> <option>d = 2t/sqrt(df)</option></select>
-* Enter the correct value of `d` for this analysis rounded to 2 decimal places: <input class='solveme nospaces' size='4' data-answer='["0.64",".64"]'/>
-* According to Cohen (1988), the effect size for this t-test would probably be considered: <select class='solveme' data-answer='["medium"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>  
+* Enter, in digits, how many people were run in this study: <input class='webex-solveme nospaces' size='2' data-answer='["26"]'/>
+* Which of these codes is the appropriate calculation of `d` in this instance:<select class='webex-select'><option value='blank'></option><option value='answer'>d = t/sqrt(N)</option><option value=''>d = 2t/sqrt(df)</option></select>
+* Enter the correct value of `d` for this analysis rounded to 2 decimal places: <input class='webex-solveme nospaces' size='4' data-answer='["0.64",".64"]'/>
+* According to Cohen (1988), the effect size for this t-test would probably be considered: <select class='webex-select'><option value='blank'></option><option value=''>small</option><option value='answer'>medium</option><option value=''>large</option></select>  
 
 ## Activity 3: Effect size from between-subjects t-test {#power-a3}
 
 * You run a between-subjects t-test and discover a significant effect, t(30) = 2.9, p < .05. Calculate `d` and determine whether the effect size is small, medium or large.
 
 
-<div class='solution'><button>Helpful hint</button>
+<div class='webex-solution'><button>Helpful hint</button>
 
 
     
@@ -93,10 +93,10 @@ Answering the following questions to check your answers. The solutions are at th
 
 Answer the following questions to check your answers. The solutions are at the bottom if you need them:
 
-* Enter, in digits, how many people were run in this study: <input class='solveme nospaces' size='2' data-answer='["32"]'/>
-* Which of these codes is the appropriate calculation of `d` in this instance:<select class='solveme' data-answer='["d = 2t/sqrt(df)"]'> <option></option> <option>d = t/sqrt(N)</option> <option>d = 2t/sqrt(df)</option></select>
-* Enter the correct value of `d` for this analysis rounded to 2 decimal places:  <input class='solveme nospaces' size='4' data-answer='["1.06"]'/>
-* According to Cohen (1988), the effect size for this t-test would probably be considered: <select class='solveme' data-answer='["large"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>
+* Enter, in digits, how many people were run in this study: <input class='webex-solveme nospaces' size='2' data-answer='["32"]'/>
+* Which of these codes is the appropriate calculation of `d` in this instance:<select class='webex-select'><option value='blank'></option><option value=''>d = t/sqrt(N)</option><option value='answer'>d = 2t/sqrt(df)</option></select>
+* Enter the correct value of `d` for this analysis rounded to 2 decimal places:  <input class='webex-solveme nospaces' size='4' data-answer='["1.06"]'/>
+* According to Cohen (1988), the effect size for this t-test would probably be considered: <select class='webex-select'><option value='blank'></option><option value=''>small</option><option value=''>medium</option><option value='answer'>large</option></select>
 
 
 ## Activity 4: t-value and effect size for a between-subjects Experiment {#power-a4}
@@ -104,7 +104,7 @@ Answer the following questions to check your answers. The solutions are at the b
 * You run a between-subjects design study and the descriptives tell you: **Group 1**, M = 10, SD = 1.3, n = 30; **Group 2**, M = 11, SD = 1.7, n = 30. Calculate `t` and `d` for this between-subjects experiment.
 
 
-<div class='solution'><button>Helpful hint</button>
+<div class='webex-solution'><button>Helpful hint</button>
 
 
     
@@ -123,15 +123,15 @@ Answer the following questions to check your answers. The solutions are at the b
 
 Answer the following questions to check your answers. The solutions are at the bottom if you need them:
 
-* Enter the correct `t-value` for this test, rounded to two decimal places: <input class='solveme nospaces' size='5' data-answer='["2.56","-2.56"]'/>
+* Enter the correct `t-value` for this test, rounded to two decimal places: <input class='webex-solveme nospaces' size='5' data-answer='["2.56","-2.56"]'/>
 
-* Which of these codes is the appropriate calculation of `d` in this instance:<select class='solveme' data-answer='["d = 2t/sqrt(df)"]'> <option></option> <option>d = t/sqrt(N)</option> <option>d = 2t/sqrt(df)</option></select>
-* Based on the above t-value above, enter the correct value of `d` for this analysis rounded to 2 decimal places: <input class='solveme nospaces' size='4' data-answer='[".67","0.67"]'/>
-* According to Cohen (1988), the effect size for this t-test would probably be described as: <select class='solveme' data-answer='["medium"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>
+* Which of these codes is the appropriate calculation of `d` in this instance:<select class='webex-select'><option value='blank'></option><option value=''>d = t/sqrt(N)</option><option value='answer'>d = 2t/sqrt(df)</option></select>
+* Based on the above t-value above, enter the correct value of `d` for this analysis rounded to 2 decimal places: <input class='webex-solveme nospaces' size='4' data-answer='[".67","0.67"]'/>
+* According to Cohen (1988), the effect size for this t-test would probably be described as: <select class='webex-select'><option value='blank'></option><option value=''>small</option><option value='answer'>medium</option><option value=''>large</option></select>
 
 We've asked you to calculate Cohen's D by hand above to reinforce your understanding of what `d` actually means, however, if you were conducting a t-test in R, chances are that you would get R is calculate this for you.
 
-* Think back to the t-test chapter. What is the name of the function for calculating Cohen's D? <input class='solveme nospaces' size='7' data-answer='["cohensD"]'/>. What package does this come from? <input class='solveme nospaces' size='3' data-answer='["lsr"]'/>
+* Think back to the t-test chapter. What is the name of the function for calculating Cohen's D? <input class='webex-solveme nospaces' size='7' data-answer='["cohensD"]'/>. What package does this come from? <input class='webex-solveme nospaces' size='3' data-answer='["lsr"]'/>
 
 **Excellent!** Now that you are comfortable with calculating effect sizes, we will look at using them to establish appropriate sample sizes for a given power. Remember, in analysis, in nearly all occasions we should set the effect size as the minimum effect size we are interested. This can be determined through discussion, through previous studies, through pilots studies, or through rules of thumb like Cohen (1988). However, also keep in mind that the lower the effect size, the larger the sample size you will need. Everything is a trade-off.
 
@@ -191,7 +191,7 @@ pwr.t.test(d = .4,
 Using a pipeline, store the answer as a single, rounded value called `sample_size_t` (i.e. use `tidy() %>% pull() %>% ceiling()`).
 
 
-<div class='solution'><button>Helpful hint</button>
+<div class='webex-solution'><button>Helpful hint</button>
 
 
 * Use the list of inputs above as a kind of check-list to clearly determine which inputs are known or unknown. This can help you enter the appropriate values to your code.
@@ -203,7 +203,7 @@ Using a pipeline, store the answer as a single, rounded value called `sample_siz
 
 Answer the following question to check your answers. The solutions are at the bottom if you need them:
 
-* Enter the minimum number of participants you would need in this one-sample t-test: <input class='solveme nospaces' size='3' data-answer='["151"]'/>
+* Enter the minimum number of participants you would need in this one-sample t-test: <input class='webex-solveme nospaces' size='3' data-answer='["151"]'/>
 
 ## P&E Activity 7: Effect size from a high power between-subjects t-test
 
@@ -211,10 +211,10 @@ Answer the following question to check your answers. The solutions are at the bo
 
 Answer the following questions to check your answers. The solutions are at the bottom if you need them:
 
-* Based on the information given, what will you set `type` as in the function? <select class='solveme' data-answer='["two.sample"]'> <option></option> <option>one.sample</option> <option>two.sample</option></select>
-* Based on the output, enter the minimum effect size you can reliably detect in this test, rounded to two decimal places: <input class='solveme nospaces' size='4' data-answer='[".65","0.65"]'/>
-* According to Cohen (1988), the effect size for this t-test is <select class='solveme' data-answer='["medium"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>
-* Say you run the study and find that the effect size determined is d = .50. Given what you know about power, select the statement that is true: <select class='solveme' data-answer='["the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .65"]'> <option></option> <option>the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than d = .65</option> <option>the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .65</option></select>
+* Based on the information given, what will you set `type` as in the function? <select class='webex-select'><option value='blank'></option><option value=''>one.sample</option><option value='answer'>two.sample</option></select>
+* Based on the output, enter the minimum effect size you can reliably detect in this test, rounded to two decimal places: <input class='webex-solveme nospaces' size='4' data-answer='[".65","0.65"]'/>
+* According to Cohen (1988), the effect size for this t-test is <select class='webex-select'><option value='blank'></option><option value=''>small</option><option value='answer'>medium</option><option value=''>large</option></select>
+* Say you run the study and find that the effect size determined is d = .50. Given what you know about power, select the statement that is true: <select class='webex-select'><option value='blank'></option><option value=''>the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than d = .65</option><option value='answer'>the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .65</option></select>
 
 ## Activity 8: Sample size for a correlation {#power-a8}
 
@@ -230,7 +230,7 @@ Now, we're going to do the same thing but for a correlation analysis using `pwr.
 
 Using a pipeline, store the answer as a single, rounded value called `sample_size_r` (i.e. use `tidy() %>% pull() %>% ceiling()`).
 
-* Enter the minimum number of participants you would need in this correlation: <input class='solveme nospaces' size='2' data-answer='["46"]'/>
+* Enter the minimum number of participants you would need in this correlation: <input class='webex-solveme nospaces' size='2' data-answer='["46"]'/>
 
 ## Activity 9: Effect size for a correlation analysis {#power-a9}
 
@@ -238,10 +238,10 @@ Using a pipeline, store the answer as a single, rounded value called `sample_siz
 
 Answer the following questions to check your answers. The solutions are at the bottom if you need them:
 
-* Based on the information given, what will you set `alternative` as in the function? <select class='solveme' data-answer='["greater"]'> <option></option> <option>two.sided</option> <option>greater</option> <option>less</option></select>
-* Based on the output, enter the minimum effect size you can reliably detect in this test, rounded to two decimal places: <input class='solveme nospaces' size='4' data-answer='[".34","0.34"]'/>
-* According to Cohen (1988), the effect size for this correlation is <select class='solveme' data-answer='["medium"]'> <option></option> <option>small</option> <option>medium</option> <option>large</option></select>
-* Say you run the study and find that the effect size determined is d = .24. Given what you know about power, select the statement that is true: <select class='solveme' data-answer='["the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .34"]'> <option></option> <option>the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than d = .24</option> <option>the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .34</option></select>
+* Based on the information given, what will you set `alternative` as in the function? <select class='webex-select'><option value='blank'></option><option value=''>two.sided</option><option value='answer'>greater</option><option value=''>less</option></select>
+* Based on the output, enter the minimum effect size you can reliably detect in this test, rounded to two decimal places: <input class='webex-solveme nospaces' size='4' data-answer='[".34","0.34"]'/>
+* According to Cohen (1988), the effect size for this correlation is <select class='webex-select'><option value='blank'></option><option value=''>small</option><option value='answer'>medium</option><option value=''>large</option></select>
+* Say you run the study and find that the effect size determined is d = .24. Given what you know about power, select the statement that is true: <select class='webex-select'><option value='blank'></option><option value=''>the study is sufficiently powered as the analysis indicates you can detect only effect sizes smaller than d = .24</option><option value='answer'>the study is underpowered as the analysis indicates you can detect only effect sizes larger than d = .34</option></select>
 
 ## Activity 10: Power of published research {#power-a10}
 
@@ -251,7 +251,7 @@ Thus far we have used hypothetical situations - now go look at the paper on the 
 2. paired t-test: t(31) = 2.42, p = .022, d= 0.43
 
 
-<div class='solution'><button>Helpful hint</button>
+<div class='webex-solution'><button>Helpful hint</button>
 
 
     
@@ -285,7 +285,7 @@ Below you will find possible solutions to the above tasks. But first, be sure to
 ### Activity 1 {#power-a1sol}
 
 
-<div class='solution'><button>Activity 1</button>
+<div class='webex-solution'><button>Activity 1</button>
 
 
 ```r
@@ -302,7 +302,7 @@ Click on the tab to reveal the solution
 ### Activity 2 {#power-a2sol}
 
 
-<div class='solution'><button>Activity 2</button>
+<div class='webex-solution'><button>Activity 2</button>
 
 
 ```r
@@ -319,7 +319,7 @@ Click on the tab to reveal the solution
 ### Activity 3 {#power-a3sol}
 
 
-<div class='solution'><button>Activity 3</button>
+<div class='webex-solution'><button>Activity 3</button>
 
 
 ```r
@@ -335,7 +335,7 @@ Click on the tab to reveal the solution
 
 ### Activity 4 {#power-a4sol}
 
-<div class='solution'><button>Activity 4</button>
+<div class='webex-solution'><button>Activity 4</button>
 
 
 ```r
@@ -356,7 +356,7 @@ Click on the tab to reveal the solution
 
 ### Activity 6 {#power-a6sol}
 
-<div class='solution'><button>Activity 6</button>
+<div class='webex-solution'><button>Activity 6</button>
 
 
 ```r
@@ -378,7 +378,7 @@ Click on the tab to reveal the solution
 
 ### Activity 7 {#power-a7sol}
 
-<div class='solution'><button>Activity 7</button>
+<div class='webex-solution'><button>Activity 7</button>
 
 
 ```r
@@ -407,7 +407,7 @@ Click on the tab to reveal the solution
 
 ### Activity 8 {#power-a8sol}
 
-<div class='solution'><button>Activity 8</button>
+<div class='webex-solution'><button>Activity 8</button>
 
 
 ```r
@@ -426,7 +426,7 @@ Click on the tab to reveal the solution
 
 ### Activity 9 {#power-a9sol}
 
-<div class='solution'><button>Activity 9</button>
+<div class='webex-solution'><button>Activity 9</button>
 
 
 ```r
@@ -452,7 +452,7 @@ Click on the tab to reveal the solution
 ### Activity 10 {#power-a10sol}
 
 
-<div class='solution'><button>Activity 11</button>
+<div class='webex-solution'><button>Activity 11</button>
 
 
 ```r

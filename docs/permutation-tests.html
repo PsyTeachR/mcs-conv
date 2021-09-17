@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>G Permutation tests | Untitled</title>
+  <title>G Permutation tests | MSc Conversion in Psychological Studies</title>
   <meta name="description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="G Permutation tests | Untitled" />
+  <meta property="og:title" content="G Permutation tests | MSc Conversion in Psychological Studies" />
   <meta property="og:type" content="book" />
   
   
@@ -16,14 +16,14 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="G Permutation tests | Untitled" />
+  <meta name="twitter:title" content="G Permutation tests | MSc Conversion in Psychological Studies" />
   
   <meta name="twitter:description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
   
 
-<meta name="author" content="Nordmann" />
 
 
+<meta name="date" content="2021-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,8 +32,8 @@
   
 <link rel="prev" href="data-transformation.html"/>
 <link rel="next" href="non-parametric-tests.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10.6/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -117,8 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="include/psyteachr.css" type="text/css" />
 <link rel="stylesheet" href="include/style.css" type="text/css" />
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
 </head>
 
 <body>
@@ -132,6 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li><a href="./">MSc Conversion in Psychological Studies/Science (face-to-face)</a></li>
+<li><a href="https://psyteachr.github.io/quant-fun/" style="color: red;">Access the most up-to-date version</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
@@ -147,7 +152,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.2" data-path="programming-basics.html"><a href="programming-basics.html#installing-r-on-your-computer"><i class="fa fa-check"></i><b>1.1.2</b> Installing R on your computer</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="programming-basics.html"><a href="programming-basics.html#getting-to-know-r-studio"><i class="fa fa-check"></i><b>1.2</b> Getting to know R Studio</a></li>
-<li class="chapter" data-level="1.3" data-path="programming-basics.html"><a href="programming-basics.html#console-vs.-scripts"><i class="fa fa-check"></i><b>1.3</b> Console vs. scripts</a></li>
+<li class="chapter" data-level="1.3" data-path="programming-basics.html"><a href="programming-basics.html#console-vs.-scripts"><i class="fa fa-check"></i><b>1.3</b> Console vs. scripts</a></li>
 <li class="chapter" data-level="1.4" data-path="programming-basics.html"><a href="programming-basics.html#functions-and-arguments"><i class="fa fa-check"></i><b>1.4</b> Functions and arguments</a></li>
 <li class="chapter" data-level="1.5" data-path="programming-basics.html"><a href="programming-basics.html#activity-1"><i class="fa fa-check"></i><b>1.5</b> Activity 1</a></li>
 <li class="chapter" data-level="1.6" data-path="programming-basics.html"><a href="programming-basics.html#activity-2"><i class="fa fa-check"></i><b>1.6</b> Activity 2</a></li>
@@ -192,7 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="loading-data.html"><a href="loading-data.html#ld-a2"><i class="fa fa-check"></i><b>3.3</b> Activity 2: Load in the package</a></li>
 <li class="chapter" data-level="3.4" data-path="loading-data.html"><a href="loading-data.html#open-data"><i class="fa fa-check"></i><b>3.4</b> Open data</a></li>
 <li class="chapter" data-level="3.5" data-path="loading-data.html"><a href="loading-data.html#ld-a3"><i class="fa fa-check"></i><b>3.5</b> Activity 3: Read in data</a></li>
-<li class="chapter" data-level="3.6" data-path="loading-data.html"><a href="loading-data.html#ld-a4"><i class="fa fa-check"></i><b>3.6</b> Activity 4: Check yo’ data</a></li>
+<li class="chapter" data-level="3.6" data-path="loading-data.html"><a href="loading-data.html#ld-a4"><i class="fa fa-check"></i><b>3.6</b> Activity 4: Check yo' data</a></li>
 <li class="chapter" data-level="3.7" data-path="loading-data.html"><a href="loading-data.html#ld-a5"><i class="fa fa-check"></i><b>3.7</b> Activity 5: Join the files together</a></li>
 <li class="chapter" data-level="3.8" data-path="loading-data.html"><a href="loading-data.html#ld-a6"><i class="fa fa-check"></i><b>3.8</b> Activity 6: Pull out variables of interest</a>
 <ul>
@@ -573,7 +578,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="F" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>F</b> Data transformation</a></li>
 <li class="chapter" data-level="G" data-path="permutation-tests.html"><a href="permutation-tests.html"><i class="fa fa-check"></i><b>G</b> Permutation tests</a>
 <ul>
-<li class="chapter" data-level="G.0.1" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>G.0.1</b> Overview</a></li>
+<li class="chapter" data-level="G.0.1" data-path="permutation-tests.html"><a href="permutation-tests.html#overview-1"><i class="fa fa-check"></i><b>G.0.1</b> Overview</a></li>
 <li class="chapter" data-level="G.0.2" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-1-generating-random-numbers"><i class="fa fa-check"></i><b>G.0.2</b> Skill 1: Generating Random Numbers</a></li>
 <li class="chapter" data-level="G.0.3" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-2-permuting-values"><i class="fa fa-check"></i><b>G.0.3</b> Skill 2: Permuting Values</a></li>
 <li class="chapter" data-level="G.0.4" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-3-creating-tibbles"><i class="fa fa-check"></i><b>G.0.4</b> Skill 3: Creating Tibbles</a></li>
@@ -583,14 +588,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="G.0.8" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-4-computing-differences-in-group-means"><i class="fa fa-check"></i><b>G.0.8</b> Skill 4: Computing Differences in Group Means</a></li>
 <li class="chapter" data-level="G.0.9" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-5-creating-your-own-functions"><i class="fa fa-check"></i><b>G.0.9</b> Skill 5: Creating Your Own Functions</a></li>
 <li class="chapter" data-level="G.0.10" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-6-replicating-operations"><i class="fa fa-check"></i><b>G.0.10</b> Skill 6: Replicating Operations</a></li>
-<li class="chapter" data-level="G.0.11" data-path="intro-to-r.html"><a href="intro-to-r.html#finished"><i class="fa fa-check"></i><b>G.0.11</b> Finished!</a></li>
+<li class="chapter" data-level="G.0.11" data-path="permutation-tests.html"><a href="permutation-tests.html#finished-1"><i class="fa fa-check"></i><b>G.0.11</b> Finished!</a></li>
 <li class="chapter" data-level="G.0.12" data-path="permutation-tests.html"><a href="permutation-tests.html#permutation-tests-of-hypotheses"><i class="fa fa-check"></i><b>G.0.12</b> Permutation Tests of Hypotheses</a></li>
 <li class="chapter" data-level="G.0.13" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT1"><i class="fa fa-check"></i><b>G.0.13</b> Step 1: Load in Add-on Packages and Data</a></li>
 <li class="chapter" data-level="G.0.14" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT2"><i class="fa fa-check"></i><b>G.0.14</b> Step 2: Calculate the Original Mean Difference - <span class="math inline">\(D_{orig}\)</span></a></li>
 <li class="chapter" data-level="G.0.15" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT3"><i class="fa fa-check"></i><b>G.0.15</b> Step 3: Permute the Group Labels</a></li>
 <li class="chapter" data-level="G.0.16" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT4"><i class="fa fa-check"></i><b>G.0.16</b> Step 4: Create the Null-Hypothesis Distribution (NHD) for the Difference</a></li>
 <li class="chapter" data-level="G.0.17" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT5"><i class="fa fa-check"></i><b>G.0.17</b> Step 5: Compare the Observed Mean Difference to the NHD</a></li>
-<li class="chapter" data-level="G.0.18" data-path="permutation-tests.html"><a href="permutation-tests.html#finished-1"><i class="fa fa-check"></i><b>G.0.18</b> Finished!</a></li>
+<li class="chapter" data-level="G.0.18" data-path="permutation-tests.html"><a href="permutation-tests.html#finished-2"><i class="fa fa-check"></i><b>G.0.18</b> Finished!</a></li>
 </ul></li>
 <li class="chapter" data-level="H" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html"><i class="fa fa-check"></i><b>H</b> Non-parametric tests</a></li>
 <li class="chapter" data-level="I" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html"><i class="fa fa-check"></i><b>I</b> Dissertation analysis guide</a>
@@ -615,19 +620,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="I.0.18" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#log-transformation"><i class="fa fa-check"></i><b>I.0.18</b> Log transformation</a></li>
 <li class="chapter" data-level="I.0.19" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#square-root"><i class="fa fa-check"></i><b>I.0.19</b> Square root</a></li>
 <li class="chapter" data-level="I.0.20" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#calculating-new-variables"><i class="fa fa-check"></i><b>I.0.20</b> Calculating new variables</a></li>
-<li class="chapter" data-level="I.0.21" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#tidy-data"><i class="fa fa-check"></i><b>I.0.21</b> Tidy data</a></li>
+<li class="chapter" data-level="I.0.21" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#tidy-data-1"><i class="fa fa-check"></i><b>I.0.21</b> Tidy data</a></li>
 <li class="chapter" data-level="I.0.22" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#summarising-and-visualising-data"><i class="fa fa-check"></i><b>I.0.22</b> Summarising and visualising data</a></li>
 <li class="chapter" data-level="I.0.23" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#descriptive-statistics"><i class="fa fa-check"></i><b>I.0.23</b> Descriptive statistics</a></li>
-<li class="chapter" data-level="I.0.24" data-path="intro-to-data-viz.html"><a href="intro-to-data-viz.html#data-visualisation"><i class="fa fa-check"></i><b>I.0.24</b> Data visualisation</a></li>
+<li class="chapter" data-level="I.0.24" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#data-visualisation-1"><i class="fa fa-check"></i><b>I.0.24</b> Data visualisation</a></li>
 <li class="chapter" data-level="I.0.25" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#inferential-statistics"><i class="fa fa-check"></i><b>I.0.25</b> Inferential statistics</a></li>
 <li class="chapter" data-level="I.0.26" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#assumption-tests"><i class="fa fa-check"></i><b>I.0.26</b> Assumption tests</a></li>
 </ul></li>
 <li class="divider"></li>
-<li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
-    target="blank"><img alt="Creative Commons License" 
-    style="border-width:0" 
-    src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><li>
-<li><a href="https://psyteachr.github.io/" target="blank">PsyTeachR</a></li>
+<li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"
+       target="_blank"><img alt="Creative Commons License"
+       style="border-width:0"
+       src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><li>
+<li><a href="https://psyteachr.github.io/" target="_blank">PsyTeachR</a></li>
 
 </ul>
 
@@ -638,7 +643,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Untitled</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MSc Conversion in Psychological Studies</a>
           </h1>
         </div>
 
@@ -648,26 +653,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="permutation-tests" class="section level1" number="24">
 <h1><span class="header-section-number">G</span> Permutation tests</h1>
-<p>This section has been adapated from the Level 2 class on permutation tests written by Dr. Phil McAleer. The original <a href="https://psyteachr.github.io/ug2-practical/permutation-tests-a-skill-set.html">can be viewed here</a>.</p>
-<div id="overview" class="section level3" number="24.0.1">
+<p>This section has been adapated from the Level 2 class on permutation tests written by Dr. Phil McAleer. The original <a href="https://psyteachr.github.io/ug2-practical/permutation-tests-a-skill-set.html">can be viewed here</a>.</p>
+<div id="overview-1" class="section level3" number="24.0.1">
 <h3><span class="header-section-number">G.0.1</span> Overview</h3>
-<p>In this week’s lab you will perform your first hypothesis test using a procedure known as a <strong>permutation test</strong>. We will help you learn how to do this through building and running data simulation procedures. In order to complete this lab you will require the following skills which we will teach you today:</p>
+<p>In this week's lab you will perform your first hypothesis test using a procedure known as a <strong>permutation test</strong>. We will help you learn how to do this through building and running data simulation procedures. In order to complete this lab you will require the following skills which we will teach you today:</p>
 <ul>
 <li>Skill 1: Generating random numbers with <code>base::rnorm()</code></li>
 <li>Skill 2: Permuting values with <code>base::sample()</code><br />
 </li>
-<li>Skill 3: Creating a “tibble” (a type of data table) using <code>tibble::tibble()</code></li>
+<li>Skill 3: Creating a "tibble" (a type of data table) using <code>tibble::tibble()</code></li>
 <li>Skill 4: Computing and extracting a difference in group means using <code>dplyr::pull()</code> and <code>purrr::pluck()</code></li>
 <li>Skill 5: Creating your own custom functions using <code>base::function()</code></li>
 <li>Skill 6: Repeating operations using <code>base::replicate()</code></li>
 </ul>
-<p>To many, a lot of statistics must seem a bit like blind faith as it deals with estimating quantities we haven’t observed (or can’t observe), e.g. the mean of a whole population. As such we have to know if we can trust our procedures for making estimations and inferences because we rarely get a chance to compare the estimated values to the true values to see if they match up. One way to test a procedure, and in turn learn about statistics, is through data simulation. In simulations <strong>we create</strong> a population and then draw samples and run tests on the data, i.e. on this <strong>known</strong> population. By running lots of simulations we can test our procedures and make sure they are acting as we expect them to. This approach is known as a <strong>Monte Carlo simulation</strong>, named after the city famous for the many games of chance that are played there.</p>
+<p>To many, a lot of statistics must seem a bit like blind faith as it deals with estimating quantities we haven't observed (or can't observe), e.g. the mean of a whole population. As such we have to know if we can trust our procedures for making estimations and inferences because we rarely get a chance to compare the estimated values to the true values to see if they match up. One way to test a procedure, and in turn learn about statistics, is through data simulation. In simulations <strong>we create</strong> a population and then draw samples and run tests on the data, i.e. on this <strong>known</strong> population. By running lots of simulations we can test our procedures and make sure they are acting as we expect them to. This approach is known as a <strong>Monte Carlo simulation</strong>, named after the city famous for the many games of chance that are played there.</p>
 <div class="info">
 <p>
-You can go read up on the Monte Carlo approach if you like. It can however get quite indepth, as having a brief glance at the wikipedia entry on it highlights. The main thing to keep in mind is that the method involves creating a population and continually taking samples from that population in order to make an inference. This is what we will show you in the lab. Data simulation and “creating” your own datasets, to see how tests work, is a great way to understand statistics. When doing this lab, keep in mind how easy it really is to find a significant result if even randomly created data can give a significant result. This may help dispell any notion that there is something inherently important about a significant result, in itself.
+You can go read up on the Monte Carlo approach if you like. It can however get quite indepth, as having a brief glance at the wikipedia entry on it highlights. The main thing to keep in mind is that the method involves creating a population and continually taking samples from that population in order to make an inference. This is what we will show you in the lab. Data simulation and "creating" your own datasets, to see how tests work, is a great way to understand statistics. When doing this lab, keep in mind how easy it really is to find a significant result if even randomly created data can give a significant result. This may help dispell any notion that there is something inherently important about a significant result, in itself.
 </p>
 </div>
-<p>We will now take each skill in turn. Be sure to try them all out. It looks a lot of reading but it is mainly just showing you the output of the functions so you can see you are doing it correctly. The key thing is to try them yourselves and don’t be scared to change things to see what might happen if you do it slightly differently. We will also ask a couple of questions along the way to make sure you understand the skills.</p>
+<p>We will now take each skill in turn. Be sure to try them all out. It looks a lot of reading but it is mainly just showing you the output of the functions so you can see you are doing it correctly. The key thing is to try them yourselves and don't be scared to change things to see what might happen if you do it slightly differently. We will also ask a couple of questions along the way to make sure you understand the skills.</p>
 </div>
 <div id="skill-1-generating-random-numbers" class="section level3" number="24.0.2">
 <h3><span class="header-section-number">G.0.2</span> Skill 1: Generating Random Numbers</h3>
@@ -683,25 +688,25 @@ You can go read up on the Monte Carlo approach if you like. It can however get q
 </li>
 <li>Try increasing <code>n</code> to 1000.</li>
 </ul>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="permutation-tests.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>)</span></code></pre></div>
-<pre><code>##  [1] -0.20535887  0.64263205  1.07657877 -0.27223032  0.92141355 -0.51802048
-##  [7]  0.87276261  0.06354919  1.90279531  0.08977612</code></pre>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="permutation-tests.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1] -0.16074024 -1.67024058 -0.19268605  0.53060358  0.25946499 -0.09457521
+##  [7] -0.07597756  0.46770700 -0.57101577 -1.92582420</code></pre>
 <p><br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
-<p>If you enter <code>rnorm(50)</code> again you will get different numbers. Why? <select class='solveme' data-answer='["The numbers are random"]'> <option></option> <option>I have made a mistake</option> <option>The numbers are random</option> <option>R has made a mistake</option> <option>Phil has made a mistake</option></select></p>
+<p>If you enter <code>rnorm(50)</code> again you will get different numbers. Why? <select class='webex-select'><option value='blank'></option><option value=''>I have made a mistake</option><option value='answer'>The numbers are random</option><option value=''>R has made a mistake</option><option value=''>Phil has made a mistake</option></select></p>
 <p>If you want to change the mean or sd, you would need to pass additional arguments to the function as shown below.</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="permutation-tests.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> .<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="permutation-tests.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> .<span class="dv">5</span>)</span></code></pre></div>
 <ul>
 <li>Try changing the mean and sd values a couple of times and see what happens. You get different numbers again that will be around the mean you set! Set a mean of 10, then a mean of 100, to test this.</li>
 </ul>
-<p>Finally, for this Skill, you can concatenate (i.e. link) numbers together into a single vector using the <code>c()</code> function from base R. For instance, say you wanted to create a vector with two sets of 50 random numbers from two separate samples: one set of 50 with a mean of 75 and the other with a mean of 90, you would use:</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="permutation-tests.html#cb359-1" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">75</span>),</span>
-<span id="cb359-2"><a href="permutation-tests.html#cb359-2" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">90</span>))</span></code></pre></div>
+<p>Finally, for this Skill, you can concatenate (i.e. link) numbers together into a single vector using the <code>c()</code> function from base R. For instance, say you wanted to create a vector with two sets of 50 random numbers from two separate samples: one set of 50 with a mean of 75 and the other with a mean of 90, you would use:</p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="permutation-tests.html#cb358-1" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">75</span>),</span>
+<span id="cb358-2"><a href="permutation-tests.html#cb358-2" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">rnorm</span>(<span class="dv">50</span>, <span class="dv">90</span>))</span></code></pre></div>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
-<p>In the above example code, what is the standard deviation of the two samples you have created? <select class='solveme' data-answer='["1"]'> <option></option> <option>50</option> <option>75</option> <option>90</option> <option>1</option></select></p>
-<div class="solution">
+<p>In the above example code, what is the standard deviation of the two samples you have created? <select class='webex-select'><option value='blank'></option><option value=''>50</option><option value=''>75</option><option value=''>90</option><option value='answer'>1</option></select></p>
+<div class="webex-solution">
 <button>
-Explain This - I don’t get this answer!
+Explain This - I don't get this answer!
 </button>
 <div class="info">
 <p>
@@ -713,15 +718,15 @@ Both populations would have an sd of 1, because that is the default, although yo
 </div>
 </div>
 <p><br>
-It is always good to check that your new vector has the right number of data points in it - i.e. the total of the two samples; a sanity check if you will. The new vector <code>random_numbers</code> should have 100 elements. You could verify this using the <code>length()</code> function:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="permutation-tests.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(random_numbers)</span></code></pre></div>
+It is always good to check that your new vector has the right number of data points in it - i.e. the total of the two samples; a sanity check if you will. The new vector <code>random_numbers</code> should have 100 elements. You could verify this using the <code>length()</code> function:</p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="permutation-tests.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(random_numbers)</span></code></pre></div>
 <pre><code>## [1] 100</code></pre>
 <p><br></p>
 </div>
 <div id="skill-2-permuting-values" class="section level3" number="24.0.3">
 <h3><span class="header-section-number">G.0.3</span> Skill 2: Permuting Values</h3>
 <p>Another thing that is useful to be able to do is to generate <strong>permutations</strong> of values.</p>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Portfolio Point - What are Permutations?
 </button>
@@ -750,27 +755,27 @@ A <strong>permutation</strong> is just a different ordering of the same values. 
 </li>
 </ul>
 <p>
-The more values you have, the more permutations of the order you have. The number of permutations can be calculated by, for example, <code>3<em>2</em>1</code>, where 3 is the number of values you have. Or through code: <code>factorial(3) = 6</code>. This assumes that each value is used once in the sequence and that each value never changes, i.e. 1234 cannot suddenly become 1235.
+The more values you have, the more permutations of the order you have. The number of permutations can be calculated by, for example, <code>3<em>2</em>1</code>, where 3 is the number of values you have. Or through code: <code>factorial(3) = 6</code>. This assumes that each value is used once in the sequence and that each value never changes, i.e. 1234 cannot suddenly become 1235.
 </p>
 </div>
 </div>
-<p>We can create random permutations of a vector using the <code>sample()</code> function. Let’s use one of R’s built in vectors: <code>letters</code>.</p>
+<p>We can create random permutations of a vector using the <code>sample()</code> function. Let's use one of R's built in vectors: <code>letters</code>.</p>
 <ul>
 <li>Type <code>letters</code> into the console, as below, and press RETURN/ENTER. You will see it contains all the lowercase letters of the English alphabet. Now, I bet you are wondering what <code>LETTERS</code> does, right?</li>
 </ul>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="permutation-tests.html#cb362-1" aria-hidden="true" tabindex="-1"></a>letters</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="permutation-tests.html#cb361-1" aria-hidden="true" tabindex="-1"></a>letters</span></code></pre></div>
 <pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot;
 ## [20] &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
 <p>We can combine <code>base::sample()</code> with <code>letters</code> to put the letters into a random order:</p>
 <ul>
 <li>Run the below line. Run it again. And again. What do you notice? And why is our output different from yours? (The answer is below)</li>
 </ul>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="permutation-tests.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(letters)</span></code></pre></div>
-<pre><code>##  [1] &quot;i&quot; &quot;l&quot; &quot;n&quot; &quot;e&quot; &quot;v&quot; &quot;h&quot; &quot;k&quot; &quot;w&quot; &quot;u&quot; &quot;q&quot; &quot;t&quot; &quot;z&quot; &quot;r&quot; &quot;o&quot; &quot;c&quot; &quot;x&quot; &quot;a&quot; &quot;f&quot; &quot;s&quot;
-## [20] &quot;m&quot; &quot;p&quot; &quot;j&quot; &quot;y&quot; &quot;d&quot; &quot;g&quot; &quot;b&quot;</code></pre>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="permutation-tests.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(letters)</span></code></pre></div>
+<pre><code>##  [1] &quot;y&quot; &quot;f&quot; &quot;p&quot; &quot;z&quot; &quot;v&quot; &quot;o&quot; &quot;k&quot; &quot;b&quot; &quot;s&quot; &quot;x&quot; &quot;h&quot; &quot;u&quot; &quot;r&quot; &quot;j&quot; &quot;c&quot; &quot;d&quot; &quot;n&quot; &quot;w&quot; &quot;g&quot;
+## [20] &quot;l&quot; &quot;a&quot; &quot;m&quot; &quot;q&quot; &quot;i&quot; &quot;e&quot; &quot;t&quot;</code></pre>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
-<p>If <code>month.name</code> contains the names of the twelve months of the year, how many possible permutations are there of <code>sample(month.name)</code>? <select class='solveme' data-answer='["479001600"]'> <option></option> <option>1</option> <option>12</option> <option>144</option> <option>479001600</option></select></p>
-<div class="solution">
+<p>If <code>month.name</code> contains the names of the twelve months of the year, how many possible permutations are there of <code>sample(month.name)</code>? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value=''>12</option><option value=''>144</option><option value='answer'>479001600</option></select></p>
+<div class="webex-solution">
 <button>
 Portfolio Point - Different samples with sample()
 </button>
@@ -782,7 +787,7 @@ Each time you run <code>sample(letters)</code> it will give you another random p
 An interesting thing about <code>sample()</code> is that <code>sample(c(1,2,3,4))</code> is the same as <code>sample(4)</code>. And to recap, there would be 24 different permutations based on <code>factorial(4)</code>, meaning that each time you type <code>sample(4)</code> you are getting one of those 24 different orders. So what would factorial(12) be?
 </p>
 <p>
-Top Tip: Remember that you can scroll up through your command history in the console using the up arrow on your keyboard; this way, you don’t ever have to retype a command you’ve already entered.
+Top Tip: Remember that you can scroll up through your command history in the console using the up arrow on your keyboard; this way, you don't ever have to retype a command you've already entered.
 </p>
 </div>
 </div>
@@ -790,87 +795,87 @@ Top Tip: Remember that you can scroll up through your command history in the con
 </div>
 <div id="skill-3-creating-tibbles" class="section level3" number="24.0.4">
 <h3><span class="header-section-number">G.0.4</span> Skill 3: Creating Tibbles</h3>
-<p>Tables are important because most of the data we want to analyze comes in a table, i.e. tabular form. There are different ways to get tabular data into R for analysis. One common way is to load existing data in from a data file (for example, using <code>readr::read_csv()</code> which you have seen before). But other times you might want to just type in data directly. You can do this using the <code>tibble::tibble()</code> function. Being able to create a tibble is a useful data analysis skill because sometimes you will want to create some data on the fly just to try certain codes or functions.</p>
+<p>Tables are important because most of the data we want to analyze comes in a table, i.e. tabular form. There are different ways to get tabular data into R for analysis. One common way is to load existing data in from a data file (for example, using <code>readr::read_csv()</code> which you have seen before). But other times you might want to just type in data directly. You can do this using the <code>tibble::tibble()</code> function. Being able to create a tibble is a useful data analysis skill because sometimes you will want to create some data on the fly just to try certain codes or functions.</p>
 </div>
 <div id="entering-data-into-a-tibble" class="section level3" number="24.0.5">
 <h3><span class="header-section-number">G.0.5</span> Entering Data into a Tibble</h3>
-<p>The <code>tibble()</code> function takes named arguments - this means that the name you give each argument within the tibble function, e.g. <code>Y = rnorm(10)</code> will be the name of the column that appears in the table, i.e. <code>Y</code>. It’s best to see how it works through an example.</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="permutation-tests.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>))</span></code></pre></div>
+<p>The <code>tibble()</code> function takes named arguments - this means that the name you give each argument within the tibble function, e.g. <code>Y = rnorm(10)</code> will be the name of the column that appears in the table, i.e. <code>Y</code>. It's best to see how it works through an example.</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="permutation-tests.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 1
 ##          Y
 ##      &lt;dbl&gt;
-##  1  0.166 
-##  2 -0.0383
-##  3 -0.557 
-##  4 -1.84  
-##  5  0.664 
-##  6 -0.0124
-##  7  1.29  
-##  8  0.622 
-##  9  1.15  
-## 10  0.771</code></pre>
+##  1 -1.70  
+##  2  0.0396
+##  3  2.15  
+##  4 -0.982 
+##  5 -1.30  
+##  6 -1.52  
+##  7 -1.34  
+##  8  0.369 
+##  9 -0.324 
+## 10  0.632</code></pre>
 <p>The above command creates a new table with one column named <code>Y</code>, and the values in that column are the result of a call to <code>rnorm(10)</code>: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.</p>
 <p>If however we wanted to sample from two different populations for <code>Y</code>, we could combine two calls to <code>rnorm()</code> within the <code>c()</code> function. Again this was in Skill 1, here we are now just storing it in a tibble. See below:</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="permutation-tests.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">10</span>), </span>
-<span id="cb368-2"><a href="permutation-tests.html#cb368-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span>  <span class="dv">20</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="permutation-tests.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">10</span>), </span>
+<span id="cb367-2"><a href="permutation-tests.html#cb367-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span>  <span class="dv">20</span>)))</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 1
 ##         Y
 ##     &lt;dbl&gt;
-##  1 -11.5 
-##  2 -10.6 
-##  3  -9.71
-##  4 -10.3 
-##  5 -10.1 
-##  6  21.6 
-##  7  21.3 
-##  8  20.8 
-##  9  19.9 
-## 10  20.5</code></pre>
+##  1  -9.93
+##  2  -9.09
+##  3  -9.70
+##  4 -10.5 
+##  5 -10.3 
+##  6  20.3 
+##  7  19.9 
+##  8  18.9 
+##  9  21.2 
+## 10  19.9</code></pre>
 <p>Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!</p>
 <p>But, of course, it would be good to know which population each data point refers to and so we should add some group names. We can do this with some additional trickery using the <code>rep()</code> function.</p>
 </div>
 <div id="repeating-values-to-save-typing" class="section level3" number="24.0.6">
 <h3><span class="header-section-number">G.0.6</span> Repeating Values to Save Typing</h3>
-<p>Before finalising our table let’s learn a little about the base R function, <code>rep()</code>. This is most useful for automatically repeating values in order to save typing. For instance, if we wanted 20 letter “A”s in a row, we would type:</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="permutation-tests.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="dv">20</span>)</span></code></pre></div>
+<p>Before finalising our table let's learn a little about the base R function, <code>rep()</code>. This is most useful for automatically repeating values in order to save typing. For instance, if we wanted 20 letter "A"s in a row, we would type:</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="permutation-tests.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="st">&quot;A&quot;</span>, <span class="dv">20</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot;
 ## [20] &quot;A&quot;</code></pre>
 <p>The first argument to <code>rep()</code> is the vector containing the information you want repeated, <strong>A</strong>, and the second argument, <code>times</code>, is the number of times to repeat it; in this case <strong>20</strong>.</p>
-<p>If you wanted to add more information, e.g. if the first argument has more than one element, say “A” and “B,” it will repeat the entire vector that number of times; A B, A B, A B, … . Note that we enclose “A” and “B” in the <code>c()</code> function so that it is seen as a single argument.</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="permutation-tests.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="dv">20</span>)</span></code></pre></div>
+<p>If you wanted to add more information, e.g. if the first argument has more than one element, say "A" and "B", it will repeat the entire vector that number of times; A B, A B, A B, ... . Note that we enclose "A" and "B" in the <code>c()</code> function so that it is seen as a single argument.</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="permutation-tests.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="dv">20</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot;
 ## [20] &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot;
 ## [39] &quot;A&quot; &quot;B&quot;</code></pre>
 <p>But sometimes we want a specific number of As followed by a specific number of Bs; A A A B B B. If the <code>times</code> argument has the same number of elements as the vector given for the first argument, it will repeat each element of the first vector as many times as given by the corresponding element in the <code>times</code> vector. In other words, for example, <code>times = c(2, 4)</code> for vector <code>c("A", "B")</code> will give you 2 As followed by 4 Bs.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="permutation-tests.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="permutation-tests.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot;</code></pre>
 <p>The best way to learn about this function is to play around with it in the console and see what happens. From the dropdown menus, the correct output of the following function would be:</p>
 <ol style="list-style-type: decimal">
-<li><p><code>rep(c("A", "B", "C"),(2, 3, 1))</code> - <select class='solveme' data-answer='["A A B B B C"]'> <option></option> <option>A A A B B C</option> <option>A A B B B C</option> <option>A A B B C C</option> <option>A B C A B C</option></select></p></li>
-<li><p><code>rep(1:5, 5:1)</code> - <select class='solveme' data-answer='["1 1 1 1 1 2 2 2 2 3 3 3 4 4 5"]'> <option></option> <option>1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</option> <option>5 5 5 5 5 4 4 4 4 3 3 3 2 2 1</option> <option>1 1 1 1 1 2 2 2 2 3 3 3 4 4 5</option> <option>1 1 1 1 1 1 1 1 5 5 5 5 5 5 5</option></select></p></li>
+<li><p><code>rep(c("A", "B", "C"),(2, 3, 1))</code> - <select class='webex-select'><option value='blank'></option><option value=''>A A A B B C</option><option value='answer'>A A B B B C</option><option value=''>A A B B C C</option><option value=''>A B C A B C</option></select></p></li>
+<li><p><code>rep(1:5, 5:1)</code> - <select class='webex-select'><option value='blank'></option><option value=''>1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</option><option value=''>5 5 5 5 5 4 4 4 4 3 3 3 2 2 1</option><option value='answer'>1 1 1 1 1 2 2 2 2 3 3 3 4 4 5</option><option value=''>1 1 1 1 1 1 1 1 5 5 5 5 5 5 5</option></select></p></li>
 </ol>
 </div>
 <div id="bringing-it-together-in-a-tibble" class="section level3" number="24.0.7">
 <h3><span class="header-section-number">G.0.7</span> Bringing it Together in a Tibble</h3>
-<p>Now we know <code>rep()</code>, we can complete our table of simulated data by combining what we’ve learned about generating random numbers and repeating values. We want our table to look like this:</p>
+<p>Now we know <code>rep()</code>, we can complete our table of simulated data by combining what we've learned about generating random numbers and repeating values. We want our table to look like this:</p>
 <pre><code>## # A tibble: 10 x 2
 ##    group      Y
 ##    &lt;chr&gt;  &lt;dbl&gt;
-##  1 A      -8.12
-##  2 A     -10.3 
-##  3 A      -9.52
-##  4 A      -9.61
-##  5 A      -7.88
-##  6 B      19.4 
-##  7 B      20.2 
-##  8 B      20.7 
-##  9 B      19.2 
-## 10 B      21.0</code></pre>
+##  1 A     -11.5 
+##  2 A     -10.6 
+##  3 A     -10.7 
+##  4 A      -8.28
+##  5 A     -11.5 
+##  6 B      19.3 
+##  7 B      19.3 
+##  8 B      19.4 
+##  9 B      21.1 
+## 10 B      20.3</code></pre>
 <p>You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called <code>group</code> where we create <strong>A</strong>s and <strong>B</strong>s through <code>rep()</code>, and one column called <strong>Y</strong>, our data, all in our <code>tibble()</code>:</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="permutation-tests.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)),</span>
-<span id="cb377-2"><a href="permutation-tests.html#cb377-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">10</span>), <span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span>  <span class="dv">20</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="permutation-tests.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)),</span>
+<span id="cb376-2"><a href="permutation-tests.html#cb376-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">10</span>), <span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span>  <span class="dv">20</span>)))</span></code></pre></div>
 <p>Be sure to play around with the code chunk to get used to it. Try adding a third group or even a third column? Perhaps you want to give every participant a random age with a mean of 18, and a sd of 1; or even a participant number.</p>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Helpful Hint
 </button>
@@ -881,73 +886,73 @@ Try <code>row_number()</code> to create participant numbers.
 </div>
 </div>
 <p><br>
-Don’t forget, if you wanted to store your tibble, you would just assign it to a name, such as <code>my_data</code>:</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="permutation-tests.html#cb378-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">ID =</span> <span class="fu">row_number</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), </span>
-<span id="cb378-2"><a href="permutation-tests.html#cb378-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)),</span>
-<span id="cb378-3"><a href="permutation-tests.html#cb378-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">10</span>), <span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span>  <span class="dv">20</span>)),</span>
-<span id="cb378-4"><a href="permutation-tests.html#cb378-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Age =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">18</span>, <span class="dv">1</span>))</span></code></pre></div>
+Don't forget, if you wanted to store your tibble, you would just assign it to a name, such as <code>my_data</code>:</p>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="permutation-tests.html#cb377-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">ID =</span> <span class="fu">row_number</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>), </span>
+<span id="cb377-2"><a href="permutation-tests.html#cb377-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)),</span>
+<span id="cb377-3"><a href="permutation-tests.html#cb377-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">10</span>), <span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span>  <span class="dv">20</span>)),</span>
+<span id="cb377-4"><a href="permutation-tests.html#cb377-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Age =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="dv">18</span>, <span class="dv">1</span>))</span></code></pre></div>
 <p><br>
 <span style="font-size: 18px; font-weight: bold; color: var(--blue);">Skill 3 out of 6 Complete!</span></p>
 </div>
 <div id="skill-4-computing-differences-in-group-means" class="section level3" number="24.0.8">
 <h3><span class="header-section-number">G.0.8</span> Skill 4: Computing Differences in Group Means</h3>
 <p>You have already learned how to calculate group means using <code>group_by()</code> and <code>summarise()</code>. For example, you might want to calculate sample means for a randomly generated dataset like so:</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="permutation-tests.html#cb379-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>)),</span>
-<span id="cb379-2"><a href="permutation-tests.html#cb379-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>,  <span class="dv">20</span>, <span class="dv">5</span>), <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="sc">-</span><span class="dv">20</span>, <span class="dv">5</span>)))</span>
-<span id="cb379-3"><a href="permutation-tests.html#cb379-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb379-4"><a href="permutation-tests.html#cb379-4" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="ot">&lt;-</span> my_data <span class="sc">%&gt;%</span></span>
-<span id="cb379-5"><a href="permutation-tests.html#cb379-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
-<span id="cb379-6"><a href="permutation-tests.html#cb379-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(Y))</span>
-<span id="cb379-7"><a href="permutation-tests.html#cb379-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb379-8"><a href="permutation-tests.html#cb379-8" aria-hidden="true" tabindex="-1"></a>my_data_means</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="permutation-tests.html#cb378-1" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>)),</span>
+<span id="cb378-2"><a href="permutation-tests.html#cb378-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>,  <span class="dv">20</span>, <span class="dv">5</span>), <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="sc">-</span><span class="dv">20</span>, <span class="dv">5</span>)))</span>
+<span id="cb378-3"><a href="permutation-tests.html#cb378-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb378-4"><a href="permutation-tests.html#cb378-4" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="ot">&lt;-</span> my_data <span class="sc">%&gt;%</span></span>
+<span id="cb378-5"><a href="permutation-tests.html#cb378-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
+<span id="cb378-6"><a href="permutation-tests.html#cb378-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">m =</span> <span class="fu">mean</span>(Y))</span>
+<span id="cb378-7"><a href="permutation-tests.html#cb378-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb378-8"><a href="permutation-tests.html#cb378-8" aria-hidden="true" tabindex="-1"></a>my_data_means</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 2
 ##   group     m
 ##   &lt;chr&gt; &lt;dbl&gt;
-## 1 A      21.1
-## 2 B     -20.8</code></pre>
-<p>Sometimes what we want though is to calculate <strong>the differences between means</strong> rather than just the means; so we’d like to subtract the second group mean -20.8 from the first group mean of 21.1, to get a single value, the difference: 41.8.</p>
-<p>We can do this using the <code>dplyr::pull()</code> and <code>purrr::pluck()</code> functions. <code>pull()</code> will extract a single column from a dataframe and turn it into a vector. <code>pluck()</code> then allows you to pull out an element (i.e. a value or values) from within that vector.</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="permutation-tests.html#cb381-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> my_data_means <span class="sc">%&gt;%</span></span>
-<span id="cb381-2"><a href="permutation-tests.html#cb381-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(m)</span>
-<span id="cb381-3"><a href="permutation-tests.html#cb381-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-4"><a href="permutation-tests.html#cb381-4" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
-<pre><code>## [1]  21.07874 -20.75158</code></pre>
+## 1 A      19.5
+## 2 B     -22.0</code></pre>
+<p>Sometimes what we want though is to calculate <strong>the differences between means</strong> rather than just the means; so we'd like to subtract the second group mean -22 from the first group mean of 19.5, to get a single value, the difference: 41.6.</p>
+<p>We can do this using the <code>dplyr::pull()</code> and <code>purrr::pluck()</code> functions. <code>pull()</code> will extract a single column from a dataframe and turn it into a vector. <code>pluck()</code> then allows you to pull out an element (i.e. a value or values) from within that vector.</p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="permutation-tests.html#cb380-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> my_data_means <span class="sc">%&gt;%</span></span>
+<span id="cb380-2"><a href="permutation-tests.html#cb380-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(m)</span>
+<span id="cb380-3"><a href="permutation-tests.html#cb380-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb380-4"><a href="permutation-tests.html#cb380-4" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
+<pre><code>## [1]  19.52869 -22.04773</code></pre>
 <p>We have now created <code>vec</code> which is a vector containing only the group means; the rest of the information in the table has been discarded. Now that we have <code>vec</code>, we can calculate the mean difference as below, where <code>vec</code> is our vector of the two means and <code>[1]</code> and <code>[2]</code> refer to the two means:</p>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="permutation-tests.html#cb383-1" aria-hidden="true" tabindex="-1"></a>vec[<span class="dv">1</span>] <span class="sc">-</span> vec[<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] 41.83031</code></pre>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="permutation-tests.html#cb382-1" aria-hidden="true" tabindex="-1"></a>vec[<span class="dv">1</span>] <span class="sc">-</span> vec[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 41.57642</code></pre>
 <p>But <code>pluck()</code> is also useful, and can be written as so:</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="permutation-tests.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pluck</span>(vec, <span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pluck</span>(vec, <span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 41.83031</code></pre>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="permutation-tests.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pluck</span>(vec, <span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pluck</span>(vec, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 41.57642</code></pre>
 <p>It can also be incorporated into a pipeline as below where we still <code>pull()</code> the means column, <code>m</code>, and then <code>pluck()</code> each value in turn and subtract them from each other.</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="permutation-tests.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="do">## whole thing in a pipeline</span></span>
-<span id="cb387-2"><a href="permutation-tests.html#cb387-2" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="sc">%&gt;%</span> <span class="fu">pull</span>(m) <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">-</span></span>
-<span id="cb387-3"><a href="permutation-tests.html#cb387-3" aria-hidden="true" tabindex="-1"></a>  my_data_means <span class="sc">%&gt;%</span> <span class="fu">pull</span>(m) <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 41.83031</code></pre>
-<p>However, there is an alternative way to extract the difference between means which may make more intuitive sense. You already know how to calculate a difference between values in the same row of a table using <code>dplyr::mutate()</code>, e.g. <code>mutate(new_column = column1 minus column2)</code>. So if you can get the observations in <code>my_data_means</code> into the same row, different columns, you could then use <code>mutate()</code> to calculate the difference. Previously you learned <code>gather()</code> to bring columns together. Well the opposite of gather is the <code>tidyr::spread()</code> function to split columns apart - as below.</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="permutation-tests.html#cb389-1" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="sc">%&gt;%</span></span>
-<span id="cb389-2"><a href="permutation-tests.html#cb389-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(group, m)</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="permutation-tests.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="do">## whole thing in a pipeline</span></span>
+<span id="cb386-2"><a href="permutation-tests.html#cb386-2" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="sc">%&gt;%</span> <span class="fu">pull</span>(m) <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">-</span></span>
+<span id="cb386-3"><a href="permutation-tests.html#cb386-3" aria-hidden="true" tabindex="-1"></a>  my_data_means <span class="sc">%&gt;%</span> <span class="fu">pull</span>(m) <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 41.57642</code></pre>
+<p>However, there is an alternative way to extract the difference between means which may make more intuitive sense. You already know how to calculate a difference between values in the same row of a table using <code>dplyr::mutate()</code>, e.g. <code>mutate(new_column = column1 minus column2)</code>. So if you can get the observations in <code>my_data_means</code> into the same row, different columns, you could then use <code>mutate()</code> to calculate the difference. Previously you learned <code>gather()</code> to bring columns together. Well the opposite of gather is the <code>tidyr::spread()</code> function to split columns apart - as below.</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="permutation-tests.html#cb388-1" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="sc">%&gt;%</span></span>
+<span id="cb388-2"><a href="permutation-tests.html#cb388-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(group, m)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 2
 ##       A     B
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  21.1 -20.8</code></pre>
-<p>The spread function (<code>?spread</code>) splits the data in column <code>m</code> by the information, i.e. labels, in column <code>group</code> and puts the data into separate columns. A call to <code>spread()</code> followed by a <code>mutate()</code> can be used to calculate the difference in means - see below:</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="permutation-tests.html#cb391-1" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="sc">%&gt;%</span></span>
-<span id="cb391-2"><a href="permutation-tests.html#cb391-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(group, m) <span class="sc">%&gt;%</span></span>
-<span id="cb391-3"><a href="permutation-tests.html#cb391-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> A <span class="sc">-</span> B) </span></code></pre></div>
+## 1  19.5 -22.0</code></pre>
+<p>The spread function (<code>?spread</code>) splits the data in column <code>m</code> by the information, i.e. labels, in column <code>group</code> and puts the data into separate columns. A call to <code>spread()</code> followed by a <code>mutate()</code> can be used to calculate the difference in means - see below:</p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="permutation-tests.html#cb390-1" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="sc">%&gt;%</span></span>
+<span id="cb390-2"><a href="permutation-tests.html#cb390-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(group, m) <span class="sc">%&gt;%</span></span>
+<span id="cb390-3"><a href="permutation-tests.html#cb390-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> A <span class="sc">-</span> B) </span></code></pre></div>
 <pre><code>## # A tibble: 1 x 3
 ##       A     B  diff
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1  21.1 -20.8  41.8</code></pre>
+## 1  19.5 -22.0  41.6</code></pre>
 <ul>
-<li>What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select></li>
+<li>What is the name of the column containing the differences between the means of A and B? <select class='webex-select'><option value='blank'></option><option value=''>means</option><option value=''>group</option><option value=''>m</option><option value='answer'>diff</option></select></li>
 </ul>
 <p>Finally, if you then wanted to just get <code>diff</code> and throw away everything else in the table:</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="permutation-tests.html#cb393-1" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="sc">%&gt;%</span></span>
-<span id="cb393-2"><a href="permutation-tests.html#cb393-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(group, m) <span class="sc">%&gt;%</span></span>
-<span id="cb393-3"><a href="permutation-tests.html#cb393-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> A <span class="sc">-</span> B) <span class="sc">%&gt;%</span></span>
-<span id="cb393-4"><a href="permutation-tests.html#cb393-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(diff)</span></code></pre></div>
-<pre><code>## [1] 41.83031</code></pre>
-<div class="solution">
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="permutation-tests.html#cb392-1" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="sc">%&gt;%</span></span>
+<span id="cb392-2"><a href="permutation-tests.html#cb392-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(group, m) <span class="sc">%&gt;%</span></span>
+<span id="cb392-3"><a href="permutation-tests.html#cb392-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> A <span class="sc">-</span> B) <span class="sc">%&gt;%</span></span>
+<span id="cb392-4"><a href="permutation-tests.html#cb392-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(diff)</span></code></pre></div>
+<pre><code>## [1] 41.57642</code></pre>
+<div class="webex-solution">
 <button>
 Portfolio Point - Reading pipes and verbalising tasks
 </button>
@@ -964,75 +969,75 @@ Often step 1 of writing code or understanding code is knowing what it is you wan
 </div>
 <div id="skill-5-creating-your-own-functions" class="section level3" number="24.0.9">
 <h3><span class="header-section-number">G.0.9</span> Skill 5: Creating Your Own Functions</h3>
-<p>In Skills 1 to 4, we have looked at creating and sampling data, storing it in a tibble, and extracting information from that tibble. Now say we wanted to do this over and over again. For instance, we might want to generate 100 random datasets just like the one in Skill 4. It would be a pain to have to type out the <code>tibble()</code> function 100 times or even to copy and paste it 100 times. We’d likely make an error somewhere and it would be hard to read. To help us, we can create a custom function that performs the action you want; in our case, creating a tibble of random data.</p>
+<p>In Skills 1 to 4, we have looked at creating and sampling data, storing it in a tibble, and extracting information from that tibble. Now say we wanted to do this over and over again. For instance, we might want to generate 100 random datasets just like the one in Skill 4. It would be a pain to have to type out the <code>tibble()</code> function 100 times or even to copy and paste it 100 times. We'd likely make an error somewhere and it would be hard to read. To help us, we can create a custom function that performs the action you want; in our case, creating a tibble of random data.</p>
 <p>Remember, a function is just a procedure that takes an input and gives you the same output each time - like a toaster! A function has the following format:</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="permutation-tests.html#cb395-1" aria-hidden="true" tabindex="-1"></a>name_of_function <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2, arg3) {</span>
-<span id="cb395-2"><a href="permutation-tests.html#cb395-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## body of function goes between these curly brackets; i.e. what the function does for you.</span></span>
-<span id="cb395-3"><a href="permutation-tests.html#cb395-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Note that the last value calculated will be returned if you call the function.</span></span>
-<span id="cb395-4"><a href="permutation-tests.html#cb395-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>First you define your own function name (e.g. <code>name_of_function</code>) and define the names of the arguments it will take (<code>arg1</code>, <code>arg2</code>, …) - an argument is the information that you feed into your function, e.g. data. Finally, you state the calculations or actions of the function in the body of the function (the portion that appears between the curly braces).</p>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="permutation-tests.html#cb394-1" aria-hidden="true" tabindex="-1"></a>name_of_function <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1, arg2, arg3) {</span>
+<span id="cb394-2"><a href="permutation-tests.html#cb394-2" aria-hidden="true" tabindex="-1"></a>  <span class="do">## body of function goes between these curly brackets; i.e. what the function does for you.</span></span>
+<span id="cb394-3"><a href="permutation-tests.html#cb394-3" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Note that the last value calculated will be returned if you call the function.</span></span>
+<span id="cb394-4"><a href="permutation-tests.html#cb394-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>First you define your own function name (e.g. <code>name_of_function</code>) and define the names of the arguments it will take (<code>arg1</code>, <code>arg2</code>, ...) - an argument is the information that you feed into your function, e.g. data. Finally, you state the calculations or actions of the function in the body of the function (the portion that appears between the curly braces).</p>
 <p>One of the most basic possible functions is one that takes no arguments and just prints a message. Here is an example:</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="permutation-tests.html#cb396-1" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb396-2"><a href="permutation-tests.html#cb396-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello World!&quot;</span>)</span>
-<span id="cb396-3"><a href="permutation-tests.html#cb396-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="permutation-tests.html#cb395-1" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb395-2"><a href="permutation-tests.html#cb395-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello World!&quot;</span>)</span>
+<span id="cb395-3"><a href="permutation-tests.html#cb395-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>So this function is called <code>hello</code>. It can be run by typing <code>hello()</code> in your console and it will give the output of <code>Hello World!</code> every single time you run it; it has no other actions or information. Test this in the console now by typing:</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="permutation-tests.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="permutation-tests.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;Hello World!&quot;</code></pre>
-<p>Awesome right? Ok, so not very exciting. Let’s make it better by adding an argument, <code>name</code>, and have it say Hello to <code>name</code>.</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="permutation-tests.html#cb399-1" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="st">&quot;World!&quot;</span>) {</span>
-<span id="cb399-2"><a href="permutation-tests.html#cb399-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, name)</span>
-<span id="cb399-3"><a href="permutation-tests.html#cb399-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>This new function is again called <code>hello()</code> and replaces the one you previously created. This time however you are supplying what is called a default argument, `name = “World!” but it still has the same action as the previous function of putting “Hello” and “World!” together. So if you run it you get “Hello World!” Try it yourself!</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="permutation-tests.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>()</span></code></pre></div>
+<p>Awesome right? Ok, so not very exciting. Let's make it better by adding an argument, <code>name</code>, and have it say Hello to <code>name</code>.</p>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="permutation-tests.html#cb398-1" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="st">&quot;World!&quot;</span>) {</span>
+<span id="cb398-2"><a href="permutation-tests.html#cb398-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, name)</span>
+<span id="cb398-3"><a href="permutation-tests.html#cb398-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>This new function is again called <code>hello()</code> and replaces the one you previously created. This time however you are supplying what is called a default argument, `name = "World!", but it still has the same action as the previous function of putting "Hello" and "World!" together. So if you run it you get "Hello World!". Try it yourself!</p>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="permutation-tests.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hello</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;Hello World!&quot;</code></pre>
 <p>The difference this time however is that because you have added an argument to the input, you can change the information you give the argument and therefore change the output of the function. More flexible. More exciting.</p>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
 <p>Test your understanding by answering these questions:</p>
 <ul>
-<li><p>Typing <code>hello("Phil")</code> in the console with this new function will give: <select class='solveme' data-answer='["Hello Phil"]'> <option></option> <option>Hello Heather</option> <option>Hello Phil</option> <option>Hello Niamh</option> <option>Hello Kevin</option></select></p></li>
-<li><p>Typing the argument as <code>"is it me you are looking for"</code> will give: <select class='solveme' data-answer='["Hello is it me you are looking for"]'> <option></option> <option>Hello is it me you are looking for</option> <option>I just called to say Hello</option> <option>You had me at Hello</option> <option>Hello seems to be the hardest word</option></select></p></li>
-<li><p>What argument would you type to get “Hello Dolly!” as the output: <select class='solveme' data-answer='["Dolly!"]'> <option></option> <option>Dolly</option> <option>Molly</option> <option>Holly</option> <option>Dolly!</option></select></p></li>
+<li><p>Typing <code>hello("Phil")</code> in the console with this new function will give: <select class='webex-select'><option value='blank'></option><option value=''>Hello Heather</option><option value='answer'>Hello Phil</option><option value=''>Hello Niamh</option><option value=''>Hello Kevin</option></select></p></li>
+<li><p>Typing the argument as <code>"is it me you are looking for"</code> will give: <select class='webex-select'><option value='blank'></option><option value='answer'>Hello is it me you are looking for</option><option value=''>I just called to say Hello</option><option value=''>You had me at Hello</option><option value=''>Hello seems to be the hardest word</option></select></p></li>
+<li><p>What argument would you type to get "Hello Dolly!" as the output: <select class='webex-select'><option value='blank'></option><option value=''>Dolly</option><option value=''>Molly</option><option value=''>Holly</option><option value='answer'>Dolly!</option></select></p></li>
 </ul>
-<p>Most of the time however we want to create a function that computes a value or constructs a table. For instance, let’s create a function that returns randomly generated data from two samples, as we learned in the previous skills - see below. All we are doing is taking the tibble we created in Skill 4 and putting it in the body (between the curly brackets) of the function.</p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="permutation-tests.html#cb402-1" aria-hidden="true" tabindex="-1"></a>gen_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb402-2"><a href="permutation-tests.html#cb402-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>)),</span>
-<span id="cb402-3"><a href="permutation-tests.html#cb402-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>,  <span class="dv">20</span>, <span class="dv">5</span>), <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="sc">-</span><span class="dv">20</span>, <span class="dv">5</span>)))</span>
-<span id="cb402-4"><a href="permutation-tests.html#cb402-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Most of the time however we want to create a function that computes a value or constructs a table. For instance, let's create a function that returns randomly generated data from two samples, as we learned in the previous skills - see below. All we are doing is taking the tibble we created in Skill 4 and putting it in the body (between the curly brackets) of the function.</p>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="permutation-tests.html#cb401-1" aria-hidden="true" tabindex="-1"></a>gen_data <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb401-2"><a href="permutation-tests.html#cb401-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>)),</span>
+<span id="cb401-3"><a href="permutation-tests.html#cb401-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>,  <span class="dv">20</span>, <span class="dv">5</span>), <span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="sc">-</span><span class="dv">20</span>, <span class="dv">5</span>)))</span>
+<span id="cb401-4"><a href="permutation-tests.html#cb401-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>This function is called <code>gen_data()</code> and when we run it we get a randomly generated table of two groups, each with 20 people, one with M = 20, SD = 5, the other with M = -20, sd = 5. Try running this <code>gen_data()</code> function in the console a few times; remember that as the data is random, the numbers will be different each time you run it.</p>
-<p>But say we want to modify the function to allow us to get a table with smaller or larger numbers of observations per group. We can add an argument <code>n</code> and modify the code as follows. Create this function and run it a couple of times through <code>gen_data()</code>. The way to think about this is that every place that <code>n</code> appears in the body of the function (between the curly brackets) it will have the value of whatever you gave it in the arguments, i.e. in this case, 20.</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="permutation-tests.html#cb403-1" aria-hidden="true" tabindex="-1"></a>gen_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">20</span>) {</span>
-<span id="cb403-2"><a href="permutation-tests.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(n, n)),</span>
-<span id="cb403-3"><a href="permutation-tests.html#cb403-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(n,  <span class="dv">20</span>, <span class="dv">5</span>), <span class="fu">rnorm</span>(n, <span class="sc">-</span><span class="dv">20</span>, <span class="dv">5</span>)))</span>
-<span id="cb403-4"><a href="permutation-tests.html#cb403-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>But say we want to modify the function to allow us to get a table with smaller or larger numbers of observations per group. We can add an argument <code>n</code> and modify the code as follows. Create this function and run it a couple of times through <code>gen_data()</code>. The way to think about this is that every place that <code>n</code> appears in the body of the function (between the curly brackets) it will have the value of whatever you gave it in the arguments, i.e. in this case, 20.</p>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="permutation-tests.html#cb402-1" aria-hidden="true" tabindex="-1"></a>gen_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">20</span>) {</span>
+<span id="cb402-2"><a href="permutation-tests.html#cb402-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(n, n)),</span>
+<span id="cb402-3"><a href="permutation-tests.html#cb402-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(n,  <span class="dv">20</span>, <span class="dv">5</span>), <span class="fu">rnorm</span>(n, <span class="sc">-</span><span class="dv">20</span>, <span class="dv">5</span>)))</span>
+<span id="cb402-4"><a href="permutation-tests.html#cb402-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <ul>
-<li><p>How many total participants would there be if you ran <code>gen_data(2)</code>? <select class='solveme' data-answer='["4"]'> <option></option> <option>2</option> <option>4</option> <option>20</option> <option>40</option></select></p></li>
-<li><p>What would you type to get 100 participants per group? <select class='solveme' data-answer='["gen_data(100)"]'> <option></option> <option>gen_data(50)</option> <option>gen_data(10)</option> <option>gen_dota(100)</option> <option>gen_data(100)</option></select></p></li>
+<li><p>How many total participants would there be if you ran <code>gen_data(2)</code>? <select class='webex-select'><option value='blank'></option><option value=''>2</option><option value='answer'>4</option><option value=''>20</option><option value=''>40</option></select></p></li>
+<li><p>What would you type to get 100 participants per group? <select class='webex-select'><option value='blank'></option><option value=''>gen_data(50)</option><option value=''>gen_data(10)</option><option value=''>gen_dota(100)</option><option value='answer'>gen_data(100)</option></select></p></li>
 </ul>
 <p><strong>Challenge Question:</strong></p>
 <p>Keeping in mind that functions can take numerous arguments, and that each group in your function have separate means, can you modify the function <code>gen_data</code> to allow the user to change the means for the two calls to <code>rnorm</code>? Have a try before revealing the solution below.</p>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Solution To Challenge Question
 </button>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="permutation-tests.html#cb404-1" aria-hidden="true" tabindex="-1"></a>gen_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">m1 =</span> <span class="dv">20</span>, <span class="at">m2 =</span> <span class="sc">-</span><span class="dv">20</span>) {</span>
-<span id="cb404-2"><a href="permutation-tests.html#cb404-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(n, n)),</span>
-<span id="cb404-3"><a href="permutation-tests.html#cb404-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(n,  m1, <span class="dv">5</span>), <span class="fu">rnorm</span>(n, m2, <span class="dv">5</span>)))</span>
-<span id="cb404-4"><a href="permutation-tests.html#cb404-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb404-5"><a href="permutation-tests.html#cb404-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb404-6"><a href="permutation-tests.html#cb404-6" aria-hidden="true" tabindex="-1"></a><span class="co"># m1 is the mean of group A, </span></span>
-<span id="cb404-7"><a href="permutation-tests.html#cb404-7" aria-hidden="true" tabindex="-1"></a><span class="co"># m2 is mean of group B and would look like:</span></span>
-<span id="cb404-8"><a href="permutation-tests.html#cb404-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb404-9"><a href="permutation-tests.html#cb404-9" aria-hidden="true" tabindex="-1"></a><span class="co"># The function would be called by: gen_data(20, 20, -20)</span></span>
-<span id="cb404-10"><a href="permutation-tests.html#cb404-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Giving 20 participants in each group, </span></span>
-<span id="cb404-11"><a href="permutation-tests.html#cb404-11" aria-hidden="true" tabindex="-1"></a><span class="co"># The first group having a mean of 20, </span></span>
-<span id="cb404-12"><a href="permutation-tests.html#cb404-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The second group having a mean of -20. </span></span>
-<span id="cb404-13"><a href="permutation-tests.html#cb404-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb404-14"><a href="permutation-tests.html#cb404-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Likewise, a call of: gen_data(4, 10, 5)</span></span>
-<span id="cb404-15"><a href="permutation-tests.html#cb404-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Would give two groups of 4, </span></span>
-<span id="cb404-16"><a href="permutation-tests.html#cb404-16" aria-hidden="true" tabindex="-1"></a><span class="co"># The first having a mean of 10, </span></span>
-<span id="cb404-17"><a href="permutation-tests.html#cb404-17" aria-hidden="true" tabindex="-1"></a><span class="co"># The second having a mean of 5.</span></span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb403-1"><a href="permutation-tests.html#cb403-1" aria-hidden="true" tabindex="-1"></a>gen_data <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">20</span>, <span class="at">m1 =</span> <span class="dv">20</span>, <span class="at">m2 =</span> <span class="sc">-</span><span class="dv">20</span>) {</span>
+<span id="cb403-2"><a href="permutation-tests.html#cb403-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(n, n)),</span>
+<span id="cb403-3"><a href="permutation-tests.html#cb403-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(n,  m1, <span class="dv">5</span>), <span class="fu">rnorm</span>(n, m2, <span class="dv">5</span>)))</span>
+<span id="cb403-4"><a href="permutation-tests.html#cb403-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb403-5"><a href="permutation-tests.html#cb403-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb403-6"><a href="permutation-tests.html#cb403-6" aria-hidden="true" tabindex="-1"></a><span class="co"># m1 is the mean of group A, </span></span>
+<span id="cb403-7"><a href="permutation-tests.html#cb403-7" aria-hidden="true" tabindex="-1"></a><span class="co"># m2 is mean of group B and would look like:</span></span>
+<span id="cb403-8"><a href="permutation-tests.html#cb403-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb403-9"><a href="permutation-tests.html#cb403-9" aria-hidden="true" tabindex="-1"></a><span class="co"># The function would be called by: gen_data(20, 20, -20)</span></span>
+<span id="cb403-10"><a href="permutation-tests.html#cb403-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Giving 20 participants in each group, </span></span>
+<span id="cb403-11"><a href="permutation-tests.html#cb403-11" aria-hidden="true" tabindex="-1"></a><span class="co"># The first group having a mean of 20, </span></span>
+<span id="cb403-12"><a href="permutation-tests.html#cb403-12" aria-hidden="true" tabindex="-1"></a><span class="co"># The second group having a mean of -20. </span></span>
+<span id="cb403-13"><a href="permutation-tests.html#cb403-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb403-14"><a href="permutation-tests.html#cb403-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Likewise, a call of: gen_data(4, 10, 5)</span></span>
+<span id="cb403-15"><a href="permutation-tests.html#cb403-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Would give two groups of 4, </span></span>
+<span id="cb403-16"><a href="permutation-tests.html#cb403-16" aria-hidden="true" tabindex="-1"></a><span class="co"># The first having a mean of 10, </span></span>
+<span id="cb403-17"><a href="permutation-tests.html#cb403-17" aria-hidden="true" tabindex="-1"></a><span class="co"># The second having a mean of 5.</span></span></code></pre></div>
 </div>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Portfolio Point - Two important facts about functions
 </button>
@@ -1043,7 +1048,7 @@ Here are two important things to understand about functions.
 <ol style="list-style-type: decimal">
 <li>
 <p>
-<strong>Functions obey lexical scoping.</strong> What does this mean? It’s like what they say about Las Vegas: what happens in the function, stays in the function. Any variables created inside of a function will be discarded after the function executes and will not be accessible to the outside calling process. So if you have a line, say a variable <code>my_var &lt;- 17</code> inside of a function, and try to print <code>my_var</code> from outside of the function, you will get an error: <code>object ‘my_var’ not found</code>. Although the function can ‘read’ variables from the environment that are not passed to it through an argument, it cannot change them. So you can only write a function to return a value, not change a value.
+<strong>Functions obey lexical scoping.</strong> What does this mean? It's like what they say about Las Vegas: what happens in the function, stays in the function. Any variables created inside of a function will be discarded after the function executes and will not be accessible to the outside calling process. So if you have a line, say a variable <code>my_var &lt;- 17</code> inside of a function, and try to print <code>my_var</code> from outside of the function, you will get an error: <code>object 'my_var' not found</code>. Although the function can 'read' variables from the environment that are not passed to it through an argument, it cannot change them. So you can only write a function to return a value, not change a value.
 </p>
 </li>
 <li>
@@ -1059,49 +1064,49 @@ Here are two important things to understand about functions.
 <div id="skill-6-replicating-operations" class="section level3" number="24.0.10">
 <h3><span class="header-section-number">G.0.10</span> Skill 6: Replicating Operations</h3>
 <p>The last skill you will need for the upcoming lab is knowing how to repeat an action (or expression) multiple times. You saw this in Lab 4 so we will only briefly recap here. Here, we use the base function <code>replicate()</code>. For instance, say you wanted to calculate the mean from <code>rnorm(100)</code> ten times, you could write it like this:</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="permutation-tests.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="do">## bad way</span></span>
-<span id="cb405-2"><a href="permutation-tests.html#cb405-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
-<span id="cb405-3"><a href="permutation-tests.html#cb405-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
-<span id="cb405-4"><a href="permutation-tests.html#cb405-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
-<span id="cb405-5"><a href="permutation-tests.html#cb405-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
-<span id="cb405-6"><a href="permutation-tests.html#cb405-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
-<span id="cb405-7"><a href="permutation-tests.html#cb405-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
-<span id="cb405-8"><a href="permutation-tests.html#cb405-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
-<span id="cb405-9"><a href="permutation-tests.html#cb405-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
-<span id="cb405-10"><a href="permutation-tests.html#cb405-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span></code></pre></div>
-<p>But it’s far easier and more readable to wrap the expression in <code>replicate()</code> function where the first argument is the number of times you want to repeat the expression stated as the second argument, i.e. <code>replicate(times, expression)</code>. Here below we replicate the mean of 100 randomly generated numbers from the normal distribution, and we do this 10 times:</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="permutation-tests.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>())</span></code></pre></div>
-<p>Also you’ll probably want to store the results in a variable, for example, <code>ten_samples</code>:</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="permutation-tests.html#cb407-1" aria-hidden="true" tabindex="-1"></a>ten_samples <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>())</span>
-<span id="cb407-2"><a href="permutation-tests.html#cb407-2" aria-hidden="true" tabindex="-1"></a>ten_samples</span></code></pre></div>
-<pre><code>##  [1]  0.0398563006 -0.0504337803 -0.0057980367 -0.1655782785 -0.1381459953
-##  [6]  0.1044063009  0.0002669897  0.2612072863  0.1205488513 -0.0965764166</code></pre>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="permutation-tests.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="do">## bad way</span></span>
+<span id="cb404-2"><a href="permutation-tests.html#cb404-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
+<span id="cb404-3"><a href="permutation-tests.html#cb404-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
+<span id="cb404-4"><a href="permutation-tests.html#cb404-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
+<span id="cb404-5"><a href="permutation-tests.html#cb404-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
+<span id="cb404-6"><a href="permutation-tests.html#cb404-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
+<span id="cb404-7"><a href="permutation-tests.html#cb404-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
+<span id="cb404-8"><a href="permutation-tests.html#cb404-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
+<span id="cb404-9"><a href="permutation-tests.html#cb404-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span>
+<span id="cb404-10"><a href="permutation-tests.html#cb404-10" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>()</span></code></pre></div>
+<p>But it's far easier and more readable to wrap the expression in <code>replicate()</code> function where the first argument is the number of times you want to repeat the expression stated as the second argument, i.e. <code>replicate(times, expression)</code>. Here below we replicate the mean of 100 randomly generated numbers from the normal distribution, and we do this 10 times:</p>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb405-1"><a href="permutation-tests.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>())</span></code></pre></div>
+<p>Also you'll probably want to store the results in a variable, for example, <code>ten_samples</code>:</p>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="permutation-tests.html#cb406-1" aria-hidden="true" tabindex="-1"></a>ten_samples <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>())</span>
+<span id="cb406-2"><a href="permutation-tests.html#cb406-2" aria-hidden="true" tabindex="-1"></a>ten_samples</span></code></pre></div>
+<pre><code>##  [1]  0.009628446  0.038643086  0.165069489  0.081068700  0.009759932
+##  [6]  0.133442292  0.177420512  0.031798246  0.111468066 -0.089064618</code></pre>
 <p>Each element (value) of the vector within <code>ten_samples</code> is the result of a single call to <code>rnorm(100) %&gt;% mean()</code>.</p>
 <ul>
-<li>Assuming that your <code>hello()</code> function from Skill 5 still exists, and it takes the argument <code>name = Goodbye</code>, what would happen in the console if you wrote, <code>replicate(1000, hello("Goodbye"))</code>? <select class='solveme' data-answer='["Hello Goodbye would appear a thousand times"]'> <option></option> <option>Hello World would appear a thousand times</option> <option>hello Goodbye would appear a thousand times</option> <option>Hello Goodbye would appear a thousand times</option></select> - Try it and see if it works!</li>
+<li>Assuming that your <code>hello()</code> function from Skill 5 still exists, and it takes the argument <code>name = Goodbye</code>, what would happen in the console if you wrote, <code>replicate(1000, hello("Goodbye"))</code>? <select class='webex-select'><option value='blank'></option><option value=''>Hello World would appear a thousand times</option><option value=''>hello Goodbye would appear a thousand times</option><option value='answer'>Hello Goodbye would appear a thousand times</option></select> - Try it and see if it works!</li>
 </ul>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Solution To Quickfire Question
 </button>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="permutation-tests.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the function would be:</span></span>
-<span id="cb409-2"><a href="permutation-tests.html#cb409-2" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="st">&quot;World!&quot;</span>){</span>
-<span id="cb409-3"><a href="permutation-tests.html#cb409-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, name)</span>
-<span id="cb409-4"><a href="permutation-tests.html#cb409-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb409-5"><a href="permutation-tests.html#cb409-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb409-6"><a href="permutation-tests.html#cb409-6" aria-hidden="true" tabindex="-1"></a><span class="co"># and would be called by:</span></span>
-<span id="cb409-7"><a href="permutation-tests.html#cb409-7" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">hello</span>(<span class="st">&quot;Goodbye&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="permutation-tests.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the function would be:</span></span>
+<span id="cb408-2"><a href="permutation-tests.html#cb408-2" aria-hidden="true" tabindex="-1"></a>hello <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">name =</span> <span class="st">&quot;World!&quot;</span>){</span>
+<span id="cb408-3"><a href="permutation-tests.html#cb408-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="st">&quot;Hello&quot;</span>, name)</span>
+<span id="cb408-4"><a href="permutation-tests.html#cb408-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb408-5"><a href="permutation-tests.html#cb408-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb408-6"><a href="permutation-tests.html#cb408-6" aria-hidden="true" tabindex="-1"></a><span class="co"># and would be called by:</span></span>
+<span id="cb408-7"><a href="permutation-tests.html#cb408-7" aria-hidden="true" tabindex="-1"></a><span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">hello</span>(<span class="st">&quot;Goodbye&quot;</span>))</span></code></pre></div>
 </div>
 <p><br></p>
 </div>
-<div id="finished" class="section level3" number="24.0.11">
+<div id="finished-1" class="section level3" number="24.0.11">
 <h3><span class="header-section-number">G.0.11</span> Finished!</h3>
 <p>To recap, we have shown you the following six skills:</p>
 <ul>
 <li>Skill 1: Generating random numbers with <code>base::rnorm()</code></li>
 <li>Skill 2: Permuting values with <code>base::sample()</code><br />
 </li>
-<li>Skill 3: Creating a “tibble” (a type of data table) using <code>tibble::tibble()</code></li>
+<li>Skill 3: Creating a "tibble" (a type of data table) using <code>tibble::tibble()</code></li>
 <li>Skill 4: Computing and extracting a difference in group means using <code>dplyr::pull()</code> and <code>purrr::pluck()</code></li>
 <li>Skill 5: Creating your own custom functions using <code>base::function()</code></li>
 <li>Skill 6: Repeating operations using <code>base::replicate()</code></li>
@@ -1110,7 +1115,7 @@ Solution To Quickfire Question
 </div>
 <div id="permutation-tests-of-hypotheses" class="section level3" number="24.0.12">
 <h3><span class="header-section-number">G.0.12</span> Permutation Tests of Hypotheses</h3>
-<p>A common statistical question when comparing two groups might be, “<strong>Is there a real difference between the group means?</strong>” From this we can establish two contrasting hypotheses:</p>
+<p>A common statistical question when comparing two groups might be, "<strong>Is there a real difference between the group means?</strong>" From this we can establish two contrasting hypotheses:</p>
 <ol style="list-style-type: decimal">
 <li>The <strong>null hypothesis</strong> which states that the group means <strong>are equivalent</strong> and is written as: <span class="math inline">\(H_0: \mu_1 = \mu_2\)</span>
 <ul>
@@ -1123,22 +1128,22 @@ Solution To Quickfire Question
 <p>Using the techniques you read about earlier and in previous labs, today you will learn how to test the null hypothesis of no difference between two independent groups. We will first do this using a <strong>permutation test</strong> before looking at other tests in later labs.</p>
 <p>A permutation test is a basic inferential procedure that involves a reshuffling of group labels or values to create new possible outcomes of the data you collected to see how your original mean difference compares to all possible outcomes. The test can in fact be applied in many situations, this is just one, and it provides a good starting place for understanding hypothesis testing. The steps for the exercise below, and really the logic of a permutation test for two independent groups, are:</p>
 <ol style="list-style-type: decimal">
-<li>Calculate the real difference <span class="math inline">\(D_{orig}\)</span> between the means of two groups (e.g. Mean of A minus Mean of B).</li>
-<li>Randomly shuffle the group labels (i.e. which group each participant belonged to - A or B) and re-calculate the difference, <span class="math inline">\(D&#39;\)</span>.</li>
+<li>Calculate the real difference <span class="math inline">\(D_{orig}\)</span> between the means of two groups (e.g. Mean of A minus Mean of B).</li>
+<li>Randomly shuffle the group labels (i.e. which group each participant belonged to - A or B) and re-calculate the difference, <span class="math inline">\(D&#39;\)</span>.</li>
 <li>Repeat step 2 <span class="math inline">\(N_{r}\)</span> times, where <span class="math inline">\(N_r\)</span> is a large number (typically greater than 1000), storing each <span class="math inline">\(D_i&#39;\)</span> value to form a null hypothesis distribution.</li>
 <li>Locate the difference you observed in step 1 (the real difference) on the null hypothesis distribution of all possible differences.</li>
 <li>Decide whether the original difference is sufficiently extreme to reject the null hypothesis of no difference (<span class="math inline">\(H_0\)</span>).</li>
 </ol>
 <p>This logic works because if the null hypothesis is true (there is no difference between the groups) then the labeling of the observations/participants into groups is arbitrary, and we can rearrange the labels in order to estimate the likelihood of our original difference under the <span class="math inline">\(H_0\)</span>. In other words if you know the original value of the difference between two groups (or the true difference) falls in the middle of your permuted distribution then there is no significant difference between the two groups. If however the original difference falls in the tail of the permuted distribution then there might be a significant difference depending on how far into the tail it falls.</p>
-<p>Let’s get started!</p>
+<p>Let's get started!</p>
 </div>
 <div id="Ch5InClassQueT1" class="section level3" number="24.0.13">
 <h3><span class="header-section-number">G.0.13</span> Step 1: Load in Add-on Packages and Data</h3>
 <p>1.1. Open a new script and call the <code>tidyverse</code> into your library.</p>
-<p>1.2. Now type the statement <code>set.seed(1011)</code> at the top of your script after your library call and run it. (This ‘seeds’ the random number generator so that you will get the same results as everyone else. The number 1011 is a bit random but if everyone uses it then we all get the same outcome. Different seeds give different outcomes)</p>
+<p>1.2. Now type the statement <code>set.seed(1011)</code> at the top of your script after your library call and run it. (This 'seeds' the random number generator so that you will get the same results as everyone else. The number 1011 is a bit random but if everyone uses it then we all get the same outcome. Different seeds give different outcomes)</p>
 <p>1.3. <a href="perm_data.csv" download>Download the data file here.</a> and read the data in <code>perm_data.csv</code> into a variable called <code>dat</code>.</p>
-<p>1.4. Let’s give every participant a participant number as well by adding a new column to <code>dat</code>. Something like this would work: <code>mutate(subj_id = row_number())</code></p>
-<div class="solution">
+<p>1.4. Let's give every participant a participant number as well by adding a new column to <code>dat</code>. Something like this would work: <code>mutate(subj_id = row_number())</code></p>
+<div class="webex-solution">
 <button>
 Helpful Hint
 </button>
@@ -1167,13 +1172,13 @@ pipe <code>%&gt;%</code> on the mutate line shown
 </ol>
 </div>
 </div>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Portfolio Point - Different uses of row_number
 </button>
 <div class="info">
 <p>
-You will see that in the example here to put a row number for each of the participants we do not have to state the number of participants we have. In the Preclass however we did. What is the difference? Well, in the Preclass we were making a tibble and trying to create a column in that tibble using <code>row_numbers</code>. If you want to do that you have to state the number of rows, e.g. <code>1:20</code>. However, in this example in the lab today the tibble already exists, we are just adding to it. If that is the case then you can just mutate on a column of row numbers without stating the number of participants. In summary:
+You will see that in the example here to put a row number for each of the participants we do not have to state the number of participants we have. In the Preclass however we did. What is the difference? Well, in the Preclass we were making a tibble and trying to create a column in that tibble using <code>row_numbers</code>. If you want to do that you have to state the number of rows, e.g. <code>1:20</code>. However, in this example in the lab today the tibble already exists, we are just adding to it. If that is the case then you can just mutate on a column of row numbers without stating the number of participants. In summary:
 </p>
 <ul>
 <li>
@@ -1195,11 +1200,11 @@ If tibble already exists, just mutate on <code>row_numbers()</code>. No need for
 <div id="Ch5InClassQueT2" class="section level3" number="24.0.14">
 <h3><span class="header-section-number">G.0.14</span> Step 2: Calculate the Original Mean Difference - <span class="math inline">\(D_{orig}\)</span></h3>
 <p>We now need to write a pipeline of five functions that calculates the mean difference between the groups in <code>dat</code>, Group A minus Group B. Broken down into steps this would be:</p>
-<p>2.1.1. Use a pipe of two <code>dplyr</code> one-table verbs (e.g. Lab 2) to create a tibble where each row contains the mean of one of the groups. Name the column storing the means as <code>m</code>.</p>
+<p>2.1.1. Use a pipe of two <code>dplyr</code> one-table verbs (e.g. Lab 2) to create a tibble where each row contains the mean of one of the groups. Name the column storing the means as <code>m</code>.</p>
 <p>2.1.2. Continue the pipe to <code>spread()</code> your data from long to wide format, based on the columns <code>group</code> and <code>m</code>.</p>
-<p>2.1.3. Now add a pipe that <strong>creates</strong> a new column in this wide dataset called <code>diff</code> which is the value of group A’s mean minus group B’s mean.</p>
+<p>2.1.3. Now add a pipe that <strong>creates</strong> a new column in this wide dataset called <code>diff</code> which is the value of group A's mean minus group B's mean.</p>
 <p>2.1.4. Pull out the value in <code>diff</code> (the mean of group A minus the mean of group B) to finish the pipe.</p>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Helpful Hint
 </button>
@@ -1225,49 +1230,49 @@ Helpful Hint
 </div>
 </div>
 <ul>
-<li>Check that your value for <code>d_orig</code> is correct, without using the solution, by typing your <code>d_orig</code> value to two decimal places in the box. Include the sign, e.g. -1.23. The box will go green if you are correct. <input class='solveme nospaces' size='10' data-answer='["-7.39"]'/></li>
+<li>Check that your value for <code>d_orig</code> is correct, without using the solution, by typing your <code>d_orig</code> value to two decimal places in the box. Include the sign, e.g. -1.23. The box will go green if you are correct. <input class='webex-solveme nospaces' size='10' data-answer='["-7.39"]'/></li>
 </ul>
 <p>The above steps have created a pipeline of five functions to get one value. Nice! We now need to turn this into a function because we are going to be permuting the data set (specifically the grouping labels) and re-calculating the difference many, many times.</p>
 <p>2.2. Wrap your pipeline in a function called <code>calc_diff</code> but swap <code>dat</code> for <code>x</code>. This function will take a single argument named <code>x</code>, where <code>x</code> is the tibble that you want to calculate group means from. As in the previous step, the function will return a single value which is the difference between the group means. The start will look like this below:</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="permutation-tests.html#cb410-1" aria-hidden="true" tabindex="-1"></a>calc_diff <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb410-2"><a href="permutation-tests.html#cb410-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span>.....</span>
-<span id="cb410-3"><a href="permutation-tests.html#cb410-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="solution">
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="permutation-tests.html#cb409-1" aria-hidden="true" tabindex="-1"></a>calc_diff <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb409-2"><a href="permutation-tests.html#cb409-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span>.....</span>
+<span id="cb409-3"><a href="permutation-tests.html#cb409-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="webex-solution">
 <button>
 Helpful Hint
 </button>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="permutation-tests.html#cb411-1" aria-hidden="true" tabindex="-1"></a>calc_diff <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb411-2"><a href="permutation-tests.html#cb411-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
-<span id="cb411-3"><a href="permutation-tests.html#cb411-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
-<span id="cb411-4"><a href="permutation-tests.html#cb411-4" aria-hidden="true" tabindex="-1"></a>    the_rest_of_your_pipe...</span>
-<span id="cb411-5"><a href="permutation-tests.html#cb411-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="permutation-tests.html#cb410-1" aria-hidden="true" tabindex="-1"></a>calc_diff <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb410-2"><a href="permutation-tests.html#cb410-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span></span>
+<span id="cb410-3"><a href="permutation-tests.html#cb410-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
+<span id="cb410-4"><a href="permutation-tests.html#cb410-4" aria-hidden="true" tabindex="-1"></a>    the_rest_of_your_pipe...</span>
+<span id="cb410-5"><a href="permutation-tests.html#cb410-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <p>2.3. Now call your new function where <code>x</code> = <code>dat</code> as the argument and store the result in a new variable called <code>d_orig</code>. Make sure that your function returns the same value as you got above and that your function returns a single value rather than a tibble. You can test this: <code>is.tibble(d_orig)</code> should give you <code>FALSE</code> and <code>is.numeric(d_orig)</code> should give you <code>TRUE</code>.</p>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Helpful Hint
 </button>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="permutation-tests.html#cb412-1" aria-hidden="true" tabindex="-1"></a>d_orig <span class="ot">&lt;-</span> <span class="fu">function_name</span>(<span class="at">x =</span> data_name) </span>
-<span id="cb412-2"><a href="permutation-tests.html#cb412-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
-<span id="cb412-3"><a href="permutation-tests.html#cb412-3" aria-hidden="true" tabindex="-1"></a>d_orig <span class="ot">&lt;-</span> <span class="fu">function_name</span>(data_name)</span>
-<span id="cb412-4"><a href="permutation-tests.html#cb412-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb412-5"><a href="permutation-tests.html#cb412-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Then type the following in the Console and look at answer:</span></span>
-<span id="cb412-6"><a href="permutation-tests.html#cb412-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb412-7"><a href="permutation-tests.html#cb412-7" aria-hidden="true" tabindex="-1"></a><span class="fu">is.tibble</span>(d_orig)</span>
-<span id="cb412-8"><a href="permutation-tests.html#cb412-8" aria-hidden="true" tabindex="-1"></a><span class="co"># True (is a tibble) or False (is not a tibble)</span></span>
-<span id="cb412-9"><a href="permutation-tests.html#cb412-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb412-10"><a href="permutation-tests.html#cb412-10" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(d_orig)</span>
-<span id="cb412-11"><a href="permutation-tests.html#cb412-11" aria-hidden="true" tabindex="-1"></a><span class="co"># True (is numeric) or False (is not numeric; it is a character or integer instead.)</span></span></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="permutation-tests.html#cb411-1" aria-hidden="true" tabindex="-1"></a>d_orig <span class="ot">&lt;-</span> <span class="fu">function_name</span>(<span class="at">x =</span> data_name) </span>
+<span id="cb411-2"><a href="permutation-tests.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb411-3"><a href="permutation-tests.html#cb411-3" aria-hidden="true" tabindex="-1"></a>d_orig <span class="ot">&lt;-</span> <span class="fu">function_name</span>(data_name)</span>
+<span id="cb411-4"><a href="permutation-tests.html#cb411-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-5"><a href="permutation-tests.html#cb411-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Then type the following in the Console and look at answer:</span></span>
+<span id="cb411-6"><a href="permutation-tests.html#cb411-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-7"><a href="permutation-tests.html#cb411-7" aria-hidden="true" tabindex="-1"></a><span class="fu">is.tibble</span>(d_orig)</span>
+<span id="cb411-8"><a href="permutation-tests.html#cb411-8" aria-hidden="true" tabindex="-1"></a><span class="co"># True (is a tibble) or False (is not a tibble)</span></span>
+<span id="cb411-9"><a href="permutation-tests.html#cb411-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-10"><a href="permutation-tests.html#cb411-10" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(d_orig)</span>
+<span id="cb411-11"><a href="permutation-tests.html#cb411-11" aria-hidden="true" tabindex="-1"></a><span class="co"># True (is numeric) or False (is not numeric; it is a character or integer instead.)</span></span></code></pre></div>
 </div>
-<p>So we now have the original difference between the groups stored in <code>d_orig</code>. Next we need to create a distribution of all possible differences to see where our original difference lies in this distribution. But first we need to shuffle the <code>group</code> letters (A or B) in our dataset and find the difference…a few hundred times!</p>
+<p>So we now have the original difference between the groups stored in <code>d_orig</code>. Next we need to create a distribution of all possible differences to see where our original difference lies in this distribution. But first we need to shuffle the <code>group</code> letters (A or B) in our dataset and find the difference...a few hundred times!</p>
 </div>
 <div id="Ch5InClassQueT3" class="section level3" number="24.0.15">
 <h3><span class="header-section-number">G.0.15</span> Step 3: Permute the Group Labels</h3>
 <p>3.1. Create a new function called <code>permute()</code> that takes as input a dataset <code>x</code> and returns the same dataset transformed such that the group labels (the values in the column <code>group</code>) are shuffled: started below for you. This will require using the <code>sample()</code> function within a <code>mutate()</code>. You have used <code>mutate()</code> twice already today and you saw how to <code>sample()</code> <strong>letters</strong> in the PreClass.</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="permutation-tests.html#cb413-1" aria-hidden="true" tabindex="-1"></a>permute <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
-<span id="cb413-2"><a href="permutation-tests.html#cb413-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span>.....</span>
-<span id="cb413-3"><a href="permutation-tests.html#cb413-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<div class="solution">
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="permutation-tests.html#cb412-1" aria-hidden="true" tabindex="-1"></a>permute <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb412-2"><a href="permutation-tests.html#cb412-2" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">%&gt;%</span>.....</span>
+<span id="cb412-3"><a href="permutation-tests.html#cb412-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="webex-solution">
 <button>
 Helpful Hint
 </button>
@@ -1278,32 +1283,32 @@ Might be easier to think of these steps in reverse.
 <ol style="list-style-type: decimal">
 <li>
 <p>
-Start with a <code>mutate()</code> function that rewrites the column <code>group</code> every time you run it, e.g. <code>dat %&gt;% mutate(variable = sample(variable))</code>
+Start with a <code>mutate()</code> function that rewrites the column <code>group</code> every time you run it, e.g. <code>dat %&gt;% mutate(variable = sample(variable))</code>
 </p>
 </li>
 <li>
 <p>
-Now put that into your <code>permute()</code> function making the necessary adjustments to the code so it starts <code>x %&gt;%…</code>. Again <code>x</code> should be in the function and not <code>dat</code>. ")
+Now put that into your <code>permute()</code> function making the necessary adjustments to the code so it starts <code>x %&gt;%...</code>. Again <code>x</code> should be in the function and not <code>dat</code>. ")
 </p>
 </li>
 </ol>
 </div>
 </div>
-<p>3.2. Try out your new <code>permute()</code> function by calling it on <code>dat</code> (i.e. <code>x = dat</code>) a few times. You should see the group labels in the <code>group</code> column changing randomly. The most common mistake is that people mutate a new column by mispelling <code>group</code>. You want to overwrite/change the information in the <code>group</code> column not make a new one, so be careful with the spelling.</p>
+<p>3.2. Try out your new <code>permute()</code> function by calling it on <code>dat</code> (i.e. <code>x = dat</code>) a few times. You should see the group labels in the <code>group</code> column changing randomly. The most common mistake is that people mutate a new column by mispelling <code>group</code>. You want to overwrite/change the information in the <code>group</code> column not make a new one, so be careful with the spelling.</p>
 <p>Now would be an excellent time to spend five minutes as a group recapping what you are doing.</p>
 <ul>
 <li>You have the original difference between groups.</li>
 <li>You have a function that calculates and stores this difference.</li>
 <li>You have a function that reshuffles the labels of the group.</li>
 </ul>
-<p>Do you understand why? If not, go back to the principles of the permutation test at the start of the lab then read on…</p>
+<p>Do you understand why? If not, go back to the principles of the permutation test at the start of the lab then read on...</p>
 </div>
 <div id="Ch5InClassQueT4" class="section level3" number="24.0.16">
 <h3><span class="header-section-number">G.0.16</span> Step 4: Create the Null-Hypothesis Distribution (NHD) for the Difference</h3>
 <p>Now that we have the original difference and our two functions, one to shuffle group labels and one to calculate the difference between two groups, we need to actually create the distribution of possible differences and see where the original difference lies in it.</p>
 <p>4.1.1. Write a <strong>a single pipeline</strong> that takes <code>dat</code> as the input, permutes the group labels with a call to your function <code>permute()</code>, and then calculates the difference in means between these new groups with a call to your function <code>calc_diff()</code>.</p>
 <p>4.1.2. Run this line manually a few times and watch the resulting value change as the labels get permuted.</p>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Helpful Hint
 </button>
@@ -1325,40 +1330,40 @@ The functions you have created do these steps. You just have to put them in orde
 </div>
 </div>
 <p>4.2. Now take your pipeline of functions and repeat it 1000 times using the <code>replicate()</code> function. Store the output in a variable called <code>nhd</code>. <code>nhd</code> will contain 1000 values where each value is the mean difference of each of the 1000 random permutations of the data. (<strong>Warning:</strong> This will probably take a while to run, perhaps 10 seconds.)</p>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Helpful Hint
 </button>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="permutation-tests.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace expression with the pipeline you created in 4.1</span></span>
-<span id="cb414-2"><a href="permutation-tests.html#cb414-2" aria-hidden="true" tabindex="-1"></a>nhd <span class="ot">&lt;-</span> <span class="fu">replicate</span>(times, expression)</span></code></pre></div>
+<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="permutation-tests.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="co"># replace expression with the pipeline you created in 4.1</span></span>
+<span id="cb413-2"><a href="permutation-tests.html#cb413-2" aria-hidden="true" tabindex="-1"></a>nhd <span class="ot">&lt;-</span> <span class="fu">replicate</span>(times, expression)</span></code></pre></div>
 </div>
 <p>You now have 1000 possible values of the difference between the permuted groups A and B - your permuted distribution.</p>
-<p>4.3 Let’s visualise this distribution through a frequency histogram of the values in <code>nhd</code>. This shows us the likelihood of various mean differences under <span class="math inline">\(H_0\)</span>. One thing to note however is that <code>nhd</code> is not a <code>tibble</code> and <code>ggplot</code> needs it to be a <code>tibble</code>. You need to convert it. You might start by do something like:</p>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="permutation-tests.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="cn">NULL</span>), <span class="fu">aes</span>(x)) <span class="sc">+</span> <span class="cn">NULL</span></span></code></pre></div>
-<div class="solution">
+<p>4.3 Let's visualise this distribution through a frequency histogram of the values in <code>nhd</code>. This shows us the likelihood of various mean differences under <span class="math inline">\(H_0\)</span>. One thing to note however is that <code>nhd</code> is not a <code>tibble</code> and <code>ggplot</code> needs it to be a <code>tibble</code>. You need to convert it. You might start by do something like:</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="permutation-tests.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="cn">NULL</span>), <span class="fu">aes</span>(x)) <span class="sc">+</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="webex-solution">
 <button>
 Helpful Hint
 </button>
 <div class="info">
 <p>
-Remember that <code>ggplot</code> works as: <code>ggplot(data, aes(x)) + geom…</code>. Here you need to convert <code>nhd</code> into a tibble and put that in as your data. Look at the example above and keep in mind that, in this case, the first NULL could be replaced with the data in <code>nhd</code>.
+Remember that <code>ggplot</code> works as: <code>ggplot(data, aes(x)) + geom...</code>. Here you need to convert <code>nhd</code> into a tibble and put that in as your data. Look at the example above and keep in mind that, in this case, the first NULL could be replaced with the data in <code>nhd</code>.
 </p>
 </div>
 </div>
 <ul>
-<li>Looking at the histogram, visually locate where your original value would sit on this distribution. Would it be extreme, in the tail, or does it look rather common, in the middle? <select class='solveme' data-answer='["is in the tail so looks extreme"]'> <option></option> <option>is in the middle so looks common</option> <option>is in the tail so looks extreme</option></select></li>
+<li>Looking at the histogram, visually locate where your original value would sit on this distribution. Would it be extreme, in the tail, or does it look rather common, in the middle? <select class='webex-select'><option value='blank'></option><option value=''>is in the middle so looks common</option><option value='answer'>is in the tail so looks extreme</option></select></li>
 </ul>
-<p>Before moving on stop to think about what this means - that the difference between the two original groups is rather uncommon in this permuted distribution, i.e. is in the tails! Again, if unsure, go back to the principles of NHST or discuss it with your tutor!</p>
+<p>Before moving on stop to think about what this means - that the difference between the two original groups is rather uncommon in this permuted distribution, i.e. is in the tails! Again, if unsure, go back to the principles of NHST or discuss it with your tutor!</p>
 </div>
 <div id="Ch5InClassQueT5" class="section level3" number="24.0.17">
 <h3><span class="header-section-number">G.0.17</span> Step 5: Compare the Observed Mean Difference to the NHD</h3>
-<p>If the null hypothesis is false, and there is a real difference between the groups, then the difference in means we observed for the original data (<code>d_orig</code>) should be somewhere in either tail of the null-hypothesis distribution we just estimated; it should be an “extreme” value. How can we test this beyond a visual inspection?</p>
-<p>First we have to decide on a false positive (Type I error) rate which is the rate at which we will falsely reject <span class="math inline">\(H_0\)</span> when it is true. This rate is referred to by the Greek letter <span class="math inline">\(\alpha\)</span> (“alpha”). Let’s just use the conventional level used in Psychology: <span class="math inline">\(\alpha = .05\)</span>.</p>
+<p>If the null hypothesis is false, and there is a real difference between the groups, then the difference in means we observed for the original data (<code>d_orig</code>) should be somewhere in either tail of the null-hypothesis distribution we just estimated; it should be an "extreme" value. How can we test this beyond a visual inspection?</p>
+<p>First we have to decide on a false positive (Type I error) rate which is the rate at which we will falsely reject <span class="math inline">\(H_0\)</span> when it is true. This rate is referred to by the Greek letter <span class="math inline">\(\alpha\)</span> ("alpha"). Let's just use the conventional level used in Psychology: <span class="math inline">\(\alpha = .05\)</span>.</p>
 <p>So the question we must ask is, if the null hypothesis was true, what would be the probability of getting a difference in means as extreme as the one we observed in the original data? We will label this probability <code>p</code>.</p>
 <p>Take a few moments to see if you can figure out how you might compute <code>p</code> from the data before we show you how. We will then show you the process in the next few, final, steps.</p>
 <p>5.1. Replace the NULLS in the code below to create a logical vector which states TRUE for all values of <code>nhd</code> greater than or equal to <code>d_orig</code> regardless of sign. <strong>Note:</strong> A logical vector is one that returns TRUE when the expression is true and FALSE when the expression is false.</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="permutation-tests.html#cb416-1" aria-hidden="true" tabindex="-1"></a>lvec <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="cn">NULL</span>) <span class="sc">&gt;=</span> <span class="fu">abs</span>(<span class="cn">NULL</span>)</span></code></pre></div>
-<div class="solution">
+<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="permutation-tests.html#cb415-1" aria-hidden="true" tabindex="-1"></a>lvec <span class="ot">&lt;-</span> <span class="fu">abs</span>(<span class="cn">NULL</span>) <span class="sc">&gt;=</span> <span class="fu">abs</span>(<span class="cn">NULL</span>)</span></code></pre></div>
+<div class="webex-solution">
 <button>
 Portfolio Point - abs and the case of one or two tails
 </button>
@@ -1372,15 +1377,15 @@ The answer relates to whether you are testing in one or two tails of your distri
 </div>
 </div>
 <p>5.2. Replace the NULL in the code below to <code>sum()</code> the <code>lvec</code> vector to get the total number of values equal to or greater than our original difference, <code>d_orig</code>. Fortunately R is fine with summing TRUEs and FALSEs so you do not have to convert the data at all.</p>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="permutation-tests.html#cb417-1" aria-hidden="true" tabindex="-1"></a>n_exceeding_orig <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="permutation-tests.html#cb416-1" aria-hidden="true" tabindex="-1"></a>n_exceeding_orig <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 <p>5.3. Replace the NULL in the code below to calculate the probability of finding a value of <code>d_orig</code> in our <code>nhd</code> distribution by dividing <code>n_exceeding_orig</code>, the number of values greater than or equal to your original value, by the <code>length()</code> of your whole distribution <code>nhd</code>. <strong>Note: the length of <code>nhd</code> is the same as the number of replications we ran. Using code reduces the chance of human error</strong></p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="permutation-tests.html#cb418-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="permutation-tests.html#cb417-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 <p>5.4. Finally, complete the sentence below determining if the original value was extreme or not in regards to the distribution. Use inline coding, shown in Lab 1, to replace the <code>XXX</code>s. For example, when formatted without the space before the first r, <code>r length(nhd)</code> would present as 1000.</p>
-<p><strong>" The difference between Group A and Group B (M = <code>XXX</code>) was found to be have a probability of p = <code>XXX</code>. This means that the original mean difference was …… and the null hypothesis is ….." </strong></p>
+<p><strong>" The difference between Group A and Group B (M = <code>XXX</code>) was found to be have a probability of p = <code>XXX</code>. This means that the original mean difference was ...... and the null hypothesis is ....." </strong></p>
 </div>
-<div id="finished-1" class="section level3" number="24.0.18">
+<div id="finished-2" class="section level3" number="24.0.18">
 <h3><span class="header-section-number">G.0.18</span> Finished!</h3>
-<p>Well done in completing this lab. Let’s recap before finishing. We had two groups, A and B, that we had tested in an experiment. We calculated the mean difference between A and B and wanted to know if this was a significant difference. To test this we created a distribution of all possible differences between A and B using the premise of permutation tests and then found the probability of our original value in that permuted distribution. The more extreme the value in a distribution the more likely that the difference is significant. And that is exactly what we found; an <span class="math inline">\(\alpha &lt; .05\)</span>. Next time we will look at using functions and inferential tests to perform this analysis but by understanding the above you now know how probability is determined.</p>
+<p>Well done in completing this lab. Let's recap before finishing. We had two groups, A and B, that we had tested in an experiment. We calculated the mean difference between A and B and wanted to know if this was a significant difference. To test this we created a distribution of all possible differences between A and B using the premise of permutation tests and then found the probability of our original value in that permuted distribution. The more extreme the value in a distribution the more likely that the difference is significant. And that is exactly what we found; an <span class="math inline">\(\alpha &lt; .05\)</span>. Next time we will look at using functions and inferential tests to perform this analysis but by understanding the above you now know how probability is determined.</p>
 </div>
 </div>
 <div class="psyteachr_footer">
@@ -1388,17 +1393,24 @@ The answer relates to whether you are testing in one or two tails of your distri
 </div>
 <script>
 
-/* update total correct if #total_correct exists */
+/* update total correct if #webex-total_correct exists */
 update_total_correct = function() {
-  if (t = document.getElementById("total_correct")) {
-    t.innerHTML =
-      document.getElementsByClassName("correct").length + " of " +
-      document.getElementsByClassName("solveme").length + " correct";
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
 }
 
-/* solution button toggling function */
+/* webex-solution button toggling function */
 b_func = function() {
+  console.log("webex: toggle hide");
+  
   var cl = this.parentElement.classList;
   if (cl.contains('open')) {
     cl.remove("open");
@@ -1409,6 +1421,8 @@ b_func = function() {
 
 /* function for checking solveme answers */
 solveme_func = function(e) {
+  console.log("webex: check solveme");
+
   var real_answers = JSON.parse(this.dataset.answer);
   var my_answer = this.value;
   var cl = this.classList;
@@ -1416,58 +1430,106 @@ solveme_func = function(e) {
     my_answer = my_answer.toLowerCase();
   }
   if (cl.contains("nospaces")) {
-    my_answer = my_answer.replace(/ /g, "");
+    my_answer = my_answer.replace(/ /g, "")
   }
-  
-  if (my_answer !== "" & real_answers.includes(my_answer)) {
-    cl.add("correct");
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
   } else {
-    cl.remove("correct");
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
   }
 
   // match numeric answers within a specified tolerance
-  if(this.dataset.tol){
-    var tol = JSON.parse(this.dataset.tol);  
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
     var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
     if (matches.reduce((a, b) => a + b, 0) > 0) {
-      cl.add("correct");
+      cl.add("webex-correct");
     } else {
-      cl.remove("correct");
-    }  
+      cl.remove("webex-correct");
+    }
   }
 
   // added regex bit
   if (cl.contains("regex")){
     answer_regex = RegExp(real_answers.join("|"))
     if (answer_regex.test(my_answer)) {
-      cl.add("correct");
-    }  
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
   }
   
   update_total_correct();
 }
 
 window.onload = function() {
+  console.log("onload");
   /* set up solution buttons */
   var buttons = document.getElementsByTagName("button");
 
   for (var i = 0; i < buttons.length; i++) {
-    if (buttons[i].parentElement.classList.contains('solution')) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
       buttons[i].onclick = b_func;
     }
   }
-  
-  /* set up solveme inputs */
-  var solveme = document.getElementsByClassName("solveme");
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
 
   for (var i = 0; i < solveme.length; i++) {
     /* make sure input boxes don't auto-anything */
     solveme[i].setAttribute("autocomplete","off");
     solveme[i].setAttribute("autocorrect", "off");
-    solveme[i].setAttribute("autocapitalize", "off"); 
+    solveme[i].setAttribute("autocapitalize", "off");
     solveme[i].setAttribute("spellcheck", "false");
     solveme[i].value = "";
-    
+
     /* adjust answer for ignorecase or nospaces */
     var cl = solveme[i].classList;
     var real_answer = solveme[i].dataset.answer;
@@ -1478,12 +1540,24 @@ window.onload = function() {
       real_answer = real_answer.replace(/ /g, "");
     }
     solveme[i].dataset.answer = real_answer;
-    
+
     /* attach checking function */
     solveme[i].onkeyup = solveme_func;
     solveme[i].onchange = solveme_func;
   }
   
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
   update_total_correct();
 }
 
@@ -1517,6 +1591,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
 "google": false
 },
@@ -1538,6 +1613,10 @@ gitbook.start({
 "text": null
 },
 "download": {},
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true

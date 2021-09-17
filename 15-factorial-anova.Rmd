@@ -305,7 +305,7 @@ And we're done! There's only one more week of R left. I know that for some of yo
 
 #### Activity 1 {#factorial-a1sol}
 
-<div class="solution"><button>Activity 1</button>
+<div class="webex-solution"><button>Activity 1</button>
 ```{r a1b, eval = FALSE}
 
 library("pwr")
@@ -325,7 +325,7 @@ library("tidyverse")
 
 #### Activity 2 {#factorial-a2sol}
 
-<div class="solution"><button>Activity 2</button>
+<div class="webex-solution"><button>Activity 2</button>
 ```{r a2b, eval = FALSE}
 sum_dat_factorial<-factorial%>%
   group_by(Condition, time)%>%
@@ -340,7 +340,7 @@ sum_dat_factorial<-factorial%>%
 
 #### Activity 3 {#factorial-a3sol}
 
-<div class="solution"><button>Activity 3</button>
+<div class="webex-solution"><button>Activity 3</button>
 ```{r a3b, eval=FALSE}
 ggplot(factorial, 
        aes(x = time , y = interest, fill = Condition))+
@@ -363,7 +363,7 @@ ggplot(factorial,
 
 #### Activity 5 {#factorial-a5sol}
 
-<div class="solution"><button>Activity 5</button>
+<div class="webex-solution"><button>Activity 5</button>
 ```{r a5b, eval=FALSE}
 
 mod_factorial <- aov_ez(id = "subject",
@@ -386,7 +386,7 @@ factorial_output <- mod_factorial$anova_table %>% tidy()
 
 #### Activity 6 {#factorial-a6sol}
 
-<div class="solution"><button>Activity 6</button>
+<div class="webex-solution"><button>Activity 6</button>
 ```{r a6b, eval=FALSE}
 # normality testing
 qqPlot(mod_factorial$lm$residuals)

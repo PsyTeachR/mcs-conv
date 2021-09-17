@@ -100,7 +100,7 @@ Use `filter()` to extract all Participants in the original `pong_data` that had:
 Store this remaining data in a new object called `pong_fast_miss`
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 
 There are three parts to this filter so it is best to think about them individually and then combine them.
@@ -119,13 +119,13 @@ You could do this in three filters where each one uses the output of the precedi
 <br>
 
 <div class="warning">
-<p>The filter function is very useful but if used wrongly can give you very misleading findings. This is why it is very important to always check your data after you perform an action. Let’s say you are working in comparative psychology and have run a study looking at how cats, dogs and horses perceive emotion. Let’s say the data is all stored in the tibble <code>animal_data</code> and there is a column called <code>animals</code> that tells you what type of animal your participant was. Imagine you wanted all the data from just cats:</p>
+<p>The filter function is very useful but if used wrongly can give you very misleading findings. This is why it is very important to always check your data after you perform an action. Let's say you are working in comparative psychology and have run a study looking at how cats, dogs and horses perceive emotion. Let's say the data is all stored in the tibble <code>animal_data</code> and there is a column called <code>animals</code> that tells you what type of animal your participant was. Imagine you wanted all the data from just cats:</p>
 <p><code>filter(animal_data, animals == "cat")</code></p>
 <p>Exactly! But what if you wanted cats and dogs?</p>
 <p><code>filter(animal_data, animals == "cat", animals == "dog")</code></p>
-<p>Right? Wrong! This actually says “give me everything that is a cat and a dog”. But nothing is a cat and a dog, that would be weird - like a dat or a cog. In fact you want everything that is either a cat <strong>or</strong> a dog:</p>
+<p>Right? Wrong! This actually says "give me everything that is a cat and a dog". But nothing is a cat and a dog, that would be weird - like a dat or a cog. In fact you want everything that is either a cat <strong>or</strong> a dog:</p>
 <p><code>filter(animal_data, animals %in% c("cat", "dog"))</code></p>
-<p>You used this code when producing your own graph of babynames, it’s a very helpful function so don’t forget it exists!</p>
+<p>You used this code when producing your own graph of babynames, it's a very helpful function so don't forget it exists!</p>
 </div>
 
 </div>
@@ -166,7 +166,7 @@ Imagine you realise there is a mistake in your dataset and that all your trial n
 You can either do this in two separate steps and create a new object, or you can uses pipes `%>%` and do it it one line of code. 
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 
 Step 1. filter(`TrialNumber` does not equal 1) - remember to store this output in a variable?
@@ -199,16 +199,16 @@ pong_data_hits<- pong_data %>% # take pong_data
 ```
 
 <div class="info">
-<p>If you get what looks like an error that says <code>summarise() ungrouping output (override with .groups argument)</code>don’t worry, this isn’t an error it’s just R telling you what it’s done. This message was included in a very recent update to the <code>tidyverse</code> which is why it doesn’t appear on some of the walkthrough vidoes.</p>
+<p>If you get what looks like an error that says <code>summarise() ungrouping output (override with .groups argument)</code>don't worry, this isn't an error it's just R telling you what it's done. This message was included in a very recent update to the <code>tidyverse</code> which is why it doesn't appear on some of the walkthrough vidoes.</p>
 </div>
 
 `summarise()` has a range of internal functions that make life really easy, e.g. `mean`, `sum`, `max`, `min`, etc. See the [dplyr cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf) for more examples.
 
 <div class="info">
-<p><code>na.rm = TRUE</code> is an argument that we can add when calculating descriptive statistics to tell R what to do if there are missing values. In this dataset, there are no missing values but if there were and we asked R to calculate the mean, it would return <code>NA</code> as the result because it doesn’t know how to average nothing. Remember this argument exists, you will use it often and it save you a lot of time!</p>
+<p><code>na.rm = TRUE</code> is an argument that we can add when calculating descriptive statistics to tell R what to do if there are missing values. In this dataset, there are no missing values but if there were and we asked R to calculate the mean, it would return <code>NA</code> as the result because it doesn't know how to average nothing. Remember this argument exists, you will use it often and it save you a lot of time!</p>
 </div>
 
-* View `pong_data_hits` and enter the number of hits made with the small paddle (50) and the red colour background in this box: <input class='solveme nospaces' size='3' data-answer='["517"]'/>
+* View `pong_data_hits` and enter the number of hits made with the small paddle (50) and the red colour background in this box: <input class='webex-solveme nospaces' size='3' data-answer='["517"]'/>
 
 **Note:**
 
@@ -218,7 +218,7 @@ pong_data_hits<- pong_data %>% # take pong_data
 
 
 <div class="try">
-<p>After grouping data together using the <code>group_by()</code> function and then performing a task on it, e.g. <code>filter()</code>, it can be very good practice to ungroup the data before performing another function. Forgetting to ungroup the dataset won’t always affect further processing, but can really mess up other things. Again just a good reminder to always check the data you are getting out of a function a) makes sense and b) is what you expect.</p>
+<p>After grouping data together using the <code>group_by()</code> function and then performing a task on it, e.g. <code>filter()</code>, it can be very good practice to ungroup the data before performing another function. Forgetting to ungroup the dataset won't always affect further processing, but can really mess up other things. Again just a good reminder to always check the data you are getting out of a function a) makes sense and b) is what you expect.</p>
 </div>
 
 ## Activity 9: Counting observations {#dw2-a9}
@@ -329,7 +329,7 @@ Below you will find the solutions to the above questions. Only look at them afte
 ### Activity 3 {#dw2-a3sol}
 
 
-<div class='solution'><button>Solution Task 3</button>
+<div class='webex-solution'><button>Solution Task 3</button>
 
 
 ```r
@@ -349,7 +349,7 @@ select_dat <-select(pong_data, -JudgedSpeed, -BallSpeed, -BlockNumber)
 ### Activity 4 {#dw2-a4sol}
 
 
-<div class='solution'><button>Solution Activity 4</button>
+<div class='webex-solution'><button>Solution Activity 4</button>
 
 
 ```r
@@ -366,7 +366,7 @@ reorder_dat <- select(pong_data, BallSpeed, HitOrMiss, JudgedSpeed, Participant,
 ### Activity 5 {#dw2-a5sol}
 
 
-<div class='solution'><button>Solution Task 2</button>
+<div class='webex-solution'><button>Solution Task 2</button>
 
 
 ```r
@@ -382,7 +382,7 @@ arrange_dat <- arrange(pong_data, desc(HitOrMiss), desc(JudgedSpeed))
 ### Activity 6 {#dw2-a6sol}
 
 
-<div class='solution'><button>Solution Activity 6</button>
+<div class='webex-solution'><button>Solution Activity 6</button>
 
 
 ```r
@@ -401,7 +401,7 @@ pong_fast_miss< - filter(pong_data,
 ### Activity 7 {#dw2-a7sol}
 
 
-<div class='solution'><button>Solution Activity 7 4</button>
+<div class='webex-solution'><button>Solution Activity 7 4</button>
 
 
 ```r
@@ -435,14 +435,14 @@ pong_data<- filter(pong_data, TrialNumber >= 2) %>%
 
 1. What type of data would these most likely be:
 
-* Male = <select class='solveme' data-answer='["Character"]'> <option></option> <option>Character</option> <option>Numeric</option> <option>Integer</option></select>
+* Male = <select class='webex-select'><option value='blank'></option><option value='answer'>Character</option><option value=''>Numeric</option><option value=''>Integer</option></select>
 
-* 7.15 = <select class='solveme' data-answer='["Numeric"]'> <option></option> <option>Character</option> <option>Numeric</option> <option>Integer</option></select>
+* 7.15 = <select class='webex-select'><option value='blank'></option><option value=''>Character</option><option value='answer'>Numeric</option><option value=''>Integer</option></select>
 
-* 137 = <select class='solveme' data-answer='["Integer"]'> <option></option> <option>Character</option> <option>Numeric</option> <option>Integer</option></select>
+* 137 = <select class='webex-select'><option value='blank'></option><option value=''>Character</option><option value=''>Numeric</option><option value='answer'>Integer</option></select>
 
 
-<div class='solution'><button>Explain these answers</button>
+<div class='webex-solution'><button>Explain these answers</button>
 
 There is a lot of different types of data and as well as different types of levels of measurements and it can get very confusing. It's important to try to remember which is which because you can only do certain types of analyses on certain types of data and certain types of measurements. For instance, you can't take the average of Characters just like you can't take the average of Categorical data. Likewise, you can do any maths on Numeric data, just like you can on Interval and Ratio data. Integer data is funny in that sometimes it is Ordinal and sometimes it is Interval, sometimes you should take the median, sometimes you should take the mean. The main point is to always know what type of data you are using and to think about what you can and cannot do with them.
 
@@ -451,10 +451,10 @@ There is a lot of different types of data and as well as different types of leve
 
 <br>
 
-2. Which of the Wickham Six would you use to sort columns from smallest to largest: <select class='solveme' data-answer='["arrange"]'> <option></option> <option>select</option> <option>filter</option> <option>mutate</option> <option>arrange</option> <option>group_by</option> <option>summarise</option></select>
+2. Which of the Wickham Six would you use to sort columns from smallest to largest: <select class='webex-select'><option value='blank'></option><option value=''>select</option><option value=''>filter</option><option value=''>mutate</option><option value='answer'>arrange</option><option value=''>group_by</option><option value=''>summarise</option></select>
 
-3. Which of the Wickham Six would you use to calculate the mean of a column: <select class='solveme' data-answer='["summarise"]'> <option></option> <option>select</option> <option>filter</option> <option>mutate</option> <option>arrange</option> <option>group_by</option> <option>summarise</option></select>
+3. Which of the Wickham Six would you use to calculate the mean of a column: <select class='webex-select'><option value='blank'></option><option value=''>select</option><option value=''>filter</option><option value=''>mutate</option><option value=''>arrange</option><option value=''>group_by</option><option value='answer'>summarise</option></select>
 
-4. Which of the Wickham Six would you use to remove certain observations - e.g. remove all males: <select class='solveme' data-answer='["filter"]'> <option></option> <option>select</option> <option>filter</option> <option>mutate</option> <option>arrange</option> <option>group_by</option> <option>summarise</option></select> 
+4. Which of the Wickham Six would you use to remove certain observations - e.g. remove all males: <select class='webex-select'><option value='blank'></option><option value=''>select</option><option value='answer'>filter</option><option value=''>mutate</option><option value=''>arrange</option><option value=''>group_by</option><option value=''>summarise</option></select> 
 
-5. What does this line of code say? `data %>% filter() %>% group_by() %>% summarise()`: <select class='solveme' data-answer='["take the data and then filter it and then group it and then summarise it"]'> <option></option> <option>take the data and then group it and then filter it and then summarise it</option> <option>take the data and then filter it and then group it and then summarise it</option> <option>take the data and then summarise it and then filter it and then group it</option> <option>take the data and then group it and then summarise it and then filter it</option></select>  
+5. What does this line of code say? `data %>% filter() %>% group_by() %>% summarise()`: <select class='webex-select'><option value='blank'></option><option value=''>take the data and then group it and then filter it and then summarise it</option><option value='answer'>take the data and then filter it and then group it and then summarise it</option><option value=''>take the data and then summarise it and then filter it and then group it</option><option value=''>take the data and then group it and then summarise it and then filter it</option></select>  

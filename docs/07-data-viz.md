@@ -4,15 +4,15 @@
 
 Which function(s) would you use to approach each of the following problems?
 
-* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='solveme' data-answer='["filter()"]'> <option></option> <option>mutate()</option> <option>select()</option> <option>summarise()</option> <option>arrange()</option> <option>group_by()</option> <option>filter()</option></select> function.
+* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='webex-select'><option value='blank'></option><option value=''>mutate()</option><option value=''>select()</option><option value='answer'>filter()</option><option value=''>group_by()</option><option value=''>summarise()</option><option value=''>arrange()</option></select> function.
 
-* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='solveme' data-answer='["summarise()"]'> <option></option> <option>summarise()</option> <option>group_by()</option> <option>select()</option> <option>arrange()</option> <option>mutate()</option> <option>filter()</option></select> function.
+* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='webex-select'><option value='blank'></option><option value=''>filter()</option><option value=''>select()</option><option value='answer'>summarise()</option><option value=''>mutate()</option><option value=''>group_by()</option><option value=''>arrange()</option></select> function.
 
-* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='solveme' data-answer='["mutate()"]'> <option></option> <option>filter()</option> <option>group_by()</option> <option>arrange()</option> <option>summarise()</option> <option>mutate()</option> <option>select()</option></select> function.
+* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='webex-select'><option value='blank'></option><option value=''>group_by()</option><option value=''>arrange()</option><option value=''>filter()</option><option value=''>summarise()</option><option value='answer'>mutate()</option><option value=''>select()</option></select> function.
 
-* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='solveme' data-answer='["group_by() and summarise()"]'> <option></option> <option>arrange() and mutate()</option> <option>group_by() and arrange()</option> <option>filter() and select()</option> <option>group_by() and summarise()</option></select> functions.
+* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='webex-select'><option value='blank'></option><option value=''>arrange() and mutate()</option><option value=''>filter() and select()</option><option value=''>group_by() and arrange()</option><option value='answer'>group_by() and summarise()</option></select> functions.
 
-* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='solveme' data-answer='["arrange() and select()","mutate() and filter()"]'> <option></option> <option>arrange() and select()</option> <option>mutate() and filter()</option> <option>select() and summarise()</option> <option>group_by() and mutate()</option></select> functions.
+* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='webex-select'><option value='blank'></option><option value=''>group_by() and mutate()</option><option value=''>select() and summarise()</option><option value='answer'>arrange() and select()</option><option value='answer'>mutate() and filter()</option></select> functions.
 
 ### Data visualisation
 
@@ -73,7 +73,7 @@ str(summarydata)
 ```
 
 ```
-## tibble[,8] [992 x 8] (S3: tbl_df/tbl/data.frame)
+## tibble [992 × 8] (S3: tbl_df/tbl/data.frame)
 ##  $ ahiTotal    : num [1:992] 32 34 34 35 36 37 38 38 38 38 ...
 ##  $ cesdTotal   : num [1:992] 50 49 47 41 36 35 50 55 47 39 ...
 ##  $ sex         : num [1:992] 1 1 1 1 1 1 2 1 2 2 ...
@@ -239,7 +239,7 @@ ggplot(summarydata, aes(x = sex, fill = sex)) +
 
 
 <div class="warning">
-<p>In R terms, <code>ggplot2</code> is a fairly old package. As a result, the use of pipes wasn’t included when it was originally written. As you can see in the code above, the layers of the code are separated by <code>+</code> rather than <code>%&gt;%</code>. In this case, <code>+</code> is doing essentially the same job as a pipe - be careful not to confuse them.</p>
+<p>In R terms, <code>ggplot2</code> is a fairly old package. As a result, the use of pipes wasn't included when it was originally written. As you can see in the code above, the layers of the code are separated by <code>+</code> rather than <code>%&gt;%</code>. In this case, <code>+</code> is doing essentially the same job as a pipe - be careful not to confuse them.</p>
 </div>
 
 ## Activity 5: Violin-boxplot {#introviz-a5}

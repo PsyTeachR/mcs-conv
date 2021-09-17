@@ -64,7 +64,7 @@ First, `gender` isn't part of our experiment - it's not one of the IVs, it's jus
 
 One option is to amend the use of `drop_na()` so that it doesn't include `gender` and we can do this using the same code as we would if we were using `select()`.
 
-* Run the below code. How many observations does `messy_listwise2` have? <input class='solveme nospaces' size='3' data-answer='["161"]'/>
+* Run the below code. How many observations does `messy_listwise2` have? <input class='webex-solveme nospaces' size='3' data-answer='["161"]'/>
 
 
 ```r
@@ -134,12 +134,12 @@ summarise(messy,
 
 The mean score for `delay` shows as `NA`. This is because R is trying to calculate an average of a dataset and including the missing value and this creates a logical problem (how do you take the average of nothing?). In order to calculate the mean we have to tell R to ignore the missing values by adding `na.rm = TRUE` to our code. You can read this as "remove the NAs? Yes".
 
-* Run the below code. What is the mean score for the `delay` condition to 2 decimal places? <input class='solveme nospaces' size='5' data-answer='["13.57"]'/>
+* Run the below code. What is the mean score for the `delay` condition to 2 decimal places? <input class='webex-solveme nospaces' size='5' data-answer='["13.57"]'/>
 
 
 
 <div class="danger">
-<p>It’s really important that you think about whether you want to calculate your descriptives from participants that have missing data. For example, if you are calculating the average reaction time from hundreds of trials, a few missing data points won’t affect the validity of the mean. However, if you are using a standardised questionnaire that has been validated using complete responses but your participants didn’t answer 3/10 questions, it may not be appropriate to calculate a mean score from the remaining data.</p>
+<p>It's really important that you think about whether you want to calculate your descriptives from participants that have missing data. For example, if you are calculating the average reaction time from hundreds of trials, a few missing data points won't affect the validity of the mean. However, if you are using a standardised questionnaire that has been validated using complete responses but your participants didn't answer 3/10 questions, it may not be appropriate to calculate a mean score from the remaining data.</p>
 </div>
 
 ## Activity 6: Implausible values {#screening-a6}
@@ -148,13 +148,13 @@ A crucial step of data screening is checking for implausible values. What is imp
 
 * Run `summary(messy)` again and look at the minimum and maximum values for each variable. 
 
-* Do the min and max values of `age` look plausible? <select class='solveme' data-answer='["No"]'> <option></option> <option>Yes</option> <option>No</option></select>
-* Do the min and max values of `pre` look plausible? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
-* Do the min and max values of `post` look plausible? <select class='solveme' data-answer='["No"]'> <option></option> <option>Yes</option> <option>No</option></select>
-* Do the min and max values of `delay` look plausible? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
+* Do the min and max values of `age` look plausible? <select class='webex-select'><option value='blank'></option><option value=''>Yes</option><option value='answer'>No</option></select>
+* Do the min and max values of `pre` look plausible? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes</option><option value=''>No</option></select>
+* Do the min and max values of `post` look plausible? <select class='webex-select'><option value='blank'></option><option value=''>Yes</option><option value='answer'>No</option></select>
+* Do the min and max values of `delay` look plausible? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes</option><option value=''>No</option></select>
 
 
-<div class='solution'><button>Explain these answers</button>
+<div class='webex-solution'><button>Explain these answers</button>
 
 The maximum value for age is 470, this is unlikely to be correct!
   
@@ -574,7 +574,7 @@ And you're done! This isn't a comprehensive tutorial on every type of dataset yo
 ### Activity 1 {#screening-a1sol}
 
 
-<div class='solution'><button>Activity 1</button>
+<div class='webex-solution'><button>Activity 1</button>
 
 
 ```r

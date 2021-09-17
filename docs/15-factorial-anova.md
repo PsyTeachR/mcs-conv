@@ -111,9 +111,9 @@ factorial_output <- NULL
 
 Look at the results. Remember the pre-class information about how to read p-values in scientific notation.
 
-* Is the main effect of condition significant? <select class='solveme' data-answer='["No"]'> <option></option> <option>Yes</option> <option>No</option></select>
-* Is the main effect of time significant? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
-* Is the two-way interaction significant? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
+* Is the main effect of condition significant? <select class='webex-select'><option value='blank'></option><option value=''>Yes</option><option value='answer'>No</option></select>
+* Is the main effect of time significant? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes</option><option value=''>No</option></select>
+* Is the two-way interaction significant? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes</option><option value=''>No</option></select>
 
 ### Activity 6: Assumption checking {#factorial-a6}
 
@@ -130,11 +130,11 @@ Technically, we shouldn't use an ANOVA to analyse ordinal data - *but almost eve
 
 * To test assumption 3, extract the residuals from the model (`mod_factorial$lm$residuals`), create a qq-plot and conduct a Shapiro-Wilk test.
 
-* Are the residuals normally distributed? <select class='solveme' data-answer='["No, but given the sample it is probably acceptable to proceed"]'> <option></option> <option>Yes</option> <option>No</option> <option>No, but given the sample it is probably acceptable to proceed</option></select> 
+* Are the residuals normally distributed? <select class='webex-select'><option value='blank'></option><option value=''>Yes</option><option value=''>No</option><option value='answer'>No, but given the sample it is probably acceptable to proceed</option></select> 
 
 For the final assumption, we can again use `test_levene()` to test homogeneity of variance.
 
-* Conduct Levene's test. Is assumption 4 met? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
+* Conduct Levene's test. Is assumption 4 met? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes</option><option value=''>No</option></select>
 
 
 ### Activity 7: Post-hoc tests {#factorial-a7}
@@ -272,7 +272,7 @@ And we're done! There's only one more week of R left. I know that for some of yo
 
 #### Activity 1 {#factorial-a1sol}
 
-<div class="solution"><button>Activity 1</button>
+<div class="webex-solution"><button>Activity 1</button>
 
 ```r
 library("pwr")
@@ -291,7 +291,7 @@ library("tidyverse")
 
 #### Activity 2 {#factorial-a2sol}
 
-<div class="solution"><button>Activity 2</button>
+<div class="webex-solution"><button>Activity 2</button>
 
 ```r
 sum_dat_factorial<-factorial%>%
@@ -307,7 +307,7 @@ sum_dat_factorial<-factorial%>%
 
 #### Activity 3 {#factorial-a3sol}
 
-<div class="solution"><button>Activity 3</button>
+<div class="webex-solution"><button>Activity 3</button>
 
 ```r
 ggplot(factorial, 
@@ -331,7 +331,7 @@ ggplot(factorial,
 
 #### Activity 5 {#factorial-a5sol}
 
-<div class="solution"><button>Activity 5</button>
+<div class="webex-solution"><button>Activity 5</button>
 
 ```r
 mod_factorial <- aov_ez(id = "subject",
@@ -354,7 +354,7 @@ factorial_output <- mod_factorial$anova_table %>% tidy()
 
 #### Activity 6 {#factorial-a6sol}
 
-<div class="solution"><button>Activity 6</button>
+<div class="webex-solution"><button>Activity 6</button>
 
 ```r
 # normality testing

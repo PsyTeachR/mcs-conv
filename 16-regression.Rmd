@@ -274,7 +274,7 @@ report(mod)
 
 ### Activity 1 {#regression-a1sol}
 
-<div class="solution"><button>Activity 1</button>
+<div class="webex-solution"><button>Activity 1</button>
 ```{r a1b, eval = FALSE}
 
 library("pwr")
@@ -294,7 +294,7 @@ engage <- read_csv("psess.csv")
 
 ### Activity 2 {#regression-a2sol}
 
-<div class="solution"><button>Activity 2</button>
+<div class="webex-solution"><button>Activity 2</button>
 ```{r a2b, eval = FALSE}
 
 stars2 <- pivot_longer(data = stars, names_to = "Question", values_to = "Score",cols = Q01:Q51) %>%
@@ -307,7 +307,7 @@ stars2 <- pivot_longer(data = stars, names_to = "Question", values_to = "Score",
 
 ### Activity 3 {#regression-a3sol}
 
-<div class="solution"><button>Activity 3</button>
+<div class="webex-solution"><button>Activity 3</button>
 ```{r a3b, eval = FALSE}
 
 stars_means <- stars2 %>%
@@ -324,7 +324,7 @@ stars_means <- stars2 %>%
 
 ### Activity 4 {#regression-a4sol}
 
-<div class="solution"><button>Activity 4</button>
+<div class="webex-solution"><button>Activity 4</button>
 ```{r a4b, eval = FALSE}
 
 joined <- inner_join(stars_means, engage, "ID")
@@ -336,7 +336,7 @@ joined <- inner_join(stars_means, engage, "ID")
 
 ### Activity 5 {#regression-a5sol}
 
-<div class="solution"><button>Activity 5</button>
+<div class="webex-solution"><button>Activity 5</button>
 ```{r a5b, eval = FALSE}
 
 ggplot(joined, aes(mean_anxiety, n_weeks)) +

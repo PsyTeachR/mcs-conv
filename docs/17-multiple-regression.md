@@ -43,13 +43,13 @@ But the expressive power of regression allows us to do this all within a single 
 
 Take a look at the resulting tibbles `pinfo`, `wellbeing`, and `screen`.  The `wellbeing` tibble has information from the WEMWBS questionnaire; `screen` has information about screen time use on weekends (variables ending with `we`) and weekdays (variables ending with `wk`) for four types of activities: using a computer (variables starting with `Comph`; Q10 on the survey), playing video games (variables starting with `Comp`; Q9 on the survey), using a smartphone (variables starting with `Smart`; Q11 on the survey) and watching TV (variables starting with `Watch`; Q8 on the survey).  If you want more information about these variables, look at the items 8-11 on pages 4-5 of the the [PDF version of the survey on the OSF website](https://osf.io/82ybd/).
 
-* The variable corresponding to *gender* is located in the table named <select class='solveme' data-answer='["pinfo"]'> <option></option> <option>pinfo</option> <option>wellbeing</option> <option>screen</option></select> and this variable is called <input class='solveme nospaces' size='6' data-answer='["male"]'/>.
+* The variable corresponding to *gender* is located in the table named <select class='webex-select'><option value='blank'></option><option value='answer'>pinfo</option><option value=''>wellbeing</option><option value=''>screen</option></select> and this variable is called <input class='webex-solveme nospaces' size='6' data-answer='["male"]'/>.
 
-* The WEMWBS data is in <select class='solveme' data-answer='["wide"]'> <option></option> <option>long</option> <option>wide</option></select> format, and contains observations from <input class='solveme nospaces' size='10' data-answer='["102580","102,580"]'/> participants on <input class='solveme nospaces' size='2' data-answer='["15"]'/> items.
+* The WEMWBS data is in <select class='webex-select'><option value='blank'></option><option value=''>long</option><option value='answer'>wide</option></select> format, and contains observations from <input class='webex-solveme nospaces' size='10' data-answer='["102580","102,580"]'/> participants on <input class='webex-solveme nospaces' size='2' data-answer='["15"]'/> items.
 
-* Individual participants in this dataset are identified by the variable named <input class='solveme nospaces' size='9' data-answer='["Serial"]'/> [be sure to type the name *exactly*, including capitalization].  This variable will allow us to link information across the three tables.
+* Individual participants in this dataset are identified by the variable named <input class='webex-solveme nospaces' size='9' data-answer='["Serial"]'/> [be sure to type the name *exactly*, including capitalization].  This variable will allow us to link information across the three tables.
 
-* Run `summary()` on the three data-sets. Are there any missing data points? <select class='solveme' data-answer='["No"]'> <option></option> <option>Yes</option> <option>No</option></select>
+* Run `summary()` on the three data-sets. Are there any missing data points? <select class='webex-select'><option value='blank'></option><option value=''>Yes</option><option value='answer'>No</option></select>
 
 
 ## Activity 3: Compute the well-being score for each respondent {#mulregression-a3}
@@ -59,7 +59,7 @@ The WEMWBS well-being score is simply the *sum* of all the items.
 * Write the code to create a new table called `wemwbs`, with two variables: `Serial` (the participant ID), and `tot_wellbeing`, the total WEMWBS score.
 
 
-<div class='solution'><button>Hint</button>
+<div class='webex-solution'><button>Hint</button>
 
 - "pivot" the table from wide to long
 
@@ -67,7 +67,7 @@ The WEMWBS well-being score is simply the *sum* of all the items.
 
 
 
-<div class='solution'><button>Another Hint</button>
+<div class='webex-solution'><button>Another Hint</button>
 
 - `group_by()`; `summarise(tot_wellbeing = ...)`
 
@@ -79,7 +79,7 @@ The WEMWBS well-being score is simply the *sum* of all the items.
 **Sanity check:** Verify for yourself that the scores all fall in the 14-70 range.  Przybylski and Weinstein reported a mean of 47.52 with a standard deviation of 9.55. Can you reproduce these values?
 
 
-<div class='solution'><button>Hint</button>
+<div class='webex-solution'><button>Hint</button>
 
 - `summarise()`, `min()`, `max()`
 
@@ -90,7 +90,7 @@ The WEMWBS well-being score is simply the *sum* of all the items.
 * Now visualise the distribution of `tot_wellbeing` in a histogram using ggplot2.  
 
 
-<div class='solution'><button>Hint</button>
+<div class='webex-solution'><button>Hint</button>
 
 - `geom_histogram()`
 
@@ -98,7 +98,7 @@ The WEMWBS well-being score is simply the *sum* of all the items.
 
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 
 ```r
@@ -118,7 +118,7 @@ ggplot(wemwbs, aes(tot_wellbeing)) + geom_histogram()
 </div>
 
 
-The distribution of well-being scores is <select class='solveme' data-answer='["negatively skewed"]'> <option></option> <option>symmetric</option> <option>negatively skewed</option> <option>positively skewed</option></select>.
+The distribution of well-being scores is <select class='webex-select'><option value='blank'></option><option value=''>symmetric</option><option value='answer'>negatively skewed</option><option value=''>positively skewed</option></select>.
 
 ## Activity 4: Visualise the relationship {#mulregression-a4}
 
@@ -172,7 +172,7 @@ For this analysis, we are going to collapse weekday and weekend use for smartpho
 * You will need to use the data-set `screen2` to do this.
 
 
-<div class='solution'><button>Hint</button>
+<div class='webex-solution'><button>Hint</button>
 
 - `filter()` then `group_by()` then `summarise()`
 
@@ -182,7 +182,7 @@ For this analysis, we are going to collapse weekday and weekend use for smartpho
 * Next, create a new tibble called `smart_wb` that only includes (filters) participants from `smarttot` who used a smartphone for more than one hour per day each week, and then combine (join) this table with the information in `wemwbs` and `pinfo`.**
 
 
-<div class='solution'><button>Hint</button>
+<div class='webex-solution'><button>Hint</button>
 
 - `filter()` then `inner_join()` then another `inner_join()`
 
@@ -214,7 +214,7 @@ For categorical predictors with two levels, these become coded as -.5 and .5 (be
 * You may find it useful to refer to the Visualisation chapter.
 
 
-<div class='solution'><button>Hint</button>
+<div class='webex-solution'><button>Hint</button>
 
 - `group_by()` both variables then `summarise()`
 - `colour = variable_you_want_different_colours_for`
@@ -230,7 +230,7 @@ For categorical predictors with two levels, these become coded as -.5 and .5 (be
 Write an interpretation of the above plot in plain English.
 
 
-<div class='solution'><button>Possible solution</button>
+<div class='webex-solution'><button>Possible solution</button>
 
 Girls show lower overall well-being compared to boys.  In addition, the slope for girls appears more negative than that for boys; the one for boys appears relatively flat.  This suggests that the negative association between well-being and smartphone use is stronger for girls.
 
@@ -255,7 +255,7 @@ where
 Then use `summary()` to view the results and store this in an object called `mod_summary()`.
 
 
-<div class='solution'><button>Hint</button>
+<div class='webex-solution'><button>Hint</button>
 
 - R formulas look like this: `y ~ a + b + a:b` where `a:b` means interaction
 
@@ -264,13 +264,13 @@ Then use `summary()` to view the results and store this in an object called `mod
 
 
 
-* The interaction between smartphone use and gender is shown by the variable <select class='solveme' data-answer='["thours_c:male_c"]'> <option></option> <option>thours_c</option> <option>male_c</option> <option>thours_c:male_c</option></select>, and this interaction was <select class='solveme' data-answer='["significant"]'> <option></option> <option>significant</option> <option>nonsignificant</option></select> at the $\alpha = .05$ level.
+* The interaction between smartphone use and gender is shown by the variable <select class='webex-select'><option value='blank'></option><option value=''>thours_c</option><option value=''>male_c</option><option value='answer'>thours_c:male_c</option></select>, and this interaction was <select class='webex-select'><option value='blank'></option><option value='answer'>significant</option><option value=''>nonsignificant</option></select> at the $\alpha = .05$ level.
 
-* To 2 decimal places, what proportion of the variance in well-being scores does the overall model explain? <input class='solveme nospaces' size='4' data-answer='["9.38"]'/>
+* To 2 decimal places, what proportion of the variance in well-being scores does the overall model explain? <input class='webex-solveme nospaces' size='4' data-answer='["9.38"]'/>
 
-* The p-value for the overall model fit is `< 2.2e-16`. Is this significant? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
+* The p-value for the overall model fit is `< 2.2e-16`. Is this significant? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes</option><option value=''>No</option></select>
 
-* What is the most reasonable interpretation of these results? <select class='solveme' data-answer='["smartphone use was more negatively associated with wellbeing for girls than for boys"]'> <option></option> <option>smartphone use harms girls more than boys</option> <option>smartphone use harms boys more than girls</option> <option>there is no evidence for gender differences in the relationship between smartphone use and well-being</option> <option>smartphone use was more negatively associated with wellbeing for girls than for boys</option></select>
+* What is the most reasonable interpretation of these results? <select class='webex-select'><option value='blank'></option><option value=''>smartphone use harms girls more than boys</option><option value=''>smartphone use harms boys more than girls</option><option value=''>there is no evidence for gender differences in the relationship between smartphone use and well-being</option><option value='answer'>smartphone use was more negatively associated with wellbeing for girls than for boys</option></select>
 
 ## Activity 9: Assumption checking {#mulregression-a9}
 
@@ -382,7 +382,7 @@ check_collinearity(mod)
 
 Finally, we'll calculate power and effect size as usual.
 
-* Using the code from Power and Effect Size calculate the minimum effect size we could reliably observe given our sample size and design but for 99% power. Report this to 2 decimal places <input class='solveme nospaces' size='0.00' data-answer='[".00"]'/>
+* Using the code from Power and Effect Size calculate the minimum effect size we could reliably observe given our sample size and design but for 99% power. Report this to 2 decimal places <input class='webex-solveme nospaces' size='0.00' data-answer='[".00"]'/>
 
 
 
@@ -390,8 +390,8 @@ Finally, we'll calculate power and effect size as usual.
 
 
 
-* What is the observed effect size for the study to 2 decimal places? <input class='solveme nospaces' size='0.10' data-answer='[".10"]'/>  
-* Is the study sufficiently powered? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
+* What is the observed effect size for the study to 2 decimal places? <input class='webex-solveme nospaces' size='0.10' data-answer='[".10"]'/>  
+* Is the study sufficiently powered? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes</option><option value=''>No</option></select>
 
 ## Activity 11: Write-up {#mulregression-a11}
 
@@ -434,7 +434,7 @@ Regardless of whether you continue with quantitative methods and using R, rememb
 
 ### Activity 3 {#mulregression-a3sol}
 
-<div class="solution"><button>Activity 3</button>
+<div class="webex-solution"><button>Activity 3</button>
 
 ```r
 wemwbs <- wellbeing %>%
@@ -453,7 +453,7 @@ wemwbs %>% summarise(mean = mean(tot_wellbeing),
 
 ### Activity 5 {#mulregression-a5sol}
 
-<div class="solution"><button>Activity 5</button>
+<div class="webex-solution"><button>Activity 5</button>
 
 ```r
 smarttot <- screen2 %>%
@@ -470,7 +470,7 @@ smart_wb <- smarttot %>%
 
 ### Activity 6 {#mulregression-a6sol}
 
-<div class="solution"><button>Activity 6</button>
+<div class="webex-solution"><button>Activity 6</button>
 
 ```r
 smart_wb <- smarttot %>%
@@ -486,7 +486,7 @@ smart_wb <- smarttot %>%
 
 ### Activity 7 {#mulregression-a7sol}
 
-<div class="solution"><button>Activity 7</button>
+<div class="webex-solution"><button>Activity 7</button>
 
 ```r
 smart_wb_gen <- smart_wb %>%
@@ -504,7 +504,7 @@ ggplot(smart_wb_gen, aes(tothours, mean_wellbeing, color = male)) +
 
 ### Activity 8 {#mulregression-a8sol}
 
-<div class="solution"><button>Activity 8</button>
+<div class="webex-solution"><button>Activity 8</button>
 
 ```r
 mod <- lm(tot_wellbeing ~ thours_c * male_c, smart_wb)
@@ -517,7 +517,7 @@ mod_summary <- summary(mod)
 
 ### Activity 9 {#mulregression-a9sol}
 
-<div class="solution"><button>Activity 9</button>
+<div class="webex-solution"><button>Activity 9</button>
 
 ```r
 qqPlot(mod$residuals)
@@ -526,7 +526,7 @@ qqPlot(mod$residuals)
 
 ### Activity 10 {#mulregression-a10sol}
 
-<div class="solution"><button>Activity 9</button>
+<div class="webex-solution"><button>Activity 9</button>
 
 ```r
 pwr.f2.test(u = 3, v = 71029, f2 = NULL, sig.level = .05, power = .99)

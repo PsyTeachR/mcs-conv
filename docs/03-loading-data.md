@@ -143,7 +143,7 @@ dat <- read_csv("ahi-cesd.csv")
 This will produce the error `could not find function "read_csv"`. Once you figure out how to fix this error, make a note of it.
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 When you restarted the session, you unloaded all the packages you previously had loaded. The function `read_csv()` is part of the `tidyverse` package which means that in order for the code to run, you need to run `library(tidyverse)` to reload the package so that you can use the function.
 
@@ -161,7 +161,7 @@ dat <- read_csv("ahi-cesd")
 This will produce the error `Error: 'ahi-cesd' does not exist in current working directory`. Once you figure out how to fix this error, make a note of it.
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 When loading data, you need to provide the full file name, including the file extension. In this case, the error was caused by writing `ahi-cesd` instead of `ahi-cesd.csv`. As far as R is concerned, these are two completely different files and only one of them exists in the working directory.
 
@@ -186,7 +186,7 @@ Look at the summary for `all_dat`. You will see that R has duplicated the `inter
 
 
 
-<div class='solution'><button>Solution</button>
+<div class='webex-solution'><button>Solution</button>
 
 If you want to join two tables that have mulitple columns in common, you need to use the `c()` command to list all of the variables. The code above hasn't done this, it's just listed `id` and `intervention` without enclosing them with `c()`.
 
@@ -198,10 +198,10 @@ If you want to join two tables that have mulitple columns in common, you need to
 
 1. When loading in a .csv file, which function should you use? 
 
-<select class='solveme' data-answer='["read_csv()"]'> <option></option> <option>read_csv()</option> <option>read.csv()</option></select>
+<select class='webex-select'><option value='blank'></option><option value='answer'>read_csv()</option><option value=''>read.csv()</option></select>
 
 
-<div class='solution'><button>Explain this answer</button>
+<div class='webex-solution'><button>Explain this answer</button>
 
 Remember, in this course we use `read_csv()` and it is important for the portfolio assignment that you use this function otherwise you may find that the variable names are slightly different and you won't get the marks
 
@@ -212,8 +212,8 @@ Remember, in this course we use `read_csv()` and it is important for the portfol
 
 2. The function `inner_join()` takes the arguments `x`, `y`, `by`. What does `by` do?
 
-<select class='solveme' data-answer='["Specifies the column to join by that both tables have in common"]'> <option></option> <option>Specifies the first table to join</option> <option>Specifies the second table to join</option> <option>Specifies the column to join by that both tables have in common</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>Specifies the first table to join</option><option value=''>Specifies the second table to join</option><option value='answer'>Specifies the column to join by that both tables have in common</option></select>
 
 3. What does the function `select()` do? 
 <br>
-<select class='solveme' data-answer='["Keeps only the variables you specify"]'> <option></option> <option>Keeps only the observations you specify</option> <option>Keeps only the variables you specify</option> <option>Keeps only the objects you specify</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>Keeps only the observations you specify</option><option value='answer'>Keeps only the variables you specify</option><option value=''>Keeps only the objects you specify</option></select>

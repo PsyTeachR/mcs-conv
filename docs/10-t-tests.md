@@ -7,7 +7,7 @@ Two-sample designs are very common as often we want to know whether there is a d
 <ul>
 <li>Independent and between-subjects design typically mean the same thing - different participants in different conditions</li>
 <li>Within-subjects, dependent, paired samples, and repeated-measures tend to mean the same participants in all conditions</li>
-<li>Matched pairs design means different people in different conditions but you have matched participants across the conditions so that they are effectively the same person (e.g. age, IQ, Social Economic Status, etc)</li>
+<li>Matched pairs design means different people in different conditions but you have matched participants across the conditions so that they are effectively the same person (e.g. age, IQ, Social Economic Status, etc)</li>
 <li>Mixed design is when there is a combination of within-subjects and between-subjects designs in the one experiment. For example, say you are looking at attractiveness and dominance of male and female faces. Everyone might see both male and female faces (within) but half of the participants do ratings of attractiveness and half do ratings of trustworthiness (between).</li>
 </ul>
 </div>
@@ -51,9 +51,9 @@ evaluators <- evaluators %>%
          condition = as.factor(condition))
 ```
 
-* How many participants were noted as being female: <input class='solveme nospaces' size='2' data-answer='["30"]'/>
-* How many participants were noted as being male: <input class='solveme nospaces' size='1' data-answer='["4"]'/>
-* How many data points are missing for `sex`? <input class='solveme nospaces' size='1' data-answer='["5"]'/>
+* How many participants were noted as being female: <input class='webex-solveme nospaces' size='2' data-answer='["30"]'/>
+* How many participants were noted as being male: <input class='webex-solveme nospaces' size='1' data-answer='["4"]'/>
+* How many data points are missing for `sex`? <input class='webex-solveme nospaces' size='1' data-answer='["5"]'/>
 
 ## Activity 3: Ratings {#ttest-a3}
 
@@ -134,7 +134,7 @@ ggplot(ratings2, aes(x = condition, y = Rating)) +
   stat_summary(geom = "pointrange", fun.data = "mean_cl_normal")
 ```
 
-* Look at the plot. In which condition did the evaluators give the higher ratings? <select class='solveme' data-answer='["listened"]'> <option></option> <option>listened</option> <option>read</option></select>
+* Look at the plot. In which condition did the evaluators give the higher ratings? <select class='webex-select'><option value='blank'></option><option value='answer'>listened</option><option value=''>read</option></select>
 
 ## Activity 5: Assumptions {#ttest-a5}
 
@@ -146,7 +146,7 @@ Before we run the t-test we need to check that the data meet the assumptions for
 
 We know that 1 and 2 are true from the design of the experiment, the measures used, and by looking at the data. To test assumption 3, we can create a QQ-plot of the **residuals**. For a between-subject t-test the residuals are the difference between the mean of each group and each data point. E.g., if the mean of group A is 10 and a participant in group A scores 12, the residual for that participant is 2.
 
-* Run the below code to calculate then plot the residuals. Based upon the plot, do the data meet the assumption of normality? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
+* Run the below code to calculate then plot the residuals. Based upon the plot, do the data meet the assumption of normality? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes</option><option value=''>No</option></select>
 
 
 ```r
@@ -160,7 +160,7 @@ qqPlot(ratings2$group_resid)
 
 We can also use a new test that will statistically test the residuals for normality, the **Shapiro-Wilk** test. `shapiro.wilk()` from Base R assesses if the distribution is significantly different from a normal distribution, so, if the test is significant it means your data is not normal, and if it is non-significant it means it is approximately normal. 
 
-* Run the below code. According to the Shapiro-Wilk test, is the data normally distributed? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
+* Run the below code. According to the Shapiro-Wilk test, is the data normally distributed? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes</option><option value=''>No</option></select>
 
 
 ```r
@@ -168,7 +168,7 @@ shapiro.test(x = ratings2$group_resid)
 ```
 
 
-<div class='solution'><button>Explain this answer</button>
+<div class='webex-solution'><button>Explain this answer</button>
 
 The p-value is .2088 which is more than .05, the cut-off for statistical significance. 
     
@@ -177,8 +177,8 @@ The p-value is .2088 which is more than .05, the cut-off for statistical signifi
   
 <br>
 
-* Think back to the lecture. If you ran a Student's t-test instead of a Welch t-test, what would the 4th assumption be? <select class='solveme' data-answer='["Homogeneity of variance"]'> <option></option> <option>Homogeneity of variance</option> <option>Homoscedascity</option> <option>Nominal data</option></select>    
-* Why should you always use a Welch test instead of a Student t-test? <select class='solveme' data-answer='["Because it performs better if sample sizes and variances are unequal and gives the same result when sample sizes and variances are equal"]'> <option></option> <option>Because it rhymes with squelch which is a funny word</option> <option>Because you are more likely to obtain a signifcant p-value than with Student's t-test when sample sizes and variances are equal</option> <option>Because it performs better if sample sizes and variances are unequal and gives the same result when sample sizes and variances are equal</option></select>.
+* Think back to the lecture. If you ran a Student's t-test instead of a Welch t-test, what would the 4th assumption be? <select class='webex-select'><option value='blank'></option><option value='answer'>Homogeneity of variance</option><option value=''>Homoscedascity</option><option value=''>Nominal data</option></select>    
+* Why should you always use a Welch test instead of a Student t-test? <select class='webex-select'><option value='blank'></option><option value=''>Because it rhymes with squelch which is a funny word</option><option value=''>Because you are more likely to obtain a signifcant p-value than with Student's t-test when sample sizes and variances are equal</option><option value='answer'>Because it performs better if sample sizes and variances are unequal and gives the same result when sample sizes and variances are equal</option></select>.
 
 ## Activity 6: Running the t-test {#ttest-a6}
 
@@ -260,9 +260,9 @@ results_impression <-
 ```
 
 <div class="warning">
-<p>What do you do if the data don’t meet the assumption of normality? There are a few options.</p>
+<p>What do you do if the data don't meet the assumption of normality? There are a few options.</p>
 <ol style="list-style-type: decimal">
-<li>Transform your data to try and normalise the distribution. We won’t cover this but if you’d like to know more, <a href="https://www.researchgate.net/profile/Jason_Osborne2/publication/200152356_Notes_on_the_Use_of_Data_Transformations/links/0deec5295f1eb10df8000000.pdf">this page</a> is a good start.</li>
+<li>Transform your data to try and normalise the distribution. We won't cover this but if you'd like to know more, <a href="https://www.researchgate.net/profile/Jason_Osborne2/publication/200152356_Notes_on_the_Use_of_Data_Transformations/links/0deec5295f1eb10df8000000.pdf">this page</a> is a good start.</li>
 <li>Use a non-parametric test. The non-parametric equivalent of the independent t-test is the Mann-Whitney and the equivalent of the paired-samples t-test is the Wilcoxon.</li>
 <li>Do nothing. <a href="https://www.rips-irsp.com/articles/10.5334/irsp.82/">Delacre, Lakens &amp; Leys, 2017</a> argue that with a large enough sample (&gt;30), the Welch test is robust and that using a two-step process actually causes more problems than it solves.</li>
 </ol>
@@ -294,7 +294,7 @@ results <- bind_rows(hire = results_hire,
 
 Now, we're going to add on a column of adjusted p-values using `p.adj()` and `mutate()`. 
 
-* Run the below code and then view the adjusted p-values. Are they larger or smaller than the original values? <select class='solveme' data-answer='["Larger"]'> <option></option> <option>Larger</option> <option>Smaller</option></select>
+* Run the below code and then view the adjusted p-values. Are they larger or smaller than the original values? <select class='webex-select'><option value='blank'></option><option value='answer'>Larger</option><option value=''>Smaller</option></select>
 
 
 ```r
@@ -326,22 +326,22 @@ impression_d <-
 
 * Were your results for `hire` significant? Enter the mean estimates and t-test results (means and t-value to 2 decimal places, p-value to 3 decimal places). Use the adjusted p-values:
 
-    + Mean `estimate1` (listened condition) = <input class='solveme nospaces' size='4' data-answer='["4.71"]'/>  
+    + Mean `estimate1` (listened condition) = <input class='webex-solveme nospaces' size='4' data-answer='["4.71"]'/>  
     
-    + Mean `estimate2` (read condition) = <input class='solveme nospaces' size='4' data-answer='["2.89"]'/>  
+    + Mean `estimate2` (read condition) = <input class='webex-solveme nospaces' size='4' data-answer='["2.89"]'/>  
     
-    + t(<input class='solveme nospaces' size='5' data-answer='["36.86"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.64"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.036",".036"]'/>  
+    + t(<input class='webex-solveme nospaces' size='5' data-answer='["36.86"]'/>) = <input class='webex-solveme nospaces' size='4' data-answer='["2.64"]'/>, p = <input class='webex-solveme nospaces' size='5' data-answer='["0.036",".036"]'/>  
     
 
 * Were your results for `impression` significant? Enter the mean estimates and t-test results (means and t-value to 2 decimal places, p-value to 3 decimal places):
 
-    + Mean`estimate1` (listened condition) = <input class='solveme nospaces' size='4' data-answer='["5.97"]'/>  
+    + Mean`estimate1` (listened condition) = <input class='webex-solveme nospaces' size='4' data-answer='["5.97"]'/>  
     
-    + Mean `estimate2` (read condition) = <input class='solveme nospaces' size='4' data-answer='["4.07"]'/>  
+    + Mean `estimate2` (read condition) = <input class='webex-solveme nospaces' size='4' data-answer='["4.07"]'/>  
     
-    + t(<input class='solveme nospaces' size='5' data-answer='["33.80","33.8"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.82"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.024",".024"]'/> 
+    + t(<input class='webex-solveme nospaces' size='5' data-answer='["33.80","33.8"]'/>) = <input class='webex-solveme nospaces' size='4' data-answer='["2.82"]'/>, p = <input class='webex-solveme nospaces' size='5' data-answer='["0.024",".024"]'/> 
 
-* According to Cohen's (1988) guidelines, the effect sizes for all three tests are <select class='solveme' data-answer='["Large"]'> <option></option> <option>Small</option> <option>Medium</option> <option>Large</option></select>
+* According to Cohen's (1988) guidelines, the effect sizes for all three tests are <select class='webex-select'><option value='blank'></option><option value=''>Small</option><option value=''>Medium</option><option value='answer'>Large</option></select>
 
 ## Activity 10: Write-up {#ttest-a10}
 
@@ -462,9 +462,9 @@ The output of the paired-samples t-test is very similar to the independent test,
 
 * Enter the mean estimates and t-test results (means and t-value to 2 decimal places, p-value to 3 decimal places):
 
-    + Mean `estimate` = <input class='solveme nospaces' size='5' data-answer='["-0.07"]'/>  
+    + Mean `estimate` = <input class='webex-solveme nospaces' size='5' data-answer='["-0.07"]'/>  
     
-    + t(<input class='solveme nospaces' size='2' data-answer='["31"]'/>) = <input class='solveme nospaces' size='4' data-answer='["2.42"]'/>, p = <input class='solveme nospaces' size='5' data-answer='["0.022",".022"]'/> 
+    + t(<input class='webex-solveme nospaces' size='2' data-answer='["31"]'/>) = <input class='webex-solveme nospaces' size='4' data-answer='["2.42"]'/>, p = <input class='webex-solveme nospaces' size='5' data-answer='["0.022",".022"]'/> 
     
 ## Activity 15: Write-up {#ttest-a15}
 
@@ -500,7 +500,7 @@ That was a long chapter but now that you've done all the statistical tests you n
 ### Activity 1 {#ttest-a1sol}
 
 
-<div class='solution'><button>Activity 1</button>
+<div class='webex-solution'><button>Activity 1</button>
 
 
 ```r
@@ -521,7 +521,7 @@ evaluators <- read_csv("evaluators.csv")
 ### Activity 2 {#ttest-a2sol}
 
 
-<div class='solution'><button>Activity 2</button>
+<div class='webex-solution'><button>Activity 2</button>
 
 
 ```r
@@ -541,7 +541,7 @@ summary(evaluators)
 ### Activity 6 {#ttest-a6sol}
 
 
-<div class='solution'><button>Activity 6</button>
+<div class='webex-solution'><button>Activity 6</button>
 
 
 ```r
@@ -559,7 +559,7 @@ impression <- filter(ratings2, Category == "impression")
 ### Activity 8 {#ttest-a8sol}
 
 
-<div class='solution'><button>Activity 7</button>
+<div class='webex-solution'><button>Activity 7</button>
 
 
 ```r
@@ -580,7 +580,7 @@ impression_d <- cohens_d(Rating ~ condition,
 ### Activity 12 {#ttest-a12sol}
 
 
-<div class='solution'><button>Activity 12</button>
+<div class='webex-solution'><button>Activity 12</button>
 
 
 ```r
@@ -598,7 +598,7 @@ qqPlot(gaze$diff)
 ### Activity 13 {#ttest-a13sol}
 
 
-<div class='solution'><button>Activity 13</button>
+<div class='webex-solution'><button>Activity 13</button>
 
 
 ```r
@@ -617,7 +617,7 @@ ggplot(gaze_tidy, aes(x = time, y = looking)) +
 ### Activity 14 {#ttest-a14sol}
 
 
-<div class='solution'><button>Activity 14</button>
+<div class='webex-solution'><button>Activity 14</button>
 
 
 ```r

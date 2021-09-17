@@ -309,7 +309,7 @@ To perform multiple correlations in one go, we will again use the `correlation()
 
 * Run the below code to calculate then view the correlation results
 
-```{r corrresults, results='hide'}
+```{r corrresults, results='hide', eval=FALSE}
 corr_results <- mh %>%
   select(-Participant) %>%
   correlation(method = "pearson", p_adjust = "holm")

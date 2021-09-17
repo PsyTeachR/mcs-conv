@@ -383,7 +383,7 @@ Regardless of whether you continue with quantitative methods and using R, rememb
 
 ### Activity 3 {#mulregression-a3sol}
 
-<div class="solution"><button>Activity 3</button>
+<div class="webex-solution"><button>Activity 3</button>
 ```{r a3, eval = FALSE}
 wemwbs <- wellbeing %>%
   pivot_longer(names_to = "var", values_to = "score", -Serial) %>%
@@ -401,7 +401,7 @@ wemwbs %>% summarise(mean = mean(tot_wellbeing),
 
 ### Activity 5 {#mulregression-a5sol}
 
-<div class="solution"><button>Activity 5</button>
+<div class="webex-solution"><button>Activity 5</button>
 ```{r a5, eval = FALSE}
 smarttot <- screen2 %>%
   filter(variable == "Using Smartphone") %>%
@@ -417,7 +417,7 @@ smart_wb <- smarttot %>%
 
 ### Activity 6 {#mulregression-a6sol}
 
-<div class="solution"><button>Activity 6</button>
+<div class="webex-solution"><button>Activity 6</button>
 ```{r a6, eval = FALSE}
 smart_wb <- smarttot %>%
   filter(tothours > 1) %>%
@@ -432,7 +432,7 @@ smart_wb <- smarttot %>%
 
 ### Activity 7 {#mulregression-a7sol}
 
-<div class="solution"><button>Activity 7</button>
+<div class="webex-solution"><button>Activity 7</button>
 ```{r a7, eval = FALSE}
 smart_wb_gen <- smart_wb %>%
   group_by(tothours, male) %>%
@@ -449,7 +449,7 @@ ggplot(smart_wb_gen, aes(tothours, mean_wellbeing, color = male)) +
 
 ### Activity 8 {#mulregression-a8sol}
 
-<div class="solution"><button>Activity 8</button>
+<div class="webex-solution"><button>Activity 8</button>
 ```{r a8, eval = FALSE}
 mod <- lm(tot_wellbeing ~ thours_c * male_c, smart_wb)
 # alternatively: 
@@ -461,7 +461,7 @@ mod_summary <- summary(mod)
 
 ### Activity 9 {#mulregression-a9sol}
 
-<div class="solution"><button>Activity 9</button>
+<div class="webex-solution"><button>Activity 9</button>
 ```{r a9, eval = FALSE}
 qqPlot(mod$residuals)
 ```
@@ -469,7 +469,7 @@ qqPlot(mod$residuals)
 
 ### Activity 10 {#mulregression-a10sol}
 
-<div class="solution"><button>Activity 9</button>
+<div class="webex-solution"><button>Activity 9</button>
 ```{r a10b, eval = FALSE}
 pwr.f2.test(u = 3, v = 71029, f2 = NULL, sig.level = .05, power = .99)
 f2 <- mod_summary$adj.r.squared/(1 - mod_summary$adj.r.squared)

@@ -554,7 +554,7 @@ In this week's lab you will perform your first hypothesis test using a procedure
 To many, a lot of statistics must seem a bit like blind faith as it deals with estimating quantities we haven't observed (or can't observe), e.g. the mean of a whole population. As such we have to know if we can trust our procedures for making estimations and inferences because we rarely get a chance to compare the estimated values to the true values to see if they match up. One way to test a procedure, and in turn learn about statistics, is through data simulation. In simulations **we create** a population and then draw samples and run tests on the data, i.e. on this **known** population. By running lots of simulations we can test our procedures and make sure they are acting as we expect them to. This approach is known as a **Monte Carlo simulation**, named after the city famous for the many games of chance that are played there. 
 
 <div class="info">
-<p>You can go read up on the Monte Carlo approach if you like. It can however get quite indepth, as having a brief glance at the wikipedia entry on it highlights. The main thing to keep in mind is that the method involves creating a population and continually taking samples from that population in order to make an inference. This is what we will show you in the lab. Data simulation and “creating” your own datasets, to see how tests work, is a great way to understand statistics. When doing this lab, keep in mind how easy it really is to find a significant result if even randomly created data can give a significant result. This may help dispell any notion that there is something inherently important about a significant result, in itself.</p>
+<p>You can go read up on the Monte Carlo approach if you like. It can however get quite indepth, as having a brief glance at the wikipedia entry on it highlights. The main thing to keep in mind is that the method involves creating a population and continually taking samples from that population in order to make an inference. This is what we will show you in the lab. Data simulation and "creating" your own datasets, to see how tests work, is a great way to understand statistics. When doing this lab, keep in mind how easy it really is to find a significant result if even randomly created data can give a significant result. This may help dispell any notion that there is something inherently important about a significant result, in itself.</p>
 </div>
 
 We will now take each skill in turn. Be sure to try them all out. It looks a lot of reading but it is mainly just showing you the output of the functions so you can see you are doing it correctly. The key thing is to try them yourselves and don't be scared to change things to see what might happen if you do it slightly differently. We will also ask a couple of questions along the way to make sure you understand the skills.
@@ -578,13 +578,13 @@ rnorm(10)
 ```
 
 ```
-##  [1] -0.20535887  0.64263205  1.07657877 -0.27223032  0.92141355 -0.51802048
-##  [7]  0.87276261  0.06354919  1.90279531  0.08977612
+##  [1] -0.16074024 -1.67024058 -0.19268605  0.53060358  0.25946499 -0.09457521
+##  [7] -0.07597756  0.46770700 -0.57101577 -1.92582420
 ```
 <br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
 
-If you enter `rnorm(50)` again you will get different numbers. Why? <select class='solveme' data-answer='["The numbers are random"]'> <option></option> <option>I have made a mistake</option> <option>The numbers are random</option> <option>R has made a mistake</option> <option>Phil has made a mistake</option></select>
+If you enter `rnorm(50)` again you will get different numbers. Why? <select class='webex-select'><option value='blank'></option><option value=''>I have made a mistake</option><option value='answer'>The numbers are random</option><option value=''>R has made a mistake</option><option value=''>Phil has made a mistake</option></select>
 
 If you want to change the mean or sd, you would need to pass additional arguments to the function as shown below.  
 
@@ -605,10 +605,10 @@ random_numbers <- c(rnorm(50, 75),
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
 
-In the above example code, what is the standard deviation of the two samples you have created? <select class='solveme' data-answer='["1"]'> <option></option> <option>50</option> <option>75</option> <option>90</option> <option>1</option></select>
+In the above example code, what is the standard deviation of the two samples you have created? <select class='webex-select'><option value='blank'></option><option value=''>50</option><option value=''>75</option><option value=''>90</option><option value='answer'>1</option></select>
 
 
-<div class='solution'><button>Explain This - I don't get this answer!</button>
+<div class='webex-solution'><button>Explain This - I don't get this answer!</button>
 
 <div class="info">
 <p>What is the <strong>default</strong> sd of the function?</p>
@@ -635,7 +635,7 @@ length(random_numbers)
 Another thing that is useful to be able to do is to generate **permutations** of values.  
 
 
-<div class='solution'><button>Portfolio Point - What are Permutations?</button>
+<div class='webex-solution'><button>Portfolio Point - What are Permutations?</button>
 
 <div class="info">
 <p>A <strong>permutation</strong> is just a different ordering of the same values. For example, the numbers 1, 2, 3 can be permuted into the following 6 sequences:</p>
@@ -647,7 +647,7 @@ Another thing that is useful to be able to do is to generate **permutations** of
 <li>3, 1, 2</li>
 <li>3, 2, 1</li>
 </ul>
-<p>The more values you have, the more permutations of the order you have. The number of permutations can be calculated by, for example, <code>3*2*1</code>, where 3 is the number of values you have. Or through code: <code>factorial(3) = 6</code>. This assumes that each value is used once in the sequence and that each value never changes, i.e. 1234 cannot suddenly become 1235.</p>
+<p>The more values you have, the more permutations of the order you have. The number of permutations can be calculated by, for example, <code>3*2*1</code>, where 3 is the number of values you have. Or through code: <code>factorial(3) = 6</code>. This assumes that each value is used once in the sequence and that each value never changes, i.e. 1234 cannot suddenly become 1235.</p>
 </div>
 
 </div>
@@ -677,21 +677,21 @@ sample(letters)
 ```
 
 ```
-##  [1] "i" "l" "n" "e" "v" "h" "k" "w" "u" "q" "t" "z" "r" "o" "c" "x" "a" "f" "s"
-## [20] "m" "p" "j" "y" "d" "g" "b"
+##  [1] "y" "f" "p" "z" "v" "o" "k" "b" "s" "x" "h" "u" "r" "j" "c" "d" "n" "w" "g"
+## [20] "l" "a" "m" "q" "i" "e" "t"
 ```
 
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span>  
 
-If `month.name` contains the names of the twelve months of the year, how many possible permutations are there of `sample(month.name)`? <select class='solveme' data-answer='["479001600"]'> <option></option> <option>1</option> <option>12</option> <option>144</option> <option>479001600</option></select>
+If `month.name` contains the names of the twelve months of the year, how many possible permutations are there of `sample(month.name)`? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value=''>12</option><option value=''>144</option><option value='answer'>479001600</option></select>
 
 
-<div class='solution'><button>Portfolio Point - Different samples with sample()</button>
+<div class='webex-solution'><button>Portfolio Point - Different samples with sample()</button>
 
 <div class="info">
 <p>Each time you run <code>sample(letters)</code> it will give you another random permutation of the sequence. That is what <code>sample()</code> does - creates a random permutation of the values you give it. Try repeating this command many times in the console. Because there are so many possible sequences, it is very unlikely that you will ever see the same sequence twice!</p>
 <p>An interesting thing about <code>sample()</code> is that <code>sample(c(1,2,3,4))</code> is the same as <code>sample(4)</code>. And to recap, there would be 24 different permutations based on <code>factorial(4)</code>, meaning that each time you type <code>sample(4)</code> you are getting one of those 24 different orders. So what would factorial(12) be?</p>
-<p>Top Tip: Remember that you can scroll up through your command history in the console using the up arrow on your keyboard; this way, you don’t ever have to retype a command you’ve already entered.</p>
+<p>Top Tip: Remember that you can scroll up through your command history in the console using the up arrow on your keyboard; this way, you don't ever have to retype a command you've already entered.</p>
 </div>
 
 </div>
@@ -715,16 +715,16 @@ tibble(Y = rnorm(10))
 ## # A tibble: 10 x 1
 ##          Y
 ##      <dbl>
-##  1  0.166 
-##  2 -0.0383
-##  3 -0.557 
-##  4 -1.84  
-##  5  0.664 
-##  6 -0.0124
-##  7  1.29  
-##  8  0.622 
-##  9  1.15  
-## 10  0.771
+##  1 -1.70  
+##  2  0.0396
+##  3  2.15  
+##  4 -0.982 
+##  5 -1.30  
+##  6 -1.52  
+##  7 -1.34  
+##  8  0.369 
+##  9 -0.324 
+## 10  0.632
 ```
 
 The above command creates a new table with one column named `Y`, and the values in that column are the result of a call to `rnorm(10)`: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.
@@ -741,16 +741,16 @@ tibble(Y = c(rnorm(5, mean = -10),
 ## # A tibble: 10 x 1
 ##         Y
 ##     <dbl>
-##  1 -11.5 
-##  2 -10.6 
-##  3  -9.71
-##  4 -10.3 
-##  5 -10.1 
-##  6  21.6 
-##  7  21.3 
-##  8  20.8 
-##  9  19.9 
-## 10  20.5
+##  1  -9.93
+##  2  -9.09
+##  3  -9.70
+##  4 -10.5 
+##  5 -10.3 
+##  6  20.3 
+##  7  19.9 
+##  8  18.9 
+##  9  21.2 
+## 10  19.9
 ```
 
 Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!
@@ -799,9 +799,9 @@ rep(c("A", "B"), c(2, 4))
 
 The best way to learn about this function is to play around with it in the console and see what happens. From the dropdown menus, the correct output of the following function would be:
 
-1. `rep(c("A", "B", "C"),(2, 3, 1))`  - <select class='solveme' data-answer='["A A B B B C"]'> <option></option> <option>A A A B B C</option> <option>A A B B B C</option> <option>A A B B C C</option> <option>A B C A B C</option></select>
+1. `rep(c("A", "B", "C"),(2, 3, 1))`  - <select class='webex-select'><option value='blank'></option><option value=''>A A A B B C</option><option value='answer'>A A B B B C</option><option value=''>A A B B C C</option><option value=''>A B C A B C</option></select>
 
-2. `rep(1:5, 5:1)` - <select class='solveme' data-answer='["1 1 1 1 1 2 2 2 2 3 3 3 4 4 5"]'> <option></option> <option>1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</option> <option>5 5 5 5 5 4 4 4 4 3 3 3 2 2 1</option> <option>1 1 1 1 1 2 2 2 2 3 3 3 4 4 5</option> <option>1 1 1 1 1 1 1 1 5 5 5 5 5 5 5</option></select>  
+2. `rep(1:5, 5:1)` - <select class='webex-select'><option value='blank'></option><option value=''>1 2 3 4 5 1 2 3 4 5 1 2 3 4 5</option><option value=''>5 5 5 5 5 4 4 4 4 3 3 3 2 2 1</option><option value='answer'>1 1 1 1 1 2 2 2 2 3 3 3 4 4 5</option><option value=''>1 1 1 1 1 1 1 1 5 5 5 5 5 5 5</option></select>  
  
 ### Bringing it Together in a Tibble
 
@@ -812,16 +812,16 @@ Now we know `rep()`, we can complete our table of simulated data by combining wh
 ## # A tibble: 10 x 2
 ##    group      Y
 ##    <chr>  <dbl>
-##  1 A      -8.12
-##  2 A     -10.3 
-##  3 A      -9.52
-##  4 A      -9.61
-##  5 A      -7.88
-##  6 B      19.4 
-##  7 B      20.2 
-##  8 B      20.7 
-##  9 B      19.2 
-## 10 B      21.0
+##  1 A     -11.5 
+##  2 A     -10.6 
+##  3 A     -10.7 
+##  4 A      -8.28
+##  5 A     -11.5 
+##  6 B      19.3 
+##  7 B      19.3 
+##  8 B      19.4 
+##  9 B      21.1 
+## 10 B      20.3
 ```
 
 You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called `group` where we create **A**s and **B**s through `rep()`, and one column called **Y**, our data, all in our `tibble()`:
@@ -835,7 +835,7 @@ tibble(group = rep(c("A", "B"), c(5, 5)),
 Be sure to play around with the code chunk to get used to it. Try adding a third group or even a third column? Perhaps you want to give every participant a random age with a mean of 18, and a sd of 1; or even a participant number.
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 <div class="info">
 <p>Try <code>row_number()</code> to create participant numbers.</p>
@@ -876,11 +876,11 @@ my_data_means
 ## # A tibble: 2 x 2
 ##   group     m
 ##   <chr> <dbl>
-## 1 A      21.1
-## 2 B     -20.8
+## 1 A      19.5
+## 2 B     -22.0
 ```
 
-Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -20.8 from the first group mean of 21.1, to get a single value, the difference: 41.8.
+Sometimes what we want though is to calculate **the differences between means** rather than just the means; so we'd like to subtract the second group mean -22 from the first group mean of 19.5, to get a single value, the difference: 41.6.
 
 We can do this using the `dplyr::pull()` and `purrr::pluck()` functions.  `pull()` will extract a single column from a dataframe and turn it into a vector.  `pluck()` then allows you to pull out an element (i.e. a value or values) from within that vector.
 
@@ -893,7 +893,7 @@ vec
 ```
 
 ```
-## [1]  21.07874 -20.75158
+## [1]  19.52869 -22.04773
 ```
 
 We have now created `vec` which is a vector containing only the group means; the rest of the information in the table has been discarded.  Now that we have `vec`, we can calculate the mean difference as below, where `vec` is our vector of the two means and `[1]` and `[2]` refer to the two means:
@@ -904,7 +904,7 @@ vec[1] - vec[2]
 ```
 
 ```
-## [1] 41.83031
+## [1] 41.57642
 ```
 
 But `pluck()` is also useful, and can be written as so: 
@@ -915,7 +915,7 @@ pluck(vec, 1) - pluck(vec, 2)
 ```
 
 ```
-## [1] 41.83031
+## [1] 41.57642
 ```
 
 It can also be incorporated into a pipeline as below where we still `pull()` the means column, `m`, and then `pluck()` each value in turn and subtract them from each other.
@@ -928,7 +928,7 @@ my_data_means %>% pull(m) %>% pluck(1) -
 ```
 
 ```
-## [1] 41.83031
+## [1] 41.57642
 ```
 
 However, there is an alternative way to extract the difference between means which may make more intuitive sense.  You already know how to calculate a difference between values in the same row of a table using `dplyr::mutate()`, e.g. `mutate(new_column = column1 minus column2)`.  So if you can get the observations in `my_data_means` into the same row, different columns, you could then use `mutate()` to calculate the difference.  Previously you learned `gather()` to bring columns together. Well the opposite of gather is the `tidyr::spread()` function to split columns apart - as below.
@@ -943,7 +943,7 @@ my_data_means %>%
 ## # A tibble: 1 x 2
 ##       A     B
 ##   <dbl> <dbl>
-## 1  21.1 -20.8
+## 1  19.5 -22.0
 ```
 
 The spread function (`?spread`) splits the data in column `m` by the information, i.e. labels, in column `group` and puts the data into separate columns.  A call to `spread()` followed by a `mutate()` can be used to calculate the difference in means - see below:
@@ -959,10 +959,10 @@ my_data_means %>%
 ## # A tibble: 1 x 3
 ##       A     B  diff
 ##   <dbl> <dbl> <dbl>
-## 1  21.1 -20.8  41.8
+## 1  19.5 -22.0  41.6
 ```
 
-* What is the name of the column containing the differences between the means of A and B? <select class='solveme' data-answer='["diff"]'> <option></option> <option>means</option> <option>group</option> <option>m</option> <option>diff</option></select>
+* What is the name of the column containing the differences between the means of A and B? <select class='webex-select'><option value='blank'></option><option value=''>means</option><option value=''>group</option><option value=''>m</option><option value='answer'>diff</option></select>
 
 Finally, if you then wanted to just get `diff` and throw away everything else in the table:
 
@@ -975,11 +975,11 @@ my_data_means %>%
 ```
 
 ```
-## [1] 41.83031
+## [1] 41.57642
 ```
 
 
-<div class='solution'><button>Portfolio Point - Reading pipes and verbalising tasks</button>
+<div class='webex-solution'><button>Portfolio Point - Reading pipes and verbalising tasks</button>
 
 <div class="info">
 <p>Keep in mind that a very useful technique for establishing what you want to do to a dataframe is to verbalise what you need, or to write it down in words, or to say it out loud. Take this last code chunk. What we wanted to do was to <code>spread()</code> the data in <code>m</code> into the groups A and B. Then we wanted to <code>mutate()</code> a new column that is the difference, <code>diff</code>, of A minus B. And finally we wanted to <code>pull()</code> out the value in <code>diff</code>.</p>
@@ -1052,11 +1052,11 @@ The difference this time however is that because you have added an argument to t
 
 Test your understanding by answering these questions:
 
-* Typing `hello("Phil")` in the console with this new function will give: <select class='solveme' data-answer='["Hello Phil"]'> <option></option> <option>Hello Heather</option> <option>Hello Phil</option> <option>Hello Niamh</option> <option>Hello Kevin</option></select>
+* Typing `hello("Phil")` in the console with this new function will give: <select class='webex-select'><option value='blank'></option><option value=''>Hello Heather</option><option value='answer'>Hello Phil</option><option value=''>Hello Niamh</option><option value=''>Hello Kevin</option></select>
 
-* Typing the argument as `"is it me you are looking for"` will give: <select class='solveme' data-answer='["Hello is it me you are looking for"]'> <option></option> <option>Hello is it me you are looking for</option> <option>I just called to say Hello</option> <option>You had me at Hello</option> <option>Hello seems to be the hardest word</option></select>
+* Typing the argument as `"is it me you are looking for"` will give: <select class='webex-select'><option value='blank'></option><option value='answer'>Hello is it me you are looking for</option><option value=''>I just called to say Hello</option><option value=''>You had me at Hello</option><option value=''>Hello seems to be the hardest word</option></select>
 
-* What argument would you type to get "Hello Dolly!" as the output: <select class='solveme' data-answer='["Dolly!"]'> <option></option> <option>Dolly</option> <option>Molly</option> <option>Holly</option> <option>Dolly!</option></select>
+* What argument would you type to get "Hello Dolly!" as the output: <select class='webex-select'><option value='blank'></option><option value=''>Dolly</option><option value=''>Molly</option><option value=''>Holly</option><option value='answer'>Dolly!</option></select>
 
 Most of the time however we want to create a function that computes a value or constructs a table.  For instance, let's create a function that returns randomly generated data from two samples, as we learned in the previous skills - see below. All we are doing is taking the tibble we created in Skill 4 and putting it in the body (between the curly brackets) of the function.
 
@@ -1080,16 +1080,16 @@ gen_data <- function(n = 20) {
 }
 ```
 
-* How many total participants would there be if you ran `gen_data(2)`? <select class='solveme' data-answer='["4"]'> <option></option> <option>2</option> <option>4</option> <option>20</option> <option>40</option></select>
+* How many total participants would there be if you ran `gen_data(2)`? <select class='webex-select'><option value='blank'></option><option value=''>2</option><option value='answer'>4</option><option value=''>20</option><option value=''>40</option></select>
 
-* What would you type to get 100 participants per group? <select class='solveme' data-answer='["gen_data(100)"]'> <option></option> <option>gen_data(50)</option> <option>gen_data(10)</option> <option>gen_dota(100)</option> <option>gen_data(100)</option></select>
+* What would you type to get 100 participants per group? <select class='webex-select'><option value='blank'></option><option value=''>gen_data(50)</option><option value=''>gen_data(10)</option><option value=''>gen_dota(100)</option><option value='answer'>gen_data(100)</option></select>
 
 **Challenge Question:**
 
 Keeping in mind that functions can take numerous arguments, and that each group in your function have separate means, can you modify the function `gen_data` to allow the user to change the means for the two calls to `rnorm`? Have a try before revealing the solution below.
 
 
-<div class='solution'><button>Solution To Challenge Question</button>
+<div class='webex-solution'><button>Solution To Challenge Question</button>
 
 
 ```r
@@ -1116,12 +1116,12 @@ gen_data <- function(n = 20, m1 = 20, m2 = -20) {
 
 
 
-<div class='solution'><button>Portfolio Point - Two important facts about functions</button>
+<div class='webex-solution'><button>Portfolio Point - Two important facts about functions</button>
 
 <div class="info">
 <p>Here are two important things to understand about functions.</p>
 <ol style="list-style-type: decimal">
-<li><p><strong>Functions obey lexical scoping.</strong> What does this mean? It’s like what they say about Las Vegas: what happens in the function, stays in the function. Any variables created inside of a function will be discarded after the function executes and will not be accessible to the outside calling process. So if you have a line, say a variable <code>my_var &lt;- 17</code> inside of a function, and try to print <code>my_var</code> from outside of the function, you will get an error: <code>object 'my_var' not found</code>. Although the function can ‘read’ variables from the environment that are not passed to it through an argument, it cannot change them. So you can only write a function to return a value, not change a value.</p></li>
+<li><p><strong>Functions obey lexical scoping.</strong> What does this mean? It's like what they say about Las Vegas: what happens in the function, stays in the function. Any variables created inside of a function will be discarded after the function executes and will not be accessible to the outside calling process. So if you have a line, say a variable <code>my_var &lt;- 17</code> inside of a function, and try to print <code>my_var</code> from outside of the function, you will get an error: <code>object 'my_var' not found</code>. Although the function can 'read' variables from the environment that are not passed to it through an argument, it cannot change them. So you can only write a function to return a value, not change a value.</p></li>
 <li><p><strong>Functions return the last value that was computed.</strong> You can compute many things inside of a function but only the last thing that was computed will be returned as part of the calling process. If you want to return <code>my_var</code>, which you computed earlier but not as the final computation, you can do so explicitly using <code>return(my_var)</code> at the end of the function (before the second curly bracket).</p></li>
 </ol>
 </div>
@@ -1164,16 +1164,16 @@ ten_samples
 ```
 
 ```
-##  [1]  0.0398563006 -0.0504337803 -0.0057980367 -0.1655782785 -0.1381459953
-##  [6]  0.1044063009  0.0002669897  0.2612072863  0.1205488513 -0.0965764166
+##  [1]  0.009628446  0.038643086  0.165069489  0.081068700  0.009759932
+##  [6]  0.133442292  0.177420512  0.031798246  0.111468066 -0.089064618
 ```
 
 Each element (value) of the vector within `ten_samples` is the result of a single call to `rnorm(100) %>% mean()`.
 
-* Assuming that your `hello()` function from Skill 5 still exists, and it takes the argument `name = Goodbye`, what would happen in the console if you wrote, `replicate(1000, hello("Goodbye"))`? <select class='solveme' data-answer='["Hello Goodbye would appear a thousand times"]'> <option></option> <option>Hello World would appear a thousand times</option> <option>hello Goodbye would appear a thousand times</option> <option>Hello Goodbye would appear a thousand times</option></select> - Try it and see if it works!
+* Assuming that your `hello()` function from Skill 5 still exists, and it takes the argument `name = Goodbye`, what would happen in the console if you wrote, `replicate(1000, hello("Goodbye"))`? <select class='webex-select'><option value='blank'></option><option value=''>Hello World would appear a thousand times</option><option value=''>hello Goodbye would appear a thousand times</option><option value='answer'>Hello Goodbye would appear a thousand times</option></select> - Try it and see if it works!
 
 
-<div class='solution'><button>Solution To Quickfire Question</button>
+<div class='webex-solution'><button>Solution To Quickfire Question</button>
 
 
 ```r
@@ -1237,7 +1237,7 @@ Let's get started!
 1.4.  Let's give every participant a participant number as well by adding a new column to `dat`. Something like this would work: `mutate(subj_id = row_number())`
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 <div class="info">
 <ol style="list-style-type: decimal">
@@ -1252,10 +1252,10 @@ Let's get started!
 
 
 
-<div class='solution'><button>Portfolio Point - Different uses of row_number</button>
+<div class='webex-solution'><button>Portfolio Point - Different uses of row_number</button>
 
 <div class="info">
-<p>You will see that in the example here to put a row number for each of the participants we do not have to state the number of participants we have. In the Preclass however we did. What is the difference? Well, in the Preclass we were making a tibble and trying to create a column in that tibble using <code>row_numbers</code>. If you want to do that you have to state the number of rows, e.g. <code>1:20</code>. However, in this example in the lab today the tibble already exists, we are just adding to it. If that is the case then you can just mutate on a column of row numbers without stating the number of participants. In summary:</p>
+<p>You will see that in the example here to put a row number for each of the participants we do not have to state the number of participants we have. In the Preclass however we did. What is the difference? Well, in the Preclass we were making a tibble and trying to create a column in that tibble using <code>row_numbers</code>. If you want to do that you have to state the number of rows, e.g. <code>1:20</code>. However, in this example in the lab today the tibble already exists, we are just adding to it. If that is the case then you can just mutate on a column of row numbers without stating the number of participants. In summary:</p>
 <ul>
 <li>When creating the tibble, state the number of participants in <code>row_numbers()</code>.</li>
 <li>If tibble already exists, just mutate on <code>row_numbers()</code>. No need for specific numbers.</li>
@@ -1284,7 +1284,7 @@ We now need to write a pipeline of five functions that calculates the mean diffe
 2.1.4.  Pull out the value in `diff` (the mean of group A minus the mean of group B) to finish the pipe.  
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 <div class="info">
 <p><code>dat %&gt;%</code></p>
@@ -1298,7 +1298,7 @@ We now need to write a pipeline of five functions that calculates the mean diffe
 </div>
 
 
-* Check that your value for `d_orig` is correct, without using the solution, by typing your `d_orig` value to two decimal places in the box. Include the sign, e.g. -1.23. The box will go green if you are correct. <input class='solveme nospaces' size='10' data-answer='["-7.39"]'/>
+* Check that your value for `d_orig` is correct, without using the solution, by typing your `d_orig` value to two decimal places in the box. Include the sign, e.g. -1.23. The box will go green if you are correct. <input class='webex-solveme nospaces' size='10' data-answer='["-7.39"]'/>
 
 The above steps have created a pipeline of five functions to get one value. Nice! We now need to turn this into a function because we are going to be permuting the data set (specifically the grouping labels) and re-calculating the difference many, many times.
 
@@ -1312,7 +1312,7 @@ calc_diff <- function(x){
 ```
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 
 ```r
@@ -1329,7 +1329,7 @@ calc_diff <- function(x) {
 2.3.  Now call your new function where `x` = `dat` as the argument and store the result in a new variable called `d_orig`.  Make sure that your function returns the same value as you got above and that your function returns a single value rather than a tibble. You can test this: `is.tibble(d_orig)` should give you `FALSE` and `is.numeric(d_orig)` should give you `TRUE`.
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 
 ```r
@@ -1363,12 +1363,12 @@ permute <- function(x){
 ```
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 <div class="info">
 <p>Might be easier to think of these steps in reverse.</p>
 <ol style="list-style-type: decimal">
-<li><p>Start with a <code>mutate()</code> function that rewrites the column <code>group</code> every time you run it, e.g. <code>dat %&gt;% mutate(variable = sample(variable))</code></p></li>
+<li><p>Start with a <code>mutate()</code> function that rewrites the column <code>group</code> every time you run it, e.g. <code>dat %&gt;% mutate(variable = sample(variable))</code></p></li>
 <li><p>Now put that into your <code>permute()</code> function making the necessary adjustments to the code so it starts <code>x %&gt;%...</code>. Again <code>x</code> should be in the function and not <code>dat</code>. ")</p></li>
 </ol>
 </div>
@@ -1395,7 +1395,7 @@ Now that we have the original difference and our two functions, one to shuffle g
 4.1.2. Run this line manually a few times and watch the resulting value change as the labels get permuted.
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 <div class="info">
 <p>Think about verbalising your pipelines. In a single pipeline:</p>
@@ -1412,7 +1412,7 @@ Now that we have the original difference and our two functions, one to shuffle g
 4.2.  Now take your pipeline of functions and repeat it 1000 times using the `replicate()` function. Store the output in a variable called `nhd`. `nhd` will contain 1000 values where each value is the mean difference of each of the 1000 random permutations of the data. (**Warning:** This will probably take a while to run, perhaps 10 seconds.)
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 
 ```r
@@ -1433,7 +1433,7 @@ ggplot(data = tibble(x = NULL), aes(x)) + NULL
 ```
 
 
-<div class='solution'><button>Helpful Hint</button>
+<div class='webex-solution'><button>Helpful Hint</button>
 
 <div class="info">
 <p>Remember that <code>ggplot</code> works as: <code>ggplot(data, aes(x)) + geom...</code>. Here you need to convert <code>nhd</code> into a tibble and put that in as your data. Look at the example above and keep in mind that, in this case, the first NULL could be replaced with the data in <code>nhd</code>.</p>
@@ -1442,7 +1442,7 @@ ggplot(data = tibble(x = NULL), aes(x)) + NULL
 </div>
 
 
-* Looking at the histogram, visually locate where your original value would sit on this distribution. Would it be extreme, in the tail, or does it look rather common, in the middle? <select class='solveme' data-answer='["is in the tail so looks extreme"]'> <option></option> <option>is in the middle so looks common</option> <option>is in the tail so looks extreme</option></select>
+* Looking at the histogram, visually locate where your original value would sit on this distribution. Would it be extreme, in the tail, or does it look rather common, in the middle? <select class='webex-select'><option value='blank'></option><option value=''>is in the middle so looks common</option><option value='answer'>is in the tail so looks extreme</option></select>
 
 Before moving on stop to think about what this means - that the difference between the two original groups is rather uncommon in this permuted distribution, i.e. is in the tails! Again, if unsure, go back to the principles of NHST or discuss it with your tutor!
 
@@ -1464,7 +1464,7 @@ lvec <- abs(NULL) >= abs(NULL)
 ```
 
 
-<div class='solution'><button>Portfolio Point - abs and the case of one or two tails</button>
+<div class='webex-solution'><button>Portfolio Point - abs and the case of one or two tails</button>
 
 <div class="info">
 <p>In the code above, the function <code>abs()</code> says to ignore the sign and use the absolute value. For instance, if <code>d_orig = -7</code>, then <code>abs(d_orig) = 7</code>. Why do we do this here? Can you think why you want to know how extreme your value is in this distribution regardless of whether the value is positive or negative?</p>

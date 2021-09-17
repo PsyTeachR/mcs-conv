@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 16 Regression | Untitled</title>
+  <title>Chapter 16 Regression | MSc Conversion in Psychological Studies</title>
   <meta name="description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 16 Regression | Untitled" />
+  <meta property="og:title" content="Chapter 16 Regression | MSc Conversion in Psychological Studies" />
   <meta property="og:type" content="book" />
   
   
@@ -16,14 +16,14 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 Regression | Untitled" />
+  <meta name="twitter:title" content="Chapter 16 Regression | MSc Conversion in Psychological Studies" />
   
   <meta name="twitter:description" content="This book contains the materials for the MSc Conversion in Psychological Studies/Science." />
   
 
-<meta name="author" content="Nordmann" />
 
 
+<meta name="date" content="2021-09-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,8 +32,8 @@
   
 <link rel="prev" href="factorial-anova.html"/>
 <link rel="next" href="multiple-regression.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.10.6/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,6 +50,8 @@
 
 
 
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -117,8 +119,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="include/psyteachr.css" type="text/css" />
 <link rel="stylesheet" href="include/style.css" type="text/css" />
+<link rel="stylesheet" href="include/webex.css" type="text/css" />
 </head>
 
 <body>
@@ -132,6 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li><a href="./">MSc Conversion in Psychological Studies/Science (face-to-face)</a></li>
+<li><a href="https://psyteachr.github.io/quant-fun/" style="color: red;">Access the most up-to-date version</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Overview</a>
@@ -147,7 +152,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.2" data-path="programming-basics.html"><a href="programming-basics.html#installing-r-on-your-computer"><i class="fa fa-check"></i><b>1.1.2</b> Installing R on your computer</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="programming-basics.html"><a href="programming-basics.html#getting-to-know-r-studio"><i class="fa fa-check"></i><b>1.2</b> Getting to know R Studio</a></li>
-<li class="chapter" data-level="1.3" data-path="programming-basics.html"><a href="programming-basics.html#console-vs.-scripts"><i class="fa fa-check"></i><b>1.3</b> Console vs. scripts</a></li>
+<li class="chapter" data-level="1.3" data-path="programming-basics.html"><a href="programming-basics.html#console-vs.-scripts"><i class="fa fa-check"></i><b>1.3</b> Console vs. scripts</a></li>
 <li class="chapter" data-level="1.4" data-path="programming-basics.html"><a href="programming-basics.html#functions-and-arguments"><i class="fa fa-check"></i><b>1.4</b> Functions and arguments</a></li>
 <li class="chapter" data-level="1.5" data-path="programming-basics.html"><a href="programming-basics.html#activity-1"><i class="fa fa-check"></i><b>1.5</b> Activity 1</a></li>
 <li class="chapter" data-level="1.6" data-path="programming-basics.html"><a href="programming-basics.html#activity-2"><i class="fa fa-check"></i><b>1.6</b> Activity 2</a></li>
@@ -192,7 +197,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="loading-data.html"><a href="loading-data.html#ld-a2"><i class="fa fa-check"></i><b>3.3</b> Activity 2: Load in the package</a></li>
 <li class="chapter" data-level="3.4" data-path="loading-data.html"><a href="loading-data.html#open-data"><i class="fa fa-check"></i><b>3.4</b> Open data</a></li>
 <li class="chapter" data-level="3.5" data-path="loading-data.html"><a href="loading-data.html#ld-a3"><i class="fa fa-check"></i><b>3.5</b> Activity 3: Read in data</a></li>
-<li class="chapter" data-level="3.6" data-path="loading-data.html"><a href="loading-data.html#ld-a4"><i class="fa fa-check"></i><b>3.6</b> Activity 4: Check yo’ data</a></li>
+<li class="chapter" data-level="3.6" data-path="loading-data.html"><a href="loading-data.html#ld-a4"><i class="fa fa-check"></i><b>3.6</b> Activity 4: Check yo' data</a></li>
 <li class="chapter" data-level="3.7" data-path="loading-data.html"><a href="loading-data.html#ld-a5"><i class="fa fa-check"></i><b>3.7</b> Activity 5: Join the files together</a></li>
 <li class="chapter" data-level="3.8" data-path="loading-data.html"><a href="loading-data.html#ld-a6"><i class="fa fa-check"></i><b>3.8</b> Activity 6: Pull out variables of interest</a>
 <ul>
@@ -573,7 +578,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="F" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>F</b> Data transformation</a></li>
 <li class="chapter" data-level="G" data-path="permutation-tests.html"><a href="permutation-tests.html"><i class="fa fa-check"></i><b>G</b> Permutation tests</a>
 <ul>
-<li class="chapter" data-level="G.0.1" data-path="index.html"><a href="index.html#overview"><i class="fa fa-check"></i><b>G.0.1</b> Overview</a></li>
+<li class="chapter" data-level="G.0.1" data-path="permutation-tests.html"><a href="permutation-tests.html#overview-1"><i class="fa fa-check"></i><b>G.0.1</b> Overview</a></li>
 <li class="chapter" data-level="G.0.2" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-1-generating-random-numbers"><i class="fa fa-check"></i><b>G.0.2</b> Skill 1: Generating Random Numbers</a></li>
 <li class="chapter" data-level="G.0.3" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-2-permuting-values"><i class="fa fa-check"></i><b>G.0.3</b> Skill 2: Permuting Values</a></li>
 <li class="chapter" data-level="G.0.4" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-3-creating-tibbles"><i class="fa fa-check"></i><b>G.0.4</b> Skill 3: Creating Tibbles</a></li>
@@ -583,14 +588,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="G.0.8" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-4-computing-differences-in-group-means"><i class="fa fa-check"></i><b>G.0.8</b> Skill 4: Computing Differences in Group Means</a></li>
 <li class="chapter" data-level="G.0.9" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-5-creating-your-own-functions"><i class="fa fa-check"></i><b>G.0.9</b> Skill 5: Creating Your Own Functions</a></li>
 <li class="chapter" data-level="G.0.10" data-path="permutation-tests.html"><a href="permutation-tests.html#skill-6-replicating-operations"><i class="fa fa-check"></i><b>G.0.10</b> Skill 6: Replicating Operations</a></li>
-<li class="chapter" data-level="G.0.11" data-path="intro-to-r.html"><a href="intro-to-r.html#finished"><i class="fa fa-check"></i><b>G.0.11</b> Finished!</a></li>
+<li class="chapter" data-level="G.0.11" data-path="permutation-tests.html"><a href="permutation-tests.html#finished-1"><i class="fa fa-check"></i><b>G.0.11</b> Finished!</a></li>
 <li class="chapter" data-level="G.0.12" data-path="permutation-tests.html"><a href="permutation-tests.html#permutation-tests-of-hypotheses"><i class="fa fa-check"></i><b>G.0.12</b> Permutation Tests of Hypotheses</a></li>
 <li class="chapter" data-level="G.0.13" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT1"><i class="fa fa-check"></i><b>G.0.13</b> Step 1: Load in Add-on Packages and Data</a></li>
 <li class="chapter" data-level="G.0.14" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT2"><i class="fa fa-check"></i><b>G.0.14</b> Step 2: Calculate the Original Mean Difference - <span class="math inline">\(D_{orig}\)</span></a></li>
 <li class="chapter" data-level="G.0.15" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT3"><i class="fa fa-check"></i><b>G.0.15</b> Step 3: Permute the Group Labels</a></li>
 <li class="chapter" data-level="G.0.16" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT4"><i class="fa fa-check"></i><b>G.0.16</b> Step 4: Create the Null-Hypothesis Distribution (NHD) for the Difference</a></li>
 <li class="chapter" data-level="G.0.17" data-path="permutation-tests.html"><a href="permutation-tests.html#Ch5InClassQueT5"><i class="fa fa-check"></i><b>G.0.17</b> Step 5: Compare the Observed Mean Difference to the NHD</a></li>
-<li class="chapter" data-level="G.0.18" data-path="permutation-tests.html"><a href="permutation-tests.html#finished-1"><i class="fa fa-check"></i><b>G.0.18</b> Finished!</a></li>
+<li class="chapter" data-level="G.0.18" data-path="permutation-tests.html"><a href="permutation-tests.html#finished-2"><i class="fa fa-check"></i><b>G.0.18</b> Finished!</a></li>
 </ul></li>
 <li class="chapter" data-level="H" data-path="non-parametric-tests.html"><a href="non-parametric-tests.html"><i class="fa fa-check"></i><b>H</b> Non-parametric tests</a></li>
 <li class="chapter" data-level="I" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html"><i class="fa fa-check"></i><b>I</b> Dissertation analysis guide</a>
@@ -615,19 +620,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="I.0.18" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#log-transformation"><i class="fa fa-check"></i><b>I.0.18</b> Log transformation</a></li>
 <li class="chapter" data-level="I.0.19" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#square-root"><i class="fa fa-check"></i><b>I.0.19</b> Square root</a></li>
 <li class="chapter" data-level="I.0.20" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#calculating-new-variables"><i class="fa fa-check"></i><b>I.0.20</b> Calculating new variables</a></li>
-<li class="chapter" data-level="I.0.21" data-path="data-wrangling-3.html"><a href="data-wrangling-3.html#tidy-data"><i class="fa fa-check"></i><b>I.0.21</b> Tidy data</a></li>
+<li class="chapter" data-level="I.0.21" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#tidy-data-1"><i class="fa fa-check"></i><b>I.0.21</b> Tidy data</a></li>
 <li class="chapter" data-level="I.0.22" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#summarising-and-visualising-data"><i class="fa fa-check"></i><b>I.0.22</b> Summarising and visualising data</a></li>
 <li class="chapter" data-level="I.0.23" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#descriptive-statistics"><i class="fa fa-check"></i><b>I.0.23</b> Descriptive statistics</a></li>
-<li class="chapter" data-level="I.0.24" data-path="intro-to-data-viz.html"><a href="intro-to-data-viz.html#data-visualisation"><i class="fa fa-check"></i><b>I.0.24</b> Data visualisation</a></li>
+<li class="chapter" data-level="I.0.24" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#data-visualisation-1"><i class="fa fa-check"></i><b>I.0.24</b> Data visualisation</a></li>
 <li class="chapter" data-level="I.0.25" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#inferential-statistics"><i class="fa fa-check"></i><b>I.0.25</b> Inferential statistics</a></li>
 <li class="chapter" data-level="I.0.26" data-path="dissertation-analysis-guide.html"><a href="dissertation-analysis-guide.html#assumption-tests"><i class="fa fa-check"></i><b>I.0.26</b> Assumption tests</a></li>
 </ul></li>
 <li class="divider"></li>
-<li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" 
-    target="blank"><img alt="Creative Commons License" 
-    style="border-width:0" 
-    src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><li>
-<li><a href="https://psyteachr.github.io/" target="blank">PsyTeachR</a></li>
+<li><a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"
+       target="_blank"><img alt="Creative Commons License"
+       style="border-width:0"
+       src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><li>
+<li><a href="https://psyteachr.github.io/" target="_blank">PsyTeachR</a></li>
 
 </ul>
 
@@ -638,7 +643,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Untitled</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MSc Conversion in Psychological Studies</a>
           </h1>
         </div>
 
@@ -648,7 +653,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="regression" class="section level1" number="16">
 <h1><span class="header-section-number">Chapter 16</span> Regression</h1>
-<p>In this activity, you will be working with real data and using regression to explore the question of whether there is a relationship between statistics anxiety and engagement in course activities. The hypothesis is that students who are more anxious about statistics are less likely to engage in course-related activities. This avoidance behaviour could ultimately be responsible for lower performance for these students (although we won’t be examining the assessment scores in this activity).</p>
+<p>In this activity, you will be working with real data and using regression to explore the question of whether there is a relationship between statistics anxiety and engagement in course activities. The hypothesis is that students who are more anxious about statistics are less likely to engage in course-related activities. This avoidance behaviour could ultimately be responsible for lower performance for these students (although we won't be examining the assessment scores in this activity).</p>
 <p>We are going to analyse data from the STARS Statistics Anxiety Survey, which was administered to students in the third-year statistics course in Psychology at the University of Glasgow. All the responses have been anonymised by associating the responses for each student with an arbitrary ID number (integer).</p>
 <p>The STARS survey (Cruise, Cash, &amp; Bolton, 1985) is a 51-item questionnaire, with each response on a 1 to 5 scale, with higher numbers indicating greater anxiety.</p>
 <p>Cruise, R. J., Cash, R. W., &amp; Bolton, D. L. (1985). Development and validation of an instrument to measure statistical anxiety. <em>Proceedings of the American Statistical Association, Section on Statistical Education</em>, Las Vegas, NV.</p>
@@ -658,17 +663,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>As a measure of engagement in the course, we will use data from Moodle usage analytics. Over the course of the term, there were eight optional weekly on-line sessions that students could attend for extra support. The variable <code>n_weeks</code> in the <code>psess.csv</code> file tells you how many (out of eight) a given student attended.</p>
 <p>Our hypothesis was that greater anxiety would be reflected in lower engagement. Answer the following question.</p>
-<p>If our hypothesis is correct then there should be <select class='solveme' data-answer='["a negative"]'> <option></option> <option>a positive</option> <option>no</option> <option>a negative</option></select> correlation between students’ mean anxiety levels and <code>n_weeks</code>.</p>
+<p>If our hypothesis is correct then there should be <select class='webex-select'><option value='blank'></option><option value=''>a positive</option><option value=''>no</option><option value='answer'>a negative</option></select> correlation between students' mean anxiety levels and <code>n_weeks</code>.</p>
 <div id="regression-a1" class="section level2" number="16.1">
 <h2><span class="header-section-number">16.1</span> Activity 1: Setup</h2>
 <ul>
 <li>Open R Studio and set the working directory to your chapter folder. Ensure the environment is clear.<br />
 </li>
-<li>Open a new R Markdown document and save it in your working directory. Call the file “Regression.”<br />
+<li>Open a new R Markdown document and save it in your working directory. Call the file "Regression".<br />
 </li>
 <li>Download <a href="L3_stars.csv" download>L3_stars.csv</a> and <a href="psess.csv" download>psess.csv</a> and save them in your chapter folder. Make sure that you do not change the file name at all.<br />
 </li>
-<li>If you’re on the server, avoid a number of issues by restarting the session - click <code>Session</code> - <code>Restart R</code></li>
+<li>If you're on the server, avoid a number of issues by restarting the session - click <code>Session</code> - <code>Restart R</code></li>
 <li>Delete the default R Markdown welcome text and insert a new code chunk that loads <code>pwr</code>, <code>broom</code>, <code>see</code>, <code>performance</code>, <code>report</code> and <code>tidyverse</code> using the <code>library()</code> function.</li>
 <li>Load the two CSV datasets into variables called <code>stars</code> and <code>engage</code> using <code>read_csv()</code>.</li>
 </ul>
@@ -681,9 +686,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The next thing we need to do is to calculate a mean anxiety score for each student (recall that individual students are identified by the <code>ID</code> variable).</p>
 <p>Recall the difference between <em>wide</em> and <em>tidy</em> data. In wide data, each row represents an individual case, with observations for that case in separate columns; in tidy data, each row represents a single observation, and the observations are grouped together into cases based on the value of a variable (for these data, the <code>ID</code> variable).</p>
 <ul>
-<li>The STARS data are currently in <select class='solveme' data-answer='["wide"]'> <option></option> <option>wide</option> <option>tidy</option></select> format.</li>
+<li>The STARS data are currently in <select class='webex-select'><option value='blank'></option><option value='answer'>wide</option><option value=''>tidy</option></select> format.</li>
 </ul>
-<p>Before we calculate means, you need to use <code>pivot_longer()</code> to restructure the STARS data into the appropriate “tidy” format; i.e., so that it looks like the table below.</p>
+<p>Before we calculate means, you need to use <code>pivot_longer()</code> to restructure the STARS data into the appropriate "tidy" format; i.e., so that it looks like the table below.</p>
 <table>
 <thead>
 <tr class="header">
@@ -732,7 +737,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="regression-a3" class="section level2" number="16.3">
 <h2><span class="header-section-number">16.3</span> Activity 3: Calculate mean anxiety for each student</h2>
 <ul>
-<li>Now that you’ve got the data into a tidy format, use <code>summarise()</code> and <code>group_by()</code> to calculate mean anxiety scores (<code>mean_anxiety</code>) for each student (<code>ID</code>). Store the resulting table in a variable named <code>stars_means</code>.</li>
+<li>Now that you've got the data into a tidy format, use <code>summarise()</code> and <code>group_by()</code> to calculate mean anxiety scores (<code>mean_anxiety</code>) for each student (<code>ID</code>). Store the resulting table in a variable named <code>stars_means</code>.</li>
 </ul>
 </div>
 <div id="regression-a4" class="section level2" number="16.4">
@@ -788,25 +793,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Run the below code. Read each line and ensure you understand what is being calculated.</li>
 </ul>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="regression.html#cb291-1" aria-hidden="true" tabindex="-1"></a>descriptives <span class="ot">&lt;-</span> joined <span class="sc">%&gt;%</span></span>
-<span id="cb291-2"><a href="regression.html#cb291-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_anx =</span> <span class="fu">mean</span>(mean_anxiety, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb291-3"><a href="regression.html#cb291-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_anx =</span> <span class="fu">sd</span>(mean_anxiety, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb291-4"><a href="regression.html#cb291-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_weeks =</span> <span class="fu">mean</span>(n_weeks, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb291-5"><a href="regression.html#cb291-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_weeks =</span> <span class="fu">sd</span>(n_weeks, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="regression.html#cb290-1" aria-hidden="true" tabindex="-1"></a>descriptives <span class="ot">&lt;-</span> joined <span class="sc">%&gt;%</span></span>
+<span id="cb290-2"><a href="regression.html#cb290-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_anx =</span> <span class="fu">mean</span>(mean_anxiety, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb290-3"><a href="regression.html#cb290-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_anx =</span> <span class="fu">sd</span>(mean_anxiety, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb290-4"><a href="regression.html#cb290-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_weeks =</span> <span class="fu">mean</span>(n_weeks, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb290-5"><a href="regression.html#cb290-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_weeks =</span> <span class="fu">sd</span>(n_weeks, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 </div>
 <div id="regression-a6" class="section level2" number="16.6">
 <h2><span class="header-section-number">16.6</span> Activity 6: Visualisations</h2>
 <ul>
-<li>Now that you’ve have all of the variables in one place, write the code to reproduce the exact scatterplot below (using ggplot2).</li>
+<li>Now that you've have all of the variables in one place, write the code to reproduce the exact scatterplot below (using ggplot2).</li>
 </ul>
-<div class="figure" style="text-align: center"><span id="fig:scatter"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:scatter"></span>
 <img src="16-regression_files/figure-html/scatter-1.png" alt="Scatteplot of mean anxiety and attendance" width="100%" />
 <p class="caption">
 Figure 16.1: Scatteplot of mean anxiety and attendance
 </p>
 </div>
 <ul>
-<li>According to the scatterplot, <select class='solveme' data-answer='["as anxiety increases, engagement decreases"]'> <option></option> <option>there is no apparent relationship</option> <option>as anxiety increases, engagement decreases</option> <option>as anxiety increases, engagement increases</option></select></li>
+<li>According to the scatterplot, <select class='webex-select'><option value='blank'></option><option value=''>there is no apparent relationship</option><option value='answer'>as anxiety increases, engagement decreases</option><option value=''>as anxiety increases, engagement increases</option></select></li>
 </ul>
 </div>
 <div id="regression-a7" class="section level2" number="16.7">
@@ -815,18 +820,18 @@ Figure 16.1: Scatteplot of mean anxiety and attendance
 <ul>
 <li>Use the <code>lm()</code> function to predict <code>n_weeks</code> (DV) from <code>mean_anxiety</code> (predictor). Store the result of the call to <code>lm()</code> in the variable <code>mod</code>. To see the results, use <code>summary(mod)</code>.</li>
 </ul>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="regression.html#cb292-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_weeks <span class="sc">~</span> mean_anxiety, joined)</span>
-<span id="cb292-2"><a href="regression.html#cb292-2" aria-hidden="true" tabindex="-1"></a>mod_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="regression.html#cb291-1" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_weeks <span class="sc">~</span> mean_anxiety, joined)</span>
+<span id="cb291-2"><a href="regression.html#cb291-2" aria-hidden="true" tabindex="-1"></a>mod_summary <span class="ot">&lt;-</span> <span class="fu">summary</span>(mod)</span></code></pre></div>
 <p>Answer the following questions about the model. You may wish to refer to the lecture notes to help you answer these questions.</p>
 <ol style="list-style-type: decimal">
-<li>The estimate of the y-intercept for the model, rounded to three decimal places, is <input class='solveme nospaces' size='5' data-answer='["9.057"]'/></li>
-<li>To three decimal places, if the GLM for this model is <span class="math inline">\(Y_i = \beta_0 + \beta_1 X_i + e_i\)</span>, then <span class="math inline">\(\beta_1\)</span> is <input class='solveme nospaces' size='6' data-answer='["-2.173"]'/></li>
-<li>To three decimal places, for each unit increase in anxiety, <code>n_weeks</code> decreases by <input class='solveme nospaces' size='5' data-answer='["2.173"]'/></li>
-<li>To two decimal places, what is the overall F-ratio of the model? <input class='solveme nospaces' size='5' data-answer='["11.99"]'/></li>
-<li>Is the overall model significant? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select></li>
-<li>What proportion of the variance does the model explain? <input class='solveme nospaces' size='5' data-answer='["23.39"]'/></li>
+<li>The estimate of the y-intercept for the model, rounded to three decimal places, is <input class='webex-solveme nospaces' size='5' data-answer='["9.057"]'/></li>
+<li>To three decimal places, if the GLM for this model is <span class="math inline">\(Y_i = \beta_0 + \beta_1 X_i + e_i\)</span>, then <span class="math inline">\(\beta_1\)</span> is <input class='webex-solveme nospaces' size='6' data-answer='["-2.173"]'/></li>
+<li>To three decimal places, for each unit increase in anxiety, <code>n_weeks</code> decreases by <input class='webex-solveme nospaces' size='5' data-answer='["2.173"]'/></li>
+<li>To two decimal places, what is the overall F-ratio of the model? <input class='webex-solveme nospaces' size='5' data-answer='["11.99"]'/></li>
+<li>Is the overall model significant? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes</option><option value=''>No</option></select></li>
+<li>What proportion of the variance does the model explain? <input class='webex-solveme nospaces' size='5' data-answer='["23.39"]'/></li>
 </ol>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Explain these answers
 </button>
@@ -843,7 +848,7 @@ Explain these answers
 </div>
 <div id="regression-a8" class="section level2" number="16.8">
 <h2><span class="header-section-number">16.8</span> Activity 8: Assumption checking</h2>
-<p>Just like with ANOVA, you can’t check the assumptions until you’ve run the regression so now we’ll do that to check whether there’s anything to be concerned about. As we covered in the lecture, the assumptions for regression are a little bit more involved than they were for ANOVA.</p>
+<p>Just like with ANOVA, you can't check the assumptions until you've run the regression so now we'll do that to check whether there's anything to be concerned about. As we covered in the lecture, the assumptions for regression are a little bit more involved than they were for ANOVA.</p>
 <ol style="list-style-type: decimal">
 <li>The outcome/DV is a interval/ratio level data</li>
 <li>The predictor variable is interval/ratio or categorical (with two levels)</li>
@@ -853,101 +858,101 @@ Explain these answers
 <li>The residuals should be normally distributed</li>
 <li>There should be homoscedasticity (homogeneity of variance, but for the residuals)</li>
 </ol>
-<p>Assumptions 1-3 are nice and easy. We know this from the data we have and the design of the study. Assumption 4 simply means that there is some spread in the data - for example, there’s no point running a regression with age as a variable if all your participants are 20 years old. We can check this using the scatterplot we created in Activity 4 and we can see that this assumption is met, we do indeed have a spread of scores.</p>
-<p>For the rest of the assumptions, we’re going to use functions from the packages <code>see</code> and <code>performance</code> that make life a whole lot easier.</p>
+<p>Assumptions 1-3 are nice and easy. We know this from the data we have and the design of the study. Assumption 4 simply means that there is some spread in the data - for example, there's no point running a regression with age as a variable if all your participants are 20 years old. We can check this using the scatterplot we created in Activity 4 and we can see that this assumption is met, we do indeed have a spread of scores.</p>
+<p>For the rest of the assumptions, we're going to use functions from the packages <code>see</code> and <code>performance</code> that make life a whole lot easier.</p>
 <p>First, we can use <code>check_model()</code> to produce a range of assumption test visualisations. Helpfully, this function also provides a brief explanation of what you should be looking for in each plot - if only all functions in R were so helpful!</p>
 <ul>
-<li>If you get the error message <code>Failed with error:  ‘there is no package called ‘qqplotr’’</code>, install the package <code>qqplotr</code>, you don’t need to load it using <code>library()</code>, but <code>check_model()</code> uses it in the background.</li>
+<li>If you get the error message <code>Failed with error:  ‘there is no package called ‘qqplotr’’</code>, install the package <code>qqplotr</code>, you don't need to load it using <code>library()</code>, but <code>check_model()</code> uses it in the background.</li>
 </ul>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="regression.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="regression.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(mod)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="16-regression_files/figure-html/check_model-1.png" alt="Visual assumption checks" width="100%" />
 <p class="caption">
 (#fig:check_model)Visual assumption checks
 </p>
 </div>
-<p>For Assumption 5, linearity, the plot suggests it’s not perfect but it looks pretty good.</p>
-<p>As we’ve already noted, it’s good to visualise your assumption checks because just relying on statistics can be problematic, as they can be sensitive to small or large sample sizes. However, it can also be reassuring to have a statistical test to back up your intuitions from the plot.</p>
+<p>For Assumption 5, linearity, the plot suggests it's not perfect but it looks pretty good.</p>
+<p>As we've already noted, it's good to visualise your assumption checks because just relying on statistics can be problematic, as they can be sensitive to small or large sample sizes. However, it can also be reassuring to have a statistical test to back up your intuitions from the plot.</p>
 <p>For Assumption 6, normality of residuals, the plot does suggest that the residuals might not be normal, so we can check this with <code>check_normality()</code> which runs a Shapiro-Wilk test.</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="regression.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_normality</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="regression.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_normality</span>(mod)</span></code></pre></div>
 <pre><code>## Warning: Non-normality of residuals detected (p = 0.008).</code></pre>
-<p>The result confirms that the residuals are not normally distributed, something that is likely being exacerbated by the relatively small sample size. If you’re feeling confident, you can see how we might resolve this below, but for the core aims of this chapter we’ll conclude that it’s because of the sample and continue.</p>
-<div class="solution">
+<p>The result confirms that the residuals are not normally distributed, something that is likely being exacerbated by the relatively small sample size. If you're feeling confident, you can see how we might resolve this below, but for the core aims of this chapter we'll conclude that it's because of the sample and continue.</p>
+<div class="webex-solution">
 <button>
 Transforming the data to correct for non-normality
 </button>
 <p>There are multiple ways you can transform data to deal with non-normality, you can find more information about data transformation in the <a href="https://psyteachr.github.io/msc-conv/data-transformation.html">Appendix here</a>.</p>
-<p>First, we need to get a sense of what the issue is with our dependent variable, in this case <code>n_weeks</code>. A simple histogram shows that the DV isn’t a normal distribution, instead, it looks more like a <a href="https://openstax.org/books/introductory-statistics/pages/5-2-the-uniform-distribution">uniform distribution</a>.</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="regression.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(joined, <span class="fu">aes</span>(<span class="at">x =</span> n_weeks)) <span class="sc">+</span></span>
-<span id="cb296-2"><a href="regression.html#cb296-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-2"></span>
+<p>First, we need to get a sense of what the issue is with our dependent variable, in this case <code>n_weeks</code>. A simple histogram shows that the DV isn't a normal distribution, instead, it looks more like a <a href="https://openstax.org/books/introductory-statistics/pages/5-2-the-uniform-distribution">uniform distribution</a>.</p>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="regression.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(joined, <span class="fu">aes</span>(<span class="at">x =</span> n_weeks)) <span class="sc">+</span></span>
+<span id="cb295-2"><a href="regression.html#cb295-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
 <img src="16-regression_files/figure-html/unnamed-chunk-2-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
 <p class="caption">
 Figure 7.3: <strong>CAPTION THIS FIGURE!!</strong>
 </p>
 </div>
-<p>It’s important to remember that the assumptions of regression are that the residuals are normally distributed, not the raw data, however, transforming the DV can help.</p>
-<p>To transform the uniform distribution to a normal distribution, we’re going to use the <code>unif2norm</code> function from the <code>faux</code> package (which you may need to install).</p>
+<p>It's important to remember that the assumptions of regression are that the residuals are normally distributed, not the raw data, however, transforming the DV can help.</p>
+<p>To transform the uniform distribution to a normal distribution, we're going to use the <code>unif2norm</code> function from the <code>faux</code> package (which you may need to install).</p>
 <p>This code uses <code>mutate()</code> to create a new variable <code>n_weeks_transformed</code> that is the result of the transformation.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="regression.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(faux)</span>
-<span id="cb297-2"><a href="regression.html#cb297-2" aria-hidden="true" tabindex="-1"></a>joined <span class="ot">&lt;-</span> <span class="fu">mutate</span>(joined, </span>
-<span id="cb297-3"><a href="regression.html#cb297-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">n_weeks_transformed =</span> <span class="fu">unif2norm</span>(n_weeks))</span>
-<span id="cb297-4"><a href="regression.html#cb297-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb297-5"><a href="regression.html#cb297-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(joined, <span class="fu">aes</span>(<span class="at">x =</span> n_weeks_transformed)) <span class="sc">+</span></span>
-<span id="cb297-6"><a href="regression.html#cb297-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="regression.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(faux)</span>
+<span id="cb296-2"><a href="regression.html#cb296-2" aria-hidden="true" tabindex="-1"></a>joined <span class="ot">&lt;-</span> <span class="fu">mutate</span>(joined, </span>
+<span id="cb296-3"><a href="regression.html#cb296-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">n_weeks_transformed =</span> <span class="fu">unif2norm</span>(n_weeks))</span>
+<span id="cb296-4"><a href="regression.html#cb296-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb296-5"><a href="regression.html#cb296-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(joined, <span class="fu">aes</span>(<span class="at">x =</span> n_weeks_transformed)) <span class="sc">+</span></span>
+<span id="cb296-6"><a href="regression.html#cb296-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
 <img src="16-regression_files/figure-html/unnamed-chunk-3-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
 <p class="caption">
 Figure 4.2: <strong>CAPTION THIS FIGURE!!</strong>
 </p>
 </div>
-<p>You’ll notice that the histogram for the transformed variable still doesn’t look amazing, but remember it’s the residuals, not the raw data that matters. If we re-run the regression with the transformed data and then check the model again, things are looking much better.</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="regression.html#cb298-1" aria-hidden="true" tabindex="-1"></a>mod_transformed <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_weeks_transformed <span class="sc">~</span> mean_anxiety, joined)</span>
-<span id="cb298-2"><a href="regression.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_normality</span>(mod_transformed)</span>
-<span id="cb298-3"><a href="regression.html#cb298-3" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(mod_transformed)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
+<p>You'll notice that the histogram for the transformed variable still doesn't look amazing, but remember it's the residuals, not the raw data that matters. If we re-run the regression with the transformed data and then check the model again, things are looking much better.</p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="regression.html#cb297-1" aria-hidden="true" tabindex="-1"></a>mod_transformed <span class="ot">&lt;-</span> <span class="fu">lm</span>(n_weeks_transformed <span class="sc">~</span> mean_anxiety, joined)</span>
+<span id="cb297-2"><a href="regression.html#cb297-2" aria-hidden="true" tabindex="-1"></a><span class="fu">check_normality</span>(mod_transformed)</span>
+<span id="cb297-3"><a href="regression.html#cb297-3" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(mod_transformed)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="16-regression_files/figure-html/unnamed-chunk-4-1.png" alt="**CAPTION THIS FIGURE!!**" width="100%" />
 <p class="caption">
 Figure 4.3: <strong>CAPTION THIS FIGURE!!</strong>
 </p>
 </div>
 <pre><code>## OK: residuals appear as normally distributed (p = 0.107).</code></pre>
-<p>It’s worth saying at this point that which transformation you use, and whether it works, can be a bit of trial-and-error.</p>
+<p>It's worth saying at this point that which transformation you use, and whether it works, can be a bit of trial-and-error.</p>
 </div>
 <p><br></p>
 <p>For homoscedasticity, the plot looks mostly fine, but we can double check this with <code>check_heteroscedasticity()</code> and the result confirms that the data have met this assumption.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="regression.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="regression.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_heteroscedasticity</span>(mod)</span></code></pre></div>
 <pre><code>## OK: Error variance appears to be homoscedastic (p = 0.542).</code></pre>
 </div>
 <div id="regression-a9" class="section level2" number="16.9">
 <h2><span class="header-section-number">16.9</span> Activity 9: Power and effect size</h2>
 <p>First we can calculate the minimum effect size we were able to detect given the sample size and design of the study using <code>pwr.f2.test()</code>. As usual, we fill in all the information we have and set the effect size argument, in this case <code>f2</code>, to <code>NULL</code>.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="regression.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.f2.test</span>(<span class="at">u =</span> <span class="dv">1</span>, <span class="at">v =</span> <span class="dv">35</span>, <span class="at">f2 =</span> <span class="cn">NULL</span>, <span class="at">sig.level =</span> .<span class="dv">05</span>, <span class="at">power =</span> .<span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="regression.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwr.f2.test</span>(<span class="at">u =</span> <span class="dv">1</span>, <span class="at">v =</span> <span class="dv">35</span>, <span class="at">f2 =</span> <span class="cn">NULL</span>, <span class="at">sig.level =</span> .<span class="dv">05</span>, <span class="at">power =</span> .<span class="dv">8</span>)</span></code></pre></div>
 <ul>
-<li>Based on the power analysis, what is the minimum effect size we were able to detect rounded to 2 decimal places? <input class='solveme nospaces' size='0.22' data-answer='[".22"]'/><br />
+<li>Based on the power analysis, what is the minimum effect size we were able to detect rounded to 2 decimal places? <input class='webex-solveme nospaces' size='0.22' data-answer='[".22"]'/><br />
 </li>
-<li>According to Cohen’s guidelines, this would be a <select class='solveme' data-answer='["Medium"]'> <option></option> <option>Small</option> <option>Medium</option> <option>Large</option></select> effect.</li>
+<li>According to Cohen's guidelines, this would be a <select class='webex-select'><option value='blank'></option><option value=''>Small</option><option value='answer'>Medium</option><option value=''>Large</option></select> effect.</li>
 </ul>
 <p>There is no formula to calculate our observed f<sup>2</sup>, we must do it manually using the formula from the lecture.</p>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="regression.html#cb303-1" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> mod_summary<span class="sc">$</span>adj.r.squared<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> mod_summary<span class="sc">$</span>adj.r.squared)</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="regression.html#cb302-1" aria-hidden="true" tabindex="-1"></a>f2 <span class="ot">&lt;-</span> mod_summary<span class="sc">$</span>adj.r.squared<span class="sc">/</span>(<span class="dv">1</span> <span class="sc">-</span> mod_summary<span class="sc">$</span>adj.r.squared)</span></code></pre></div>
 <ul>
-<li>Is the observed effect size larger than the minimum effect size we could detect? <select class='solveme' data-answer='["Yes, our study is sufficiently powered"]'> <option></option> <option>Yes, our study is sufficiently powered</option> <option>No, our study is underpowered</option></select></li>
+<li>Is the observed effect size larger than the minimum effect size we could detect? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes, our study is sufficiently powered</option><option value=''>No, our study is underpowered</option></select></li>
 </ul>
 </div>
 <div id="regression-a10" class="section level2" number="16.10">
 <h2><span class="header-section-number">16.10</span> Activity 10: Write-up</h2>
-<p>There’s two ways we can use R to help with the write-up. The first is inline coding like we’ve done in the other chapters, and the second is to use the <code>report</code> package. Which one you use is entirely up to you but it’s nice to have options.</p>
-<p>We need to manually calculate the p-value for the inline coding as you can’t extract it from the <code>lm()</code> model. Run the below code to do this.</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="regression.html#cb304-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span>mod_summary<span class="sc">$</span>fstatistic</span>
-<span id="cb304-2"><a href="regression.html#cb304-2" aria-hidden="true" tabindex="-1"></a>mod_p <span class="ot">&lt;-</span> <span class="fu">pf</span>(f[<span class="dv">1</span>], f[<span class="dv">2</span>], f[<span class="dv">3</span>], <span class="at">lower=</span><span class="cn">FALSE</span>) </span></code></pre></div>
+<p>There's two ways we can use R to help with the write-up. The first is inline coding like we've done in the other chapters, and the second is to use the <code>report</code> package. Which one you use is entirely up to you but it's nice to have options.</p>
+<p>We need to manually calculate the p-value for the inline coding as you can't extract it from the <code>lm()</code> model. Run the below code to do this.</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="regression.html#cb303-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span>mod_summary<span class="sc">$</span>fstatistic</span>
+<span id="cb303-2"><a href="regression.html#cb303-2" aria-hidden="true" tabindex="-1"></a>mod_p <span class="ot">&lt;-</span> <span class="fu">pf</span>(f[<span class="dv">1</span>], f[<span class="dv">2</span>], f[<span class="dv">3</span>], <span class="at">lower=</span><span class="cn">FALSE</span>) </span></code></pre></div>
 <p>Now, copy and paste the below code into <strong>white-space</strong> and knit the document.</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="regression.html#cb305-1" aria-hidden="true" tabindex="-1"></a>A simple linear regression was performed with <span class="fu">engagment</span> (<span class="at">M =</span> <span class="st">`</span><span class="at">r descriptives$mean_weeks %&gt;% round(2)</span><span class="st">`</span>, <span class="at">SD =</span> <span class="st">`</span><span class="at">r descriptives$sd_anx %&gt;% round(2)</span><span class="st">`</span>) as the outcome variable and statistics <span class="fu">anxiety</span> (<span class="at">M =</span> <span class="st">`</span><span class="at">r descriptives$mean_anx %&gt;% round(2)</span><span class="st">`</span>, <span class="at">SD =</span> <span class="st">`</span><span class="at">r descriptives$sd_anx %&gt;% round(2)</span><span class="st">`</span>) as the predictor variable. The results of the regression indicated that the model significantly predicted course <span class="fu">engagement</span> (<span class="fu">F</span>(<span class="st">`</span><span class="at">r mod_summary$fstatistic[2]</span><span class="st">`</span>, <span class="st">`</span><span class="at">r mod_summary$fstatistic[3]</span><span class="st">`</span>) <span class="ot">=</span> <span class="st">`</span><span class="at">r mod_summary$fstatistic[1] %&gt;% round(2)</span><span class="st">`</span>, p <span class="sc">&lt;</span> .<span class="dv">001</span>, Adjusted <span class="at">R2 =</span> <span class="st">`</span><span class="at">r mod_summary$adj.r.squared %&gt;% round(2)</span><span class="st">`</span>, <span class="at">f2 =</span> .<span class="dv">63</span>), accounting <span class="cf">for</span> <span class="st">`</span><span class="at">r (mod_summary$adj.r.squared %&gt;% round(2))*100</span><span class="st">`</span><span class="sc">% of the variance. Anxiety was a significant positive predictor (β = `r mod$coefficients[2] %</span><span class="er">&gt;</span><span class="sc">% round(2)`, p &lt; `r mod_p %</span><span class="er">&gt;</span>% <span class="fu">round</span>(<span class="dv">3</span>)<span class="st">`</span><span class="at">.</span></span>
-<span id="cb305-2"><a href="regression.html#cb305-2" aria-hidden="true" tabindex="-1"></a><span class="at">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="regression.html#cb304-1" aria-hidden="true" tabindex="-1"></a>A simple linear regression was performed with <span class="fu">engagment</span> (<span class="at">M =</span> <span class="st">`</span><span class="at">r descriptives$mean_weeks %&gt;% round(2)</span><span class="st">`</span>, <span class="at">SD =</span> <span class="st">`</span><span class="at">r descriptives$sd_anx %&gt;% round(2)</span><span class="st">`</span>) as the outcome variable and statistics <span class="fu">anxiety</span> (<span class="at">M =</span> <span class="st">`</span><span class="at">r descriptives$mean_anx %&gt;% round(2)</span><span class="st">`</span>, <span class="at">SD =</span> <span class="st">`</span><span class="at">r descriptives$sd_anx %&gt;% round(2)</span><span class="st">`</span>) as the predictor variable. The results of the regression indicated that the model significantly predicted course <span class="fu">engagement</span> (<span class="fu">F</span>(<span class="st">`</span><span class="at">r mod_summary$fstatistic[2]</span><span class="st">`</span>, <span class="st">`</span><span class="at">r mod_summary$fstatistic[3]</span><span class="st">`</span>) <span class="ot">=</span> <span class="st">`</span><span class="at">r mod_summary$fstatistic[1] %&gt;% round(2)</span><span class="st">`</span>, p <span class="sc">&lt;</span> .<span class="dv">001</span>, Adjusted <span class="at">R2 =</span> <span class="st">`</span><span class="at">r mod_summary$adj.r.squared %&gt;% round(2)</span><span class="st">`</span>, <span class="at">f2 =</span> .<span class="dv">63</span>), accounting <span class="cf">for</span> <span class="st">`</span><span class="at">r (mod_summary$adj.r.squared %&gt;% round(2))*100</span><span class="st">`</span><span class="sc">% of the variance. Anxiety was a significant positive predictor (β = `r mod$coefficients[2] %</span><span class="er">&gt;</span><span class="sc">% round(2)`, p &lt; `r mod_p %</span><span class="er">&gt;</span>% <span class="fu">round</span>(<span class="dv">3</span>)<span class="st">`</span><span class="at">.</span></span>
+<span id="cb304-2"><a href="regression.html#cb304-2" aria-hidden="true" tabindex="-1"></a><span class="at">)</span></span></code></pre></div>
 <p>A simple linear regression was performed with engagement (M = 4.54, SD = 0.56) as the outcome variable and statistics anxiety (M = 2.08, SD = 0.56) as the predictor variable. The results of the regression indicated that the model significantly predicted course engagement (F(1, 35) = 11.99, p &lt; .001, Adjusted R2 = 0.23, f<sup>2</sup> = .63), accounting for 23% of the variance. Anxiety was a significant positive predictor (β = -2.17, p &lt; 0.001.
 )</p>
-<p>The second option uses <code>report</code>. Just like with the t-test, the output of these functions doesn’t tend to be useable without some editing but particularly when you’re first learning how to write-up stats it can be useful to have this kind of template (and also to see that there’s different ways of reporting stats).</p>
+<p>The second option uses <code>report</code>. Just like with the t-test, the output of these functions doesn't tend to be useable without some editing but particularly when you're first learning how to write-up stats it can be useful to have this kind of template (and also to see that there's different ways of reporting stats).</p>
 <p>Running <code>report()</code> will output a summary of the results which you could copy and past into your Word document.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="regression.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="fu">report</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="regression.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="fu">report</span>(mod)</span></code></pre></div>
 <pre><code>## We fitted a linear model (estimated using OLS) to predict n_weeks with mean_anxiety (formula: n_weeks ~ mean_anxiety). The model explains a statistically significant and moderate proportion of variance (R2 = 0.26, F(1, 35) = 11.99, p = 0.001, adj. R2 = 0.23). The model&#39;s intercept, corresponding to mean_anxiety = 0, is at 9.06 (95% CI [6.32, 11.80], t(35) = 6.71, p &lt; .001). Within this model:
 ## 
 ##   - The effect of mean_anxiety is statistically significant and negative (beta = -2.17, 95% CI [-3.45, -0.90], t(35) = -3.46, p = 0.001; Std. beta = -0.51, 95% CI [-0.80, -0.21])
@@ -958,67 +963,67 @@ Figure 4.3: <strong>CAPTION THIS FIGURE!!</strong>
 <h2><span class="header-section-number">16.11</span> Activity solutions</h2>
 <div id="regression-a1sol" class="section level3" number="16.11.1">
 <h3><span class="header-section-number">16.11.1</span> Activity 1</h3>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Activity 1
 </button>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="regression.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;pwr&quot;</span>)</span>
-<span id="cb308-2"><a href="regression.html#cb308-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;broom&quot;</span>)</span>
-<span id="cb308-3"><a href="regression.html#cb308-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;see&quot;</span>)</span>
-<span id="cb308-4"><a href="regression.html#cb308-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;performance&quot;</span>)</span>
-<span id="cb308-5"><a href="regression.html#cb308-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;report&quot;</span>)</span>
-<span id="cb308-6"><a href="regression.html#cb308-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
-<span id="cb308-7"><a href="regression.html#cb308-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb308-8"><a href="regression.html#cb308-8" aria-hidden="true" tabindex="-1"></a>stars <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;LS_stars.csv&quot;</span>)</span>
-<span id="cb308-9"><a href="regression.html#cb308-9" aria-hidden="true" tabindex="-1"></a>engage <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;psess.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="regression.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;pwr&quot;</span>)</span>
+<span id="cb307-2"><a href="regression.html#cb307-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;broom&quot;</span>)</span>
+<span id="cb307-3"><a href="regression.html#cb307-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;see&quot;</span>)</span>
+<span id="cb307-4"><a href="regression.html#cb307-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;performance&quot;</span>)</span>
+<span id="cb307-5"><a href="regression.html#cb307-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;report&quot;</span>)</span>
+<span id="cb307-6"><a href="regression.html#cb307-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb307-7"><a href="regression.html#cb307-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb307-8"><a href="regression.html#cb307-8" aria-hidden="true" tabindex="-1"></a>stars <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;LS_stars.csv&quot;</span>)</span>
+<span id="cb307-9"><a href="regression.html#cb307-9" aria-hidden="true" tabindex="-1"></a>engage <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;psess.csv&quot;</span>)</span></code></pre></div>
 </div>
 <p>** Click tab to see solution **</p>
 </div>
 <div id="regression-a2sol" class="section level3" number="16.11.2">
 <h3><span class="header-section-number">16.11.2</span> Activity 2</h3>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Activity 2
 </button>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="regression.html#cb309-1" aria-hidden="true" tabindex="-1"></a>stars2 <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data =</span> stars, <span class="at">names_to =</span> <span class="st">&quot;Question&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Score&quot;</span>,<span class="at">cols =</span> Q01<span class="sc">:</span>Q51) <span class="sc">%&gt;%</span></span>
-<span id="cb309-2"><a href="regression.html#cb309-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(ID)</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="regression.html#cb308-1" aria-hidden="true" tabindex="-1"></a>stars2 <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data =</span> stars, <span class="at">names_to =</span> <span class="st">&quot;Question&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Score&quot;</span>,<span class="at">cols =</span> Q01<span class="sc">:</span>Q51) <span class="sc">%&gt;%</span></span>
+<span id="cb308-2"><a href="regression.html#cb308-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(ID)</span></code></pre></div>
 </div>
 <p>** Click tab to see solution **</p>
 </div>
 <div id="regression-a3sol" class="section level3" number="16.11.3">
 <h3><span class="header-section-number">16.11.3</span> Activity 3</h3>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Activity 3
 </button>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="regression.html#cb310-1" aria-hidden="true" tabindex="-1"></a>stars_means <span class="ot">&lt;-</span> stars2 <span class="sc">%&gt;%</span></span>
-<span id="cb310-2"><a href="regression.html#cb310-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ID) <span class="sc">%&gt;%</span></span>
-<span id="cb310-3"><a href="regression.html#cb310-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_anxiety =</span> <span class="fu">mean</span>(Score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb310-4"><a href="regression.html#cb310-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">min =</span> <span class="fu">min</span>(Score), </span>
-<span id="cb310-5"><a href="regression.html#cb310-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">min</span>(Score),</span>
-<span id="cb310-6"><a href="regression.html#cb310-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(Score))</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="regression.html#cb309-1" aria-hidden="true" tabindex="-1"></a>stars_means <span class="ot">&lt;-</span> stars2 <span class="sc">%&gt;%</span></span>
+<span id="cb309-2"><a href="regression.html#cb309-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ID) <span class="sc">%&gt;%</span></span>
+<span id="cb309-3"><a href="regression.html#cb309-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_anxiety =</span> <span class="fu">mean</span>(Score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb309-4"><a href="regression.html#cb309-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">min =</span> <span class="fu">min</span>(Score), </span>
+<span id="cb309-5"><a href="regression.html#cb309-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">min</span>(Score),</span>
+<span id="cb309-6"><a href="regression.html#cb309-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(Score))</span></code></pre></div>
 </div>
 <p>** Click tab to see solution **</p>
 </div>
 <div id="regression-a4sol" class="section level3" number="16.11.4">
 <h3><span class="header-section-number">16.11.4</span> Activity 4</h3>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Activity 4
 </button>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="regression.html#cb311-1" aria-hidden="true" tabindex="-1"></a>joined <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(stars_means, engage, <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="regression.html#cb310-1" aria-hidden="true" tabindex="-1"></a>joined <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(stars_means, engage, <span class="st">&quot;ID&quot;</span>)</span></code></pre></div>
 </div>
 <p>** Click tab to see solution **</p>
 </div>
 <div id="regression-a5sol" class="section level3" number="16.11.5">
 <h3><span class="header-section-number">16.11.5</span> Activity 5</h3>
-<div class="solution">
+<div class="webex-solution">
 <button>
 Activity 5
 </button>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="regression.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(joined, <span class="fu">aes</span>(mean_anxiety, n_weeks)) <span class="sc">+</span></span>
-<span id="cb312-2"><a href="regression.html#cb312-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb312-3"><a href="regression.html#cb312-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="regression.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(joined, <span class="fu">aes</span>(mean_anxiety, n_weeks)) <span class="sc">+</span></span>
+<span id="cb311-2"><a href="regression.html#cb311-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb311-3"><a href="regression.html#cb311-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>)</span></code></pre></div>
 </div>
 <p>** Click tab to see solution **</p>
 
@@ -1030,17 +1035,24 @@ Activity 5
 </div>
 <script>
 
-/* update total correct if #total_correct exists */
+/* update total correct if #webex-total_correct exists */
 update_total_correct = function() {
-  if (t = document.getElementById("total_correct")) {
-    t.innerHTML =
-      document.getElementsByClassName("correct").length + " of " +
-      document.getElementsByClassName("solveme").length + " correct";
+  console.log("webex: update total_correct");
+
+  if (t = document.getElementById("webex-total_correct")) {
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
 }
 
-/* solution button toggling function */
+/* webex-solution button toggling function */
 b_func = function() {
+  console.log("webex: toggle hide");
+  
   var cl = this.parentElement.classList;
   if (cl.contains('open')) {
     cl.remove("open");
@@ -1051,6 +1063,8 @@ b_func = function() {
 
 /* function for checking solveme answers */
 solveme_func = function(e) {
+  console.log("webex: check solveme");
+
   var real_answers = JSON.parse(this.dataset.answer);
   var my_answer = this.value;
   var cl = this.classList;
@@ -1058,58 +1072,106 @@ solveme_func = function(e) {
     my_answer = my_answer.toLowerCase();
   }
   if (cl.contains("nospaces")) {
-    my_answer = my_answer.replace(/ /g, "");
+    my_answer = my_answer.replace(/ /g, "")
   }
-  
-  if (my_answer !== "" & real_answers.includes(my_answer)) {
-    cl.add("correct");
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
   } else {
-    cl.remove("correct");
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
   }
 
   // match numeric answers within a specified tolerance
-  if(this.dataset.tol){
-    var tol = JSON.parse(this.dataset.tol);  
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
     var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
     if (matches.reduce((a, b) => a + b, 0) > 0) {
-      cl.add("correct");
+      cl.add("webex-correct");
     } else {
-      cl.remove("correct");
-    }  
+      cl.remove("webex-correct");
+    }
   }
 
   // added regex bit
   if (cl.contains("regex")){
     answer_regex = RegExp(real_answers.join("|"))
     if (answer_regex.test(my_answer)) {
-      cl.add("correct");
-    }  
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
   }
   
   update_total_correct();
 }
 
 window.onload = function() {
+  console.log("onload");
   /* set up solution buttons */
   var buttons = document.getElementsByTagName("button");
 
   for (var i = 0; i < buttons.length; i++) {
-    if (buttons[i].parentElement.classList.contains('solution')) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
       buttons[i].onclick = b_func;
     }
   }
-  
-  /* set up solveme inputs */
-  var solveme = document.getElementsByClassName("solveme");
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
 
   for (var i = 0; i < solveme.length; i++) {
     /* make sure input boxes don't auto-anything */
     solveme[i].setAttribute("autocomplete","off");
     solveme[i].setAttribute("autocorrect", "off");
-    solveme[i].setAttribute("autocapitalize", "off"); 
+    solveme[i].setAttribute("autocapitalize", "off");
     solveme[i].setAttribute("spellcheck", "false");
     solveme[i].value = "";
-    
+
     /* adjust answer for ignorecase or nospaces */
     var cl = solveme[i].classList;
     var real_answer = solveme[i].dataset.answer;
@@ -1120,12 +1182,24 @@ window.onload = function() {
       real_answer = real_answer.replace(/ /g, "");
     }
     solveme[i].dataset.answer = real_answer;
-    
+
     /* attach checking function */
     solveme[i].onkeyup = solveme_func;
     solveme[i].onchange = solveme_func;
   }
   
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
+
   update_total_correct();
 }
 
@@ -1159,6 +1233,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"],
 "google": false
 },
@@ -1180,6 +1255,10 @@ gitbook.start({
 "text": null
 },
 "download": {},
+"search": {
+"engine": "lunr",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true

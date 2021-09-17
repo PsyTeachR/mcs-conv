@@ -1,6 +1,6 @@
 ---
 title: "MSc Conversion in Psychological Studies"
-date: "2021-08-19"
+date: "2021-09-17"
 bibliography:
 - book.bib
 - packages.bib
@@ -16,6 +16,8 @@ biblio-style: apalike
 # Overview {-}
 
 <img src="images/msc_conv.png" style="width: 200px">
+
+<a href="https://psyteachr.github.io/quant-fun/" style="color: red; font-size: 200%;">Access the most up-to-date version</a>
 
 Across Research Methods 1 and 2 you will learn core data skills that allow you to manipulate and analyse quantitative data, a key component of an accredited psychology programme. In addition to this book, there are video walkthroughs available on Moodle and [YouTube](https://www.youtube.com/playlist?list=PLMGjq7JynlJmBbomo-_lIqJ4qWcuHcy_z) and you can use Teams to ask any R related questions that you have.
 

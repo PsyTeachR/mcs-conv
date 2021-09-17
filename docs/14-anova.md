@@ -58,7 +58,7 @@ Next we want to calculate some descriptive statistics. We're really interested i
 
 
 
-<div class='solution'><button> Hint</button>
+<div class='webex-solution'><button> Hint</button>
 
 
 ```
@@ -150,9 +150,9 @@ mod_output <- (mod$anova_table) %>% tidy()
 
 You should refer to the lecture for more information on what each variable means and how it is calculated.
 
-* Is the overall effect of Condition significant? <select class='solveme' data-answer='["Yes"]'> <option></option> <option>Yes</option> <option>No</option></select>
-* What is the F-statistics to 2 decimal places? <input class='solveme nospaces' size='4' data-answer='["3.79"]'/>
-* According to the rules of thumb, the effect size is <select class='solveme' data-answer='["Large"]'> <option></option> <option>Small</option> <option>Medium</option> <option>Large</option></select>
+* Is the overall effect of Condition significant? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes</option><option value=''>No</option></select>
+* What is the F-statistics to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["3.79"]'/>
+* According to the rules of thumb, the effect size is <select class='webex-select'><option value='blank'></option><option value=''>Small</option><option value=''>Medium</option><option value='answer'>Large</option></select>
 
 
 ### Activity 7: Assumption checking {#anova-a7}
@@ -191,7 +191,7 @@ shapiro.test(mod$aov$residuals)
 
 There are a few things to note about the assumption test results. First, look at the p-value for the Shapiro-Wilk test - `4.252e-06`. Whenever you see the `e` at the end of a number it means that R is using **scientific notation**. Scientific notation is a way of writing very large or very small numbers. Because the number after the `e` is negative it means the number should be divided by 10 to the power of six. Put simply, move the decimal place six places to the left and you will get the standard number. When reporting p-values in your results section, you should not use scientific notation, instead you should round to 3 decimal places.
 
-* What is the value of `4.252e-06`? <select class='solveme' data-answer='[".000004252"]'> <option></option> <option>.004252</option> <option>42.52</option> <option>.000004252</option></select>
+* What is the value of `4.252e-06`? <select class='webex-select'><option value='blank'></option><option value=''>.004252</option><option value=''>42.52</option><option value='answer'>.000004252</option></select>
 
 If you want R to round this for you to make it easier to read, you could use the below code to save it to an object, tidy it and then round the p.value. Just remember that in APA style you should never write "p = 0", instead, you should write "p < .001" (because p will never equal actual zero, it can just be very, very, very small).
 
@@ -227,12 +227,12 @@ test_levene(mod)
 ```
 
 ```
-## Warning: Functionality has moved to the 'performance' package.
-## Calling 'performance::check_homogeneity()'.
-```
-
-```
-## Warning: Variances differ between groups (Levene's Test, p = 0.039).
+## Levene's Test for Homogeneity of Variance (center = center)
+##       Df F value  Pr(>F)  
+## group  3  2.9551 0.03854 *
+##       68                  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 The results from Levene's test show that the assumption of homogeneity of variance has also not been met. The paper does indicate this might be the case as it specifies that the ANOVAs do not assume equal variance, however, the results of the ANOVA that are reported are identical to our results above where no correction has been made although the post-hoc tests are Welch tests (you can tell this because the degrees of freedom have been adjusted and are not whole numbers).
@@ -259,7 +259,7 @@ dat2 %>%
 ```
 
 <div class="info">
-<p>Because <code>Condition</code> has four levels, we can’t just specify <code>intrustion ~ Condition</code> because a t-test compares two groups and it wouldn’t know which of the four to compare so first we have to filter the data and use a new function <code>droplevels()</code>. It’s important to remember that when it comes to R there are two things to consider, the data you can see and the underlying structure of that data. In the above code we use <code>filter()</code> to select only conditions 1 and 2 so that we can compare them. However, that doesn’t change the fact that R “knows” that <code>Condition</code> has four levels - it doesn’t matter if two of those levels don’t have any observations any more, the underlying structure still says there are four groups. <code>droplevels()</code> tells R to remove any unused levels from a factor. Try running the above code but without <code>droplevels()</code> and see what happens.</p>
+<p>Because <code>Condition</code> has four levels, we can’t just specify <code>intrustion ~ Condition</code> because a t-test compares two groups and it wouldn’t know which of the four to compare so first we have to filter the data and use a new function <code>droplevels()</code>. It's important to remember that when it comes to R there are two things to consider, the data you can see and the underlying structure of that data. In the above code we use <code>filter()</code> to select only conditions 1 and 2 so that we can compare them. However, that doesn't change the fact that R "knows" that <code>Condition</code> has four levels - it doesn't matter if two of those levels don't have any observations any more, the underlying structure still says there are four groups. <code>droplevels()</code> tells R to remove any unused levels from a factor. Try running the above code but without <code>droplevels()</code> and see what happens.</p>
 </div>
 
 However, a quicker and better way of doing this that allows you apply a correction for multiple comparisons easily is to use `emmeans()` which computes all possible pairwise comparison t-tests and applies a correction to the p-value. 
@@ -275,7 +275,7 @@ mod_contrasts <- mod_pairwise$contrasts %>% tidy()
 ```
 
 <div class="warning">
-<p>The inquisitive amongst you may have noticed that <code>mod</code> is a list of 5 and seemingly contains the same thing three times: <code>anova_table</code>, <code>aov</code> and <code>Anova</code>. The reasons behind the differences are too complex to go into detail on this course (see <a href="https://rcompanion.org/rcompanion/d_04.html">here</a> for more info) but the simple version is that <code>anova_table</code> and <code>Anova</code>use one method of calculating the results (type 3 sum of squares) and <code>aov</code> uses a different method (type 1 sum of squares). What’s important for your purposes is that you need to use <code>anova_table</code> to view the overall results (and replicate the results from papers) and <code>aov</code>to run the follow-up tests and to get access to the residuals (or <code>lm()</code> for factorial ANOVA). As always, precision and attention to detail is key.</p>
+<p>The inquisitive amongst you may have noticed that <code>mod</code> is a list of 5 and seemingly contains the same thing three times: <code>anova_table</code>, <code>aov</code> and <code>Anova</code>. The reasons behind the differences are too complex to go into detail on this course (see <a href="https://rcompanion.org/rcompanion/d_04.html">here</a> for more info) but the simple version is that <code>anova_table</code> and <code>Anova</code>use one method of calculating the results (type 3 sum of squares) and <code>aov</code> uses a different method (type 1 sum of squares). What's important for your purposes is that you need to use <code>anova_table</code> to view the overall results (and replicate the results from papers) and <code>aov</code>to run the follow-up tests and to get access to the residuals (or <code>lm()</code> for factorial ANOVA). As always, precision and attention to detail is key.</p>
 </div>
 
 ### Activity 9: Power and effect size {#anova-a9}
@@ -338,11 +338,11 @@ mod_contrasts <- mod_contrasts %>%
 
 
 <div class="warning">
-<p>What are your options if the data don’t meet the assumptions and it’s really not appropriate to continue with a regular one-way ANOVA? As always, there are multiple options and it is a judgement call.</p>
+<p>What are your options if the data don't meet the assumptions and it's really not appropriate to continue with a regular one-way ANOVA? As always, there are multiple options and it is a judgement call.</p>
 <ol style="list-style-type: decimal">
 <li>You could run a non-parametric test, the Kruskal-Wallis for between-subject designs and the Friedman test for within-subject designs.</li>
-<li>If normality is the problem, you could try transforming the data. Field et al. (2009) has a good section on data transformation.</li>
-<li>You could use bootstrapping, which is not something we will cover in this course at all. Again, Field et al. (2009) covers this although it is a little complicated.</li>
+<li>If normality is the problem, you could try transforming the data. Field et al. (2009) has a good section on data transformation.</li>
+<li>You could use bootstrapping, which is not something we will cover in this course at all. Again, Field et al. (2009) covers this although it is a little complicated.</li>
 </ol>
 </div>
 
@@ -363,7 +363,7 @@ Below this line you will find the solutions to the above tasks. Only look at the
 
 #### Activity 1 {#anova-1sol}
 
-<div class="solution"><button>Activity 1</button>
+<div class="webex-solution"><button>Activity 1</button>
 
 ```r
 library("pwr")
@@ -384,7 +384,7 @@ dat <- read_csv("James Holmes_Expt 2_DATA.csv")%>%
 
 #### Activity 2 {#anova-a2sol}
 
-<div class="solution"><button>Activity 2</button>
+<div class="webex-solution"><button>Activity 2</button>
 
 ```r
 dat2 <- dat%>%
@@ -398,7 +398,7 @@ dat2 <- dat%>%
 
 #### Activity 4 {#anova-a4sol}
 
-<div class="solution"><button>Activity 4</button>
+<div class="webex-solution"><button>Activity 4</button>
 
 ```r
 sum_dat<-dat2%>%
@@ -413,7 +413,7 @@ sum_dat<-dat2%>%
 
 #### Activity 5 {#anova-a5sol}
 
-<div class="solution"><button>Activity 5</button>
+<div class="webex-solution"><button>Activity 5</button>
 
 ```r
 ggplot(dat2, aes(x = Condition, y = intrusions))+
