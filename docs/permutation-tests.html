@@ -52,6 +52,15 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6NP3MF25W3');
+</script>
 
 
 <style type="text/css">
@@ -689,8 +698,8 @@ You can go read up on the Monte Carlo approach if you like. It can however get q
 <li>Try increasing <code>n</code> to 1000.</li>
 </ul>
 <div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="permutation-tests.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(<span class="dv">10</span>)</span></code></pre></div>
-<pre><code>##  [1] -0.16074024 -1.67024058 -0.19268605  0.53060358  0.25946499 -0.09457521
-##  [7] -0.07597756  0.46770700 -0.57101577 -1.92582420</code></pre>
+<pre><code>##  [1] -0.3318226  0.5383048  0.8232601  0.8645694 -0.5955911 -0.4459756
+##  [7] -2.1898532  1.5251591  0.8880835 -0.6752691</code></pre>
 <p><br>
 <span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
 <p>If you enter <code>rnorm(50)</code> again you will get different numbers. Why? <select class='webex-select'><option value='blank'></option><option value=''>I have made a mistake</option><option value='answer'>The numbers are random</option><option value=''>R has made a mistake</option><option value=''>Phil has made a mistake</option></select></p>
@@ -771,8 +780,8 @@ The more values you have, the more permutations of the order you have. The numbe
 <li>Run the below line. Run it again. And again. What do you notice? And why is our output different from yours? (The answer is below)</li>
 </ul>
 <div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="permutation-tests.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(letters)</span></code></pre></div>
-<pre><code>##  [1] &quot;y&quot; &quot;f&quot; &quot;p&quot; &quot;z&quot; &quot;v&quot; &quot;o&quot; &quot;k&quot; &quot;b&quot; &quot;s&quot; &quot;x&quot; &quot;h&quot; &quot;u&quot; &quot;r&quot; &quot;j&quot; &quot;c&quot; &quot;d&quot; &quot;n&quot; &quot;w&quot; &quot;g&quot;
-## [20] &quot;l&quot; &quot;a&quot; &quot;m&quot; &quot;q&quot; &quot;i&quot; &quot;e&quot; &quot;t&quot;</code></pre>
+<pre><code>##  [1] &quot;s&quot; &quot;e&quot; &quot;n&quot; &quot;q&quot; &quot;i&quot; &quot;y&quot; &quot;r&quot; &quot;f&quot; &quot;h&quot; &quot;k&quot; &quot;x&quot; &quot;v&quot; &quot;u&quot; &quot;j&quot; &quot;t&quot; &quot;p&quot; &quot;w&quot; &quot;o&quot; &quot;c&quot;
+## [20] &quot;a&quot; &quot;z&quot; &quot;d&quot; &quot;b&quot; &quot;g&quot; &quot;l&quot; &quot;m&quot;</code></pre>
 <p><span style="font-size: 22px; font-weight: bold; color: var(--green);">Quickfire Questions</span></p>
 <p>If <code>month.name</code> contains the names of the twelve months of the year, how many possible permutations are there of <code>sample(month.name)</code>? <select class='webex-select'><option value='blank'></option><option value=''>1</option><option value=''>12</option><option value=''>144</option><option value='answer'>479001600</option></select></p>
 <div class="webex-solution">
@@ -802,18 +811,18 @@ Top Tip: Remember that you can scroll up through your command history in the con
 <p>The <code>tibble()</code> function takes named arguments - this means that the name you give each argument within the tibble function, e.g. <code>Y = rnorm(10)</code> will be the name of the column that appears in the table, i.e. <code>Y</code>. It's best to see how it works through an example.</p>
 <div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="permutation-tests.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Y =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 1
-##          Y
-##      &lt;dbl&gt;
-##  1 -1.70  
-##  2  0.0396
-##  3  2.15  
-##  4 -0.982 
-##  5 -1.30  
-##  6 -1.52  
-##  7 -1.34  
-##  8  0.369 
-##  9 -0.324 
-## 10  0.632</code></pre>
+##         Y
+##     &lt;dbl&gt;
+##  1  1.17 
+##  2  2.21 
+##  3 -1.11 
+##  4 -0.787
+##  5 -0.469
+##  6 -1.39 
+##  7  0.631
+##  8  1.04 
+##  9  2.12 
+## 10 -0.844</code></pre>
 <p>The above command creates a new table with one column named <code>Y</code>, and the values in that column are the result of a call to <code>rnorm(10)</code>: 10 randomly sampled values from a standard normal distribution (mean = 0, sd = 1) - See Skill 1.</p>
 <p>If however we wanted to sample from two different populations for <code>Y</code>, we could combine two calls to <code>rnorm()</code> within the <code>c()</code> function. Again this was in Skill 1, here we are now just storing it in a tibble. See below:</p>
 <div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="permutation-tests.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">10</span>), </span>
@@ -821,16 +830,16 @@ Top Tip: Remember that you can scroll up through your command history in the con
 <pre><code>## # A tibble: 10 x 1
 ##         Y
 ##     &lt;dbl&gt;
-##  1  -9.93
-##  2  -9.09
-##  3  -9.70
-##  4 -10.5 
-##  5 -10.3 
-##  6  20.3 
-##  7  19.9 
-##  8  18.9 
-##  9  21.2 
-## 10  19.9</code></pre>
+##  1  -9.47
+##  2 -10.5 
+##  3 -10.3 
+##  4 -10.1 
+##  5  -9.17
+##  6  19.9 
+##  7  18.6 
+##  8  19.4 
+##  9  19.8 
+## 10  19.5</code></pre>
 <p>Now we have sampled a total of 10 observations - the first 5 come from a group with a mean of -10, and the second 5 come from a group with a mean of 20. Try changing the values in the above example to get an idea of how this works. Maybe even add a third group!</p>
 <p>But, of course, it would be good to know which population each data point refers to and so we should add some group names. We can do this with some additional trickery using the <code>rep()</code> function.</p>
 </div>
@@ -861,16 +870,16 @@ Top Tip: Remember that you can scroll up through your command history in the con
 <pre><code>## # A tibble: 10 x 2
 ##    group      Y
 ##    &lt;chr&gt;  &lt;dbl&gt;
-##  1 A     -11.5 
-##  2 A     -10.6 
-##  3 A     -10.7 
-##  4 A      -8.28
-##  5 A     -11.5 
-##  6 B      19.3 
-##  7 B      19.3 
-##  8 B      19.4 
-##  9 B      21.1 
-## 10 B      20.3</code></pre>
+##  1 A     -10.5 
+##  2 A     -10.7 
+##  3 A     -12.2 
+##  4 A      -9.49
+##  5 A     -10.1 
+##  6 B      20.4 
+##  7 B      20.1 
+##  8 B      20.4 
+##  9 B      17.9 
+## 10 B      19.3</code></pre>
 <p>You now know how to create this table. Have a look at the code below and make sure you understand it. We have one column called <code>group</code> where we create <strong>A</strong>s and <strong>B</strong>s through <code>rep()</code>, and one column called <strong>Y</strong>, our data, all in our <code>tibble()</code>:</p>
 <div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="permutation-tests.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>)),</span>
 <span id="cb376-2"><a href="permutation-tests.html#cb376-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">Y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">10</span>), <span class="fu">rnorm</span>(<span class="dv">5</span>, <span class="at">mean =</span>  <span class="dv">20</span>)))</span></code></pre></div>
@@ -908,33 +917,33 @@ Don't forget, if you wanted to store your tibble, you would just assign it to a 
 <pre><code>## # A tibble: 2 x 2
 ##   group     m
 ##   &lt;chr&gt; &lt;dbl&gt;
-## 1 A      19.5
-## 2 B     -22.0</code></pre>
-<p>Sometimes what we want though is to calculate <strong>the differences between means</strong> rather than just the means; so we'd like to subtract the second group mean -22 from the first group mean of 19.5, to get a single value, the difference: 41.6.</p>
+## 1 A      20.6
+## 2 B     -20.8</code></pre>
+<p>Sometimes what we want though is to calculate <strong>the differences between means</strong> rather than just the means; so we'd like to subtract the second group mean -20.8 from the first group mean of 20.6, to get a single value, the difference: 41.4.</p>
 <p>We can do this using the <code>dplyr::pull()</code> and <code>purrr::pluck()</code> functions. <code>pull()</code> will extract a single column from a dataframe and turn it into a vector. <code>pluck()</code> then allows you to pull out an element (i.e. a value or values) from within that vector.</p>
 <div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="permutation-tests.html#cb380-1" aria-hidden="true" tabindex="-1"></a>vec <span class="ot">&lt;-</span> my_data_means <span class="sc">%&gt;%</span></span>
 <span id="cb380-2"><a href="permutation-tests.html#cb380-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(m)</span>
 <span id="cb380-3"><a href="permutation-tests.html#cb380-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb380-4"><a href="permutation-tests.html#cb380-4" aria-hidden="true" tabindex="-1"></a>vec</span></code></pre></div>
-<pre><code>## [1]  19.52869 -22.04773</code></pre>
+<pre><code>## [1]  20.64371 -20.79290</code></pre>
 <p>We have now created <code>vec</code> which is a vector containing only the group means; the rest of the information in the table has been discarded. Now that we have <code>vec</code>, we can calculate the mean difference as below, where <code>vec</code> is our vector of the two means and <code>[1]</code> and <code>[2]</code> refer to the two means:</p>
 <div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="permutation-tests.html#cb382-1" aria-hidden="true" tabindex="-1"></a>vec[<span class="dv">1</span>] <span class="sc">-</span> vec[<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] 41.57642</code></pre>
+<pre><code>## [1] 41.43661</code></pre>
 <p>But <code>pluck()</code> is also useful, and can be written as so:</p>
 <div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="permutation-tests.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pluck</span>(vec, <span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pluck</span>(vec, <span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 41.57642</code></pre>
+<pre><code>## [1] 41.43661</code></pre>
 <p>It can also be incorporated into a pipeline as below where we still <code>pull()</code> the means column, <code>m</code>, and then <code>pluck()</code> each value in turn and subtract them from each other.</p>
 <div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="permutation-tests.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="do">## whole thing in a pipeline</span></span>
 <span id="cb386-2"><a href="permutation-tests.html#cb386-2" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="sc">%&gt;%</span> <span class="fu">pull</span>(m) <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="dv">1</span>) <span class="sc">-</span></span>
 <span id="cb386-3"><a href="permutation-tests.html#cb386-3" aria-hidden="true" tabindex="-1"></a>  my_data_means <span class="sc">%&gt;%</span> <span class="fu">pull</span>(m) <span class="sc">%&gt;%</span> <span class="fu">pluck</span>(<span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 41.57642</code></pre>
+<pre><code>## [1] 41.43661</code></pre>
 <p>However, there is an alternative way to extract the difference between means which may make more intuitive sense. You already know how to calculate a difference between values in the same row of a table using <code>dplyr::mutate()</code>, e.g. <code>mutate(new_column = column1 minus column2)</code>. So if you can get the observations in <code>my_data_means</code> into the same row, different columns, you could then use <code>mutate()</code> to calculate the difference. Previously you learned <code>gather()</code> to bring columns together. Well the opposite of gather is the <code>tidyr::spread()</code> function to split columns apart - as below.</p>
 <div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="permutation-tests.html#cb388-1" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="sc">%&gt;%</span></span>
 <span id="cb388-2"><a href="permutation-tests.html#cb388-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(group, m)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 2
 ##       A     B
 ##   &lt;dbl&gt; &lt;dbl&gt;
-## 1  19.5 -22.0</code></pre>
+## 1  20.6 -20.8</code></pre>
 <p>The spread function (<code>?spread</code>) splits the data in column <code>m</code> by the information, i.e. labels, in column <code>group</code> and puts the data into separate columns. A call to <code>spread()</code> followed by a <code>mutate()</code> can be used to calculate the difference in means - see below:</p>
 <div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="permutation-tests.html#cb390-1" aria-hidden="true" tabindex="-1"></a>my_data_means <span class="sc">%&gt;%</span></span>
 <span id="cb390-2"><a href="permutation-tests.html#cb390-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(group, m) <span class="sc">%&gt;%</span></span>
@@ -942,7 +951,7 @@ Don't forget, if you wanted to store your tibble, you would just assign it to a 
 <pre><code>## # A tibble: 1 x 3
 ##       A     B  diff
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1  19.5 -22.0  41.6</code></pre>
+## 1  20.6 -20.8  41.4</code></pre>
 <ul>
 <li>What is the name of the column containing the differences between the means of A and B? <select class='webex-select'><option value='blank'></option><option value=''>means</option><option value=''>group</option><option value=''>m</option><option value='answer'>diff</option></select></li>
 </ul>
@@ -951,7 +960,7 @@ Don't forget, if you wanted to store your tibble, you would just assign it to a 
 <span id="cb392-2"><a href="permutation-tests.html#cb392-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(group, m) <span class="sc">%&gt;%</span></span>
 <span id="cb392-3"><a href="permutation-tests.html#cb392-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff =</span> A <span class="sc">-</span> B) <span class="sc">%&gt;%</span></span>
 <span id="cb392-4"><a href="permutation-tests.html#cb392-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(diff)</span></code></pre></div>
-<pre><code>## [1] 41.57642</code></pre>
+<pre><code>## [1] 41.43661</code></pre>
 <div class="webex-solution">
 <button>
 Portfolio Point - Reading pipes and verbalising tasks
@@ -1079,8 +1088,8 @@ Here are two important things to understand about functions.
 <p>Also you'll probably want to store the results in a variable, for example, <code>ten_samples</code>:</p>
 <div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="permutation-tests.html#cb406-1" aria-hidden="true" tabindex="-1"></a>ten_samples <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">10</span>, <span class="fu">rnorm</span>(<span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mean</span>())</span>
 <span id="cb406-2"><a href="permutation-tests.html#cb406-2" aria-hidden="true" tabindex="-1"></a>ten_samples</span></code></pre></div>
-<pre><code>##  [1]  0.009628446  0.038643086  0.165069489  0.081068700  0.009759932
-##  [6]  0.133442292  0.177420512  0.031798246  0.111468066 -0.089064618</code></pre>
+<pre><code>##  [1]  0.0468488529  0.0002258006  0.0641965548 -0.2356203533 -0.0070404504
+##  [6] -0.1745433809 -0.0033140013 -0.0479244861  0.0399383341 -0.0159443433</code></pre>
 <p>Each element (value) of the vector within <code>ten_samples</code> is the result of a single call to <code>rnorm(100) %&gt;% mean()</code>.</p>
 <ul>
 <li>Assuming that your <code>hello()</code> function from Skill 5 still exists, and it takes the argument <code>name = Goodbye</code>, what would happen in the console if you wrote, <code>replicate(1000, hello("Goodbye"))</code>? <select class='webex-select'><option value='blank'></option><option value=''>Hello World would appear a thousand times</option><option value=''>hello Goodbye would appear a thousand times</option><option value='answer'>Hello Goodbye would appear a thousand times</option></select> - Try it and see if it works!</li>
